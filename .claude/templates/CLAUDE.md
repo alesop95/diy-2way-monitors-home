@@ -35,7 +35,7 @@ Regole modulari caricate su necessità, sotto `.claude/rules/`, e skill richiama
 
 ## Apprendimenti recenti
 
-Voci brevi e datate per le decisioni e le scoperte operative che non hanno ancora una casa definitiva: un comando che funziona diversamente da come documentato, un gotcha dell'ambiente, una scelta presa al volo. La voce nasce qui e migra appena possibile nella sede propria, `memory/decisions.md` se e' una decisione architetturale, la scheda di contesto pertinente se e' conoscenza strutturale, e si cancella da qui una volta migrata: questa sezione e' un buffer, non un archivio.
+Voci brevi e datate per le decisioni e le scoperte operative che non hanno ancora una casa definitiva: un comando che funziona diversamente da come documentato, un gotcha dell'ambiente, una scelta presa al volo. La voce nasce qui e migra appena possibile nella sede propria, `memory/decisions.md` se è una decisione architetturale, la scheda di contesto pertinente se è conoscenza strutturale, e si cancella da qui una volta migrata: questa sezione è un buffer, non un archivio.
 
 ```
 - [<YYYY-MM-DD>] <decisione o scoperta, una riga>
@@ -43,4 +43,4 @@ Voci brevi e datate per le decisioni e le scoperte operative che non hanno ancor
 
 ## Vincoli di team
 
-Le operazioni di `git add`, commit e push restano sempre manuali dell'utente: l'agente prepara i file, non committa. L'identità git è impostata a livello locale del repo secondo `.claude/rules/git-identity-and-repo.md`. Lo stile di documentazione e di interazione è quello di `.claude/rules/interaction-style.md`. Claude non scrive autonomamente nei file di memoria e di contesto: li aggiorna solo su richiesta esplicita, così il versionamento resta sotto controllo umano.
+Le operazioni di `git add`, commit e push restano sempre manuali dell'utente: l'agente prepara i file, non committa. L'identità git è impostata a livello locale del repo secondo `.claude/rules/git-identity-and-repo.md`. Lo stile di documentazione e di interazione è quello di `.claude/rules/interaction-style.md`, la cui sezione "Formattazione dei file Markdown" vincola anche la forma dei file `.md`: paragrafi su una riga sorgente continua, senza a capo manuali a metà frase. Dove è istanziato lo strumento `tools/md-unwrap.py` la convenzione si attua eseguendolo sul file appena scritto, e si verifica prima di un commit con `python tools/md-unwrap.py --check .`. Claude non scrive autonomamente nei file di memoria e di contesto: li aggiorna solo su richiesta esplicita, così il versionamento resta sotto controllo umano.
