@@ -1,46 +1,70 @@
-﻿# Materiali manuali e binari (non versionati finche il progetto non avanza)
-_notes/
-*.txt
-*.docx
-*.doc
-*.pdf
-*.ppt
-*.pptx
-*.xls
-*.xlsx
-*.gsheet
-*.csv
-*.xml
-*.url
-*.lnk
+# Materiale scritto a mano e segnalibri alla radice del progetto.
+# I pattern sono ancorati alla radice con lo slash iniziale: prima erano globali e
+# nascondevano per errore file di template e di strumenti che devono essere versionati,
+# per esempio tools/dashes-exclude.txt e .claude/templates/latex/tex-packages.txt.
+/*.txt
+/*.docx
+/*.doc
+/*.pdf
+/*.ppt
+/*.pptx
+/*.xls
+/*.xlsx
+/*.gsheet
+/*.csv
+/*.xml
+/*.url
+/*.lnk
+/*.jpg
+/*.jpeg
+/*.png
+/*.gif
+/*.bmp
+
+# Materiali pesanti del progetto: installer Windows, pacchetto degli esempi e licenza.
+# Vivono qui solo in transito verso la macchina Ubuntu Studio; l'elenco di che cosa
+# contengono e dove vanno sta in docs/TRANSFER-MANIFEST.md.
+/Akabak + VACS/
+
+# Eseguibili, archivi e media: mai versionati, in nessuna cartella.
 *.exe
 *.msi
 *.apk
 *.zip
 *.7z
 *.rar
-*.jpg
-*.jpeg
-*.png
-*.gif
-*.bmp
 *.mp3
 *.wav
+*.flac
 *.mp4
+*.mkv
 
-# Ambiente e sistema operativo
+# Livello privato e verboso: appunti, stati di lavorazione, materiale transitorio
+_notes/
+
+# Eccezione: sotto .claude/templates/ i _notes non sono appunti reali ma i modelli
+# da cui si istanziano, quindi vanno versionati. Senza questa negazione un clone
+# perderebbe i modelli DIARIO, RESOCONTO, RESUME-PROMPT e TEST-CHECKLIST.
+# Divergenza voluta dal template di origine, che ha lo stesso difetto: da propagare.
+!.claude/templates/_notes/
+!.claude/templates/community-sources/_notes/
+
+# File personali e locali, non condivisi nel repository.
+# Ancorati alla radice, cosi' il modello .claude/templates/CLAUDE.local.md resta tracciato.
+/CLAUDE.local.md
+/.claude/settings.local.json
+
+# Ambiente di sviluppo
 node_modules/
 .venv/
 venv/
 __pycache__/
 *.pyc
+
+# Artefatti di sistema operativo e di sincronizzazione
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Privati
-CLAUDE.local.md
-.claude/settings.local.json
 
 # File di test della sessione (eliminare a mano)
 .claude2/
