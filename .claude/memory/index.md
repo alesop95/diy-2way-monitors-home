@@ -6,7 +6,7 @@
 
 ```
 Branch attivo:          main
-Commit di riferimento:  f85480d
+Commit di riferimento:  047c842
 Data snapshot:          2026-09-07
 Modifiche non committate: sì, la coda della sessione del 2026-09-07 su SSD e privilegi
 ```
@@ -21,9 +21,9 @@ Progettazione e costruzione di una coppia di monitor da studio a due vie per un 
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| STACK.md | f85480d | aggiornata |
-| roadmap.md | f85480d | da rileggere: la fase 0 ha cambiato le priorità |
-| current-work.md | f85480d | aggiornata |
+| STACK.md | 047c842 | aggiornata |
+| roadmap.md | 047c842 | da rileggere: la fase 0 ha cambiato le priorità |
+| current-work.md | 047c842 | aggiornata |
 | design-and-security.md | - | non creata: il progetto non ha codice applicativo né superficie di attacco |
 | deployment.md | - | non creata: non c'è deploy; il suo equivalente è `docs/TRANSFER-MANIFEST.md` |
 | dev-testing.md | - | non creata: i test sono le suite degli strumenti, descritte in STACK.md |

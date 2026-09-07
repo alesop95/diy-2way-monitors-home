@@ -177,3 +177,17 @@ Conseguenza operativa immediata, e non è ovvia: **la pulizia dell'ambiente Wine
 L'unica cosa che va conservata dall'ambiente attuale è il prefix `~/.wine`, che vive sotto `/home` e quindi sopravvive: la copia di sicurezza prevista dalla fase 1.2 resta utile non per ripristinarlo, perché i prefix vanno rifatti puliti, ma per poter confrontare configurazioni e librerie se un programma dopo la reinstallazione non si comportasse come prima.
 
 Conseguenza sulla sequenza: si passa direttamente alla fase 1, cioè trasferimento dei materiali e copia di sicurezza di `/home`, e da lì alle fasi da 2 a 11. Le due voci ancora aperte di PA-005, cioè l'esito di `apt update` e il Machine Identifier di Akabak, cambiano di peso: la prima diventa irrilevante perché quel sistema non verrà aggiornato, la seconda resta necessaria e va fatta prima di azzerare, perché dopo non sarebbe più confrontabile.
+
+## ADR-014 - Emendamento ad ADR-012: il vincolo di budget sulla catena di ascolto è rilassato
+
+Data: 2026-09-07. Stato: accettata.
+
+Contesto: ADR-012 aveva registrato che l'uscita a livello di linea del Rod Rain, essendo un segnale e non una potenza, vincola l'architettura del diffusore, e aveva presentato la necessità di un amplificatore di potenza per la strada passiva come un costo da evitare, cioè come un elemento che "diventerebbe un acquisto". L'utente ha precisato che l'acquisto di un buon amplificatore non è un problema quando servirà, e che in alternativa si può valutare la sostituzione del convertitore, ragionando sul miglior compromesso fra qualità e costo.
+
+Decisione: la scelta fra monitor attivi e passivi si prende su criteri tecnici e non sul risparmio di un componente. Il budget non è il vincolo dominante, e né l'amplificatore né la sostituzione del convertitore sono esclusi in partenza.
+
+Motivazione: un vincolo di budget che non esiste distorce una decisione tecnica. Presentare l'amplificatore come un costo da evitare avrebbe spinto verso la strada attiva per la ragione sbagliata, cioè per non comprare un componente, invece che per le sue ragioni proprie, che sono il controllo indipendente per via, l'assenza di componenti passivi in serie all'altoparlante e la possibilità di realizzare il filtro in digitale. Simmetricamente, la strada passiva ha ragioni proprie che vanno pesate: un solo canale di amplificazione per cassa, nessuna alimentazione a bordo del diffusore, e un progetto di crossover verificabile con componenti misurabili.
+
+Conseguenze: la decisione resta aperta e si prende nella fase 4a, dove sarà informata dalle simulazioni invece che dal listino. Restano da confrontare, quando ci si arriverà, tre configurazioni e non due: convertitore attuale più monitor attivi, convertitore attuale più amplificatore di potenza più monitor passivi, e convertitore sostituito con un'interfaccia o un DAC più adatto più una delle due architetture. Il terzo termine è quello che l'utente ha aggiunto e che ADR-012 non contemplava.
+
+Va notato che il terzo termine ha un legame con un'altra voce aperta, e conviene non deciderle separatamente: la valutazione dell'interfaccia audio per l'home recording, tracciata come PA-001 nel progetto gemello, riguarda un dispositivo che potrebbe coprire anche il ruolo di sorgente per l'ascolto. Valutare le due cose insieme evita di comprare due dispositivi dove ne basterebbe uno, oppure di scoprire dopo che quello comprato per la registrazione non è adatto all'ascolto.
