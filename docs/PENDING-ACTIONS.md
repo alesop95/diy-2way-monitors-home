@@ -118,6 +118,77 @@ Che cosa cambia fra le due strade, in concreto. L'aggiornamento in posto è oggi
 
 Il criterio di completamento. Una scelta dichiarata, e ADR-006 riconfermata oppure superata da una voce nuova.
 
+## PA-007 - Cancellare la copia del corredo sul Desktop della postazione
+
+Data di apertura: 2026-09-07. Stato: **aperta, bloccata da una condizione precisa**.
+
+Che cosa va fatto. Cancellare `C:\Users\Utente\Desktop\Progetto stanza (software)`, 650 file per 2,3 GB.
+
+Perché non ora, ed è la risposta a una domanda diretta dell'utente. Il ragionamento "se abbiamo tutto quello che serve possiamo cancellare anche il Desktop" è corretto sul contenuto e sbagliato sul momento. Oggi le voci utili del corredo esistono in due copie, una sul Desktop e una sulla macchina. Cancellare il Desktop le porta a **una copia sola**, e quella copia vive su una macchina che sta per subire una reinstallazione con riformattazione di una partizione. Ridurre a una copia proprio prima di una operazione che tocca le partizioni è il momento peggiore possibile.
+
+La condizione di sblocco è quindi una sola: **la copia di sicurezza di `/home` fuori dalla macchina**, cioè la fase 1.3 della procedura di installazione pulita. Fatta quella, le copie tornano a essere due, una sulla macchina e una nel backup, e il Desktop diventa la terza: a quel punto è ridondante e può andare.
+
+Che cosa si perde davvero, distinto con precisione. Delle sei voci trasferite non si perde nulla, perché sono sulla macchina con le impronte verificate. Delle otto voci scartate dal censimento si perde l'unica copia esistente, perché non sono state trasferite di proposito. Il censimento stabilisce che nessuna serve al progetto e che per ciascuna esiste una sostituzione nativa o gratuita già disponibile, quindi la perdita è voluta e non accidentale; ma va detta, perché è irreversibile.
+
+Il criterio di completamento. La cartella non esiste più sul Desktop, e sulla macchina il corredo è presente con le impronte verificate più una copia di sicurezza di `/home` fuori dalla macchina.
+
+Il comando, da eseguire solo dopo la fase 1.3.
+
+```powershell
+bash tools/transfer-to-studio.sh --impronte
+Remove-Item -LiteralPath "C:\Users\Utente\Desktop\Progetto stanza (software)" -Recurse -Force
+```
+
+Il primo comando non è decorativo: riverifica che il materiale sulla macchina corrisponda ancora, e va lanciato subito prima della cancellazione e non ore prima.
+
+## PA-008 - Recuperare 1,2 GiB di cartelle di servizio su J:
+
+Data di apertura: 2026-09-07. Stato: **aperta, eseguibile adesso**.
+
+Che cosa va fatto. Cancellare da `J:` le tre cartelle di servizio che contengono lo spazio recuperabile, verificate presenti il 2026-09-07.
+
+Va chiarito un equivoco emerso in sessione: l'agente non ha cancellato nulla su quel disco. La cartella `Progetto stanza (software)` risultava già assente quando è stata verificata, e le tre cartelle di servizio ci sono ancora tutte.
+
+| Voce | Peso | Natura |
+|---|---|---|
+| `J:\FOUND.002` | 429 MiB | 77 frammenti orfani di chkdsk, del 27 luglio |
+| `J:\FOUND.000` | 412 MiB | 90 frammenti orfani di chkdsk, del 30 giugno |
+| `J:\.Spotlight-V100` | 371 MiB | 76 file di indice di ricerca di macOS |
+
+Le altre sei voci di servizio, cioè `FOUND.001`, `FOUND.003`, `FOUND.004`, `.Trashes`, `.fseventsd` e `.TemporaryItems`, esistono ma sommate non arrivano a un megabyte: cancellarle non cambia niente e non vale il gesto. `$RECYCLE.BIN` si svuota dal cestino e `System Volume Information` va lasciata al sistema.
+
+Una precauzione sulle due `FOUND` grandi. Contengono 167 file di dati che il filesystem aveva perso e che `chkdsk` ha recuperato senza il loro nome, quindi con nomi del tipo `file0001.chk`. Nella grande maggioranza dei casi sono inservibili, ma la maggioranza non è la totalità: guardarli prima costa un minuto.
+
+```powershell
+Get-ChildItem "J:\FOUND.000", "J:\FOUND.002" -Recurse -File | Sort-Object Length -Descending | Select-Object -First 20 Length, FullName
+```
+
+Il comando di cancellazione, dopo aver guardato.
+
+```powershell
+Remove-Item -LiteralPath "J:\FOUND.000", "J:\FOUND.001", "J:\FOUND.002", "J:\FOUND.003", "J:\FOUND.004", "J:\.Spotlight-V100" -Recurse -Force
+```
+
+Il criterio di completamento. Le tre voci non esistono più e `python tools/analisi-ssd-esterno.py` riporta un recuperabile prossimo a zero.
+
+Nota su ciò che **non** va cancellato, perché è la parte contro-intuitiva. I due archivi di backup da 25,8 e 19,4 GiB restano: il confronto dei loro indici, fatto il 2026-09-07, dimostra che nessuno dei due contiene l'altro, e cancellare il più vecchio costerebbe 145.478 versioni di file che non esistono altrove in forma archiviata. Il dettaglio è in `docs/90-riferimenti/pulizia-ssd-esterno.md`.
+
+## PA-009 - Leggere lo SMART dell'SSD esterno
+
+Data di apertura: 2026-09-07. Stato: **aperta**.
+
+Che cosa va fatto. Leggere lo stato di salute del disco `J:` con CrystalDiskInfo da Windows, oppure con `smartctl` collegandolo alla macchina Ubuntu Studio.
+
+Perché conta. Sul volume ci sono cinque cartelle `FOUND`, dal 30 giugno al 3 settembre, cioè cinque riparazioni del filesystem in poco più di due mesi. Le cause possibili sono due e portano a rimedi opposti: la rimozione senza espulsione sicura, che si corregge con una abitudine, oppure un difetto del supporto, che si corregge sostituendolo. Solo lo SMART distingue le due.
+
+L'elemento di contesto che rende la prima ipotesi meno rassicurante: il disco interno della macchina ha 24 spegnimenti non puliti su 135 accensioni. Due dischi con sintomi diversi che puntano nella stessa direzione sono un indizio più forte di due sintomi isolati.
+
+Gli indicatori da guardare sono gli stessi usati per il disco interno: percentuale di usura, riserva di blocchi disponibili e conteggio degli errori di integrità dei dati.
+
+Il criterio di completamento. Un esito registrato, e la conseguente decisione se quel disco possa continuare a ospitare backup oppure vada sostituito.
+
+Nota di priorità. Media, e più alta di quanto sembri: su quel disco vivono 371 GiB di materiale personale e due archivi di backup che il confronto ha dimostrato non ridondanti. Se il supporto è malato, quello è il posto sbagliato dove tenerli.
+
 ## Azioni compiute
 
 Nessuna, per ora. Le voci compiute si spostano qui con la data e l'esito, e non si cancellano.
