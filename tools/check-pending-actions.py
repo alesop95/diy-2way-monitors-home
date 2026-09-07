@@ -25,6 +25,10 @@ from pathlib import Path
 COPIA_LAVORO = Path(r"C:\Users\Utente\Desktop\Progetto stanza (software)")
 COPIA_SSD = Path(r"J:\Progetto stanza (software)")
 
+# Quarta posizione, emersa leggendo il collegamento presente in entrambe le copie:
+# il materiale EASE Focus 3.1.10 del workshop K-array. Vedi PA-004.
+COPIA_G = Path(r"G:\LIBRARY\LOUDSPEAKERS & ELECTROACOUSTIC\K-ARRAY WORKSHOP\EASE Focus (k-array)")
+
 # Sottoinsieme legittimo, quello che va sulla macchina Ubuntu Studio. I percorsi sono
 # relativi alla radice del corredo. Vedi docs/10-ambiente/wine-corredo-progetto-stanza.md
 SOTTOINSIEME_UTILE = [
@@ -66,20 +70,21 @@ def controlla_pa001() -> None:
     ssd_presente = COPIA_SSD.is_dir()
     lavoro_presente = COPIA_LAVORO.is_dir()
 
-    riga("ok" if lavoro_presente else "!!", f"copia di lavoro: {COPIA_LAVORO}")
-    riga("ok" if ssd_presente else "  ", f"copia su SSD:    {COPIA_SSD}")
+    riga("ok" if lavoro_presente else "!!", f"condizione 1a, copia di lavoro: {COPIA_LAVORO}")
+    riga("ok" if ssd_presente else "  ", f"condizione 1b, disco J: collegato: {COPIA_SSD}")
 
     if not ssd_presente:
         print("\n  BLOCCATA: il disco J: non e' collegato, quindi non c'e' nulla da")
         print("  confrontare ne' da cancellare. Ricollegare l'SSD e rilanciare.")
         return
 
-    print("\n  Il disco e' collegato. Restano due condizioni da confermare a mano,")
-    print("  perche' questo strumento non puo' verificarle:")
-    riga("? ", "il trasferimento verso la macchina Ubuntu Studio e' completato")
-    riga("? ", "le impronte sulla destinazione coincidono (docs/TRANSFER-MANIFEST.md)")
-    print("\n  Poi il confronto fra le due copie, con: --confronta")
-    print("  Non cancellare prima che il confronto sia andato a buon fine.")
+    riga("ok", "condizione 2, corrispondenza fra le copie: verificata il 2026-09-07")
+    print("       650 file per copia, stesse dimensioni, impronte SHA-256 tutte coincidenti.")
+    print("       Rieseguibile in qualsiasi momento con: --confronta")
+    riga("? ", "condizione 3, trasferimento verso la macchina completato e verificato")
+    print("       Non verificabile da qui: la conferma e' l'esito di transfer-to-studio.sh.")
+    print("\n  BLOCCATA sulla sola condizione 3. Non cancellare prima che la copia buona")
+    print("  sia sulla macchina con le impronte verificate.")
 
 
 def controlla_pa002() -> None:
@@ -95,6 +100,22 @@ def controlla_pa003() -> None:
     template = Path(r"E:\template-claude-developing")
     riga("ok" if template.is_dir() else "  ", f"template raggiungibile: {template}")
     print("  APERTA: e' una decisione dell'utente su un altro repository.")
+
+
+def controlla_pa004() -> None:
+    print("\nPA-004  Ispezionare il disco G: e il materiale EASE Focus 3.1.10 (K-array)")
+    presente = COPIA_G.is_dir()
+    riga("ok" if presente else "  ", f"percorso su G:: {COPIA_G}")
+    if presente:
+        try:
+            n = sum(1 for x in COPIA_G.rglob("*") if x.is_file())
+            print(f"  SBLOCCATA: il percorso e' raggiungibile e contiene {n} file.")
+            print("  Ispezionarlo e decidere se qualcosa va nel manifest di trasferimento.")
+        except OSError as e:
+            print(f"  ANOMALIA: percorso presente ma non percorribile: {e}")
+    else:
+        print("  BLOCCATA: il disco G: non e' collegato.")
+        print("  Priorita' bassa: la versione da installare e' la 3.1.260, non la 3.1.10.")
 
 
 def confronta() -> int:
@@ -161,6 +182,7 @@ def main() -> int:
     controlla_pa001()
     controlla_pa002()
     controlla_pa003()
+    controlla_pa004()
     print("\nLegenda: [ok] condizione soddisfatta, [? ] da confermare a mano,")
     print("         [  ] non soddisfatta, [!!] anomalia da guardare.")
     return 0

@@ -2,9 +2,31 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-07 - Verifica delle copie del corredo, e apertura dell'accesso alla macchina
+
+Commit di partenza: 3eac5f3. Commit di arrivo: da assegnare.
+
+File toccati: `docs/PENDING-ACTIONS.md` con PA-001 riscritta e PA-004 nuova, `docs/10-ambiente/wine-corredo-progetto-stanza.md`, `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 10.3, `docs/TRANSFER-MANIFEST.md`, `docs/OPERATIONS-LOG.md` con MS-024 a MS-027 e la correzione di MS-021 e MS-023, `tools/check-pending-actions.py`, `.claude/memory/decisions.md` con la correzione di ADR-010, e `CLAUDE.md` con la regola nuova sul tracciamento integrale.
+
+Motivo: il disco `J:` è stato collegato, il che ha permesso di verificare la corrispondenza fra le due copie del corredo software, e l'utente ha chiesto di includere anche quel contenuto nel perimetro di installazione. In parallelo è emerso un errore nella documentazione fornita per aprire l'accesso SSH.
+
+Esito in sintesi. Quattro microstep nuovi, da MS-024 a MS-027, e due voci precedenti corrette esplicitamente invece che riscritte in silenzio.
+
+Il risultato principale è una smentita, ed è il motivo per cui questa sessione conta più di quanto la sua lunghezza suggerisca. Le due copie del corredo sono identiche: 650 file per parte, stesse dimensioni, 2.380.021.546 byte per copia, tutte le impronte SHA-256 coincidenti. L'inferenza scritta nella sessione precedente, secondo cui la versione 3.1.10 di EASE Focus esistesse sul solo SSD e le due copie quindi divergessero, era sbagliata: il collegamento è identico su entrambe. Era marcata come probabile e non come certa, che è il minimo, ma restava una supposizione dove bastava leggere un file.
+
+Il tranello che l'aveva alimentata va registrato perché è generale: `du -sh` mostrava differenze vistose fra le due copie, fino a 14 MB contro 5,9 MB sulla stessa cartella, e non erano reali. Quel comando misura lo spazio occupato, che dipende dalla dimensione dei cluster del filesystem e arrotonda per eccesso ogni file; su 650 file l'arrotondamento si accumula. Il criterio giusto è l'impronta del contenuto.
+
+Dalla lettura del collegamento è venuta una scoperta: punta a un quarto disco `G:`, al percorso del workshop K-array, mai menzionato in nessun documento del progetto. Non collegato, quindi non ispezionato, e tracciato come PA-004 a priorità bassa perché la versione da installare è la 3.1.260.
+
+Sul perimetro di installazione, la risposta alla domanda dell'utente è che `J:` non era incluso, perché nel messaggio precedente era nominato con il ruolo opposto, cioè come la copia da cancellare. La richiesta di includerlo non ha però conseguenze pratiche, proprio perché le due copie sono identiche: il piano già scritto le copre entrambe e nessuna voce va aggiunta.
+
+Un errore mio, corretto e documentato come MS-027. Il comando `ssh-copy-id` fornito in un blocco PowerShell non esiste in quella shell: è uno script POSIX presente su Windows solo dentro Git Bash. L'utente ha generato la chiave con successo e il secondo comando è fallito. La causa è l'assunzione che due blocchi per due shell differiscano solo nella sintassi, mentre qui differiva la disponibilità del comando. La fase 10.3 riporta ora tre forme, con l'aggiunta dei permessi espliciti sul file delle chiavi autorizzate, che il servizio SSH pretende e la cui assenza farebbe fallire l'autenticazione senza spiegare perché.
+
+Infine, l'istruzione dell'utente di scrivere in documentazione tutto ciò che passa in sessione è stata resa vincolante in `CLAUDE.md`, con la ripartizione fra i documenti e i tre casi che si è tentati di non scrivere: gli errori, comprese le inferenze smentite da ritirare esplicitamente, e i comandi eseguiti con il loro output reale quando insegna qualcosa.
+
 ## 2026-09-04 - Impianto del progetto: allineamento, conversione, ambiente
 
-Commit di partenza: 0df04bb. Commit della prima parte: 9e9517e, già su origin. Commit della seconda parte: da assegnare.
+Commit di partenza: 0df04bb. Commit prodotti: 9e9517e per la prima parte e 3eac5f3 per la seconda, entrambi su origin.
 
 File toccati: `.claude/rules/` tutte e sette le regole, `.claude/PROJECT-SYSTEM.md`, i due prompt di sistema, `.claude/skills/`, l'intero `.claude/templates/`, le tre schede nuove sotto `.claude/context/`, i tre file di `.claude/memory/`, l'albero `docs/` con ventitré file, sei script sotto `tools/`, `.gitignore`, `CLAUDE.md`, `README.md`. Spostato `full_electroacoustics.docx` dalla radice a `_notes/`.
 
