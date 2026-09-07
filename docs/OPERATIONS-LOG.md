@@ -670,6 +670,56 @@ L'emendamento aggiunge anche un terzo termine di confronto che ADR-012 non conte
 
 Esito: fatto. La decisione resta aperta e si prende nella fase 4a, informata dalle simulazioni invece che dal listino.
 
+### MS-043 - I due archivi di backup confrontati: nessuno contiene l'altro
+
+Perimetro: sola lettura sui due archivi su `J:`, indici salvati sotto `_notes/`, riscrittura della sezione corrispondente di `docs/90-riferimenti/pulizia-ssd-esterno.md`.
+
+MS-041 aveva lasciato la questione aperta dichiarando che la conclusione "il vecchio è superato dal nuovo" non era sostenibile con i dati disponibili. I dati sono stati raccolti.
+
+Estratti gli indici dei due archivi con `7z l`, per 159.217 e 94.221 righe, e confrontati per percorso. L'esito è che **nessuno dei due contiene l'altro**: 145.483 voci esistono solo nel più vecchio e 80.487 solo nel più recente.
+
+La causa è `backup-sviluppo`, che spiega 145.478 delle prime e 80.377 delle seconde: fra il 28 agosto e il 4 settembre quella cartella è cambiata quasi per intero, quindi i due archivi sono due istantanee diverse della stessa cosa e non due versioni incrementali. Il più recente ha in aggiunta 81 voci sotto `_info_PW`, 26 sotto `DOCUMENTATION` e 2 sotto `SONGWRITING`.
+
+Cade anche l'ipotesi che MS-041 aveva avanzato sulla differenza di peso. Si era supposto che i 6 GiB di scarto dipendessero dalla cartella dei modelli 3DS, esclusa dal più recente per dichiarazione del suo stesso nome. Quella cartella non compare fra le differenze, quindi non era nemmeno nel più vecchio, coerentemente con il fatto che porti nel nome una data successiva a quel backup. Lo scarto si spiega interamente con il rimescolamento di `backup-sviluppo`.
+
+Conseguenza: cancellare il più vecchio costa 145.478 versioni di file che non esistono altrove in forma archiviata. La domanda "posso cancellarlo perché c'è il nuovo" ha quindi risposta negativa e documentata. Se quelle versioni servano è una decisione dell'utente e non una questione tecnica, dato che la cartella `backup-sviluppo` esiste ancora sul disco con il suo contenuto corrente.
+
+Nota operativa: `7z` non è sul PATH di PowerShell su questa postazione, e il comando che lo invocava per nome era quindi ineseguibile. L'eseguibile sta in `C:\Program Files\7-Zip\7z.exe`, e va invocato per percorso completo oppure aggiunto al PATH. È lo stesso genere di errore di MS-027 su `ssh-copy-id`, cioè un comando fornito assumendo che sia disponibile invece di verificarlo.
+
+Esito: fatto.
+
+### MS-044 - La copia sul Desktop non si cancella adesso, e la ragione è il conteggio delle copie
+
+Perimetro: PA-007 nuova, aggiornamento dello strumento delle azioni differite.
+
+L'utente ha proposto di cancellare anche `C:\Users\Utente\Desktop\Progetto stanza (software)`, dato che tutto il necessario è sulla macchina. Il ragionamento è corretto sul contenuto e sbagliato sul momento, e vale spiegare la differenza perché è il tipo di errore che costa dati.
+
+Oggi le voci utili del corredo esistono in due copie, una sul Desktop e una sulla macchina. Cancellare il Desktop le porta a **una copia sola**, e quella copia vive su una macchina che sta per subire una reinstallazione con riformattazione di una partizione, per ADR-013. Ridurre a una copia proprio prima di una operazione che tocca le partizioni è il momento peggiore possibile: non perché la procedura sia rischiosa, ma perché l'unico rischio irreversibile che ha, cioè l'errore umano nella selezione della partizione da formattare, è esattamente quello contro cui una seconda copia protegge.
+
+La condizione di sblocco è quindi una sola, ed è un passo che era già in programma: la copia di sicurezza di `/home` fuori dalla macchina, cioè la fase 1.3. Fatta quella, le copie tornano due e il Desktop diventa la terza, quindi ridondante.
+
+Va dichiarato con precisione che cosa si perderà quando si cancellerà. Delle sei voci trasferite nulla, perché sono sulla macchina con le impronte verificate. Delle otto voci scartate dal censimento si perde l'unica copia esistente, perché non sono state trasferite di proposito: la perdita è voluta e documentata, dato che il censimento stabilisce che nessuna serve e che per ciascuna esiste una sostituzione già disponibile, ma resta irreversibile e va detta.
+
+Aggiunto al comando di cancellazione un passo che lo precede e che non è decorativo: la riverifica delle impronte sulla macchina, da lanciare subito prima e non ore prima.
+
+Esito: fatto per la decisione. L'esecuzione è subordinata alla fase 1.3.
+
+### MS-045 - Chiarito un equivoco: l'agente non ha cancellato nulla su J:
+
+Perimetro: PA-008 nuova, con la verifica dello stato attuale del disco.
+
+L'utente ha chiesto che cosa dovesse cancellare "se l'ho cancellato io". L'equivoco va chiarito perché riguarda la fiducia su un disco con materiale personale: **l'agente non ha cancellato nulla su quel volume, e non ha eseguito alcuna cancellazione in tutta la sessione.** La cartella `Progetto stanza (software)` risultava già assente quando è stata verificata, come MS-040 registra dichiarando di non sapere quando e come sia sparita.
+
+Verificato lo stato attuale: le nove voci di servizio sono tutte ancora presenti, comprese le tre che contengono lo spazio recuperabile. Quindi c'è ancora tutto da fare, e PA-008 lo elenca con i pesi misurati.
+
+Il recuperabile è concentrato in tre voci per circa 1.212 MiB: `FOUND.002` con 429 MiB e 77 file, `FOUND.000` con 412 MiB e 90 file, e `.Spotlight-V100` con 371 MiB e 76 file. Le altre sei, cioè `FOUND.001`, `FOUND.003`, `FOUND.004`, `.Trashes`, `.fseventsd` e `.TemporaryItems`, esistono ma sommate non arrivano a un megabyte: cancellarle non cambia niente.
+
+Aggiunta una precauzione prima della cancellazione delle due `FOUND` grandi, che insieme contengono 167 file recuperati da `chkdsk` senza il loro nome originale. Nella grande maggioranza dei casi sono inservibili, ma la maggioranza non è la totalità, e guardare i venti più grandi costa un minuto.
+
+Lo strumento delle azioni differite ora misura la presenza delle tre voci e riporta quanto resta da recuperare, così che il controllo sia un comando invece di un ricordo, e ricorda in quella stessa schermata che i due archivi `.7z` non si cancellano, perché è il punto dove la tentazione è più forte.
+
+Esito: fatto.
+
 ## Microstep bloccati, e da che cosa dipendono ora
 
 Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso e non uno stallo. All'inizio la macchina era di stato ignoto, poi si è rivelata sospesa e non spenta, poi sveglia e raggiungibile ma senza autenticazione configurata. Il blocco attuale è quindi su una singola azione dell'utente, cioè l'installazione della chiave SSH descritta nella fase 10.3 della procedura, che richiede la password una volta sola e non è delegabile.

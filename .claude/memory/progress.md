@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-07, quarta parte - SSD esterno misurato, archivi confrontati, Desktop rinviato
+
+Commit di partenza: ba69e0c.
+
+File toccati: `docs/PENDING-ACTIONS.md` con PA-007, PA-008 e PA-009 nuove, `docs/90-riferimenti/pulizia-ssd-esterno.md` riscritta nella sezione sugli archivi, `docs/OPERATIONS-LOG.md` con MS-040 a MS-045, `tools/check-pending-actions.py` con tre difetti corretti e tre voci nuove, `tools/analisi-ssd-esterno.py` nuovo, `.claude/memory/decisions.md` con ADR-014, `_notes/` con i due indici degli archivi.
+
+Esito in sintesi, quattro cose.
+
+Gli archivi di backup su `J:` sono stati confrontati e **nessuno dei due contiene l'altro**: 145.483 voci solo nel vecchio e 80.487 solo nel nuovo, per il rimescolamento di `backup-sviluppo`. Cancellare il vecchio costerebbe 145.478 versioni di file. Cade anche l'ipotesi sulla cartella 3DS come causa della differenza di peso.
+
+La copia sul Desktop **non si cancella adesso**, e la ragione è il conteggio delle copie: oggi le voci utili sono in due posti, cancellare il Desktop le porta a uno, e questo proprio prima di una reinstallazione che tocca le partizioni. La condizione di sblocco è la copia di sicurezza di `/home`, cioè la fase 1.3.
+
+Chiarito un equivoco che riguardava la fiducia: l'agente non ha cancellato nulla su `J:` e non ha eseguito alcuna cancellazione in tutta la sessione. Le nove voci di servizio sono tutte ancora presenti, e le tre che valgono 1,2 GiB sono da fare.
+
+Tre difetti dello strumento delle azioni differite, tutti trovati leggendo l'output che l'utente ha incollato. La chiusura di PA-006 non era stata applicata perché un `assert` era fallito e non avevo controllato il codice di uscita. Su PA-001 lo strumento nascondeva le condizioni permanenti uscendo subito col disco assente. E confondeva disco assente con cartella già cancellata, cioè un ostacolo con l'obiettivo raggiunto.
+
 ## 2026-09-07, terza parte - SMART, censimento del corredo, catena di ascolto e pulizia
 
 Commit di partenza: f85480d.

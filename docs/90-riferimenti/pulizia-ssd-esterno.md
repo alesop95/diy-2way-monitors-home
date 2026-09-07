@@ -47,18 +47,21 @@ Questa parte esiste per un difetto dello strumento, corretto, e vale raccontarla
 
 La prima versione dello strumento iterava le sole cartelle della radice e ignorava i file sciolti. Su questo volume ce ne sono quattro, per **45,2 GiB**, di cui due archivi di backup: `backup 28082026 (tutto tranne main, dasistemareancora).7z` da 25,8 GiB e `backup 04092026 (tutto tranne main, dasistemareancora, 3DS - 03092026).7z` da 19,4 GiB. Lo strumento riportava quindi 326 GiB di materiale personale invece di 371, sbagliando per difetto di 45 GiB senza che nulla lo segnalasse. Un totale sbagliato per difetto è peggio di un totale assente, perché non si vede che manca qualcosa.
 
-Sui due archivi la tentazione è di considerare il più vecchio superato dal più recente e cancellarlo, recuperando 25,8 GiB in un colpo. **Non è una conclusione sostenibile con i dati disponibili**, e la ragione sta nei nomi che gli archivi si portano addosso: il più recente dichiara di escludere una cartella in più rispetto al precedente, cioè `3DS - 03092026`, che sul volume pesa 11,4 GiB. I due non sono quindi due versioni della stessa cosa a distanza di una settimana: hanno perimetri diversi, e il più vecchio potrebbe essere l'unico a contenere qualcosa che il più recente non ha.
+Sui due archivi la domanda era se il piu' vecchio fosse superato dal piu' recente, e quindi cancellabile per recuperare 25,8 GiB. **La risposta, misurata il 2026-09-07, e' no: nessuno dei due e' ridondante.**
 
-C'è un elemento che complica ulteriormente e che va dichiarato invece di essere risolto per ipotesi: la cartella `3DS - 03092026` porta nel nome una data successiva a quella del backup del 28 agosto, quindi non poteva esserne parte con quel nome. Può essere stata rinominata, oppure il contenuto può essere diverso. Non lo si stabilisce dal nome.
+Il confronto degli indici dei due archivi, ottenuti con `7z l`, da' questo esito.
 
-La decisione richiede di elencare il contenuto dei due archivi e confrontarlo, che è una operazione di lettura e non distruttiva.
+| | 28/08/2026 | 04/09/2026 |
+|---|---|---|
+| Voci totali | 159.196 | 94.200 |
+| Voci presenti solo qui | 145.483 | 80.487 |
+| di cui sotto `backup-sviluppo` | 145.478 | 80.377 |
 
-```powershell
-7z l "J:\backup 28082026 (tutto tranne main, dasistemareancora).7z" > _notes\lista-backup-28082026.txt
-7z l "J:\backup 04092026 (tutto tranne main, dasistemareancora,3DS - 03092026).7z" > _notes\lista-backup-04092026.txt
-```
+Nessuno dei due contiene l'altro. La causa e' `backup-sviluppo`, che fra le due date e' cambiato quasi per intero: sono due istantanee diverse della stessa cartella, non due versioni incrementali. Il piu' recente ha in aggiunta 81 voci sotto `_info_PW`, 26 sotto `DOCUMENTATION` e 2 sotto `SONGWRITING`.
 
-Finché quel confronto non è fatto, la posizione corretta è conservarli entrambi. Sono 45 GiB su un disco che ne ha 371 occupati e che ha dato cinque riparazioni del filesystem in due mesi: la fretta di liberare spazio su un supporto di cui non si conosce lo stato di salute è la combinazione sbagliata.
+Cade anche l'ipotesi avanzata prima della misura, cioe' che la differenza di peso dipendesse dalla cartella dei modelli 3DS esclusa dal piu' recente. Quella cartella non compare fra le differenze, quindi non era nemmeno nel piu' vecchio: coerente con il fatto che porti nel nome una data successiva a quel backup. La differenza di 6 GiB si spiega interamente con il rimescolamento di `backup-sviluppo`.
+
+La conseguenza operativa: **cancellare il piu' vecchio costa 145.478 versioni di file che non esistono altrove in forma archiviata.** Se quelle versioni servano e' una decisione dell'utente, non una questione tecnica: la cartella `backup-sviluppo` esiste ancora sul disco con il suo contenuto corrente, e i due archivi sono istantanee storiche. Ma la domanda "posso cancellare il vecchio perche' c'e' il nuovo" ha una risposta negativa e documentata.
 
 ```bash
 python tools/analisi-ssd-esterno.py
