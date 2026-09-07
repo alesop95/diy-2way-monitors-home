@@ -402,6 +402,74 @@ Va inoltre segnalato all'utente un punto che l'errore rende attuale: `ssh-keygen
 
 Esito: fatto. La fase 10.3 della procedura riporta ora tre forme, cioè PowerShell senza `ssh-copy-id`, Git Bash con `ssh-copy-id`, e la verifica successiva.
 
+### MS-028 - Accesso SSH aperto e verificato
+
+Perimetro: nessuna modifica al progetto; installazione della chiave sulla macchina eseguita dall'utente.
+
+L'utente ha eseguito il comando corretto per PowerShell, quello che accoda la chiave pubblica al file delle chiavi autorizzate impostando i permessi, e ha inserito la password una volta. La verifica immediata ha risposto `CONNESSO` e ha rivelato il nome della macchina, `i7-6700-16GBDDR4-500GBSSD`, che descrive l'hardware e conferma quanto documentato.
+
+Da parte dell'agente la connessione con chiave funziona in modalità non interattiva, cioè con `BatchMode=yes`, che è la condizione necessaria per eseguire diagnostica senza intervento umano. L'utente risulta `alesop95` con identificativo numerico 1000, e appartiene ai gruppi `sudo`, `audio` e `plugdev` fra gli altri. L'appartenenza al gruppo `audio` è uno dei controlli della fase 6 della procedura, quindi risulta soddisfatto in anticipo.
+
+Un limite dell'accesso da registrare, perché determina che cosa l'agente può e non può fare: `sudo` chiede la password, quindi ogni comando privilegiato resta dell'utente. La verifica è `sudo -n true`, che risponde `sudo: a password is required`. Ne segue che la fase 0 è stata eseguita nella sua parte non privilegiata, e che le due voci che richiedono privilegi restano da fare.
+
+Esito: fatto. Il blocco che durava da due sessioni è rimosso.
+
+### MS-029 - Fase 0 eseguita: la fotografia della macchina, e tre ipotesi smentite
+
+Perimetro: `docs/10-ambiente/fotografia-macchina-2026-09-07.md` nuovo, `_notes/fotografia-2026-09-07/` con ventitré file di output grezzo, correzioni a `docs/10-ambiente/ubuntu-lts-upgrade.md`.
+
+Eseguita la fase 0 nella sua parte non privilegiata e raccolti ventitré file sulla macchina sotto `~/fotografia-pre-reinstall/`, poi recuperati sulla postazione sotto `_notes/`, che è ignorata da git. Il documento tracciato è l'analisi; i file grezzi restano locali perché sono output di comandi e non documentazione.
+
+Il risultato principale è una smentita, e va messo per primo perché è la ragione per cui la fase 0 esiste. Delle quattro cause che avevo attribuito al blocco di aggiornamento, tre sono false.
+
+La prima, secondo cui dalla 25.04 non esisterebbe un salto diretto alla LTS e servirebbe passare dalla 25.10, è smentita da `do-release-upgrade -c`, che risponde *New release '26.04.1 LTS' available*.
+
+La seconda, secondo cui `Prompt=lts` impedirebbe di trovare il rilascio successivo, è smentita due volte. Il file contiene `Prompt=normal`, quindi quel valore non c'è. E il commento dello stesso file dichiara che con `lts` su un rilascio non-LTS l'aggiornatore assume `normal`, quindi la causa non avrebbe potuto agire nemmeno se il valore fosse stato quello. Questa è la smentita più istruttiva: l'errore non era di osservazione ma di lettura della documentazione, perché la risposta era scritta nei commenti del file che stavo ipotizzando.
+
+La terza, secondo cui gli archivi della 25.04 sarebbero stati spostati su `old-releases` producendo errori 404, è smentita da sei richieste HTTP: archivio, mirror italiano e security rispondono 200 sulle suite `plucky`, mentre `old-releases` risponde 404 sulla stessa risorsa, cioè il rilascio non è ancora stato spostato lì. Il ragionamento sulla politica di Ubuntu era corretto in generale ma applicato a un momento sbagliato.
+
+L'unica parte confermata è la quarta, i fattori di attrito, e in forma più grave del previsto: sotto `/etc/apt/sources.list.d/` convivono due repository WineHQ attivi, `winehq-noble.sources` e `winehq-plucky.sources`, per due rilasci diversi di Ubuntu, che forniscono pacchetti con gli stessi nomi in versioni diverse per amd64 e i386. Restano anche l'architettura `i386` dichiarata, una sorgente `file:/cdrom/` residua e due file di backup delle sorgenti.
+
+Il fatto che riorganizza tutto il quadro è però un altro, ed è di quelli che si trovano soltanto guardando: la cartella `/var/log/dist-upgrade/` è vuota. L'aggiornamento di rilascio non è mai stato eseguito su questa macchina, quindi non esisteva un tentativo fallito da diagnosticare. La cronologia di apt lo conferma dall'altro lato: l'ultima operazione registrata è del 13 agosto 2025 e riguarda l'installazione di `winetricks`, e la simulazione `apt-get -s dist-upgrade` elenca 134 pacchetti pendenti da `plucky-updates` senza segnalare conflitti. Il sistema chiede anche un riavvio, perché il kernel `6.14.0-37` è installato mentre in esecuzione c'è il `6.14.0-35`.
+
+La conclusione onesta è che la macchina non fa fatica ad aggiornarsi: non è mai stata aggiornata. Che cosa significasse concretamente la difficoltà riferita resta una domanda per l'utente, e questa è la lezione metodologica del microstep: avevo costruito una diagnosi elaborata su una premessa che non avevo verificato, cioè che un tentativo fosse stato fatto e fosse fallito. La premessa era implicita nella domanda e l'ho accettata senza chiederla.
+
+La pagina della diagnosi non è stata riscritta per far finta di aver avuto ragione. Porta in apertura l'avvertenza che è smentita, ciascuna delle tre cause è marcata come tale nel corpo, e la sezione delle due strade è stata corretta perché la strada dell'aggiornamento in posto si è rivelata molto meno onerosa di come era stata descritta.
+
+Verificato con: i ventitré file di output, tutti non vuoti; il confronto riga per riga fra esito atteso ed esito reale, riportato in tabella nel documento nuovo.
+
+Esito: fatto per la parte non privilegiata. Restano lo stato di salute dell'SSD, l'esito reale di `apt update` e la verifica del Machine Identifier di Akabak.
+
+### MS-030 - La catena audio a bassa latenza è attiva, e la fase 6 chiedeva la cosa sbagliata
+
+Perimetro: correzione della fase 6 di `docs/10-ambiente/installazione-pulita-26-04.md`.
+
+Il documento sull'aggiornamento elencava fra i punti da verificare il modo in cui Ubuntu Studio fornisce il kernel a bassa latenza, e la fase 6 prescriveva di controllare che il kernel in esecuzione fosse un kernel a bassa latenza. La fotografia mostra che quella prescrizione avrebbe dato un falso negativo.
+
+Sulla macchina non è installato alcun `linux-image-lowlatency`. I kernel presenti sono `linux-image-6.14.0-35-generic`, `linux-image-6.14.0-37-generic` e il metapacchetto `linux-image-generic`. È installato invece `ubuntustudio-lowlatency-settings` alla versione `25.04.21`, che non è un kernel ma un pacchetto di impostazioni.
+
+I due fatti convivono perché la configurazione a bassa latenza è ottenuta sul kernel generico tramite parametri di avvio, e la riga di comando del kernel in esecuzione li mostra: `preempt=full`, che abilita la prelazione completa, e `threadirqs`, che sposta la gestione degli interrupt in thread schedulabili. Sono le proprietà per cui esisteva un kernel separato. Il pacchetto configura anche i limiti di priorità in tempo reale, con `rtprio 95` e `memlock unlimited` per i gruppi `audio` e `pipewire`, e i tre servizi `pipewire`, `pipewire-pulse` e `wireplumber` risultano attivi.
+
+Ne segue la correzione: il controllo corretto non è il nome del kernel ma la presenza di `preempt=full` e `threadirqs` in `/proc/cmdline`, insieme ai limiti `rtprio` per il gruppo `audio` e allo stato dei tre servizi. Un controllo sul nome avrebbe concluso che la configurazione mancasse mentre è attiva, e avrebbe portato a installare un kernel che non serve.
+
+Va registrato inoltre che **la Scarlett 2i2 non è collegata**: l'elenco USB non riporta alcun dispositivo Focusrite, e le sole schede viste sono l'audio integrato `ALC887-VD` con le sue uscite HDMI. Il controllo di uscita della fase 6, che chiede di vedere la Scarlett in ingresso e in uscita, non è eseguibile finché l'interfaccia non viene collegata.
+
+Esito: fatto.
+
+### MS-031 - L'ambiente Wine reale, e due lacune di cui una si chiude
+
+Perimetro: aggiornamento della fotografia e dello storico di Akabak e VACS.
+
+Esiste **un solo prefix** Wine sulla macchina, ed è quello di default, `/home/alesop95/.wine`. Non ci sono prefix separati per programma.
+
+Questo chiude la prima delle due lacune dichiarate in `docs/90-riferimenti/timeline-akabak-vacs.md`, cioè in quale prefix Akabak e VACS siano installati: sono nel prefix condiviso, secondo l'approccio che il documento sorgente chiamava fare come per Akabak e di cui riconosceva il rischio. La seconda lacuna, cioè quale variante di VACS sia installata e come fu risolto il suo fallimento iniziale, richiede di guardare dentro il prefix e resta aperta.
+
+Lo stato dei pacchetti è la fotografia del pasticcio già raccontato dal documento sorgente. La versione attiva è `wine-9.0 (Ubuntu 9.0~repack-4build3)`, cioè quella dei repository Ubuntu e non di WineHQ, nonostante entrambi i repository WineHQ siano configurati. Accanto a essa è installato `wine-stable 3.0.1ubuntu1`, che è una versione del 2018 e di fatto un residuo, dato che `wine --version` riporta 9.0. Sono presenti anche `wine32:i386`, `libwine`, `libwine:i386`, `fonts-wine` e `winetricks`. Non esistono `wine64` né `wine32` come comandi separati, quindi la verifica prevista dalla pagina di configurazione che li usa entrambi darebbe esito negativo su questa macchina pur essendo l'ambiente funzionante.
+
+La cronologia di apt fornisce il riscontro indipendente che finora mancava alla sezione di troubleshooting del documento sorgente. La sequenza di installazioni, purghe e reinstallazioni che il documento descriveva è registrata con data e ora del 13 agosto 2025: installazione di `wine64` e `winetricks` alle 12:06, aggiunta di `wine32` alle 12:17, purga di tutto alle 13:18, `autoremove` alle 13:19, reinstallazione con `--install-recommends wine-stable` alle 13:31, e `winetricks` alle 16:37. È la prima volta in questo progetto che una affermazione del documento sorgente viene confermata da una fonte sulla macchina stessa.
+
+Esito: fatto.
+
 ## Microstep bloccati, e da che cosa dipendono ora
 
 Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso e non uno stallo. All'inizio la macchina era di stato ignoto, poi si è rivelata sospesa e non spenta, poi sveglia e raggiungibile ma senza autenticazione configurata. Il blocco attuale è quindi su una singola azione dell'utente, cioè l'installazione della chiave SSH descritta nella fase 10.3 della procedura, che richiede la password una volta sola e non è delegabile.

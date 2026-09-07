@@ -39,9 +39,11 @@ Il commit e il push, che restano operazioni manuali dell'utente.
 
 ## Bloccato da
 
-L'installazione della chiave SSH sulla macchina Ubuntu Studio, che richiede la password una volta sola e va eseguita dall'utente. È l'unico blocco residuo, e il percorso è la fase 10.3 di `docs/10-ambiente/installazione-pulita-26-04.md`.
+Nulla di tecnico. L'accesso SSH è aperto e funzionante, anche in modalità non interattiva, e la fase 0 della procedura è eseguita nella sua parte non privilegiata.
 
-Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso. La macchina risultava di stato ignoto e la prima diagnosi, in MS-008, la dava per spenta o su un altro segmento. La lettura corretta l'ha data l'utente: si sospende da sola, e una macchina sospesa non risponde nemmeno alle richieste ARP, quindi scompare del tutto dalla rete. Risvegliata, ha risposto al ping con TTL 64 e ha accettato la connessione sulla porta 22, rifiutando l'autenticazione perché nessuna chiave della postazione è autorizzata e perché `~/.ssh/config` non ha una voce per quell'host, quindi `ssh` non prova nemmeno le chiavi esistenti. Le correzioni sono in MS-015 e MS-016.
+Restano due dipendenze, e sono entrambe dell'utente e non dell'agente. La prima è una decisione: riconfermare o rivedere la scelta fra installazione pulita e aggiornamento in posto, tracciata come PA-006, perché la verifica sulla macchina ha fatto cadere uno dei quattro motivi su cui era stata presa. La seconda è l'esecuzione dei tre controlli privilegiati della fase 0, tracciati come PA-005, perché `sudo` sulla macchina chiede la password e uno dei tre è un controllo in interfaccia grafica.
+
+La storia del blocco, che è finita, vale come traccia. Macchina di stato ignoto, poi scoperta sospesa e quindi invisibile anche all'ARP, poi sveglia ma senza autenticazione configurata, poi accessibile. Le correzioni sono in MS-015, MS-016 e MS-028.
 
 ## Domande aperte per l'utente
 

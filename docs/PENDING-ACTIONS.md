@@ -70,6 +70,32 @@ Il criterio di completamento. Un inventario del percorso su `G:`, la decisione s
 
 Nota metodologica. Questa voce nasce da una inferenza sbagliata corretta: si era concluso che il contenuto della 3.1.10 vivesse sul solo SSD, mentre il collegamento è identico su entrambe le copie e punta a un terzo luogo. La lezione operativa è che un collegamento va letto, non interpretato dal nome: due minuti di lettura del file hanno sostituito una supposizione con un percorso esatto.
 
+## PA-005 - Completare le tre voci privilegiate della fase 0
+
+Data di apertura: 2026-09-07. Stato: **aperta**.
+
+Che cosa va fatto. Tre controlli della fase 0 che l'accesso via chiave non permette di eseguire, perché `sudo` sulla macchina chiede la password e perché uno dei tre è un controllo in interfaccia grafica.
+
+Il primo è lo stato di salute dell'SSD con `sudo smartctl -a /dev/nvme0n1`, previa installazione di `smartmontools` se assente. È il controllo il cui esito potrebbe cambiare la decisione: se la vita residua è crollata rispetto al 91 per cento misurato nel 2025, la scelta non è più fra installazione e aggiornamento ma fra installazione e sostituzione del disco.
+
+Il secondo è l'esito reale di `sudo apt update`. Le prove HTTP lo rendono prevedibile, perché archivio, mirror e security rispondono 200, ma prevedibile non è verificato.
+
+Il terzo è la verifica del Machine Identifier di Akabak, che si legge dal menu di aiuto del programma alla voce del release code, con la cattura di uno screenshot della finestra. Va fatto prima di azzerare la macchina, perché dopo non sarebbe più confrontabile, e il valore atteso è quello nella scheda riservata sotto `_notes/`.
+
+Il criterio di completamento. I tre esiti registrati, e la fotografia della fase 0 aggiornata di conseguenza.
+
+## PA-006 - Riconfermare o rivedere la scelta fra installazione pulita e aggiornamento in posto
+
+Data di apertura: 2026-09-07. Stato: **aperta, decisione dell'utente**.
+
+Che cosa va fatto. Riconfermare ADR-006, cioè l'installazione pulita della 26.04 LTS, oppure scegliere l'aggiornamento in posto, sapendo che uno dei quattro motivi originali è venuto meno.
+
+Perché è aperta. La decisione era stata confermata dall'utente il 2026-09-04 sulla base di quattro motivi, e la verifica del 2026-09-07 ne ha smentito il primo: non ci sono due aggiornamenti in cascata attraverso archivi storici da evitare, perché `do-release-upgrade` offre direttamente la 26.04.1 LTS. Tenere una decisione confermata quando una delle sue gambe è caduta significherebbe farla passare per più solida di quanto sia. La revisione è registrata come ADR-011.
+
+Che cosa cambia fra le due strade, in concreto. L'aggiornamento in posto è oggi: applicare 134 pacchetti pendenti, riavviare, disattivare i due repository WineHQ, ed eseguire un solo `do-release-upgrade`. L'installazione pulita è la procedura in undici fasi, e il suo guadagno è un ambiente Wine ricostruito senza la sedimentazione documentata, più la rimozione dell'architettura `i386` e delle sorgenti residue.
+
+Il criterio di completamento. Una scelta dichiarata, e ADR-006 riconfermata oppure superata da una voce nuova.
+
 ## Azioni compiute
 
 Nessuna, per ora. Le voci compiute si spostano qui con la data e l'esito, e non si cancellano.
