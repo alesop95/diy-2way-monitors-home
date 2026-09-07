@@ -110,7 +110,19 @@ Va infine registrato che **la Scarlett 2i2 non è collegata**. L'elenco USB non 
 
 C'è **un solo prefix**, ed è quello di default: `/home/alesop95/.wine`. Non esistono prefix separati per programma.
 
-Questo chiude una delle lacune dichiarate nello storico di Akabak e VACS, cioè in quale prefix i due programmi siano installati: sono nel prefix condiviso, secondo l'approccio che il documento sorgente chiamava fare come per Akabak e di cui riconosceva il rischio. La seconda lacuna, cioè quale variante di VACS sia installata e come fu risolto il suo fallimento iniziale, richiede di guardare dentro il prefix e resta aperta.
+Questo chiude **entrambe** le lacune dichiarate nello storico di Akabak e VACS. In quale prefix i due programmi siano installati: nel prefix condiviso di default, secondo l'approccio che il documento sorgente chiamava fare come per Akabak e di cui riconosceva il rischio. E quale variante di VACS sia installata e come fu risolto il suo fallimento iniziale: è la variante a **32 bit**, `VACS_32.exe`, ed è quella la risoluzione.
+
+L'ispezione del prefix ha però prodotto un esito molto più grande di due lacune chiuse, e lo si trova nella sezione seguente: il prefix è a 32 bit, e lo è anche Akabak.
+
+### Il prefix è a 32 bit, e Akabak con lui
+
+Il registro del prefix dichiara `#arch=win32` e la cartella `syswow64` è assente, come deve essere in un prefix a 32 bit. L'eseguibile installato `AKABAK.exe` è `PE32 executable, Intel 80386`, cioè a 32 bit, e lo stesso vale per `VACS_32.exe`; la libreria che entrambi portano si chiama `Matrix32.dll`. I due programmi stanno in `C:\Program Files\RDTeam`, e i lanciatori sulla scrivania invocano `wine-stable`, che su questa macchina esiste come comando e riporta la versione 9.0.
+
+Nel prefix non esiste alcun `winetricks.log`, non esiste `Microsoft.NET/Framework/v4` e non è installato alcun font Microsoft di base. Le librerie `msvcp*` presenti sono quelle che Wine fornisce di suo, non redistributable Microsoft installati.
+
+Ne segue che tre affermazioni del documento sorgente sono false: Akabak 3 non è a 64 bit, esiste ed è in uso una build a 32 bit, e non richiede .NET Framework 4.8 né font né runtime aggiuntivi. La lettura che riconcilia tutto è che la lista di dipendenze del sorgente descriveva ciò che era stato tentato durante il troubleshooting e non ciò che serviva, e la cronologia di apt del 13 agosto lo conferma mostrando installazioni, purghe e reinstallazioni, cioè la traccia di una ricerca per tentativi.
+
+Le conseguenze sono registrate in ADR-016 e hanno corretto le fasi 7 e 8 della procedura più quattro pagine di questo blocco. La più importante da sapere subito: l'architettura `i386` sul sistema è **necessaria** e non residua, e il consiglio precedente di non riprodurla sulla macchina nuova era sbagliato.
 
 La versione di Wine è `wine-9.0 (Ubuntu 9.0~repack-4build3)`, cioè quella dei repository Ubuntu e non di WineHQ, nonostante entrambi i repository WineHQ siano configurati. Il binario è `/usr/bin/wine`; non esistono `wine64` né `wine32` come comandi separati. I pacchetti installati sono `wine`, `wine-stable`, `wine32:i386`, `libwine`, `libwine:i386`, `fonts-wine` e `winetricks`.
 

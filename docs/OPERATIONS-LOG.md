@@ -720,6 +720,102 @@ Lo strumento delle azioni differite ora misura la presenza delle tre voci e ripo
 
 Esito: fatto.
 
+### MS-046 - PA-008 compiuta: 1,2 GiB recuperati su J:
+
+Perimetro: verifica dello stato del disco esterno dopo l'intervento dell'utente.
+
+L'utente ha guardato i venti file più grandi delle due cartelle `FOUND` e le ha cancellate insieme alle altre quattro e a `.Spotlight-V100`. Verificato: tutte e sei le voci sono rimosse.
+
+Vale registrare cosa contenevano, perché la precauzione di guardare prima si è rivelata sensata anche se l'esito è stato di cancellare. I due frammenti maggiori erano di 247 MB in `FOUND.000` e 206 MB in `FOUND.002`, e da soli valevano 453 dei 841 MB complessivi. Frammenti di quelle dimensioni non sono documenti: sono immagini disco, archivi o file multimediali di cui `chkdsk` ha trovato i dati senza il nome. Restano inservibili senza sapere che cosa fossero, ma la loro dimensione dice che il filesystem ha perso qualcosa di sostanzioso, non solo metadati sparsi. È un elemento in più a favore di PA-009, cioè della lettura SMART di quel disco.
+
+Esito: fatto.
+
+### MS-047 - La destinazione del backup di /home, e perché non può stare sulla stessa macchina
+
+Perimetro: ADR-015, aggiornamento della fase 1.3 della procedura.
+
+L'utente ha chiesto se la copia di sicurezza di `/home` possa stare su una partizione della stessa macchina, oppure temporaneamente su questa postazione Windows. La prima risposta è no e la seconda è sì, e le ragioni sono diverse fra loro.
+
+Sulla stessa macchina non è possibile né sensato, e la verifica lo mostra: il sistema ha **un solo disco**, `nvme0n1` da 465,8 GB, con quattro partizioni e nient'altro, cioè EFI da 1 GB, root da 74,5 GB, swap da 14,9 GB e `/home` da 375,3 GB. Non ci sono altri dischi e non c'è alcun disco USB collegato.
+
+Le tre varianti pensabili fallirebbero tutte, e per ragioni diverse che vale distinguere. Copiare `/home` su root è inutile, perché root è la partizione che viene formattata. Copiare `/home` su se stessa non protegge da nulla, perché il rischio contro cui il backup esiste è precisamente la formattazione per errore di quella partizione: la copia morirebbe con l'originale. Creare una partizione nuova richiederebbe di ridurre `/home`, che è una operazione rischiosa in sé, e non proteggerebbe comunque dal rischio principale, perché un errore nella selezione della partizione da formattare può colpire anche quella nuova, e un guasto del disco porta via tutto.
+
+La regola generale che ne discende, e che vale oltre questo caso: una copia di sicurezza sullo stesso supporto della cosa che protegge non è una copia di sicurezza, è una copia.
+
+Sulla postazione Windows invece funziona, ed è la scelta adottata. `/home` pesa 4,4 GB e il disco di destinazione ne ha 198 liberi, quindi il costo è trascurabile. E soprattutto è una **macchina fisicamente diversa**, che è l'unica proprietà che rende un backup un backup.
+
+Il metodo richiede una precisazione che non è pedanteria. La copia si fa con `tar` in streaming attraverso `ssh` e non con `scp` dei file, perché la destinazione è un filesystem NTFS che non sa rappresentare proprietario, gruppo e permessi POSIX: copiando i file singoli quelle informazioni andrebbero perdute e il ripristino produrrebbe una `/home` con i permessi sbagliati. Dentro un archivio `tar` quei metadati sopravvivono anche su NTFS, perché sono contenuto dell'archivio e non attributi del filesystem. Si usa `--numeric-owner` per registrare gli identificativi numerici invece dei nomi, così che il ripristino non dipenda dall'esistenza dell'utente al momento in cui si ripristina.
+
+L'archivio non viene compresso, ed è una scelta e non una dimenticanza: dei 4,4 GB la maggior parte sono installer, archivi e pacchetti già compressi, quindi la compressione costerebbe tempo di processore per un guadagno prossimo a zero.
+
+La destinazione è fuori dalla cartella del progetto, in `E:\_backup-ubuntu-studio\`, perché un archivio di 4,4 GB non ha ragione di stare dentro un repository, nemmeno in una cartella ignorata.
+
+Esito: si veda la voce successiva per l'esecuzione.
+
+### MS-048 - Il corredo era già sulla macchina: il trasferimento ha prodotto una copia in più
+
+Perimetro: constatazione sullo stato della macchina, con conseguenza su PA-007.
+
+Ispezionando la scrivania della macchina per capire da cosa venissero 2,3 GB di `/home`, è emerso che il corredo software **era già lì**, nelle sue tre cartelle originali: `DIY Loudspeaker Pack Softwares` per 117 MB, `Room acoustics` per 563 MB e `Simulators` per 1,6 GB. Ci sono anche gli installer di Akabak e di VACS a 32 bit, sciolti sulla scrivania.
+
+Il trasferimento di MS-039 ha quindi prodotto una seconda copia sulla macchina, sotto `~/electroacoustics`, invece della prima. Non è lavoro inutile e vale spiegare perché: la copia nuova è il sottoinsieme selezionato dal censimento, organizzato in un albero con le impronte verificate e coperto dal manifest, mentre quella sulla scrivania è il materiale grezzo con tutte e quattordici le voci, comprese le otto scartate. Sono due cose diverse con due scopi diversi. Resta il fatto che il peso su `/home` è oggi maggiore del necessario.
+
+La conseguenza importante riguarda PA-007, cioè la cancellazione della copia sul Desktop di Windows, e **corregge in meglio** il ragionamento di MS-044. Lì avevo detto che cancellare il Desktop di Windows avrebbe portato le voci utili a una copia sola: non è vero, perché sulla macchina esistono due copie indipendenti, quella organizzata e quella grezza sulla scrivania. Il conteggio corretto è quindi di tre copie oggi e due dopo la cancellazione.
+
+Questo non cambia la decisione ma ne cambia la ragione, e la differenza conta perché una decisione giusta per il motivo sbagliato non regge alla prima verifica. La ragione valida che resta è che entrambe le copie sulla macchina vivono sulla stessa partizione dello stesso disco, quindi non sono due copie indipendenti rispetto al rischio che il backup deve coprire: un errore sulla partizione le porta via entrambe. La condizione di sblocco resta la copia di sicurezza di `/home` fuori dalla macchina, ma ora perché è l'unica copia su un supporto diverso, non perché sia la seconda.
+
+Emerge anche una cosa da sistemare più avanti, quando l'ambiente verrà ricostruito: sulla macchina il materiale sarà in tre posti, cioè la scrivania, `~/electroacoustics` e il collegamento simbolico. Vale consolidare, ma dopo la reinstallazione e non prima, perché toccare adesso l'unica installazione funzionante non porta nulla.
+
+Esito: fatto per la constatazione. La correzione al ragionamento di MS-044 è riportata in PA-007.
+
+### MS-049 - Backup di /home eseguito e verificato: fase 1.3 chiusa
+
+Perimetro: `E:\_backup-ubuntu-studio\` fuori dal repository, aggiornamento di PA-007.
+
+Eseguita la copia di sicurezza di `/home` con `tar` in streaming attraverso `ssh`, secondo ADR-015. L'archivio pesa 4,4 GB e non è compresso.
+
+La verifica è la parte che conta, perché un backup non verificato non è un backup. Tre controlli. L'archivio si legge per intero senza errori. Il conteggio dei file coincide esattamente: **13.498 nell'archivio contro 13.498 sulla macchina**. E i metadati sono conservati, come mostra l'elenco esteso, che riporta permessi e proprietario numerico `1000/1000`: è la ragione per cui si è usato `tar` e non `scp`, dato che NTFS non sa rappresentarli.
+
+Registrata anche l'impronta SHA-256 dell'archivio, così che una eventuale copia successiva sia confrontabile.
+
+Conseguenza: PA-007 è sbloccata, cioè la copia del corredo sul Desktop di Windows può andare. E la fase 1.2 della procedura, che prevedeva un archivio separato dei soli prefix Wine, diventa ridondante: i prefix stanno sotto `/home` e questo archivio li contiene.
+
+Esito: fatto.
+
+### MS-050 - Akabak è a 32 bit: la scoperta che corregge tre decisioni e sei documenti
+
+Perimetro: ADR-016, correzioni alle fasi 7 e 8 della procedura e a quattro pagine del blocco ambiente.
+
+Ispezionando la scrivania della macchina per capire da dove venissero 2,3 GB di `/home` sono comparsi i lanciatori `.desktop` di Akabak e di VACS, e leggerli ha aperto una catena di verifiche il cui esito ribalta una parte del piano.
+
+I fatti, tutti misurati. Il prefix in uso è `~/.wine` e il suo registro dichiara `#arch=win32`, cioè è **a 32 bit**; `syswow64` è assente, come deve essere in un prefix a 32 bit. L'eseguibile installato `AKABAK.exe` è `PE32 executable, Intel 80386`, cioè **a 32 bit**, e lo stesso vale per `VACS_32.exe`; la libreria che entrambi portano si chiama `Matrix32.dll`. Nel prefix non esiste alcun `winetricks.log`, non esiste `Microsoft.NET/Framework/v4` e non è installato alcun font Microsoft di base. I lanciatori invocano `wine-stable`, che su questa macchina esiste come comando e riporta la versione 9.0.
+
+Ne segue che tre affermazioni del documento sorgente sono false. Akabak 3 non è a 64 bit. Non è vero che non esista una build a 32 bit, dato che quella installata lo è. E non richiede .NET Framework 4.8, né i font di base, né i runtime Visual C++, perché la configurazione che funziona non ne ha nessuno. La lista di dipendenze del sorgente descriveva **ciò che era stato tentato durante il troubleshooting, non ciò che serviva**, e questa è la lettura che riconcilia tutto: la cronologia di apt del 13 agosto 2025 mostra installazioni, purghe e reinstallazioni, cioè la traccia di una ricerca per tentativi, non di una procedura.
+
+Chiude anche una lacuna che due documenti dichiaravano aperta, cioè quale variante di VACS fosse installata e come fosse stato risolto il fallimento iniziale. La risposta è la build a 32 bit, ed era **esattamente l'ipotesi formulata nella corrispondenza del 13 agosto 2025**, dove si chiedeva all'autore se il problema potesse dipendere dall'aver usato la versione a 64 bit invece della 32. Quell'ipotesi era corretta.
+
+Le conseguenze sono sostanziali e vanno dichiarate una per una. La fase 7 della procedura prescriveva quattro prefix a 64 bit con `dotnet48` per tutti: sbagliata per Akabak e VACS, corretta. Il consiglio di non dichiarare l'architettura `i386`, dato in ADR-009 e ripetuto in ADR-013, è **rovesciato**: senza `i386` il solo software del progetto che oggi funziona non funzionerebbe. La mappa dei prefix passa da quattro a 64 bit a uno a 32 bit più tre a 64. E le pagine sui prefix, sulla configurazione e sui programmi sono state corrette nei punti che riportavano l'architettura e le dipendenze sbagliate.
+
+Resta valida la parte di ADR-004 che non riguarda l'architettura, cioè un prefix per programma, con l'eccezione dichiarata di Akabak e VACS che condividono il proprio perché si usano in sequenza e perché così è la configurazione funzionante.
+
+La lezione di metodo è la più costosa della sessione, e va scritta per intero. Tre decisioni consecutive, ADR-004, ADR-009 e ADR-013, hanno propagato una affermazione non verificata presa da un appunto, e ciascuna l'ha usata come premessa della successiva senza tornare alla fonte. Il risultato è stata una prescrizione operativa sbagliata su sei documenti, che se eseguita avrebbe prodotto un ambiente in cui il programma centrale del progetto non parte. Il controllo che l'avrebbe evitato costava un comando: `file` sull'eseguibile installato. È la stessa lezione di MS-029, dove tre cause su quattro di una diagnosi erano false: la differenza fra un appunto e una misura non è di grado.
+
+Esito: fatto.
+
+### MS-051 - Il release code in chiaro sulla scrivania della macchina
+
+Perimetro: constatazione, senza modifiche.
+
+Sulla scrivania della macchina esiste un file vuoto il cui **nome** è il release code di Akabak, e nella cartella di installazione di VACS esiste un `ReleaseCode.rtf`. Sono due copie in chiaro di un codice di attivazione, su una macchina che questo progetto documenta e che verrà sottoposta a backup.
+
+Non è una falla e non va drammatizzata: è la macchina personale dell'utente, il codice vale solo per quell'hardware, e tenerlo a portata di mano su una scrivania è una scelta comprensibile di comodità. Vale registrarlo per due ragioni pratiche.
+
+La prima è che il backup di `/home` eseguito in MS-049 contiene quel nome di file, quindi l'archivio su `E:\_backup-ubuntu-studio\` contiene il codice. Non è un problema perché resta su una macchina personale, ma va saputo, perché se quell'archivio venisse spostato su un servizio condiviso il codice ci andrebbe con lui.
+
+La seconda è che spiega perché la scheda riservata di questo progetto vive sotto `_notes/` e non fra i file tracciati: non per proteggere un segreto che l'utente tiene su una scrivania, ma perché il repository è pubblico su GitHub e lì il codice avrebbe una diffusione di natura diversa.
+
+Esito: fatto, come constatazione. Nessuna azione proposta.
+
 ## Microstep bloccati, e da che cosa dipendono ora
 
 Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso e non uno stallo. All'inizio la macchina era di stato ignoto, poi si è rivelata sospesa e non spenta, poi sveglia e raggiungibile ma senza autenticazione configurata. Il blocco attuale è quindi su una singola azione dell'utente, cioè l'installazione della chiave SSH descritta nella fase 10.3 della procedura, che richiede la password una volta sola e non è delegabile.
