@@ -49,6 +49,10 @@ Il corredo software raccolto sotto `C:\Users\Utente\Desktop\Progetto stanza (sof
 
 Il totale di questa seconda parte è di circa 524 mebibyte, quindi il trasferimento complessivo è di circa 682 mebibyte, come riporta lo strumento nella sua fase di sola verifica.
 
+Sulla sorgente da usare, un chiarimento che vale perché è stato oggetto di una domanda. Il corredo esiste in due copie identiche, quella sul Desktop e quella su `J:`, e l'identità è stata verificata il 2026-09-07 per impronta su tutti e 650 i file. La sorgente del trasferimento è quindi indifferente, e lo strumento usa il Desktop soltanto perché è sempre disponibile mentre l'SSD va collegato. La variabile d'ambiente `CORREDO` permette di puntarlo all'SSD se serve.
+
+Ne discende una precauzione sull'ordine, ed è l'unica conseguenza pratica dell'avere due sorgenti: la cancellazione della copia su SSD, tracciata come PA-001, non va eseguita prima che il trasferimento sia compiuto, altrimenti si perde la sorgente alternativa proprio nel momento in cui potrebbe servire.
+
 Le voci escluse sono otto, per circa 1,7 GB, cioè quasi tre quarti del peso del corredo. Sette portano protezioni rimosse e una porta il file di provenienza da un servizio di condivisione. Nessuna serve al progetto, e la pagina sul corredo argomenta il perché per ciascuna insieme alla sostituzione nativa o gratuita che ne copre il ruolo. È esclusa anche EASE Focus 3.0.18, che non ha problemi di licenza ma è superata dalla 3.1.260 con i GLL retrocompatibili: resta materiale d'archivio sulla postazione.
 
 La cartella di destinazione sta sotto `/home`, e la scelta è deliberata: `/home` è su una partizione separata, quindi questi file sopravvivono alla reinstallazione pulita del sistema descritta nella pagina sull'aggiornamento alla LTS. Metterli sotto la radice li farebbe cancellare esattamente nel momento in cui servono.

@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: 9e9517e
+last-verified-commit: 3eac5f3
 ---
 
 # Lavoro corrente

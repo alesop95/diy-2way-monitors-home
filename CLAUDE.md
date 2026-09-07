@@ -16,6 +16,14 @@ Poi lanciare `python tools/check-pending-actions.py`, che dice quali azioni diff
 
 Il punto d'ingresso della documentazione tecnica è `docs/README.md`. Il registro cronologico degli interventi, con l'esito verificato di ciascuno, è `docs/OPERATIONS-LOG.md`, e ogni intervento nuovo vi aggiunge un microstep numerato con la propria verifica. Le azioni differite stanno in `docs/PENDING-ACTIONS.md`, e una voce compiuta non si cancella: si marca come compiuta con la data.
 
+## Tracciamento integrale: tutto quello che passa in sessione finisce in documentazione
+
+Istruzione vincolante dell'utente, non una preferenza. Tutto ciò che viene detto, deciso, scoperto, sbagliato o corretto durante una sessione va scritto nella documentazione di progetto, sempre e per intero, non riassunto nella risposta e lasciato lì. Una conversazione non è un supporto di memoria: si perde alla chiusura, non si versiona e non arriva a chi clona il repository.
+
+La ripartizione fra i documenti è la seguente, e va rispettata perché ciascuno ha un lettore diverso. Un intervento tecnico, con il comando che lo ha verificato e il suo esito, diventa un microstep numerato in `docs/OPERATIONS-LOG.md`. Una decisione non ovvia diventa una voce in `.claude/memory/decisions.md`. Un impegno che dipende da una condizione esterna diventa una voce in `docs/PENDING-ACTIONS.md`. Una nozione tecnica che serve a capire, e non solo a sapere che è stata fatta, diventa prosa in una pagina di `docs/`. Il meta-stato di sessione va in `.claude/memory/progress.md`.
+
+Tre casi che si è tentati di non scrivere e che invece vanno scritti sempre. Gli errori commessi, compresi quelli dell'agente, con la causa e la regola che ne discende: MS-014 e MS-027 sono di questo tipo. Le inferenze poi smentite, ritirate esplicitamente e non cancellate in silenzio, perché altrimenti il documento sembra essere sempre stato giusto e non si impara nulla: MS-024 è di questo tipo. E i comandi esatti eseguiti dall'utente con il loro output reale, quando l'output insegna qualcosa.
+
 ## Satelliti tracciati
 
 Regole modulari sotto `.claude/rules/`: `interaction-style.md` da caricare sempre, più `git-commands-format.md`, `git-identity-and-repo.md`, `manual-screenshots.md`, `security-permissions.md`, `token-economy.md` e `web-sources-not-fetchable.md`.
