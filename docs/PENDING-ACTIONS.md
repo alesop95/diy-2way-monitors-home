@@ -10,7 +10,7 @@ Ogni azione ha un identificativo nella forma `PA-NNN`, una data di apertura, la 
 
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
 
-Data di apertura: 2026-09-04. Ultimo aggiornamento: 2026-09-07. Stato: **aperta, una sola condizione residua**.
+Data di apertura: 2026-09-04. Ultimo aggiornamento: 2026-09-07. Stato: **sbloccata, in attesa dell'esecuzione da parte dell'utente**.
 
 Che cosa va fatto. Cancellare la cartella `J:\Progetto stanza (software)` dall'SSD esterno, una volta che il corredo utile è stato trasferito sulla macchina Ubuntu Studio e la sua integrità è stata verificata. È l'utente a chiedere questo promemoria, e la ragione è che quella copia è ridondante rispetto a quella sul Desktop della postazione Windows.
 
@@ -20,7 +20,9 @@ La prima, il disco collegato e visibile, è **soddisfatta**. Il 2026-09-04 `J:` 
 
 La seconda, la corrispondenza fra le due copie verificata per impronte, è **soddisfatta**. Il confronto ha dato 650 file su ciascuna copia, gli stessi nomi, le stesse dimensioni, 2.380.021.546 byte in totale su entrambe, e le impronte SHA-256 di tutti e 650 i file coincidenti, senza alcun file presente su una sola delle due. La dichiarazione dell'utente che si trattasse di una copia uno a uno è quindi confermata come fatto.
 
-La terza, il trasferimento del corredo verso la macchina Ubuntu Studio completato con le impronte verificate secondo `docs/TRANSFER-MANIFEST.md`, è **non soddisfatta** e resta l'unica a bloccare. La ragione per cui non si salta è la più semplice possibile: non si cancella una copia prima che la copia buona sia al suo posto e verificata.
+La terza, il trasferimento del corredo verso la macchina Ubuntu Studio completato con le impronte verificate secondo `docs/TRANSFER-MANIFEST.md`, è **soddisfatta il 2026-09-07**. Il trasferimento è stato eseguito e verificato: 8 file del manifest e 6 voci del corredo per 273 file, tutte le impronte coincidenti, per 728 MB sotto `~/electroacoustics` con un collegamento sulla scrivania della macchina. Il dettaglio, compresi i due difetti dello strumento trovati durante l'operazione, è in MS-038.
+
+**Le tre condizioni sono quindi tutte soddisfatte e la cancellazione è autorizzata.** Resta un'azione dell'utente e non dell'agente, perché cancellare 2,3 GB da un disco esterno è una operazione distruttiva su materiale personale: il comando è in fondo a questa voce.
 
 Il tranello nel metodo di verifica, che vale registrare perché avrebbe portato a una conclusione sbagliata. Il comando `du -sh` riportava dimensioni sensibilmente diverse fra le due copie, per esempio 14 MB contro 5,9 MB su LSPCad 5.25 e 36 MB contro 15 MB su LSPCad 6.32, e a prima vista sembrava una divergenza di contenuto. Non lo era: `du` misura lo spazio occupato, che dipende dalla dimensione dei cluster del filesystem e arrotonda per eccesso ogni file, e i due dischi hanno cluster di dimensione diversa. Il conteggio dei byte reali e le impronte hanno mostrato copie identiche. È la dimostrazione pratica del perché il criterio di confronto deve essere l'impronta del contenuto e non lo spazio occupato.
 
@@ -29,6 +31,18 @@ Una inferenza sbagliata da ritirare, registrata qui perché una versione precede
 Il criterio di completamento. La cartella non esiste più su `J:`, e sulla macchina Ubuntu Studio il corredo utile è presente con le impronte verificate.
 
 Nota sul perimetro. Questa azione riguarda la copia su SSD, non quella sul Desktop della postazione Windows. Quest'ultima è la copia di lavoro da cui parte il trasferimento, e la sua eventuale rimozione è una decisione separata, da prendere dopo che il materiale è sulla macchina e non insieme a questa.
+
+Il comando di cancellazione, da eseguire dall'utente sulla postazione Windows. Prima di lanciarlo conviene rilanciare il controllo, che conferma le tre condizioni.
+
+```powershell
+python tools/check-pending-actions.py
+Remove-Item -LiteralPath "J:\Progetto stanza (software)" -Recurse -Force
+```
+
+```bash
+python tools/check-pending-actions.py
+rm -rf "/j/Progetto stanza (software)"
+```
 
 Nota sul perimetro di installazione, aggiunta il 2026-09-07 a fronte di una domanda dell'utente. Il percorso indicato per la messa in opera sotto Wine era la sola copia sul Desktop; `J:` era stato nominato soltanto come la copia da cancellare. L'utente ha poi chiesto che anche il contenuto di `J:` fosse fatto funzionare sulla macchina. La verifica per impronte rende la richiesta priva di conseguenze pratiche: essendo le due copie identiche file per file, il piano di installazione già scritto le copre entrambe, e non c'è alcun programma su `J:` che non sia già nel piano. Il perimetro di installazione resta quindi quello di ADR-010, e nessuna voce va aggiunta.
 
@@ -72,11 +86,11 @@ Nota metodologica. Questa voce nasce da una inferenza sbagliata corretta: si era
 
 ## PA-005 - Completare le tre voci privilegiate della fase 0
 
-Data di apertura: 2026-09-07. Stato: **aperta**.
+Data di apertura: 2026-09-07. Stato: **aperta, una voce su tre compiuta**.
 
 Che cosa va fatto. Tre controlli della fase 0 che l'accesso via chiave non permette di eseguire, perché `sudo` sulla macchina chiede la password e perché uno dei tre è un controllo in interfaccia grafica.
 
-Il primo è lo stato di salute dell'SSD con `sudo smartctl -a /dev/nvme0n1`, previa installazione di `smartmontools` se assente. È il controllo il cui esito potrebbe cambiare la decisione: se la vita residua è crollata rispetto al 91 per cento misurato nel 2025, la scelta non è più fra installazione e aggiornamento ma fra installazione e sostituzione del disco.
+Il primo, lo stato di salute dell'SSD, è **compiuto il 2026-09-07 con esito positivo**. Il giudizio è `PASSED`, l'usura al 9 per cento, la riserva di blocchi al 100, gli errori di integrità zero, e il valore coincide con il 91 per cento di vita residua misurato nel 2025. Il disco non va sostituito, quindi la scelta resta fra installazione e aggiornamento. Il pacchetto `smartmontools` era già installato, quindi l'avvertenza su una possibile installazione da rete non serviva. Il dettaglio, con la lettura dei due numeri che sembrano allarmanti e non lo sono, è in `docs/10-ambiente/fotografia-macchina-2026-09-07.md` e in MS-033.
 
 Il secondo è l'esito reale di `sudo apt update`. Le prove HTTP lo rendono prevedibile, perché archivio, mirror e security rispondono 200, ma prevedibile non è verificato.
 
@@ -86,7 +100,11 @@ Il criterio di completamento. I tre esiti registrati, e la fotografia della fase
 
 ## PA-006 - Riconfermare o rivedere la scelta fra installazione pulita e aggiornamento in posto
 
-Data di apertura: 2026-09-07. Stato: **aperta, decisione dell'utente**.
+Data di apertura: 2026-09-07. **Chiusa il 2026-09-07.** Esito: l'utente ha riconfermato l'installazione pulita di Ubuntu Studio 26.04 LTS sulla base corretta, cioè su tre motivi invece di quattro con l'ambiente pulito come dominante, e ha scelto di eseguire il lavoro privilegiato con comandi preparati e lanciati a mano, senza regole `sudoers`. La decisione è registrata come ADR-013, che supera lo stato di attesa di ADR-011.
+
+La conseguenza operativa che ne discende, e che non era ovvia: la pulizia dell'ambiente Wine **non si esegue**, perché pulire un sistema che verrà azzerato è lavoro che si butta. L'ambiente pulito si ottiene per costruzione dalla reinstallazione. Per la stessa ragione non si applicano i 134 pacchetti pendenti e non si esegue il riavvio richiesto.
+
+Il testo che segue è quello originale della voce, conservato perché documenta i termini su cui la decisione è stata presa.
 
 Che cosa va fatto. Riconfermare ADR-006, cioè l'installazione pulita della 26.04 LTS, oppure scegliere l'aggiornamento in posto, sapendo che uno dei quattro motivi originali è venuto meno.
 

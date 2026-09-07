@@ -498,6 +498,130 @@ La lezione è la stessa del resto della sessione, applicata questa volta in temp
 
 Esito: fatto per la diagnosi del vincolo. La lettura di SMART resta in PA-005 e resta dell'utente.
 
+### MS-033 - SMART letto: il disco è sano e la decisione non cambia
+
+Perimetro: aggiornamento di `docs/10-ambiente/fotografia-macchina-2026-09-07.md` e di PA-005.
+
+L'utente ha eseguito `sudo smartctl -a /dev/nvme0n1` con l'opzione `-t`, e l'esito chiude la voce più importante della fase 0, cioè la sola che poteva spostare la decisione da installazione a sostituzione del disco. Non la sposta.
+
+Il giudizio complessivo è `PASSED`. I due indicatori che contano su un SSD stanno bene: `Percentage Used` al 9 per cento, quindi 91 per cento di vita residua, e `Available Spare` al 100 per cento contro una soglia di allarme del 5. Gli errori di integrità dei dati e dei supporti sono zero. La temperatura è 34 gradi contro soglie di 70 e 85.
+
+Un riscontro che vale segnalare. Il documento sorgente riportava il disco al 91 per cento, misurato con CrystalDiskInfo da Windows nel 2025; SMART oggi dice 9 per cento usato, cioè lo stesso valore. Fra le due misure passano tredici mesi e l'usura non si è mossa di un punto, coerentemente con i 3,7 GB occupati su `/home`.
+
+Due numeri richiedono una lettura e non vanno presi per allarmi, ed è la parte tecnicamente utile di questo microstep.
+
+Le 584 voci nel registro degli errori hanno tutte lo stesso stato, `0x4004`, con messaggio `Invalid Field in Command`. Non sono errori del supporto: sono risposte del controller a comandi che non implementa. La riga finale dell'output lo dimostra da sola, perché `smartctl` stesso ne genera una mentre gira, con `Read Self-test Log failed: Invalid Field in Command`. Il registro dell'autotest è una funzione opzionale della specifica NVMe che questo controller non espone, quindi ogni interrogazione incrementa il contatore. Quel numero misura quante volte qualcosa ha chiesto al disco una funzione che non ha, non quante volte il disco ha sbagliato, e la prova è la coesistenza con gli errori di integrità a zero.
+
+I 24 spegnimenti non puliti su 135 cicli di accensione sono invece un dato reale, circa uno su sei, e vale sapere che non è normale: indica mancanze di alimentazione, blocchi risolti col pulsante o spegnimenti forzati. Non ha prodotto danni, ma è un fattore di rischio da tenere in conto proprio in vista di una reinstallazione, perché una interruzione durante la scrittura del sistema è il momento peggiore.
+
+Un terzo dato racconta qualcosa che il documento sorgente non conteneva: le ore di accensione sono 12.787, cioè circa un anno e cinque mesi di funzionamento continuo, mentre il sistema attuale è installato dal 5 agosto 2025. Ne segue che il disco ha una vita precedente a questa installazione, presumibilmente nel PC Windows da cui la macchina è stata riconvertita, e lo confermano i 24,6 TB scritti che su tredici mesi di uso leggero non si spiegherebbero.
+
+Il modello letto da SMART, `CT500P2SSD8` con firmware `P2CR033`, conferma la correzione della settima incoerenza del documento sorgente, che lo riportava come `CT500P25SD8`.
+
+Esito: fatto. La prima delle tre voci di PA-005 è chiusa con esito positivo, e la scelta resta fra installazione pulita e aggiornamento in posto, cioè dove ADR-011 l'ha lasciata.
+
+### MS-034 - Censimento dell'inventario testuale contro l'SSD: completo e accurato
+
+Perimetro: `docs/90-riferimenti/censimento-corredo.md` nuovo, sola lettura su `J:` e sul Desktop della postazione.
+
+L'utente ha chiesto di controllare l'inventario testuale `(SSD S7) DIY Loudspeaker Pack Softwares.txt` contro il contenuto reale di `J:\Progetto stanza (software)`, con il disco collegato.
+
+L'esito è netto: l'inventario dichiara 36 cartelle e tutte e 36 esistono su `J:`, e su `J:` non c'è alcuna cartella non dichiarata. L'inventario è quindi completo e accurato.
+
+Va spiegato un dettaglio che a prima lettura sembra una lacuna e non lo è. L'inventario non nomina né `VituixCAD_setup.exe` né il collegamento della versione 3.1.10 di EASE Focus, benché entrambi esistano, perché quel file è l'uscita di un comando che elenca soltanto le cartelle. È un inventario completo di ciò che si era proposto di elencare, e la sua incompletezza sui file è una proprietà del comando e non un errore dell'autore. Questo chiude in modo definitivo il sospetto, avanzato in MS-021 e ritirato in MS-024, secondo cui l'assenza della 3.1.10 dall'inventario indicasse una differenza fra le copie: non la indicava, e la spiegazione era più banale di quanto avessi ipotizzato.
+
+Il censimento vero e proprio assegna a ciascuna delle quattordici voci un verdetto fra portare, archiviare e scartare, con la ragione. Si portano cinque voci per circa 524 mebibyte, si archiviano due, si scartano otto per circa 1,7 GB, cioè quasi tre quarti del peso.
+
+La parte che vale più dell'elenco è il criterio, perché è quello che rende il censimento ripetibile su materiale nuovo. Il criterio primario è la posizione nel workflow: questo progetto parte da driver finiti e usa i loro parametri Thiele/Small, quindi tutto ciò che opera a monte, cioè la simulazione del cono e del motore magnetico, sta fuori per costruzione e non per giudizio di qualità. Il criterio secondario è la sostituibilità con qualcosa di migliore già disponibile: LSPCad e Grenander fanno ciò che fa VituixCAD, che è gratuito e di quindici anni più recente. Lo stato di licenza è un criterio terziario, e va detto con precisione perché è controintuitivo: nessuna delle otto voci scartate è esclusa perché porta una protezione rimossa, ma perché non serve, e la dimostrazione è che ciascuna ha una ragione funzionale che regge da sola.
+
+Sulla destinazione fisica, la richiesta era di portare il materiale sulla scrivania della macchina levandolo dall'SSD. La soluzione adottata concilia le due esigenze: l'albero organizzato resta sotto `~/electroacoustics/`, perché è la struttura che gli strumenti di trasferimento e il manifest conoscono e su cui calcolano le impronte, e sulla scrivania si mette un collegamento simbolico a quella cartella. Così è raggiungibile con un doppio clic senza duplicare 524 mebibyte né spezzare la corrispondenza fra manifest e disco.
+
+Verificato con: confronto insiemistico fra le cartelle dichiarate nel `.txt` e quelle reali su `J:`, che dà zero differenze in entrambe le direzioni.
+
+Esito: fatto.
+
+### MS-035 - La catena di riproduzione, e la conseguenza che anticipa una decisione di progetto
+
+Perimetro: `docs/75-catena-di-riproduzione.md` nuovo, ADR-012.
+
+L'utente ha indicato come uscita per i due monitor l'unità Rod Rain audio, oggetto di studio del progetto `rodrainaudio-reverse-eng`, precisando che il dispositivo è condiviso con un altro computer. La catena di ascolto non era mai stata definita: il documento sorgente si occupava della catena di misura e lasciava il resto implicito.
+
+Letta la catena interna dal progetto dedicato, che ne è la fonte canonica: USB, ricevitore SA9023, collegamento I2S, convertitore ES9023 con driver integrato a 2 Vrms, filtro RC, uscita a livello di linea, e da lì lo stadio cuffie discreto. Il pannello posteriore espone AUDIO IN, AUDIO OUT su RCA, USB-B e rete.
+
+Ciò che conta per il progetto è un solo dato, ed è anche ciò che genera la conseguenza: esiste una uscita a livello di linea su RCA a circa 2 Vrms. Due Vrms sono un segnale, non una potenza, e lo stadio cuffie che segue è dimensionato per carichi da decine o centinaia di ohm, non per un altoparlante da 4 o 8 ohm che chiede decine di watt.
+
+Ne segue che la scelta della sorgente vincola l'architettura del diffusore, e questa è la conseguenza non ovvia. Con monitor attivi la catena è completa così com'è, perché l'uscita RCA va direttamente ai loro ingressi. Con monitor passivi serve un amplificatore di potenza stereo interposto, che non è fra le cose disponibili e diventerebbe un acquisto.
+
+Il documento sorgente lasciava aperta la scelta fra crossover passivo e attivo, ed era legittimo quando la sorgente non era decisa. Ora va anticipata alla fase 4a, prima dell'acquisto dei driver, perché determina se occorre un amplificatore in più, perché cambia il modo in cui il crossover si progetta, e perché influisce su quali driver convengono. Non l'ho decisa io: è registrata come decisione aperta con i suoi termini in ADR-012.
+
+Una seconda conseguenza riguarda la validità delle misure, ed è il tipo di dettaglio che si scopre nel momento sbagliato. La catena di misura usa la Scarlett, perché serve un ingresso microfonico con phantom; la catena di ascolto userà il Rod Rain. Per la fase 1 la differenza è irrilevante, perché si misura la stanza e la sorgente è provvisoria. Per la fase 8 non lo è: se si vuole misurare ciò che si ascolterà, il segnale di prova deve uscire dalla catena di ascolto reale, quindi microfono sulla Scarlett e generazione sul Rod Rain, che REW permette configurando dispositivi diversi in ingresso e in uscita.
+
+Resta da verificare, e non da assumere, se l'uscita AUDIO OUT sia a livello fisso o segua il controllo di volume: con uscita fissa e monitor attivi il volume deve stare altrove.
+
+Esito: fatto.
+
+### MS-036 - Scheda audio per l'home recording, registrata nel progetto che la riguarda
+
+Perimetro: nel progetto `home-recording-training-mixing-setup`, `docs/PENDING-ACTIONS.md` nuovo, più i due indici.
+
+L'utente ha chiesto di annotare in quel progetto la valutazione di acquisto di una interfaccia audio, con ricerca di mercato, da fare più avanti.
+
+La voce è stata scritta lì e non qui, e la ragione va detta perché è la stessa logica del blocco condiviso sull'ambiente: la macchina serve a due progetti, ma l'esigenza è di uno solo. La Scarlett 2i2 ha due ingressi, che bastano al progetto dei monitor dove serve un solo ingresso microfonico per il microfono di misura, e sono invece il vincolo principale per la registrazione multitraccia, che è lo scopo dell'altro progetto.
+
+La voce fissa i criteri prima dei modelli, perché è l'ordine che evita di innamorarsi di una scheda e poi giustificarla. Il primo criterio, quello che ordina tutti gli altri, è quanti ingressi contemporanei servano davvero e di che tipo. Fra gli altri c'è il supporto su Linux, che a questo scopo non è un dettaglio: le interfacce conformi alla classe audio USB funzionano senza driver proprietari, mentre alcune richiedono software di configurazione che esiste solo per Windows e macOS, e in quel caso funzioni come il mixer interno o il routing restano inaccessibili.
+
+Esito: fatto. La valutazione resta aperta e non blocca nulla del progetto dei monitor.
+
+### MS-037 - Pulizia: rimossa la pagina smentita e corrette le affermazioni obsolete
+
+Perimetro: rimozione di `docs/10-ambiente/ubuntu-lts-upgrade.md` da questo progetto e dalla sua copia nel gemello, più correzioni in sei file.
+
+L'utente ha chiesto di far sparire dal progetto le informazioni obsolete o sbagliate. La richiesta convive con quella di tracciare tutto, e la conciliazione adottata è questa: le affermazioni sbagliate non restano dove qualcuno le leggerebbe come vere, cioè nella documentazione di riferimento, mentre il record di che cosa era sbagliato e perché resta dove il tracciamento vive, cioè in questo registro e nella pagina delle incoerenze.
+
+La pagina della diagnosi è stata quindi rimossa invece di essere tenuta con l'avvertenza in apertura. Tre delle sue quattro cause erano false, e una pagina così è un rischio anche con l'avvertenza, perché chi la apre a metà legge il ragionamento e non la premessa. Il quadro reale sta nella fotografia della macchina, e il record dell'errore con la ragione di ciascuna smentita sta in MS-029. Tutti i rimandi sono stati ridiretti.
+
+Corrette inoltre quattro affermazioni obsolete che sopravvivevano come dichiarazioni al presente. La partizione EFI è 1,1 GB e non i circa 100 MB del documento sorgente, e la correzione era urgente nella tabella della fase 4.2 perché chi la seguisse cercherebbe una partizione che non corrisponde. Il modello del disco è `CT500P2SSD8`. Lo stato dell'SSD non è più una scansione Windows del 2025 ma una lettura SMART del 2026-09-07. E la configurazione a bassa latenza non arriva da un kernel dedicato ma dal kernel generico con `preempt=full` e `threadirqs`.
+
+Un residuo dichiarato: i rimandi alla pagina rimossa che restano nel registro dei microstep, nel work-log e nel contesto di ADR-006 non sono stati toccati, perché lì sono storia e riferirsi a un file che esisteva è corretto. Un lettore che li segue non trova il file, e questo microstep è la spiegazione.
+
+Verificato con: ricerca dei rimandi residui, che nella documentazione di riferimento è vuota; i due controlli di convenzione su tutto l'albero; e la propagazione al gemello, che ha richiesto la rimozione manuale della copia perché lo strumento di sincronizzazione segnala gli orfani ma per scelta non li cancella.
+
+Esito: fatto.
+
+### MS-038 - Decisioni chiuse: installazione pulita riconfermata, e la pulizia di Wine non si fa
+
+Perimetro: ADR-013, chiusura di PA-006, aggiornamento dello strumento delle azioni differite.
+
+L'utente ha riconfermato l'installazione pulita di Ubuntu Studio 26.04 LTS sulla base corretta, cioè su tre motivi invece di quattro con l'ambiente pulito come dominante invece della fragilità dell'alternativa, e ha scelto di eseguire il lavoro privilegiato con comandi preparati e lanciati a mano, senza regole `sudoers`. La motivazione della seconda scelta è che una regola senza password amplierebbe ciò che può fare chi ottenesse la chiave SSH, e per una macchina raggiungibile in rete quel prezzo non è giustificato da una comodità di esecuzione.
+
+La conseguenza operativa merita di stare in evidenza perché non è ovvia e perché ha risparmiato lavoro: **la pulizia dell'ambiente Wine non si esegue**. Pulire un sistema che verrà azzerato è lavoro che si butta, perché la riformattazione di root porta via l'installazione dei pacchetti, i due repository WineHQ, l'architettura `i386` e la sorgente `file:/cdrom/` residua. L'ambiente pulito si ottiene per costruzione dalla reinstallazione, non da una purga preventiva. Per la stessa ragione non si applicano i 134 pacchetti pendenti e non si esegue il riavvio richiesto.
+
+Cambia anche il peso delle due voci ancora aperte di PA-005: l'esito reale di `apt update` diventa irrilevante, perché quel sistema non verrà aggiornato, mentre la verifica del Machine Identifier di Akabak resta necessaria e va fatta prima di azzerare, perché dopo non sarebbe più confrontabile.
+
+Esito: fatto. PA-006 chiusa, ADR-013 registrata, ADR-011 superata nel suo stato di attesa.
+
+### MS-039 - Trasferimento eseguito e verificato, e due difetti dello strumento trovati sul campo
+
+Perimetro: esecuzione della fase 1.1 sulla macchina, correzioni a `tools/transfer-to-studio.sh`, chiusura della terza condizione di PA-001.
+
+Il trasferimento è stato eseguito e verificato: 8 file del manifest e 6 voci del corredo per 273 file, 728 MB sotto `~/electroacoustics`, con tutte le impronte SHA-256 coincidenti fra origine e destinazione. Sulla scrivania della macchina è stato creato un collegamento simbolico all'albero, così che sia raggiungibile con un doppio clic senza duplicare i file. Lo spazio su `/home` passa da 3,7 a 4,4 GB su 369 disponibili.
+
+Prima di questo, lo strumento ha richiesto una aggiunta e ha rivelato due difetti, tutti e tre istruttivi.
+
+L'aggiunta è il supporto alla chiave dedicata. Lo strumento invocava `ssh` e `scp` senza indicare una identità, e su questa postazione non esiste una voce in `~/.ssh/config` per la macchina, quindi il client provava solo i nomi di chiave predefiniti, che non esistono. Aggiunta la variabile `STUDIO_KEY`, con valore predefinito la chiave dedicata e possibilità di svuotarla se in futuro si aggiungerà un alias di configurazione.
+
+Il primo difetto è il più interessante e si è manifestato al primo tentativo, con `scp: dest open "$HOME/electroacoustics/installers/": No such file or directory`. La causa è che da OpenSSH 9 in avanti `scp` trasferisce via SFTP invece del vecchio protocollo, e SFTP non esegue una shell sul lato remoto: la variabile `$HOME` arrivava letterale, come stringa, e non veniva espansa. Il dettaglio che rende il difetto insidioso è che nello stesso script la creazione dell'albero di destinazione, fatta con `ssh` seguito da un comando, funzionava perfettamente, perché lì una shell remota c'è e la variabile si espande. Convivevano quindi due invocazioni all'apparenza simmetriche con comportamenti diversi. La correzione è usare percorsi relativi, che SFTP risolve dalla home dell'utente perché è la directory iniziale della sessione.
+
+Il secondo difetto era nel confronto delle impronte e ha prodotto un falso negativo su `VituixCAD_setup.exe`. Lo strumento dichiarava impronte diverse mostrando due righe con la **stessa** impronta: `95a1aea4...` da un lato e `95a1aea4...` dall'altro. La differenza era il separatore. Il comando `sha256sum` di Git Bash per Windows scrive `impronta *nome`, con l'asterisco che marca la lettura in modo binario, mentre quello di Linux scrive `impronta  nome` con due spazi. Confrontare le due forme grezze segnala una differenza che non esiste. La correzione è normalizzare il separatore su entrambi i lati prima del confronto.
+
+Vale notare che questo secondo difetto era il più pericoloso dei due, e non per la sua gravità tecnica ma per l'effetto che avrebbe avuto sull'uso: un falso negativo su una verifica di integrità insegna a non fidarsi della verifica, e una verifica di cui non si ha fiducia non viene più guardata. Un difetto che blocca è meno dannoso di uno che mente.
+
+Aggiunta infine una modalità `--impronte`, che esegue la sola verifica saltando la copia. È nata da una necessità pratica, cioè non ricopiare 726 MB per riprovare un confronto corretto, ma resta utile in generale, perché la verifica di integrità è precisamente il tipo di controllo che si vuole poter ripetere.
+
+Verificato con: `bash -n` sulla sintassi; l'esecuzione completa con esito positivo su tutte e quattordici le voci; la modalità di sola verifica rilanciata dopo la correzione, che riporta impronte identiche su tutte le voci; e l'ispezione dell'albero sulla macchina, con 281 file e il collegamento sulla scrivania.
+
+Esito: fatto. La terza e ultima condizione di PA-001 è soddisfatta, quindi la cancellazione della copia sull'SSD è autorizzata. L'esecuzione resta dell'utente, perché cancellare 2,3 GB da un disco esterno è una operazione distruttiva su materiale personale e non la compie l'agente.
+
 ## Microstep bloccati, e da che cosa dipendono ora
 
 Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso e non uno stallo. All'inizio la macchina era di stato ignoto, poi si è rivelata sospesa e non spenta, poi sveglia e raggiungibile ma senza autenticazione configurata. Il blocco attuale è quindi su una singola azione dell'utente, cioè l'installazione della chiave SSH descritta nella fase 10.3 della procedura, che richiede la password una volta sola e non è delegabile.
@@ -506,13 +630,13 @@ Sbloccata quella, i microstep seguenti diventano eseguibili nell'ordine in cui s
 
 La fotografia completa della macchina attuale, in quattordici file, secondo la fase 0. Include la conferma o la smentita della diagnosi del blocco di aggiornamento, la lettura dello stato di salute dell'SSD, l'inventario dei prefix Wine esistenti che chiude la lacuna su come fu risolto il fallimento iniziale di VACS, e la verifica che il Machine Identifier di Akabak sia ancora quello a cui il Release Code è legato.
 
-L'esecuzione del trasferimento dei materiali, con verifica delle impronte sulla destinazione, secondo la fase 1 e `docs/TRANSFER-MANIFEST.md`.
+~~L'esecuzione del trasferimento dei materiali~~ **compiuta il 2026-09-07**, si veda MS-039.
 
 La copia di sicurezza di `/home` fuori dalla macchina, secondo la fase 1.3. Non è opzionale: copre l'unico rischio irreversibile della procedura, cioè l'errore umano nella selezione delle partizioni.
 
 L'installazione pulita di Ubuntu Studio 26.04 LTS conservando `/home`, secondo le fasi da 2 a 5.
 
-La verifica della catena audio e la ricostruzione dell'ambiente Wine con un prefix per programma e senza architettura a 32 bit, secondo le fasi 6 e 7.
+La verifica della catena audio e la ricostruzione dell'ambiente Wine con un prefix per programma e senza architettura a 32 bit, secondo le fasi 6 e 7. Da eseguire **dopo** la reinstallazione e non prima: per ADR-013 l'ambiente attuale non si pulisce, perché sarebbe lavoro buttato su un sistema che verrà azzerato.
 
 La reinstallazione dei quattro programmi e la riattivazione della licenza con il codice esistente, secondo la fase 8. È la prova pratica dell'affermazione registrata in ADR-003 sulla licenza legata alla macchina, e il suo esito va registrato come tale: se il codice viene accettato, l'affermazione è confermata; se il Machine Identifier fosse cambiato, ADR-003 va corretta con una voce nuova nel registro delle decisioni.
 

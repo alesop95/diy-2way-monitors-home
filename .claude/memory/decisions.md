@@ -139,3 +139,41 @@ Il motivo nuovo che la fotografia rende disponibile: `/home` contiene 3,7 GB su 
 Conseguenze: la decisione resta difendibile, ma su tre motivi invece di quattro, e con una alternativa molto meno onerosa di come era stata descritta. Chi legge la documentazione non deve trovare la vecchia motivazione intatta, quindi la pagina della diagnosi porta l'avvertenza in apertura e le tre cause sono marcate come smentite nel corpo. Se l'utente sceglie di riconfermare l'installazione pulita, il motivo dominante diventa l'ambiente pulito e non la fragilità dell'alternativa. Se sceglie l'aggiornamento in posto, la sequenza è nella strada A della pagina corretta, e il lavoro reale sta nel disattivare i due repository WineHQ prima di iniziare.
 
 Nota metodologica, perché è il vero contenuto di questa voce. ADR-006 era stata registrata come proposta e poi accettata prima che la sua premessa fosse verificata, con la giustificazione che la verifica era il primo passo della procedura. Quella giustificazione era corretta in principio e ha funzionato in pratica, perché la verifica ha effettivamente preceduto qualunque modifica al disco. Ma il fatto che tre cause su quattro fossero sbagliate mostra quanto poco valga una ricostruzione plausibile: la decisione era giusta per ragioni in parte sbagliate, e questo è un esito diverso dall'aver avuto ragione.
+
+## ADR-012 - Il Rod Rain audio è la sorgente della catena di ascolto, e questo anticipa la scelta fra monitor attivi e passivi
+
+Data: 2026-09-07. Stato: accettata per la sorgente; la conseguenza sull'architettura del diffusore resta aperta.
+
+Contesto: la catena di ascolto dei due monitor non era mai stata definita. Il documento sorgente si occupava della catena di misura, cioè microfono e Focusrite Scarlett 2i2, e lasciava il resto implicito. L'utente ha indicato come uscita per i monitor l'unità Rod Rain audio, oggetto di studio del progetto `rodrainaudio-reverse-eng`, precisando che il dispositivo è condiviso con un altro computer.
+
+Decisione: il Rod Rain audio è la sorgente della catena di ascolto. Ciò che ne viene usato è l'uscita a livello di linea su RCA, a circa 2 Vrms, non lo stadio cuffie.
+
+Motivazione: il dispositivo è già in casa, è già caratterizzato in un progetto dedicato che ne documenta la catena interna fino all'uscita di linea, e fornisce esattamente ciò che serve a una sorgente, cioè il livello di linea consumer standard. Non c'è ragione di acquistare un convertitore per questo scopo.
+
+Conseguenze, e la più importante non è ovvia. Due Vrms su RCA sono un segnale e non una potenza, e lo stadio cuffie che segue non può pilotare un altoparlante da 4 o 8 ohm. Ne segue che la scelta della sorgente vincola l'architettura del diffusore: con monitor attivi la catena è completa così com'è, con monitor passivi serve un amplificatore di potenza stereo interposto, che non è fra le cose disponibili e diventerebbe un acquisto.
+
+Il documento sorgente lasciava aperta la scelta fra crossover passivo e attivo, ed era legittimo farlo quando la sorgente non era decisa. Ora quella scelta va anticipata alla fase 4a, prima dell'acquisto dei driver, perché determina se occorre un amplificatore in più e perché cambia il modo in cui il crossover si progetta: passivo significa componenti reali con le loro tolleranze, attivo significa filtro a livello di linea realizzato in analogico o in digitale. Influisce anche su quali driver convengono.
+
+Seconda conseguenza, sulla validità delle misure. La catena di misura usa la Scarlett, perché serve un ingresso microfonico con alimentazione phantom; la catena di ascolto usa il Rod Rain. Per la fase 1 la differenza è irrilevante, perché si misura la stanza e la sorgente è provvisoria. Per la fase 8, cioè la verifica del monitor costruito, non lo è: se si vuole misurare ciò che si ascolterà, il segnale di prova deve uscire dalla catena di ascolto reale, quindi microfono sulla Scarlett e generazione sul Rod Rain, che REW permette configurando dispositivi diversi in ingresso e in uscita.
+
+Terza conseguenza, minore: l'uso condiviso con un altro computer implica scollegare e ricollegare, oppure un commutatore USB. Non è un problema tecnico ma è attrito, e l'attrito scoraggia le misure ripetute, che sono il metodo di questo progetto.
+
+Resta da verificare, e non da assumere, se l'uscita AUDIO OUT sia a livello fisso o segua il controllo di volume: con uscita fissa e monitor attivi il volume deve stare altrove.
+
+## ADR-013 - ADR-006 riconfermata sulla base corretta, e la pulizia di Wine non si fa
+
+Data: 2026-09-07. Stato: accettata. Supera lo stato di attesa di ADR-011 e chiude PA-006.
+
+Contesto: ADR-011 aveva registrato la caduta del primo dei quattro motivi di ADR-006 e rimesso la scelta all'utente, perché tenere una decisione confermata quando una delle sue gambe è caduta significherebbe farla passare per più solida di quanto sia. La lettura SMART del 2026-09-07 ha inoltre escluso il terzo scenario, cioè la sostituzione del disco, perché il disco risulta sano.
+
+Decisione: si procede con l'installazione pulita di Ubuntu Studio 26.04 LTS, riformattando la sola partizione root e conservando `/home`. Il lavoro privilegiato si esegue con comandi preparati dall'agente e lanciati dall'utente, senza alcuna regola `sudoers` che conceda privilegi senza password.
+
+Motivazione della prima parte: dei quattro motivi originali ne restano tre, e il dominante è ora l'ambiente pulito, non più la fragilità dell'alternativa. La fotografia ha mostrato che la sedimentazione da rimuovere è reale e concreta, cioè due repository WineHQ attivi per due rilasci diversi di Ubuntu, `wine-stable 3.0.1` del 2018 accanto a `wine 9.0`, l'architettura `i386` dichiarata, una sorgente `file:/cdrom/` residua e un prefix unico condiviso fra programmi. Si aggiunge il motivo reso disponibile dai dati: `/home` contiene 3,7 GB su 369, quindi il costo del salvataggio è trascurabile e il rischio dell'operazione più basso di quanto si potesse stimare.
+
+Motivazione della seconda parte: la regola `sudoers` avrebbe reso autonoma la parte privilegiata, ma amplia ciò che può fare chi ottenesse la chiave SSH, e per una macchina raggiungibile in rete quel prezzo non è giustificato da una comodità di esecuzione. La scelta è quindi di non modificare la postura di sicurezza della macchina.
+
+Conseguenza operativa immediata, e non è ovvia: **la pulizia dell'ambiente Wine non si esegue**. Pulire Wine su un sistema che verrà azzerato è lavoro che si butta, perché la riformattazione di root porta via l'intera installazione dei pacchetti, i due repository WineHQ, l'architettura `i386` e la sorgente residua. L'ambiente pulito si ottiene per costruzione dalla reinstallazione, non da una purga preventiva. Per la stessa ragione non si applicano i 134 pacchetti pendenti e non si esegue il riavvio richiesto: sono operazioni sul sistema che sta per essere sostituito.
+
+L'unica cosa che va conservata dall'ambiente attuale è il prefix `~/.wine`, che vive sotto `/home` e quindi sopravvive: la copia di sicurezza prevista dalla fase 1.2 resta utile non per ripristinarlo, perché i prefix vanno rifatti puliti, ma per poter confrontare configurazioni e librerie se un programma dopo la reinstallazione non si comportasse come prima.
+
+Conseguenza sulla sequenza: si passa direttamente alla fase 1, cioè trasferimento dei materiali e copia di sicurezza di `/home`, e da lì alle fasi da 2 a 11. Le due voci ancora aperte di PA-005, cioè l'esito di `apt update` e il Machine Identifier di Akabak, cambiano di peso: la prima diventa irrilevante perché quel sistema non verrà aggiornato, la seconda resta necessaria e va fatta prima di azzerare, perché dopo non sarebbe più confrontabile.
