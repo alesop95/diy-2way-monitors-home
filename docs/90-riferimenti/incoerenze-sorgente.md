@@ -1,12 +1,12 @@
 # Le incoerenze del documento sorgente, una per una
 
-> Pagina didattica. Il documento `full_electroacoustics.docx` conteneva sei affermazioni fra loro incompatibili o tecnicamente sbagliate. Questa pagina le spiega tutte e sei nel dettaglio: che cosa diceva il sorgente, perché è sbagliato, come si riconosce l'errore, che cosa dice invece la versione corretta e dove è finita nella documentazione. Serve a due cose: sapere che quelle correzioni sono state fatte deliberatamente e non per distrazione, e imparare a riconoscere la stessa classe di errore la prossima volta.
+> Pagina didattica. Il documento `full_electroacoustics.docx` conteneva sette affermazioni fra loro incompatibili, tecnicamente sbagliate o non corrispondenti alla realtà. Questa pagina le spiega tutte e sette nel dettaglio: che cosa diceva il sorgente, perché è sbagliato, come si riconosce l'errore, che cosa dice invece la versione corretta e dove è finita nella documentazione. Serve a due cose: sapere che quelle correzioni sono state fatte deliberatamente e non per distrazione, e imparare a riconoscere la stessa classe di errore la prossima volta.
 
 ## Perché una pagina dedicata invece di una nota a piè di pagina
 
 Un appunto scritto in mesi diversi accumula naturalmente contraddizioni: si impara qualcosa, si aggiorna un paragrafo e non l'altro, e alla rilettura successiva non si distingue più quale delle due versioni fosse quella informata. Questo è normale e non è un difetto dell'autore.
 
-Diventa un problema nel momento in cui l'appunto viene usato come procedura. Chi rifà l'installazione seguendo la trascrizione sbagliata la replica, e l'errore si propaga in una macchina reale invece di restare su carta. Quattro delle sei incoerenze qui elencate avrebbero avuto esattamente questo esito. Per questo la correzione è documentata invece che silenziosa: la documentazione che sostituisce un appunto deve dichiarare in che punti si discosta da esso, altrimenti non è verificabile.
+Diventa un problema nel momento in cui l'appunto viene usato come procedura. Chi rifà l'installazione seguendo la trascrizione sbagliata la replica, e l'errore si propaga in una macchina reale invece di restare su carta. Quattro delle sette incoerenze qui elencate avrebbero avuto esattamente questo esito. Per questo la correzione è documentata invece che silenziosa: la documentazione che sostituisce un appunto deve dichiarare in che punti si discosta da esso, altrimenti non è verificabile.
 
 ## Incoerenza 1: due filesystem sullo stesso punto di montaggio
 
@@ -34,7 +34,7 @@ Che cosa è vero. La quarta partizione è `/home`, e lo dice la tabella dello st
 
 L'incoerenza è quindi interna al documento: la tabella e l'elenco finale dicevano cose diverse, e l'elenco era la versione sbagliata. Va notato che le due fonti divergono anche sulla dimensione della swap, 8 GB nell'elenco e circa 16 GB nella tabella: la tabella è coerente con la regola che la dichiara pari alla RAM per rendere possibile l'ibernazione, e la macchina ha 16 GB di RAM, quindi anche qui la tabella è la versione informata.
 
-Perché conta. È la più pericolosa delle sei, perché la separazione di `/home` su una partizione propria è precisamente ciò che rende la reinstallazione pulita una operazione a basso rischio. Un appunto che dichiara due radici e nessuna `/home` porterebbe a rifare l'installazione senza quella separazione, e la volta successiva la reinstallazione costerebbe la perdita di tutti i dati.
+Perché conta. È la più pericolosa delle sette, perché la separazione di `/home` su una partizione propria è precisamente ciò che rende la reinstallazione pulita una operazione a basso rischio. Un appunto che dichiara due radici e nessuna `/home` porterebbe a rifare l'installazione senza quella separazione, e la volta successiva la reinstallazione costerebbe la perdita di tutti i dati.
 
 Dove è finita. In `docs/10-ambiente/ubuntu-studio-installazione.md`, con la tabella corretta e una sezione finale che dichiara l'errore del sorgente per nome. In `docs/10-ambiente/installazione-pulita-26-04.md` lo schema corretto è il punto di partenza della procedura.
 
@@ -138,9 +138,26 @@ Che cosa è vero, e un passo che mancava del tutto. La procedura corretta entra 
 
 Dove è finita. In `docs/10-ambiente/wine-corredo-progetto-stanza.md`, con la procedura corretta e i due installer, e in `docs/10-ambiente/installazione-pulita-26-04.md`, dove la fase 8.5 è stata corretta di conseguenza.
 
+## Incoerenza 7: il numero di modello dell'SSD
+
+Che cosa diceva il sorgente. Nella sezione sui prerequisiti, l'SSD della macchina è indicato come `CT500P25SD8`, Crucial da 500 GB, con uno stato di salute al 91 per cento rilevato da una scansione fatta su Windows.
+
+Perché è sbagliato. Il modello reale, letto dalla macchina, è `CT500P2SSD8`, con firmware `P2CR033`. La differenza è di un carattere trasposto, e corrisponde alla sigla della serie: `P2` è la linea Crucial P2, mentre `P25` non è una sigla esistente.
+
+```bash
+cat /sys/class/nvme/nvme0/model
+cat /sys/class/nvme/nvme0/firmware_rev
+```
+
+Come si riconosce. È l'unica delle sette che non si trova né rileggendo il documento né guardando i file di un corredo: si trova soltanto leggendo l'hardware. Un errore di trascrizione di un numero di modello non ha alcun sintomo, perché il documento resta perfettamente coerente con se stesso.
+
+Perché conta, e quanto. Operativamente non cambia niente sul funzionamento della macchina. Cambia però tutto nel momento in cui quel numero serve a cercare qualcosa: il firmware aggiornato, la scheda tecnica con le specifiche di durata, una segnalazione di difetto noto, o un ricambio compatibile. Un modello inesistente restituisce zero risultati oppure, peggio, i risultati di un prodotto diverso.
+
+Dove è finita. In `docs/10-ambiente/fotografia-macchina-2026-09-07.md`, nella sezione sullo SSD, insieme al firmware e alla temperatura, che sono gli altri due dati leggibili senza privilegi.
+
 ## La classe di errore, in generale
 
-Le sei incoerenze non sono sei casi indipendenti: sono quattro tipi.
+Le sette incoerenze non sono sette casi indipendenti: sono cinque tipi.
 
 Le prime tre sono errori di trascrizione, cioè un carattere o una riga sbagliati in un punto mentre la versione corretta è presente altrove nello stesso documento. Si trovano confrontando due passaggi che parlano della stessa cosa, e il metodo è cercare i duplicati: due punti di montaggio uguali, due numeri di versione diversi, due percorsi che differiscono di uno slash.
 
@@ -149,3 +166,5 @@ La quarta è un errore di ordine di grandezza, cioè un numero plausibile come n
 La quinta è una decisione non presa, travestita da elenco di alternative. Si trova chiedendo, per ogni alternativa, se l'ambiente soddisfa i suoi requisiti, e la risposta è spesso già scritta poche righe più in là.
 
 La sesta è di tipo diverso da tutte le altre, ed è la ragione per cui vale la pena distinguerle. Non è una contraddizione interna e non si trova rileggendo: il documento è coerente con se stesso e semplicemente non corrisponde ai file. Si trova solo confrontando la procedura con il materiale su cui dovrebbe operare, ed è il tipo di errore che si moltiplica quando una procedura viene scritta a memoria a distanza di mesi dal materiale. Il metodo, di conseguenza, è elencare i file prima di scrivere il comando che li usa.
+
+La settima è il quinto tipo, ed è il più silenzioso di tutti: un dato che non corrisponde all'hardware. Non ha sintomi, perché il documento è coerente e la macchina funziona comunque; si scopre solo leggendo il sistema. Il metodo è quello che questa sessione ha applicato in ritardo e che avrebbe dovuto venire per primo: prima di scrivere qualunque cosa su una macchina, leggerla.

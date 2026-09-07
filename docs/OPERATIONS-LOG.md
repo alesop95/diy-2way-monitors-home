@@ -470,6 +470,34 @@ La cronologia di apt fornisce il riscontro indipendente che finora mancava alla 
 
 Esito: fatto.
 
+### MS-032 - Perché SMART richiede privilegi, e i tre dati che si leggono comunque
+
+Perimetro: diagnostica in sola lettura sulla macchina, aggiornamento della fotografia, della fase 0.3 della procedura e della pagina delle incoerenze.
+
+L'utente ha chiesto se il comando `sudo smartctl -a /dev/nvme0n1` non si possa lanciare via SSH da Windows. La risposta è in due parti e la distinzione conta: via SSH si può e funziona, ma non dallo strumento di shell dell'agente, perché quella shell non ha input interattivo e la connessione usa `BatchMode=yes`, che disabilita di proposito ogni richiesta interattiva. Non è un limite della rete né della chiave: è un limite di canale.
+
+Prima di rimandare la palla all'utente ho verificato se esistesse una via non privilegiata, invece di darlo per scontato. Non esiste, e la ragione è precisa: i dati SMART di un disco NVMe si leggono interrogando il controller, che è il dispositivo a caratteri `/dev/nvme0`, con permessi `crw------- root root`, cioè nessun gruppo a cui delegare. Il dispositivo a blocchi `/dev/nvme0n1` è `brw-rw---- root disk`, ma l'utente non appartiene al gruppo `disk`. E `udisksctl`, che tramite polkit avrebbe potuto essere una terza via, non è installato.
+
+Tre dati si ricavano comunque senza privilegi, e due di essi correggono quanto era documentato.
+
+Il modello reale del disco è `CT500P2SSD8` con firmware `P2CR033`, letti da `/sys/class/nvme/nvme0/`. Il documento sorgente lo riportava come `CT500P25SD8`, con un carattere trasposto: `P2` è la sigla della serie Crucial, `P25` non esiste. È la settima incoerenza del documento sorgente, e appartiene a un tipo nuovo rispetto alle sei precedenti, perché non si trova né rileggendo il documento né guardando i file, ma solo leggendo l'hardware. Non ha sintomi e non cambia nulla di operativo; cambia tutto nel momento in cui quel numero serve a cercare un firmware, una scheda tecnica o un ricambio.
+
+La temperatura del controller si legge da `hwmon` ed è di 33,85 gradi, sotto l'etichetta `Composite`. È un indicatore parziale ma esclude la sofferenza termica, che è una delle cause di degrado di un SSD.
+
+Il pacchetto `smartmontools` è già installato, alla versione `smartctl 7.4`. Questo rende superflua l'avvertenza della fase 0.3, che prevedeva di installarlo e ipotizzava che l'installazione da rete potesse non funzionare su un rilascio fuori supporto: era una precauzione ragionevole e non serviva.
+
+Le tre strade per il comando privilegiato sono documentate con il costo di ciascuna. L'esecuzione da parte dell'utente con l'opzione `-t`, che alloca un terminale sulla connessione e senza la quale `sudo` non ha dove chiedere la password. Una regola `sudoers` limitata al singolo comando in sola lettura, che renderebbe autonoma la diagnostica privilegiata anche in futuro ma amplia ciò che un accesso compromesso alla chiave permette, quindi resta una decisione dell'utente perché modifica la postura di sicurezza della macchina. E l'aggiunta al gruppo `disk`, nominata solo per escluderla, perché darebbe accesso in lettura e scrittura a tutti i dispositivi a blocchi per leggere una tabella.
+
+Verificato con: `sudo -n smartctl`, che risponde `sudo: a password is required`; `ls -l` sui due dispositivi; `groups`; lettura dei tre attributi da `/sys`; assenza di `udisksctl`.
+
+Un secondo controllo della stessa passata, riportato perché il suo esito è un falso allarme rientrato e questo è un tipo di voce che merita comunque di stare a verbale. Una scansione dei caratteri non attesi nei file Markdown ha trovato 166 trattini lunghi in otto file del pacchetto `academic-researcher`, che la regola di stile vieta e che `fix-dashes.py` non converte. Il sospetto era un difetto dello strumento.
+
+Non lo è. Uno dei due file è dichiarato in `tools/dashes-exclude.txt` con la sua motivazione, cioè un documento copiato verbatim da fonte esterna, che per la regola di stile mantiene la formattazione originale. Negli altri sette, la mappatura delle posizioni ha mostrato che ogni trattino cade dentro un blocco recintato: le recinzioni stanno alle righe 44, 54, 58, 67, 71, 83 e così via, e le occorrenze alle righe 51, 61, 80 e seguenti sono tutte comprese fra una apertura e la sua chiusura. Sono modelli di prompt in inglese dentro blocchi preformattati, che lo strumento non tocca di proposito e che la regola di stile esclude esplicitamente insieme al codice e alle tabelle.
+
+La lezione è la stessa del resto della sessione, applicata questa volta in tempo: verificare prima di riportare. Un difetto annunciato e poi rientrato costa credibilità alla documentazione più di quanto valga la segnalazione.
+
+Esito: fatto per la diagnosi del vincolo. La lettura di SMART resta in PA-005 e resta dell'utente.
+
 ## Microstep bloccati, e da che cosa dipendono ora
 
 Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso e non uno stallo. All'inizio la macchina era di stato ignoto, poi si è rivelata sospesa e non spenta, poi sveglia e raggiungibile ma senza autenticazione configurata. Il blocco attuale è quindi su una singola azione dell'utente, cioè l'installazione della chiave SSH descritta nella fase 10.3 della procedura, che richiede la password una volta sola e non è delegabile.

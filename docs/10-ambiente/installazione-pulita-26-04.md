@@ -70,7 +70,17 @@ sudo apt list --installed 2>/dev/null | grep smartmontools
 sudo smartctl -a /dev/nvme0n1
 ```
 
-L'SSD era dato al 91 per cento di vita residua da una scansione fatta su Windows nel periodo dell'installazione originaria. Vale rileggerlo ora, prima di scriverci sopra un sistema nuovo: se il valore è crollato, la decisione da prendere non è più fra installazione e aggiornamento ma fra installazione e sostituzione del disco. Se `smartctl` non è presente si installa con `sudo apt install smartmontools`, ma su una 25.04 fuori supporto l'installazione da rete potrebbe non funzionare: in quel caso il controllo si rimanda al primo avvio del sistema nuovo, dove è comunque utile.
+L'SSD era dato al 91 per cento di vita residua da una scansione fatta su Windows nel periodo dell'installazione originaria. Vale rileggerlo ora, prima di scriverci sopra un sistema nuovo: se il valore è crollato, la decisione da prendere non è più fra installazione e aggiornamento ma fra installazione e sostituzione del disco.
+
+La verifica del 2026-09-07 ha accertato che `smartmontools` è **già installato**, alla versione `smartctl 7.4`, quindi l'avvertenza precedente su una possibile installazione da rete non serve. Ha accertato anche che non esiste una via non privilegiata per leggere i dati SMART, perché `/dev/nvme0` è `crw------- root root` e l'utente non appartiene al gruppo `disk`. Tre dati si ricavano comunque senza privilegi, e sono il modello reale del disco, il firmware e la temperatura del controller.
+
+```bash
+cat /sys/class/nvme/nvme0/model
+cat /sys/class/nvme/nvme0/firmware_rev
+cat /sys/class/nvme/nvme0/hwmon1/temp1_input
+```
+
+Il comando privilegiato va quindi eseguito da un terminale interattivo, e richiede l'opzione `-t` se lo si lancia via SSH, perché senza un terminale allocato `sudo` non ha dove chiedere la password. Il dettaglio, con le tre strade possibili e il costo di ciascuna, è in `fotografia-macchina-2026-09-07.md`.
 
 ### 0.4 Catena audio attuale
 

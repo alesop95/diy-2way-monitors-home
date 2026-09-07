@@ -6,12 +6,12 @@
 
 ```
 Branch attivo:          main
-Commit di riferimento:  4863804
+Commit di riferimento:  f85480d
 Data snapshot:          2026-09-07
-Modifiche non committate: sì, la seconda parte della sessione del 2026-09-07
+Modifiche non committate: sì, la coda della sessione del 2026-09-07 su SSD e privilegi
 ```
 
-Due commit del 2026-09-04 sono su origin: `9e9517e` con l'allineamento al template, la conversione del documento sorgente e l'impianto dell'ambiente documentale, e `3eac5f3` con l'approfondimento su Wine, la procedura di installazione pulita, lo storico di Akabak e VACS e il piano del corredo software. Il lavoro del 2026-09-07, cioè la verifica delle copie del corredo e le quattro voci da MS-024 a MS-027, non è ancora committato. Commit e push restano operazioni manuali dell'utente.
+Quattro commit sono su origin, gli ultimi due del 2026-09-07: `4863804` con la verifica delle copie del corredo e `f85480d` con la fase 0 eseguita e la diagnosi corretta. I due precedenti, del 2026-09-04, sono: `9e9517e` con l'allineamento al template, la conversione del documento sorgente e l'impianto dell'ambiente documentale, e `3eac5f3` con l'approfondimento su Wine, la procedura di installazione pulita, lo storico di Akabak e VACS e il piano del corredo software. Il lavoro del 2026-09-07, cioè la verifica delle copie del corredo e le quattro voci da MS-024 a MS-027, non è ancora committato. Commit e push restano operazioni manuali dell'utente.
 
 ## Che cos'è questo progetto, in tre righe
 
@@ -21,9 +21,9 @@ Progettazione e costruzione di una coppia di monitor da studio a due vie per un 
 
 | Scheda | last-verified | Stato |
 |---|---|---|
-| STACK.md | 4863804 | aggiornata |
-| roadmap.md | 4863804 | da rileggere: la fase 0 ha cambiato le priorità |
-| current-work.md | 4863804 | aggiornata |
+| STACK.md | f85480d | aggiornata |
+| roadmap.md | f85480d | da rileggere: la fase 0 ha cambiato le priorità |
+| current-work.md | f85480d | aggiornata |
 | design-and-security.md | - | non creata: il progetto non ha codice applicativo né superficie di attacco |
 | deployment.md | - | non creata: non c'è deploy; il suo equivalente è `docs/TRANSFER-MANIFEST.md` |
 | dev-testing.md | - | non creata: i test sono le suite degli strumenti, descritte in STACK.md |
