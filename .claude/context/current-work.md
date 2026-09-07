@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: 0df04bb7019814cf69b8458e4eaad8eaf71be818
+last-verified-commit: 9e9517e
 ---
 
 # Lavoro corrente
@@ -39,16 +39,16 @@ Il commit e il push, che restano operazioni manuali dell'utente.
 
 ## Bloccato da
 
-L'accesso alla macchina Ubuntu Studio. L'host `192.168.10.204` non risponde, e la diagnostica registrata in `docs/OPERATIONS-LOG.md` alla voce MS-008 indica che la macchina non è accesa oppure non è su questo segmento di rete. Da questo dipendono cinque microstep già progettati: il trasferimento, la conferma della diagnosi di aggiornamento, l'installazione pulita, la ricostruzione dell'ambiente Wine e la verifica del release code di Akabak.
+L'installazione della chiave SSH sulla macchina Ubuntu Studio, che richiede la password una volta sola e va eseguita dall'utente. È l'unico blocco residuo, e il percorso è la fase 10.3 di `docs/10-ambiente/installazione-pulita-26-04.md`.
+
+Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso. La macchina risultava di stato ignoto e la prima diagnosi, in MS-008, la dava per spenta o su un altro segmento. La lettura corretta l'ha data l'utente: si sospende da sola, e una macchina sospesa non risponde nemmeno alle richieste ARP, quindi scompare del tutto dalla rete. Risvegliata, ha risposto al ping con TTL 64 e ha accettato la connessione sulla porta 22, rifiutando l'autenticazione perché nessuna chiave della postazione è autorizzata e perché `~/.ssh/config` non ha una voce per quell'host, quindi `ssh` non prova nemmeno le chiavi esistenti. Le correzioni sono in MS-015 e MS-016.
 
 ## Domande aperte per l'utente
 
-Se la macchina sia raggiungibile da un'altra postazione o su un'altra rete, oppure se il travaso dei materiali vada fatto con un supporto fisico. Il manifest resta valido in entrambi i casi.
+Le due decisioni maggiori sono prese e non sono più domande. L'installazione pulita della 26.04 LTS è confermata e registrata come ADR-006 accettata. La macchina è sulla stessa rete della postazione, quindi il travaso dei materiali passa per rete locale e non richiede un supporto fisico.
 
-Se procedere con l'installazione pulita di Ubuntu Studio 26.04 LTS, che è la strada raccomandata con quattro motivi in `docs/10-ambiente/ubuntu-lts-upgrade.md`, oppure con l'aggiornamento in posto in due salti attraverso archivi storici.
-
-Se propagare al template `template-claude-developing` le quattro correzioni trovate qui. La ripropagazione degli strumenti tipografici nel pacchetto `fix-typography`, che è rimasto indietro rispetto alle copie in `tools/`. La negazione nel `.gitignore` che rende versionabili i modelli `_notes` sotto `.claude/templates/`, oggi persi da qualunque clone. L'allineamento delle regole di prudenza fra `fix-accents.py` e `fix-missing-accents.py`, la cui incoerenza corrompe le forme elise nei file di codice, con la riparazione delle quindici occorrenze già danneggiate nei sorgenti del template stesso. La gestione dei percorsi cross-disco nei tre strumenti tipografici, che `md-unwrap.py` ha già e loro no. Le ultime due sono diagnosticate in MS-014 del registro dei microstep, con i casi minimi che le riproducono.
+Resta invece aperta la scelta se propagare al template `template-claude-developing` le quattro correzioni trovate qui. La ripropagazione degli strumenti tipografici nel pacchetto `fix-typography`, che è rimasto indietro rispetto alle copie in `tools/`. La negazione nel `.gitignore` che rende versionabili i modelli `_notes` sotto `.claude/templates/`, oggi persi da qualunque clone. L'allineamento delle regole di prudenza fra `fix-accents.py` e `fix-missing-accents.py`, la cui incoerenza corrompe le forme elise nei file di codice, con la riparazione delle quindici occorrenze già danneggiate nei sorgenti del template stesso. La gestione dei percorsi cross-disco nei tre strumenti tipografici, che `md-unwrap.py` ha già e loro no. Le ultime due sono diagnosticate in MS-014 del registro dei microstep, con i casi minimi che le riproducono.
 
 ## Prossimo passo concreto
 
-Committare il lavoro di questa sessione, poi accendere o raggiungere la macchina Ubuntu Studio ed eseguire la sequenza di verifica in sola lettura di `docs/10-ambiente/ubuntu-lts-upgrade.md`, confrontando gli esiti reali con quelli attesi.
+Installare la chiave SSH dedicata sulla macchina, secondo la fase 10.3 della procedura, poi eseguire la fase 0 della stessa procedura, cioè la fotografia completa in quattordici file. È il passo che conferma o smentisce la diagnosi del blocco di aggiornamento, chiude la lacuna sui prefix Wine esistenti, e verifica che il Machine Identifier di Akabak sia ancora quello a cui il Release Code è legato.

@@ -5,7 +5,7 @@ generated-date: 2026-09-04
 covers-paths:
   - tools/**
   - docs/**
-last-verified-commit: 0df04bb7019814cf69b8458e4eaad8eaf71be818
+last-verified-commit: 9e9517e
 ---
 
 # Stack del progetto
@@ -24,11 +24,15 @@ La catena vive sulla macchina Ubuntu Studio descritta in `docs/10-ambiente/READM
 
 Nativi: REW per la misura acustica, Blender per la geometria della stanza, GNU Octave con il toolbox MATAA per l'analisi modale e il calcolo dei tempi di riverberazione, FreeCAD per la progettazione meccanica del cabinet.
 
-Sotto Wine, ciascuno nel proprio prefix: Akabak 3 a 64 bit per la simulazione mista elettroacustica e ambientale, VACS a 64 bit come suo strumento di visualizzazione, VituixCAD 2 a 64 bit per crossover e direttività, EASE Focus 3.1.260 per la verifica di copertura. WinISD è disponibile ma deliberatamente non installato.
+Sotto Wine, ciascuno nel proprio prefix a 64 bit: Akabak 3 per la simulazione mista elettroacustica e ambientale, VACS come suo strumento di visualizzazione nello stesso prefix, VituixCAD 2 per crossover e direttività, EASE Focus 3.1.260 con il servizio di database AFMG per la verifica di copertura, e ARTA 1.7.1 per produrre un file GLL da un diffusore misurato. La mappa completa dei prefix con le dipendenze di ciascuno è in `docs/10-ambiente/wine-corredo-progetto-stanza.md`.
+
+WinISD è disponibile ma deliberatamente non installato. Ramsete 27b è sospeso in attesa della verifica del suo stato di licenza, e sarebbe il solo a richiedere un prefix a 32 bit, per ADR-009.
 
 L'hardware di misura è una Focusrite Scarlett 2i2 di seconda generazione con alimentazione phantom, e un microfono di misura calibrato individualmente ancora da acquistare.
 
 ## Alternative deliberatamente escluse
+
+Otto voci del corredo software con protezione rimossa o provenienza non lecita, per circa 1,7 GB. Escluse per ADR-010, e la ragione che regge da sola è che nessuna serve al progetto: la motivazione voce per voce, con la sostituzione nativa o gratuita che ne copre il ruolo, è in `docs/10-ambiente/wine-corredo-progetto-stanza.md`.
 
 Una macchina virtuale Windows invece di Wine. Esclusa per tre motivi documentati in `docs/10-ambiente/wine-vs-emulatore.md`: la latenza aggiuntiva sulla catena audio proprio nella fase in cui si misura il tempo, l'identificativo hardware virtuale che invaliderebbe la licenza di Akabak, e il costo di licenza e manutenzione di un sistema ospite.
 
@@ -39,8 +43,6 @@ EASE JR, che per l'ottimizzazione di monitor in una stanza domestica sarebbe sup
 EASE Address 2.1. Escluso perché lavora in due dimensioni sulla vista laterale e non gestisce geometrie complesse né riflessioni multiple, mentre la stanza del progetto è irregolare con soffitto spiovente.
 
 WinISD. Non escluso in assoluto ma non installato, perché ridondante rispetto a VituixCAD e Akabak, e perché è il solo programma che richiederebbe un prefix Wine a 32 bit con la classe di problemi che ne deriva.
-
-Il pacchetto di software con protezione rimossa ereditato su un disco esterno. Escluso, e l'inventario in `docs/90-riferimenti/inventario-software.md` motiva per ciascuna voce perché non serve.
 
 ## Strumenti di manutenzione nel repository
 
@@ -56,7 +58,9 @@ Su questi tre strumenti valgono due avvertenze, entrambe verificate con casi min
 
 Il file `tools/sync-ambiente.py` propaga il blocco `docs/10-ambiente/` al progetto gemello di home recording, in una sola direzione, marcando le copie e segnalando gli orfani senza rimuoverli.
 
-I file `tools/transfer-to-studio.sh` e `tools/transfer-to-studio.ps1` eseguono il trasferimento dei materiali pesanti verso la macchina di lavoro, con verifica delle impronte, secondo `docs/TRANSFER-MANIFEST.md`.
+I file `tools/transfer-to-studio.sh` e `tools/transfer-to-studio.ps1` eseguono il trasferimento dei materiali pesanti verso la macchina di lavoro, con verifica delle impronte, secondo `docs/TRANSFER-MANIFEST.md`. I due non hanno lo stesso perimetro, e la differenza è dichiarata nell'intestazione del secondo: la versione bash copre sia gli otto file piatti del manifest sia gli alberi del corredo software, con confronto ricorsivo delle impronte; la versione PowerShell copre i soli file piatti.
+
+Il file `tools/check-pending-actions.py` verifica quali azioni differite di `docs/PENDING-ACTIONS.md` sono diventate eseguibili, leggendo le condizioni automatizzabili come la presenza di un disco esterno, e con `--confronta` confronta per impronta le due copie del corredo software prima di autorizzarne la cancellazione. È di sola lettura e non cancella nulla.
 
 Il file `tools/latest-screenshot.ps1` restituisce lo screenshot più recente della cartella di cattura, per i passi manuali che l'agente non può osservare da sé.
 
@@ -75,4 +79,5 @@ python tools/md-unwrap.py --check .
 python tools/lint-md-commands.py .
 python tools/test-tipografia.py
 python tools/sync-ambiente.py --check
+python tools/check-pending-actions.py
 ```

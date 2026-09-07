@@ -14,11 +14,13 @@ L'ambiente Linux, cioè Ubuntu Studio e Wine con tutto ciò che serve a far gira
 
 Le fasi operative sono documentate una per pagina: [misura reale della stanza](20-misura-stanza.md), [modellazione e simulazione acustica](30-modellazione-e-simulazione.md), [analisi dei dati in Octave](40-analisi-octave.md), [progettazione del monitor](50-progettazione-monitor.md), [simulazione finale in Akabak](60-simulazione-finale-akabak.md) e [realizzazione con verifica finale](70-realizzazione-e-verifica.md).
 
-I riferimenti, cioè l'inventario del software disponibile, lo stato delle licenze e le fonti citate, stanno nella cartella [90-riferimenti/](90-riferimenti/README.md).
+I riferimenti stanno nella cartella [90-riferimenti/](90-riferimenti/README.md), e comprendono l'inventario del software disponibile, lo stato delle licenze, lo storico verificato di Akabak e VACS, le cinque incoerenze del documento sorgente spiegate una per una, la prova di copertura della conversione e le fonti citate.
 
 Il registro cronologico dei microstep operativi, con l'esito verificato di ciascuno, sta in [OPERATIONS-LOG.md](OPERATIONS-LOG.md).
 
 L'elenco dei materiali pesanti da spostare sulla macchina di lavoro, con destinazioni e impronte di verifica, sta in [TRANSFER-MANIFEST.md](TRANSFER-MANIFEST.md).
+
+Le azioni che non si possono compiere adesso, con la condizione che sblocca ciascuna e il criterio con cui si stabilisce che sono compiute, stanno in [PENDING-ACTIONS.md](PENDING-ACTIONS.md). Conviene leggerlo a inizio sessione, o meglio lanciare `python tools/check-pending-actions.py`, che ne verifica le condizioni automatizzabili.
 
 ## Rapporto con il documento sorgente
 

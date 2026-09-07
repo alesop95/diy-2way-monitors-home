@@ -3,6 +3,14 @@
 # Windows senza Git Bash. Non cancella nulla sull'origine: la rimozione resta una
 # decisione manuale, da prendere dopo che il confronto delle impronte e' riuscito.
 #
+# PERIMETRO RIDOTTO, da conoscere prima di usarlo. Questa versione copre soltanto gli
+# otto file piatti del manifest. NON copre il corredo "Progetto stanza", che e' fatto di
+# alberi di cartelle per circa 524 MiB e richiede una copia ricorsiva con verifica delle
+# impronte albero per albero. Per quello si usa transfer-to-studio.sh da Git Bash, che
+# lo gestisce. Il motivo di questa asimmetria e' deliberato: duplicare in PowerShell la
+# logica di confronto ricorsivo raddoppierebbe la superficie da mantenere per un caso
+# che Git Bash copre gia', ed e' installato su questa postazione.
+#
 # Uso:
 #   powershell -NoProfile -ExecutionPolicy Bypass -File tools\transfer-to-studio.ps1 -SoloVerifica
 #   powershell -NoProfile -ExecutionPolicy Bypass -File tools\transfer-to-studio.ps1

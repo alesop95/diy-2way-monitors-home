@@ -33,7 +33,23 @@ I sette file binari provengono dalla cartella `Akabak + VACS/` nella radice del 
 | `randteam.url` | 114 | `~/electroacoustics/licenze/` | collegamento al sito dell'autore |
 | `_notes/full_electroacoustics.docx` | 98.899 | `~/electroacoustics/sorgenti/` | documento sorgente di questa documentazione, conservato come fonte di rigenerazione |
 
-Il totale è di circa 166 megabyte.
+Il totale di questa prima parte è di circa 166 megabyte.
+
+## Che cosa si trasferisce, parte seconda: il corredo Progetto stanza
+
+Il corredo software raccolto sotto `C:\Users\Utente\Desktop\Progetto stanza (software)` pesa 2,3 GB, e va sulla macchina soltanto in parte. La selezione non è arbitraria: è il sottoinsieme legittimo e utile, e il criterio con cui ogni voce è stata inclusa o esclusa è documentato voce per voce in `docs/10-ambiente/wine-corredo-progetto-stanza.md`, con il formato reale di ciascun installer letto dai file e non dedotto dal nome.
+
+| Voce | Tipo | Dimensione | Destinazione | Perché |
+|---|---|---|---|---|
+| `VituixCAD_setup.exe` | file | 796 KB | `~/electroacoustics/progetto-stanza/diy/` | strumento della fase 4a, gratuito |
+| `Arta/` | albero | 6,3 MB | `~/electroacoustics/progetto-stanza/diy/` | serve alla fase 8, per produrre un GLL da misure reali |
+| `EASE_Focus_v3.1.260/` | albero | 58 MB | `~/electroacoustics/progetto-stanza/room/` | versione da installare, con il servizio di database AFMG |
+| `EASE_Focus_3_GLL_Database_2016_10_11/` | albero | 451 MB | `~/electroacoustics/progetto-stanza/room/` | 221 file, di cui 174 GLL: dati, non programma |
+| `Ramsete27b - room acoustics/` | albero | 9,7 MB | `~/electroacoustics/progetto-stanza/room/` | supplemento facoltativo, subordinato alla verifica di licenza PA-002 |
+
+Il totale di questa seconda parte è di circa 524 mebibyte, quindi il trasferimento complessivo è di circa 682 mebibyte, come riporta lo strumento nella sua fase di sola verifica.
+
+Le voci escluse sono otto, per circa 1,7 GB, cioè quasi tre quarti del peso del corredo. Sette portano protezioni rimosse e una porta il file di provenienza da un servizio di condivisione. Nessuna serve al progetto, e la pagina sul corredo argomenta il perché per ciascuna insieme alla sostituzione nativa o gratuita che ne copre il ruolo. È esclusa anche EASE Focus 3.0.18, che non ha problemi di licenza ma è superata dalla 3.1.260 con i GLL retrocompatibili: resta materiale d'archivio sulla postazione.
 
 La cartella di destinazione sta sotto `/home`, e la scelta è deliberata: `/home` è su una partizione separata, quindi questi file sopravvivono alla reinstallazione pulita del sistema descritta nella pagina sull'aggiornamento alla LTS. Metterli sotto la radice li farebbe cancellare esattamente nel momento in cui servono.
 
@@ -47,7 +63,13 @@ I file di testo e i collegamenti nella radice del progetto restano dove sono. So
 
 ## Verifica di integrità
 
-Le impronte SHA-256 dei file di origine, calcolate prima del trasferimento, sono le seguenti.
+La verifica avviene in due parti, perché i due gruppi hanno forma diversa e un solo elenco piatto non basterebbe.
+
+Per gli otto file del manifest si confronta un elenco di impronte per nome di file, ed è quello riportato qui sotto, calcolato prima del trasferimento.
+
+Per il corredo, che è fatto di alberi di cartelle, lo strumento confronta voce per voce l'elenco completo delle impronte relative alla radice di quella voce, sull'origine e sulla destinazione, e riporta il numero di file e le differenze. Le impronte del corredo non sono trascritte in questo documento perché sono qualche centinaio e perderebbero di utilità: il confronto è meccanico e il suo esito è nell'output dello strumento.
+
+Le impronte SHA-256 degli otto file del manifest sono le seguenti.
 
 ```
 9807e96d2e5bff1c76b22ee510768571330dd49e727ad167ea0324d350fc5cff  AKABAK_Pro_v324b126.exe
@@ -73,7 +95,9 @@ Lo strumento sta in `tools/transfer-to-studio.sh` per bash e `tools/transfer-to-
 
 Sulla copia c'è una avvertenza pratica. Lo strumento preferisce `rsync`, che riprende un trasferimento interrotto, ma `rsync` non è presente in Git Bash per Windows, e in sua assenza degrada su `scp`, che copia sempre da capo. La versione PowerShell usa `scp` in ogni caso. Su una rete locale i 158 megabyte passano comunque in poco tempo, quindi la perdita della ripresa è accettabile; su un collegamento lento conviene invece eseguire lo strumento da una macchina dove `rsync` esiste.
 
-Non cancella nulla sull'origine. La rimozione dei file dal disco di sviluppo è una decisione separata, da prendere dopo che il confronto delle impronte è andato a buon fine, e resta manuale.
+Non cancella nulla sull'origine. La rimozione dei file dal disco di sviluppo è una decisione separata, da prendere dopo che il confronto delle impronte è andato a buon fine, e resta manuale. In particolare, il completamento verificato di questo trasferimento è una delle tre condizioni che sbloccano la cancellazione della copia ridondante del corredo sull'SSD esterno, tracciata come PA-001 in `docs/PENDING-ACTIONS.md`: lo strumento lo ricorda nel proprio messaggio finale.
+
+Una asimmetria fra le due versioni dello strumento, da conoscere. La versione bash gestisce entrambe le parti del manifest. La versione PowerShell gestisce soltanto gli otto file piatti e non il corredo, e lo dichiara nella propria intestazione: duplicare in PowerShell la logica di confronto ricorsivo raddoppierebbe la superficie da mantenere per un caso che Git Bash copre già ed è installato su questa postazione.
 
 ```bash
 bash tools/transfer-to-studio.sh --verifica
