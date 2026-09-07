@@ -36,7 +36,7 @@ La decisione è registrata come ADR-010.
 
 ## Hardware
 
-Il processore è un Intel i7-6700 a 3.40 GHz, con 16 GB di RAM DDR4 e un SSD Crucial CT500P2SSD8 da 500 GB con firmware P2CR033, al 91 per cento di vita residua secondo SMART letto il 2026-09-07, con riserva di blocchi al 100 per cento e zero errori di integrita'.
+Il processore è un Intel i7-6700 a 3.40 GHz, con 16 GB di RAM DDR4 e un SSD Crucial CT500P2SSD8 da 500 GB con firmware P2CR033, al 91 per cento di vita residua secondo SMART letto il 2026-09-07, con riserva di blocchi al 100 per cento e zero errori di integrità.
 
 L'interfaccia audio è una Focusrite Scarlett 2i2 di seconda generazione, con alimentazione phantom a 48 V.
 

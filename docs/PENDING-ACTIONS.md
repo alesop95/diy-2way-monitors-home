@@ -120,7 +120,11 @@ Il criterio di completamento. Una scelta dichiarata, e ADR-006 riconfermata oppu
 
 ## PA-007 - Cancellare la copia del corredo sul Desktop della postazione
 
-Data di apertura: 2026-09-07. Stato: **aperta, bloccata da una condizione precisa**.
+Data di apertura: 2026-09-07. Stato: **sbloccata il 2026-09-07**, in attesa dell'esecuzione da parte dell'utente.
+
+La condizione era la copia di sicurezza di `/home` fuori dalla macchina, ed è soddisfatta: archivio `tar` di 4,4 GB in `E:\_backup-ubuntu-studio\`, verificato con 13.498 file nell'archivio contro 13.498 sulla macchina e i permessi conservati. Si veda MS-049.
+
+Va corretto in meglio il ragionamento con cui la voce era stata aperta. Avevo scritto che cancellare il Desktop di Windows avrebbe portato le voci utili a una copia sola: non era vero, perché sulla macchina ne esistono due indipendenti, cioè l'albero organizzato sotto `~/electroacoustics` e il materiale grezzo già presente sulla scrivania della macchina, scoperto in MS-048. La ragione valida che resta è diversa e più precisa: quelle due copie vivono sulla stessa partizione dello stesso disco, quindi rispetto al rischio che il backup deve coprire non sono due copie ma una. Il backup su un supporto diverso è ciò che le rende due, e adesso c'è.
 
 Che cosa va fatto. Cancellare `C:\Users\Utente\Desktop\Progetto stanza (software)`, 650 file per 2,3 GB.
 
