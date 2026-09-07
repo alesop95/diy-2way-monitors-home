@@ -18,6 +18,22 @@ La copia della corrispondenza con l'autore, che contiene il release code, è mat
 
 Le versioni a cui la licenza si riferisce, dichiarate dall'autore, sono AKABAK 3.2.4 build 126 e VACS 2.1.3 build 33. Un solo Release Code copre entrambi i programmi: si inserisce una volta da Akabak, e VACS non ne chiede un secondo.
 
+### Lo stato verificato in interfaccia il 2026-09-07
+
+Il controllo in interfaccia grafica previsto dalla fase 0 è stato eseguito davanti alla macchina, aprendo la finestra del release code e quella delle informazioni sul programma. Serviva a una cosa sola, cioè confrontare il Machine Identifier mostrato dal programma con quello conservato nella scheda riservata, prima di azzerare la macchina e perdere il termine di confronto. **Coincidono**, coincide anche il release code inserito, e il programma dichiara la licenza valida con l'indicatore verde e la scritta `Release Code valid`. Nessuno dei due valori viene riportato qui, per la ragione detta sopra: questo repository è pubblico.
+
+Il confronto vale più di una spunta, perché stabilisce che l'identificativo hardware calcolato da Akabak sotto Wine è **stabile nel tempo**: è lo stesso di agosto 2025, dopo un anno di uso, aggiornamenti di sistema e la sedimentazione dell'ambiente Wine documentata nella fotografia della macchina. È la prova sperimentale di ciò che la pagina sui prefix afferma per costruzione, cioè che una licenza machine-based sopravvive alla ricostruzione dell'ambiente, e quindi la conferma che la reinstallazione pulita non mette a rischio la licenza.
+
+La stessa finestra ha portato in dote tre fatti che nessun documento aveva registrato, e vanno detti perché due di essi correggono un'aspettativa.
+
+Il primo è l'edizione. Il programma si dichiara **Standard Edition**, non professionale, malgrado l'installer conservato si chiami `AKABAK_Pro_v324b126.exe` e malgrado l'autore avesse scritto di scaricare la versione professionale. La contraddizione è solo apparente e si risolve così: l'installer è uno, e l'edizione che si ottiene la determina il release code, non il file scaricato. L'autore aveva registrato l'utente per una *student license*, e Standard Edition è ciò che quella registrazione concede. Quali funzioni distinguano la Standard dalla professionale non è accertato qui e non va supposto: se una simulazione dovesse urtare un limite di edizione, la verifica è il listino delle funzioni sul sito dell'autore, non l'inferenza dal nome dell'installer.
+
+Il secondo è il profilo di Windows dichiarato dal prefix, che il programma riporta come `NT 10.0 (Build 19043)`. È la conferma misurata che il prefix funzionante è impostato su *Windows 10*, quindi la prescrizione di impostare quel profilo, che la pagina di configurazione dava per uniformità e non per necessità dimostrata, risulta essere anche ciò che l'ambiente funzionante fa davvero.
+
+Il terzo è la memoria, riportata come `1897 / 2047 MBytes` su una macchina che ha 16 GB di RAM installata. Non è un difetto ed è la firma inconfondibile di un processo a 32 bit, che dispone di 2 GB di spazio di indirizzamento in modo utente indipendentemente da quanta memoria fisica esista. È una conferma indipendente di ADR-016, e il suo aspetto scomodo è trattato in MS-053: era visibile in uno screenshot esistente prima dell'indagine che ha stabilito quel fatto per altra via.
+
+Una nota finale sul meccanismo di licenza, che la finestra rende visibile. Sotto il release code compare la scritta `Security key not connected to the USB port`, cioè Akabak prevede anche una chiave hardware come portatore alternativo del diritto d'uso. Non è in uso in questo progetto e non serve procurarsela: la scritta non è un errore, è la constatazione che quella via non è quella scelta. Vale saperlo perché in caso di cambio di hardware, l'unico caso che invaliderebbe il release code, la chiave USB sarebbe l'alternativa tecnica da valutare invece di ricontattare l'autore.
+
 ## VituixCAD 2
 
 Gratuito per l'uso previsto in questo progetto, senza registrazione né codice di attivazione. Nessuna licenza da conservare.

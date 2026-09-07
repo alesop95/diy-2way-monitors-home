@@ -748,7 +748,7 @@ Il metodo richiede una precisazione che non è pedanteria. La copia si fa con `t
 
 L'archivio non viene compresso, ed è una scelta e non una dimenticanza: dei 4,4 GB la maggior parte sono installer, archivi e pacchetti già compressi, quindi la compressione costerebbe tempo di processore per un guadagno prossimo a zero.
 
-La destinazione è fuori dalla cartella del progetto, in `E:\_backup-ubuntu-studio\`, perché un archivio di 4,4 GB non ha ragione di stare dentro un repository, nemmeno in una cartella ignorata.
+La destinazione è fuori dalla cartella del progetto, allora in `E:\_backup-ubuntu-studio\` e oggi sul Desktop della postazione, perché un archivio di 4,4 GB non ha ragione di stare dentro un repository, nemmeno in una cartella ignorata.
 
 Esito: si veda la voce successiva per l'esecuzione.
 
@@ -770,7 +770,7 @@ Esito: fatto per la constatazione. La correzione al ragionamento di MS-044 è ri
 
 ### MS-049 - Backup di /home eseguito e verificato: fase 1.3 chiusa
 
-Perimetro: `E:\_backup-ubuntu-studio\` fuori dal repository, aggiornamento di PA-007.
+Perimetro: la cartella `_backup-ubuntu-studio` fuori dal repository, aggiornamento di PA-007.
 
 Eseguita la copia di sicurezza di `/home` con `tar` in streaming attraverso `ssh`, secondo ADR-015. L'archivio pesa 4,4 GB e non è compresso.
 
@@ -810,29 +810,97 @@ Sulla scrivania della macchina esiste un file vuoto il cui **nome** è il releas
 
 Non è una falla e non va drammatizzata: è la macchina personale dell'utente, il codice vale solo per quell'hardware, e tenerlo a portata di mano su una scrivania è una scelta comprensibile di comodità. Vale registrarlo per due ragioni pratiche.
 
-La prima è che il backup di `/home` eseguito in MS-049 contiene quel nome di file, quindi l'archivio su `E:\_backup-ubuntu-studio\` contiene il codice. Non è un problema perché resta su una macchina personale, ma va saputo, perché se quell'archivio venisse spostato su un servizio condiviso il codice ci andrebbe con lui.
+La prima è che il backup di `/home` eseguito in MS-049 contiene quel nome di file, quindi l'archivio di `/home` contiene il codice. Non è un problema perché resta su una macchina personale, ma va saputo, perché se quell'archivio venisse spostato su un servizio condiviso il codice ci andrebbe con lui.
 
 La seconda è che spiega perché la scheda riservata di questo progetto vive sotto `_notes/` e non fra i file tracciati: non per proteggere un segreto che l'utente tiene su una scrivania, ma perché il repository è pubblico su GitHub e lì il codice avrebbe una diffusione di natura diversa.
 
 Esito: fatto, come constatazione. Nessuna azione proposta.
 
-## Microstep bloccati, e da che cosa dipendono ora
+### MS-052 - Machine Identifier confermato in interfaccia: PA-005 chiusa nella sostanza
 
-Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso e non uno stallo. All'inizio la macchina era di stato ignoto, poi si è rivelata sospesa e non spenta, poi sveglia e raggiungibile ma senza autenticazione configurata. Il blocco attuale è quindi su una singola azione dell'utente, cioè l'installazione della chiave SSH descritta nella fase 10.3 della procedura, che richiede la password una volta sola e non è delegabile.
+Perimetro: chiusura della seconda delle tre voci privilegiate della fase 0, quattro documenti aggiornati.
 
-Sbloccata quella, i microstep seguenti diventano eseguibili nell'ordine in cui sono elencati, e ciascuno corrisponde a una fase numerata della procedura di installazione pulita.
+L'utente ha aperto sulla macchina la finestra delle informazioni di AKABAK e quella del release code, e ha fornito le due immagini. Il confronto che serviva è quello fra il Machine Identifier mostrato dal programma e il valore conservato nella scheda riservata sotto `_notes/`: **coincidono**. Coincide anche il release code inserito, e il programma dichiara `Release Code valid` con l'indicatore verde. Nessuno dei due valori entra in un file tracciato, perché il repository è pubblico.
 
-La fotografia completa della macchina attuale, in quattordici file, secondo la fase 0. Include la conferma o la smentita della diagnosi del blocco di aggiornamento, la lettura dello stato di salute dell'SSD, l'inventario dei prefix Wine esistenti che chiude la lacuna su come fu risolto il fallimento iniziale di VACS, e la verifica che il Machine Identifier di Akabak sia ancora quello a cui il Release Code è legato.
+Il valore del controllo non è la spunta ma ciò che stabilisce. L'identificativo hardware che AKABAK calcola sotto Wine è lo stesso di agosto 2025, dopo un anno di uso, aggiornamenti e la sedimentazione dell'ambiente Wine che la fotografia della macchina documenta. È la prova sperimentale di ciò che la pagina sui prefix afferma per costruzione, cioè che una licenza machine-based non dipende dal prefix né dall'installazione di Wine, e quindi la conferma che l'installazione pulita non mette a rischio la licenza. Era il solo controllo che dopo la formattazione non sarebbe più stato ripetibile, e per questo era in elenco.
 
-~~L'esecuzione del trasferimento dei materiali~~ **compiuta il 2026-09-07**, si veda MS-039.
+Le finestre hanno portato in dote tre fatti che nessun documento aveva registrato, e due di essi correggono un'aspettativa. Il programma si dichiara **Standard Edition** e non professionale, malgrado l'installer conservato si chiami `AKABAK_Pro_v324b126.exe` e malgrado l'autore avesse scritto di scaricare la versione professionale: l'installer è uno, e l'edizione la determina il release code, coerentemente con la *student license* per cui l'utente era stato registrato. Quali funzioni distinguano le due edizioni non è accertato e non va supposto dal nome del file. Il profilo di Windows dichiarato dal prefix è `NT 10.0 (Build 19043)`, cioè Windows 10, il che trasforma in fatto misurato una prescrizione che la pagina di configurazione dava per uniformità. E sotto il release code compare `Security key not connected to the USB port`, cioè esiste una chiave hardware come portatore alternativo del diritto d'uso, non in uso qui: non è un errore da correggere ma l'alternativa tecnica da valutare nel solo caso che invaliderebbe il codice, cioè un cambio significativo di hardware.
 
-La copia di sicurezza di `/home` fuori dalla macchina, secondo la fase 1.3. Non è opzionale: copre l'unico rischio irreversibile della procedura, cioè l'errore umano nella selezione delle partizioni.
+Con questa voce PA-005 resta aperta su una sola delle tre, l'esito reale di `sudo apt update`, che ADR-013 ha reso irrilevante perché su un sistema che verrà azzerato non informa nessuna decisione. La fase 0 è quindi chiusa nella sostanza: tutte le verifiche che potevano spostare una decisione sono state fatte, e nessuna l'ha spostata.
 
-L'installazione pulita di Ubuntu Studio 26.04 LTS conservando `/home`, secondo le fasi da 2 a 5.
+Aggiornati di conseguenza `docs/90-riferimenti/licenze-e-registrazioni.md` con la sezione sullo stato verificato, `docs/90-riferimenti/timeline-akabak-vacs.md` con la voce di cronologia del 2026-09-07 e con la riscrittura della sezione finale, che elencava come da verificare tre cose oggi tutte verificate, `docs/10-ambiente/fotografia-macchina-2026-09-07.md` nella sezione delle voci pendenti, che ne dichiarava pendenti due già chiuse, e `docs/10-ambiente/wine-configurazione.md` sul profilo di Windows.
 
-La verifica della catena audio e la ricostruzione dell'ambiente Wine con un prefix per programma e senza architettura a 32 bit, secondo le fasi 6 e 7. Da eseguire **dopo** la reinstallazione e non prima: per ADR-013 l'ambiente attuale non si pulisce, perché sarebbe lavoro buttato su un sistema che verrà azzerato.
+Esito: fatto.
 
-La reinstallazione dei quattro programmi e la riattivazione della licenza con il codice esistente, secondo la fase 8. È la prova pratica dell'affermazione registrata in ADR-003 sulla licenza legata alla macchina, e il suo esito va registrato come tale: se il codice viene accettato, l'affermazione è confermata; se il Machine Identifier fosse cambiato, ADR-003 va corretta con una voce nuova nel registro delle decisioni.
+### MS-053 - I 2047 MByte erano già in uno screenshot: la conferma che sarebbe potuta arrivare prima
+
+Perimetro: constatazione di metodo, nessuna decisione cambiata.
+
+La finestra delle informazioni di AKABAK riporta la memoria come `1897 / 2047 MBytes` su una macchina che ha 16 GB di RAM installata. Non è un difetto: è la firma inconfondibile di un processo a **32 bit**, che dispone di 2 GB di spazio di indirizzamento in modo utente indipendentemente dalla memoria fisica presente. È quindi una conferma indipendente di ADR-016, ottenuta per una via completamente diversa da quella che ha prodotto quella decisione, cioè il formato dell'eseguibile e l'architettura dichiarata dal registro del prefix.
+
+Il fatto scomodo, e va scritto perché è la parte utile, è che questa conferma era disponibile **prima** dell'indagine che ha stabilito il fatto. L'immagine appartiene alla stessa serie di screenshot da cui era stata ricostruita la corrispondenza con l'autore, ed è stata letta soltanto oggi, quando è stata fornita per un'altra ragione. Se fosse stata letta allora, ADR-004, ADR-009 e ADR-013 non avrebbero propagato per tre decisioni consecutive un'affermazione sbagliata presa da un appunto, e sei documenti non avrebbero portato una prescrizione che, eseguita, avrebbe prodotto un ambiente in cui il programma centrale del progetto non parte.
+
+La lezione non è leggere tutti gli screenshot, che è irrealizzabile e non è un metodo. È più precisa: quando una premessa regge una decisione, il materiale già in mano va interrogato **su quella premessa** invece di essere letto per il tema per cui era stato raccolto. Gli screenshot erano stati letti per ricostruire lo scambio di posta elettronica, e la domanda sull'architettura non era stata posta a un materiale che conteneva la risposta. È la stessa lezione di MS-029 e MS-050, vista dal lato dell'archivio invece che da quello della misura.
+
+Esito: fatto, come constatazione.
+
+### MS-054 - L'archivio di /home spostato, e un controllo che inchiodava un percorso
+
+Perimetro: `tools/check-pending-actions.py`, ADR-015, quattro documenti, sblocco dichiarato di PA-007.
+
+L'utente ha spostato l'archivio di backup da `E:\_backup-ubuntu-studio\` a `C:\Users\Utente\Desktop\_backup-ubuntu-studio\`. La dimensione è identica al byte, 4.662.927.360, quindi la verifica di MS-049 vale ancora per quel file: è stato spostato e non rigenerato.
+
+Lo spostamento ha però rotto un controllo, e il modo in cui l'ha rotto è più interessante dello spostamento. Lo strumento delle azioni differite verificava la condizione di sblocco di PA-007 cercando l'archivio a un percorso fisso, quindi dallo spostamento in avanti dichiarava mancante un backup che esiste, e con esso riportava PA-007 a bloccata per un motivo falso. È il difetto peggiore che uno strumento di verifica possa avere: non sbagliare l'esito in senso permissivo, che si nota subito perché qualcosa va storto, ma in senso restrittivo, che si crede e blocca un lavoro legittimo.
+
+Corretto rendendo il nome del file l'invariante e la cartella una fra più posizioni plausibili, con una funzione che restituisce la prima in cui l'archivio risulta presente. Aggiunto anche un confronto della dimensione con quella registrata, che segnala un'anomalia se l'archivio è stato rigenerato o è incompleto, perché in quel caso la verifica di MS-049 non varrebbe più e va rifatta prima di cancellare qualcosa. Il controllo eseguito dopo la correzione trova l'archivio sul Desktop, dimensione coincidente, e dichiara PA-007 sbloccata. ADR-015 aggiornata per dire che la destinazione fa parte della decisione solo per la proprietà che conta, cioè essere una macchina diversa da quella protetta, e non per la lettera di unità.
+
+Resta da dire la cosa che l'utente ha chiesto due volte, e che era rimasta implicita fra un aggiornamento di stato e l'altro: **la copia del corredo sul Desktop si può cancellare adesso.** La condizione era una sola, il backup di `/home` fuori dalla macchina, ed è soddisfatta e verificata. L'unica perdita è quella voluta, cioè le otto voci che il censimento ha scartato con una sostituzione nativa o gratuita già disponibile per ciascuna; le sei voci utili restano sulla macchina con le impronte verificate e nell'archivio. La voce PA-007 è stata riscritta perché lo dicesse in apertura invece di farlo dedurre, e il testo con cui era stata aperta è conservato ma marcato come superato.
+
+Esito: fatto per la parte documentale e strumentale; la cancellazione è dell'utente.
+
+### MS-055 - La copia del template nel progetto gemello è rimasta indietro
+
+Perimetro: `docs/PENDING-ACTIONS.md` del progetto gemello, nuova voce PA-002.
+
+La verifica `md-unwrap --check` eseguita sul progetto gemello dopo la propagazione segnala cinque file non conformi alla convenzione della riga sorgente unica, per quattordici righe da unire: `CLAUDE.local.md` e quattro modelli sotto `.claude/templates/_notes/`. La stessa verifica su questo progetto non segnala nulla.
+
+La spiegazione non è che gli strumenti si comportino diversamente. Il confronto dei file mostra che sono **diversi**: la copia del template nel gemello è anteriore alla propagazione della convenzione Markdown fatta qui, quindi non è un difetto nuovo ma un ritardo di allineamento. Vale registrarlo perché l'ipotesi immediata sarebbe stata un marcatore di esclusione presente qui e assente là, e quella ipotesi è falsa: nessuno dei due progetti ha marcatori su quei file.
+
+Non corretto di proposito. Sono modelli in un altro repository, fuori dal blocco che lo strumento di propagazione dichiara di gestire, cioè `docs/10-ambiente/`, e correggerli qui significherebbe allargare in silenzio il perimetro di una sincronizzazione unidirezionale dichiarata. Aperto invece come PA-002 nel gemello, con l'osservazione che conviene trattarla insieme a PA-003 di questo progetto, perché la sorgente comune è `template-claude-developing` e correggere lì risolve entrambe le copie invece di rincorrerle.
+
+Esito: fatto come registrazione; la correzione è una decisione dell'utente.
+
+### MS-056 - Due danni tipografici autoinflitti in dieci minuti, e come sono stati trovati
+
+Perimetro: `docs/OPERATIONS-LOG.md`, riparazione di danni introdotti in questa stessa sessione.
+
+Va scritto perché è il tipo di episodio che si tende a non registrare, essendo un errore proprio e rimediato subito, ed è invece quello da cui si impara di più. Due danni consecutivi, il secondo prodotto dalla riparazione del primo.
+
+Il primo. Scritta la voce MS-055 con le forme non accentate del tipo `e'` e `perche'`, ho lanciato `fix-missing-accents.py` sul file per normalizzarle, e lo strumento ha prodotto esattamente il difetto che MS-014 documenta in questo stesso registro: `perche'` è diventato `perché'` e `cioe'` è diventato `cioè'`, cioè accento corretto più apostrofo orfano. Non è un difetto nuovo dello strumento, è quello già diagnosticato, e la lezione è che averlo documentato non basta a non incapparci: MS-014 aveva escluso la catena tipografica dalla sequenza di verifica su `.` proprio per questo, e io l'ho invocata a mano su un singolo file aggirando la propria mitigazione.
+
+Il secondo, ed è il più istruttivo. Per rimuovere gli apostrofi orfani ho applicato una sostituzione con espressione regolare su tutto il file, nella forma vocale accentata seguita da apostrofo. Ha funzionato, e ha anche cancellato gli apostrofi delle **citazioni deliberate** di MS-014, dove le stringhe `c'è'` e `com'è'` non sono errori del testo ma gli esempi del difetto che quella voce spiega. Il risultato era un paragrafo che dichiarava che il difetto produce `c'è` e `perché`, cioè le forme corrette, rendendo incomprensibile l'intera spiegazione.
+
+La regola che ne discende, e che vale oltre la tipografia. Una sostituzione automatica su un file di documentazione tecnica non distingue il testo dagli esempi, e in un documento che parla di errori gli esempi **sono** errori: applicare una correzione globale a un file che contiene citazioni di forme sbagliate ne distrugge il contenuto. La sostituzione va quindi limitata alla porzione appena scritta, non estesa al file, oppure va verificata leggendo il diff riga per riga.
+
+Ed è così che il danno è stato trovato, che è la parte da conservare. Non da un controllo tipografico, che dopo la riparazione risultava pulito su entrambe le versioni, quella giusta e quella rovinata, perché `c'è` è una forma perfettamente corretta. È stato trovato leggendo il `git diff` di ciò che avevo modificato e chiedendosi perché comparissero righe rimosse in un microstep che non stavo toccando. Il controllo automatico non poteva vederlo: il difetto era semantico, non ortografico. La verifica che ha funzionato è quella che si fa sempre e comunque, cioè guardare l'elenco completo delle righe cambiate e giustificarne ciascuna, e in questo caso l'esito finale è zero rimozioni non attese.
+
+Un terzo difetto minore, trovato nello stesso passaggio e con lo stesso metodo: scrivendo MS-055 avevo introdotto una sequenza `l` più `i` senza punto più accento grave combinante, al posto di una semplice `lì`. Un controllo dei punti di codice fuori dal latino ha isolato il carattere combinante U+0300 e la riparazione è stata immediata. Il progetto era stato ripulito dai caratteri di controllo in una sessione precedente, quindi il controllo esiste già come abitudine ed è ciò che lo ha intercettato prima del commit.
+
+Esito: fatto, con i tre difetti riparati e verificati.
+
+## Che cosa resta da fare, e da che cosa dipende
+
+Questa sezione ha cambiato natura tre volte nel corso della sessione, ed è utile dirlo perché la successione è un progresso e non uno stallo. All'inizio elencava microstep bloccati da una macchina di stato ignoto; poi il blocco si è ristretto all'installazione della chiave SSH, che è una azione dell'utente non delegabile; oggi quella chiave è installata, la fase 0 è chiusa nella sostanza e la fase 1 è compiuta, quindi **non esiste più alcun microstep bloccato da una condizione esterna**. Ciò che resta è lavoro da eseguire, in ordine, e il suo unico prerequisito è la disponibilità dell'utente davanti alla macchina.
+
+Le fasi 0 e 1 sono chiuse. La fotografia della macchina attuale è prodotta e sta in `docs/10-ambiente/fotografia-macchina-2026-09-07.md`; ha smentito tre delle quattro cause che avevo attribuito al blocco di aggiornamento, ha chiuso con esito positivo lo stato di salute del disco, ha chiuso la lacuna su come fu risolto il fallimento iniziale di VACS, e ha portato alla scoperta dei 32 bit registrata in ADR-016. Il trasferimento dei materiali è compiuto e verificato per impronte, si veda MS-039. La copia di sicurezza di `/home` è fatta e verificata, si veda MS-049. Il Machine Identifier è confermato identico a quello a cui il Release Code è legato, si veda MS-052. Della fase 0 resta non eseguito soltanto l'esito reale di `sudo apt update`, che ADR-013 ha reso irrilevante.
+
+Quello che segue è il lavoro rimanente, nell'ordine delle fasi della procedura di installazione pulita descritta in `docs/10-ambiente/installazione-pulita-26-04.md`.
+
+L'installazione pulita di Ubuntu Studio 26.04 LTS conservando `/home`, secondo le fasi da 2 a 5. È il passo che contiene l'unico rischio irreversibile della procedura, cioè l'errore umano nella selezione delle partizioni, e il presidio contro quel rischio è già in posizione.
+
+La verifica della catena audio a bassa latenza e la ricostruzione dell'ambiente Wine, secondo le fasi 6 e 7. Da eseguire **dopo** la reinstallazione e non prima: per ADR-013 l'ambiente attuale non si pulisce, perché sarebbe lavoro buttato su un sistema che verrà azzerato. La forma di questa ricostruzione è cambiata per ADR-016 e va letta lì e non nella versione che questa sezione portava fino al 2026-09-07: i prefix sono quattro ma non tutti a 64 bit, e l'architettura `i386` va **dichiarata** e non evitata, perché senza di essa il solo software del progetto che oggi funziona non funzionerebbe.
+
+La reinstallazione dei programmi e la riattivazione della licenza con il codice esistente, secondo la fase 8. Resta la prova pratica dell'affermazione sulla licenza legata alla macchina, ma il suo esito è oggi molto più prevedibile di quando questa voce fu scritta, perché MS-052 ha verificato che l'identificativo hardware non è cambiato in un anno: se il codice venisse rifiutato, la spiegazione andrebbe cercata in un errore di inserimento o di prefix, non in un cambio di identificativo.
 
 L'installazione del corredo Progetto stanza secondo le fasi da 8.5 a 8.9, cioè VituixCAD, EASE Focus 3.1.260 con il servizio di database AFMG e il database dei GLL, e ARTA. Ramsete resta fuori finché PA-002 non è risolta.
 
@@ -840,4 +908,4 @@ L'igiene post-installazione secondo la fase 10, cioè la direttiva di aggiorname
 
 La fotografia finale e il confronto con quella iniziale, secondo la fase 11.
 
-E infine, con un blocco proprio e indipendente dai precedenti, la cancellazione della copia ridondante del corredo sull'SSD esterno, tracciata come PA-001 in `docs/PENDING-ACTIONS.md`. Dipende dal collegamento del disco `J:`, che in questa sessione non era presente, dal completamento verificato del trasferimento, e dal confronto per impronte fra le due copie. Lo strumento `python tools/check-pending-actions.py` dice quali di queste condizioni sono soddisfatte, così che il controllo sia un comando invece di un ricordo.
+Fuori da questa sequenza restano le azioni differite di `docs/PENDING-ACTIONS.md`, che non dipendono dalla reinstallazione. Di quelle, due sono eseguibili adesso e sono entrambe dell'utente: la cancellazione della copia del corredo sul Desktop, cioè PA-007, sbloccata dal backup di `/home`, e la lettura dello SMART dell'SSD esterno, cioè PA-009, che ha una ragione concreta dietro, cinque riparazioni del filesystem in due mesi. Lo strumento `python tools/check-pending-actions.py` dice quali condizioni sono soddisfatte, così che il controllo sia un comando invece di un ricordo.

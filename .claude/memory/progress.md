@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-07, sesta parte - Licenza confermata in interfaccia, fase 0 chiusa, PA-007 detta chiara
+
+Commit di partenza: 0df04bb.
+
+Machine Identifier verificato sulle immagini fornite dall'utente: coincide con il valore conservato sotto `_notes/`, coincide anche il release code, e il programma dichiara `Release Code valid`. Chiude la seconda delle tre voci di PA-005 e con essa la fase 0 nella sostanza, dato che la terza voce, l'esito di `sudo apt update`, e' resa irrilevante da ADR-013. E' la prova sperimentale che una licenza machine-based sotto Wine resta valida a un anno di distanza, quindi che la reinstallazione pulita non la mette a rischio. E' MS-052.
+
+Tre fatti collaterali dalle stesse finestre. L'edizione e' **Standard** e non professionale, malgrado l'installer si chiami `AKABAK_Pro_...`: l'edizione la determina il release code, coerentemente con la student license concessa. Il prefix dichiara `NT 10.0 (Build 19043)`, cioe' Windows 10, che trasforma in fatto misurato una prescrizione data per uniformita'. E la memoria riportata, 2047 MByte su una macchina con 16 GB, e' una conferma indipendente di ADR-016, perche' e' lo spazio di indirizzamento di un processo a 32 bit.
+
+Quella conferma era pero' disponibile prima dell'indagine che ha stabilito il fatto, nello stesso lotto di screenshot letti per ricostruire la corrispondenza. La lezione, in MS-053, non e' leggere tutto: e' che quando una premessa regge una decisione, il materiale gia' in mano va interrogato **su quella premessa**, non solo sul tema per cui era stato raccolto.
+
+Corretto un difetto di verifica introdotto dallo spostamento dell'archivio di backup sul Desktop: lo strumento delle azioni differite cercava un percorso fisso e dichiarava mancante un backup esistente, riportando PA-007 a bloccata per un motivo falso. Ora l'invariante e' il nome del file fra piu' posizioni, con controllo della dimensione. E' MS-054, e la lezione e' che un errore restrittivo in uno strumento di verifica e' peggiore di uno permissivo, perche' si crede.
+
+Detto chiaro cio' che era rimasto implicito e che l'utente aveva chiesto due volte: **la copia del corredo sul Desktop si puo' cancellare adesso.** PA-007 riscritta perche' lo dica in apertura.
+
+Ripulite dalle informazioni superate quattro sezioni che dichiaravano pendente lavoro compiuto: la coda del registro dei microstep, che elencava come bloccati passi eseguiti e ripeteva la prescrizione sbagliata sui 64 bit, la sezione finale dello storico Akabak e VACS, le voci residue della fase 0 nella fotografia della macchina, e le sezioni di blocco e prossimo passo del lavoro corrente.
+
 ## 2026-09-07, quinta parte - Backup di /home fatto, e Akabak si rivela a 32 bit
 
 Commit di partenza: ba69e0c.
