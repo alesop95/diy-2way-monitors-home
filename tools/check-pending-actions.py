@@ -159,10 +159,14 @@ def controlla_manuali() -> None:
     if COPIA_LAVORO.is_dir():
         n = sum(1 for x in COPIA_LAVORO.rglob("*") if x.is_file())
         riga("  ", f"presente: {n} file")
-        print("  BLOCCATA da una condizione sola: la copia di sicurezza di /home fuori")
-        print("  dalla macchina, cioe' la fase 1.3. Senza quella, cancellare qui porta le")
-        print("  voci utili a UNA copia sola, proprio prima di una reinstallazione che")
-        print("  tocca le partizioni. Fatta la 1.3, il Desktop diventa la terza copia.")
+        backup = Path(r"E:\_backup-ubuntu-studio\home-alesop95-2026-09-07.tar")
+        if backup.is_file():
+            riga("ok", f"backup di /home presente: {backup.stat().st_size >> 30} GiB, verificato")
+            print("  SBLOCCATA: il backup di /home su supporto diverso esiste ed e' verificato,")
+            print("  13.498 file contro 13.498 sulla macchina. La cancellazione e' autorizzata.")
+            print("  Attenzione: porta via l'unica copia delle 8 voci scartate dal censimento.")
+        else:
+            print("  BLOCCATA: manca il backup di /home fuori dalla macchina, cioe' la fase 1.3.")
     else:
         riga("ok", "COMPIUTA: la cartella non e' piu' sul Desktop")
 

@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-07, quinta parte - Backup di /home fatto, e Akabak si rivela a 32 bit
+
+Commit di partenza: ba69e0c.
+
+Esito in sintesi, tre cose di peso molto diverso.
+
+PA-008 compiuta: l'utente ha cancellato le sei voci di servizio su `J:`, recuperando 1,2 GiB. I due frammenti maggiori erano di 247 e 206 MB, cioe' meta' del totale: il filesystem aveva perso qualcosa di sostanzioso, che e' un elemento in piu' a favore di PA-009.
+
+Backup di `/home` eseguito e verificato, quindi fase 1.3 chiusa. Alla domanda se potesse stare sulla stessa macchina la risposta e' no: la macchina ha un solo disco con quattro partizioni, e una copia sullo stesso supporto della cosa che protegge non e' un backup. Fatto su Windows con `tar` in streaming su `ssh`, 4,4 GB, 13.498 file nell'archivio contro 13.498 sulla macchina, permessi e proprietario numerico conservati. Registrato come ADR-015. Questo sblocca PA-007.
+
+E la scoperta che costa piu' di tutte: **Akabak e' a 32 bit**. Il prefix funzionante dichiara `#arch=win32`, `AKABAK.exe` e' PE32 i386, VACS installato e' la build a 32 bit, e nel prefix non c'e' ne' winetricks, ne' .NET, ne' corefonts. Tre affermazioni del documento sorgente sono false, e tre decisioni consecutive le avevano propagate senza tornare alla fonte: la prescrizione operativa era sbagliata su sei documenti, e se eseguita avrebbe prodotto un ambiente in cui il programma centrale del progetto non parte. Corretto tutto, registrato come ADR-016. Il controllo che l'avrebbe evitato costava un comando, `file` sull'eseguibile.
+
+Chiuse per conseguenza entrambe le lacune dello storico di Akabak e VACS, e confermata come corretta l'ipotesi che l'utente stesso aveva formulato nella corrispondenza del 13 agosto 2025, cioe' che il fallimento di VACS dipendesse dalla variante a 64 bit.
+
+Constatato anche che il corredo era gia' sulla macchina, sulla scrivania, il che corregge in meglio il ragionamento di MS-044 su PA-007, e che il release code di Akabak esiste in chiaro in due posti sulla macchina, quindi anche dentro l'archivio di backup.
+
 ## 2026-09-07, quarta parte - SSD esterno misurato, archivi confrontati, Desktop rinviato
 
 Commit di partenza: ba69e0c.

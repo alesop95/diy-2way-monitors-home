@@ -191,3 +191,37 @@ Motivazione: un vincolo di budget che non esiste distorce una decisione tecnica.
 Conseguenze: la decisione resta aperta e si prende nella fase 4a, dove sarà informata dalle simulazioni invece che dal listino. Restano da confrontare, quando ci si arriverà, tre configurazioni e non due: convertitore attuale più monitor attivi, convertitore attuale più amplificatore di potenza più monitor passivi, e convertitore sostituito con un'interfaccia o un DAC più adatto più una delle due architetture. Il terzo termine è quello che l'utente ha aggiunto e che ADR-012 non contemplava.
 
 Va notato che il terzo termine ha un legame con un'altra voce aperta, e conviene non deciderle separatamente: la valutazione dell'interfaccia audio per l'home recording, tracciata come PA-001 nel progetto gemello, riguarda un dispositivo che potrebbe coprire anche il ruolo di sorgente per l'ascolto. Valutare le due cose insieme evita di comprare due dispositivi dove ne basterebbe uno, oppure di scoprire dopo che quello comprato per la registrazione non è adatto all'ascolto.
+
+## ADR-015 - La copia di sicurezza di /home va su una macchina diversa, in un archivio tar
+
+Data: 2026-09-07. Stato: accettata ed eseguita.
+
+Contesto: la fase 1.3 della procedura richiede una copia di sicurezza di `/home` fuori dalla macchina, ed è l'unico presidio contro l'unico rischio irreversibile dell'installazione pulita, cioè l'errore umano nella selezione della partizione da formattare. L'utente ha chiesto se la destinazione potesse essere una partizione della stessa macchina, oppure temporaneamente la postazione Windows.
+
+Decisione: la copia va sulla postazione Windows, in `E:\_backup-ubuntu-studio\`, come archivio `tar` non compresso prodotto in streaming attraverso `ssh`. Non va su alcuna partizione della macchina.
+
+Motivazione del rifiuto della prima opzione. La verifica mostra che la macchina ha un solo disco, `nvme0n1` da 465,8 GB, con quattro partizioni e nient'altro, e nessun disco USB collegato. Le tre varianti pensabili fallirebbero per ragioni diverse: su root la copia morirebbe con la formattazione, su `/home` stessa non proteggerebbe da nulla perché il rischio da coprire è precisamente la perdita di quella partizione, e una partizione nuova richiederebbe di ridurre `/home` con una operazione rischiosa in sé senza proteggere da un errore di selezione né da un guasto del disco. La regola generale: una copia di sicurezza sullo stesso supporto della cosa che protegge non è una copia di sicurezza, è una copia.
+
+Motivazione della scelta della seconda. `/home` pesa 4,4 GB contro 198 GB liberi sulla destinazione, quindi il costo è trascurabile, e soprattutto è una macchina fisicamente diversa, che è l'unica proprietà che rende un backup un backup.
+
+Motivazione del metodo, che non è un dettaglio. Si usa `tar` in streaming e non `scp` dei file, perché la destinazione è NTFS e non sa rappresentare proprietario, gruppo e permessi POSIX: copiando i file singoli quei metadati andrebbero perduti e il ripristino produrrebbe una `/home` con i permessi sbagliati. Dentro un archivio quei metadati sono contenuto e sopravvivono anche su NTFS. Si usa `--numeric-owner` perché il ripristino non dipenda dall'esistenza dell'utente con quel nome. Non si comprime perché dei 4,4 GB la maggior parte sono installer e archivi già compressi.
+
+Conseguenze: PA-007, cioè la cancellazione della copia del corredo sul Desktop di Windows, è sbloccata. L'archivio va rigenerato se `/home` cambia in modo significativo prima della reinstallazione, e la sua verifica è il confronto fra il numero di file nell'archivio e quelli sulla macchina, non la sola assenza di errori.
+
+## ADR-016 - Akabak è a 32 bit: revisione di ADR-004, ADR-009 e ADR-013 sull'architettura dei prefix
+
+Data: 2026-09-07. Stato: accettata. Supera la parte sull'architettura di ADR-004, ADR-009 e ADR-013.
+
+Contesto: tre decisioni precedenti poggiavano sull'affermazione, presa dal documento sorgente, che Akabak 3 sia una applicazione a 64 bit senza build a 32 bit, e ne concludevano che servisse un prefix a 64 bit e che l'architettura `i386` fosse un residuo da non riprodurre sulla macchina nuova. L'ispezione del prefix funzionante sulla macchina smentisce la premessa.
+
+I fatti misurati. Il prefix in uso è `/home/alesop95/.wine` e il suo registro dichiara `#arch=win32`, cioè è un prefix a **32 bit**; la cartella `syswow64` è assente, come deve essere in un prefix a 32 bit. L'eseguibile installato, `AKABAK.exe`, è `PE32 executable, Intel 80386`, cioè **a 32 bit**. Lo stesso vale per `VACS_32.exe`, e la libreria che entrambi portano si chiama `Matrix32.dll`. Nel prefix non esiste alcun `winetricks.log`, non esiste `Microsoft.NET/Framework/v4` e non è installato alcun font Microsoft di base.
+
+Decisione: Akabak e VACS vanno in un prefix a **32 bit**, senza dipendenze installate con winetricks, riproducendo la configurazione che funziona. L'architettura `i386` va dichiarata sul sistema, perché è necessaria e non residua. VituixCAD ed EASE Focus restano su prefix a 64 bit, perché i loro requisiti sono dichiarati dai rispettivi produttori e su questa macchina non sono mai stati installati, quindi non c'è nulla da riprodurre e nulla da smentire.
+
+Motivazione: la configurazione che funziona su questa macchina batte qualunque requisito dichiarato in un appunto. Il documento sorgente descriveva Akabak come a 64 bit con bisogno di .NET 4.8 e di font e runtime aggiuntivi, e nessuna di quelle affermazioni è confermata dall'installazione reale: la lista delle dipendenze del sorgente descriveva ciò che era stato tentato durante il troubleshooting, non ciò che serviva.
+
+Conseguenze, e sono sostanziali. La fase 7 della procedura di installazione pulita, che prescriveva quattro prefix a 64 bit con `dotnet48`, è sbagliata per Akabak e VACS e va corretta. Il consiglio di non dichiarare l'architettura `i386`, dato in ADR-009 e ripetuto in ADR-013, è rovesciato: senza `i386` il solo software del progetto che oggi funziona non funzionerebbe più. Il conteggio dei prefix passa da quattro a quattro ma con architetture diverse, cioè uno a 32 bit per Akabak e VACS e tre a 64 bit per gli altri.
+
+Resta valida la parte di ADR-004 che non riguarda l'architettura, cioè un prefix per programma, con l'eccezione dichiarata di Akabak e VACS che condividono il proprio perché si usano in sequenza e perché così è la configurazione funzionante.
+
+Una nota di metodo, che è la lezione vera di questa voce. Tre decisioni consecutive hanno propagato una affermazione non verificata presa da un appunto, e ciascuna l'ha usata come premessa della successiva senza tornare alla fonte. Il costo è stato una prescrizione operativa sbagliata su tre documenti. Il controllo che l'avrebbe evitato costava un comando, cioè `file` sull'eseguibile installato.
