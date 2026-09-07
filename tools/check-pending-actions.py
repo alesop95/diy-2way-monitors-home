@@ -155,6 +155,40 @@ def controlla_manuali() -> None:
     print("  e perche' il controllo del Machine Identifier e' visivo. La voce che poteva")
     print("  cambiare la decisione, cioe' lo stato del disco, e' chiusa: risulta sano.")
 
+    print("\nPA-007  Cancellare la copia del corredo sul Desktop della postazione")
+    if COPIA_LAVORO.is_dir():
+        n = sum(1 for x in COPIA_LAVORO.rglob("*") if x.is_file())
+        riga("  ", f"presente: {n} file")
+        print("  BLOCCATA da una condizione sola: la copia di sicurezza di /home fuori")
+        print("  dalla macchina, cioe' la fase 1.3. Senza quella, cancellare qui porta le")
+        print("  voci utili a UNA copia sola, proprio prima di una reinstallazione che")
+        print("  tocca le partizioni. Fatta la 1.3, il Desktop diventa la terza copia.")
+    else:
+        riga("ok", "COMPIUTA: la cartella non e' piu' sul Desktop")
+
+    print("\nPA-008  Recuperare 1,2 GiB di cartelle di servizio su J:")
+    disco = COPIA_SSD.parent
+    if disco.is_dir():
+        voci = [("FOUND.002", 429), ("FOUND.000", 412), (".Spotlight-V100", 371)]
+        residuo = 0
+        for nome, mib_atteso in voci:
+            presente = (disco / nome).is_dir()
+            riga("  " if presente else "ok", f"{nome}: {'presente, ~' + str(mib_atteso) + ' MiB' if presente else 'rimossa'}")
+            if presente:
+                residuo += mib_atteso
+        if residuo:
+            print(f"  ESEGUIBILE ADESSO: ~{residuo} MiB da recuperare. Il comando e' in PA-008.")
+            print("  I due archivi .7z NON si cancellano: nessuno dei due contiene l'altro.")
+        else:
+            print("  COMPIUTA: le tre voci non ci sono piu'.")
+    else:
+        print("  IN ATTESA DEL DISCO: J: non e' collegato.")
+
+    print("\nPA-009  Leggere lo SMART dell'SSD esterno")
+    print("  APERTA: CrystalDiskInfo da Windows, oppure smartctl collegandolo alla")
+    print("  macchina. Cinque riparazioni del filesystem in due mesi vanno spiegate:")
+    print("  abitudine di rimozione o difetto del supporto, e solo lo SMART distingue.")
+
     print("\nPA-006  Riconfermare o rivedere la scelta fra installazione e aggiornamento")
     riga("ok", "CHIUSA il 2026-09-07: installazione pulita 26.04 LTS riconfermata")
     print("  Lavoro privilegiato con comandi lanciati a mano, senza regole sudoers.")
