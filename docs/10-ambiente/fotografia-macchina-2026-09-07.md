@@ -209,10 +209,12 @@ La terza, cioè aggiungere l'utente al gruppo `disk`, è la peggiore e va nomina
 
 ## Che cosa resta da fare in fase 0
 
-Tre voci, di cui due richiedono privilegi che l'accesso via chiave non concede in modo non interattivo, perché `sudo` su questa macchina chiede la password.
+Delle tre voci che questa sezione elencava come pendenti, due sono chiuse nella stessa giornata e la terza è diventata irrilevante. Le si registra qui con il loro esito, perché una fotografia serve a dire come sono andate le verifiche, non a conservare l'elenco di quelle che non erano ancora partite.
 
-Lo stato di salute dell'SSD con `smartctl`, che è il controllo il cui esito potrebbe cambiare la decisione da installazione a sostituzione del disco. Richiede `sudo`; `smartmontools` è già installato, quindi non serve altro. La sezione precedente spiega perché non esiste una via non privilegiata e quali sono le tre strade.
+Lo stato di salute dell'SSD con `smartctl` era il controllo il cui esito poteva cambiare la decisione da installazione a sostituzione del disco. **Eseguito dall'utente con esito positivo**, `PASSED` e usura al 9 per cento: la sezione dedicata sopra ne riporta la lettura completa. La decisione resta quindi fra installazione pulita e aggiornamento in posto, e non si sposta sulla sostituzione del disco.
 
-L'esito reale di `sudo apt update`, che le prove HTTP rendono prevedibile ma non certo.
+La verifica del Machine Identifier di Akabak era un controllo manuale in interfaccia grafica, da fare davanti alla macchina. **Eseguito**: il valore mostrato dal programma coincide con quello conservato, il release code inserito coincide anch'esso e il programma dichiara la licenza valida. Il dettaglio, con i tre fatti collaterali che le finestre hanno portato in dote fra cui la conferma indipendente dei 32 bit, sta in `docs/90-riferimenti/licenze-e-registrazioni.md`.
 
-La verifica del Machine Identifier di Akabak, che è un controllo manuale in interfaccia grafica e va fatto davanti alla macchina, con la cattura di uno screenshot della finestra del release code.
+L'esito reale di `sudo apt update` resta l'unica voce non eseguita, e **ADR-013 l'ha resa irrilevante**: su un sistema che verrà azzerato quell'esito non informa nessuna decisione. Le prove HTTP lo rendevano comunque prevedibile, dato che archivio, mirror e security rispondono 200, ma prevedibile non è verificato e la voce si dichiara non eseguita invece di essere fatta passare per compiuta.
+
+Ne segue che la fase 0 è chiusa nella sostanza: tutte le verifiche che potevano cambiare una decisione sono state fatte, e nessuna l'ha cambiata.

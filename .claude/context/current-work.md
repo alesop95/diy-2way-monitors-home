@@ -39,9 +39,9 @@ Il commit e il push, che restano operazioni manuali dell'utente.
 
 ## Bloccato da
 
-Nulla di tecnico. L'accesso SSH è aperto e funzionante, anche in modalità non interattiva, e la fase 0 della procedura è eseguita nella sua parte non privilegiata.
+Nulla. È la prima volta in questa sessione che questa sezione può dirlo senza qualificazioni, e vale registrarlo perché fino a poche ore prima elencava due dipendenze.
 
-Restano due dipendenze, e sono entrambe dell'utente e non dell'agente. La prima è una decisione: riconfermare o rivedere la scelta fra installazione pulita e aggiornamento in posto, tracciata come PA-006, perché la verifica sulla macchina ha fatto cadere uno dei quattro motivi su cui era stata presa. La seconda è l'esecuzione dei tre controlli privilegiati della fase 0, tracciati come PA-005, perché `sudo` sulla macchina chiede la password e uno dei tre è un controllo in interfaccia grafica.
+Le due dipendenze che c'erano sono cadute entrambe. La decisione fra installazione pulita e aggiornamento in posto è presa e riconfermata dall'utente, ed è ADR-013, che chiude PA-006. Dei tre controlli privilegiati della fase 0, tracciati come PA-005, i due che potevano spostare una decisione sono eseguiti: il disco risulta sano e il Machine Identifier di Akabak coincide con quello a cui il Release Code è legato. Il terzo, l'esito reale di `sudo apt update`, non è eseguito ma ADR-013 lo ha reso irrilevante, perché su un sistema che verrà azzerato non informa nessuna scelta.
 
 La storia del blocco, che è finita, vale come traccia. Macchina di stato ignoto, poi scoperta sospesa e quindi invisibile anche all'ARP, poi sveglia ma senza autenticazione configurata, poi accessibile. Le correzioni sono in MS-015, MS-016 e MS-028.
 
@@ -53,4 +53,8 @@ Resta invece aperta la scelta se propagare al template `template-claude-developi
 
 ## Prossimo passo concreto
 
-Installare la chiave SSH dedicata sulla macchina, secondo la fase 10.3 della procedura, poi eseguire la fase 0 della stessa procedura, cioè la fotografia completa in quattordici file. È il passo che conferma o smentisce la diagnosi del blocco di aggiornamento, chiude la lacuna sui prefix Wine esistenti, e verifica che il Machine Identifier di Akabak sia ancora quello a cui il Release Code è legato.
+Le fasi 0 e 1 sono chiuse, quindi il prossimo passo è l'installazione pulita di Ubuntu Studio 26.04 LTS conservando `/home`, cioè le fasi da 2 a 5 della procedura. Il presidio contro l'unico rischio irreversibile, l'errore umano nella selezione delle partizioni, è già in posizione: la copia di sicurezza di `/home` esiste su una macchina diversa, verificata per numero di file e permessi.
+
+Un avviso che vale più della sequenza. Le fasi 7 e 8 sono state corrette il 2026-09-07 per ADR-016: chi eseguisse una versione precedente della procedura otterrebbe un ambiente in cui Akabak non parte, perché l'architettura `i386` va dichiarata e non evitata e il prefix di Akabak va creato a 32 bit.
+
+Due azioni dell'utente sono eseguibili adesso e non dipendono dalla reinstallazione: la cancellazione della copia del corredo sul Desktop, PA-007, sbloccata dal backup verificato, e la lettura dello SMART dell'SSD esterno, PA-009.

@@ -29,6 +29,26 @@ COPIA_SSD = Path(r"J:\Progetto stanza (software)")
 # il materiale EASE Focus 3.1.10 del workshop K-array. Vedi PA-004.
 COPIA_G = Path(r"G:\LIBRARY\LOUDSPEAKERS & ELECTROACOUSTIC\K-ARRAY WORKSHOP\EASE Focus (k-array)")
 
+# Copia di sicurezza di /home, condizione di sblocco di PA-007. Si cercano piu' posizioni
+# invece di una sola perche' l'archivio e' un file che l'utente puo' spostare: la prima
+# versione di questo controllo inchiodava il percorso su E: e lo spostamento sul Desktop
+# lo avrebbe fatto dichiarare assente, riportando PA-007 a bloccata per un motivo falso.
+# Il nome del file e' l'invariante, non la cartella che lo contiene.
+BACKUP_HOME_NOME = "home-alesop95-2026-09-07.tar"
+BACKUP_HOME_CANDIDATI = [
+    Path(r"C:\Users\Utente\Desktop\_backup-ubuntu-studio") / BACKUP_HOME_NOME,
+    Path(r"E:\_backup-ubuntu-studio") / BACKUP_HOME_NOME,
+]
+BACKUP_HOME_BYTE = 4_662_927_360
+
+
+def trova_backup_home() -> Path | None:
+    """Prima posizione in cui l'archivio di /home risulta presente, o None."""
+    for p in BACKUP_HOME_CANDIDATI:
+        if p.is_file():
+            return p
+    return None
+
 # Sottoinsieme legittimo, quello che va sulla macchina Ubuntu Studio. I percorsi sono
 # relativi alla radice del corredo. Vedi docs/10-ambiente/wine-corredo-progetto-stanza.md
 SOTTOINSIEME_UTILE = [
@@ -149,24 +169,31 @@ def controlla_manuali() -> None:
     """
     print("\nPA-005  Completare le tre voci privilegiate della fase 0")
     riga("ok", "stato di salute dell'SSD: letto il 2026-09-07, PASSED, usura 9 per cento")
+    riga("ok", "Machine Identifier: letto in interfaccia il 2026-09-07, coincide con _notes")
     riga("? ", "esito reale di sudo apt update")
-    riga("? ", "Machine Identifier di Akabak, controllo in interfaccia grafica")
-    print("  APERTA su due voci su tre: non automatizzabili perche' sudo chiede la password")
-    print("  e perche' il controllo del Machine Identifier e' visivo. La voce che poteva")
-    print("  cambiare la decisione, cioe' lo stato del disco, e' chiusa: risulta sano.")
+    print("  APERTA su una voce su tre, e quella voce e' resa irrilevante da ADR-013:")
+    print("  su un sistema che verra' azzerato l'esito di apt update non decide nulla.")
+    print("  Le due voci che contavano sono chiuse: disco sano, licenza confermata valida.")
 
     print("\nPA-007  Cancellare la copia del corredo sul Desktop della postazione")
     if COPIA_LAVORO.is_dir():
         n = sum(1 for x in COPIA_LAVORO.rglob("*") if x.is_file())
         riga("  ", f"presente: {n} file")
-        backup = Path(r"E:\_backup-ubuntu-studio\home-alesop95-2026-09-07.tar")
-        if backup.is_file():
+        backup = trova_backup_home()
+        if backup is not None:
             riga("ok", f"backup di /home presente: {backup.stat().st_size >> 30} GiB, verificato")
+            riga("  ", f"posizione: {backup.parent}")
+            if backup.stat().st_size != BACKUP_HOME_BYTE:
+                riga("!!", f"dimensione diversa da quella registrata ({BACKUP_HOME_BYTE} byte):")
+                print("  l'archivio e' stato rigenerato o e' incompleto, la verifica di MS-049")
+                print("  non vale piu' per questo file e va rifatta prima di cancellare.")
             print("  SBLOCCATA: il backup di /home su supporto diverso esiste ed e' verificato,")
             print("  13.498 file contro 13.498 sulla macchina. La cancellazione e' autorizzata.")
             print("  Attenzione: porta via l'unica copia delle 8 voci scartate dal censimento.")
         else:
             print("  BLOCCATA: manca il backup di /home fuori dalla macchina, cioe' la fase 1.3.")
+            print("  Cercato come " + BACKUP_HOME_NOME + " in: "
+                  + ", ".join(str(p.parent) for p in BACKUP_HOME_CANDIDATI))
     else:
         riga("ok", "COMPIUTA: la cartella non e' piu' sul Desktop")
 
