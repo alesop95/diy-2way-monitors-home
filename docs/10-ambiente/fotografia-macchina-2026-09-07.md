@@ -126,11 +126,47 @@ Si aggiunge un argomento nuovo che la fotografia rende disponibile e che prima n
 
 La decisione resta quindi difendibile, ma su tre motivi invece di quattro, e con un'alternativa che si è rivelata molto meno onerosa di come era stata descritta. È una decisione che va riconfermata dall'utente sapendo questo, non data per acquisita: la registrazione della revisione è ADR-011.
 
+## Lo SSD: che cosa si legge senza privilegi, e perché SMART no
+
+La fase 0.3 chiede lo stato di salute del disco con `smartctl`, e quel comando richiede privilegi. Vale spiegare perché in modo preciso, invece di fermarsi a constatarlo, perché la ragione indica anche quali alternative esistono e quali no.
+
+I dati SMART di un disco NVMe si leggono interrogando il controller, che sul sistema è il dispositivo a caratteri `/dev/nvme0`. I suoi permessi sono `crw------- root root`, cioè lettura e scrittura per il solo utente root, senza alcun gruppo a cui delegare l'accesso. Il dispositivo a blocchi `/dev/nvme0n1` è invece `brw-rw---- root disk`, quindi accessibile al gruppo `disk`, ma l'utente `alesop95` appartiene ai gruppi `adm`, `cdrom`, `sudo`, `audio`, `dip`, `plugdev`, `users` e `lpadmin`, e **non** a `disk`. Non esiste quindi una via non privilegiata: né per appartenenza a un gruppo, né tramite `udisksctl`, che su questa macchina non è installato.
+
+Tre informazioni si ricavano comunque, e due di esse correggono o completano quanto era documentato.
+
+Il modello reale del disco è **`CT500P2SSD8`**, letto da `/sys/class/nvme/nvme0/model`, con firmware `P2CR033`. Il documento sorgente lo riportava come `CT500P25SD8`: è un errore di trascrizione di un carattere, e il modello corretto corrisponde a un Crucial P2 da 500 GB. Non cambia nulla di operativo, ma un numero di modello sbagliato è il tipo di dato con cui si cerca il firmware giusto o la scheda tecnica, quindi vale averlo esatto.
+
+La temperatura del controller si legge senza privilegi da `hwmon`, e al momento della misura è di **33,85 gradi**, sotto l'etichetta `Composite`. È un indicatore parziale ma non inutile: un SSD in sofferenza termica sta molto più in alto, e questo valore esclude quel tipo di problema.
+
+Il pacchetto `smartmontools` è **già installato**, alla versione `smartctl 7.4`. Questo rende superflua l'avvertenza della fase 0.3, che prevedeva di installarlo e ipotizzava che l'installazione da rete potesse non funzionare su un rilascio fuori supporto.
+
+```bash
+cat /sys/class/nvme/nvme0/model
+cat /sys/class/nvme/nvme0/firmware_rev
+cat /sys/class/nvme/nvme0/hwmon1/temp1_input
+ls -l /dev/nvme0 /dev/nvme0n1
+groups
+```
+
+## Perché l'agente non può eseguire il comando privilegiato, e le tre strade
+
+La domanda se il comando si possa lanciare via SSH da Windows ha una risposta in due parti, e la distinzione conta.
+
+Via SSH si può, e funziona. Ciò che non funziona è eseguirlo dallo strumento di shell dell'agente, perché quella shell non ha input interattivo: `sudo` chiede la password su un terminale, e senza terminale non c'è modo di fornirla. La connessione dell'agente usa inoltre `BatchMode=yes`, che disabilita di proposito ogni richiesta interattiva. Non è un limite della rete né della chiave: è un limite di canale.
+
+Le strade sono tre, e hanno costi diversi.
+
+La prima è che il comando lo esegua l'utente dal proprio terminale, dove il prompt della password funziona. Richiede l'opzione `-t`, che alloca un terminale sulla connessione: senza di essa `sudo` non trova un terminale su cui chiedere la password e fallisce.
+
+La seconda è una regola `sudoers` limitata, che consenta senza password soltanto alcuni comandi diagnostici di sola lettura. È la strada che renderebbe autonoma la diagnostica privilegiata anche in futuro, e il futuro di questa procedura ne contiene diversi passi. Il costo va dichiarato: qualunque regola `NOPASSWD` amplia ciò che un accesso compromesso a quella chiave permette di fare, quindi va scritta sul singolo comando e non su una categoria, e resta una decisione dell'utente perché modifica la postura di sicurezza della macchina.
+
+La terza, cioè aggiungere l'utente al gruppo `disk`, è la peggiore e va nominata solo per escluderla: darebbe accesso in lettura e scrittura a tutti i dispositivi a blocchi, che è molto più di quanto serva per leggere una tabella SMART.
+
 ## Che cosa resta da fare in fase 0
 
 Tre voci, di cui due richiedono privilegi che l'accesso via chiave non concede in modo non interattivo, perché `sudo` su questa macchina chiede la password.
 
-Lo stato di salute dell'SSD con `smartctl`, che è il controllo il cui esito potrebbe cambiare la decisione da installazione a sostituzione del disco. Richiede `sudo` e, probabilmente, l'installazione di `smartmontools`.
+Lo stato di salute dell'SSD con `smartctl`, che è il controllo il cui esito potrebbe cambiare la decisione da installazione a sostituzione del disco. Richiede `sudo`; `smartmontools` è già installato, quindi non serve altro. La sezione precedente spiega perché non esiste una via non privilegiata e quali sono le tre strade.
 
 L'esito reale di `sudo apt update`, che le prove HTTP rendono prevedibile ma non certo.
 
