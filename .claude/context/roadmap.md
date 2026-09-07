@@ -51,6 +51,8 @@ La decima priorità è la progettazione in VituixCAD, poi l'acquisto dei driver,
 
 Lo stato di licenza di Ramsete 27b, che decide se il programma entra nel piano e con esso se serve un prefix Wine a 32 bit. Tracciata come PA-002, priorità bassa perché il suo ruolo è coperto da Akabak.
 
+L'architettura del diffusore, cioè attivo o passivo. Non era una decisione aperta finché la sorgente non era definita; ora che lo è, per ADR-012, va anticipata alla fase 4a: con monitor attivi la catena di ascolto è completa così com'è, con monitor passivi serve un amplificatore di potenza interposto, che sarebbe un acquisto. Influisce anche su quali driver convengono.
+
 La risposta target del diffusore. Gli appunti registrano che la scelta di un riferimento consumer con lieve enfasi sui bassi è stata fatta da un collega sul proprio sistema; per un monitor da mixing la scelta di una risposta piatta ha argomenti diversi, e le due strade portano a crossover diversi.
 
 Il diametro del tweeter, che dipende dalla frequenza di incrocio, quindi si decide dentro la fase 4a e non prima.

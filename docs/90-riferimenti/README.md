@@ -4,6 +4,8 @@
 
 ## Indice
 
+Il censimento delle quattordici voci del corredo software, con il verdetto e la ragione per ciascuna e il criterio che li decide, sta in [censimento-corredo.md](censimento-corredo.md). È il documento che autorizza a togliere quel materiale dall'SSD esterno.
+
 L'inventario del software presente sui dischi, con il giudizio di pertinenza rispetto al workflow, sta in [inventario-software.md](inventario-software.md).
 
 Lo stato delle licenze e delle registrazioni, incluso lo scambio con l'autore di Akabak, sta in [licenze-e-registrazioni.md](licenze-e-registrazioni.md).

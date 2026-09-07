@@ -14,8 +14,21 @@ set -euo pipefail
 
 STUDIO_HOST="${STUDIO_HOST:-alesop95@192.168.10.204}"
 STUDIO_BASE="${STUDIO_BASE:-electroacoustics}"
+
+# Chiave dedicata all'host. Serve perche' su questa postazione non esiste una voce in
+# ~/.ssh/config per la macchina, quindi ssh proverebbe solo i nomi di chiave predefiniti,
+# che non esistono: le chiavi si chiamano _personal, _corp e _studio. Si sovrascrive con
+# STUDIO_KEY, oppure si svuota se si e' aggiunta una voce di configurazione con un alias.
+STUDIO_KEY="${STUDIO_KEY-$HOME/.ssh/id_ed25519_studio}"
+if [ -n "$STUDIO_KEY" ] && [ -f "$STUDIO_KEY" ]; then
+  SSH_OPZ=(-o IdentitiesOnly=yes -i "$STUDIO_KEY")
+else
+  SSH_OPZ=()
+fi
 SOLO_VERIFICA=0
+SOLO_IMPRONTE=0
 [ "${1:-}" = "--verifica" ] && SOLO_VERIFICA=1
+[ "${1:-}" = "--impronte" ] && SOLO_IMPRONTE=1
 
 RADICE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MATERIALI="$RADICE/Akabak + VACS"
@@ -42,6 +55,7 @@ MAPPA_DIR=(
   "Room acoustics/EEASE Focus/EASE_Focus_v3.1.260|progetto-stanza/room"
   "Room acoustics/EEASE Focus/EASE_Focus_3_GLL_Database_2016_10_11|progetto-stanza/room"
   "Room acoustics/Ramsete27b - room acoustics|progetto-stanza/room"
+  "Room acoustics/EEASE Focus/EASE_Focus_v3.0.18|progetto-stanza/archivio"
 )
 MAPPA_CORREDO_FILE=(
   "DIY Loudspeaker Pack Softwares/VituixCAD_setup.exe|progetto-stanza/diy"
@@ -127,7 +141,7 @@ nota "da trasferire: $(( byte_totali / 1048576 )) MiB, $(( ${#MAPPA[@]} + 1 )) f
 
 titolo "Raggiungibilita' dell'host"
 
-if ssh -o BatchMode=yes -o ConnectTimeout=10 "$STUDIO_HOST" "echo raggiungibile" >/dev/null 2>&1; then
+if ssh "${SSH_OPZ[@]}" -o BatchMode=yes -o ConnectTimeout=10 "$STUDIO_HOST" "echo raggiungibile" >/dev/null 2>&1; then
   nota "$STUDIO_HOST risponde"
 else
   errore "$STUDIO_HOST non risponde"
@@ -136,7 +150,7 @@ else
   exit 2
 fi
 
-spazio_kib="$(ssh -o BatchMode=yes "$STUDIO_HOST" "df -Pk \"\$HOME\" | awk 'NR==2 {print \$4}'")"
+spazio_kib="$(ssh "${SSH_OPZ[@]}" -o BatchMode=yes "$STUDIO_HOST" "df -Pk \"\$HOME\" | awk 'NR==2 {print \$4}'")"
 nota "spazio disponibile in home sulla destinazione: $(( spazio_kib / 1024 )) MiB"
 if [ "$(( spazio_kib * 1024 ))" -lt "$(( byte_totali * 2 ))" ]; then
   errore "spazio insufficiente: serve almeno il doppio dei byte da trasferire per lavorare con margine"
@@ -148,18 +162,24 @@ if [ "$SOLO_VERIFICA" -eq 1 ]; then
   exit 0
 fi
 
+if [ "$SOLO_IMPRONTE" -eq 0 ]; then
 titolo "Creazione dell'albero di destinazione"
-ssh -o BatchMode=yes "$STUDIO_HOST" "mkdir -p \"\$HOME/$STUDIO_BASE\"/{installers,examples,licenze,sorgenti,progetto-stanza/diy,progetto-stanza/room}"
+ssh "${SSH_OPZ[@]}" -o BatchMode=yes "$STUDIO_HOST" "mkdir -p \"\$HOME/$STUDIO_BASE\"/{installers,examples,licenze,sorgenti,progetto-stanza/diy,progetto-stanza/room,progetto-stanza/archivio}"
 nota "albero creato sotto \$HOME/$STUDIO_BASE"
 
+# Nota sui percorsi remoti: qui non si usa "$HOME/..." ma un percorso relativo, perche'
+# scp da OpenSSH 9 in avanti trasferisce via SFTP, che non esegue una shell sul lato
+# remoto e quindi non espande le variabili: "$HOME" arriverebbe letterale e la copia
+# fallirebbe con "dest open: No such file or directory". Un percorso relativo viene
+# risolto dalla home dell'utente, che e' la directory iniziale di una sessione SFTP.
 copia_uno() {
   origine="$1"
   sotto="$2"
   if [ "$COPIA" = rsync ]; then
-    rsync -h --partial --progress --times "$origine" "$STUDIO_HOST:\$HOME/$STUDIO_BASE/$sotto/"
+    rsync -e "ssh ${SSH_OPZ[*]}" -h --partial --progress --times "$origine" "$STUDIO_HOST:$STUDIO_BASE/$sotto/"
   else
-    scp -p "$origine" "$STUDIO_HOST:\$HOME/$STUDIO_BASE/$sotto/"
-  fi
+    scp "${SSH_OPZ[@]}" -p "$origine" "$STUDIO_HOST:$STUDIO_BASE/$sotto/"
+  fi || { errore "copia fallita: $(basename "$origine")"; return 1; }
 }
 
 titolo "Trasferimento con $COPIA"
@@ -178,10 +198,10 @@ copia_albero() {
   origine="$1"
   sotto="$2"
   if [ "$COPIA" = rsync ]; then
-    rsync -a -h --partial --progress "$origine" "$STUDIO_HOST:\$HOME/$STUDIO_BASE/$sotto/"
+    rsync -e "ssh ${SSH_OPZ[*]}" -a -h --partial --progress "$origine" "$STUDIO_HOST:$STUDIO_BASE/$sotto/"
   else
-    scp -p -r "$origine" "$STUDIO_HOST:\$HOME/$STUDIO_BASE/$sotto/"
-  fi
+    scp "${SSH_OPZ[@]}" -p -r "$origine" "$STUDIO_HOST:$STUDIO_BASE/$sotto/"
+  fi || { errore "copia dell'albero fallita: $(basename "$origine")"; return 1; }
 }
 
 if [ -d "$CORREDO" ]; then
@@ -200,6 +220,8 @@ if [ -d "$CORREDO" ]; then
   done
 fi
 
+fi
+
 titolo "Verifica delle impronte: i file del manifest"
 
 # I file del manifest sono piatti, uno per sottocartella di destinazione: si confronta
@@ -213,13 +235,13 @@ trap 'rm -f "$atteso" "$ottenuto"' EXIT
 for voce in "${MAPPA[@]}"; do
   nome="${voce%%|*}"
   sha256sum "$MATERIALI/$nome" | awk -v n="$nome" '{print $1"  "n}'
-done > "$atteso"
+done | sed 's/ \*/  /' > "$atteso"
 if [ -f "$RADICE/$DOCX" ]; then
   sha256sum "$RADICE/$DOCX" | awk -v n="$(basename "$DOCX")" '{print $1"  "n}' >> "$atteso"
 fi
 sort -k2 -o "$atteso" "$atteso"
 
-ssh -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE\" && find installers examples licenze sorgenti -maxdepth 1 -type f -exec sha256sum {} + | sed 's#  [^/]*/#  #'" | sort -k2 > "$ottenuto"
+ssh "${SSH_OPZ[@]}" -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE\" && find installers examples licenze sorgenti -maxdepth 1 -type f -exec sha256sum {} + | sed 's#  [^/]*/#  #'" | sort -k2 > "$ottenuto"
 
 differenze=0
 if diff -u "$atteso" "$ottenuto"; then
@@ -241,11 +263,11 @@ if [ -d "$CORREDO" ]; then
     rem="$(mktemp)"
 
     if [ -f "$CORREDO/$nome" ]; then
-      ( cd "$(dirname "$CORREDO/$nome")" && sha256sum "$base" ) | sort -k2 > "$loc"
-      ssh -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE/$sotto\" && sha256sum \"$base\"" 2>/dev/null | sort -k2 > "$rem"
+      ( cd "$(dirname "$CORREDO/$nome")" && sha256sum "$base" ) | sed 's/ \*/  /' | sort -k2 > "$loc"
+      ssh "${SSH_OPZ[@]}" -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE/$sotto\" && sha256sum \"$base\"" 2>/dev/null | sort -k2 > "$rem"
     else
-      ( cd "$CORREDO/$nome" && find . -type f -exec sha256sum {} + ) | sort -k2 > "$loc"
-      ssh -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE/$sotto/$base\" && find . -type f -exec sha256sum {} +" 2>/dev/null | sort -k2 > "$rem"
+      ( cd "$CORREDO/$nome" && find . -type f -exec sha256sum {} + ) | sed 's/ \*/  /' | sort -k2 > "$loc"
+      ssh "${SSH_OPZ[@]}" -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE/$sotto/$base\" && find . -type f -exec sha256sum {} +" 2>/dev/null | sort -k2 > "$rem"
     fi
 
     n_loc="$(wc -l < "$loc")"

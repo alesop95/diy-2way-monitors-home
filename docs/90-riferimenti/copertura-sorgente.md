@@ -105,7 +105,7 @@ Gli appunti di una conversazione del luglio 2024 con un collega esperto di acust
 
 L'inventario del pacchetto software ereditato, che sta in un altro file di testo nella radice e non nel `.docx`. Alimenta `90-riferimenti/inventario-software.md`, incluse le voci escluse dal workflow.
 
-La pagina `10-ambiente/ubuntu-lts-upgrade.md`, che non ha corrispondente nel sorgente perché il problema che descrive è emerso dopo la sua stesura. È dichiaratamente una ipotesi con la propria procedura di verifica, non una cronaca.
+La diagnosi dello stato di aggiornamento del sistema, che non ha corrispondente nel sorgente perché il problema è emerso dopo la sua stesura. Era stata scritta come ipotesi in una pagina dedicata, poi rimossa perché la misura sulla macchina ne ha smentito tre cause su quattro; il quadro reale è in `10-ambiente/fotografia-macchina-2026-09-07.md` e il record dell'errore in MS-029 del registro dei microstep.
 
 ## Conclusione
 

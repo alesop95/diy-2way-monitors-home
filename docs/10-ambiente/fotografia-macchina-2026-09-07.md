@@ -148,6 +148,39 @@ ls -l /dev/nvme0 /dev/nvme0n1
 groups
 ```
 
+## Lo stato di salute dell'SSD, letto: sano, e la decisione non cambia
+
+Il comando privilegiato è stato eseguito dall'utente e l'esito chiude la voce più importante della fase 0, cioè la sola che poteva spostare la decisione da installazione a sostituzione del disco. Non la sposta.
+
+Il giudizio complessivo del disco è `PASSED`. I due indicatori che contano davvero su un SSD sono l'usura e la riserva di blocchi, e stanno entrambi bene: `Percentage Used` è al **9 per cento**, quindi il 91 per cento di vita residua, e `Available Spare` è al **100 per cento** contro una soglia di allarme del 5. Gli errori di integrità dei dati e dei supporti sono **zero**, che è il numero che si vuole vedere e non ammette interpretazioni.
+
+Vale segnalare una coincidenza che è in realtà una conferma. Il documento sorgente riportava lo stato del disco al 91 per cento, misurato con CrystalDiskInfo da Windows nel 2025. Il valore letto oggi da SMART è identico: 9 per cento usato. Fra le due misure passano circa tredici mesi, e l'usura non si è mossa di un punto percentuale, il che è coerente con un uso leggero e con i 3,7 GB occupati su `/home`.
+
+I dati di traffico raccontano però una storia che il documento sorgente non conteneva, e che vale registrare perché riguarda l'età reale dell'hardware. Le ore di accensione sono **12.787**, cioè circa un anno e cinque mesi di funzionamento continuo, mentre il sistema attuale è installato dal 5 agosto 2025, cioè da circa tredici mesi che a macchina non sempre accesa valgono molto meno. Ne segue che il disco ha una vita precedente a questa installazione, presumibilmente nel PC Windows da cui la macchina è stata riconvertita. Lo confermano i 24,6 TB scritti e i 20,6 TB letti, che su tredici mesi di uso leggero non si spiegherebbero. Nulla di preoccupante, ma è utile sapere che l'orologio di quel disco è partito prima.
+
+| Indicatore | Valore | Lettura |
+|---|---|---|
+| Giudizio complessivo | `PASSED` | nessun allarme |
+| `Percentage Used` | 9 per cento | 91 per cento di vita residua, identico alla misura del 2025 |
+| `Available Spare` | 100 per cento, soglia 5 | riserva di blocchi intatta |
+| `Media and Data Integrity Errors` | 0 | nessun dato compromesso |
+| Temperatura | 34 gradi, soglie 70 e 85 | ampio margine |
+| Ore di accensione | 12.787 | il disco ha una vita precedente a questa installazione |
+| Cicli di accensione | 135 | coerente con un uso desktop |
+| `Unsafe Shutdowns` | 24 | si veda sotto |
+| Dati scritti | 24,6 TB | entro l'ordine di grandezza atteso per la classe del disco |
+| `Error Information Log Entries` | 584 | benigno, si veda sotto |
+
+### I due numeri che sembrano allarmanti e non lo sono
+
+Il primo sono le **584 voci nel registro degli errori**, che a prima vista è un numero grande. Tutte le voci riportate hanno lo stesso stato, `0x4004`, con messaggio `Invalid Field in Command`. Non sono errori del supporto: sono risposte del controller a comandi che non implementa. La riga finale dell'output lo rende esplicito, perché `smartctl` stesso ne genera uno mentre gira: `Read Self-test Log failed: Invalid Field in Command`. Il registro dell'autotest è una funzione opzionale della specifica NVMe che questo controller non espone, quindi ogni interrogazione la incrementa. Il numero misura quante volte qualcosa ha chiesto al disco una funzione che non ha, non quante volte il disco ha sbagliato. La prova che si tratti di questo è la coesistenza con `Media and Data Integrity Errors` a zero: un disco con 584 errori reali non avrebbe quel campo a zero.
+
+Il secondo sono i **24 spegnimenti non puliti**, cioè interruzioni senza il consenso del sistema operativo. Su 135 cicli di accensione è una proporzione alta, circa uno su sei, e vale sapere che non è normale: indica mancanze di alimentazione, blocchi risolti con il pulsante, oppure spegnimenti forzati. Non ha prodotto danni, come dicono gli errori di integrità a zero, ma è un fattore di rischio da tenere in conto proprio in vista di una reinstallazione, perché un'interruzione durante la scrittura del sistema è il momento peggiore. La precauzione operativa è banale e vale citarla: non eseguire la fase 4 durante un temporale o con la macchina collegata a una presa condivisa con carichi che possono far scattare la protezione.
+
+### La conseguenza sulla decisione
+
+La voce più critica della fase 0 è chiusa con esito positivo. Il disco non va sostituito, quindi la scelta resta fra installazione pulita e aggiornamento in posto, cioè esattamente dove ADR-011 l'ha lasciata, e nessuno dei due termini è stato indebolito da questo dato. Se invece l'usura fosse risultata alta, la decisione corretta sarebbe stata sostituire il disco e installare sul nuovo, perché reinstallare un sistema su un supporto a fine vita significa rifare il lavoro due volte.
+
 ## Perché l'agente non può eseguire il comando privilegiato, e le tre strade
 
 La domanda se il comando si possa lanciare via SSH da Windows ha una risposta in due parti, e la distinzione conta.

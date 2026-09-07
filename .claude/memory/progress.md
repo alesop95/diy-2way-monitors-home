@@ -2,6 +2,24 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-07, terza parte - SMART, censimento del corredo, catena di ascolto e pulizia
+
+Commit di partenza: f85480d.
+
+File toccati: `docs/90-riferimenti/censimento-corredo.md` e `docs/75-catena-di-riproduzione.md` nuovi, `docs/10-ambiente/fotografia-macchina-2026-09-07.md` con l'analisi SMART, `docs/PENDING-ACTIONS.md`, `docs/TRANSFER-MANIFEST.md`, `docs/OPERATIONS-LOG.md` con MS-033 a MS-037, `.claude/memory/decisions.md` con ADR-012, `tools/check-pending-actions.py`, i tre indici, e nel progetto gemello `docs/PENDING-ACTIONS.md` nuovo con i suoi due indici. Rimossa `docs/10-ambiente/ubuntu-lts-upgrade.md` da entrambi i progetti.
+
+Esito in sintesi, cinque cose.
+
+Lo SMART è stato letto e il disco è sano: `PASSED`, usura al 9 per cento, riserva di blocchi al 100, errori di integrità zero. La voce che poteva spostare la decisione da installazione a sostituzione del disco è chiusa con esito positivo. Due numeri richiedevano una lettura: le 584 voci nel registro degli errori sono tutte `Invalid Field in Command`, cioè risposte a comandi che il controller non implementa e non errori del supporto, come dimostra `smartctl` stesso che ne genera una mentre gira; i 24 spegnimenti non puliti su 135 accensioni sono invece reali e sono un fattore di rischio da tenere in conto durante la reinstallazione. Emerso anche che il disco ha una vita precedente a questa installazione, con 12.787 ore di accensione contro tredici mesi di sistema.
+
+Il censimento del corredo software è completo. L'inventario testuale dichiara 36 cartelle e tutte e 36 esistono su `J:`, senza cartelle non dichiarate: è completo e accurato, e la sua incompletezza sui file è una proprietà del comando che l'ha generato. Le quattordici voci hanno ora un verdetto ciascuna con la ragione, e il criterio che li decide è stato isolato perché è quello che rende il censimento ripetibile: primario la posizione nel workflow, secondario la sostituibilità con qualcosa di migliore già disponibile, e solo terziario lo stato di licenza. Nessuna delle otto voci scartate è esclusa perché porta una protezione rimossa: è esclusa perché non serve, e ciascuna ha una ragione funzionale che regge da sola.
+
+La catena di ascolto è definita, e la definizione ha una conseguenza non ovvia. Il Rod Rain audio fornisce una uscita a livello di linea su RCA a 2 Vrms, che è un segnale e non una potenza: con monitor attivi la catena è completa, con monitor passivi serve un amplificatore interposto che sarebbe un acquisto. La scelta fra attivo e passivo, che il documento sorgente lasciava aperta, va quindi anticipata alla fase 4a. Registrata come ADR-012, con la seconda conseguenza sulla validità delle misure della fase 8, dove il segnale di prova deve uscire dalla catena di ascolto reale e non da quella di misura.
+
+La valutazione di acquisto di una interfaccia audio è registrata nel progetto gemello, che è dove l'esigenza vive: la Scarlett a due ingressi basta al progetto dei monitor e non alla registrazione multitraccia.
+
+La pulizia ha rimosso la pagina della diagnosi smentita da entrambi i progetti, invece di tenerla con l'avvertenza in apertura, e ha corretto quattro affermazioni obsolete che sopravvivevano come dichiarazioni al presente. La conciliazione fra il far sparire ciò che è sbagliato e il tracciare tutto è questa: le affermazioni sbagliate non restano dove qualcuno le leggerebbe come vere, il record di che cosa era sbagliato resta dove il tracciamento vive.
+
 ## 2026-09-07, seconda parte - Accesso aperto, fase 0 eseguita, diagnosi smentita
 
 Commit di partenza: 4863804.

@@ -265,7 +265,7 @@ Le quattro partizioni vanno configurate così.
 
 | Partizione | Filesystem | Mount point | Formattare | Nota |
 |---|---|---|---|---|
-| EFI, circa 100 MB, FAT32 | non cambiare | `/boot/efi` | no | si riusa quella esistente; formattarla non è necessario e sarebbe un rischio inutile |
+| EFI, **1,1 GB** reali, FAT32 | non cambiare | `/boot/efi` | no | si riusa quella esistente; formattarla non è necessario e sarebbe un rischio inutile. Il documento sorgente la dichiarava intorno ai 100 MB: la misura reale è 1,1 GB con 6,2 MB occupati |
 | root, circa 80 GB, EXT4 | EXT4 | `/` | sì | è la partizione da azzerare, contiene solo sistema e programmi |
 | swap, circa 16 GB | swap | nessuno | sì | pari alla RAM, per tenere possibile l'ibernazione |
 | home, il resto, EXT4 | EXT4 | `/home` | **no** | qui vivono progetti, materiali trasferiti e prefix Wine |

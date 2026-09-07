@@ -46,12 +46,21 @@ Il corredo software raccolto sotto `C:\Users\Utente\Desktop\Progetto stanza (sof
 | `EASE_Focus_v3.1.260/` | albero | 58 MB | `~/electroacoustics/progetto-stanza/room/` | versione da installare, con il servizio di database AFMG |
 | `EASE_Focus_3_GLL_Database_2016_10_11/` | albero | 451 MB | `~/electroacoustics/progetto-stanza/room/` | 221 file, di cui 174 GLL: dati, non programma |
 | `Ramsete27b - room acoustics/` | albero | 9,7 MB | `~/electroacoustics/progetto-stanza/room/` | supplemento facoltativo, subordinato alla verifica di licenza PA-002 |
+| `EASE_Focus_v3.0.18/` | albero | 45 MB | `~/electroacoustics/progetto-stanza/archivio/` | archivio di riserva se la 3.1.260 dà problemi, non si installa |
 
 Il totale di questa seconda parte è di circa 524 mebibyte, quindi il trasferimento complessivo è di circa 682 mebibyte, come riporta lo strumento nella sua fase di sola verifica.
 
 Sulla sorgente da usare, un chiarimento che vale perché è stato oggetto di una domanda. Il corredo esiste in due copie identiche, quella sul Desktop e quella su `J:`, e l'identità è stata verificata il 2026-09-07 per impronta su tutti e 650 i file. La sorgente del trasferimento è quindi indifferente, e lo strumento usa il Desktop soltanto perché è sempre disponibile mentre l'SSD va collegato. La variabile d'ambiente `CORREDO` permette di puntarlo all'SSD se serve.
 
 Ne discende una precauzione sull'ordine, ed è l'unica conseguenza pratica dell'avere due sorgenti: la cancellazione della copia su SSD, tracciata come PA-001, non va eseguita prima che il trasferimento sia compiuto, altrimenti si perde la sorgente alternativa proprio nel momento in cui potrebbe servire.
+
+Il censimento completo delle quattordici voci, con il verdetto e la ragione per ciascuna, è in [90-riferimenti/censimento-corredo.md](90-riferimenti/censimento-corredo.md), che è anche il documento che autorizza a togliere il materiale dall'SSD.
+
+A trasferimento compiuto, sulla scrivania della macchina si mette un collegamento simbolico all'albero, così che sia raggiungibile con un doppio clic senza duplicare i file né spezzare la corrispondenza fra manifest e disco.
+
+```bash
+ln -sfn ~/electroacoustics ~/Desktop/Progetto-stanza
+```
 
 Le voci escluse sono otto, per circa 1,7 GB, cioè quasi tre quarti del peso del corredo. Sette portano protezioni rimosse e una porta il file di provenienza da un servizio di condivisione. Nessuna serve al progetto, e la pagina sul corredo argomenta il perché per ciascuna insieme alla sostituzione nativa o gratuita che ne copre il ruolo. È esclusa anche EASE Focus 3.0.18, che non ha problemi di licenza ma è superata dalla 3.1.260 con i GLL retrocompatibili: resta materiale d'archivio sulla postazione.
 

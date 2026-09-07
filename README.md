@@ -30,7 +30,7 @@ Il [workflow completo](docs/00-workflow.md) mostra le otto fasi insieme, con ing
 
 La pagina su [Wine, un emulatore e una macchina virtuale](docs/10-ambiente/wine-vs-emulatore.md) chiarisce una distinzione da cui dipendono quasi tutte le decisioni pratiche dell'ambiente, e non è una digressione teorica.
 
-La pagina sull'[aggiornamento alla LTS successiva](docs/10-ambiente/ubuntu-lts-upgrade.md) ricostruisce perché la macchina non si aggiorna, con la procedura di verifica e le due strade possibili. È dichiaratamente una ipotesi in attesa di conferma sulla macchina.
+La [fotografia della macchina](docs/10-ambiente/fotografia-macchina-2026-09-07.md) è l'unico documento costruito su dati letti dalla macchina reale. Riporta lo stato di sistema, disco, catena audio e ambiente Wine, e la correzione di una diagnosi precedente che era sbagliata in tre punti su quattro.
 
 Il [registro dei microstep](docs/OPERATIONS-LOG.md) traccia ogni intervento con il comando che lo ha verificato e il suo esito, inclusi i microstep bloccati e da che cosa dipendono.
 

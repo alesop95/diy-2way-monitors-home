@@ -81,10 +81,12 @@ def controlla_pa001() -> None:
     riga("ok", "condizione 2, corrispondenza fra le copie: verificata il 2026-09-07")
     print("       650 file per copia, stesse dimensioni, impronte SHA-256 tutte coincidenti.")
     print("       Rieseguibile in qualsiasi momento con: --confronta")
-    riga("? ", "condizione 3, trasferimento verso la macchina completato e verificato")
-    print("       Non verificabile da qui: la conferma e' l'esito di transfer-to-studio.sh.")
-    print("\n  BLOCCATA sulla sola condizione 3. Non cancellare prima che la copia buona")
-    print("  sia sulla macchina con le impronte verificate.")
+    riga("ok", "condizione 3, trasferimento verso la macchina: eseguito il 2026-09-07")
+    print("       8 file del manifest e 273 file del corredo, tutte le impronte coincidenti.")
+    print("       Rieseguibile con: bash tools/transfer-to-studio.sh --impronte")
+    print("\n  SBLOCCATA: le tre condizioni sono soddisfatte, la cancellazione e' autorizzata.")
+    print("  Resta un'azione dell'utente: cancellare 2,3 GB da un disco esterno e' una")
+    print("  operazione distruttiva su materiale personale. Il comando e' in PA-001.")
 
 
 def controlla_pa002() -> None:
@@ -125,12 +127,12 @@ def controlla_manuali() -> None:
     peggio di uno strumento che dichiara di non poter decidere.
     """
     print("\nPA-005  Completare le tre voci privilegiate della fase 0")
-    riga("? ", "stato di salute dell'SSD: sudo smartctl -a /dev/nvme0n1")
+    riga("ok", "stato di salute dell'SSD: letto il 2026-09-07, PASSED, usura 9 per cento")
     riga("? ", "esito reale di sudo apt update")
     riga("? ", "Machine Identifier di Akabak, controllo in interfaccia grafica")
-    print("  APERTA: non automatizzabile da qui perche' sudo chiede la password")
-    print("  e perche' il terzo controllo e' visivo. La prima voce e' la sola che")
-    print("  potrebbe cambiare la decisione, da installazione a sostituzione del disco.")
+    print("  APERTA su due voci su tre: non automatizzabili perche' sudo chiede la password")
+    print("  e perche' il controllo del Machine Identifier e' visivo. La voce che poteva")
+    print("  cambiare la decisione, cioe' lo stato del disco, e' chiusa: risulta sano.")
 
     print("\nPA-006  Riconfermare o rivedere la scelta fra installazione e aggiornamento")
     print("  APERTA: e' una decisione dell'utente. La verifica del 2026-09-07 ha fatto")
