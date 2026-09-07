@@ -622,6 +622,54 @@ Verificato con: `bash -n` sulla sintassi; l'esecuzione completa con esito positi
 
 Esito: fatto. La terza e ultima condizione di PA-001 è soddisfatta, quindi la cancellazione della copia sull'SSD è autorizzata. L'esecuzione resta dell'utente, perché cancellare 2,3 GB da un disco esterno è una operazione distruttiva su materiale personale e non la compie l'agente.
 
+### MS-040 - PA-001 compiuta, e due difetti dello strumento delle azioni differite
+
+Perimetro: `tools/check-pending-actions.py`, chiusura di PA-001 e di PA-006 nello strumento.
+
+L'output incollato dall'utente ha rivelato due difetti, di cui uno era mio e non era stato notato.
+
+Il primo: la chiusura di PA-006 nello strumento **non era stata applicata**. Lo script che la scriveva conteneva un `assert` sul testo da sostituire, l'assert è fallito perché gli accenti erano stati normalizzati fra la scrittura e la modifica, e lo script si è interrotto prima di scrivere il file. La modifica al documento era andata a buon fine, quella allo strumento no, e i due si contraddicevano: il documento dava PA-006 per chiusa, lo strumento la dava per aperta. Non me ne sono accorto perché ho letto l'output della parte riuscita senza controllare quella fallita. La regola che ne discende è semplice e vale oltre questo caso: quando uno script fa più modifiche e una fallisce, l'esito da guardare non è la riga di successo ma il codice di uscita.
+
+Il secondo era un difetto di progetto più che di codice. Su PA-001 lo strumento usciva subito quando il disco non era collegato, mostrando le sole prime due condizioni. L'effetto era di nascondere le due condizioni permanenti, cioè il materiale verificato sulla macchina e la corrispondenza fra le copie, facendo sembrare la voce molto più lontana dallo sblocco di quanto fosse: chi leggeva vedeva `BLOCCATA` e due righe, non `manca solo che il disco sia collegato`. Corretto mostrando sempre tutte le condizioni e distinguendo quella transitoria dalle due permanenti.
+
+Nel frattempo la voce si è chiusa. La cartella `Progetto stanza (software)` non esiste più su `J:`, verificato con il disco collegato, mentre le due copie restanti sono intatte: 650 file per 2,3 GB sul Desktop e 281 file per 728 MB sulla macchina con le impronte verificate. Nessun dato perduto.
+
+Il momento e il modo della cancellazione non sono accertati, e va detto invece di ricostruirlo. Il comando dell'utente ha risposto che il percorso non esisteva mentre lo strumento riportava il disco come non collegato, e le due cose sono compatibili sia con una cartella già rimossa sia con un disco assente in quell'istante. Alle 14 dello stesso giorno la cartella c'era, perché il confronto delle impronte ne aveva letto tutti e 650 i file. Poiché l'obiettivo era che quella copia non ci fosse più e le altre due sì, la voce è compiuta a prescindere da quale spiegazione sia quella giusta.
+
+Esito: fatto.
+
+### MS-041 - Analisi dello spazio sull'SSD esterno, e un difetto che sbagliava di 45 GiB
+
+Perimetro: `tools/analisi-ssd-esterno.py` nuovo, `docs/90-riferimenti/pulizia-ssd-esterno.md` nuovo.
+
+Alla domanda su che cosa si possa cancellare da `J:` la risposta richiedeva una misura e non una stima, quindi è stato scritto uno strumento che classifica ogni voce della radice in materiale personale, cartelle di servizio e materiale trasferito, e riporta peso e numero di file senza cancellare nulla.
+
+L'esito: circa 372 GiB di materiale personale e **1,2 GiB recuperabile**. Quasi tutto il recuperabile sta in tre voci, cioè `FOUND.002` con 429 MiB, `FOUND.000` con 412 MiB e `.Spotlight-V100` con 371 MiB; le altre sette sommate non arrivano a un megabyte, quindi cancellarle non cambia nulla.
+
+Il difetto dello strumento merita di stare a verbale perché era del tipo peggiore. La prima versione iterava le sole cartelle della radice e ignorava i file sciolti. Su questo volume ce ne sono quattro per 45,2 GiB, di cui due archivi di backup da 25,8 e 19,4 GiB, e lo strumento riportava quindi 326 GiB di materiale personale invece di 371, sbagliando per difetto di 45 GiB senza che nulla lo segnalasse. Un totale sbagliato per difetto è peggio di un totale assente, perché non si vede che manca qualcosa: chi legge 326 non ha modo di sospettare che ne manchino 45. Corretto iterando anche i file, e con un marcatore in testa al nome invece che in coda, perché in coda veniva tagliato dal troncamento della colonna e un archivio da 26 GiB compariva indistinguibile da una cartella.
+
+Sui due archivi di backup la conclusione è di non cancellarli, e la ragione è che la conclusione opposta non è sostenibile con i dati disponibili. La tentazione è considerare il più vecchio superato dal più recente, recuperando 25,8 GiB. Ma i nomi dichiarano perimetri diversi: il più recente esclude una cartella in più, cioè quella dei modelli 3DS, che sul volume pesa 11,4 GiB. Non sono due versioni della stessa cosa, e il più vecchio potrebbe essere l'unico a contenere qualcosa. Si aggiunge un elemento che complica e che va dichiarato invece di risolvere per ipotesi: quella cartella porta nel nome una data successiva al backup del 28 agosto, quindi non poteva esserne parte con quel nome, e non lo si stabilisce dal nome. La decisione richiede di elencare il contenuto dei due archivi, che è una lettura e non una operazione distruttiva.
+
+Il segnale che vale più dello spazio è un altro, ed è emerso guardando la radice senza cercarlo: sul volume ci sono **cinque cartelle FOUND**, dal 30 giugno al 3 settembre, cioè cinque riparazioni del filesystem in poco più di due mesi. Le cause tipiche sono due e portano a rimedi opposti: la rimozione senza espulsione sicura, che è una abitudine da correggere, oppure un difetto del supporto, che è un hardware da sostituire. C'è un elemento di contesto che rende la prima ipotesi meno rassicurante di quanto sembri, e vale metterlo in relazione: la lettura SMART del disco interno della macchina ha riportato 24 spegnimenti non puliti su 135 accensioni. Due dischi diversi con sintomi diversi che puntano nella stessa direzione sono un indizio più forte di due sintomi isolati. Resta un indizio e non una conclusione, e il controllo che la chiude è la lettura SMART del disco esterno.
+
+La conseguenza pratica non aspetta la diagnosi: quel disco non è il posto dove tenere l'unica copia di qualcosa. Che è esattamente il motivo per cui la cancellazione era stata subordinata alla verifica che il materiale fosse altrove, invece di essere eseguita sulla fiducia.
+
+Verificato con: esecuzione dello strumento sul volume collegato, prima e dopo la correzione, con il totale che passa da 326 a 371 GiB; misura indipendente dei file sciolti, che conferma 45,2 GiB in quattro file; e una scansione dei caratteri di controllo su tutti i Markdown del progetto, che ha trovato e rimosso due caratteri di backspace introdotti per errore da un escape di uno script di modifica, e che ora non ne trova più nessuno.
+
+Esito: fatto.
+
+### MS-042 - Emendamento sul budget della catena di ascolto
+
+Perimetro: ADR-014.
+
+L'utente ha precisato che l'acquisto di un buon amplificatore non è un problema quando servirà, e che in alternativa si può valutare la sostituzione del convertitore, ragionando sul miglior compromesso fra qualità e costo.
+
+ADR-012 aveva presentato l'amplificatore necessario alla strada passiva come un costo da evitare, scrivendo che diventerebbe un acquisto. Era una inquadratura sbagliata, e correggerla conta perché un vincolo di budget che non esiste distorce una decisione tecnica: avrebbe spinto verso la strada attiva per la ragione sbagliata, cioè per non comprare un componente, invece che per le sue ragioni proprie, che sono il controllo indipendente per via, l'assenza di componenti passivi in serie all'altoparlante e la possibilità di realizzare il filtro in digitale.
+
+L'emendamento aggiunge anche un terzo termine di confronto che ADR-012 non contemplava, cioè la sostituzione del convertitore. E rileva un legame da non trascurare: la valutazione dell'interfaccia audio per l'home recording, tracciata nel progetto gemello, riguarda un dispositivo che potrebbe coprire anche il ruolo di sorgente per l'ascolto. Valutare le due cose insieme evita di comprare due dispositivi dove ne basterebbe uno, oppure di scoprire dopo che quello comprato per la registrazione non è adatto all'ascolto.
+
+Esito: fatto. La decisione resta aperta e si prende nella fase 4a, informata dalle simulazioni invece che dal listino.
+
 ## Microstep bloccati, e da che cosa dipendono ora
 
 Il blocco è cambiato natura nel corso della sessione, e vale registrarlo perché è un progresso e non uno stallo. All'inizio la macchina era di stato ignoto, poi si è rivelata sospesa e non spenta, poi sveglia e raggiungibile ma senza autenticazione configurata. Il blocco attuale è quindi su una singola azione dell'utente, cioè l'installazione della chiave SSH descritta nella fase 10.3 della procedura, che richiede la password una volta sola e non è delegabile.

@@ -10,7 +10,11 @@ Ogni azione ha un identificativo nella forma `PA-NNN`, una data di apertura, la 
 
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
 
-Data di apertura: 2026-09-04. Ultimo aggiornamento: 2026-09-07. Stato: **sbloccata, in attesa dell'esecuzione da parte dell'utente**.
+Data di apertura: 2026-09-04. **Compiuta il 2026-09-07.** Stato: chiusa.
+
+L'esito, con la distinzione fra ciò che è accertato e ciò che non lo è. La cartella `J:\Progetto stanza (software)` **non esiste più sul disco**, verificato con il disco collegato. Le due copie restanti sono intatte: quella sul Desktop della postazione conta 650 file per 2,3 GB, e quella sulla macchina Ubuntu Studio conta 281 file per 728 MB con le impronte verificate. Nessun dato è andato perduto.
+
+Non è invece accertato il momento né il modo della cancellazione, e va detto invece di ricostruirlo. Il comando lanciato dall'utente ha risposto che il percorso non esisteva, e nello stesso momento lo strumento riportava il disco come non collegato: le due cose sono compatibili sia con una cartella già rimossa in precedenza sia con un disco assente al momento del comando. Alle 14 dello stesso giorno la cartella era presente, perché il confronto delle impronte ne ha letto tutti e 650 i file. Fra quel momento e la verifica successiva è scomparsa. Poiché l'obiettivo della voce era che quella copia non ci fosse più e le altre due sì, la voce è compiuta a prescindere da quale delle due spiegazioni sia quella giusta.
 
 Che cosa va fatto. Cancellare la cartella `J:\Progetto stanza (software)` dall'SSD esterno, una volta che il corredo utile è stato trasferito sulla macchina Ubuntu Studio e la sua integrità è stata verificata. È l'utente a chiedere questo promemoria, e la ragione è che quella copia è ridondante rispetto a quella sul Desktop della postazione Windows.
 
