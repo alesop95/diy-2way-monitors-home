@@ -67,26 +67,47 @@ def riga(stato: str, testo: str) -> None:
 def controlla_pa001() -> None:
     print("\nPA-001  Cancellare la copia del corredo su SSD esterno")
 
-    ssd_presente = COPIA_SSD.is_dir()
+    # Tre stati distinti, e confonderne due e' stato un difetto reale di questo
+    # strumento: il disco assente e la cartella gia' cancellata producono entrambi
+    # "cartella non trovata", ma il primo e' un ostacolo e il secondo e' l'obiettivo
+    # raggiunto. Si guarda quindi la radice del disco separatamente dalla cartella.
+    disco_presente = COPIA_SSD.parent.is_dir()
+    cartella_presente = COPIA_SSD.is_dir()
     lavoro_presente = COPIA_LAVORO.is_dir()
 
-    riga("ok" if lavoro_presente else "!!", f"condizione 1a, copia di lavoro: {COPIA_LAVORO}")
-    riga("ok" if ssd_presente else "  ", f"condizione 1b, disco J: collegato: {COPIA_SSD}")
-
-    if not ssd_presente:
-        print("\n  BLOCCATA: il disco J: non e' collegato, quindi non c'e' nulla da")
-        print("  confrontare ne' da cancellare. Ricollegare l'SSD e rilanciare.")
+    if disco_presente and not cartella_presente:
+        riga("ok", "COMPIUTA: la cartella non e' piu' su J:, con il disco collegato")
+        riga("ok" if lavoro_presente else "!!",
+             f"copia sul Desktop, intatta: {COPIA_LAVORO}")
+        riga("ok", "copia sulla macchina, verificata: ~/electroacoustics, 281 file")
+        print("\n  L'obiettivo della voce e' raggiunto: quella copia non c'e' piu' e le")
+        print("  altre due ci sono. Nessun dato perduto. Il momento esatto e il modo della")
+        print("  cancellazione non sono accertati, e la voce in PA-001 lo dichiara.")
         return
 
+    riga("ok" if lavoro_presente else "!!", f"condizione 1a, copia di lavoro: {COPIA_LAVORO}")
+    riga("ok" if disco_presente else "  ", f"condizione 1b, disco J: collegato: {COPIA_SSD.parent}")
+    ssd_presente = cartella_presente
+
+    # La condizione sul disco collegato e' transitoria: si soddisfa e si perde a ogni
+    # scollegamento. Le altre due sono fatti accertati una volta per sempre. Una prima
+    # versione usciva subito quando il disco era assente, e questo nascondeva le due
+    # condizioni permanenti facendo sembrare la voce piu' lontana dallo sblocco di
+    # quanto sia: le si mostra sempre, e l'assenza del disco resta l'unico ostacolo.
     riga("ok", "condizione 2, corrispondenza fra le copie: verificata il 2026-09-07")
     print("       650 file per copia, stesse dimensioni, impronte SHA-256 tutte coincidenti.")
     print("       Rieseguibile in qualsiasi momento con: --confronta")
     riga("ok", "condizione 3, trasferimento verso la macchina: eseguito il 2026-09-07")
     print("       8 file del manifest e 273 file del corredo, tutte le impronte coincidenti.")
     print("       Rieseguibile con: bash tools/transfer-to-studio.sh --impronte")
-    print("\n  SBLOCCATA: le tre condizioni sono soddisfatte, la cancellazione e' autorizzata.")
-    print("  Resta un'azione dell'utente: cancellare 2,3 GB da un disco esterno e' una")
-    print("  operazione distruttiva su materiale personale. Il comando e' in PA-001.")
+    if ssd_presente:
+        print("\n  SBLOCCATA: le tre condizioni sono soddisfatte, la cancellazione e' autorizzata.")
+        print("  Resta un'azione dell'utente: cancellare 2,3 GB da un disco esterno e' una")
+        print("  operazione distruttiva su materiale personale. Il comando e' in PA-001.")
+    else:
+        print("\n  IN ATTESA DEL DISCO. Le due condizioni di merito sono soddisfatte in modo")
+        print("  permanente: il materiale e' sulla macchina e verificato. Manca solo che")
+        print("  J: sia collegato, che e' una condizione transitoria. Ricollegarlo e rilanciare.")
 
 
 def controlla_pa002() -> None:
@@ -135,8 +156,10 @@ def controlla_manuali() -> None:
     print("  cambiare la decisione, cioe' lo stato del disco, e' chiusa: risulta sano.")
 
     print("\nPA-006  Riconfermare o rivedere la scelta fra installazione e aggiornamento")
-    print("  APERTA: e' una decisione dell'utente. La verifica del 2026-09-07 ha fatto")
-    print("  cadere uno dei quattro motivi di ADR-006; la revisione e' ADR-011.")
+    riga("ok", "CHIUSA il 2026-09-07: installazione pulita 26.04 LTS riconfermata")
+    print("  Lavoro privilegiato con comandi lanciati a mano, senza regole sudoers.")
+    print("  Conseguenza: la pulizia di Wine NON si esegue, sarebbe lavoro buttato su")
+    print("  un sistema che verra' azzerato. Decisione registrata come ADR-013.")
 
 
 def confronta() -> int:
