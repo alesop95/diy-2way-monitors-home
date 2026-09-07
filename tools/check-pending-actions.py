@@ -118,6 +118,25 @@ def controlla_pa004() -> None:
         print("  Priorita' bassa: la versione da installare e' la 3.1.260, non la 3.1.10.")
 
 
+def controlla_manuali() -> None:
+    """PA-005 e PA-006 non hanno condizioni automatizzabili, ma vanno elencate.
+
+    Uno strumento che riporta quattro voci su sei sotto-riporta in silenzio, ed e'
+    peggio di uno strumento che dichiara di non poter decidere.
+    """
+    print("\nPA-005  Completare le tre voci privilegiate della fase 0")
+    riga("? ", "stato di salute dell'SSD: sudo smartctl -a /dev/nvme0n1")
+    riga("? ", "esito reale di sudo apt update")
+    riga("? ", "Machine Identifier di Akabak, controllo in interfaccia grafica")
+    print("  APERTA: non automatizzabile da qui perche' sudo chiede la password")
+    print("  e perche' il terzo controllo e' visivo. La prima voce e' la sola che")
+    print("  potrebbe cambiare la decisione, da installazione a sostituzione del disco.")
+
+    print("\nPA-006  Riconfermare o rivedere la scelta fra installazione e aggiornamento")
+    print("  APERTA: e' una decisione dell'utente. La verifica del 2026-09-07 ha fatto")
+    print("  cadere uno dei quattro motivi di ADR-006; la revisione e' ADR-011.")
+
+
 def confronta() -> int:
     if not COPIA_SSD.is_dir():
         print(f"ERRORE: {COPIA_SSD} non trovata: il disco J: non e' collegato.", file=sys.stderr)
@@ -183,6 +202,7 @@ def main() -> int:
     controlla_pa002()
     controlla_pa003()
     controlla_pa004()
+    controlla_manuali()
     print("\nLegenda: [ok] condizione soddisfatta, [? ] da confermare a mano,")
     print("         [  ] non soddisfatta, [!!] anomalia da guardare.")
     return 0

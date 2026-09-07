@@ -2,7 +2,27 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
-## 2026-09-07 - Verifica delle copie del corredo, e apertura dell'accesso alla macchina
+## 2026-09-07, seconda parte - Accesso aperto, fase 0 eseguita, diagnosi smentita
+
+Commit di partenza: 4863804.
+
+File toccati: `docs/10-ambiente/fotografia-macchina-2026-09-07.md` nuovo, `_notes/fotografia-2026-09-07/` con ventitré file di output grezzo non versionati, correzioni sostanziali a `docs/10-ambiente/ubuntu-lts-upgrade.md` e alle fasi 0, 0.1 e 6 di `docs/10-ambiente/installazione-pulita-26-04.md`, `docs/OPERATIONS-LOG.md` con MS-028 a MS-031, `docs/PENDING-ACTIONS.md` con PA-005 e PA-006, `.claude/memory/decisions.md` con ADR-011 e la marcatura di ADR-006, e i due indici.
+
+Motivo: l'utente ha installato la chiave SSH, sbloccando l'accesso alla macchina che era il vincolo delle due sessioni precedenti. Con l'accesso è diventato possibile eseguire la fase 0 della procedura, cioè mettere alla prova la diagnosi scritta per ipotesi.
+
+Esito in sintesi, e non è quello che mi aspettavo. **Tre delle quattro cause che avevo attribuito al blocco di aggiornamento sono false.** Il salto diretto alla LTS è offerto, e `do-release-upgrade -c` risponde che la 26.04.1 LTS è disponibile. La direttiva è `Prompt=normal` e non `lts`, e il commento dello stesso file di configurazione dichiara che con `lts` su un rilascio non-LTS l'aggiornatore assume `normal`, quindi quella causa non poteva agire nemmeno in principio: la risposta era scritta dentro il file che stavo ipotizzando. Gli archivi della 25.04 sono ancora vivi e rispondono 200, non sono stati spostati su `old-releases`, che sulla stessa risorsa risponde 404.
+
+Il fatto che riorganizza tutto è però un altro: `/var/log/dist-upgrade/` è vuota, quindi **l'aggiornamento non è mai stato tentato**. Non c'era un blocco da diagnosticare. La cronologia di apt lo conferma dall'altro lato, con l'ultima operazione datata 13 agosto 2025, e la simulazione elenca 134 pacchetti pendenti senza conflitti. La lezione metodologica è che avevo costruito una diagnosi elaborata su una premessa implicita nella domanda e mai verificata, cioè che un tentativo fosse stato fatto e fosse fallito.
+
+L'unica parte confermata è la quarta, i fattori di attrito, in forma più grave del previsto: due repository WineHQ attivi contemporaneamente per due rilasci diversi di Ubuntu, più `wine-stable 3.0.1` del 2018 accanto a `wine 9.0`, l'architettura `i386`, una sorgente `file:/cdrom/` residua e un solo prefix Wine condiviso.
+
+Altri due esiti della fotografia. La catena a bassa latenza è attiva e configurata bene, ma il controllo che la fase 6 prescriveva, cioè il nome del kernel, avrebbe dato un falso negativo: il kernel è generico e le proprietà arrivano da `preempt=full` e `threadirqs` sulla riga di comando, con `rtprio 95` per il gruppo audio. Corretto. E la partizione EFI è di 1,1 GB e non dei circa 100 MB che il documento sorgente dichiarava, mentre `/home` usa 3,7 GB su 369.
+
+Conseguenza sulle decisioni. Il primo dei quattro motivi di ADR-006 è caduto, gli altri tre tengono, e se ne aggiunge uno nuovo reso disponibile dai dati. La revisione è ADR-011, ADR-006 è marcata come rivista senza essere riscritta, e la riconferma della scelta è tracciata come PA-006 perché è dell'utente e non mia.
+
+Un riscontro positivo che vale registrare: la cronologia di apt conferma con data e ora la sequenza di installazioni e purghe di Wine che il documento sorgente descriveva. È la prima volta che una affermazione di quel documento viene confermata da una fonte indipendente sulla macchina stessa.
+
+## 2026-09-07, prima parte - Verifica delle copie del corredo, e apertura dell'accesso alla macchina
 
 Commit di partenza: 3eac5f3. Commit di arrivo: da assegnare.
 

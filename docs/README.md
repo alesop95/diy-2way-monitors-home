@@ -10,7 +10,7 @@ La documentazione segue la struttura del progetto reale invece della struttura d
 
 Il workflow in otto fasi, dalla misura della stanza alla verifica finale, sta in [00-workflow.md](00-workflow.md).
 
-L'ambiente Linux, cioè Ubuntu Studio e Wine con tutto ciò che serve a far girare i programmi Windows di progettazione, sta nella cartella [10-ambiente/](10-ambiente/README.md).
+L'ambiente Linux, cioè Ubuntu Studio e Wine con tutto ciò che serve a far girare i programmi Windows di progettazione, sta nella cartella [10-ambiente/](10-ambiente/README.md). Dentro quel blocco, il documento da cui partire è la [fotografia della macchina al 2026-09-07](10-ambiente/fotografia-macchina-2026-09-07.md), che è l'unico costruito su dati letti dalla macchina reale.
 
 Le fasi operative sono documentate una per pagina: [misura reale della stanza](20-misura-stanza.md), [modellazione e simulazione acustica](30-modellazione-e-simulazione.md), [analisi dei dati in Octave](40-analisi-octave.md), [progettazione del monitor](50-progettazione-monitor.md), [simulazione finale in Akabak](60-simulazione-finale-akabak.md) e [realizzazione con verifica finale](70-realizzazione-e-verifica.md).
 
