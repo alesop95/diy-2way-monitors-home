@@ -48,6 +48,16 @@ Il file del cabinet contiene le pareti con il loro spessore, la posizione dei dr
 
 Il modo pratico di iniziare non è costruire da zero ma partire da un file di esempio di sistema a due vie fra quelli distribuiti con il programma, e adattarne driver e dimensioni. Il pacchetto degli esempi è quindi materiale di lavoro, non documentazione accessoria, ed è la ragione per cui compare nel manifest di trasferimento verso la macchina di destinazione.
 
+## Il passaggio dei dati a VACS, che su Linux è manuale
+
+Prima di descrivere il ciclo di ottimizzazione va messo in chiaro un vincolo dell'ambiente, perché è dentro il ciclo che si paga e perché non è un difetto da risolvere.
+
+Akabak e VACS sono pensati per lavorare in coppia, il primo come solutore e il secondo come strumento di visualizzazione e analisi. Su Windows i risultati passano dall'uno all'altro attraverso COM, senza intervento manuale. L'autore del software ha dichiarato che su Linux quel canale non funziona, perché Wine implementa COM solo in parte, e che il trasferimento avviene attraverso gli appunti di sistema: si copia da Akabak e si incolla in VACS, con l'impostazione relativa nelle preferenze di Akabak.
+
+Le conseguenze sul ciclo sono due, e conviene pianificarle invece di subirle. La prima è il tempo: ogni iterazione ha un passo manuale in più, e le iterazioni sono molte. La seconda, meno ovvia e più insidiosa, è il rischio di errore silenzioso: incollare in VACS il risultato di una simulazione precedente credendo che sia quella appena eseguita non produce alcun messaggio di errore, produce un grafico plausibile e sbagliato. La difesa è una disciplina di denominazione dei risultati e un controllo, a ogni incollaggio, che il dato sia quello atteso.
+
+Il dettaglio, con la cronologia della corrispondenza da cui la constatazione proviene, sta in `docs/90-riferimenti/timeline-akabak-vacs.md`.
+
 ## Il ciclo di ottimizzazione
 
 La sequenza operativa è aprire il file di progetto, collegare i file dei driver, collegare i file del cabinet e del crossover, e lanciare la simulazione. Si leggono quattro uscite: la risposta in frequenza, il diagramma di fase, l'impedenza del cabinet e la mappa SPL.

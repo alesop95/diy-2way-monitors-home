@@ -32,6 +32,21 @@ MAPPA=(
 )
 DOCX="_notes/full_electroacoustics.docx"
 
+# Corredo "Progetto stanza": alberi di cartelle, non file singoli. Sono il sottoinsieme
+# legittimo e utile del corredo sul Desktop della postazione, selezionato in
+# docs/10-ambiente/wine-corredo-progetto-stanza.md. Le voci con protezione rimossa non
+# sono qui di proposito, e nemmeno EASE Focus 3.0.18, superata dalla 3.1.260.
+CORREDO="${CORREDO:-/c/Users/Utente/Desktop/Progetto stanza (software)}"
+MAPPA_DIR=(
+  "DIY Loudspeaker Pack Softwares/Arta|progetto-stanza/diy"
+  "Room acoustics/EEASE Focus/EASE_Focus_v3.1.260|progetto-stanza/room"
+  "Room acoustics/EEASE Focus/EASE_Focus_3_GLL_Database_2016_10_11|progetto-stanza/room"
+  "Room acoustics/Ramsete27b - room acoustics|progetto-stanza/room"
+)
+MAPPA_CORREDO_FILE=(
+  "DIY Loudspeaker Pack Softwares/VituixCAD_setup.exe|progetto-stanza/diy"
+)
+
 nota()  { printf '  %s\n' "$*"; }
 titolo(){ printf '\n== %s ==\n' "$*"; }
 errore(){ printf 'ERRORE: %s\n' "$*" >&2; }
@@ -79,6 +94,16 @@ for voce in "${MAPPA[@]}"; do
   fi
 done
 [ -f "$RADICE/$DOCX" ] || nota "avviso: $DOCX non presente, verra' saltato"
+
+if [ -d "$CORREDO" ]; then
+  nota "corredo Progetto stanza trovato"
+  for voce in "${MAPPA_DIR[@]}" "${MAPPA_CORREDO_FILE[@]}"; do
+    nome="${voce%%|*}"
+    [ -e "$CORREDO/$nome" ] || { errore "voce del corredo assente: $nome"; assenti=1; }
+  done
+else
+  nota "avviso: corredo non trovato in $CORREDO, verra' saltato interamente"
+fi
 [ "$assenti" -eq 0 ] || { errore "manifest e disco non coincidono, controllare prima di trasferire"; exit 1; }
 nota "tutti i file del manifest sono presenti"
 
@@ -88,7 +113,17 @@ for voce in "${MAPPA[@]}"; do
   byte_totali=$(( byte_totali + $(stat -c%s "$MATERIALI/$nome") ))
 done
 [ -f "$RADICE/$DOCX" ] && byte_totali=$(( byte_totali + $(stat -c%s "$RADICE/$DOCX") ))
-nota "da trasferire: $(( byte_totali / 1048576 )) MiB in $(( ${#MAPPA[@]} + 1 )) file"
+voci_corredo=0
+if [ -d "$CORREDO" ]; then
+  for voce in "${MAPPA_DIR[@]}" "${MAPPA_CORREDO_FILE[@]}"; do
+    nome="${voce%%|*}"
+    if [ -e "$CORREDO/$nome" ]; then
+      byte_totali=$(( byte_totali + $(du -sb "$CORREDO/$nome" | cut -f1) ))
+      voci_corredo=$(( voci_corredo + 1 ))
+    fi
+  done
+fi
+nota "da trasferire: $(( byte_totali / 1048576 )) MiB, $(( ${#MAPPA[@]} + 1 )) file piu' $voci_corredo voci del corredo"
 
 titolo "Raggiungibilita' dell'host"
 
@@ -114,7 +149,7 @@ if [ "$SOLO_VERIFICA" -eq 1 ]; then
 fi
 
 titolo "Creazione dell'albero di destinazione"
-ssh -o BatchMode=yes "$STUDIO_HOST" "mkdir -p \"\$HOME/$STUDIO_BASE\"/{installers,examples,licenze,sorgenti}"
+ssh -o BatchMode=yes "$STUDIO_HOST" "mkdir -p \"\$HOME/$STUDIO_BASE\"/{installers,examples,licenze,sorgenti,progetto-stanza/diy,progetto-stanza/room}"
 nota "albero creato sotto \$HOME/$STUDIO_BASE"
 
 copia_uno() {
@@ -139,7 +174,37 @@ if [ -f "$RADICE/$DOCX" ]; then
   copia_uno "$RADICE/$DOCX" "sorgenti"
 fi
 
-titolo "Verifica delle impronte"
+copia_albero() {
+  origine="$1"
+  sotto="$2"
+  if [ "$COPIA" = rsync ]; then
+    rsync -a -h --partial --progress "$origine" "$STUDIO_HOST:\$HOME/$STUDIO_BASE/$sotto/"
+  else
+    scp -p -r "$origine" "$STUDIO_HOST:\$HOME/$STUDIO_BASE/$sotto/"
+  fi
+}
+
+if [ -d "$CORREDO" ]; then
+  titolo "Trasferimento del corredo Progetto stanza"
+  for voce in "${MAPPA_CORREDO_FILE[@]}"; do
+    nome="${voce%%|*}"; sotto="${voce##*|}"
+    [ -e "$CORREDO/$nome" ] || continue
+    nota "$(basename "$nome") -> $sotto/"
+    copia_uno "$CORREDO/$nome" "$sotto"
+  done
+  for voce in "${MAPPA_DIR[@]}"; do
+    nome="${voce%%|*}"; sotto="${voce##*|}"
+    [ -e "$CORREDO/$nome" ] || continue
+    nota "$(basename "$nome")/ -> $sotto/"
+    copia_albero "$CORREDO/$nome" "$sotto"
+  done
+fi
+
+titolo "Verifica delle impronte: i file del manifest"
+
+# I file del manifest sono piatti, uno per sottocartella di destinazione: si confronta
+# l'elenco per nome di file. Il corredo, che e' fatto di alberi, si verifica dopo, con
+# un confronto separato per ciascuna voce, perche' un solo elenco piatto non basterebbe.
 
 atteso="$(mktemp)"
 ottenuto="$(mktemp)"
@@ -154,12 +219,53 @@ if [ -f "$RADICE/$DOCX" ]; then
 fi
 sort -k2 -o "$atteso" "$atteso"
 
-ssh -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE\" && find . -type f -exec sha256sum {} + | sed 's#  \./[^/]*/#  #'" | sort -k2 > "$ottenuto"
+ssh -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE\" && find installers examples licenze sorgenti -maxdepth 1 -type f -exec sha256sum {} + | sed 's#  [^/]*/#  #'" | sort -k2 > "$ottenuto"
 
+differenze=0
 if diff -u "$atteso" "$ottenuto"; then
+  nota "gli 8 file del manifest coincidono"
+else
+  errore "le impronte dei file del manifest non coincidono"
+  differenze=1
+fi
+
+if [ -d "$CORREDO" ]; then
+  titolo "Verifica delle impronte: il corredo Progetto stanza"
+  for voce in "${MAPPA_CORREDO_FILE[@]}" "${MAPPA_DIR[@]}"; do
+    nome="${voce%%|*}"
+    sotto="${voce##*|}"
+    base="$(basename "$nome")"
+    [ -e "$CORREDO/$nome" ] || continue
+
+    loc="$(mktemp)"
+    rem="$(mktemp)"
+
+    if [ -f "$CORREDO/$nome" ]; then
+      ( cd "$(dirname "$CORREDO/$nome")" && sha256sum "$base" ) | sort -k2 > "$loc"
+      ssh -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE/$sotto\" && sha256sum \"$base\"" 2>/dev/null | sort -k2 > "$rem"
+    else
+      ( cd "$CORREDO/$nome" && find . -type f -exec sha256sum {} + ) | sort -k2 > "$loc"
+      ssh -o BatchMode=yes "$STUDIO_HOST" "cd \"\$HOME/$STUDIO_BASE/$sotto/$base\" && find . -type f -exec sha256sum {} +" 2>/dev/null | sort -k2 > "$rem"
+    fi
+
+    n_loc="$(wc -l < "$loc")"
+    n_rem="$(wc -l < "$rem")"
+    if diff -q "$loc" "$rem" >/dev/null 2>&1; then
+      nota "ok $base: $n_loc file, impronte identiche"
+    else
+      errore "$base: origine $n_loc file, destinazione $n_rem file, impronte diverse"
+      diff -u "$loc" "$rem" | head -20
+      differenze=1
+    fi
+    rm -f "$loc" "$rem"
+  done
+fi
+
+if [ "$differenze" -eq 0 ]; then
   titolo "Trasferimento verificato: tutte le impronte coincidono"
   nota "la rimozione dei file dall'origine resta manuale e deliberata"
+  nota "sblocca la verifica di PA-001: python tools/check-pending-actions.py"
 else
-  errore "le impronte non coincidono: non rimuovere nulla dall'origine"
+  errore "verifica non superata: non rimuovere nulla dall'origine"
   exit 4
 fi

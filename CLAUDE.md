@@ -12,7 +12,9 @@ L'impostazione che ne determina la forma è descritta in `README.md` e formalizz
 
 Leggere `.claude/memory/index.md` per primo, che è lo snapshot di sincronizzazione e dice cosa è fatto e dove si riprende. Poi `.claude/context/current-work.md` per il fronte attivo e i blocchi.
 
-Il punto d'ingresso della documentazione tecnica è `docs/README.md`. Il registro cronologico degli interventi, con l'esito verificato di ciascuno, è `docs/OPERATIONS-LOG.md`, e ogni intervento nuovo vi aggiunge un microstep numerato con la propria verifica.
+Poi lanciare `python tools/check-pending-actions.py`, che dice quali azioni differite sono diventate eseguibili. Serve perché alcune dipendono da condizioni esterne che cambiano fra una sessione e l'altra, per esempio un disco esterno collegato o no, e un promemoria che vive solo in una conversazione andrebbe perduto.
+
+Il punto d'ingresso della documentazione tecnica è `docs/README.md`. Il registro cronologico degli interventi, con l'esito verificato di ciascuno, è `docs/OPERATIONS-LOG.md`, e ogni intervento nuovo vi aggiunge un microstep numerato con la propria verifica. Le azioni differite stanno in `docs/PENDING-ACTIONS.md`, e una voce compiuta non si cancella: si marca come compiuta con la data.
 
 ## Satelliti tracciati
 
@@ -37,6 +39,7 @@ python tools/md-unwrap.py --check .
 python tools/lint-md-commands.py .
 python tools/test-tipografia.py
 python tools/sync-ambiente.py --check
+python tools/check-pending-actions.py
 ```
 
 L'ultimo comando fallisce se il blocco `docs/10-ambiente/` è stato modificato qui e non ancora propagato al progetto gemello `home-recording-training-mixing-setup`, di cui questo repository è la copia canonica.
