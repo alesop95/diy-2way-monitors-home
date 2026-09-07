@@ -90,17 +90,17 @@ Nota metodologica. Questa voce nasce da una inferenza sbagliata corretta: si era
 
 ## PA-005 - Completare le tre voci privilegiate della fase 0
 
-Data di apertura: 2026-09-07. Stato: **aperta, una voce su tre compiuta**.
+Data di apertura: 2026-09-07. Stato: **aperta, due voci su tre compiute, e la terza è irrilevante**.
 
 Che cosa va fatto. Tre controlli della fase 0 che l'accesso via chiave non permette di eseguire, perché `sudo` sulla macchina chiede la password e perché uno dei tre è un controllo in interfaccia grafica.
 
 Il primo, lo stato di salute dell'SSD, è **compiuto il 2026-09-07 con esito positivo**. Il giudizio è `PASSED`, l'usura al 9 per cento, la riserva di blocchi al 100, gli errori di integrità zero, e il valore coincide con il 91 per cento di vita residua misurato nel 2025. Il disco non va sostituito, quindi la scelta resta fra installazione e aggiornamento. Il pacchetto `smartmontools` era già installato, quindi l'avvertenza su una possibile installazione da rete non serviva. Il dettaglio, con la lettura dei due numeri che sembrano allarmanti e non lo sono, è in `docs/10-ambiente/fotografia-macchina-2026-09-07.md` e in MS-033.
 
-Il secondo è l'esito reale di `sudo apt update`. Le prove HTTP lo rendono prevedibile, perché archivio, mirror e security rispondono 200, ma prevedibile non è verificato.
+Il secondo è la verifica del Machine Identifier di Akabak, ed è **compiuto il 2026-09-07**. Il valore letto nella finestra del release code coincide con quello nella scheda riservata sotto `_notes/`, il release code inserito coincide anch'esso, e il programma dichiara la licenza valida. Il dettaglio, con i tre fatti collaterali che la finestra ha portato in dote, è in MS-052 e in [90-riferimenti/licenze-e-registrazioni.md](90-riferimenti/licenze-e-registrazioni.md).
 
-Il terzo è la verifica del Machine Identifier di Akabak, che si legge dal menu di aiuto del programma alla voce del release code, con la cattura di uno screenshot della finestra. Va fatto prima di azzerare la macchina, perché dopo non sarebbe più confrontabile, e il valore atteso è quello nella scheda riservata sotto `_notes/`.
+Il terzo è l'esito reale di `sudo apt update`. Le prove HTTP lo rendono prevedibile, perché archivio, mirror e security rispondono 200, ma prevedibile non è verificato. Va detto però che ADR-013 lo ha reso **irrilevante**: su un sistema che verrà azzerato l'esito di `apt update` non informa nessuna decisione, e la voce resta elencata solo per non dichiarare compiuto ciò che non lo è.
 
-Il criterio di completamento. I tre esiti registrati, e la fotografia della fase 0 aggiornata di conseguenza.
+Il criterio di completamento. I due esiti che contano sono registrati e la fotografia della fase 0 è aggiornata di conseguenza; la voce si chiude quando la macchina viene azzerata, perché a quel punto il terzo controllo non ha più oggetto.
 
 ## PA-006 - Riconfermare o rivedere la scelta fra installazione pulita e aggiornamento in posto
 
@@ -120,13 +120,17 @@ Il criterio di completamento. Una scelta dichiarata, e ADR-006 riconfermata oppu
 
 ## PA-007 - Cancellare la copia del corredo sul Desktop della postazione
 
-Data di apertura: 2026-09-07. Stato: **sbloccata il 2026-09-07**, in attesa dell'esecuzione da parte dell'utente.
+Data di apertura: 2026-09-07. Stato: **eseguibile adesso**, in attesa dell'esecuzione da parte dell'utente.
 
-La condizione era la copia di sicurezza di `/home` fuori dalla macchina, ed è soddisfatta: archivio `tar` di 4,4 GB in `E:\_backup-ubuntu-studio\`, verificato con 13.498 file nell'archivio contro 13.498 sulla macchina e i permessi conservati. Si veda MS-049.
+Detto senza giri di parole, perché la domanda è stata posta due volte: **la cartella si può cancellare, oggi, e l'unica cosa che si perde è quella che il censimento ha deciso di non tenere.** Non c'è nessuna condizione residua da attendere.
+
+La condizione che c'era è la copia di sicurezza di `/home` fuori dalla macchina, ed è soddisfatta: archivio `tar` di 4,4 GB, verificato con 13.498 file nell'archivio contro 13.498 sulla macchina e i permessi conservati. Si veda MS-049. L'archivio è stato spostato dall'utente da `E:\_backup-ubuntu-studio\` a `C:\Users\Utente\Desktop\_backup-ubuntu-studio\`, con dimensione identica al byte, quindi la verifica di MS-049 vale ancora per quel file; lo strumento di controllo cerca l'archivio per nome in entrambe le posizioni proprio perché un file si sposta e un controllo che inchioda una cartella dichiara assente ciò che è soltanto altrove.
 
 Va corretto in meglio il ragionamento con cui la voce era stata aperta. Avevo scritto che cancellare il Desktop di Windows avrebbe portato le voci utili a una copia sola: non era vero, perché sulla macchina ne esistono due indipendenti, cioè l'albero organizzato sotto `~/electroacoustics` e il materiale grezzo già presente sulla scrivania della macchina, scoperto in MS-048. La ragione valida che resta è diversa e più precisa: quelle due copie vivono sulla stessa partizione dello stesso disco, quindi rispetto al rischio che il backup deve coprire non sono due copie ma una. Il backup su un supporto diverso è ciò che le rende due, e adesso c'è.
 
 Che cosa va fatto. Cancellare `C:\Users\Utente\Desktop\Progetto stanza (software)`, 650 file per 2,3 GB.
+
+Il testo che segue, in questi due paragrafi, è quello con cui la voce era stata aperta ed è **superato**: si conserva perché documenta la condizione che allora mancava e che oggi è soddisfatta, non perché descriva lo stato attuale.
 
 Perché non ora, ed è la risposta a una domanda diretta dell'utente. Il ragionamento "se abbiamo tutto quello che serve possiamo cancellare anche il Desktop" è corretto sul contenuto e sbagliato sul momento. Oggi le voci utili del corredo esistono in due copie, una sul Desktop e una sulla macchina. Cancellare il Desktop le porta a **una copia sola**, e quella copia vive su una macchina che sta per subire una reinstallazione con riformattazione di una partizione. Ridurre a una copia proprio prima di una operazione che tocca le partizioni è il momento peggiore possibile.
 
@@ -136,7 +140,7 @@ Che cosa si perde davvero, distinto con precisione. Delle sei voci trasferite no
 
 Il criterio di completamento. La cartella non esiste più sul Desktop, e sulla macchina il corredo è presente con le impronte verificate più una copia di sicurezza di `/home` fuori dalla macchina.
 
-Il comando, da eseguire solo dopo la fase 1.3.
+Il comando. La condizione della fase 1.3 è soddisfatta, quindi si può lanciare.
 
 ```powershell
 bash tools/transfer-to-studio.sh --impronte

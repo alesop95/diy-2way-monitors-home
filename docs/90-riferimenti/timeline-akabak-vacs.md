@@ -32,6 +32,8 @@ Le date e gli orari sono quelli della corrispondenza. I nomi delle versioni e de
 
 **3 settembre 2025, 12:58.** Si comunica l'esito: il codice ha funzionato per AKABAK, eseguito su Ubuntu Studio con Wine. VACS è stato avviato e non ha richiesto un secondo codice.
 
+**7 settembre 2026.** Un anno dopo, e questa volta non è corrispondenza ma verifica diretta, in due tempi. Per via SSH si ispeziona il prefix e si accerta che il prefix in uso è a 32 bit e che lo sono anche i due eseguibili installati, il che chiude la lacuna del 14 agosto 2025 e ne apre una molto più consistente sull'architettura dichiarata dal documento sorgente: è ADR-016. Davanti alla macchina si aprono poi le due finestre di AKABAK che portano l'informazione di licenza, e le immagini fornite dall'utente confermano il Machine Identifier identico a quello del 13 agosto 2025, il release code inserito identico a quello ricevuto il 15 agosto, e la dichiarazione `Release Code valid`. La licenza è quindi viva e stabile a un anno di distanza, ed è la conferma sperimentale che la reinstallazione pulita non la mette a rischio. Le stesse finestre dichiarano l'edizione **Standard**, non professionale malgrado il nome dell'installer, il profilo `NT 10.0 (Build 19043)` e uno spazio di memoria di 2047 MByte che è la firma di un processo a 32 bit: il dettaglio è in [licenze-e-registrazioni.md](licenze-e-registrazioni.md).
+
 ## I fatti che ne discendono, e cosa cambiano
 
 Sette fatti, con la conseguenza operativa di ciascuno.
@@ -46,7 +48,7 @@ Sette fatti, con la conseguenza operativa di ciascuno.
 
 **Le versioni corrette sono AKABAK 3.2.4 b126 e VACS 2.1.3 b33.** Coincidono con i nomi degli installer conservati, cioè `AKABAK_Pro_v324b126.exe` e `VACS_32_v213b33.exe` con la sua variante a 64 bit. È anche la conferma esterna che chiude l'incoerenza 2 del documento sorgente, dove Akabak era descritto in un punto come software a 16 bit: un programma alla versione 3.2.4 distribuito nel 2025 non lo è.
 
-**VACS inizialmente non partiva, e l'ipotesi dei 32 bit era plausibile ma non è quella che ha risolto.** La corrispondenza registra il problema il 13 agosto e la sua soluzione il 14, senza dire quale intervento lo abbia risolto. Questo va dichiarato come lacuna e non riempito per ipotesi: non si sa se la risoluzione sia venuta dall'installazione della variante a 32 bit, da una dipendenza aggiunta con winetricks, o dalla ricreazione del prefix. È una informazione che si recupera soltanto ispezionando la macchina, e la sezione finale di questa pagina indica come.
+**VACS inizialmente non partiva, e l'ipotesi dei 32 bit era quella giusta.** La corrispondenza registra il problema il 13 agosto e la sua soluzione il 14, senza dire quale intervento lo abbia risolto, e questa pagina lo aveva dichiarato come lacuna da non riempire per ipotesi. L'ispezione della macchina del 2026-09-07 l'ha chiusa: nel prefix è installato `VACS_32.exe`, il prefix stesso è dichiarato `#arch=win32`, e non esiste alcun `winetricks.log` né alcuna dipendenza aggiunta. La risoluzione è quindi l'installazione della variante a 32 bit, cioè esattamente ciò che l'utente aveva ipotizzato il 13 agosto nella domanda all'autore. Il seguito è più grande della lacuna chiusa, perché lo stesso accertamento ha mostrato che anche Akabak è a 32 bit, contro quanto il documento sorgente affermava: si veda ADR-016 e MS-050.
 
 **Il trasferimento dati fra AKABAK e VACS su Linux passa dagli appunti, non dalle pipeline COM.** È il fatto più importante dei sette, e ha una sezione propria.
 
@@ -87,14 +89,14 @@ Il primo è il PDF della corrispondenza, che sta fra i materiali della cartella 
 
 Il secondo è una scheda sotto `_notes/`, anch'essa ignorata, che riporta i due valori in forma direttamente utilizzabile insieme alla procedura di inserimento, così che al momento della reinstallazione non si debba rileggere un PDF di posta elettronica.
 
-## Che cosa resta da verificare sulla macchina
+## Che cosa è stato verificato sulla macchina, e con quale esito
 
-Tre cose non sono deducibili dalla corrispondenza e vanno lette sulla macchina prima di azzerarla, perché dopo non sarebbero più recuperabili. Sono parte della fotografia dello stato attuale che precede l'installazione pulita.
+Questa sezione elencava tre cose non deducibili dalla corrispondenza, da leggere sulla macchina prima di azzerarla perché dopo non sarebbero più recuperabili. **Sono tutte e tre verificate il 2026-09-07**, e l'elenco resta come registro degli esiti invece che come promemoria.
 
-In quale prefix Wine sono effettivamente installati AKABAK e VACS, e se condividono lo stesso prefix o ne hanno uno per ciascuno. La corrispondenza non lo dice e il documento sorgente descriveva sia l'uso del prefix di default sia la buona pratica del prefix separato.
+In quale prefix Wine sono installati AKABAK e VACS: nel prefix di default `~/.wine`, **condiviso** fra i due, cioè la strada che il documento sorgente chiamava fare come per Akabak e di cui riconosceva il rischio. La conseguenza operativa è in ADR-016, che accetta il prefix condiviso per questi due programmi perché si usano in sequenza e perché è la configurazione che funziona, mantenendo la separazione per tutti gli altri.
 
-Quale variante di VACS è installata, a 32 o a 64 bit, e con quali dipendenze nel prefix. È la risposta alla lacuna sul come il fallimento iniziale sia stato risolto.
+Quale variante di VACS è installata e con quali dipendenze: la variante a **32 bit**, `VACS_32.exe`, in un prefix `win32`, e **senza alcuna dipendenza aggiunta**, dato che nel prefix non esiste `winetricks.log`, non c'è .NET e non ci sono i font Microsoft di base. È la risposta alla lacuna sul come il fallimento iniziale sia stato risolto, ed è anche ciò che smentisce la lista di dipendenze del documento sorgente.
 
-Se il Machine Identifier attuale sia ancora quello a cui il Release Code è legato. È un controllo di dieci secondi che vale la pena fare prima di reinstallare, perché se per qualche motivo fosse cambiato, per esempio per una sostituzione di componente avvenuta nel frattempo, lo si scoprirebbe adesso e non a reinstallazione compiuta.
+Se il Machine Identifier attuale sia ancora quello a cui il Release Code è legato: **lo è**, verificato in interfaccia e coincidente con il valore conservato nella scheda riservata. Il controllo è costato dieci secondi e ha comprato una certezza che dopo la formattazione non sarebbe più stata ottenibile, che è esattamente la ragione per cui era stato messo in elenco.
 
 [^1]: *COM*, Component Object Model - infrastruttura di Windows che permette a processi distinti di esporre e invocare oggetti fra loro, usata dalle applicazioni per scambiarsi dati senza passare da file o dagli appunti; Wine la implementa solo in parte.
