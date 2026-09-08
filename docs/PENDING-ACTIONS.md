@@ -8,6 +8,30 @@
 
 Ogni azione ha un identificativo nella forma `PA-NNN`, una data di apertura, la descrizione di che cosa va fatto, la condizione che ne blocca l'esecuzione, il criterio di completamento e lo stato. Una voce non si cancella quando è compiuta: si marca come compiuta con la data, così che il registro resti la storia di ciò che è stato deciso e non solo di ciò che resta da fare.
 
+## Sequenza operativa: che cosa deve fare l'utente, e in che ordine
+
+Questa sezione esiste perché il registro per voce risponde alla domanda sbagliata. Dice per ciascuna azione se è eseguibile, ma non dice in che ordine affrontarle né quali appartengono alla procedura di installazione invece che a questo registro, e chi si siede al lavoro ha bisogno esattamente di quell'ordine. Si aggiorna quando cambia, e ogni voce rimanda al posto dove sta il dettaglio.
+
+Le azioni sono numerate e nell'ordine in cui vanno eseguite. Dove una dipende dalla precedente lo dice; dove è indipendente lo dice, così che si possa saltare senza rompere nulla.
+
+**1. Commit e push dei due repository.** Prima di tutto il resto, perché il lavoro documentale in attesa di commit è l'unica cosa che una sessione perduta porterebbe via. Indipendente da tutto ciò che segue.
+
+**2. Cancellare la copia del corredo sul Desktop.** È PA-007, sbloccata. Si lancia prima la riverifica delle impronte e poi la cancellazione, nell'ordine, e non a distanza di ore l'una dall'altra. Indipendente dal resto: non è un prerequisito dell'installazione, è recupero di 2,3 GB e chiusura di una voce.
+
+**3. Leggere lo SMART dell'SSD esterno. Compiuto il 2026-09-08.** È PA-009, chiusa. Il supporto è sano, quindi delle due cause resta la rimozione senza espulsione: il disco non va sostituito e la regola è espellere il volume prima di staccarlo.
+
+**4. Preparare la chiavetta di installazione. Due terzi compiuti il 2026-09-08.** È la fase 2 della procedura. L'immagine è scaricata in `E:\_iso-ubuntu-studio\` ed è verificata due volte, per somma di controllo e per firma del file delle somme: è la **26.04.1**, cioè il point release, e non la 26.04 iniziale che la procedura nominava. Rufus 4.15 portabile è scaricato accanto a essa e verificato per firma Authenticode. Resta la sola scrittura, che richiede un supporto da almeno 16 GB e va fatta in modalità DD: la ragione, insieme all'avvertenza su che cosa rifiutare a scrittura finita, è nella sottofase 2.3.
+
+**5. Controllare il firmware.** È la fase 3. Quattro voci nel setup UEFI, e una va cambiata adesso perché dopo costa una sessione: il Wake-on-LAN, senza il quale la macchina che si sospende va risvegliata a mano.
+
+**6. Installare, conservando `/home`.** Sono le fasi 4 e 5, ed è il passo irreversibile. Il presidio contro l'unico rischio reale, l'errore umano nella selezione delle partizioni, è già in posizione: la copia di sicurezza di `/home` esiste su una macchina diversa ed è verificata.
+
+**7. Ricostruire l'ambiente.** Sono le fasi da 6 a 9, cioè catena audio, Wine, programmi e licenza, strumenti nativi. Un avviso che vale più della sequenza: le fasi 7 e 8 sono state corrette il 2026-09-07 per ADR-016, e chi eseguisse una versione precedente otterrebbe un ambiente in cui Akabak non parte, perché l'architettura `i386` va dichiarata e non evitata.
+
+**8. Igiene e chiusura.** Sono le fasi 10 e 11, cioè politica di aggiornamento, sospensione e accesso remoto, chiave SSH, indirizzo stabile, e la fotografia finale da confrontare con quella iniziale.
+
+Restano fuori da questa sequenza le voci a bassa priorità che non dipendono da essa e non la bloccano: PA-002 sulla licenza di Ramsete, PA-003 sulla propagazione al template, PA-004 sul disco `G:`. Si affrontano quando capita l'occasione, non in un ordine.
+
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
 
 Data di apertura: 2026-09-04. **Compiuta il 2026-09-07.** Stato: chiusa.
@@ -183,7 +207,15 @@ Nota su ciò che **non** va cancellato, perché è la parte contro-intuitiva. I 
 
 ## PA-009 - Leggere lo SMART dell'SSD esterno
 
-Data di apertura: 2026-09-07. Stato: **aperta**.
+Data di apertura: 2026-09-07. **Compiuta il 2026-09-08.** Stato: chiusa.
+
+L'esito, e risponde alla domanda che la voce poneva. Il **supporto è sano**: usura a zero, riserva disponibile al 100 per cento su una soglia di 10, zero errori di integrità dei dati, zero voci nel registro errori, giudizio complessivo 100 per cento dopo 2795 ore. Il disco non va sostituito e può continuare a ospitare materiale, con l'avvertenza generale che un disco rimovibile non è il posto dove tenere l'unica copia di qualcosa.
+
+Delle due cause possibili cade quindi la seconda, cioè il difetto del supporto, e resta la prima, cioè la rimozione senza espulsione sicura, coerente con i **122 spegnimenti non protetti su 742 cicli** di alimentazione. Su quel numero va applicato un correttivo prima di usarlo come prova, perché su un disco USB il contatore si incrementa ogni volta che il ponte non inoltra al controller la notifica di spegnimento, cosa che molti ponti non fanno mai: una parte dei 122 è fisiologica dell'involucro. Le cinque cartelle `FOUND` non hanno invece spiegazioni fisiologiche, e restano la prova che il volume è stato staccato con scritture in sospeso.
+
+La regola operativa che ne discende è una sola: espellere il volume prima di staccarlo, sempre. La misura completa, il confronto con il disco di sistema della postazione e l'ostacolo dei privilegi su Windows sono in [90-riferimenti/pulizia-ssd-esterno.md](90-riferimenti/pulizia-ssd-esterno.md) e in MS-058.
+
+Il testo che segue è quello originale della voce, conservato perché documenta i termini su cui la verifica è stata impostata.
 
 Che cosa va fatto. Leggere lo stato di salute del disco `J:` con CrystalDiskInfo da Windows, oppure con `smartctl` collegandolo alla macchina Ubuntu Studio.
 

@@ -2,19 +2,37 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-08 - Sequenza operativa avviata: PA-009 chiusa, immagine 26.04.1 verificata
+
+Commit di partenza: d2905ba.
+
+Avviata l'esecuzione della sequenza operativa passo per passo, su richiesta dell'utente di farli insieme. Passo 1 risultava già fatto, entrambi i repository committati e in pari con origin.
+
+Passo 3 chiuso, ed è PA-009. SMART dell'SSD esterno letto con CrystalDiskInfo elevato e l'opzione `/CopyExit`, che scrive un rapporto su file invece di richiedere uno screenshot. Il Samsung T7 è **sano**: usura zero, riserva al 100 per cento, zero errori di integrità, zero voci nel registro errori. Delle due cause possibili cade il difetto del supporto e resta la rimozione senza espulsione, con 122 spegnimenti non protetti su 742 cicli, su cui va applicato il correttivo che su USB quel contatore si incrementa anche quando l'espulsione è regolare. Le cinque cartelle `FOUND` restano la prova che conta. Il disco non va sostituito. È MS-058.
+
+Registrato l'ostacolo, valido oltre il caso: la lettura SMART richiede privilegi anche su Windows, dove `Get-StorageReliabilityCounter` risponde `PermissionDenied` senza sessione elevata, per la stessa ragione per cui su Linux serve `sudo` su `/dev/nvme0`.
+
+Passo 4 per due terzi. La fonte ufficiale ha corretto la procedura: nella cartella del rilascio convivono la 26.04 e la **26.04.1**, e la seconda è quella da prendere. La procedura nominava la prima in due punti, uno dei quali dentro il comando `dd`. Immagine scaricata, 7.127.195.648 byte, e verificata due volte: firma del file delle somme buona con la chiave `Ubuntu CD Image Automatic Signing Key (2012)`, impronta dell'immagine `OK`. L'ordine delle due verifiche non è indifferente e la fase 2.2 ora ne chiede due invece di una, perché una somma confrontata con un file preso dallo stesso posto dell'immagine non protegge da chi controlli quel posto. Sono MS-059 e MS-060.
+
+Rufus 4.15 portabile scaricato e verificato per firma Authenticode, `Status: Valid`, firmatario `Akeo Consulting`: per un eseguibile Windows è la verifica più forte disponibile, e le note del rilascio non pubblicano somme di controllo. Riscritta la sottofase 2.3 con il vincolo dei 16 GB motivato numericamente, la ragione della modalità DD contro il limite dei 4 GB di FAT32, e l'avvertenza sul rifiutare la formattazione dello spazio residuo che Windows propone a scrittura finita. È MS-061.
+
+Allineate due dichiarazioni di stato superate nella procedura, che dichiaravano non eseguite fasi compiute e chiedevano una riconferma già data.
+
+Resta da fare il passo 2, cioè la cancellazione della copia sul Desktop: le impronte sono state riverificate, 8 file del manifest e 273 del corredo tutti identici sulla macchina, ma la cartella è ancora presente.
+
 ## 2026-09-07, sesta parte - Licenza confermata in interfaccia, fase 0 chiusa, PA-007 detta chiara
 
 Commit di partenza: 0df04bb.
 
-Machine Identifier verificato sulle immagini fornite dall'utente: coincide con il valore conservato sotto `_notes/`, coincide anche il release code, e il programma dichiara `Release Code valid`. Chiude la seconda delle tre voci di PA-005 e con essa la fase 0 nella sostanza, dato che la terza voce, l'esito di `sudo apt update`, e' resa irrilevante da ADR-013. E' la prova sperimentale che una licenza machine-based sotto Wine resta valida a un anno di distanza, quindi che la reinstallazione pulita non la mette a rischio. E' MS-052.
+Machine Identifier verificato sulle immagini fornite dall'utente: coincide con il valore conservato sotto `_notes/`, coincide anche il release code, e il programma dichiara `Release Code valid`. Chiude la seconda delle tre voci di PA-005 e con essa la fase 0 nella sostanza, dato che la terza voce, l'esito di `sudo apt update`, è resa irrilevante da ADR-013. È la prova sperimentale che una licenza machine-based sotto Wine resta valida a un anno di distanza, quindi che la reinstallazione pulita non la mette a rischio. È MS-052.
 
-Tre fatti collaterali dalle stesse finestre. L'edizione e' **Standard** e non professionale, malgrado l'installer si chiami `AKABAK_Pro_...`: l'edizione la determina il release code, coerentemente con la student license concessa. Il prefix dichiara `NT 10.0 (Build 19043)`, cioe' Windows 10, che trasforma in fatto misurato una prescrizione data per uniformita'. E la memoria riportata, 2047 MByte su una macchina con 16 GB, e' una conferma indipendente di ADR-016, perche' e' lo spazio di indirizzamento di un processo a 32 bit.
+Tre fatti collaterali dalle stesse finestre. L'edizione è **Standard** e non professionale, malgrado l'installer si chiami `AKABAK_Pro_...`: l'edizione la determina il release code, coerentemente con la student license concessa. Il prefix dichiara `NT 10.0 (Build 19043)`, cioè Windows 10, che trasforma in fatto misurato una prescrizione data per uniformità. E la memoria riportata, 2047 MByte su una macchina con 16 GB, è una conferma indipendente di ADR-016, perché è lo spazio di indirizzamento di un processo a 32 bit.
 
-Quella conferma era pero' disponibile prima dell'indagine che ha stabilito il fatto, nello stesso lotto di screenshot letti per ricostruire la corrispondenza. La lezione, in MS-053, non e' leggere tutto: e' che quando una premessa regge una decisione, il materiale gia' in mano va interrogato **su quella premessa**, non solo sul tema per cui era stato raccolto.
+Quella conferma era però disponibile prima dell'indagine che ha stabilito il fatto, nello stesso lotto di screenshot letti per ricostruire la corrispondenza. La lezione, in MS-053, non è leggere tutto: è che quando una premessa regge una decisione, il materiale già in mano va interrogato **su quella premessa**, non solo sul tema per cui era stato raccolto.
 
-Corretto un difetto di verifica introdotto dallo spostamento dell'archivio di backup sul Desktop: lo strumento delle azioni differite cercava un percorso fisso e dichiarava mancante un backup esistente, riportando PA-007 a bloccata per un motivo falso. Ora l'invariante e' il nome del file fra piu' posizioni, con controllo della dimensione. E' MS-054, e la lezione e' che un errore restrittivo in uno strumento di verifica e' peggiore di uno permissivo, perche' si crede.
+Corretto un difetto di verifica introdotto dallo spostamento dell'archivio di backup sul Desktop: lo strumento delle azioni differite cercava un percorso fisso e dichiarava mancante un backup esistente, riportando PA-007 a bloccata per un motivo falso. Ora l'invariante è il nome del file fra più posizioni, con controllo della dimensione. È MS-054, e la lezione è che un errore restrittivo in uno strumento di verifica è peggiore di uno permissivo, perché si crede.
 
-Detto chiaro cio' che era rimasto implicito e che l'utente aveva chiesto due volte: **la copia del corredo sul Desktop si puo' cancellare adesso.** PA-007 riscritta perche' lo dica in apertura.
+Detto chiaro ciò che era rimasto implicito e che l'utente aveva chiesto due volte: **la copia del corredo sul Desktop si può cancellare adesso.** PA-007 riscritta perché lo dica in apertura.
 
 Ripulite dalle informazioni superate quattro sezioni che dichiaravano pendente lavoro compiuto: la coda del registro dei microstep, che elencava come bloccati passi eseguiti e ripeteva la prescrizione sbagliata sui 64 bit, la sezione finale dello storico Akabak e VACS, le voci residue della fase 0 nella fotografia della macchina, e le sezioni di blocco e prossimo passo del lavoro corrente.
 
@@ -24,15 +42,15 @@ Commit di partenza: ba69e0c.
 
 Esito in sintesi, tre cose di peso molto diverso.
 
-PA-008 compiuta: l'utente ha cancellato le sei voci di servizio su `J:`, recuperando 1,2 GiB. I due frammenti maggiori erano di 247 e 206 MB, cioe' meta' del totale: il filesystem aveva perso qualcosa di sostanzioso, che e' un elemento in piu' a favore di PA-009.
+PA-008 compiuta: l'utente ha cancellato le sei voci di servizio su `J:`, recuperando 1,2 GiB. I due frammenti maggiori erano di 247 e 206 MB, cioè metà del totale: il filesystem aveva perso qualcosa di sostanzioso, che è un elemento in più a favore di PA-009.
 
-Backup di `/home` eseguito e verificato, quindi fase 1.3 chiusa. Alla domanda se potesse stare sulla stessa macchina la risposta e' no: la macchina ha un solo disco con quattro partizioni, e una copia sullo stesso supporto della cosa che protegge non e' un backup. Fatto su Windows con `tar` in streaming su `ssh`, 4,4 GB, 13.498 file nell'archivio contro 13.498 sulla macchina, permessi e proprietario numerico conservati. Registrato come ADR-015. Questo sblocca PA-007.
+Backup di `/home` eseguito e verificato, quindi fase 1.3 chiusa. Alla domanda se potesse stare sulla stessa macchina la risposta è no: la macchina ha un solo disco con quattro partizioni, e una copia sullo stesso supporto della cosa che protegge non è un backup. Fatto su Windows con `tar` in streaming su `ssh`, 4,4 GB, 13.498 file nell'archivio contro 13.498 sulla macchina, permessi e proprietario numerico conservati. Registrato come ADR-015. Questo sblocca PA-007.
 
-E la scoperta che costa piu' di tutte: **Akabak e' a 32 bit**. Il prefix funzionante dichiara `#arch=win32`, `AKABAK.exe` e' PE32 i386, VACS installato e' la build a 32 bit, e nel prefix non c'e' ne' winetricks, ne' .NET, ne' corefonts. Tre affermazioni del documento sorgente sono false, e tre decisioni consecutive le avevano propagate senza tornare alla fonte: la prescrizione operativa era sbagliata su sei documenti, e se eseguita avrebbe prodotto un ambiente in cui il programma centrale del progetto non parte. Corretto tutto, registrato come ADR-016. Il controllo che l'avrebbe evitato costava un comando, `file` sull'eseguibile.
+E la scoperta che costa più di tutte: **Akabak è a 32 bit**. Il prefix funzionante dichiara `#arch=win32`, `AKABAK.exe` è PE32 i386, VACS installato è la build a 32 bit, e nel prefix non c'è né winetricks, né .NET, né corefonts. Tre affermazioni del documento sorgente sono false, e tre decisioni consecutive le avevano propagate senza tornare alla fonte: la prescrizione operativa era sbagliata su sei documenti, e se eseguita avrebbe prodotto un ambiente in cui il programma centrale del progetto non parte. Corretto tutto, registrato come ADR-016. Il controllo che l'avrebbe evitato costava un comando, `file` sull'eseguibile.
 
-Chiuse per conseguenza entrambe le lacune dello storico di Akabak e VACS, e confermata come corretta l'ipotesi che l'utente stesso aveva formulato nella corrispondenza del 13 agosto 2025, cioe' che il fallimento di VACS dipendesse dalla variante a 64 bit.
+Chiuse per conseguenza entrambe le lacune dello storico di Akabak e VACS, e confermata come corretta l'ipotesi che l'utente stesso aveva formulato nella corrispondenza del 13 agosto 2025, cioè che il fallimento di VACS dipendesse dalla variante a 64 bit.
 
-Constatato anche che il corredo era gia' sulla macchina, sulla scrivania, il che corregge in meglio il ragionamento di MS-044 su PA-007, e che il release code di Akabak esiste in chiaro in due posti sulla macchina, quindi anche dentro l'archivio di backup.
+Constatato anche che il corredo era già sulla macchina, sulla scrivania, il che corregge in meglio il ragionamento di MS-044 su PA-007, e che il release code di Akabak esiste in chiaro in due posti sulla macchina, quindi anche dentro l'archivio di backup.
 
 ## 2026-09-07, quarta parte - SSD esterno misurato, archivi confrontati, Desktop rinviato
 

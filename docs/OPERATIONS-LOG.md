@@ -888,6 +888,122 @@ Un terzo difetto minore, trovato nello stesso passaggio e con lo stesso metodo: 
 
 Esito: fatto, con i tre difetti riparati e verificati.
 
+### MS-057 - Una sequenza operativa, perché il registro per voce risponde alla domanda sbagliata
+
+Perimetro: `docs/PENDING-ACTIONS.md`, nuova sezione in testa al registro.
+
+Alla domanda su quali microstep tocchino all'utente non esisteva un documento che rispondesse. Il registro delle azioni differite dice per ciascuna voce se è eseguibile e da che cosa dipende, la procedura di installazione dice quali fasi restano, ma nessuno dei due dice in che ordine affrontare le due cose insieme, nè quali voci appartengono al registro e quali alla procedura. La risposta esisteva soltanto come ricostruzione fatta a mano leggendo tre documenti, che è esattamente ciò che questo progetto tiene fuori dalla conversazione.
+
+Aggiunta quindi una sequenza numerata di otto passi in testa al registro, con tre proprietà dichiarate per ciascuno: che cosa e', dove sta il dettaglio, e se dipende dal precedente o è indipendente e quindi saltabile. Le tre voci a bassa priorità che non appartengono alla sequenza sono elencate a parte come tali, invece di essere lasciate a galleggiare in un elenco dove sembrerebbero un passo mancato.
+
+Il criterio con cui la sequenza è ordinata vale registrarlo perché non è l'ordine dei numeri delle voci. Prima ciò che una sessione perduta porterebbe via, cioè il commit. Poi le azioni indipendenti e reversibili nei loro effetti utili, cioè recuperare spazio e misurare un disco. Poi la preparazione, che è l'unico posto dove un errore silenzioso, una immagine corrotta, si paga settimane dopo. Poi il passo irreversibile. Poi la ricostruzione e l'igiene.
+
+Esito: fatto.
+
+### MS-058 - SMART dell'SSD esterno: il supporto è sano, la causa è la rimozione
+
+Perimetro: chiusura di PA-009, nuova sezione in `docs/90-riferimenti/pulizia-ssd-esterno.md`, correzione della coda superata della stessa pagina.
+
+L'ostacolo, prima dell'esito, perché è la parte trasferibile. La lettura SMART richiede privilegi anche su Windows, cosa che si tende ad associare al solo Linux. La via nativa, `Get-StorageReliabilityCounter` da PowerShell, risponde `PermissionDenied` sulla classe CIM di storage se la sessione non è elevata, ed è la stessa ragione per cui su Linux serve `sudo` su `/dev/nvme0`: leggere quella tabella significa mandare un comando diretto al dispositivo e non leggere un file. La via che non richiede una sessione interattiva elevata è avviare CrystalDiskInfo con elevazione e l'opzione `/CopyExit`, che scrive il rapporto completo di tutti i dischi in `DiskInfo.txt` nella cartella del programma e chiude subito: nessuna finestra da leggere, nessuno screenshot da catturare, un file di testo che si analizza come qualsiasi altro. È l'alternativa migliore alla regola sugli screenshot ogni volta che lo strumento grafico sa scrivere un rapporto.
+
+L'esito sul Samsung Portable SSD T7 da 500 GB, firmware `FXG42P2Q`, esposto come NVMe 1.3 attraverso un ponte UASP: usura **zero** per cento, riserva disponibile 100 su soglia 10, errori di integrità supporto e dati **zero**, voci nel registro errori **zero**, temperatura 32 gradi, giudizio 100 per cento, 2795 ore di accensione, 742 cicli di alimentazione, 7526 GB letti e 1863 scritti.
+
+Il supporto è quindi sano e delle due cause che PA-009 metteva in alternativa cade la seconda: non c'è difetto del medium né del controllore, e la sostituzione del disco non serve. Resta la prima, la rimozione senza espulsione sicura, coerente con i **122 spegnimenti non protetti**, cioè uno ogni sei cicli.
+
+Su quel numero va però applicato un correttivo, e va scritto perché senza di esso si conclude più di quanto il dato dica. Su un disco USB il contatore degli spegnimenti non protetti si incrementa ogni volta che l'alimentazione cade senza che il ponte inoltri al controller NVMe la notifica di spegnimento, e molti ponti non la inoltrano mai, nemmeno quando il sistema espelle il volume correttamente. Una parte dei 122 è quindi fisiologica dell'involucro esterno e non prova di uno strappo. Ciò che non ha spiegazioni fisiologiche sono le cinque cartelle `FOUND`, perché `chkdsk` non ripara un filesystem coerente: quelle restano la prova che il volume è stato staccato con scritture in sospeso.
+
+Per dare una scala al numero, dallo stesso rapporto, il disco di sistema di questa postazione, un Crucial P3 da 1 TB con firmware `P9CR413`: 23 spegnimenti non protetti su 253 cicli, usura al 13 per cento, salute all'87 per cento, zero errori di integrità dopo 11881 ore. Su un disco interno, dove il contatore non passa da un ponte USB, il rapporto fra spegnimenti non protetti e cicli è circa la metà.
+
+L'ipotesi aperta in MS-042, cioè due dischi con sintomi diversi che puntavano verso una gestione poco pulita dell'alimentazione e delle rimozioni, si risolve così: era corretta come direzione e va precisata nel merito. Non è una gestione dell'alimentazione difettosa su due supporti, è una abitudine di rimozione su uno e un contatore che su USB conta anche gli spegnimenti regolari. La regola operativa che ne discende è una sola, e non è la sostituzione del disco: espellere il volume prima di staccarlo, sempre.
+
+Corretta nella stessa pagina una coda superata. Diceva che la decisione sulla copia del corredo sul Desktop andava presa dopo la reinstallazione compiuta e verificata; la condizione reale che scioglie il nodo non è quella ma una copia di sicurezza su un supporto diverso, che esiste dal 2026-09-07. Si veda PA-007 e ADR-015.
+
+Esito: fatto, PA-009 chiusa.
+
+### MS-059 - Fase 2: la fonte dice 26.04.1, non 26.04, e la firma si verifica davvero
+
+Perimetro: riscrittura delle sottofasi 2.1 e 2.2 e correzione del nome nel comando della 2.3 in `docs/10-ambiente/installazione-pulita-26-04.md`, propagata al progetto gemello.
+
+La procedura prescriveva di non dedurre il nome dell'immagine dal calendario dei rilasci ma di prenderlo dalla fonte, e la prescrizione si è ripagata al primo uso. Nella cartella del rilascio ufficiale convivono **due** immagini, `ubuntustudio-26.04-desktop-amd64.iso` da 6,7 GB e `ubuntustudio-26.04.1-desktop-amd64.iso` da 6,6 GB, cioè il primo point release. Da prendere è la seconda, perché incorpora le correzioni accumulate dopo il rilascio, fra cui quelle dell'installatore e del kernel, ed è anche la versione che `do-release-upgrade` offriva sulla macchina secondo la fase 0. La procedura nominava la prima in due punti, cioè nel testo della 2.1 e nel comando `dd` della 2.3, ed è stata corretta in entrambi: il secondo era il più insidioso, perché un nome sbagliato dentro un comando da copiare non produce un errore di comprensione ma un comando che non trova il file.
+
+Scaricati il file delle somme e la sua firma, 208 e 833 byte, e registrata nella procedura la somma attesa del point release, `2b25d06203c8a2f60da23e20e3afd1fa400f8ff8104fd074c1b7e49fc3768084`, perché un valore verificato vale più di una istruzione da seguire.
+
+La sottofase 2.2 chiedeva una sola verifica, la somma di controllo, e ne chiede ora **due**, perché rispondono a domande diverse e la prima da sola ha un limite che va enunciato: una somma confrontata con un file scaricato dallo stesso posto dell'immagine non protegge da chi controlli quel posto. La seconda verifica è la firma del file delle somme, ed è stata eseguita per davvero invece di essere prescritta.
+
+L'esecuzione ha prodotto tre esiti utili in sequenza. Al primo tentativo `gpg` risponde `Can't check signature: No public key`, che non è un fallimento della verifica ma la sua impossibilità, e nello stesso messaggio dichiara l'identificativo della chiave usata per firmare: `843938DF228D22F7B3742BC0D94AA3F0EFE21092`. Vale notare il metodo, perché è quello che questo progetto impone e che qui si è potuto seguire alla lettera: l'impronta della chiave da importare è stata letta dalla firma stessa e non ricordata, quindi il comando di importazione scritto nella procedura non contiene un valore assunto. Importata la chiave dal server di chiavi, la verifica dà `Good signature from "Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>"`.
+
+Il terzo esito è l'avviso che segue la firma buona, ed è la ragione per cui l'output è stato riportato per intero nella procedura: `WARNING: This key is not certified with a trusted signature`. Si prende per un fallimento e non lo è. Le due domande sono separate, l'autenticità della firma e la fiducia nella chiave, e `gpg` risponde alla prima con un sì e alla seconda con un non lo so, perché nell'anello di chiavi locale quella chiave non è firmata da nessuno di cui si sia dichiarata la fiducia. L'avviso sparisce solo dichiarando manualmente quella fiducia, che è una scelta di chi usa lo strumento e non un requisito della verifica.
+
+Aggiunta infine la precisazione su che cosa la verifica della firma dimostra e che cosa no, perché è facile attribuirle un valore che non ha. Dimostra che il file delle somme è stato firmato da quella chiave; non dimostra che quella chiave sia di Canonical, se la si è appena presa da un server di chiavi senza confronto indipendente. La fiducia si ancora al fatto che l'impronta è pubblicata dalla distribuzione e che la stessa chiave firma i rilasci da anni. Resta una difesa concreta, perché costringe un attacco a compromettere anche la chiave e non soltanto il sito.
+
+Registrato anche un dettaglio che altrimenti fa sospettare un file diverso: il file delle somme di Ubuntu scrive il nome nella forma `hash *nome`, con l'asterisco della modalità binaria, e la stessa forma la produce `sha256sum` nella shell POSIX che accompagna git su Windows, mentre su Linux la forma abituale è con due spazi. È la stessa trappola di MS-039, dove un confronto fra impronte identiche risultava negativo per il solo separatore.
+
+L'immagine è in scaricamento in `E:\_iso-ubuntu-studio\`, fuori dal repository, con `curl -C -` per poterlo riprendere invece di ricominciare. La verifica della sua integrità è un microstep a parte, perché è un esito che non esiste finché il file non è completo.
+
+Esito: fatto per la fase 2.1 e 2.2 e per la correzione della 2.3; la scrittura della chiavetta resta da fare.
+
+### MS-060 - L'immagine 26.04.1 scaricata e verificata integra
+
+Perimetro: `E:\_iso-ubuntu-studio\` fuori dal repository, chiusura della sottofase 2.2.
+
+Scaricata `ubuntustudio-26.04.1-desktop-amd64.iso`, 7.127.195.648 byte, con `curl -L -C - --retry 5` così che una interruzione di rete si riprendesse invece di richiedere di ricominciare. La destinazione è fuori dalla cartella del progetto, per la stessa ragione dell'archivio di backup: un file da 6,6 GB non ha motivo di stare dentro un repository, nemmeno in una cartella ignorata.
+
+Verifica dell'integrità eseguita con `sha256sum -c SHA256SUMS`, contro il file delle somme la cui firma era già stata verificata in MS-059. Esito: `ubuntustudio-26.04.1-desktop-amd64.iso: OK`. L'ordine delle due verifiche non è indifferente e vale enunciarlo: si verifica prima la firma del file delle somme e poi la somma dell'immagine, perché confrontare un'immagine con un elenco di somme non autenticato dimostra soltanto che il download non si è corrotto, non che l'immagine sia quella pubblicata.
+
+Nello stesso output compare una riga `FAILED open or read` relativa a `ubuntustudio-26.04-desktop-amd64.iso`, cioè l'immagine iniziale del rilascio che non è stata scaricata. Non è un errore ed era previsto nella procedura: il file delle somme elenca tutte le immagini del rilascio, e `sha256sum -c` segnala come mancante ogni voce dell'elenco che non trova su disco. Va detto perché in un output di due righe una delle due dice `FAILED`, e la lettura affrettata conclude il contrario di quello che è successo.
+
+Stato della fase 2 dopo questo passo: 2.1 e 2.2 chiuse, resta la 2.3, cioè la scrittura della chiavetta. Sulla postazione Windows non è presente alcuno strumento di scrittura, dato che Rufus non risulta installato, e nessun supporto rimovibile diverso dall'SSD esterno risulta collegato: entrambe le condizioni vanno soddisfatte prima di procedere, e la scelta dello strumento è registrata separatamente perché ha due strade con costi diversi.
+
+Esito: fatto.
+
+### MS-061 - Rufus verificato per firma, e la fase 2.3 riscritta con la ragione di ogni scelta
+
+Perimetro: `E:\_iso-ubuntu-studio\rufus-4.15p.exe`, riscrittura della sottofase 2.3 e allineamento dell'intestazione e della premessa della procedura.
+
+Scelta la strada della scrittura da Windows con Rufus, fra le due possibili, e va registrato che l'altra esisteva: scrivere la chiavetta dalla macchina Ubuntu con `dd`, previo trasferimento dell'immagine via rete, non richiedeva alcuno strumento nuovo e produceva la chiavetta già dove serve. La scelta è dell'utente e la ragione è la disponibilità del supporto sulla postazione.
+
+Su questa postazione Rufus non risultava installato e nessun supporto rimovibile diverso dall'SSD esterno risultava collegato. Individuata la versione corrente dalla pagina dei rilasci del progetto invece di assumerla, cioè la 4.15, e scaricata la variante portabile `rufus-4.15p.exe`, che non scrive nel registro e non lascia nulla sul sistema.
+
+La verifica di questo file segue una strada diversa da quella dell'immagine, e la differenza è il contenuto tecnico di questo microstep. Per l'immagine la verifica corretta è la somma di controllo la cui firma è stata verificata a parte, perché l'immagine è un dato e la fiducia si ancora alla chiave della distribuzione. Per un eseguibile Windows la verifica più forte disponibile è invece la firma Authenticode, perché il sistema operativo la controlla contro le proprie radici di certificazione fidate: non contro un valore pubblicato sullo stesso sito da cui si è scaricato il file, che è il limite già enunciato in MS-059. Le note del rilascio, del resto, non pubblicano alcuna somma di controllo, quindi la firma non è soltanto la via migliore ma l'unica.
+
+```powershell
+Get-AuthenticodeSignature "E:\_iso-ubuntu-studio\rufus-4.15p.exe" | Format-List Status, SignerCertificate
+```
+
+Esito: `Status` vale `Valid`, il firmatario è `CN=Akeo Consulting, O=Akeo Consulting, S=Donegal, C=IE`, cioè l'autore di Rufus, con emittente `Sectigo Public Code Signing CA EV R36` e validità fino ad agosto 2027. Registrata anche l'impronta SHA-256 del file scaricato, `84c8a437f8af89257524478489e5c85f1edf25f761d299e2bcde46ac0afbe106`, non come verifica ma come riferimento, così che una copia futura sia confrontabile con questa.
+
+Riscritta la sottofase 2.3, che prima diceva soltanto di usare Rufus in modalità di scrittura diretta. Aggiunte quattro cose che il testo precedente non conteneva e che decidono la riuscita.
+
+Il vincolo di capacità, con la sua ragione numerica invece di un margine di prudenza: 16 GB, perché l'immagine pesa 6,64 GiB e una chiavetta da 8 GB offre circa 7,45 GiB utili, cioè un margine che si esaurisce appena lo strumento debba costruire un filesystem con spazio di servizio.
+
+La modalità di scrittura, che era nominata ma non motivata, e la motivazione è la parte che serve. In modalità immagine ISO lo strumento costruisce sulla chiavetta un filesystem FAT32, scelto per compatibilità di avvio, che non può contenere un singolo file più grande di 4 GB; dentro una immagine live di questa dimensione il filesystem compresso del sistema supera quella soglia. In modalità DD l'immagine è copiata byte per byte, senza costruire nulla, quindi il limite non si presenta e la chiavetta risulta identica al file di cui si è verificata l'impronta. Ne segue anche una proprietà utile: una chiavetta scritta in DD è verificabile a posteriori, una scritta in modalità ISO no.
+
+Lo schema GPT con destinazione UEFI senza compatibilità CSM, coerente con la fase 3 e con il fatto che l'installazione esistente è UEFI e la sua partizione EFI va riusata.
+
+E l'avvertenza sul dopo, che è il punto esatto in cui si rovina una chiavetta appena fatta: terminata la scrittura in DD, Windows vede lo spazio non allocato oltre le partizioni dell'immagine e propone di formattarlo o di inizializzare il disco. Va rifiutato, perché quella operazione riscrive la tabella delle partizioni e rende il supporto non avviabile. L'insidia sta nel fatto che l'avviso ha l'aspetto di una richiesta di manutenzione ordinaria.
+
+Allineate infine due dichiarazioni di stato della procedura che erano superate e che, lasciate così, avrebbero fatto ripetere lavoro compiuto o rimettere in discussione una decisione presa. L'intestazione dichiarava non eseguite tutte le fasi dalla 1 in avanti, mentre la 1 è compiuta e della 2 restano solo le chiavette; ora dichiara anche, in apertura, che questa procedura è già stata corretta quattro volte dall'esito reale delle sue prime fasi, con l'elenco delle quattro. La premessa chiedeva all'utente di riconfermare la scelta fra installazione e aggiornamento, cosa avvenuta il 2026-09-07 con ADR-013.
+
+Esito: fatto per la preparazione e per la documentazione; la scrittura della chiavetta resta un'azione dell'utente, che richiede il supporto fisico.
+
+### MS-062 - Due difetti in una sostituzione fatta a mano, e lo strumento che esisteva già
+
+Perimetro: `.claude/memory/progress.md` e `docs/OPERATIONS-LOG.md`, riparazione di danni introdotti in questa sessione.
+
+Secondo episodio della stessa famiglia di MS-056, e va scritto per intero perché la causa è diversa e più insidiosa, e perché la conclusione è che lo strumento corretto era già nel progetto.
+
+Il primo difetto è di ordinamento della lista di sostituzioni. Normalizzando a mano le forme con l'apostrofo al posto dell'accento avevo scritto una lista che comincia con la coppia da `e'` a `è` e prosegue con quella da `perche'` a `perché`. La prima coppia consuma la seconda, perché `e'` è un sottoinsieme di `perche'`: il risultato è **`perchè`**, cioè accento grave dove l'italiano vuole l'acuto. La regola generale che ne discende vale oltre la tipografia: in una lista di sostituzioni un pattern più corto che sia sottostringa di uno più lungo va messo per ultimo, altrimenti il più lungo non viene mai raggiunto. Lo stesso difetto aveva già colpito MS-055 e MS-057 nel registro, con due occorrenze, ed è passato inosservato perché `perchè` è una grafia scorretta ma plausibile, non un carattere di controllo: nessun controllo automatico di questo progetto la segnala, e a video sembra una parola.
+
+Il secondo difetto è di aritmetica sugli indici, e ha prodotto testo duplicato. Per applicare le sostituzioni al solo blocco nuovo avevo estratto una fetta con `b = t[i:i+len(v)+200]`, trasformato `b`, e ricomposto con `t[:i] + b + t[i+len(b):]`. Le sostituzioni **accorciano** la fetta, perché `gia'` diventa `già` perdendo un carattere, quindi `len(b)` dopo la trasformazione è minore della lunghezza della fetta originale e la ricomposizione reinserisce la sovrapposizione. L'esito visibile è stato un paragrafo di una voce precedente che cominciava con `fornite dall'utente: te dall'utente: coincide`. La regola: quando si ricompone una stringa attorno a una fetta trasformata, l'indice di ripresa deve essere quello **originale** della fine della fetta, non uno ricalcolato dalla lunghezza del risultato.
+
+La riparazione non è stata un'altra sostituzione a mano, ed è questo il punto utile. Rimossa la duplicazione e corrette le due occorrenze di `perchè`, la normalizzazione degli accenti del file è stata affidata a `tools/fix-accents.py`, cioè allo strumento che il progetto ha per questo scopo. Ha fatto due cose che la lista scritta a mano non faceva: ha applicato le sostituzioni nell'ordine corretto, convertendo `uniformita'`, `pero'`, `cio'`, `puo'` e `meta'` senza collisioni, e ha lasciato intatto l'unico `c'e'` presente nel file, perché sta dentro un frammento di codice fra apici inversi ed è una citazione deliberata. È esattamente la protezione che a MS-056 era mancata quando la sostituzione globale aveva cancellato gli apostrofi dagli esempi.
+
+Ne segue la lezione, che è la stessa vista da un'altra faccia. A MS-056 il danno veniva dall'aver invocato lo strumento fuori dalla sua mitigazione; qui viene dall'averlo sostituito con codice scritto sul momento. Il denominatore comune è la fretta su un lavoro che sembra troppo semplice per meritare uno strumento, e la conseguenza è che il file di memoria del progetto ha portato per qualche minuto una frase priva di senso. Il presidio che ha funzionato, di nuovo, è la lettura del `git diff` riga per riga: nessuno dei due difetti era rilevabile dai controlli automatici, perché `md-unwrap` non guarda l'ortografia e il controllo dei caratteri anomali non trova nulla in una parola sbagliata scritta con caratteri validi.
+
+Come effetto collaterale utile, il file di memoria è ora integralmente conforme alla convenzione tipografica: le voci delle sessioni precedenti erano state scritte con le forme ad apostrofo e non erano mai state normalizzate, quindi il debito è chiuso invece di essere aumentato con un paragrafo misto.
+
+Esito: fatto, con i due difetti riparati e verificati.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura tre volte nel corso della sessione, ed è utile dirlo perché la successione è un progresso e non uno stallo. All'inizio elencava microstep bloccati da una macchina di stato ignoto; poi il blocco si è ristretto all'installazione della chiave SSH, che è una azione dell'utente non delegabile; oggi quella chiave è installata, la fase 0 è chiusa nella sostanza e la fase 1 è compiuta, quindi **non esiste più alcun microstep bloccato da una condizione esterna**. Ciò che resta è lavoro da eseguire, in ordine, e il suo unico prerequisito è la disponibilità dell'utente davanti alla macchina.
