@@ -47,13 +47,29 @@ def file_del_blocco(radice: Path) -> list[Path]:
     return sorted(p for p in sorgente.rglob("*.md") if p.is_file())
 
 
+def fine_riga(grezzo: bytes) -> bytes:
+    """La fine riga del file, dedotta da cio' che prevale nel corpo.
+
+    Serve perche' l'intestazione va scritta con la stessa interruzione del corpo. La
+    prima versione di questo strumento la scriveva sempre con LF, e su un file CRLF
+    produceva quattro righe LF in mezzo a centinaia di CRLF: un file misto, che nessun
+    altro controllo del progetto segnalava e che entrava nella storia di git, dato che
+    core.autocrlf e' false. Il difetto e' stato trovato da tools/check-eol.py al suo
+    primo lancio, su otto file del gemello, ed e' documentato in MS-063.
+    """
+    crlf = grezzo.count(b"\r\n")
+    lf = grezzo.count(b"\n") - crlf
+    return b"\r\n" if crlf > lf else b"\n"
+
+
 def contenuto_atteso(percorso: Path) -> bytes:
     """Il gemello riceve il file con l'intestazione che ne dichiara la provenienza."""
     grezzo = percorso.read_bytes()
+    testa = INTESTAZIONE_COPIA.encode("utf-8").replace(b"\n", fine_riga(grezzo))
     bom = b"\xef\xbb\xbf"
     if grezzo.startswith(bom):
-        return bom + INTESTAZIONE_COPIA.encode("utf-8") + grezzo[len(bom):]
-    return INTESTAZIONE_COPIA.encode("utf-8") + grezzo
+        return bom + testa + grezzo[len(bom):]
+    return testa + grezzo
 
 
 def main() -> int:

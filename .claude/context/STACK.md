@@ -52,6 +52,8 @@ Il file `tools/md-unwrap.py` attua la convenzione della riga sorgente unica per 
 
 Il file `tools/lint-md-commands.py` percorre i blocchi di shell nei file Markdown e segnala continuazioni di riga, heredoc e comandi git che proseguono sulla riga seguente, perché un comando spezzato dentro un blocco recintato non lo corregge nessun altro strumento.
 
+Il file `tools/check-eol.py` segnala i file di testo che mescolano fini riga `CRLF` e `LF`. Esiste perché nessun altro controllo può accorgersene, e la ragione è strutturale: la convenzione prescrive di conservare la fine riga di ciascun file, quindi `md-unwrap` la rispetta e non ne pretende la coerenza interna, mentre il rendering a video di un file misto è identico a quello di uno coerente. Con `core.autocrlf` a `false` e senza `.gitattributes` git registra le interruzioni così come stanno sul disco, quindi un file misto entra nella storia e alla prima riscrittura da parte di qualunque strumento trasforma una modifica di due righe in una modifica dell'intero file. Lo strumento è di sola lettura e non converte niente, perché la scelta di quale formato tenere spetta a chi conosce il file, e indica il prevalente come suggerimento; esclude le fixture di prova di `md-unwrap`, che sono miste di proposito. La verifica prima di un commit è `python tools/check-eol.py .`.
+
 I file `tools/fix-accents.py`, `tools/fix-missing-accents.py` e `tools/fix-dashes.py` attuano le convenzioni tipografiche: accenti veri al posto dell'apostrofo, ripristino degli accenti mancanti dove la forma senza accento non è una parola italiana, e trattini brevi al posto dei trattini lunghi. Il file `tools/test-tipografia.py` è la loro suite di prova, e `tools/dashes-exclude.txt` il loro sidecar di esclusioni.
 
 Su questi tre strumenti valgono due avvertenze, entrambe verificate con casi minimi e documentate in MS-014 del registro dei microstep. Si eseguono sui soli file Markdown e non su `.`, perché su un file di codice le regole di prudenza di `fix-accents.py` e `fix-missing-accents.py` sono incoerenti fra loro: il primo si astiene sulle forme elise come `c'e'`, il secondo no, e la catena dei due lascia un apostrofo orfano producendo `c'è'`, che poi nessuno dei due riconosce più. E terminano con un errore se ricevono un percorso su un'altra lettera di unità, difetto che `md-unwrap.py` ha già corretto e questi no.
@@ -77,6 +79,7 @@ La sequenza di controllo, tutta non distruttiva, è la seguente.
 ```bash
 python tools/md-unwrap.py --check .
 python tools/lint-md-commands.py .
+python tools/check-eol.py .
 python tools/test-tipografia.py
 python tools/sync-ambiente.py --check
 python tools/check-pending-actions.py

@@ -938,13 +938,13 @@ Aggiunta infine la precisazione su che cosa la verifica della firma dimostra e c
 
 Registrato anche un dettaglio che altrimenti fa sospettare un file diverso: il file delle somme di Ubuntu scrive il nome nella forma `hash *nome`, con l'asterisco della modalità binaria, e la stessa forma la produce `sha256sum` nella shell POSIX che accompagna git su Windows, mentre su Linux la forma abituale è con due spazi. È la stessa trappola di MS-039, dove un confronto fra impronte identiche risultava negativo per il solo separatore.
 
-L'immagine è in scaricamento in `E:\_iso-ubuntu-studio\`, fuori dal repository, con `curl -C -` per poterlo riprendere invece di ricominciare. La verifica della sua integrità è un microstep a parte, perché è un esito che non esiste finché il file non è completo.
+L'immagine è in scaricamento in `C:\Users\Utente\Desktop\_iso-ubuntu-studio\`, fuori dal repository, con `curl -C -` per poterlo riprendere invece di ricominciare. La verifica della sua integrità è un microstep a parte, perché è un esito che non esiste finché il file non è completo.
 
 Esito: fatto per la fase 2.1 e 2.2 e per la correzione della 2.3; la scrittura della chiavetta resta da fare.
 
 ### MS-060 - L'immagine 26.04.1 scaricata e verificata integra
 
-Perimetro: `E:\_iso-ubuntu-studio\` fuori dal repository, chiusura della sottofase 2.2.
+Perimetro: `C:\Users\Utente\Desktop\_iso-ubuntu-studio\` fuori dal repository, chiusura della sottofase 2.2.
 
 Scaricata `ubuntustudio-26.04.1-desktop-amd64.iso`, 7.127.195.648 byte, con `curl -L -C - --retry 5` così che una interruzione di rete si riprendesse invece di richiedere di ricominciare. La destinazione è fuori dalla cartella del progetto, per la stessa ragione dell'archivio di backup: un file da 6,6 GB non ha motivo di stare dentro un repository, nemmeno in una cartella ignorata.
 
@@ -958,7 +958,7 @@ Esito: fatto.
 
 ### MS-061 - Rufus verificato per firma, e la fase 2.3 riscritta con la ragione di ogni scelta
 
-Perimetro: `E:\_iso-ubuntu-studio\rufus-4.15p.exe`, riscrittura della sottofase 2.3 e allineamento dell'intestazione e della premessa della procedura.
+Perimetro: `C:\Users\Utente\Desktop\_iso-ubuntu-studio\rufus-4.15p.exe`, riscrittura della sottofase 2.3 e allineamento dell'intestazione e della premessa della procedura.
 
 Scelta la strada della scrittura da Windows con Rufus, fra le due possibili, e va registrato che l'altra esisteva: scrivere la chiavetta dalla macchina Ubuntu con `dd`, previo trasferimento dell'immagine via rete, non richiedeva alcuno strumento nuovo e produceva la chiavetta già dove serve. La scelta è dell'utente e la ragione è la disponibilità del supporto sulla postazione.
 
@@ -967,7 +967,7 @@ Su questa postazione Rufus non risultava installato e nessun supporto rimovibile
 La verifica di questo file segue una strada diversa da quella dell'immagine, e la differenza è il contenuto tecnico di questo microstep. Per l'immagine la verifica corretta è la somma di controllo la cui firma è stata verificata a parte, perché l'immagine è un dato e la fiducia si ancora alla chiave della distribuzione. Per un eseguibile Windows la verifica più forte disponibile è invece la firma Authenticode, perché il sistema operativo la controlla contro le proprie radici di certificazione fidate: non contro un valore pubblicato sullo stesso sito da cui si è scaricato il file, che è il limite già enunciato in MS-059. Le note del rilascio, del resto, non pubblicano alcuna somma di controllo, quindi la firma non è soltanto la via migliore ma l'unica.
 
 ```powershell
-Get-AuthenticodeSignature "E:\_iso-ubuntu-studio\rufus-4.15p.exe" | Format-List Status, SignerCertificate
+Get-AuthenticodeSignature "C:\Users\Utente\Desktop\_iso-ubuntu-studio\rufus-4.15p.exe" | Format-List Status, SignerCertificate
 ```
 
 Esito: `Status` vale `Valid`, il firmatario è `CN=Akeo Consulting, O=Akeo Consulting, S=Donegal, C=IE`, cioè l'autore di Rufus, con emittente `Sectigo Public Code Signing CA EV R36` e validità fino ad agosto 2027. Registrata anche l'impronta SHA-256 del file scaricato, `84c8a437f8af89257524478489e5c85f1edf25f761d299e2bcde46ac0afbe106`, non come verifica ma come riferimento, così che una copia futura sia confrontabile con questa.
@@ -1003,6 +1003,42 @@ Ne segue la lezione, che è la stessa vista da un'altra faccia. A MS-056 il dann
 Come effetto collaterale utile, il file di memoria è ora integralmente conforme alla convenzione tipografica: le voci delle sessioni precedenti erano state scritte con le forme ad apostrofo e non erano mai state normalizzate, quindi il debito è chiuso invece di essere aumentato con un paragrafo misto.
 
 Esito: fatto, con i due difetti riparati e verificati.
+
+### MS-063 - PA-007 eseguita, immagine spostata e riverificata, e la trappola delle fini riga
+
+Perimetro: chiusura di PA-007, aggiornamento del percorso dell'immagine in quattro documenti, allineamento dello snapshot di sincronizzazione.
+
+Tre cose, di peso diverso.
+
+La prima è l'esecuzione di PA-007, cioè la cancellazione della copia del corredo sul Desktop della postazione. L'utente l'ha eseguita nell'ordine prescritto, con la riverifica delle impronte immediatamente prima: 8 file del manifest e 273 file del corredo tutti coincidenti sulla macchina, poi la cancellazione di 650 file per 2,3 GB, verificata come compiuta. Le voci utili restano in due copie indipendenti, quella sulla macchina e quella dentro l'archivio di `/home`. Delle otto voci scartate dal censimento si è perduta l'unica copia, come previsto e voluto. La voce è chiusa e resta nel registro con il suo esito.
+
+La seconda è lo spostamento dell'immagine di installazione e di Rufus dal disco `E:` al Desktop della postazione, per scelta dell'utente, che li vuole lì finché servono. Il punto tecnico è che questo spostamento attraversa due volumi, quindi non è un rinomino ma una copia seguita da una cancellazione: i byte sono stati riscritti, e una copia può fallire. Entrambe le verifiche sono state quindi rifatte alla nuova posizione invece di essere ereditate, ed entrambe passano: l'immagine dà `OK` contro il file delle somme firmato, e Rufus dà `Status: Valid` con firmatario `Akeo Consulting`. Aggiornato il percorso nei quattro documenti che lo citavano, fra cui il comando di verifica della firma nella sottofase 2.3, dove un percorso vecchio non sarebbe stato un dubbio ma un comando che non trova il file. È la seconda volta in due giorni che un file di lavoro cambia posto, dopo l'archivio di backup in MS-054, e la regola che ne discende per gli strumenti resta quella: la condizione da verificare è l'esistenza per nome, non la presenza a un percorso fisso.
+
+La terza è una trappola dell'ambiente, e va scritta perché ha fatto fallire due modifiche in modo incomprensibile prima di essere capita. Uno script eseguito passandogli il sorgente sull'ingresso standard non riesce a trovare un ancoraggio di testo su più righe se il file di destinazione usa `CRLF` e l'ancoraggio è scritto con `LF`. Il file `.claude/memory/index.md` è `CRLF`, e la ricerca di un blocco di tre righe scritto con interruzioni `LF` non trova nulla: l'errore che si osserva è una asserzione fallita, senza alcun indizio sulla causa, e la tentazione è cercare l'errore nel testo cercato.
+
+La causa profonda è una proprietà voluta di questo progetto e non un difetto: la convenzione Markdown prescrive di conservare la fine riga di ciascun file, `CRLF` o `LF`, e lo strumento `md-unwrap` la rispetta. Ne segue che l'albero contiene file con entrambe le convenzioni, e che qualunque manipolazione testuale scritta a mano deve tenerne conto. Le tre regole operative che ne discendono: preferire ancoraggi di una sola riga, che il problema non hanno; leggere il file con la conservazione delle fini riga e confrontare byte a byte quando l'ancoraggio deve essere multi-riga; oppure usare uno strumento che normalizza il confronto per conto suo, che è la strada giusta e la più economica.
+
+Va aggiunta una nota su una ipotesi sbagliata formulata durante la diagnosi, perché è istruttiva quanto la causa. Avevo supposto che il colpevole fosse la codifica, dato che su questa macchina l'ingresso standard di Python dichiara `cp1252`, e che i caratteri accentati del sorgente arrivassero corrotti. La verifica ha smentito: il sorgente viene decodificato come UTF-8 a prescindere dalla codifica dell'ingresso, e la stringa accentata risultava corretta byte per byte. Ciò che sembrava corruzione era solo la stampa illeggibile sulla console, che è `cp1252` e non sa rappresentare quei caratteri. Due fenomeni distinti, la rappresentazione a schermo e il contenuto in memoria, che a occhio danno lo stesso sintomo: la differenza si vede solo guardando i byte, ed è la ragione per cui la verifica è stata fatta sui byte e non sul `repr`.
+
+La stessa trappola aveva già prodotto un danno silenzioso più grande, scoperto proprio cercandola. Tutti i blocchi inseriti in questa sessione in questo registro e nella pagina sull'SSD esterno erano stati scritti con interruzioni `LF` e inseriti in file `CRLF`, producendo **fini riga miste**: 134 righe `LF` in mezzo a 913 `CRLF` nel registro, 35 in mezzo a 90 nell'altra pagina. Nessuno dei controlli del progetto lo segnalava, perché `md-unwrap` per contratto conserva la fine riga di ciascun file e non ne pretende la coerenza interna, e il rendering a video è identico.
+
+Che finisse nella storia del repository era però certo, e questo è il dato che ha reso la cosa urgente: `core.autocrlf` è `false`, non esiste alcun `.gitattributes`, e il blob del commit precedente contiene già i ritorni carrello, quindi git registra le fini riga così come stanno sul disco senza normalizzarle. Un file misto committato produce differenze rumorose su ogni modifica successiva, perché qualunque strumento che riscriva il file uniforma le interruzioni e trasforma una modifica di due righe in una modifica dell'intero file. Normalizzati entrambi i file alla loro fine riga originale, cioè `CRLF`, con verifica che nell'albero non resti alcun file misto oltre alle due fixture di prova di `md-unwrap`, che sono misti di proposito perché servono a provare che lo strumento li conserva.
+
+Aggiunto quindi uno strumento nuovo, `tools/check-eol.py`, ed è entrato nella sequenza di verifica prima di un commit dichiarata in `CLAUDE.md`. È di sola lettura e non converte niente, perché la decisione su quale fine riga tenere spetta a chi conosce il file; segnala il formato prevalente come suggerimento. Esclude le fixture di `md-unwrap`, che sono miste di proposito.
+
+Al primo lancio si è ripagato, trovando un file misto che non era stato introdotto adesso ma era **già nella storia del repository**: `.claude/settings.json`, con una riga `CRLF` in mezzo a trentasei `LF`. Il difetto era una riga vuota finale terminata con ritorno carrello, cioè la sequenza `}` newline ritorno-carrello newline in coda al file. Corretto togliendo la sola interruzione superflua, con due cautele dichiarate: il contenuto JSON è stato confrontato prima e dopo e risulta identico, e il BOM presente in testa al file è stato conservato, perché la convenzione prescrive di conservarlo e perché toccarlo sarebbe stato un cambiamento non richiesto. Il primo tentativo di correzione, del resto, è fallito proprio sul BOM, dato che il parser JSON lo rifiuta se non gli si dice di aspettarselo: l'errore è arrivato prima della scrittura, quindi non ha prodotto danni, ed è un buon esempio di perché convenga verificare il contenuto prima di riscriverlo e non dopo.
+
+Il ritrovamento più consistente è arrivato lanciandolo sul progetto gemello: **otto file misti**, e sette di essi con esattamente quattro righe `LF` in un corpo di centinaia di `CRLF`. Quattro righe sono la lunghezza dell'intestazione di provenienza che `tools/sync-ambiente.py` antepone a ogni file propagato, e la coincidenza esatta ha indicato subito il colpevole: lo strumento scriveva quella intestazione sempre con `LF`, a prescindere dalla fine riga del corpo. Non era quindi un difetto dei file ma dello strumento che li genera, cioè un difetto che si sarebbe ripresentato a ogni propagazione futura.
+
+Corretto facendo dedurre allo strumento la fine riga dal corpo del file e scrivendo l'intestazione con quella. Ripropagati i sette file, il conteggio dei misti nel gemello è passato da otto a uno, e il residuo era la stessa riga vuota terminata con ritorno carrello di `settings.json`, presente in modo identico anche là: corretta con le stesse due cautele, JSON confrontato prima e dopo e BOM conservato.
+
+Vale registrare la forma del ragionamento, perché è riusabile. Il numero costante di righe anomale attraverso file di dimensione molto diversa è l'indizio che il difetto non sta nei file ma in qualcosa che li tocca tutti allo stesso modo: una anomalia proporzionale alla dimensione indica il contenuto, una anomalia di misura fissa indica il generatore.
+
+È il tipo di difetto che questo progetto deve saper trovare da solo, perché nasce dal fatto stesso di avere una convenzione che conserva due formati invece di imporne uno.
+
+Allineato infine lo snapshot di sincronizzazione, che dichiarava come commit di riferimento uno di due giorni prima e descriveva una storia di quattro commit su origin quando ne esistono ventidue.
+
+Esito: fatto.
 
 ## Che cosa resta da fare, e da che cosa dipende
 
