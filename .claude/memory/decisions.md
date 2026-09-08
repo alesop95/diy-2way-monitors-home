@@ -225,3 +225,19 @@ Conseguenze, e sono sostanziali. La fase 7 della procedura di installazione puli
 Resta valida la parte di ADR-004 che non riguarda l'architettura, cioè un prefix per programma, con l'eccezione dichiarata di Akabak e VACS che condividono il proprio perché si usano in sequenza e perché così è la configurazione funzionante.
 
 Una nota di metodo, che è la lezione vera di questa voce. Tre decisioni consecutive hanno propagato una affermazione non verificata presa da un appunto, e ciascuna l'ha usata come premessa della successiva senza tornare alla fonte. Il costo è stato una prescrizione operativa sbagliata su tre documenti. Il controllo che l'avrebbe evitato costava un comando, cioè `file` sull'eseguibile installato.
+
+## ADR-017 - La scheda di stampa si genera con uno strumento, e non porta i dati di licenza
+
+Data: 2026-09-08. Stato: accettata.
+
+Contesto: la reinstallazione si esegue davanti alla macchina e non davanti alla postazione di sviluppo, quindi serve una scheda su carta. La prima versione di quella scheda era stata composta a mano come `.docx` in una sessione poi interrotta da un crash, e ne sono emersi due problemi indipendenti. Il primo è che il documento non era riproducibile, perché il codice che lo aveva costruito viveva soltanto nella sessione: due minuti dopo la sua creazione la procedura ha guadagnato una avvertenza, e la carta è rimasta indietro senza che nulla lo segnalasse. Il secondo è che la scheda sorgente dichiarava di contenere i dati di licenza di Akabak nel documento generato, cioè Machine Identifier e Release Code su un foglio stampato.
+
+Decisione, in due parti. La carta si genera con `tools/make-scheda-docx.py`, che è versionato, e non si compone a mano. I dati di licenza non entrano nel documento generato, se non passando esplicitamente `--con-licenza`.
+
+Motivazione della prima parte: un documento di stampa è una copia di documentazione che circola fuori dal repository, quindi il rischio non è che sia sbagliato ma che diverga in silenzio. Uno strumento versionato non elimina la divergenza, perché il contenuto della scheda vive nello strumento come dati e non è una conversione del Markdown, ma la rende riparabile con un comando invece che con una ricostruzione. La ragione per cui non è una conversione automatica va detta perché è una rinuncia consapevole: la carta ha vincoli che il Markdown non ha, cioè due pagine di spazio, caselle da spuntare a penna e riquadri colorati sul passo irreversibile, e una conversione li perderebbe tutti.
+
+Motivazione della seconda parte, e non è soltanto di riservatezza. Alla reinstallazione quei valori non servono: il Release Code è permanente e legato al Machine Identifier, la cui invarianza è stata verificata in MS-052, quindi si reinserisce dal file riservato al momento di riaprire AKABAK, che è un passo successivo alla reinstallazione e si esegue davanti alla macchina con la postazione disponibile. Stamparli anticiperebbe un codice di attivazione permanente su un foglio che si porta in giro, in cambio di nessun vantaggio operativo. Il valore predefinito è quindi la loro assenza, e non la loro presenza con un avvertimento.
+
+Conseguenze. La nota in apertura di `docs/10-ambiente/scheda-reinstallazione.md` è stata corretta, perché dichiarava la sostituzione dei due segnaposto come comportamento normale dello strumento. Il file riservato `_notes/licenze-akabak-riservato.md` resta la sola sede dei valori, esclusa dal versionamento. Chi usa `--con-licenza` produce un foglio che va trattato come materiale riservato, e lo strumento lo dichiara sul terminale al momento di generarlo.
+
+Alternativa scartata: mettere i valori nel documento e affidarsi alla cura di chi stampa. Scartata perché sposta un presidio da una impostazione predefinita a una abitudine, e le abitudini non sopravvivono alla fretta del giorno in cui si azzera un disco.
