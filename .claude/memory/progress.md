@@ -18,7 +18,11 @@ Rufus 4.15 portabile scaricato e verificato per firma Authenticode, `Status: Val
 
 Allineate due dichiarazioni di stato superate nella procedura, che dichiaravano non eseguite fasi compiute e chiedevano una riconferma già data.
 
-Resta da fare il passo 2, cioè la cancellazione della copia sul Desktop: le impronte sono state riverificate, 8 file del manifest e 273 del corredo tutti identici sulla macchina, ma la cartella è ancora presente.
+Passo 2 compiuto: l'utente ha cancellato la copia del corredo sul Desktop, 650 file per 2,3 GB, dopo la riverifica delle impronte. PA-007 chiusa. Immagine e Rufus spostati sul Desktop per scelta dell'utente: essendo uno spostamento fra volumi, cioè una copia più cancellazione, entrambe le verifiche sono state rifatte alla nuova posizione e passano. Percorso aggiornato in quattro documenti. È MS-063.
+
+Trovato nello stesso microstep un difetto di ambiente che aveva fatto fallire due modifiche in modo incomprensibile: un ancoraggio di testo multi-riga scritto con `LF` non trova nulla in un file `CRLF`, e l'albero contiene legittimamente entrambi i formati perché la convenzione prescrive di conservare la fine riga di ciascun file. Ipotesi sbagliata scartata per prima, cioè la codifica: il sorgente è decodificato come UTF-8 comunque, e ciò che sembrava corruzione era la stampa illeggibile su una console `cp1252`.
+
+Da lì un difetto silenzioso più grande, che stavo per committare: i blocchi inseriti in questa sessione erano scritti con `LF` in due file `CRLF`, producendo fini riga miste che nessun controllo del progetto segnalava e che git avrebbe registrato, dato che `core.autocrlf` è `false`. Normalizzati, e aggiunto `tools/check-eol.py` alla sequenza di verifica. Al primo lancio ha trovato un file misto già nella storia del repository, `settings.json`, e sul gemello **otto** file, sette dei quali con esattamente quattro righe anomale: la misura fissa attraverso file di dimensione diversa ha indicato il generatore invece del contenuto, cioè `sync-ambiente.py`, che scriveva l'intestazione di provenienza sempre con `LF`. Corretto lo strumento e ripropagato.
 
 ## 2026-09-07, sesta parte - Licenza confermata in interfaccia, fase 0 chiusa, PA-007 detta chiara
 
