@@ -216,9 +216,10 @@ def controlla_manuali() -> None:
         print("  IN ATTESA DEL DISCO: J: non e' collegato.")
 
     print("\nPA-009  Leggere lo SMART dell'SSD esterno")
-    print("  APERTA: CrystalDiskInfo da Windows, oppure smartctl collegandolo alla")
-    print("  macchina. Cinque riparazioni del filesystem in due mesi vanno spiegate:")
-    print("  abitudine di rimozione o difetto del supporto, e solo lo SMART distingue.")
+    riga("ok", "CHIUSA il 2026-09-08: supporto sano, usura 0, zero errori di integrita'")
+    print("  Delle due cause cade il difetto del supporto: resta la rimozione senza")
+    print("  espulsione, con 122 spegnimenti non protetti su 742 cicli. Il disco non va")
+    print("  sostituito. Regola: espellere il volume prima di staccarlo, sempre.")
 
     print("\nPA-006  Riconfermare o rivedere la scelta fra installazione e aggiornamento")
     riga("ok", "CHIUSA il 2026-09-07: installazione pulita 26.04 LTS riconfermata")
