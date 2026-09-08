@@ -2,6 +2,28 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-08, ripresa da crash - La carta della reinstallazione, e uno strumento che la rende riproducibile
+
+Commit di partenza: cadf335.
+
+File toccati: `tools/make-scheda-docx.py` nuovo, `docs/10-ambiente/scheda-reinstallazione.md` corretto nella nota di apertura e nella tipografia, `docs/10-ambiente/README.md` con l'indicizzazione della scheda, `.claude/context/STACK.md` con lo strumento nuovo e la correzione dello scopo di `verify-usb-dd.ps1`, `docs/OPERATIONS-LOG.md` con MS-070 e MS-071, `.claude/memory/decisions.md` con ADR-017, `.claude/context/current-work.md` con il fronte nuovo, e `CLAUDE.md` per tre accenti. Fuori dal versionamento: il `.docx` rigenerato in `Downloads` e la copia precedente conservata sotto `_notes/`.
+
+Motivo: la sessione precedente è stata interrotta da un crash di Claude Code mentre si modificava il `.docx` da stampare, e l'utente ha chiesto di riprendere da dove si era rimasti. La macchina va formattata con la chiavetta già pronta, quindi il lavoro residuo era una sola cosa, cioè aggiungere alla scheda una avvertenza precisa prima di stamparla.
+
+Come si è ricostruito lo stato, e vale perché la conversazione non c'era più. Nessuna nota di handoff era stata scritta, quindi la ripresa è poggiata su tre fonti sul disco: lo snapshot in `.claude/memory/index.md`, la coda non committata di `git diff`, e i timestamp dei file, che sono stati la fonte decisiva. Il `.docx` portava l'ora 15:10, la sottofase 4.2 della procedura le 15:12 e la scheda sorgente le 15:14, quindi la carta era indietro di due minuti rispetto alla documentazione. L'estrazione del testo dal `.docx` lo ha confermato: non conteneva né la parola filesystem né la parola riepilogo, cioè mancava esattamente di ciò che la fase 4.2 aveva guadagnato alle 15:12. L'ipotesi su quale fosse l'avvertenza è stata comunque sottoposta all'utente prima di agire, invece di essere data per certa, perché il foglio va in mano a chi azzera il disco.
+
+Esito in sintesi, quattro cose.
+
+La scheda `.docx` è rigenerata e contiene l'avvertenza sul modo concreto in cui il passo irreversibile si sbaglia, cioè che la casella di formattazione si attiva da sé quando si seleziona un filesystem nel menu della riga. L'avvertenza compare in tre punti, e la sequenza operativa passa da dodici a tredici passi perché la lettura della schermata di riepilogo, che nella procedura era una raccomandazione in prosa, è diventata un passo con la sua casella da spuntare: era il controllo più importante della fase e l'unico senza casella. È MS-070.
+
+Il documento di stampa è ora riproducibile, e prima non lo era. Il codice che aveva costruito il `.docx` viveva soltanto nella sessione e il crash lo ha portato via, mentre la scheda tracciata dichiarava uno strumento `tools/make-scheda-docx.py` che non esisteva, cioè un'affermazione falsa in un file versionato. Lo strumento adesso esiste, in sola libreria standard come gli altri, ed è verificato su tre livelli: buona formazione delle cinque parti XML, apertura con un lettore indipendente, e rilettura del testo di tutte le celle.
+
+I dati di licenza di Akabak non entrano nel documento se non lo si chiede, ed è ADR-017. La ragione non è solo di riservatezza ma operativa: alla reinstallazione non servono, perché il codice si reinserisce dal file riservato quando si riapre AKABAK, che è un passo successivo, mentre stamparli metterebbe un codice di attivazione permanente su un foglio che si porta in giro.
+
+Due difetti trovati per strada e chiusi. Lo scopo di `verify-usb-dd.ps1` era ancora dichiarato in `STACK.md` come la sottofase 2.4 della procedura, che MS-069 gli aveva tolto il giorno stesso. E la grafia degli accenti con l'apostrofo, ventotto occorrenze nella scheda più cinque in prosa fra registro e `CLAUDE.md`, è sanata; il perimetro si è ristretto guardando le occorrenze invece dei totali, perché quasi tutte quelle del registro sono esempi citati dentro code span nei microstep che raccontano i difetti degli strumenti tipografici, e correggerle li avrebbe distrutti. È MS-071.
+
+Due errori miei, entrambi a verbale in MS-071. Una sequenza di sostituzioni con `sed` in cui la terza regola ha colpito il risultato della prima, producendo *scegliee*, vista subito perché avevo riletto le righe invece di fidarmi del codice di uscita. E un caso minimo scritto su `C:` invece che sul disco del progetto, che è terminato con l'eccezione cross-disco di PA-003 mentre io ne avevo silenziato lo standard error: stavo per concludere dal file non modificato che lo strumento protegge la prosa, cioè il contrario del vero.
+
 ## 2026-09-08 - Sequenza operativa avviata: PA-009 chiusa, immagine 26.04.1 verificata
 
 Commit di partenza: d2905ba.
