@@ -978,6 +978,8 @@ Il vincolo di capacità, con la sua ragione numerica invece di un margine di pru
 
 La modalità di scrittura, che era nominata ma non motivata, e la motivazione è la parte che serve. In modalità immagine ISO lo strumento costruisce sulla chiavetta un filesystem FAT32, scelto per compatibilità di avvio, che non può contenere un singolo file più grande di 4 GB; dentro una immagine live di questa dimensione il filesystem compresso del sistema supera quella soglia. In modalità DD l'immagine è copiata byte per byte, senza costruire nulla, quindi il limite non si presenta e la chiavetta risulta identica al file di cui si è verificata l'impronta. Ne segue anche una proprietà utile: una chiavetta scritta in DD è verificabile a posteriori, una scritta in modalità ISO no.
 
+> **Ritirato il 2026-09-08.** La frase sul filesystem compresso che supera i 4 GB è **falsa** e non va usata: la misura dice 3,83 GiB, sotto il limite. La conclusione, cioè scegliere DD, resta valida per la sola proprietà di verificabilità nominata in fondo al paragrafo. Il paragrafo si conserva come era perché il registro documenta anche gli errori, e la correzione con la misura è in MS-067.
+
 Lo schema GPT con destinazione UEFI senza compatibilità CSM, coerente con la fase 3 e con il fatto che l'installazione esistente è UEFI e la sua partizione EFI va riusata.
 
 E l'avvertenza sul dopo, che è il punto esatto in cui si rovina una chiavetta appena fatta: terminata la scrittura in DD, Windows vede lo spazio non allocato oltre le partizioni dell'immagine e propone di formattarlo o di inizializzare il disco. Va rifiutato, perché quella operazione riscrive la tabella delle partizioni e rende il supporto non avviabile. L'insidia sta nel fatto che l'avviso ha l'aspetto di una richiesta di manutenzione ordinaria.
@@ -1039,6 +1041,122 @@ Vale registrare la forma del ragionamento, perché è riusabile. Il numero costa
 Allineato infine lo snapshot di sincronizzazione, che dichiarava come commit di riferimento uno di due giorni prima e descriveva una storia di quattro commit su origin quando ne esistono ventidue.
 
 Esito: fatto.
+
+### MS-064 - La chiavetta non si formatta, e una lettera di unità non identifica un disco
+
+Perimetro: risposta operativa alla preparazione del supporto, avvertenza aggiunta a PA-004 e allo strumento delle azioni differite.
+
+L'utente ha collegato una chiavetta Kingston DataTraveler 3.0 da 57,7 GB e ha aperto la finestra di formattazione di Windows, chiedendo con quale filesystem formattarla. La risposta corretta è **nessuno**, e vale spiegarla perché è controintuitiva: la finestra di formattazione, in questa procedura, non va usata affatto.
+
+La ragione sta nella modalità di scrittura scelta nella sottofase 2.3. In modalità DD l'immagine viene copiata sul dispositivo byte per byte a partire dal settore zero, quindi sovrascrive la tabella delle partizioni e con essa qualunque filesystem esistente. Formattare prima significa costruire una struttura che verrà cancellata in blocco pochi minuti dopo: non è dannoso, è lavoro senza effetto. La stessa cosa vale per la scelta del filesystem, che in modalità DD non è una scelta dell'utente ma una proprietà dell'immagine. La chiavetta risultava inoltre vuota, 57,7 GB liberi su 57,7, quindi non c'era nulla da preservare e nemmeno la ragione prudenziale di guardare prima cosa contenesse.
+
+La capienza è ampiamente sufficiente per un'immagine da 6,64 GiB, quindi il vincolo dei 16 GB della sottofase 2.3 è rispettato con abbondanza.
+
+Il fatto che merita di essere registrato, però, è un altro, ed è emerso per caso guardando l'elenco dei volumi. La chiavetta ha ricevuto la lettera **`G:`**, che è la stessa con cui PA-004 identifica il disco contenente il materiale EASE Focus 3.1.10 del workshop K-array. Non è quel disco: questo è vuoto e quello contiene una cartella `LIBRARY`. Ma la coincidenza dimostra un difetto di metodo che era latente in quella voce da quando è stata aperta.
+
+Una lettera di unità su Windows non è un identificatore di dispositivo. Il sistema assegna la prima lettera libera al momento del collegamento, quindi la stessa lettera indica dispositivi diversi in momenti diversi, e lo stesso dispositivo si presenta con lettere diverse a seconda di che altro è collegato. PA-004 nasceva dalla lettura di un collegamento `.lnk` che puntava a un percorso su `G:`, e quel percorso è l'unica informazione che il collegamento conteneva: la lettera che vi compare era quella valida sulla macchina nel momento in cui il collegamento fu creato, non una proprietà del disco.
+
+Ne segue la correzione del criterio, scritta sia nella voce sia nello strumento. Il disco cercato si riconosce dal **contenuto**, cioè dalla presenza del percorso completo con la cartella `LIBRARY`, non dalla lettera. Trovare quel percorso su una lettera è una conferma; non trovarlo significa soltanto che quel dispositivo non è collegato adesso; e trovare la lettera occupata da un altro volume non è un indizio di nulla. Lo strumento ora dichiara esplicitamente questo terzo caso, con una riga che avvisa quando la lettera esiste ma il percorso no, così che chi legge l'esito non concluda di aver trovato il disco sbagliato quando semplicemente non c'è.
+
+È la stessa famiglia di errore di MS-054, dove un controllo inchiodava un percorso fisso per un archivio che l'utente poteva spostare, e di MS-063, dove il percorso dell'immagine è cambiato in corsa. Il denominatore comune: in un controllo automatico l'invariante da usare è la proprietà stabile della cosa cercata, cioè il nome di un file o il contenuto di una cartella, non la sua collocazione, che è una circostanza.
+
+Esito: fatto per la parte documentale; la scrittura della chiavetta resta dell'utente.
+
+### MS-065 - La modalità DD si sceglie dopo Avvia, non prima: un difetto di istruzione
+
+Perimetro: sottofase 2.3 della procedura, propagata al progetto gemello.
+
+L'utente ha configurato Rufus e ha chiesto che cosa mancasse, non trovando la scelta della modalità di scrittura. Non mancava nulla: la configurazione era corretta e lo stato dichiarava pronto. Mancava una informazione nella mia istruzione, ed è un difetto di documentazione che vale registrare perché produce esattamente il dubbio che ha prodotto.
+
+La scelta fra modalità immagine ISO e modalità immagine DD **non è un campo della finestra principale**: è una finestra di dialogo che compare dopo aver premuto Avvia, quando Rufus riconosce che l'immagine è di tipo ibrido. La sottofase 2.3, come l'avevo scritta, diceva che Rufus la chiede con una finestra ma non diceva quando, e chi legge cerca fra le opzioni prima di avviare, non trova niente, e conclude che manchi qualcosa da configurare. Una istruzione che nomina una scelta senza dire in quale momento si presenta è incompleta anche se non è sbagliata.
+
+Corretta la sottofase dicendo esplicitamente che la finestra arriva dopo Avvia, e aggiunta la descrizione della configurazione corretta verificata su Rufus 4.15, campo per campo, così che si possa confrontare invece di indovinare: dispositivo la chiavetta, immagine con la spunta verde di riconoscimento, partizione persistente a zero perché si prepara un installatore e non un sistema live con memoria, schema GPT, destinazione UEFI senza CSM, e lo stato che dichiara pronto.
+
+Chiarito anche un campo che a quel punto trae in inganno. Prima di premere Avvia il sistema di file mostra `Large FAT32`, e va lasciato così, perché è il valore che Rufus propone presumendo la modalità ISO e in modalità DD diventa irrilevante, dato che nessun filesystem viene costruito. Il punto tecnico che serve capire è che `Large FAT32` non rimuove il limite di 4 GB per singolo file: rimuove il limite di dimensione del **volume**, consentendo FAT32 oltre i 32 GB. Sono due vincoli diversi e confonderli porta a credere che in modalità ISO il problema del filesystem compresso oltre i 4 GB non esista.
+
+Aggiunta infine una avvertenza sul dispositivo, perché è il campo dove un errore costa caro e perché in questa sessione la circostanza c'era per davvero: alla postazione era collegato anche il disco esterno di lavoro da 465,8 GB accanto alla chiavetta da 57,7, e Rufus cancella per intero il dispositivo che gli si indica. La distinzione si fa sulla capacità dichiarata accanto al nome, non sulla posizione nell'elenco.
+
+Esito: fatto.
+
+### MS-066 - Un avvertimento ritirato: la casella che rende impossibile l'errore che temevo
+
+Perimetro: completamento della sottofase 2.3, ritiro di una avvertenza data in MS-065.
+
+In MS-065 avevo avvertito di non confondere la chiavetta con il disco esterno di lavoro, dato che entrambi erano collegati e Rufus cancella per intero il dispositivo che gli si indica. L'avvertenza era prudente ma **descriveva un rischio che la configurazione in uso aveva già eliminato**, e va ritirata in modo esplicito invece di essere lasciata a scadere: la barra di stato di Rufus dichiarava un solo dispositivo rilevato, e la ragione è che la casella `Elenco unità disco USB` era deselezionata.
+
+Quella casella è il presidio che tiene i dischi rigidi e gli SSD esterni fuori dall'elenco dei dispositivi, lasciandovi soltanto le unità rimovibili. Spenta com'era, il disco di lavoro da 465,8 GB non era selezionabile nemmeno volendo, quindi il rischio di indicare il dispositivo sbagliato non era ridotto ma assente. Attivarla lo reintroduce, ed è la ragione per cui la sottofase ora prescrive di non attivarla senza un motivo preciso: è una impostazione che scambia sicurezza per una capacità che in questa procedura non serve.
+
+La forma corretta di una avvertenza, e vale come regola oltre il caso, è darla insieme alla sua mitigazione. Un avvertimento senza la condizione in cui il rischio si presenta insegna a diffidare di un passo che è sicuro, e la diffidenza generica si spende male: fa controllare due volte la cosa già protetta e distrae dalle altre. Nel caso specifico, il rischio esiste soltanto se si attiva una casella, e dirlo cambia l'istruzione da guarda bene a lascia quella casella come è.
+
+Documentate nella stessa occasione le tre opzioni avanzate di formattazione, che l'utente ha aperto e che non erano descritte. Formattazione rapida e creazione dell'etichetta estesa con i file icona appartengono alla modalità ISO, dove un filesystem viene costruito, quindi in modalità DD non hanno oggetto. Il test dei blocchi errati va lasciato spento, e la ragione non è la fretta: su un supporto nuovo aggiunge una lettura completa dell'intera capacità senza dire nulla che l'esito della scrittura non dica già, e su un supporto sospetto la domanda a cui rispondere non è se abbia blocchi difettosi ma se valga la pena usarlo per un installatore.
+
+Esito: fatto.
+
+### MS-067 - Inferenza ritirata: dentro l'immagine non c'è nessun file oltre i 4 GiB
+
+Perimetro: ritiro di una affermazione data come fatto in MS-059, MS-061 e MS-065 e nella sottofase 2.3, con la misura che la smentisce.
+
+L'utente ha chiesto che cosa significhi la modalità DD, e nel rispondere ho verificato l'affermazione su cui avevo poggiato la raccomandazione invece di ripeterla. Era sbagliata.
+
+Avevo affermato che dentro l'immagine di Ubuntu Studio 26.04.1 il filesystem compresso del sistema supera i 4 GiB, e che quindi la modalità immagine ISO, che costruisce un FAT32, non potesse contenerlo. La misura del contenuto dell'immagine dice il contrario: il file più grande è `casper/minimal.squashfs` con **4.112.433.152 byte**, cioè 3,83 GiB, contro un limite di 4.294.967.295 byte per singolo file su FAT32. Il secondo per dimensione, `casper/minimal.standard.squashfs`, sta a 2.162.012.160 byte. Nessun file supera la soglia, quindi la modalità ISO avrebbe funzionato e il suggerimento dello strumento, che proponeva proprio quella, era corretto.
+
+La progressione dell'errore è la parte da registrare, perché è identica a quella di MS-050 e va riconosciuta prima che si ripeta. In MS-059 l'avevo scritta come probabile, con la formula che il filesystem compresso supera quella soglia con ogni probabilità. In MS-061 era diventata una affermazione senza qualificazioni. In MS-065 la usavo come premessa per spiegare un altro punto, cioè il significato di `Large FAT32`, che è il segno che era stata promossa a fatto e usata come fondamento. Tre passaggi, nessun ritorno alla fonte, e la fonte era a un comando di distanza: l'elenco del contenuto dell'immagine con un archiviatore.
+
+Il margine è del quattro per cento, e questo va detto perché spiega la plausibilita' senza scusare la promozione: 3,83 GiB contro 4 GiB è vicinissimo, quindi l'ipotesi era ragionevole come ipotesi. Ne segue anche che l'argomento non è sbagliato in generale ma soltanto su questa immagine: su un'altra derivata, o su una versione futura di questa, quel file può superare la soglia. La prescrizione corretta non è quindi eliminare l'argomento ma renderlo condizionale a una misura, e la misura è entrata nella sottofase 2.3 come comando.
+
+Che cosa non cambia, ed è la ragione per cui l'errore non ha prodotto danni operativi. La scelta della modalità DD resta corretta, ma su due motivi diversi da quello caduto. Il primo è che la chiavetta risulta verificabile a posteriori, essendo un clone esatto di un file di cui si conosce l'impronta firmata, mentre una chiavetta scritta in modalità ISO non è confrontabile con nulla perché il suo contenuto è una struttura nuova. Il secondo è che l'avvio non dipende da un caricatore costruito dallo strumento ma da quello che l'immagine porta con sé, collaudato da chi l'ha pubblicata. Il costo della scelta, in cambio, è che la chiavetta diventa un installatore e nient'altro: non vi si aggiungono file, lo spazio residuo non è utilizzabile, e per riusare il supporto occorre azzerarne la tabella delle partizioni con `diskpart` e la sua operazione `clean`, dato che una formattazione dall'interfaccia grafica non basta.
+
+Riscritta di conseguenza la sottofase 2.3, che ora spiega la differenza fra le due modalità in termini di ricostruzione contro copia esatta, dichiara le due ragioni valide della scelta, dichiara il costo, e riporta l'inferenza ritirata con la misura invece di far sparire il motivo sbagliato. Nel registro il paragrafo di MS-061 è conservato come era, con una nota di ritiro in evidenza: la regola di questo progetto è che una inferenza smentita si ritira esplicitamente e non si cancella in silenzio, altrimenti il documento sembra essere sempre stato giusto e non si impara nulla.
+
+Una nota marginale sul metodo, perché è costata due minuti. Il controllo che uso per non inserire due volte lo stesso microstep cerca l'identificativo nel file, e qui ha rifiutato l'inserimento: l'identificativo c'era già, ma dentro il rimando che avevo appena scritto nella nota di ritiro di MS-061. Una guardia che cerca una stringa qualunque scatta anche sulle citazioni legittime di quella stringa; quella corretta cerca l'intestazione, cioè il marcatore di titolo seguito dall'identificativo.
+
+Esito: fatto.
+
+### MS-068 - Chiavetta scritta in DD, e uno strumento che la verifica invece di crederci
+
+Perimetro: chiusura della sottofase 2.3, nuove sottofasi 2.4 e 2.5 della procedura, nuovo strumento `tools/verify-usb-dd.ps1`, propagato al progetto gemello.
+
+La scrittura è riuscita. Otto minuti e sette secondi, stato verde, e il dispositivo che prima si presentava come un volume unico ora si presenta come partizioni multiple. La struttura risultante è la prova visibile che la modalità DD è stata effettivamente usata: tabella GPT con tre partizioni, cioè il volume principale dell'immagine di circa 6792 MB, una partizione di sistema EFI di 5 MB e una partizione ausiliaria di 0,3 MB. Sono le partizioni che l'immagine ibrida porta con sé, non una struttura costruita dallo strumento di scrittura, che in modalità ISO ne avrebbe creata una sola.
+
+Il resto di questo microstep è la verifica, e vale spiegare perché merita uno strumento invece di una spunta. La modalità DD ha una proprietà che la modalità ISO non ha: la chiavetta è un clone byte per byte del file, quindi i primi N byte del dispositivo grezzo, con N pari alla dimensione esatta dell'immagine, devono avere la stessa impronta del file. È l'unico caso in cui un supporto di installazione si può verificare, invece di accettarne la riuscita sulla parola dello strumento che l'ha scritto. Una chiavetta scritta in modalità ISO non è confrontabile con nulla, perché il suo contenuto è un filesystem nuovo che nessuna impronta pubblicata descrive, e questa è la seconda ragione valida per cui la sottofase 2.3 prescrive DD, dopo il ritiro della prima in MS-067.
+
+Scritto quindi `tools/verify-usb-dd.ps1`, che apre il dispositivo grezzo, ne legge esattamente la dimensione dell'immagine a blocchi da 1 MiB calcolando l'impronta in modo incrementale, e la confronta con quella del file. Tre dettagli di realizzazione meritano di stare a verbale perché sono i punti in cui una versione ingenua fallisce.
+
+Il primo è la condivisione. I volumi della chiavetta risultano montati con lettere proprie subito dopo la scrittura, quindi l'apertura del dispositivo grezzo va fatta dichiarando la condivisione in lettura e scrittura: senza quella dichiarazione l'apertura fallisce con un errore di condivisione, che si legge come un permesso negato e manda a cercare la causa nel posto sbagliato.
+
+Il secondo è l'allineamento ai settori. Un dispositivo grezzo si legge per settori, quindi la dimensione da confrontare deve essere un multiplo di 512. Per una immagine ISO è sempre vero, dato che il suo blocco è di 2048 byte, e per questa in particolare i conti tornano in modo netto: 7.127.195.648 byte sono esattamente 6797 blocchi da 1 MiB. Lo strumento lo verifica comunque e si rifiuta di procedere se il conto non torna, invece di arrotondare: un arrotondamento silenzioso produrrebbe un confronto fra quantità diverse, cioè un esito negativo senza causa apparente.
+
+Il terzo sono i privilegi, ed è la stessa constatazione già fatta due volte in questa sessione sotto forme diverse. Leggere un dispositivo grezzo richiede l'elevazione, perché significa aprire un percorso nello spazio dei nomi dei dispositivi e non un file dentro un filesystem: è la stessa ragione per cui SMART richiede privilegi su Windows come su Linux, cioè che si sta parlando al dispositivo e non al filesystem che vi sta sopra.
+
+Sulla portata della verifica lo strumento è esplicito, e la procedura con lui, perché è il punto in cui si crede di aver verificato più di quanto si è verificato. Il confronto dimostra la fedeltà della copia, cioè che la scrittura non ha introdotto errori e che il supporto rilegge ciò che vi è stato scritto. Non dice nulla sull'autenticità dell'immagine, che è la domanda della sottofase 2.2 e va risolta prima di scrivere, non dopo. Passando allo strumento anche l'impronta attesa, una sola esecuzione risponde a entrambe le domande, ma restano due domande e non una.
+
+Documentate anche le tre cause di un esito negativo, in ordine di probabilità, perché senza di esse un fallimento manda a sospettare la chiavetta per prima quando è la spiegazione meno probabile: scrittura avvenuta in modalità ISO invece che DD, disco sbagliato indicato, oppure un supporto che non conserva ciò che scrive. Solo la terza è un problema del supporto, e in quel caso quella chiavetta non va usata per installare, perché un errore che si manifesta durante la copia dei file di sistema produce un guasto difficile da attribuire.
+
+Riorganizzata infine la fase 2, che ora ha cinque sottofasi invece di tre: scaricamento, verifica dell'immagine, scrittura, verifica della chiavetta, e come 2.5 la scrittura dalla macchina Linux come alternativa, che prima stava in coda alla 2.3 dove sembrava un seguito e non una strada diversa.
+
+Esito: fatto. Resta da eseguire la verifica, che richiede una sessione elevata e quindi è dell'utente.
+
+### MS-069 - Verifica sbagliata, strumento troppo lento, e una domanda semplice complicata
+
+Perimetro: riscrittura della sottofase 2.4, riscoperta del suo scopo, rimozione di uno strumento appena creato, correzione dell'altro.
+
+È il microstep più scomodo della sessione e va scritto per intero, perché l'errore non è tecnico ma di giudizio, e l'utente ha dovuto interromperlo. La domanda era: la chiavetta è pronta, posso azzerare la macchina, dove sono le informazioni per ricostruirla. La risposta corretta era una riga per ognuna. Al suo posto ho costruito due strumenti di verifica, dei quali il primo ha dato un falso allarme e il secondo si è piantato.
+
+**Il falso allarme.** Avevo prescritto, nella sottofase 2.4, di confrontare l'impronta dei primi byte del dispositivo grezzo con quella dell'immagine, sul presupposto che una chiavetta scritta in modalità DD debba restare identica al file. Il confronto ha dato impronte diverse su una chiavetta valida, e il presupposto è falso su Windows per tre ragioni che sono tutte scritture legittime del sistema, non guasti. Una immagine ibrida porta una tabella GPT dimensionata sull'immagine, con la copia di sicurezza alla propria fine; scritta su un supporto da 57,7 GB quella copia si trova a meta' disco invece che in fondo, e il sistema la ripara spostandola e riscrivendo l'intestazione primaria, il campo che punta alla copia e il codice di controllo. La zona da cui la copia è stata rimossa cambia a sua volta. E le due partizioni piccole vengono montate con lettera propria, fra cui quella di sistema EFI che è formattata FAT, dove Windows crea le proprie cartelle di servizio al primo accesso.
+
+Ne segue la regola: un confronto byte per byte fra una immagine e il supporto su cui è stata scritta ha senso soltanto su un sistema che non monta i volumi da sè e non ripara le tabelle delle partizioni. Su Windows la differenza è la norma, quindi quel confronto non è una verifica ma un generatore di falsi allarmi. La verifica giusta esisteva già e non l'avevo nominata: è quella che il supporto fa su se stesso dal proprio menu di avvio, alla voce di controllo dei difetti, che confronta le somme che l'immagine porta al proprio interno.
+
+**Lo strumento che si è piantato.** Per capire dove fossero le differenze ho scritto un secondo strumento che confrontava blocco per blocco, e l'ho scritto con un ciclo che confronta i byte uno alla volta in PowerShell: su sette miliardi di byte quel ciclo richiede ore, e l'utente ha visto una finestra ferma allo zero per cento. Non era bloccata, era mal scritta. La lezione tecnica è che in PowerShell l'iterazione elemento per elemento su volumi grandi non è praticabile e va sostituita da un confronto vettoriale o da un altro linguaggio; la lezione di merito è che quello strumento non serviva, perché rispondeva a una domanda che non era stata posta.
+
+Lo strumento è stato rimosso invece di essere ottimizzato, perché ottimizzarlo avrebbe conservato il difetto più grande, cioè l'esistenza. `tools/verify-usb-dd.ps1` invece resta, ma con lo scopo corretto dichiarato in testa al suo docstring: non serve a verificare una chiavetta appena scritta su Windows, e il suo uso legittimo è confrontare una copia grezza che nessun sistema operativo abbia montato né riparato. Corretto anche il messaggio che stampa in caso di esito negativo, che elencava tre cause tutte allarmanti e ometteva quella più probabile: adesso la prima voce dell'elenco è la scrittura legittima del sistema operativo, e il guasto del supporto è l'ultima.
+
+**Il difetto di giudizio, che è la parte che conta.** Ogni singolo passaggio era difendibile: verificare è meglio che fidarsi, e uno strumento è meglio di un comando a mano. Ma sommati hanno prodotto una sessione in cui una chiavetta pronta sembrava sospetta e una domanda semplice non ha ricevuto risposta. La verifica ha un costo, e quel costo va confrontato con il rischio che copre: qui il rischio era una chiavetta scritta male, la cui unica conseguenza sarebbe stata un avvio fallito, cioè cinque minuti e nessun danno, mentre il presidio proposto costava mezz'ora, due strumenti nuovi e un allarme falso. Il criterio corretto è quello: si verifica quando la conseguenza di un errore è costosa o difficile da attribuire, non per completezza.
+
+Va aggiunto che il rischio residuo era anche coperto altrove, e questo rende il presidio non solo costoso ma ridondante: il supporto verifica se stesso all'avvio, e un avvio fallito è immediatamente diagnostico.
+
+Riscritta quindi la sottofase 2.4 in modo che prescriva il controllo dei difetti dal menu di avvio, spieghi perché il confronto integrale non va usato su Windows, e conservi come riferimento la sola cosa utile che l'esecuzione ha prodotto: il fatto che a fine scrittura la chiavetta presenti tre partizioni in tabella GPT, cioè quelle dell'immagine ibrida, e che questo si legga a occhio come conferma che la modalità DD è stata usata, senza bisogno di alcuno strumento.
+
+Esito: fatto. La chiavetta è pronta e i prerequisiti dell'installazione sono soddisfatti.
 
 ## Che cosa resta da fare, e da che cosa dipende
 

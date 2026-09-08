@@ -149,6 +149,13 @@ def controlla_pa004() -> None:
     print("\nPA-004  Ispezionare il disco G: e il materiale EASE Focus 3.1.10 (K-array)")
     presente = COPIA_G.is_dir()
     riga("ok" if presente else "  ", f"percorso su G:: {COPIA_G}")
+    # La lettera non identifica il disco: Windows assegna la prima libera, quindi la
+    # stessa lettera indica dispositivi diversi in momenti diversi. Il 2026-09-08 G:
+    # era una chiavetta di installazione. Il criterio di riconoscimento e' il percorso
+    # completo qui sopra, non la lettera: se la lettera esiste ma il percorso no, non
+    # si e' trovato il disco sbagliato, semplicemente non c'e'. Vedi PA-004.
+    if not presente and COPIA_G.drive and Path(COPIA_G.drive + "\\").is_dir():
+        riga("  ", f"attenzione: la lettera {COPIA_G.drive} e' occupata da un altro volume")
     if presente:
         try:
             n = sum(1 for x in COPIA_G.rglob("*") if x.is_file())
