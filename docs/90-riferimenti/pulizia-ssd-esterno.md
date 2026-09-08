@@ -81,22 +81,45 @@ La prima è la rimozione del disco senza espulsione sicura, cioè scollegarlo me
 
 La seconda è un difetto del supporto o del suo controllore, e in quel caso il rimedio non è un'abitudine ma la sostituzione, o almeno la decisione di non tenere su quel disco l'unica copia di qualcosa.
 
-C'è un elemento di contesto che rende la prima ipotesi meno rassicurante di quanto sembri, e vale metterlo in relazione invece di lasciarlo isolato: la lettura SMART del disco interno della macchina Ubuntu Studio ha riportato 24 spegnimenti non puliti su 135 accensioni, cioè circa uno su sei. Due dischi diversi con due sintomi diversi che puntano nella stessa direzione, cioè verso una gestione dell'alimentazione e delle rimozioni poco pulita, sono un indizio più forte di due sintomi isolati. Resta un indizio e non una conclusione.
+C'era un elemento di contesto che rendeva la prima ipotesi meno rassicurante di quanto sembrasse, e vale conservarlo perché è il ragionamento che ha portato a misurare: la lettura SMART del disco interno della macchina Ubuntu Studio aveva riportato 24 spegnimenti non puliti su 135 accensioni, cioè circa uno su sei. Due dischi diversi con due sintomi diversi che puntavano nella stessa direzione, cioè verso una gestione dell'alimentazione e delle rimozioni poco pulita, erano un indizio più forte di due sintomi isolati. Era un indizio e non una conclusione, e la misura lo ha risolto.
 
-Il controllo che chiude la questione è la lettura SMART dell'SSD esterno, che si fa con `smartctl` da Linux oppure con CrystalDiskInfo da Windows, cioè lo stesso strumento con cui il disco interno era stato valutato nel 2025. Gli indicatori da guardare sono gli stessi: la percentuale di usura, la riserva di blocchi disponibili e il conteggio degli errori di integrità dei dati.
+## La misura SMART dell'SSD esterno, del 2026-09-08
+
+Il controllo è stato eseguito con CrystalDiskInfo 9.9.1 dalla postazione Windows, con il disco collegato. Va detto per primo un ostacolo che si incontra e che sorprende chi lo aspetta solo su Linux: la lettura SMART richiede privilegi anche su Windows. Il tentativo per la via nativa, cioè `Get-StorageReliabilityCounter` da PowerShell, risponde `PermissionDenied` sulla classe CIM di storage se la sessione non è elevata, ed è la stessa ragione per cui su Linux serve `sudo` su `/dev/nvme0`: leggere quella tabella significa mandare un comando diretto al dispositivo, non leggere un file. La via che funziona senza sessione interattiva elevata è avviare lo strumento con elevazione e fargli scrivere il rapporto su file.
 
 ```powershell
-smartctl -a /dev/sdb
+Start-Process -FilePath "C:\Program Files\CrystalDiskInfo\DiskInfo64.exe" -ArgumentList "/CopyExit" -Verb RunAs
 ```
 
-Il nome del dispositivo va identificato prima e non assunto, perché su un disco esterno dipende dall'ordine di collegamento.
+L'opzione `/CopyExit` fa scrivere il rapporto completo di tutti i dischi in `DiskInfo.txt` nella cartella del programma e chiudere subito, quindi non richiede di leggere una finestra né di catturare uno screenshot.
 
-La conseguenza pratica, qualunque sia la causa, è già chiara e non aspetta la diagnosi: quel disco non è il posto dove tenere l'unica copia di qualcosa. Il che è esattamente il motivo per cui la cancellazione di `Progetto stanza (software)` è stata subordinata alla verifica che il materiale fosse altrove, invece di essere eseguita sulla fiducia.
+L'esito sul Samsung Portable SSD T7 da 500 GB, firmware `FXG42P2Q`, esposto come NVMe 1.3 attraverso un ponte UASP.
+
+| Indicatore | Valore | Lettura |
+|---|---|---|
+| giudizio complessivo | Buono, 100 per cento | nessun attributo fuori soglia |
+| percentuale usata | 0 per cento | vita di scrittura praticamente intatta |
+| riserva disponibile | 100 per cento, soglia 10 | nessun blocco di riserva consumato |
+| errori di integrità supporto e dati | 0 | nessun dato letto in modo scorretto |
+| voci nel registro errori | 0 | nessun errore registrato dal controller |
+| ore di accensione | 2795 | |
+| cicli di alimentazione | 742 | |
+| spegnimenti non protetti | **122** | uno ogni sei cicli |
+| letti / scritti dall'host | 7526 GB / 1863 GB | |
+| temperatura | 32 gradi | |
+
+La conclusione è netta e ribalta il peso delle due cause. Il supporto è sano: con usura a zero, riserva intatta e zero errori di integrità non esiste alcun indizio di difetto del medium o del controllore, quindi la seconda causa cade e la sostituzione del disco non serve. Ciò che resta è la prima causa, cioè la disconnessione mentre il sistema ha scritture in sospeso, ed è coerente con i 122 spegnimenti non protetti.
+
+Un correttivo va però applicato a quel numero prima di usarlo come prova, altrimenti si conclude più di quanto il dato dica. Su un disco collegato via USB quel contatore si incrementa ogni volta che l'alimentazione cade senza che il ponte inoltri al controller NVMe la notifica di spegnimento, e molti ponti non la inoltrano mai, nemmeno quando il sistema operativo espelle il volume correttamente. Una parte dei 122 è quindi fisiologica dell'involucro e non prova di uno strappo. Ciò che non ha spiegazioni fisiologiche sono le cinque cartelle `FOUND`, perché `chkdsk` non ripara un filesystem coerente: quelle cinque restano la prova che il volume è stato staccato con scritture in sospeso.
+
+Per confronto, letto nello stesso rapporto, il disco di sistema di questa postazione, un Crucial P3 da 1 TB con firmware `P9CR413`, riporta 23 spegnimenti non protetti su 253 cicli, usura al 13 per cento, salute all'87 per cento e zero errori di integrità dopo 11881 ore. Il confronto serve a dare una scala: su un disco interno, dove il contatore non passa da un ponte USB, il rapporto fra spegnimenti non protetti e cicli è circa la metà.
+
+La regola operativa che ne discende è una sola, e non è la sostituzione del disco: si espelle il volume prima di staccarlo, sempre. Resta valida, indipendentemente da questa misura, la conseguenza già scritta sotto, cioè che un disco esterno rimovibile non è il posto dove tenere l'unica copia di qualcosa: non perché sia malato, ma perché è rimovibile.
 
 ## Che cosa resta da decidere sulla copia sul Desktop
 
 La cancellazione su `J:` non chiude la questione dello spazio, perché la copia sul Desktop della postazione Windows resta, con tutte e quattordici le voci, comprese le otto che il censimento ha scartato.
 
-La decisione su quella copia è separata e va presa dopo, non insieme, e la ragione è di ordine e non di merito: rimuoverle entrambe nello stesso momento lascerebbe una sola copia del materiale utile, cioè quella sulla macchina, in un momento in cui la macchina è in procinto di essere reinstallata. Finita la reinstallazione e verificato che i programmi funzionino, la copia sul Desktop diventa ridondante e può andare.
+La decisione su quella copia era stata rinviata, e il rinvio è **superato dal 2026-09-07**. La ragione del rinvio era di ordine e non di merito: rimuovere entrambe le copie nello stesso momento avrebbe lasciato una sola copia del materiale utile, quella sulla macchina, proprio mentre la macchina è in procinto di essere reinstallata. La condizione che scioglie il nodo non è la reinstallazione compiuta, come questa pagina scriveva, ma una copia di sicurezza su un supporto diverso: esiste, è l'archivio `tar` di `/home` verificato per numero di file e permessi, quindi le copie sono di nuovo due e quella sul Desktop è la terza. Si veda PA-007, che è sbloccata, e ADR-015.
 
 Sulle otto voci scartate la considerazione è diversa e più semplice, perché non sono state trasferite e non lo saranno: la loro unica copia è sul Desktop, e cancellarla significa non averle più. Dato che il censimento stabilisce che nessuna serve al progetto, e dato che per ciascuna esiste una sostituzione nativa o gratuita già disponibile, non c'è ragione di conservarle. Ma è materiale personale e la decisione è dell'utente, quindi resta dichiarata qui e non eseguita.
