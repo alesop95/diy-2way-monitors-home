@@ -6,12 +6,12 @@
 
 ```
 Branch attivo:          main
-Commit di riferimento:  ba69e0c
-Data snapshot:          2026-09-07
-Modifiche non committate: sì, la coda della sessione del 2026-09-07 su SSD e privilegi
+Commit di riferimento:  1b4e801
+Data snapshot:          2026-09-08
+Modifiche non committate: sì, la coda della sessione del 2026-09-08
 ```
 
-Quattro commit sono su origin, gli ultimi due del 2026-09-07: `4863804` con la verifica delle copie del corredo e `f85480d` con la fase 0 eseguita e la diagnosi corretta. I due precedenti, del 2026-09-04, sono: `9e9517e` con l'allineamento al template, la conversione del documento sorgente e l'impianto dell'ambiente documentale, e `3eac5f3` con l'approfondimento su Wine, la procedura di installazione pulita, lo storico di Akabak e VACS e il piano del corredo software. Il lavoro del 2026-09-07, cioè la verifica delle copie del corredo e le quattro voci da MS-024 a MS-027, non è ancora committato. Commit e push restano operazioni manuali dell'utente.
+Il repository conta 22 commit e origin è in pari fino a `1b4e801`. I due più recenti, del 2026-09-08, sono `d2905ba` con il Machine Identifier confermato e la ripulitura delle informazioni superate, e `1b4e801` con la sequenza operativa e le verifiche dell'immagine di installazione. I due del 2026-09-04 che hanno impiantato il progetto sono `9e9517e`, con l'allineamento al template e la conversione del documento sorgente, e `3eac5f3`, con l'approfondimento su Wine, la procedura di installazione pulita e lo storico di Akabak e VACS. Commit e push restano operazioni manuali dell'utente.
 
 ## Che cos'è questo progetto, in tre righe
 
@@ -46,6 +46,6 @@ La fase 1.3 è compiuta: backup di `/home` in `C:\Users\Utente\Desktop\_backup-u
 
 La verifica del Machine Identifier di Akabak è compiuta: coincide con il valore conservato, la licenza è dichiarata valida, e questo chiude nella sostanza PA-005 e con essa la fase 0. È MS-052. Anche PA-009 è chiusa: l'SSD esterno è sano e la causa delle riparazioni del filesystem è la rimozione senza espulsione, non il supporto. È MS-058.
 
-Della fase 2 sono compiute la 2.1 e la 2.2: l'immagine `ubuntustudio-26.04.1-desktop-amd64.iso` è in `E:\_iso-ubuntu-studio\`, verificata per somma di controllo e per firma, e accanto a essa c'è Rufus 4.15 portabile verificato per firma Authenticode. Da prendere è il point release 26.04.1 e non la 26.04 iniziale. Il prossimo passo è quindi la 2.3, cioè scrivere la chiavetta in modalità DD su un supporto da almeno 16 GB, e poi le fasi da 3 a 11. La sequenza completa delle azioni dell'utente, in ordine e con le dipendenze dichiarate, è in testa a `docs/PENDING-ACTIONS.md`. Attenzione: le fasi 7 e 8 sono state corrette il 2026-09-07 per ADR-016, perché Akabak è a 32 bit e non a 64: chi eseguisse una versione precedente della procedura otterrebbe un ambiente in cui il programma non parte.
+Della fase 2 sono compiute la 2.1 e la 2.2: l'immagine `ubuntustudio-26.04.1-desktop-amd64.iso` è in `C:\Users\Utente\Desktop\_iso-ubuntu-studio\`, verificata per somma di controllo e per firma, e accanto a essa c'è Rufus 4.15 portabile verificato per firma Authenticode. Da prendere è il point release 26.04.1 e non la 26.04 iniziale. Il prossimo passo è quindi la 2.3, cioè scrivere la chiavetta in modalità DD su un supporto da almeno 16 GB, e poi le fasi da 3 a 11. La sequenza completa delle azioni dell'utente, in ordine e con le dipendenze dichiarate, è in testa a `docs/PENDING-ACTIONS.md`. Attenzione: le fasi 7 e 8 sono state corrette il 2026-09-07 per ADR-016, perché Akabak è a 32 bit e non a 64: chi eseguisse una versione precedente della procedura otterrebbe un ambiente in cui il programma non parte.
 
 Lo stato dell'accesso alla macchina: è raggiungibile e la chiave SSH dedicata è installata, quindi l'accesso funziona anche in modo non interattivo. Resta che `sudo` chiede la password, per scelta dell'utente, quindi il lavoro privilegiato si esegue a mano su comandi preparati. Attenzione alla sospensione automatica: la macchina si riaddormenta e scompare dalla rete, quindi conviene risvegliarla prima di ogni sessione di lavoro su di essa. Il suo indirizzo hardware è `2c:4d:54:53:a4:fb`, utile per il Wake-on-LAN e per una prenotazione dell'indirizzo sul router.

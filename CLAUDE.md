@@ -45,12 +45,15 @@ Tutta non distruttiva, e va eseguita per intera.
 ```bash
 python tools/md-unwrap.py --check .
 python tools/lint-md-commands.py .
+python tools/check-eol.py .
 python tools/test-tipografia.py
 python tools/sync-ambiente.py --check
 python tools/check-pending-actions.py
 ```
 
-L'ultimo comando fallisce se il blocco `docs/10-ambiente/` è stato modificato qui e non ancora propagato al progetto gemello `home-recording-training-mixing-setup`, di cui questo repository è la copia canonica.
+Il penultimo comando fallisce se il blocco `docs/10-ambiente/` è stato modificato qui e non ancora propagato al progetto gemello `home-recording-training-mixing-setup`, di cui questo repository è la copia canonica.
+
+Il terzo comando, `check-eol.py`, cerca i file di testo che mescolano fini riga `CRLF` e `LF`, ed esiste perché nessun altro controllo può accorgersene: la convenzione Markdown prescrive di conservare la fine riga di ciascun file, quindi `md-unwrap` la rispetta e non ne pretende la coerenza interna, il rendering a video è identico e la catena tipografica guarda i caratteri e non le interruzioni. Non è un problema estetico: con `core.autocrlf` a `false` e senza `.gitattributes`, come in questo repository, git registra le fini riga così come stanno sul disco, quindi un file misto entra nella storia e alla prima riscrittura da parte di qualunque strumento trasforma una modifica di due righe in una modifica dell'intero file. Il difetto è stato introdotto per davvero il 2026-09-08 inserendo blocchi scritti con `LF` in due file `CRLF`, e al primo lancio lo strumento ne ha trovato un terzo che era già nella storia del repository. Il racconto è in MS-063.
 
 La catena tipografica, cioè `fix-accents.py`, `fix-missing-accents.py` e `fix-dashes.py`, non entra in questa sequenza e non si lancia su `.`. Si esegue sui soli file Markdown, e la ragione è un difetto isolato in MS-014 del registro dei microstep: su un file di codice le regole di prudenza dei due strumenti sugli accenti sono incoerenti fra loro, e la catena dei due lascia un apostrofo orfano su forme come `c'e'`, producendo `c'è'`. Gli stessi strumenti terminano inoltre con un errore se ricevono un percorso su un'altra lettera di unità.
 

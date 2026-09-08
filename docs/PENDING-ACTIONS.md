@@ -16,11 +16,11 @@ Le azioni sono numerate e nell'ordine in cui vanno eseguite. Dove una dipende da
 
 **1. Commit e push dei due repository.** Prima di tutto il resto, perché il lavoro documentale in attesa di commit è l'unica cosa che una sessione perduta porterebbe via. Indipendente da tutto ciò che segue.
 
-**2. Cancellare la copia del corredo sul Desktop.** È PA-007, sbloccata. Si lancia prima la riverifica delle impronte e poi la cancellazione, nell'ordine, e non a distanza di ore l'una dall'altra. Indipendente dal resto: non è un prerequisito dell'installazione, è recupero di 2,3 GB e chiusura di una voce.
+**2. Cancellare la copia del corredo sul Desktop. Compiuto il 2026-09-08.** È PA-007, chiusa. Riverifica delle impronte e cancellazione eseguite nell'ordine e a distanza di minuti, 2,3 GB recuperati, nessun dato utile perduto.
 
 **3. Leggere lo SMART dell'SSD esterno. Compiuto il 2026-09-08.** È PA-009, chiusa. Il supporto è sano, quindi delle due cause resta la rimozione senza espulsione: il disco non va sostituito e la regola è espellere il volume prima di staccarlo.
 
-**4. Preparare la chiavetta di installazione. Due terzi compiuti il 2026-09-08.** È la fase 2 della procedura. L'immagine è scaricata in `E:\_iso-ubuntu-studio\` ed è verificata due volte, per somma di controllo e per firma del file delle somme: è la **26.04.1**, cioè il point release, e non la 26.04 iniziale che la procedura nominava. Rufus 4.15 portabile è scaricato accanto a essa e verificato per firma Authenticode. Resta la sola scrittura, che richiede un supporto da almeno 16 GB e va fatta in modalità DD: la ragione, insieme all'avvertenza su che cosa rifiutare a scrittura finita, è nella sottofase 2.3.
+**4. Preparare la chiavetta di installazione. Due terzi compiuti il 2026-09-08.** È la fase 2 della procedura. L'immagine è scaricata in `C:\Users\Utente\Desktop\_iso-ubuntu-studio\` ed è verificata due volte, per somma di controllo e per firma del file delle somme: è la **26.04.1**, cioè il point release, e non la 26.04 iniziale che la procedura nominava. Rufus 4.15 portabile è scaricato accanto a essa e verificato per firma Authenticode. Resta la sola scrittura, che richiede un supporto da almeno 16 GB e va fatta in modalità DD: la ragione, insieme all'avvertenza su che cosa rifiutare a scrittura finita, è nella sottofase 2.3.
 
 **5. Controllare il firmware.** È la fase 3. Quattro voci nel setup UEFI, e una va cambiata adesso perché dopo costa una sessione: il Wake-on-LAN, senza il quale la macchina che si sospende va risvegliata a mano.
 
@@ -144,7 +144,11 @@ Il criterio di completamento. Una scelta dichiarata, e ADR-006 riconfermata oppu
 
 ## PA-007 - Cancellare la copia del corredo sul Desktop della postazione
 
-Data di apertura: 2026-09-07. Stato: **eseguibile adesso**, in attesa dell'esecuzione da parte dell'utente.
+Data di apertura: 2026-09-07. **Compiuta il 2026-09-08.** Stato: chiusa.
+
+L'esito. La cartella `C:\Users\Utente\Desktop\Progetto stanza (software)`, 650 file per 2,3 GB, è stata cancellata dall'utente e non esiste più, verificato. Nell'ordine prescritto: prima la riverifica delle impronte sulla macchina, che ha dato 8 file del manifest e 273 file del corredo tutti coincidenti, e subito dopo la cancellazione. Le voci utili del corredo restano in due copie indipendenti, quella sulla macchina e quella dentro l'archivio di `/home`; delle otto voci scartate dal censimento si è perduta l'unica copia, come previsto e voluto, perché per ciascuna esiste una sostituzione nativa o gratuita già disponibile.
+
+Il testo che segue documenta i termini su cui la voce era stata sbloccata, ed è **superato dall'esecuzione**.
 
 Detto senza giri di parole, perché la domanda è stata posta due volte: **la cartella si può cancellare, oggi, e l'unica cosa che si perde è quella che il censimento ha deciso di non tenere.** Non c'è nessuna condizione residua da attendere.
 
