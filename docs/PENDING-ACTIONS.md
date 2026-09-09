@@ -58,7 +58,27 @@ Condizione di sblocco. Che le fasi da 6 a 9 siano compiute e verificate, cioè c
 
 Criterio di completamento. Il backup esiste, il suo supporto di destinazione è dichiarato, e ne è stato provato il ripristino almeno in forma parziale, perché un backup mai riletto è una speranza e non una copia. Va dichiarato anche dove risiede, dato che la regola imparata da PA-009 vale anche qui: un disco rimovibile non è il posto dove tenere l'unica copia di qualcosa.
 
-Da definire, e non va inventato adesso. Quale prodotto Veeam si usa su Linux, se l'agente gratuito per Linux basta allo scopo, quale sia la destinazione e con quale frequenza. Sono decisioni che si prendono quando la voce si sblocca, e la loro assenza qui è voluta.
+Sull'esperienza precedente dell'utente va registrato un accertamento fatto il 2026-09-09, perché ridimensiona quanto sia riutilizzabile. Il progetto `home-lab-cybersec-networking` contiene una strategia di backup con Veeam sotto `docs/03-spunti-di-sviluppo/05-strategia-di-backup/`, ma la sua unica pagina è `01-veeam-agent-for-windows.md` e il README della cartella elenca soltanto quella: una ricerca di `linux` e `ubuntu` in quel blocco non restituisce nulla. Trasferibili sono quindi i concetti, cioè la scelta della destinazione, il criterio di ritenzione e la prova di ripristino, mentre l'agente per Linux è un prodotto diverso, con un proprio modulo del kernel per gli snapshot e un proprio servizio, e va documentato da zero. Su Ubuntu Studio non cambia nulla rispetto a Ubuntu, e questa è una delle poche affermazioni che si possono fare senza verificarle su questa macchina, perché l'abbiamo misurata: kernel generico, stessi archivi, stesso `apt`, con la sola differenza della selezione di pacchetti.
+
+Da definire, e non va inventato adesso. Se l'agente gratuito per Linux basti allo scopo, quale sia la destinazione e con quale frequenza. Sono decisioni che si prendono quando la voce si sblocca, e la loro assenza qui è voluta.
+
+## PA-012 - Scegliere l'interfaccia audio, che serve a due progetti e non a uno
+
+Data di apertura: 2026-09-09. Stato: aperta.
+
+Che cosa va fatto. Scegliere e acquisire una interfaccia audio per la macchina Ubuntu Studio. La valutazione appartiene al progetto gemello `home-recording-training-mixing-setup`, perché l'esigenza primaria è la registrazione multitraccia con Ardour, ma la scelta vincola anche questo progetto, quindi la voce esiste in entrambi.
+
+Perché conta qui. La fase 8 di questo progetto misura i diffusori costruiti, e una misura acustica richiede un ingresso microfonico con alimentazione phantom per un microfono XLR calibrato, che la scheda integrata `ALC887-VD` non ha. Senza interfaccia la fase 8 non è eseguibile in quella forma, e la scelta del microfono resta bloccata a monte: `docs/20-misura-stanza.md` conclude a favore di un XLR calibrato individualmente soltanto sotto la condizione che l'interfaccia esista, e dichiara che in sua assenza l'UMIK-1 USB sarebbe la scelta giusta senza discussione. Le due decisioni sono quindi in sequenza e non in parallelo.
+
+I due vincoli fissati dall'utente il 2026-09-09, e vanno trattati come requisiti e non come preferenze. Il primo è che l'interfaccia funzioni come dispositivo di classe audio, cioè che il kernel Linux la riconosca senza driver proprietari: elimina la classe di problemi peggiore su questa piattaforma, dove un produttore che rilascia driver solo per Windows e macOS rende l'hardware inutilizzabile a ogni aggiornamento di kernel. Il secondo è che la stessa interfaccia regga anche le misure di questo progetto, non solo la registrazione, quindi serve almeno un ingresso microfonico con phantom a 48 V e una qualità di conversione dichiarata dal produttore.
+
+Due vincoli che l'utente ha esplicitamente non fissato, e la loro assenza va registrata perché altrimenti verrebbe riempita per ipotesi: il numero di ingressi simultanei necessari, che è il parametro che elimina più modelli di ogni altro, e un tetto di spesa. Nessuno dei due va assunto: vanno chiesti quando la valutazione si apre.
+
+Un fatto storico da non ripetere. Le versioni precedenti della documentazione dichiaravano come dato di fatto che la macchina possedesse una Focusrite Scarlett 2i2 di seconda generazione, e l'affermazione derivava da un file alla radice contenente il solo indirizzo della pagina di download dei driver. L'utente possiede quella interfaccia ma non la impiega in questo progetto. Il ritiro è in MS-079, e la lezione operativa per questa voce è che l'inventario dell'hardware si scrive da ciò che si osserva sul bus, non da un segnalibro.
+
+Condizione di sblocco. Nessuna condizione esterna impedisce la valutazione, che si può fare adesso; l'acquisto dipende dai due parametri mancanti, che sono dell'utente. La voce resta aperta finché l'interfaccia non è scelta.
+
+Criterio di completamento. Esiste un documento nel progetto gemello che confronta un numero limitato di candidati sui due vincoli dichiarati, con la verifica esplicita del supporto di classe audio su Linux fatta su fonte primaria e non su un forum, e la scelta è registrata come decisione architetturale in entrambi i progetti. Dopo l'acquisto, il controllo di uscita della fase 6 di `docs/10-ambiente/installazione-pulita-26-04.md` va riscritto nominando il dispositivo reale, e la scelta del microfono in `docs/20-misura-stanza.md` va promossa da condizionale a decisa.
 
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
 

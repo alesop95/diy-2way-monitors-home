@@ -142,7 +142,7 @@ Nota metodologica, perché è il vero contenuto di questa voce. ADR-006 era stat
 
 ## ADR-012 - Il Rod Rain audio è la sorgente della catena di ascolto, e questo anticipa la scelta fra monitor attivi e passivi
 
-Data: 2026-09-07. Stato: accettata per la sorgente; la conseguenza sull'architettura del diffusore resta aperta.
+Data: 2026-09-07. Stato: accettata per la sorgente; la conseguenza sull'architettura del diffusore resta aperta. Rivista da ADR-018 nella seconda conseguenza, quella sulla catena di misura: l'interfaccia nominata qui non appartiene a questo progetto.
 
 Contesto: la catena di ascolto dei due monitor non era mai stata definita. Il documento sorgente si occupava della catena di misura, cioè microfono e Focusrite Scarlett 2i2, e lasciava il resto implicito. L'utente ha indicato come uscita per i monitor l'unità Rod Rain audio, oggetto di studio del progetto `rodrainaudio-reverse-eng`, precisando che il dispositivo è condiviso con un altro computer.
 
@@ -241,3 +241,21 @@ Motivazione della seconda parte, e non è soltanto di riservatezza. Alla reinsta
 Conseguenze. La nota in apertura di `docs/10-ambiente/scheda-reinstallazione.md` è stata corretta, perché dichiarava la sostituzione dei due segnaposto come comportamento normale dello strumento. Il file riservato `_notes/licenze-akabak-riservato.md` resta la sola sede dei valori, esclusa dal versionamento. Chi usa `--con-licenza` produce un foglio che va trattato come materiale riservato, e lo strumento lo dichiara sul terminale al momento di generarlo.
 
 Alternativa scartata: mettere i valori nel documento e affidarsi alla cura di chi stampa. Scartata perché sposta un presidio da una impostazione predefinita a una abitudine, e le abitudini non sopravvivono alla fretta del giorno in cui si azzera un disco.
+
+## ADR-018 - Emendamento ad ADR-012: la catena di misura non ha un'interfaccia, e questo mette in sequenza due acquisti
+
+Data: 2026-09-09. Stato: accettata. Rivede la seconda conseguenza di ADR-012.
+
+Contesto. ADR-012 aveva definito la catena di ascolto dei due monitor, stabilendo che la sorgente è il Rod Rain audio con uscita di linea su RCA a 2 Vrms, e ne aveva tratto due conseguenze. La prima, sull'anticipo della scelta fra monitor attivi e passivi, resta valida e non è toccata. La seconda affermava che la catena di misura usa la Focusrite Scarlett 2i2 mentre quella di ascolto usa il Rod Rain, e che sono due convertitori diversi con due uscite diverse.
+
+La struttura di quella seconda conseguenza è corretta e va conservata: sono davvero due catene distinte, e per la fase 8, cioè la verifica dei diffusori costruiti, il segnale di prova deve uscire dalla catena di ascolto reale e non da quella di misura, altrimenti si misura un convertitore invece di un diffusore. Ciò che cade è il soggetto: quella interfaccia non appartiene a questo progetto. L'utente ha confermato il 2026-09-09 di possederla ma di non impiegarla qui, e l'affermazione contraria derivava da un file alla radice contenente il solo indirizzo della pagina di download dei driver. Il ritiro documentale è in MS-079.
+
+Decisione. La catena di misura richiede una interfaccia con ingresso microfonico e alimentazione phantom a 48 V, e quale interfaccia non è deciso. La scelta è condivisa con il progetto gemello di home recording, dove l'esigenza primaria è la registrazione multitraccia con Ardour, e porta due vincoli fissati dall'utente: deve essere un dispositivo di classe audio riconosciuto dal kernel Linux senza driver proprietari, e deve reggere anche le misure di questo progetto e non solo la registrazione. È tracciata come PA-012.
+
+Motivazione dei due vincoli, perché non sono preferenze. Il primo elimina la classe di guasti peggiore su questa piattaforma: un produttore che rilasci driver soltanto per Windows e macOS rende l'hardware inutilizzabile a ogni aggiornamento di kernel, e su una macchina che è stata lasciata due anni senza aggiornamenti proprio per timore di rompere l'ambiente questo è un rischio già sperimentato in altra forma. Il secondo evita due acquisti dove ne basta uno, e ha una conseguenza tecnica: una interfaccia che regga la misura deve dichiarare la propria qualità di conversione, perché in fase 8 quel convertitore entra nella catena di cui si misura la risposta.
+
+Conseguenza sulla sequenza delle decisioni, ed è la parte operativa di questo emendamento. La scelta del microfono di misura dipende da quella dell'interfaccia e non è invertibile. La pagina `docs/20-misura-stanza.md` concludeva a favore di un microfono XLR calibrato individualmente contro l'UMIK-1 USB, e quella conclusione poggiava interamente sulla disponibilità di una interfaccia: la stessa pagina dichiarava che su una macchina senza interfaccia l'UMIK-1 sarebbe stato la scelta giusta senza discussione. La conclusione è quindi stata riscritta in forma condizionale, valida se l'interfaccia viene acquisita e rovesciata se non lo fosse.
+
+Due parametri restano non fissati e la loro assenza è dichiarata invece di essere riempita per ipotesi: il numero di ingressi simultanei necessari alla registrazione, che è il vincolo che elimina più modelli di ogni altro, e un eventuale tetto di spesa. Vanno chiesti quando la valutazione si apre, e non assunti.
+
+Alternativa scartata, e vale registrarla perché era la via più rapida. Impiegare in questo progetto l'interfaccia che l'utente già possiede, risolvendo il problema con zero spesa. Scartata perché è una decisione dell'utente sull'uso del proprio hardware e l'ha già presa in senso contrario; il progetto registra la scelta e non la discute.
