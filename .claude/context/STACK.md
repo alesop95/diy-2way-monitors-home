@@ -28,7 +28,7 @@ Sotto Wine, ciascuno nel proprio prefix, con l'architettura che ADR-016 ha corre
 
 WinISD è disponibile ma deliberatamente non installato. Ramsete 27b è sospeso in attesa della verifica del suo stato di licenza. L'affermazione precedente di questa scheda, secondo cui sarebbe il solo a richiedere un prefix a 32 bit per ADR-009, è ritirata: ADR-016 ha stabilito che Akabak e VACS sono a 32 bit, quindi l'architettura `i386` va dichiarata sul sistema in ogni caso e non è una eccezione di un solo programma.
 
-L'hardware di misura è una Focusrite Scarlett 2i2 di seconda generazione con alimentazione phantom, e un microfono di misura calibrato individualmente ancora da acquistare.
+L'hardware di misura non è deciso. Le versioni precedenti di questa scheda dichiaravano come fatto che fosse una Focusrite Scarlett 2i2 di seconda generazione con alimentazione phantom: l'affermazione è ritirata in MS-079, perché derivava da un segnalibro e non da un inventario, e l'utente ha confermato di possedere quella interfaccia ma di non impiegarla qui. Il requisito è un ingresso microfonico con alimentazione phantom e una qualità di conversione nota, più un microfono di misura calibrato individualmente, entrambi da acquisire. La valutazione dell'interfaccia è condivisa con il progetto gemello di home recording, con due vincoli fissati dall'utente: deve funzionare come dispositivo di classe audio senza driver proprietari, e deve reggere anche le misure della fase 8.
 
 ## Alternative deliberatamente escluse
 

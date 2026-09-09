@@ -1362,6 +1362,44 @@ Una nota di metodo che vale più del conteggio. Il grassetto era stato usato per
 
 Esito: fatto.
 
+### MS-079 - Un segnalibro promosso a inventario: la Scarlett 2i2 non appartiene a questo progetto
+
+Perimetro: `docs/10-ambiente/README.md`, `docs/20-misura-stanza.md`, `docs/90-riferimenti/inventario-software.md`, `docs/10-ambiente/installazione-pulita-26-04.md` in sei punti, `docs/10-ambiente/setup-macchina-2026-09.md`, `docs/10-ambiente/scheda-reinstallazione.md`, `docs/10-ambiente/wine-corredo-progetto-stanza.md`, `docs/10-ambiente/wine-vs-emulatore.md`, `.claude/context/STACK.md`, `.claude/context/current-work.md`.
+
+L'utente ha corretto una mia richiesta, cioè quella di collegare la Focusrite Scarlett 2i2 per completare la fase 6, dicendo di non aver mai dichiarato di doverla collegare. Aveva ragione, e la responsabilità non è della sua memoria ma della documentazione: più pagine di questo progetto dichiaravano quella interfaccia come hardware della macchina, al presente e come dato di fatto.
+
+La fonte di quella affermazione è stata isolata, ed è istruttiva. Alla radice del repository viveva un file di testo, `focusrite.txt`, che conteneva una sola riga: l'indirizzo della pagina di download dei driver della Scarlett 2i2 di seconda generazione. Da un segnalibro il documento sorgente aveva ricavato un possesso, e da un possesso quattro pagine avevano ricavato una catena di misura. L'utente ha chiarito il 2026-09-09 di possedere quella interfaccia ma di non impiegarla in questo progetto, quindi il fatto hardware esiste e la sua appartenenza a questa catena no.
+
+Va detto che il progetto aveva la prova della contraddizione da due giorni e non l'aveva risolta. La fotografia del 2026-09-07 registrava correttamente che `lsusb` non riportava alcun dispositivo Focusrite e che le sole schede viste erano l'audio integrato `ALC887-VD` con le sue uscite HDMI, e la verifica del 2026-09-09 lo ha confermato sul sistema nuovo. Ma quella osservazione era stata letta come *interfaccia presente e staccata* invece di *interfaccia assente*, perché altre pagine dichiaravano il possesso, e una osservazione che contraddice una affermazione dichiarata come fatto tende a essere interpretata come un caso particolare di quel fatto. È lo stesso meccanismo di MS-029, dove una diagnosi elaborata poggiava su una premessa implicita nella domanda: qui la premessa era implicita nell'inventario.
+
+La conseguenza a valle è la parte che conta più della correzione, e riguarda `docs/20-misura-stanza.md`. Quella pagina non nominava la Scarlett di passaggio: la usava come premessa per decidere la scelta del microfono di misura, concludendo che un microfono XLR calibrato individualmente battesse l'UMIK-1 perché sfruttava una interfaccia già disponibile, e dichiarando esplicitamente che su una macchina senza interfaccia l'UMIK-1 sarebbe stato la scelta giusta senza discussione. Ritirata la premessa, quella conclusione si rovescia.
+
+La forma in cui è stata riscritta è condizionale e non assertiva, perché è così che stanno le cose: l'utente ha fissato il 2026-09-09 due vincoli sull'interfaccia da acquisire per l'home recording, cioè che sia un dispositivo di classe audio riconosciuto dal kernel senza driver proprietari e che regga anche le misure di questo progetto. Sotto quel vincolo l'interfaccia ci sarà, e la conclusione a favore dell'XLR tiene. Se quell'acquisto non avvenisse, l'UMIK-1 tornerebbe a vincere. Ne segue una dipendenza di ordine che prima non era scritta da nessuna parte: la decisione sul microfono non si prende prima di quella sull'interfaccia.
+
+Tutte le occorrenze sono state riscritte con il ritiro dichiarato invece di far sparire la frase, secondo la regola del progetto per cui una inferenza smentita si ritira esplicitamente e non si cancella in silenzio. I controlli operativi che nominavano l'interfaccia come bersaglio, cioè il controllo di uscita della fase 6 e la verifica della scheda di stampa, sono stati riscritti sui dispositivi effettivamente presenti, con l'avvertenza sui limiti realtime che vanno letti con `ulimit` e non nei file di configurazione.
+
+Verificato con: ricerca di ogni occorrenza della stringa in `docs/` e `.claude/`, riscrittura di ciascuna e nuova ricerca a valle, che lascia soltanto le occorrenze che dichiarano il ritiro o che appartengono al registro dei microstep e al work-log, dove sono voci storiche.
+
+Esito: fatto per la documentazione, aperto come decisione di acquisto, tracciata in PA-012.
+
+### MS-080 - La radice del repository contiene ora soltanto ciò che è tracciato
+
+Perimetro: cinque file di testo spostati da `/` a `_notes/materiale-radice/`, con una pagina di archivio che dichiara che cos'era ciascuno.
+
+La radice portava cinque file di testo scritti a mano più due cartelle di materiale pesante, e nessuno dei file era versionato, dato che il `.gitignore` esclude alla radice i tipi di file di testo con pattern ancorati. Lo spostamento non ha quindi alcun effetto sulla storia di git: il guadagno è che la radice contiene ora soltanto `.gitignore`, `CLAUDE.md` e `README.md` più le cartelle del progetto, così che ciò che si vede aprendo il repository sia ciò che il repository contiene.
+
+Il controllo che ha reso l'operazione sicura è stato verificare che nessuno dei cinque portasse informazione unica, e il risultato è che nessuno la portava. I tre file che contenevano un solo indirizzo ciascuno, cioè la pagina di download dei driver Focusrite, il forum Audio Science Review e l'elenco di strumenti di progettazione di diffusori di diyAudio, erano tutti e tre già registrati in `docs/90-riferimenti/fonti.md`. L'albero testuale del pacchetto software di terze parti era già censito voce per voce in `docs/90-riferimenti/censimento-corredo.md`, con il confronto fra le cartelle dichiarate e quelle realmente presenti. La descrizione sintetica del progetto in una riga di composizione tipografica non era citata da alcun documento, ed è materiale personale da portfolio: resta archiviata, con la nota che il suo testo dichiara Ubuntu Studio 25.04 e va aggiornato se riusato.
+
+Sono stati spostati e non cancellati, e la ragione è la stessa per cui il documento sorgente `.docx` fu archiviato invece di distrutto: il costo di conservare quaranta kilobyte è nullo, mentre il costo di scoprire fra sei mesi che uno di quei file conteneva una riga non registrata altrove non lo è. La cartella porta un proprio `README.md` che dichiara che cos'era ciascun file e dove vive adesso il suo contenuto.
+
+Non è stata spostata la cartella `Akabak + VACS/`, 159 MB e sette file, e la decisione è dell'utente. Il suo contenuto è stato verificato identico per impronta SHA-256 a quello sulla macchina sotto `~/electroacoustics`, con corrispondenza uno a uno di tutti e sette i file: i due installer di VACS e quello di AKABAK in `installers/`, l'archivio di esempi in `examples/`, e la licenza in PDF, lo screenshot dell'aggiornamento e il collegamento al sito dell'autore in `licenze/`. Le dimensioni indicavano 159 MB contro 158, differenza di arrotondamento del filesystem e non un file mancante, e il criterio che decide resta l'impronta del contenuto per la lezione di MS-024.
+
+La cancellazione sarebbe quindi priva di perdita di dati, e non è stata fatta per una ragione che riguarda il rischio e non il contenuto: la macchina non ha ancora un backup, quindi cancellare adesso lascerebbe l'unica copia di quel materiale su un disco che porta ventiquattro spegnimenti non puliti in archivio. L'operazione è subordinata alla chiusura di PA-011.
+
+Verificato con: `sha256sum` sui sette file locali e `find` con `sha256sum` sui file corrispondenti della macchina, con confronto delle impronte ordinate; elenco della radice dopo lo spostamento, che riporta i soli tre file tracciati.
+
+Esito: fatto per i cinque file sciolti, subordinato a PA-011 per la cartella pesante.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura tre volte nel corso della sessione, ed è utile dirlo perché la successione è un progresso e non uno stallo. All'inizio elencava microstep bloccati da una macchina di stato ignoto; poi il blocco si è ristretto all'installazione della chiave SSH, che è una azione dell'utente non delegabile; oggi quella chiave è installata, la fase 0 è chiusa nella sostanza e la fase 1 è compiuta, quindi *non esiste più alcun microstep bloccato da una condizione esterna*. Ciò che resta è lavoro da eseguire, in ordine, e il suo unico prerequisito è la disponibilità dell'utente davanti alla macchina.

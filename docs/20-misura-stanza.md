@@ -16,13 +16,15 @@ Il waterfall è la vista che conta di più in questo contesto, perché mostra qu
 
 ## La catena di misura
 
-Servono una interfaccia audio a bassa latenza, un cavo bilanciato, un supporto microfonico e un microfono di misura calibrato. Sulla macchina l'interfaccia è già disponibile, una Focusrite Scarlett 2i2 di seconda generazione con alimentazione phantom a 48 V e preamplificatori di qualità adeguata.
+Servono una interfaccia audio a bassa latenza, un cavo bilanciato, un supporto microfonico e un microfono di misura calibrato. Dei quattro elementi, nessuno è oggi disponibile sulla macchina: l'unica scheda presente è quella integrata `ALC887-VD`, priva di ingresso microfonico con alimentazione phantom.
 
-La disponibilità della Scarlett è la premessa che decide la scelta del microfono, e vale seguire il ragionamento perché è un caso in cui la risposta ovvia non è quella corretta.
+Le versioni precedenti di questa pagina dichiaravano l'interfaccia già disponibile, una Focusrite Scarlett 2i2 di seconda generazione con alimentazione phantom, e su quella premessa costruivano la scelta del microfono. La premessa è ritirata in MS-079: l'utente possiede quella interfaccia ma non la impiega in questo progetto, e l'affermazione derivava da un segnalibro promosso a inventario. Al suo posto vale un vincolo dichiarato dall'utente il 2026-09-09, cioè che l'interfaccia da acquisire per l'home recording debba reggere anche le misure di questo progetto, e debba essere un dispositivo di classe audio riconosciuto dal kernel senza driver proprietari.
+
+La scelta del microfono dipende quindi dalla scelta dell'interfaccia, e l'ordine delle due decisioni non è invertibile. Vale seguire il ragionamento perché è un caso in cui la risposta ovvia non è quella corretta, e perché il ritiro della premessa lo cambia.
 
 La scelta di default nella comunità è l'UMIK-1, un microfono USB calibrato. Il suo vantaggio è la semplicità: non serve interfaccia, non serve alimentazione phantom, non servono driver ASIO, e riduce il numero di variabili in gioco, cioè cavi, guadagno del preamplificatore e rumore di fondo. Su una macchina senza interfaccia audio sarebbe la scelta giusta senza discussione.
 
-Avendo però già la Scarlett, l'USB diventa un vincolo invece di una comodità: obbliga a una catena separata e non riutilizzabile. Un microfono XLR calibrato individualmente costa quanto l'UMIK-1, sfrutta l'interfaccia che c'è, e resta usabile con altri sistemi in futuro.
+Il ragionamento che segue tiene, ma su una premessa condizionale invece che su un fatto, e la differenza va tenuta presente perché ribalta la conclusione se la condizione cade. Se l'interfaccia viene acquisita, come il vincolo dell'utente prevede dato che deve servire anche l'home recording, allora l'USB diventa un vincolo invece di una comodità: obbliga a una catena separata e non riutilizzabile, mentre un microfono XLR calibrato individualmente costa quanto l'UMIK-1, sfrutta l'interfaccia che ci sarà, e resta usabile con altri sistemi in futuro. Se invece quell'acquisto non avvenisse, la conclusione di questa pagina si rovescia e l'UMIK-1 torna a essere la scelta giusta senza discussione, per le ragioni scritte nel paragrafo precedente. La decisione sul microfono non va quindi presa prima di quella sull'interfaccia.
 
 | Modello | Prezzo indicativo | Calibrazione | Pro | Contro |
 |---|---|---|---|---|
