@@ -2,6 +2,30 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-09 - Installazione eseguita, verificata da remoto e documentata
+
+Commit di partenza: d9912b1.
+
+File toccati: `docs/10-ambiente/setup-macchina-2026-09.md` nuovo, `docs/OPERATIONS-LOG.md` con MS-076 e MS-077, `docs/PENDING-ACTIONS.md` con PA-010 e PA-011, `tools/check-pending-actions.py` esteso alle due voci nuove, `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 6, `docs/10-ambiente/scheda-reinstallazione.md` su quattro punti, `tools/make-scheda-docx.py` allineato, `docs/10-ambiente/README.md` con l'indice e una affermazione obsoleta corretta, `.claude/memory/index.md` e `.claude/context/current-work.md`.
+
+Motivo: l'utente ha eseguito l'installazione l'8 settembre sera, l'ha trovata apparentemente bloccata per sedici ore e ha riavviato a forza. La sessione del 9 è servita a stabilire se il riavvio avesse rotto qualcosa, a ripristinare l'accesso remoto e a documentare per intero la cronologia e il razionale del setup, che l'utente ha chiesto esplicitamente di non lasciare in conversazione.
+
+Esito in sintesi, sei cose.
+
+L'installazione è riuscita e `/home` è intatto, provato dal contenuto reale del disco invece che dal riepilogo dell'installatore. Il sistema è `Ubuntu 26.04.1 LTS` con kernel `7.0.0-31-generic`, l'utente ha ereditato l'identificativo numerico `1000`, e `~/electroacoustics` conta esattamente i 281 file per 728 MB registrati al trasferimento.
+
+Il blocco di sedici ore non era un blocco dell'installazione: i log dicono stato `DONE` alle 17:50:40, con `curtin: Installation finished.` e il boot loader installato. Ciò che restava appeso era la fase di chiusura. La regola che ne discende è che la schermata di avanzamento non è l'autorità sullo stato dell'installazione, e il registro consultabile dall'icona a forma di terminale lo è. La causa prossima resta non nominata per assenza di evidenza, e l'assenza è dichiarata: la copia del log nel sistema installato termina nell'istante in cui copia se stessa.
+
+L'accesso remoto è ripristinato e ora si usa come `ssh studio`. Ha funzionato perché `authorized_keys` vive in `/home`, che è la stessa separazione su cui poggia tutta la strategia di reinstallazione.
+
+Tre difetti reali dell'installazione sono stati corretti, con i comandi preparati e la ragione di ciascun presidio a verbale: gruppi `audio` e `pipewire` mancanti con i limiti realtime scritti ma non in vigore, swap su un file da 4 GB invece della partizione da 14,9 GiB, e sospensione automatica di nuovo attiva.
+
+Due prescrizioni della documentazione sono state ritirate perché smentite dall'uso reale. La voce `Check disc for defects` non esiste su questa immagine e il controllo del supporto è automatico, quindi MS-069 aveva sostituito una prescrizione sbagliata con un'altra. E i parametri di avvio a bassa latenza arrivano da un drop-in di Ubuntu Studio e non da `/etc/default/grub`, quindi aggiungerli a mano li duplicherebbe.
+
+La cronologia e il razionale del setup vivono ora in una pagina propria, `docs/10-ambiente/setup-macchina-2026-09.md`, scritta nello stile della sezione 8 del template, cioè senza grassetto nella prosa e con gli acronimi in note a piè di pagina. Serve a una domanda a cui nessuno degli altri documenti rispondeva: perché la configurazione è quella che è.
+
+Due errori miei, entrambi visti subito e nessuno arrivato su disco. Un pattern di sostituzione scritto con fini riga `LF` su un file `CRLF`, che non ha combaciato e che, se avesse combaciato sui primi due casi, avrebbe inserito righe miste, cioè esattamente il difetto per cui esiste `check-eol.py`. E un grassetto in prosa introdotto nel README del blocco pochi minuti dopo aver dichiarato che il template lo vieta.
+
 ## 2026-09-08, ripresa da crash - La carta della reinstallazione, e uno strumento che la rende riproducibile
 
 Commit di partenza: cadf335.
@@ -30,11 +54,11 @@ Commit di partenza: d2905ba.
 
 Avviata l'esecuzione della sequenza operativa passo per passo, su richiesta dell'utente di farli insieme. Passo 1 risultava già fatto, entrambi i repository committati e in pari con origin.
 
-Passo 3 chiuso, ed è PA-009. SMART dell'SSD esterno letto con CrystalDiskInfo elevato e l'opzione `/CopyExit`, che scrive un rapporto su file invece di richiedere uno screenshot. Il Samsung T7 è **sano**: usura zero, riserva al 100 per cento, zero errori di integrità, zero voci nel registro errori. Delle due cause possibili cade il difetto del supporto e resta la rimozione senza espulsione, con 122 spegnimenti non protetti su 742 cicli, su cui va applicato il correttivo che su USB quel contatore si incrementa anche quando l'espulsione è regolare. Le cinque cartelle `FOUND` restano la prova che conta. Il disco non va sostituito. È MS-058.
+Passo 3 chiuso, ed è PA-009. SMART dell'SSD esterno letto con CrystalDiskInfo elevato e l'opzione `/CopyExit`, che scrive un rapporto su file invece di richiedere uno screenshot. Il Samsung T7 è *sano*: usura zero, riserva al 100 per cento, zero errori di integrità, zero voci nel registro errori. Delle due cause possibili cade il difetto del supporto e resta la rimozione senza espulsione, con 122 spegnimenti non protetti su 742 cicli, su cui va applicato il correttivo che su USB quel contatore si incrementa anche quando l'espulsione è regolare. Le cinque cartelle `FOUND` restano la prova che conta. Il disco non va sostituito. È MS-058.
 
 Registrato l'ostacolo, valido oltre il caso: la lettura SMART richiede privilegi anche su Windows, dove `Get-StorageReliabilityCounter` risponde `PermissionDenied` senza sessione elevata, per la stessa ragione per cui su Linux serve `sudo` su `/dev/nvme0`.
 
-Passo 4 per due terzi. La fonte ufficiale ha corretto la procedura: nella cartella del rilascio convivono la 26.04 e la **26.04.1**, e la seconda è quella da prendere. La procedura nominava la prima in due punti, uno dei quali dentro il comando `dd`. Immagine scaricata, 7.127.195.648 byte, e verificata due volte: firma del file delle somme buona con la chiave `Ubuntu CD Image Automatic Signing Key (2012)`, impronta dell'immagine `OK`. L'ordine delle due verifiche non è indifferente e la fase 2.2 ora ne chiede due invece di una, perché una somma confrontata con un file preso dallo stesso posto dell'immagine non protegge da chi controlli quel posto. Sono MS-059 e MS-060.
+Passo 4 per due terzi. La fonte ufficiale ha corretto la procedura: nella cartella del rilascio convivono la 26.04 e la *26.04.1*, e la seconda è quella da prendere. La procedura nominava la prima in due punti, uno dei quali dentro il comando `dd`. Immagine scaricata, 7.127.195.648 byte, e verificata due volte: firma del file delle somme buona con la chiave `Ubuntu CD Image Automatic Signing Key (2012)`, impronta dell'immagine `OK`. L'ordine delle due verifiche non è indifferente e la fase 2.2 ora ne chiede due invece di una, perché una somma confrontata con un file preso dallo stesso posto dell'immagine non protegge da chi controlli quel posto. Sono MS-059 e MS-060.
 
 Rufus 4.15 portabile scaricato e verificato per firma Authenticode, `Status: Valid`, firmatario `Akeo Consulting`: per un eseguibile Windows è la verifica più forte disponibile, e le note del rilascio non pubblicano somme di controllo. Riscritta la sottofase 2.3 con il vincolo dei 16 GB motivato numericamente, la ragione della modalità DD contro il limite dei 4 GB di FAT32, e l'avvertenza sul rifiutare la formattazione dello spazio residuo che Windows propone a scrittura finita. È MS-061.
 
@@ -44,7 +68,7 @@ Passo 2 compiuto: l'utente ha cancellato la copia del corredo sul Desktop, 650 f
 
 Trovato nello stesso microstep un difetto di ambiente che aveva fatto fallire due modifiche in modo incomprensibile: un ancoraggio di testo multi-riga scritto con `LF` non trova nulla in un file `CRLF`, e l'albero contiene legittimamente entrambi i formati perché la convenzione prescrive di conservare la fine riga di ciascun file. Ipotesi sbagliata scartata per prima, cioè la codifica: il sorgente è decodificato come UTF-8 comunque, e ciò che sembrava corruzione era la stampa illeggibile su una console `cp1252`.
 
-Da lì un difetto silenzioso più grande, che stavo per committare: i blocchi inseriti in questa sessione erano scritti con `LF` in due file `CRLF`, producendo fini riga miste che nessun controllo del progetto segnalava e che git avrebbe registrato, dato che `core.autocrlf` è `false`. Normalizzati, e aggiunto `tools/check-eol.py` alla sequenza di verifica. Al primo lancio ha trovato un file misto già nella storia del repository, `settings.json`, e sul gemello **otto** file, sette dei quali con esattamente quattro righe anomale: la misura fissa attraverso file di dimensione diversa ha indicato il generatore invece del contenuto, cioè `sync-ambiente.py`, che scriveva l'intestazione di provenienza sempre con `LF`. Corretto lo strumento e ripropagato.
+Da lì un difetto silenzioso più grande, che stavo per committare: i blocchi inseriti in questa sessione erano scritti con `LF` in due file `CRLF`, producendo fini riga miste che nessun controllo del progetto segnalava e che git avrebbe registrato, dato che `core.autocrlf` è `false`. Normalizzati, e aggiunto `tools/check-eol.py` alla sequenza di verifica. Al primo lancio ha trovato un file misto già nella storia del repository, `settings.json`, e sul gemello *otto* file, sette dei quali con esattamente quattro righe anomale: la misura fissa attraverso file di dimensione diversa ha indicato il generatore invece del contenuto, cioè `sync-ambiente.py`, che scriveva l'intestazione di provenienza sempre con `LF`. Corretto lo strumento e ripropagato.
 
 ## 2026-09-07, sesta parte - Licenza confermata in interfaccia, fase 0 chiusa, PA-007 detta chiara
 
@@ -52,13 +76,13 @@ Commit di partenza: 0df04bb.
 
 Machine Identifier verificato sulle immagini fornite dall'utente: coincide con il valore conservato sotto `_notes/`, coincide anche il release code, e il programma dichiara `Release Code valid`. Chiude la seconda delle tre voci di PA-005 e con essa la fase 0 nella sostanza, dato che la terza voce, l'esito di `sudo apt update`, è resa irrilevante da ADR-013. È la prova sperimentale che una licenza machine-based sotto Wine resta valida a un anno di distanza, quindi che la reinstallazione pulita non la mette a rischio. È MS-052.
 
-Tre fatti collaterali dalle stesse finestre. L'edizione è **Standard** e non professionale, malgrado l'installer si chiami `AKABAK_Pro_...`: l'edizione la determina il release code, coerentemente con la student license concessa. Il prefix dichiara `NT 10.0 (Build 19043)`, cioè Windows 10, che trasforma in fatto misurato una prescrizione data per uniformità. E la memoria riportata, 2047 MByte su una macchina con 16 GB, è una conferma indipendente di ADR-016, perché è lo spazio di indirizzamento di un processo a 32 bit.
+Tre fatti collaterali dalle stesse finestre. L'edizione è *Standard* e non professionale, malgrado l'installer si chiami `AKABAK_Pro_...`: l'edizione la determina il release code, coerentemente con la student license concessa. Il prefix dichiara `NT 10.0 (Build 19043)`, cioè Windows 10, che trasforma in fatto misurato una prescrizione data per uniformità. E la memoria riportata, 2047 MByte su una macchina con 16 GB, è una conferma indipendente di ADR-016, perché è lo spazio di indirizzamento di un processo a 32 bit.
 
-Quella conferma era però disponibile prima dell'indagine che ha stabilito il fatto, nello stesso lotto di screenshot letti per ricostruire la corrispondenza. La lezione, in MS-053, non è leggere tutto: è che quando una premessa regge una decisione, il materiale già in mano va interrogato **su quella premessa**, non solo sul tema per cui era stato raccolto.
+Quella conferma era però disponibile prima dell'indagine che ha stabilito il fatto, nello stesso lotto di screenshot letti per ricostruire la corrispondenza. La lezione, in MS-053, non è leggere tutto: è che quando una premessa regge una decisione, il materiale già in mano va interrogato *su quella premessa*, non solo sul tema per cui era stato raccolto.
 
 Corretto un difetto di verifica introdotto dallo spostamento dell'archivio di backup sul Desktop: lo strumento delle azioni differite cercava un percorso fisso e dichiarava mancante un backup esistente, riportando PA-007 a bloccata per un motivo falso. Ora l'invariante è il nome del file fra più posizioni, con controllo della dimensione. È MS-054, e la lezione è che un errore restrittivo in uno strumento di verifica è peggiore di uno permissivo, perché si crede.
 
-Detto chiaro ciò che era rimasto implicito e che l'utente aveva chiesto due volte: **la copia del corredo sul Desktop si può cancellare adesso.** PA-007 riscritta perché lo dica in apertura.
+Detto chiaro ciò che era rimasto implicito e che l'utente aveva chiesto due volte: *la copia del corredo sul Desktop si può cancellare adesso.* PA-007 riscritta perché lo dica in apertura.
 
 Ripulite dalle informazioni superate quattro sezioni che dichiaravano pendente lavoro compiuto: la coda del registro dei microstep, che elencava come bloccati passi eseguiti e ripeteva la prescrizione sbagliata sui 64 bit, la sezione finale dello storico Akabak e VACS, le voci residue della fase 0 nella fotografia della macchina, e le sezioni di blocco e prossimo passo del lavoro corrente.
 
@@ -72,7 +96,7 @@ PA-008 compiuta: l'utente ha cancellato le sei voci di servizio su `J:`, recuper
 
 Backup di `/home` eseguito e verificato, quindi fase 1.3 chiusa. Alla domanda se potesse stare sulla stessa macchina la risposta è no: la macchina ha un solo disco con quattro partizioni, e una copia sullo stesso supporto della cosa che protegge non è un backup. Fatto su Windows con `tar` in streaming su `ssh`, 4,4 GB, 13.498 file nell'archivio contro 13.498 sulla macchina, permessi e proprietario numerico conservati. Registrato come ADR-015. Questo sblocca PA-007.
 
-E la scoperta che costa più di tutte: **Akabak è a 32 bit**. Il prefix funzionante dichiara `#arch=win32`, `AKABAK.exe` è PE32 i386, VACS installato è la build a 32 bit, e nel prefix non c'è né winetricks, né .NET, né corefonts. Tre affermazioni del documento sorgente sono false, e tre decisioni consecutive le avevano propagate senza tornare alla fonte: la prescrizione operativa era sbagliata su sei documenti, e se eseguita avrebbe prodotto un ambiente in cui il programma centrale del progetto non parte. Corretto tutto, registrato come ADR-016. Il controllo che l'avrebbe evitato costava un comando, `file` sull'eseguibile.
+E la scoperta che costa più di tutte: *Akabak è a 32 bit*. Il prefix funzionante dichiara `#arch=win32`, `AKABAK.exe` è PE32 i386, VACS installato è la build a 32 bit, e nel prefix non c'è né winetricks, né .NET, né corefonts. Tre affermazioni del documento sorgente sono false, e tre decisioni consecutive le avevano propagate senza tornare alla fonte: la prescrizione operativa era sbagliata su sei documenti, e se eseguita avrebbe prodotto un ambiente in cui il programma centrale del progetto non parte. Corretto tutto, registrato come ADR-016. Il controllo che l'avrebbe evitato costava un comando, `file` sull'eseguibile.
 
 Chiuse per conseguenza entrambe le lacune dello storico di Akabak e VACS, e confermata come corretta l'ipotesi che l'utente stesso aveva formulato nella corrispondenza del 13 agosto 2025, cioè che il fallimento di VACS dipendesse dalla variante a 64 bit.
 
@@ -86,9 +110,9 @@ File toccati: `docs/PENDING-ACTIONS.md` con PA-007, PA-008 e PA-009 nuove, `docs
 
 Esito in sintesi, quattro cose.
 
-Gli archivi di backup su `J:` sono stati confrontati e **nessuno dei due contiene l'altro**: 145.483 voci solo nel vecchio e 80.487 solo nel nuovo, per il rimescolamento di `backup-sviluppo`. Cancellare il vecchio costerebbe 145.478 versioni di file. Cade anche l'ipotesi sulla cartella 3DS come causa della differenza di peso.
+Gli archivi di backup su `J:` sono stati confrontati e *nessuno dei due contiene l'altro*: 145.483 voci solo nel vecchio e 80.487 solo nel nuovo, per il rimescolamento di `backup-sviluppo`. Cancellare il vecchio costerebbe 145.478 versioni di file. Cade anche l'ipotesi sulla cartella 3DS come causa della differenza di peso.
 
-La copia sul Desktop **non si cancella adesso**, e la ragione è il conteggio delle copie: oggi le voci utili sono in due posti, cancellare il Desktop le porta a uno, e questo proprio prima di una reinstallazione che tocca le partizioni. La condizione di sblocco è la copia di sicurezza di `/home`, cioè la fase 1.3.
+La copia sul Desktop *non si cancella adesso*, e la ragione è il conteggio delle copie: oggi le voci utili sono in due posti, cancellare il Desktop le porta a uno, e questo proprio prima di una reinstallazione che tocca le partizioni. La condizione di sblocco è la copia di sicurezza di `/home`, cioè la fase 1.3.
 
 Chiarito un equivoco che riguardava la fiducia: l'agente non ha cancellato nulla su `J:` e non ha eseguito alcuna cancellazione in tutta la sessione. Le nove voci di servizio sono tutte ancora presenti, e le tre che valgono 1,2 GiB sono da fare.
 
@@ -120,9 +144,9 @@ File toccati: `docs/10-ambiente/fotografia-macchina-2026-09-07.md` nuovo, `_note
 
 Motivo: l'utente ha installato la chiave SSH, sbloccando l'accesso alla macchina che era il vincolo delle due sessioni precedenti. Con l'accesso è diventato possibile eseguire la fase 0 della procedura, cioè mettere alla prova la diagnosi scritta per ipotesi.
 
-Esito in sintesi, e non è quello che mi aspettavo. **Tre delle quattro cause che avevo attribuito al blocco di aggiornamento sono false.** Il salto diretto alla LTS è offerto, e `do-release-upgrade -c` risponde che la 26.04.1 LTS è disponibile. La direttiva è `Prompt=normal` e non `lts`, e il commento dello stesso file di configurazione dichiara che con `lts` su un rilascio non-LTS l'aggiornatore assume `normal`, quindi quella causa non poteva agire nemmeno in principio: la risposta era scritta dentro il file che stavo ipotizzando. Gli archivi della 25.04 sono ancora vivi e rispondono 200, non sono stati spostati su `old-releases`, che sulla stessa risorsa risponde 404.
+Esito in sintesi, e non è quello che mi aspettavo. *Tre delle quattro cause che avevo attribuito al blocco di aggiornamento sono false.* Il salto diretto alla LTS è offerto, e `do-release-upgrade -c` risponde che la 26.04.1 LTS è disponibile. La direttiva è `Prompt=normal` e non `lts`, e il commento dello stesso file di configurazione dichiara che con `lts` su un rilascio non-LTS l'aggiornatore assume `normal`, quindi quella causa non poteva agire nemmeno in principio: la risposta era scritta dentro il file che stavo ipotizzando. Gli archivi della 25.04 sono ancora vivi e rispondono 200, non sono stati spostati su `old-releases`, che sulla stessa risorsa risponde 404.
 
-Il fatto che riorganizza tutto è però un altro: `/var/log/dist-upgrade/` è vuota, quindi **l'aggiornamento non è mai stato tentato**. Non c'era un blocco da diagnosticare. La cronologia di apt lo conferma dall'altro lato, con l'ultima operazione datata 13 agosto 2025, e la simulazione elenca 134 pacchetti pendenti senza conflitti. La lezione metodologica è che avevo costruito una diagnosi elaborata su una premessa implicita nella domanda e mai verificata, cioè che un tentativo fosse stato fatto e fosse fallito.
+Il fatto che riorganizza tutto è però un altro: `/var/log/dist-upgrade/` è vuota, quindi *l'aggiornamento non è mai stato tentato*. Non c'era un blocco da diagnosticare. La cronologia di apt lo conferma dall'altro lato, con l'ultima operazione datata 13 agosto 2025, e la simulazione elenca 134 pacchetti pendenti senza conflitti. La lezione metodologica è che avevo costruito una diagnosi elaborata su una premessa implicita nella domanda e mai verificata, cioè che un tentativo fosse stato fatto e fosse fallito.
 
 L'unica parte confermata è la quarta, i fattori di attrito, in forma più grave del previsto: due repository WineHQ attivi contemporaneamente per due rilasci diversi di Ubuntu, più `wine-stable 3.0.1` del 2018 accanto a `wine 9.0`, l'architettura `i386`, una sorgente `file:/cdrom/` residua e un solo prefix Wine condiviso.
 

@@ -33,11 +33,11 @@ Si salva con `F10`. Il menu di avvio temporaneo si apre con `F8` all'accensione,
 
 ## Avvio dalla chiavetta
 
-Si sceglie `Try or Install Ubuntu Studio`. **Non si cerca la voce `Check disc for defects`: su questa immagine non esiste più**, e la sua assenza non è un difetto del supporto né una svista. Il controllo di integrità viene eseguito automaticamente all'avvio, e il suo esito resta leggibile a installazione finita in `/var/log/installer/casper-md5check.json`, dove `"result": "pass"` senza somme discordanti significa che il supporto era integro. La verifica quindi non si fa prima con un'azione, si legge dopo con un comando. La versione precedente di questa scheda prescriveva quella voce di menu ed è stata smentita dall'uso reale il 2026-09-08, come racconta MS-073.
+Si sceglie `Try or Install Ubuntu Studio`. *Non si cerca la voce `Check disc for defects`: su questa immagine non esiste più*, e la sua assenza non è un difetto del supporto né una svista. Il controllo di integrità viene eseguito automaticamente all'avvio, e il suo esito resta leggibile a installazione finita in `/var/log/installer/casper-md5check.json`, dove `"result": "pass"` senza somme discordanti significa che il supporto era integro. La verifica quindi non si fa prima con un'azione, si legge dopo con un comando. La versione precedente di questa scheda prescriveva quella voce di menu ed è stata smentita dall'uso reale il 2026-09-08, come racconta MS-073.
 
 ## Partizionamento: il passo irreversibile
 
-Si sceglie **`Partizionamento manuale`**. Non si sceglie in nessun caso la cancellazione del disco.
+Si sceglie *`Partizionamento manuale`*. Non si sceglie in nessun caso la cancellazione del disco.
 
 | Partizione | Dimensione | Mount point | Formattare |
 |---|---|---|---|
@@ -50,9 +50,9 @@ I tre soli momenti in cui questa fase si può sbagliare.
 
 Primo: la schermata del tipo di installazione, dove va scelto il partizionamento manuale e non la cancellazione del disco.
 
-Secondo: la riga di `nvme0n1p4`, dove si imposta soltanto il punto di montaggio e **non si tocca il menu del filesystem**, perché selezionare un filesystem attiva la formattazione da sé.
+Secondo: la riga di `nvme0n1p4`, dove si imposta soltanto il punto di montaggio e *non si tocca il menu del filesystem*, perché selezionare un filesystem attiva la formattazione da sé.
 
-Terzo: la schermata di riepilogo prima di scrivere. Deve comparire una formattazione **soltanto** per `nvme0n1p2`. Fino a quel pulsante nulla è stato scritto sul disco.
+Terzo: la schermata di riepilogo prima di scrivere. Deve comparire una formattazione *soltanto* per `nvme0n1p2`. Fino a quel pulsante nulla è stato scritto sul disco.
 
 Nell'ultima schermata l'utente va creato con lo stesso nome, cioè `alesop95`, altrimenti il `/home` conservato risulta di proprietà di un altro identificativo numerico e i permessi vanno corretti a mano.
 
@@ -85,7 +85,7 @@ Verifiche: `cat /proc/cmdline` deve contenere i due parametri, `ulimit -r -l` de
 
 ## Wine: la parte dove un errore costa il programma
 
-L'architettura a 32 bit va **dichiarata**, e va fatto prima di installare Wine e non dopo, altrimenti i pacchetti a 32 bit non vengono tirati dentro.
+L'architettura a 32 bit va *dichiarata*, e va fatto prima di installare Wine e non dopo, altrimenti i pacchetti a 32 bit non vengono tirati dentro.
 
 ```bash
 sudo dpkg --add-architecture i386
@@ -106,7 +106,7 @@ WINEARCH=win32 WINEPREFIX=~/wineprefixes/akabak32 winecfg
 
 Nella scheda delle applicazioni si imposta la versione di Windows su *Windows 10*, che è quella dichiarata dal prefix funzionante.
 
-Akabak e VACS **non** richiedono .NET, font Microsoft o runtime Visual C++: il prefix che funziona non ne ha nessuno, e la lista di dipendenze del documento sorgente descriveva i tentativi del troubleshooting e non ciò che serviva.
+Akabak e VACS *non* richiedono .NET, font Microsoft o runtime Visual C++: il prefix che funziona non ne ha nessuno, e la lista di dipendenze del documento sorgente descriveva i tentativi del troubleshooting e non ciò che serviva.
 
 ## Reinstallazione dei programmi e licenza
 
@@ -117,7 +117,7 @@ WINEPREFIX=~/wineprefixes/akabak32 wine ~/electroacoustics/installers/AKABAK_Pro
 WINEPREFIX=~/wineprefixes/akabak32 wine ~/electroacoustics/installers/VACS_32_v213b33.exe
 ```
 
-La licenza è legata alla macchina e non al prefix, quindi il codice esistente resta valido. Si inserisce **una volta sola**, da AKABAK, e VACS non ne chiede un secondo.
+La licenza è legata alla macchina e non al prefix, quindi il codice esistente resta valido. Si inserisce *una volta sola*, da AKABAK, e VACS non ne chiede un secondo.
 
 ```
 Machine Identifier   {{MACHINE_IDENTIFIER}}
@@ -135,7 +135,7 @@ sudo sed -i 's/^Prompt=.*/Prompt=lts/' /etc/update-manager/release-upgrades
 sudo ethtool -s enp3s0 wol g
 ```
 
-La prima riga fa proporre in futuro le sole versioni LTS invece delle intermedie, che è la ragione per cui questa macchina si è trovata su un rilascio fuori supporto; su una installazione LTS pulita `Prompt=lts` è **già impostato**, quindi il comando è una non-operazione e serve solo a verificare. La seconda abilita il Wake-on-LAN sul lato sistema, che va aggiunta all'impostazione del BIOS e non la sostituisce.
+La prima riga fa proporre in futuro le sole versioni LTS invece delle intermedie, che è la ragione per cui questa macchina si è trovata su un rilascio fuori supporto; su una installazione LTS pulita `Prompt=lts` è *già impostato*, quindi il comando è una non-operazione e serve solo a verificare. La seconda abilita il Wake-on-LAN sul lato sistema, che va aggiunta all'impostazione del BIOS e non la sostituisce.
 
 Restano da rifare la disattivazione della sospensione automatica, la chiave SSH dedicata con la disattivazione dell'autenticazione per password, e la prenotazione dell'indirizzo sul router. La fase 10 della procedura le descrive per intero.
 

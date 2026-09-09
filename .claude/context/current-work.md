@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: ba69e0c
+last-verified-commit: d9912b1
 ---
 
 # Lavoro corrente
@@ -15,9 +15,21 @@ last-verified-commit: ba69e0c
 
 ## Fronte attivo
 
+Ricostruzione dell'ambiente sulla macchina reinstallata, dal 2026-09-09.
+
+L'installazione è compiuta e verificata, quindi il fronte non è più documentale ma operativo, e si svolge sulla macchina via `ssh studio`. Lo stato di partenza è fotografato in `docs/10-ambiente/setup-macchina-2026-09.md`, che è anche il documento dove la cronologia e il razionale del setup vanno tenuti aggiornati mano a mano.
+
+Definizione di finito per questo fronte. La catena audio verificata per intero, cioè non solo i parametri di avvio e i limiti realtime, che sono già a posto, ma anche la Scarlett 2i2 vista in ingresso e in uscita con una riproduzione di prova che si sente. L'ambiente Wine ricostruito con l'architettura `i386` dichiarata prima dell'installazione di Wine, per ADR-016. Akabak e VACS funzionanti in un prefix a 32 bit con la licenza riattivata. Il corredo `Progetto stanza` installato secondo le sottofasi da 8.5 a 8.9.
+
+Bloccato da una condizione fisica e non tecnica: la Scarlett 2i2 non è collegata al bus USB, quindi `aplay -l` vede la sola scheda integrata. Non è un difetto del sistema e la verifica va rifatta con l'interfaccia attaccata.
+
+Una possibilità da mettere alla prova prima di ricostruire, dichiarata come ipotesi e non come piano. Il prefix `~/.wine` è sopravvissuto all'azzeramento con AKABAK installato dentro e la sua attivazione nel registro, e il Machine Identifier della macchina non è cambiato. Se quel prefix risultasse utilizzabile dopo la migrazione automatica che Wine applica ai prefix creati da versioni molto precedenti, salterebbero sia la reinstallazione sia la riattivazione. Se la migrazione lo rompesse non si perde nulla, perché gli installer stanno in `~/electroacoustics/installers/` e il codice è nel file riservato. La prova va fatta dopo aver dichiarato `i386`, non prima.
+
+## Fronte chiuso il 2026-09-04: impianto del progetto
+
 Impianto del progetto: allineamento al template, conversione del documento sorgente in documentazione navigabile, preparazione dell'ambiente di lavoro e della sua manutenzione. È lavoro di infrastruttura documentale, non ancora lavoro di progettazione elettroacustica.
 
-## Definizione di finito per questo fronte
+### Definizione di finito per questo fronte
 
 Il progetto allineato al template, con le sette regole, le skill e il catalogo dei pacchetti aggiornati, e i valori specifici di macchina re-istanziati nelle regole che li richiedono. Raggiunto.
 
@@ -33,11 +45,11 @@ La roadmap del progetto scritta con priorità motivate e decisioni aperte dichia
 
 Il registro dei microstep con l'esito verificato di ciascuno. Raggiunto, in `docs/OPERATIONS-LOG.md`.
 
-## Che cosa manca a questo fronte
+### Che cosa manca a questo fronte
 
 Il commit e il push, che restano operazioni manuali dell'utente.
 
-## Bloccato da
+### Bloccato da
 
 Nulla. È la prima volta in questa sessione che questa sezione può dirlo senza qualificazioni, e vale registrarlo perché fino a poche ore prima elencava due dipendenze.
 
@@ -45,13 +57,13 @@ Le due dipendenze che c'erano sono cadute entrambe. La decisione fra installazio
 
 La storia del blocco, che è finita, vale come traccia. Macchina di stato ignoto, poi scoperta sospesa e quindi invisibile anche all'ARP, poi sveglia ma senza autenticazione configurata, poi accessibile. Le correzioni sono in MS-015, MS-016 e MS-028.
 
-## Domande aperte per l'utente
+### Domande aperte per l'utente
 
 Le due decisioni maggiori sono prese e non sono più domande. L'installazione pulita della 26.04 LTS è confermata e registrata come ADR-006 accettata. La macchina è sulla stessa rete della postazione, quindi il travaso dei materiali passa per rete locale e non richiede un supporto fisico.
 
 Resta invece aperta la scelta se propagare al template `template-claude-developing` le quattro correzioni trovate qui. La ripropagazione degli strumenti tipografici nel pacchetto `fix-typography`, che è rimasto indietro rispetto alle copie in `tools/`. La negazione nel `.gitignore` che rende versionabili i modelli `_notes` sotto `.claude/templates/`, oggi persi da qualunque clone. L'allineamento delle regole di prudenza fra `fix-accents.py` e `fix-missing-accents.py`, la cui incoerenza corrompe le forme elise nei file di codice, con la riparazione delle quindici occorrenze già danneggiate nei sorgenti del template stesso. La gestione dei percorsi cross-disco nei tre strumenti tipografici, che `md-unwrap.py` ha già e loro no. Le ultime due sono diagnosticate in MS-014 del registro dei microstep, con i casi minimi che le riproducono.
 
-## Il fronte del 2026-09-08: la carta per la reinstallazione
+## Fronte chiuso il 2026-09-08: la carta per la reinstallazione
 
 La fase 2 è chiusa e committata, quindi il fronte attivo non è più la preparazione del supporto ma la scheda che si porta accanto alla macchina durante la reinstallazione. La sua sorgente tracciata è `docs/10-ambiente/scheda-reinstallazione.md`, il documento stampabile si genera con `python tools/make-scheda-docx.py` e la decisione che governa i due è ADR-017.
 
@@ -65,10 +77,20 @@ La grafia degli accenti con l'apostrofo sopravvive nei modelli sotto `.claude/te
 
 Nei file di documentazione del progetto la grafia è invece stata sanata il 2026-09-08, ed è utile registrare perché il conteggio iniziale era molto più alto della realtà. Una prima conta dava venti occorrenze in `docs/OPERATIONS-LOG.md` e cinque in `CLAUDE.md`, ma quasi tutte stavano dentro code span, cioè erano le forme sbagliate citate di proposito come esempi negli stessi microstep che raccontano i difetti degli strumenti tipografici. I difetti reali in prosa erano due nel registro e tre in `CLAUDE.md`, e sono corretti. La verifica che ha reso sicura la correzione è stata un caso minimo su un file di prova, che ha mostrato che `fix-accents.py` protegge il contenuto dei code span inline esattamente come quello dei blocchi recintati; senza quella prova la ripulitura avrebbe distrutto la documentazione dei difetti. Il caso della scheda, che ne portava ventotto in prosa, è chiuso in MS-071.
 
+## Deriva di stile rispetto al template
+
+Il template `template-claude-developing` prescrive alla sezione 8 di `PROJECT-SYSTEM.md` che nella prosa non si usino elenchi puntati, emoji né grassetto, e che gli acronimi si spieghino in note a piè di pagina numerate. Parte della documentazione di questo progetto non lo rispetta, e la deriva è quantificata: `docs/OPERATIONS-LOG.md` contiene grassetto in prosa in gran quantità, `docs/10-ambiente/installazione-pulita-26-04.md` in ventotto punti, `docs/10-ambiente/fotografia-macchina-2026-09-07.md` in ventiquattro, e `.claude/memory/progress.md` in undici. Le note a piè di pagina esistono in cinque pagine su dodici del blocco ambiente.
+
+Dal 2026-09-09 la documentazione nuova rispetta lo stile del template, e `docs/10-ambiente/setup-macchina-2026-09.md` ne è la prima applicazione integrale, con zero grassetto in prosa e sei note a piè di pagina. La ripulitura del pregresso non è stata eseguita per una ragione che va dichiarata invece di sembrare una dimenticanza: il registro dei microstep proibisce di riscrivere una voce passata, e la maggior parte del grassetto in prosa vive dentro voci già committate. La riscrittura di quelle voci va quindi decisa esplicitamente, perché è una modifica alla forma di documentazione storica e non una correzione di contenuto.
+
 ## Prossimo passo concreto
 
-Le fasi 0 e 1 sono chiuse, quindi il prossimo passo è l'installazione pulita di Ubuntu Studio 26.04 LTS conservando `/home`, cioè le fasi da 2 a 5 della procedura. Il presidio contro l'unico rischio irreversibile, l'errore umano nella selezione delle partizioni, è già in posizione: la copia di sicurezza di `/home` esiste su una macchina diversa, verificata per numero di file e permessi.
+Le fasi da 0 a 5 sono chiuse: l'installazione è eseguita, `/home` conservato, l'accesso remoto ripristinato e i tre difetti dell'installazione corretti. Il prossimo passo è la fase 6 completata, cioè collegare la Scarlett 2i2 e verificare che compaia in ingresso e in uscita con una riproduzione di prova che si sente. È l'unica parte della catena audio ancora non osservata, dato che parametri di avvio e limiti realtime sono verificati.
 
-Un avviso che vale più della sequenza. Le fasi 7 e 8 sono state corrette il 2026-09-07 per ADR-016: chi eseguisse una versione precedente della procedura otterrebbe un ambiente in cui Akabak non parte, perché l'architettura `i386` va dichiarata e non evitata e il prefix di Akabak va creato a 32 bit.
+Subito dopo la fase 7, con l'ordine obbligato di ADR-016: `sudo dpkg --add-architecture i386`, poi l'installazione di Wine, e solo allora il prefix a 32 bit. Prima di crearne uno nuovo conviene provare il prefix `~/.wine` sopravvissuto, che contiene AKABAK installato e attivato: se la migrazione automatica di Wine non lo rompe, la fase 8 si riduce a una verifica.
 
-Due azioni dell'utente sono eseguibili adesso e non dipendono dalla reinstallazione: la cancellazione della copia del corredo sul Desktop, PA-007, sbloccata dal backup verificato, e la lettura dello SMART dell'SSD esterno, PA-009.
+Prima di cancellare qualunque copia esterna di materiale personale va compiuta PA-010, cioè l'inventario per impronta fra le copie esterne e `/home`. I due controlli fatti finora coprono un perimetro molto più stretto di quello che serve, e la cancellazione non è autorizzata da un'impressione visiva.
+
+A ricostruzione compiuta e verificata va preso il backup Veeam di PA-011, che è cosa diversa dall'archivio di `/home` già esistente: quello contiene i dati e non il sistema, e lo scopo del secondo è rendere ripetibile in poche ore un risultato che è costato più di un giorno.
+
+Una decisione resta da prendere e non è mia: se ripulire la deriva di stile rispetto al template nella documentazione già committata, quantificata nella sezione dedicata qui sopra.
