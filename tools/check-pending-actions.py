@@ -302,6 +302,15 @@ def controlla_pa010_pa011() -> None:
     print("  dell'inventario completo, per impronta e non per dimensione occupata.")
     print("  Riguarda anche l'apribilita' dei formati, non i soli file. Vedi PA-010.")
 
+    print("\nPA-012  Scegliere l'interfaccia audio, che serve a due progetti")
+    riga("? ", "vincolo 1: dispositivo di classe audio senza driver proprietari")
+    riga("? ", "vincolo 2: deve reggere anche le misure, quindi phantom a 48 V")
+    riga("  ", "numero di ingressi simultanei: NON dichiarato, da chiedere")
+    riga("  ", "tetto di spesa: NON dichiarato, da chiedere")
+    print("  APERTA: la valutazione vive nel progetto gemello, la scelta vincola")
+    print("  anche la fase 8 di questo. La scelta del microfono dipende da questa")
+    print("  e l'ordine non e' invertibile: vedi docs/20-misura-stanza.md e MS-079.")
+
     print("\nPA-011  Backup Veeam della macchina, a ricostruzione finita")
     riga("  ", "condizione: fasi da 6 a 9 compiute e verificate")
     riga("ok", "catena audio: parametri di avvio attivi da /etc/default/grub.d/ubuntustudio.cfg")
