@@ -14,7 +14,7 @@ Ne segue il conteggio delle copie, che è ciò che rende sicura una cancellazion
 
 Tre categorie, in ordine di sicurezza decrescente.
 
-La prima era la cartella `Progetto stanza (software)`, 2,3 GB, e **non c'è più**: la verifica del 2026-09-07 non la trova sul volume, quindi PA-001 è chiusa. Le sue tre condizioni erano soddisfatte, cioè materiale utile sulla macchina con le impronte verificate e corrispondenza fra le due copie accertata file per file, e le due copie restanti sono intatte.
+La prima era la cartella `Progetto stanza (software)`, 2,3 GB, e *non c'è più*: la verifica del 2026-09-07 non la trova sul volume, quindi PA-001 è chiusa. Le sue tre condizioni erano soddisfatte, cioè materiale utile sulla macchina con le impronte verificate e corrispondenza fra le due copie accertata file per file, e le due copie restanti sono intatte.
 
 La seconda sono le cartelle di servizio, che su quel volume sono di due specie. Da macOS arrivano `.Spotlight-V100`, cioè l'indice di ricerca, `.TemporaryItems`, `.Trashes`, cioè il cestino, e `.fseventsd`, il registro degli eventi del filesystem: sono tutte inutili su Windows e su Linux, e la loro presenza dice soltanto che quel disco è stato usato anche su un Mac. Da Windows arrivano `$RECYCLE.BIN`, che è il cestino del volume e si svuota dal cestino invece che a mano, e `System Volume Information`, che contiene punti di ripristino e indici e va lasciata al sistema.
 
@@ -26,7 +26,7 @@ Lo strumento `tools/analisi-ssd-esterno.py` misura ciascuna voce e la classifica
 
 ## La misura reale, del 2026-09-07
 
-Il volume contiene circa 372 GiB di materiale personale e **1,2 GiB recuperabile** senza perdere nulla di utile. La cartella `Progetto stanza (software)` non compare più nell'elenco, perché è stata rimossa: la voce PA-001 è chiusa.
+Il volume contiene circa 372 GiB di materiale personale e *1,2 GiB recuperabile* senza perdere nulla di utile. La cartella `Progetto stanza (software)` non compare più nell'elenco, perché è stata rimossa: la voce PA-001 è chiusa.
 
 Il recuperabile si distribuisce così, e la sorpresa è che quasi tutto sta in tre cartelle.
 
@@ -45,9 +45,9 @@ Va segnalato che le due cartelle `FOUND` grandi, cioè la 000 del 30 giugno e la
 
 Questa parte esiste per un difetto dello strumento, corretto, e vale raccontarla perché il difetto era del tipo peggiore.
 
-La prima versione dello strumento iterava le sole cartelle della radice e ignorava i file sciolti. Su questo volume ce ne sono quattro, per **45,2 GiB**, di cui due archivi di backup: `backup 28082026 (tutto tranne main, dasistemareancora).7z` da 25,8 GiB e `backup 04092026 (tutto tranne main, dasistemareancora, 3DS - 03092026).7z` da 19,4 GiB. Lo strumento riportava quindi 326 GiB di materiale personale invece di 371, sbagliando per difetto di 45 GiB senza che nulla lo segnalasse. Un totale sbagliato per difetto è peggio di un totale assente, perché non si vede che manca qualcosa.
+La prima versione dello strumento iterava le sole cartelle della radice e ignorava i file sciolti. Su questo volume ce ne sono quattro, per *45,2 GiB*, di cui due archivi di backup: `backup 28082026 (tutto tranne main, dasistemareancora).7z` da 25,8 GiB e `backup 04092026 (tutto tranne main, dasistemareancora, 3DS - 03092026).7z` da 19,4 GiB. Lo strumento riportava quindi 326 GiB di materiale personale invece di 371, sbagliando per difetto di 45 GiB senza che nulla lo segnalasse. Un totale sbagliato per difetto è peggio di un totale assente, perché non si vede che manca qualcosa.
 
-Sui due archivi la domanda era se il più vecchio fosse superato dal più recente, e quindi cancellabile per recuperare 25,8 GiB. **La risposta, misurata il 2026-09-07, è no: nessuno dei due è ridondante.**
+Sui due archivi la domanda era se il più vecchio fosse superato dal più recente, e quindi cancellabile per recuperare 25,8 GiB. *La risposta, misurata il 2026-09-07, è no: nessuno dei due è ridondante.*
 
 Il confronto degli indici dei due archivi, ottenuti con `7z l`, da' questo esito.
 
@@ -61,7 +61,7 @@ Nessuno dei due contiene l'altro. La causa è `backup-sviluppo`, che fra le due 
 
 Cade anche l'ipotesi avanzata prima della misura, cioè che la differenza di peso dipendesse dalla cartella dei modelli 3DS esclusa dal più recente. Quella cartella non compare fra le differenze, quindi non era nemmeno nel più vecchio: coerente con il fatto che porti nel nome una data successiva a quel backup. La differenza di 6 GiB si spiega interamente con il rimescolamento di `backup-sviluppo`.
 
-La conseguenza operativa: **cancellare il più vecchio costa 145.478 versioni di file che non esistono altrove in forma archiviata.** Se quelle versioni servano è una decisione dell'utente, non una questione tecnica: la cartella `backup-sviluppo` esiste ancora sul disco con il suo contenuto corrente, e i due archivi sono istantanee storiche. Ma la domanda "posso cancellare il vecchio perché c'è il nuovo" ha una risposta negativa e documentata.
+La conseguenza operativa: *cancellare il più vecchio costa 145.478 versioni di file che non esistono altrove in forma archiviata.* Se quelle versioni servano è una decisione dell'utente, non una questione tecnica: la cartella `backup-sviluppo` esiste ancora sul disco con il suo contenuto corrente, e i due archivi sono istantanee storiche. Ma la domanda "posso cancellare il vecchio perché c'è il nuovo" ha una risposta negativa e documentata.
 
 ```bash
 python tools/analisi-ssd-esterno.py
@@ -73,7 +73,7 @@ Va detto che su un volume di decine di gigabyte la misura richiede qualche minut
 
 Questa è l'osservazione che vale più dello spazio, ed è emersa guardando la radice del volume senza cercarla.
 
-Una cartella `FOUND.00x` non è una cartella qualsiasi: è il deposito in cui `chkdsk` mette i frammenti orfani quando ripara il filesystem, cioè i pezzi di file di cui ha trovato i dati ma non il nome. Averne una significa che il filesystem è stato riparato una volta. Sul volume ce ne sono **cinque**, `FOUND.000` fino a `FOUND.004`, con date che vanno dal 30 giugno al 3 settembre. Cinque riparazioni in poco più di due mesi.
+Una cartella `FOUND.00x` non è una cartella qualsiasi: è il deposito in cui `chkdsk` mette i frammenti orfani quando ripara il filesystem, cioè i pezzi di file di cui ha trovato i dati ma non il nome. Averne una significa che il filesystem è stato riparato una volta. Sul volume ce ne sono *cinque*, `FOUND.000` fino a `FOUND.004`, con date che vanno dal 30 giugno al 3 settembre. Cinque riparazioni in poco più di due mesi.
 
 Le cause tipiche sono due e vanno distinte, perché portano a rimedi opposti.
 
@@ -120,6 +120,6 @@ La regola operativa che ne discende è una sola, e non è la sostituzione del di
 
 La cancellazione su `J:` non chiude la questione dello spazio, perché la copia sul Desktop della postazione Windows resta, con tutte e quattordici le voci, comprese le otto che il censimento ha scartato.
 
-La decisione su quella copia era stata rinviata, e il rinvio è **superato dal 2026-09-07**. La ragione del rinvio era di ordine e non di merito: rimuovere entrambe le copie nello stesso momento avrebbe lasciato una sola copia del materiale utile, quella sulla macchina, proprio mentre la macchina è in procinto di essere reinstallata. La condizione che scioglie il nodo non è la reinstallazione compiuta, come questa pagina scriveva, ma una copia di sicurezza su un supporto diverso: esiste, è l'archivio `tar` di `/home` verificato per numero di file e permessi, quindi le copie sono di nuovo due e quella sul Desktop è la terza. Si veda PA-007, che è sbloccata, e ADR-015.
+La decisione su quella copia era stata rinviata, e il rinvio è *superato dal 2026-09-07*. La ragione del rinvio era di ordine e non di merito: rimuovere entrambe le copie nello stesso momento avrebbe lasciato una sola copia del materiale utile, quella sulla macchina, proprio mentre la macchina è in procinto di essere reinstallata. La condizione che scioglie il nodo non è la reinstallazione compiuta, come questa pagina scriveva, ma una copia di sicurezza su un supporto diverso: esiste, è l'archivio `tar` di `/home` verificato per numero di file e permessi, quindi le copie sono di nuovo due e quella sul Desktop è la terza. Si veda PA-007, che è sbloccata, e ADR-015.
 
 Sulle otto voci scartate la considerazione è diversa e più semplice, perché non sono state trasferite e non lo saranno: la loro unica copia è sul Desktop, e cancellarla significa non averle più. Dato che il censimento stabilisce che nessuna serve al progetto, e dato che per ciascuna esiste una sostituzione nativa o gratuita già disponibile, non c'è ragione di conservarle. Ma è materiale personale e la decisione è dell'utente, quindi resta dichiarata qui e non eseguita.

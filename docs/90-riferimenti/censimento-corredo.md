@@ -6,11 +6,11 @@
 
 Il corredo esiste in tre descrizioni, e la prima cosa fatta è stato verificare che dicano la stessa cosa, invece di fidarsi.
 
-L'inventario testuale è il file `(SSD S7) DIY Loudspeaker Pack Softwares.txt` nella radice di questo progetto. Dichiara 36 cartelle, distribuite su tre alberi. Il confronto con l'SSD, fatto il 2026-09-07 con il disco collegato, dà un esito netto: **tutte e 36 le cartelle dichiarate esistono su `J:`, e su `J:` non c'è alcuna cartella non dichiarata**.
+L'inventario testuale è il file `(SSD S7) DIY Loudspeaker Pack Softwares.txt` nella radice di questo progetto. Dichiara 36 cartelle, distribuite su tre alberi. Il confronto con l'SSD, fatto il 2026-09-07 con il disco collegato, dà un esito netto: *tutte e 36 le cartelle dichiarate esistono su `J:`, e su `J:` non c'è alcuna cartella non dichiarata*.
 
 Va spiegato un dettaglio che a prima lettura sembra una lacuna e non lo è. L'inventario testuale non nomina né `VituixCAD_setup.exe` né il collegamento `EASE_Focus_v3.1.10 (k-array) - collegamento.lnk`, benché entrambi esistano. Il motivo è che quel file è l'uscita di un comando che elenca soltanto le cartelle, non i file. È quindi un inventario completo e corretto di ciò che si era proposto di elencare, e la sua incompletezza sui file è una proprietà del comando e non un errore dell'autore. Questo chiude anche in modo definitivo il sospetto, avanzato in una sessione precedente, che l'assenza della versione 3.1.10 dall'inventario indicasse una differenza fra le copie.
 
-La copia di lavoro sul Desktop della postazione Windows e la copia su `J:` sono state confrontate per impronta il 2026-09-07: **650 file per parte, gli stessi nomi, le stesse dimensioni, 2.380.021.546 byte per copia, tutte le impronte SHA-256 coincidenti**. Sono una copia uno a uno, come l'utente dichiarava.
+La copia di lavoro sul Desktop della postazione Windows e la copia su `J:` sono state confrontate per impronta il 2026-09-07: *650 file per parte, gli stessi nomi, le stesse dimensioni, 2.380.021.546 byte per copia, tutte le impronte SHA-256 coincidenti*. Sono una copia uno a uno, come l'utente dichiarava.
 
 ## Il censimento
 
@@ -39,11 +39,11 @@ I numeri che ne risultano. Si portano cinque voci per circa 524 mebibyte, di cui
 
 Vale isolare il criterio, perché è quello che rende il censimento ripetibile su materiale nuovo invece di essere un elenco di giudizi.
 
-Il criterio primario è **la posizione nel workflow**. Questo progetto parte da driver finiti, di cui usa i parametri Thiele/Small e le misure, e arriva a un sistema a due vie in una stanza nota. Tutto ciò che opera a monte dei driver finiti, cioè la simulazione del cono e del motore magnetico, sta fuori dal progetto per costruzione, non per giudizio di qualità: FineCone e FineMotor sono strumenti seri, ma servono a chi progetta gli altoparlanti. Tutto ciò che opera in un dominio diverso, cioè gli emulatori di amplificatori per chitarra, sta fuori a maggior ragione.
+Il criterio primario è *la posizione nel workflow*. Questo progetto parte da driver finiti, di cui usa i parametri Thiele/Small e le misure, e arriva a un sistema a due vie in una stanza nota. Tutto ciò che opera a monte dei driver finiti, cioè la simulazione del cono e del motore magnetico, sta fuori dal progetto per costruzione, non per giudizio di qualità: FineCone e FineMotor sono strumenti seri, ma servono a chi progetta gli altoparlanti. Tutto ciò che opera in un dominio diverso, cioè gli emulatori di amplificatori per chitarra, sta fuori a maggior ragione.
 
-Il criterio secondario è **la sostituibilità con qualcosa di migliore già disponibile**. LSPCad e Grenander fanno ciò che fa VituixCAD, che è gratuito, di quindici anni più recente e gestisce la direttività e la risposta in potenza, cioè proprio le grandezze che questo progetto misura. Ramsete fa ciò che fa Akabak, che è già licenziato e funzionante sulla macchina.
+Il criterio secondario è *la sostituibilità con qualcosa di migliore già disponibile*. LSPCad e Grenander fanno ciò che fa VituixCAD, che è gratuito, di quindici anni più recente e gestisce la direttività e la risposta in potenza, cioè proprio le grandezze che questo progetto misura. Ramsete fa ciò che fa Akabak, che è già licenziato e funzionante sulla macchina.
 
-Lo stato di licenza è un criterio **terziario**, e questo va detto con precisione perché è controintuitivo: nessuna delle otto voci scartate viene esclusa perché porta una protezione rimossa. Vengono escluse perché non servono, e la dimostrazione è che ciascuna ha nella tabella una ragione funzionale che regge da sola. La protezione rimossa è una ragione in più, non la ragione, ed è il motivo per cui non esiste in questa documentazione alcuna procedura di installazione per esse.
+Lo stato di licenza è un criterio *terziario*, e questo va detto con precisione perché è controintuitivo: nessuna delle otto voci scartate viene esclusa perché porta una protezione rimossa. Vengono escluse perché non servono, e la dimostrazione è che ciascuna ha nella tabella una ragione funzionale che regge da sola. La protezione rimossa è una ragione in più, non la ragione, ed è il motivo per cui non esiste in questa documentazione alcuna procedura di installazione per esse.
 
 ## Il destino fisico del materiale
 
