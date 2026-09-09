@@ -1454,6 +1454,26 @@ Verificato con: `dpkg -l wine32:i386` uguale a `ii`; confronto delle impronte de
 
 Esito: fatto. Resta da provare se il prefix `~/.wine` sopravvissuto funzioni con Wine 10, che è la prova che decide se la fase 8 si riduce a una verifica.
 
+### MS-084 - Con wine32 e wine64 installati il comando `wine` sceglie sempre i 64 bit, e MS-083 conteneva una mia affermazione falsa
+
+Perimetro: diagnosi del rifiuto di AKABAK ad avviarsi, lettura degli script di avvio di Wine sulla macchina, correzione dei due lanciatori della scrivania, correzione della fase 7 della procedura e della scheda di stampa. Supera una affermazione di MS-083.
+
+Il primo avvio di AKABAK nel prefix sopravvissuto è fallito con un messaggio esplicito: `wine: '/home/alesop95/.wine' is a 32-bit installation, it cannot support 64-bit applications`. Il messaggio va letto al contrario di come si è tentati di leggerlo: non dice che il prefix sia difettoso, dice che il caricatore avviato era quello a 64 bit e che quel caricatore non lavora su un prefix a 32 bit.
+
+La causa sta in come Ubuntu confeziona il comando. Il file `/usr/bin/wine` è un collegamento che attraverso il sistema delle alternative arriva a `/usr/bin/wine-stable`, che è uno script di poche righe. Quello script contiene la logica che decide: se `/usr/bin/wine64` è eseguibile lo usa e ne esporta il percorso in `WINELOADER`, e ripiega su `/usr/bin/wine32` soltanto se il primo manca. Con entrambi i rami installati, e ADR-016 impone di installarli entrambi, il caricatore a 32 bit non viene mai scelto. La via corretta è invocare `wine32`, che è anch'esso uno script e che esegue `/usr/lib/i386-linux-gnu/wine/wine`, cioè un binario `ELF 32-bit`; va notato che quello script imposta `WINEPREFIX` a `~/.wine32` se la variabile non è definita, quindi il prefix va sempre dichiarato esplicitamente.
+
+Ne discende una prescrizione che la procedura non conteneva e che è il complemento operativo di ADR-016: dichiarare l'architettura e installare `wine32` rende possibile il prefix a 32 bit, ma per usarlo il comando deve essere `wine32` e non `wine`. Senza questa riga la decisione sui 32 bit resta corretta e inapplicabile.
+
+*Il ritiro.* MS-083 afferma che i due lanciatori della scrivania fossero rotti perché invocavano `wine-stable`, un nome che su questo sistema non esisterebbe, e registra la loro correzione a `wine` come un difetto risolto. Quella affermazione è falsa e va ritirata per intero. Il file `/usr/bin/wine-stable` esiste, è installato dal pacchetto `wine`, ed è precisamente lo script a cui `/usr/bin/wine` rimanda: i due nomi sono lo stesso programma. I lanciatori non erano quindi rotti per quel motivo, e la mia correzione era una non-operazione.
+
+Peggio: quella correzione lasciava intatto il difetto reale. Sia `wine` sia `wine-stable` finiscono nel caricatore a 64 bit, quindi entrambi i lanciatori avrebbero fallito sul prefix a 32 bit con lo stesso messaggio visto a riga di comando. Sono stati ora corretti a `wine32`, che è la forma che funziona.
+
+La causa del mio errore va isolata perché è precisa e ripetibile. Avevo verificato l'inesistenza del *pacchetto* `wine-stable` con `apt-cache policy`, che è il controllo giusto per la riga di installazione corretta in MS-081, e ho trasferito quella conclusione al *binario* senza rifare il controllo. Sono due domande diverse con due strumenti diversi: `apt-cache policy` risponde sui pacchetti, `ls` e `command -v` rispondono sui file eseguibili. In Debian e Ubuntu la distinzione è tutt'altro che accademica, perché il sistema delle alternative fa esistere nomi di comando che non corrispondono ad alcun pacchetto omonimo. La regola operativa è che una conclusione ottenuta con uno strumento non si estende a un oggetto diverso senza rifare la misura, ed è la stessa che questo progetto ha già pagato tre volte in forma diversa.
+
+Verificato con: lettura integrale di `/usr/bin/wine-stable` e `/usr/bin/wine32-stable`; elenco dei collegamenti in `/etc/alternatives/`, che mostra `wine` verso `wine-stable`; `file` sul caricatore a 32 bit, che risponde `ELF 32-bit LSB pie executable, Intel i386`; `WINEPREFIX=~/.wine wine32 --version`, che risponde `wine-10.0` senza errori contro il prefix a 32 bit; `grep` su `system.reg` del prefix, che dichiara `#arch=win32`; `file` su `AKABAK.exe`, che conferma `PE32 executable`.
+
+Esito: fatto per la diagnosi e per i lanciatori, aperto per l'avvio effettivo del programma, che richiede una sessione grafica sulla macchina.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura tre volte nel corso della sessione, ed è utile dirlo perché la successione è un progresso e non uno stallo. All'inizio elencava microstep bloccati da una macchina di stato ignoto; poi il blocco si è ristretto all'installazione della chiave SSH, che è una azione dell'utente non delegabile; oggi quella chiave è installata, la fase 0 è chiusa nella sostanza e la fase 1 è compiuta, quindi *non esiste più alcun microstep bloccato da una condizione esterna*. Ciò che resta è lavoro da eseguire, in ordine, e il suo unico prerequisito è la disponibilità dell'utente davanti alla macchina.
