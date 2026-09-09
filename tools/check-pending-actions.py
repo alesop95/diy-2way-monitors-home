@@ -284,6 +284,33 @@ def confronta() -> int:
     return 0
 
 
+def controlla_pa010_pa011() -> None:
+    """Le due voci aperte il 2026-09-09, entrambe con condizioni non automatizzabili da qui.
+
+    PA-010 dipende da un confronto fra le copie esterne e la macchina, che richiede
+    l'accesso SSH e non la sola postazione; PA-011 dipende da uno stato della macchina,
+    cioe' la ricostruzione compiuta, che nessun controllo locale puo' osservare. Si
+    elencano comunque, per la stessa ragione per cui esiste controlla_manuali: uno
+    strumento che tace su una voce la fa sparire.
+    """
+    print("\nPA-010  Verificare i file personali sulla macchina prima di cancellarli altrove")
+    riga("? ", "inventario di /home confrontato con le copie esterne: DA FARE")
+    riga("ok", "~/electroacoustics verificato il 2026-09-09: 281 file, 728 MB, come atteso")
+    riga("ok", "scrivania ripresentata dopo la reinstallazione: /home e' sopravvissuto")
+    print("  ATTENZIONE: i due controlli fatti coprono un perimetro molto piu' stretto")
+    print("  della verifica richiesta. Nessuna copia esterna va cancellata prima")
+    print("  dell'inventario completo, per impronta e non per dimensione occupata.")
+    print("  Riguarda anche l'apribilita' dei formati, non i soli file. Vedi PA-010.")
+
+    print("\nPA-011  Backup Veeam della macchina, a ricostruzione finita")
+    riga("  ", "condizione: fasi da 6 a 9 compiute e verificate")
+    riga("ok", "catena audio: parametri di avvio attivi da /etc/default/grub.d/ubuntustudio.cfg")
+    riga("  ", "limiti realtime: utente non nei gruppi audio e pipewire, da correggere")
+    riga("  ", "Wine: non installato, architettura i386 non dichiarata")
+    print("  BLOCCATA: un backup preso adesso congelerebbe uno stato intermedio.")
+    print("  Da definire alla riapertura: prodotto, destinazione e prova di ripristino.")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -301,6 +328,7 @@ def main() -> int:
     controlla_pa003()
     controlla_pa004()
     controlla_manuali()
+    controlla_pa010_pa011()
     print("\nLegenda: [ok] condizione soddisfatta, [? ] da confermare a mano,")
     print("         [  ] non soddisfatta, [!!] anomalia da guardare.")
     return 0

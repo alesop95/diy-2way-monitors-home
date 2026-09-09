@@ -1204,6 +1204,72 @@ Resta fuori la grafia nei modelli sotto `.claude/templates/`, per una decina di 
 
 Esito: fatto per la scheda e per la documentazione del progetto, lasciato ai modelli del template il residuo che appartiene a PA-003.
 
+## 2026-09-09, installazione eseguita e verificata da remoto
+
+### MS-072 - La reinstallazione è riuscita e `/home` è intatto, con la prova diretta
+
+Perimetro: sola lettura sulla macchina via SSH, dopo l'installazione eseguita dall'utente l'8 settembre.
+
+Il passo irreversibile è andato bene. La prova non è il riepilogo dell'installatore, che è una dichiarazione di intenti, ma il contenuto reale del disco dopo il primo avvio: la scrivania si è ripresentata con `AKABAK_Pro_v324b126.exe`, `VACS_32_v213b33.exe`, `Ardour projects`, `Room acoustics` e `Progetto-stanza`, e `~/electroacoustics` conta esattamente **281 file per 728 MB**, cioè i due numeri registrati in MS-039 al momento del trasferimento. Anche il prefix Wine `~/.wine` è sopravvissuto con il suo `drive_c`, datato 13 agosto 2025.
+
+Il sistema installato è `Ubuntu 26.04.1 LTS`, kernel `7.0.0-31-generic`, Plasma 6.6.6 su Wayland, e il supporto dichiara `Ubuntu-Studio 26.04.1 LTS "Resolute Raccoon" - Release amd64 (20260826)`. L'identificativo numerico dell'utente è `1000` e `/home/alesop95` appartiene a `1000:1000`: l'utente nuovo ha ereditato l'identità del vecchio, quindi l'avvertenza sui permessi da correggere a mano non si è avverata. La condizione che l'ha evitata è aver creato l'utente con lo stesso nome, che la scheda prescriveva al suo ultimo passo.
+
+L'accesso SSH è stato ristabilito, e il modo in cui è avvenuto merita di stare a verbale perché non era ovvio e ha risparmiato un giro. La radice azzerata ha portato via `openssh-server` e le chiavi d'identità della macchina, ma `authorized_keys` vive in `/home` ed è sopravvissuto: il file porta ancora la data del 7 settembre alle 09:08, con i permessi `600` su una cartella `700`, cioè già conformi a quanto il servizio pretende. È bastato installare il server. Dal lato della postazione è servito rimuovere la voce vecchia dall'archivio delle chiavi note, perché l'identità della macchina è cambiata legittimamente con la reinstallazione, e un cambio di chiave host è indistinguibile da un attacco per chi guarda solo il messaggio d'errore.
+
+Verificato con: connessione non interattiva riuscita, cioè `ssh` con `BatchMode` attivo che ha risposto `CONNESSO`, `alessio-ubuntustudio`, `7.0.0-31-generic`, `Ubuntu 26.04.1 LTS`. Con `BatchMode` nessuna richiesta di password è possibile, quindi l'autenticazione è passata per chiave e l'accesso automatizzato è di nuovo disponibile.
+
+Lo stato del gestore dei pacchetti è pulito: `dpkg --configure -a` seguito da `apt -f install` ha riportato zero pacchetti da aggiornare, installare o rimuovere. La fase interrotta non ha lasciato pacchetti a metà configurazione.
+
+Esito: fatto. Le fasi 4 e 5 della procedura sono chiuse.
+
+### MS-073 - Il blocco di sedici ore era dopo la fine dell'installazione, e il supporto era stato verificato da sé
+
+Perimetro: lettura dei log dell'installatore conservati in `/var/log/installer/` sul sistema installato. Ritira una prescrizione della scheda e una affermazione di MS-069.
+
+L'installazione si è piantata alla schermata `Setting up the system` e vi è rimasta per sedici ore, dalle 18 di sera alle 10 del mattino, finché l'utente ha riavviato togliendo la chiavetta. La macchina si è avviata correttamente. La domanda che restava era che cosa si fosse bloccato e che danno avesse lasciato, e i log copiati nel sistema installato rispondono a entrambe.
+
+Il danno è nessuno, e la ragione è che il blocco era **dopo** la fine dell'installazione vera. L'ultima riga di `curtin-install.log` è `curtin: Installation finished.`, preceduta da `install-grub: SUCCESS` e `configuring-bootloader: SUCCESS`. Curtin è il componente che partiziona, copia il sistema e installa il boot loader: ha completato tutto e ha smontato ordinatamente `/target`. Ciò che è rimasto appeso è un passo successivo dell'interfaccia, e la sua natura resta ignota perché il log di dettaglio richiede privilegi. L'ora dice qualcosa comunque: l'ultima scrittura di log è delle 17:50, quindi il silenzio è cominciato lì.
+
+Le tre osservazioni indipendenti che confermano l'integrità del risultato sono `dpkg` senza pacchetti a metà, `fstab` completo con radice, EFI e `/home` tutti per UUID, e il sistema che si avvia e aggiorna. Nessuna delle tre da sola basterebbe; insieme chiudono la questione.
+
+**Il fatto che ritira una mia prescrizione.** La scheda prescriveva al passo 5 di eseguire `Check disc for defects` dal menu di avvio, e l'utente ha riferito che quella voce non gli veniva offerta. Non era una svista sua: sulle immagini recenti quella voce di menu non esiste più, perché il controllo di integrità del supporto viene eseguito automaticamente all'avvio. Il file `/var/log/installer/casper-md5check.json` ne conserva l'esito, ed è `{"checksum_missmatch": [], "result": "pass"}`, cioè il supporto è stato verificato e ha superato la verifica senza una sola somma discordante.
+
+Ne discende un ritiro esplicito, e riguarda MS-069 oltre alla scheda. Quel microstep aveva rimosso dalla sottofase 2.4 il confronto di impronte, correttamente, ma lo aveva sostituito dichiarando il controllo dal menu di avvio *l'unica verifica autorevole del supporto*. Quella frase è sbagliata su questa immagine per due ragioni cumulative: il controllo non è raggiungibile dal menu, e non è l'unica verifica perché ne esiste una automatica il cui esito è leggibile in un file. La forma corretta della prescrizione non è un'azione dell'operatore ma una lettura a posteriori, cioè controllare `casper-md5check.json` dopo l'installazione.
+
+Vale isolare l'errore di metodo perché è lo stesso di MS-016 e di MS-029. Ho descritto una interfaccia che non avevo osservato, deducendola da come funzionavano le immagini precedenti, e l'ho scritta su un foglio che qualcuno avrebbe seguito davanti alla macchina. Il costo qui è stato lieve, cioè un passo saltato e un dubbio sulla bontà del supporto durato un giorno, ma il presidio è lo stesso di sempre: una prescrizione su una interfaccia si verifica sull'interfaccia, e finché non lo è va marcata come non verificata.
+
+Resta ignota la causa del blocco. Non è una lacuna che si chiude con una ipotesi: il log di dettaglio esiste, `subiquity-server-debug.log`, e va letto con privilegi prima di dichiarare qualunque cosa.
+
+Esito: fatto per la diagnosi dei danni, aperto per la causa.
+
+### MS-074 - Due difetti reali nell'installazione: la swap sul file sbagliato e i limiti realtime non applicati
+
+Perimetro: sola lettura via SSH su `fstab`, `swapon`, `lsblk`, `/etc/security/limits.d/` e appartenenza ai gruppi.
+
+Il primo difetto. L'installatore ha **ignorato la partizione di swap** `nvme0n1p3`, che esiste, è formattata e porta un UUID valido, e ha creato al suo posto un file `/swap.img` da 4 GB sulla radice. È la spiegazione della riga `Unchanged` accanto a `nvme0n1p3` nella schermata di riepilogo, che al momento era sembrata innocua. Le conseguenze sono due e nessuna è grave ma entrambe contraddicono una scelta di progetto: 14,9 GiB di disco restano inutilizzati, e la swap scende da 16 a 4 GB, il che rende impossibile l'ibernazione su una macchina con 16 GB di RAM, che era la ragione dichiarata per cui quella partizione era stata dimensionata pari alla memoria.
+
+Il secondo difetto, e conta di più perché tocca lo scopo della macchina. I file in `/etc/security/limits.d/` concedono `rtprio 95` e `memlock unlimited` ai gruppi `@audio` e `@pipewire`, e Ubuntu Studio li installa da sé in `30-ubuntustudio-audio.conf`. L'utente però non appartiene a nessuno dei due: i suoi gruppi sono `adm cdrom sudo dip plugdev users lpadmin lxd`. I due gruppi esistono, `audio` con identificativo 29 e `pipewire` con 982, quindi non è un problema di configurazione ma di appartenenza. La conseguenza è misurabile e misurata: `ulimit -r` risponde `0` e la memoria bloccabile è 8192 kB, cioè i limiti realtime **non sono in vigore**.
+
+Vale notare come il difetto sarebbe passato inosservato. La verifica prescritta dalla scheda è leggere i valori in `/etc/security/limits.d/`, e quei valori sono giusti: chi si fermasse lì concluderebbe che la catena è configurata. Solo il confronto fra ciò che il file concede e ciò che `ulimit` riporta davvero mostra che il permesso non arriva all'utente. È la stessa differenza fra una regola scritta e una regola in vigore che aveva già prodotto un falso negativo nella fase 6, dove il controllo sul nome del kernel avrebbe bocciato una catena funzionante.
+
+Non verificabile adesso: la Scarlett 2i2 non è collegata al bus USB, quindi `aplay -l` vede la sola scheda integrata `ALC887-VD`. La verifica dell'interfaccia va rifatta con il dispositivo attaccato, e finché non lo è resta non osservata invece che assente.
+
+Esito: fatto per la diagnosi, aperto per la correzione, che è privilegiata e quindi dell'utente.
+
+### MS-075 - I parametri di avvio arrivano da un file che la scheda non nominava
+
+Perimetro: `/proc/cmdline`, `/etc/default/grub`, `/etc/default/grub.d/`, `/etc/update-manager/release-upgrades`.
+
+La catena a bassa latenza è attiva: `/proc/cmdline` contiene `preempt=full threadirqs rcu_nocbs=all`. Ma `/etc/default/grub` contiene soltanto `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"`, quindi quei parametri non vengono da lì: vengono da `/etc/default/grub.d/ubuntustudio.cfg`, un file che il sistema installa da sé e che estende la variabile invece di sostituirla.
+
+La conseguenza è una correzione della scheda e della fase 6 della procedura, entrambe le quali prescrivevano di aggiungere i due parametri a mano in `/etc/default/grub`. Seguire quella istruzione oggi non romperebbe nulla di visibile ma li duplicherebbe sulla riga di comando del kernel, il che è il genere di configurazione che confonde chi la legge sei mesi dopo e non sa più quale delle due sorgenti comanda. La forma corretta della prescrizione è verificare `/proc/cmdline`, e intervenire soltanto se i parametri mancano.
+
+Nella stessa famiglia cade un secondo passo di igiene. La scheda prescriveva di impostare `Prompt=lts` in `/etc/update-manager/release-upgrades` con un comando `sed`, e quel file **contiene già** `Prompt=lts` su una installazione LTS pulita. Il comando non farebbe danno ed è una non-operazione, ma una scheda che prescrive passi già compiuti insegna a eseguirla senza leggerla, che è il difetto peggiore che possa avere un foglio da seguire davanti a una macchina.
+
+Confermato invece che i codec proprietari sono installati, con `ubuntu-restricted-addons` in stato `ii`: la scelta fatta nell'installatore è stata onorata, il che restringe ulteriormente ciò che il blocco può aver impedito.
+
+Esito: fatto.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura tre volte nel corso della sessione, ed è utile dirlo perché la successione è un progresso e non uno stallo. All'inizio elencava microstep bloccati da una macchina di stato ignoto; poi il blocco si è ristretto all'installazione della chiave SSH, che è una azione dell'utente non delegabile; oggi quella chiave è installata, la fase 0 è chiusa nella sostanza e la fase 1 è compiuta, quindi **non esiste più alcun microstep bloccato da una condizione esterna**. Ciò che resta è lavoro da eseguire, in ordine, e il suo unico prerequisito è la disponibilità dell'utente davanti alla macchina.

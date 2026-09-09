@@ -68,7 +68,7 @@ SOTTOTITOLO = (
 RIQUADRI = [
     (
         "PASSO IRREVERSIBILE",
-        "nvme0n1p4 (/home, 346 GB) va MONTATA, NON formattata. Se si sbaglia qui, la sola "
+        "nvme0n1p4 (/home, 402,98 GB) va MONTATA, NON formattata. Se si sbaglia qui, la sola "
         "copia che resta è il backup da 4,4 GB.",
     ),
     (
@@ -84,13 +84,13 @@ RIQUADRI = [
 PARTIZIONI_INTESTAZIONE = ["Partizione", "FS", "Dimensione", "Mount point", "Azione"]
 PARTIZIONI_LARGHEZZE = [1500, 800, 1300, 1700, 4806]
 PARTIZIONI = [
-    ("nvme0n1p1", "vfat", "1 GB", "/boot/efi", "riusare, NON formattare", False),
-    ("nvme0n1p2", "ext4", "73 GB", "/", "FORMATTARE, è il sistema vecchio", False),
-    ("nvme0n1p3", "swap", "-", "swap", "riusare", False),
+    ("nvme0n1p1", "vfat", "1,13 GB", "/boot/efi", "riusare, NON formattare", False),
+    ("nvme0n1p2", "ext4", "80,00 GB", "/", "FORMATTARE, è il sistema vecchio", False),
+    ("nvme0n1p3", "swap", "16,00 GB", "swap", "riusare", False),
     (
         "nvme0n1p4",
         "ext4",
-        "346 GB",
+        "402,98 GB",
         "/home",
         "MONTARE, NON FORMATTARE - non toccare il menu del filesystem",
         True,
@@ -138,11 +138,10 @@ SEQUENZA = [
     ("Chiavetta + BIOS", "Infila la chiavetta e accendi premendo Del per entrare nel BIOS.", None),
     ("Quattro modifiche", "Fai le quattro modifiche della tabella BIOS, poi F10 per salvare e uscire.", None),
     ("Boot menu", "Riaccendi premendo F8 (su ASUS apre il menu di avvio temporaneo) e scegli la voce UEFI della Kingston.", None),
-    ("Check disc for defects", "Nel menu della chiavetta scegli Check disc for defects. Due minuti, ed è l'unica verifica autorevole del supporto perché la fa il supporto su se stesso. Se dà errori la chiavetta si riscrive; se è pulita si prosegue.", None),
-    ("Avvio live", "Riavvia e scegli Try or Install Ubuntu Studio.", None),
+    ("Avvio live", "Scegli Try or Install Ubuntu Studio. NON cercare la voce Check disc for defects: su questa immagine non esiste più, il controllo del supporto è automatico e il suo esito si legge dopo in /var/log/installer/casper-md5check.json.", None),
     ("Partizionamento manuale", "PRIMO DEI TRE MOMENTI. Nell'installatore scegli il partizionamento manuale, cioè Something else o Partizionamento manuale. Non scegliere in nessun caso la cancellazione del disco né l'installazione guidata.", "giallo"),
     ("nvme0n1p2 → /", "Punto di montaggio /  ·  formattazione SPUNTATA  ·  ext4. È la sola partizione da azzerare.", None),
-    ("nvme0n1p4 → /home", "SECONDO DEI TRE MOMENTI, ed è quello irreversibile. Imposta SOLTANTO il punto di montaggio /home. NON toccare il menu del filesystem: selezionare un filesystem spunta la formattazione da sé. La casella di formattazione deve restare vuota. Se sbagli qui perdi 346 GB, e la sola copia che resta è il backup da 4,4 GB.", "rosso"),
+    ("nvme0n1p4 → /home", "SECONDO DEI TRE MOMENTI, ed è quello irreversibile. Imposta SOLTANTO il punto di montaggio /home. NON toccare il menu del filesystem: selezionare un filesystem spunta la formattazione da sé. La casella di formattazione deve restare vuota. Se sbagli qui perdi 402,98 GB, e la sola copia che resta è il backup da 4,4 GB.", "rosso"),
     ("nvme0n1p1 → /boot/efi", "Punto di montaggio /boot/efi  ·  formattazione NON SPUNTATA. Si riusa quella esistente.", "giallo"),
     ("nvme0n1p3 → swap", "Assegna come swap.", None),
     ("Schermata di riepilogo", "TERZO DEI TRE MOMENTI, ed è l'unico controllo che conta davvero. Leggi l'elenco delle operazioni previste: una formattazione deve comparire SOLTANTO per nvme0n1p2. Se la parola compare accanto a nvme0n1p4 o a nvme0n1p1, torna indietro. Fino a questo pulsante nulla è stato scritto sul disco.", "rosso"),
@@ -160,6 +159,19 @@ VERIFICHE_CHIUSURA = (
     "con i suoi 281 file. Se /home risulta vuoto la formattazione è avvenuta: a quel punto si "
     "ripristina l'archivio di backup, che sta su questa postazione Windows."
 )
+
+DIFETTI_TITOLO = "5 · DUE COSE CHE L'INSTALLATORE SBAGLIA"
+DIFETTI = [
+    "Swap: la partizione nvme0n1p3 viene ignorata e marcata Unchanged nel riepilogo, e al suo "
+    "posto nasce un file /swap.img da 4 GB sulla radice. Restano 15 GB inutilizzati e "
+    "l'ibernazione non è più possibile. Si corregge dopo, in /etc/fstab, mettendo la "
+    "partizione per UUID al posto del file.",
+    "Limiti realtime: i file in /etc/security/limits.d/ concedono rtprio 95 e memlock unlimited "
+    "ai gruppi audio e pipewire, ma l'utente creato dall'installatore non appartiene a nessuno "
+    "dei due. Leggere quei file non rivela niente perché il loro contenuto è giusto: il "
+    "difetto si vede solo con ulimit -r -l, che risponde 0 e 8192. Si corregge aggiungendo "
+    "l'utente ai due gruppi e riaccedendo.",
+]
 
 CHIUSURA_TITOLO = "DOPO L'INSTALLAZIONE"
 CHIUSURA = [
@@ -392,6 +404,10 @@ def documento(con_licenza: Path | None) -> str:
         para(run(VERIFICHE_TITOLO, grassetto=True), stile="Heading1"),
         blocco_comandi(VERIFICHE_COMANDI),
         para(run(VERIFICHE_CHIUSURA, dimensione=17)),
+        para(run(DIFETTI_TITOLO, grassetto=True), stile="Heading1"),
+    ]
+    corpo += [para(run(d, dimensione=17)) for d in DIFETTI]
+    corpo += [
         para(run(CHIUSURA_TITOLO, grassetto=True), stile="Heading1"),
     ]
     corpo += [para(run(t, dimensione=17)) for t in CHIUSURA]

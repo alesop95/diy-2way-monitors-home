@@ -32,6 +32,34 @@ Le azioni sono numerate e nell'ordine in cui vanno eseguite. Dove una dipende da
 
 Restano fuori da questa sequenza le voci a bassa priorità che non dipendono da essa e non la bloccano: PA-002 sulla licenza di Ramsete, PA-003 sulla propagazione al template, PA-004 sul disco `G:`. Si affrontano quando capita l'occasione, non in un ordine.
 
+## PA-010 - Verificare che i file personali siano tutti sulla macchina, prima di cancellarli altrove
+
+Data di apertura: 2026-09-09. Stato: aperta.
+
+Che cosa va fatto. Prima di cancellare qualunque copia di materiale personale che oggi vive fuori dalla macchina Ubuntu Studio, cioè sulla postazione Windows, sull'SSD esterno `J:` o sul disco `G:` non ancora ispezionato, va accertato che il corrispondente sia presente e integro dentro `/home/alesop95`. La verifica riguarda i file di lavoro personali e non il solo corredo software, quindi comprende i progetti Ardour, il materiale di acustica della stanza, i simulatori, i documenti sciolti sulla scrivania e tutto ciò che l'utente riconosce come proprio.
+
+Perché conta, ed è una richiesta esplicita dell'utente. Il 2026-09-09 la reinstallazione ha conservato `/home` e la scrivania si è ripresentata con i suoi contenuti, il che rende naturale concludere che non manchi nulla. Quella conclusione non è verificata: si è osservato che le icone della scrivania ci sono e che `~/electroacoustics` conta 281 file per 728 MB come documentato, che sono due controlli su un perimetro molto più ampio. Cancellare una copia esterna sulla base di una impressione visiva è esattamente il genere di passo che non si può annullare.
+
+Condizione di sblocco. Nessuna condizione esterna impedisce la verifica in sé, che si può fare adesso via SSH. La cancellazione delle copie esterne, invece, dipende da questa verifica e non va anticipata. La voce resta aperta finché l'inventario non è fatto e confrontato.
+
+Criterio di completamento. Esiste un confronto documentato fra il contenuto personale delle copie esterne e quello di `/home/alesop95`, fatto per impronta del contenuto e non per dimensione occupata, dato che il tranello del `du -sh` è già costato una inferenza sbagliata in MS-024. Da quel confronto risulta un elenco esplicito di ciò che esiste solo fuori dalla macchina, e ogni voce di quell'elenco è stata trasferita oppure dichiarata volutamente non trasferita.
+
+Nota sul software. La richiesta dell'utente comprende anche l'utilizzo del software, cioè non soltanto i file di dato ma la loro apribilità: un progetto Ardour o un modello Akabak conservato senza il programma che lo apre è un archivio e non un materiale di lavoro. La verifica va quindi estesa a quali formati restano leggibili sulla macchina dopo la ricostruzione dell'ambiente delle fasi da 6 a 9.
+
+## PA-011 - Backup Veeam della macchina, a ricostruzione finita
+
+Data di apertura: 2026-09-09. Stato: aperta.
+
+Che cosa va fatto. Un backup completo della macchina Ubuntu Studio con Veeam, da eseguire quando la ricostruzione dell'ambiente è finita e verificata, non prima.
+
+Perché conta, e perché è diverso dal backup che già esiste. L'archivio da 4,4 GB prodotto il 2026-09-07 e conservato sulla postazione Windows è una copia di `/home` fatta con `tar`, cioè dei soli dati dell'utente, ed è servito come presidio contro l'errore umano nel partizionamento. Non contiene il sistema, i pacchetti installati, la configurazione della catena audio a bassa latenza, i prefix Wine ricostruiti né le licenze attivate. Un backup di macchina intera ha uno scopo diverso: rendere ripetibile in poche ore il risultato di una ricostruzione che, come questa sessione dimostra, costa più di un giorno.
+
+Condizione di sblocco. Che le fasi da 6 a 9 siano compiute e verificate, cioè catena audio, Wine con l'architettura `i386` dichiarata, programmi reinstallati, licenza Akabak riattivata e corredo installato. Un backup preso prima congelerebbe uno stato intermedio che nessuno vuole ripristinare.
+
+Criterio di completamento. Il backup esiste, il suo supporto di destinazione è dichiarato, e ne è stato provato il ripristino almeno in forma parziale, perché un backup mai riletto è una speranza e non una copia. Va dichiarato anche dove risiede, dato che la regola imparata da PA-009 vale anche qui: un disco rimovibile non è il posto dove tenere l'unica copia di qualcosa.
+
+Da definire, e non va inventato adesso. Quale prodotto Veeam si usa su Linux, se l'agente gratuito per Linux basta allo scopo, quale sia la destinazione e con quale frequenza. Sono decisioni che si prendono quando la voce si sblocca, e la loro assenza qui è voluta.
+
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
 
 Data di apertura: 2026-09-04. **Compiuta il 2026-09-07.** Stato: chiusa.
