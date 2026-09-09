@@ -8,7 +8,7 @@ La sorgente digitale è l'unità etichettata Rod Rain audio, oggetto di uno stud
 
 La catena interna, come documentata in quel progetto, è la seguente: ingresso USB, ricevitore USB-audio SA9023, collegamento I²S[^2], convertitore ES9023 con driver di uscita integrato a 2 Vrms, filtro RC, uscita a livello di linea, e da lì lo stadio cuffie discreto su dissipatore. L'alimentazione è lineare, con toroide da due volte 12 V. Il pannello posteriore espone AUDIO IN, AUDIO OUT su RCA, USB-B e la rete.
 
-Ciò che di questo elenco conta per il progetto dei monitor è un solo dato: esiste una **uscita a livello di linea su RCA, a circa 2 Vrms**. È il livello di linea consumer standard, ed è esattamente ciò che serve come sorgente.
+Ciò che di questo elenco conta per il progetto dei monitor è un solo dato: esiste una *uscita a livello di linea su RCA, a circa 2 Vrms*. È il livello di linea consumer standard, ed è esattamente ciò che serve come sorgente.
 
 ## La conseguenza che vincola il progetto, e va capita prima di comprare i driver
 
@@ -16,9 +16,9 @@ Due Vrms su RCA sono un segnale, non una potenza. Lo stadio cuffie che segue nel
 
 Ne segue che la scelta del convertitore non è indipendente dall'architettura del diffusore, e le due strade sono queste.
 
-Se i monitor sono **attivi**, cioè con amplificazione a bordo e crossover attivo, l'uscita RCA del Rod Rain va direttamente ai loro ingressi e la catena è completa. Un due vie attivo ha un amplificatore per via, quindi due canali di potenza per cassa, e il crossover lavora a livello di linea prima degli amplificatori.
+Se i monitor sono *attivi*, cioè con amplificazione a bordo e crossover attivo, l'uscita RCA del Rod Rain va direttamente ai loro ingressi e la catena è completa. Un due vie attivo ha un amplificatore per via, quindi due canali di potenza per cassa, e il crossover lavora a livello di linea prima degli amplificatori.
 
-Se i monitor sono **passivi**, cioè con crossover a componenti fra l'amplificatore e i driver, serve un amplificatore di potenza stereo fra il Rod Rain e le casse. Quell'amplificatore diventa un elemento della catena da scegliere, con la sua potenza, la sua impedenza di carico ammessa e il suo rumore, e non esiste al momento fra le cose disponibili.
+Se i monitor sono *passivi*, cioè con crossover a componenti fra l'amplificatore e i driver, serve un amplificatore di potenza stereo fra il Rod Rain e le casse. Quell'amplificatore diventa un elemento della catena da scegliere, con la sua potenza, la sua impedenza di carico ammessa e il suo rumore, e non esiste al momento fra le cose disponibili.
 
 Il documento sorgente lasciava questa scelta aperta, scrivendo che il crossover potesse essere passivo o attivo e che entrambi si potessero simulare in VituixCAD. Era una posizione legittima quando la sorgente non era decisa. Ora che lo è, la scelta va anticipata, perché determina se occorre un acquisto in più e perché cambia la fase 4a: un crossover passivo si progetta con componenti reali e le loro tolleranze, uno attivo si progetta come filtro a livello di linea e si realizza in analogico o in digitale.
 
@@ -30,7 +30,7 @@ Il convertitore è usato anche da un altro computer. Non è un problema di proge
 
 La prima è banale e riguarda l'ergonomia: una sola porta USB-B significa scollegare e ricollegare, oppure interporre un commutatore USB. Nulla di tecnico, ma è il tipo di attrito che scoraggia le misure ripetute, e le misure ripetute sono il metodo di questo progetto.
 
-La seconda è più sottile e riguarda la validità delle misure. La catena di **misura** usa la Focusrite Scarlett 2i2, perché serve un ingresso microfonico con alimentazione phantom, mentre la catena di **ascolto** userà il Rod Rain. Sono due convertitori diversi con due uscite diverse. Per la fase 1, cioè la caratterizzazione della stanza, questo è irrilevante: si misura come la stanza risponde, e la sorgente è uno strumento provvisorio. Per la fase 8, cioè la verifica finale del monitor costruito, non è irrilevante: se si vuole misurare ciò che si ascolterà, il segnale di prova deve uscire dalla catena di ascolto reale. REW permette di usare dispositivi diversi in ingresso e in uscita, quindi la configurazione corretta per la fase 8 è microfono sulla Scarlett e generazione del segnale sul Rod Rain.
+La seconda è più sottile e riguarda la validità delle misure. La catena di *misura* usa la Focusrite Scarlett 2i2, perché serve un ingresso microfonico con alimentazione phantom, mentre la catena di *ascolto* userà il Rod Rain. Sono due convertitori diversi con due uscite diverse. Per la fase 1, cioè la caratterizzazione della stanza, questo è irrilevante: si misura come la stanza risponde, e la sorgente è uno strumento provvisorio. Per la fase 8, cioè la verifica finale del monitor costruito, non è irrilevante: se si vuole misurare ciò che si ascolterà, il segnale di prova deve uscire dalla catena di ascolto reale. REW permette di usare dispositivi diversi in ingresso e in uscita, quindi la configurazione corretta per la fase 8 è microfono sulla Scarlett e generazione del segnale sul Rod Rain.
 
 ## Che cosa resta da verificare
 
