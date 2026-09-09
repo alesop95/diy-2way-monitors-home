@@ -1400,6 +1400,22 @@ Verificato con: `sha256sum` sui sette file locali e `find` con `sha256sum` sui f
 
 Esito: fatto per i cinque file sciolti, subordinato a PA-011 per la cartella pesante.
 
+### MS-081 - Il pacchetto prescritto non esiste, e la verifica è costata un comando
+
+Perimetro: `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 7, `docs/10-ambiente/scheda-reinstallazione.md`, `docs/10-ambiente/wine-configurazione.md`.
+
+Prima di consegnare all'utente i comandi della fase 7 ho verificato sulla macchina che i pacchetti prescritti esistano, e uno non esiste. La procedura, la scheda di stampa e la pagina di configurazione di Wine prescrivevano tutte `sudo apt install --install-recommends wine-stable winetricks`, e su Ubuntu 26.04 `apt-cache policy wine-stable` risponde `Candidate: (none)`.
+
+La causa è che quel nome appartiene ai repository WineHQ, non all'archivio Ubuntu. Il sistema precedente aveva due repository WineHQ attivi contemporaneamente per due rilasci diversi, che era uno dei fattori di attrito che hanno motivato l'installazione pulita, e la prescrizione era stata scritta guardando quello che c'era su quella macchina invece dell'archivio della distribuzione che si sarebbe installata. Il pacchetto corretto si chiama `wine`, versione `10.0~repack-12ubuntu1`, e `winetricks` esiste con quel nome.
+
+Il controllo ha prodotto anche una conferma non cercata, e vale registrarla perché è la prova pratica di una decisione presa su base documentale. `apt-cache policy wine32` risponde `Candidate: (none)` mentre `wine64` risponde con la versione: `wine32` non è disponibile perché l'architettura `i386` non è ancora dichiarata sul sistema. È esattamente il meccanismo per cui ADR-016 impone di dichiarare `i386` prima di installare Wine e non dopo, e finora quell'ordine era sostenuto dal ragionamento e da un prefix osservato, non da una misura sul sistema nuovo.
+
+La nota di metodo è che questo è il terzo caso in tre giorni della stessa classe di difetto, dopo la voce `Check disc for defects` che non esiste nel menu di avvio in MS-073 e i parametri di avvio attribuiti al file sbagliato in MS-075. La forma comune è una prescrizione operativa scritta guardando un ambiente diverso da quello su cui verrà eseguita, e il presidio che l'ha intercettata questa volta è banale: prima di consegnare un comando, verificarlo dove verrà eseguito. Il costo era un comando di sola lettura.
+
+Verificato con: `apt-cache policy` su sei nomi di pacchetto candidati, eseguito via SSH sulla macchina, che ha risposto `(none)` per `wine-stable` e per `wine32`, con la versione per `wine`, `wine64` e `winetricks`, e nessun pacchetto per `wine-installer`.
+
+Esito: fatto. Le tre pagine prescrivono ora `wine`, con la nota che spiega perché il nome precedente non esiste e da dove veniva.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura tre volte nel corso della sessione, ed è utile dirlo perché la successione è un progresso e non uno stallo. All'inizio elencava microstep bloccati da una macchina di stato ignoto; poi il blocco si è ristretto all'installazione della chiave SSH, che è una azione dell'utente non delegabile; oggi quella chiave è installata, la fase 0 è chiusa nella sostanza e la fase 1 è compiuta, quindi *non esiste più alcun microstep bloccato da una condizione esterna*. Ciò che resta è lavoro da eseguire, in ordine, e il suo unico prerequisito è la disponibilità dell'utente davanti alla macchina.
