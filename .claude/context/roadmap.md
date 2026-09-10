@@ -4,7 +4,7 @@ generated-from-branch: main
 generated-date: 2026-09-04
 covers-paths:
   - docs/**
-last-verified-commit: ba69e0c
+last-verified-commit: d8ebf45
 ---
 
 # Roadmap
@@ -23,29 +23,27 @@ La parte simulativa è pensata in profondità: il workflow in otto fasi è defin
 
 Sull'ambiente lo stato è più avanzato di quanto la prima ricognizione lasciasse credere: Akabak e VACS sono installati, licenziati e verificati funzionanti sulla macchina dal 3 settembre 2025, quindi la ricostruzione dell'ambiente non è un primo impianto ma la ripetizione di un percorso già percorso una volta.
 
-Il vincolo che oggi blocca più di ogni altro non è tecnico di progetto ma di infrastruttura: la macchina di lavoro è su una versione di Ubuntu fuori supporto, e l'accesso remoto per amministrarla non è ancora configurato. La macchina è sulla stessa rete della postazione e risponde quando è sveglia; si sospende da sola, e nessuna chiave SSH della postazione è autorizzata su di essa.
+Il vincolo che oggi blocca più di ogni altro non è più di infrastruttura, e la differenza rispetto a come questa sezione era scritta fino al 2026-09-09 è il progresso di una settimana. La macchina è stata reinstallata su Ubuntu Studio 26.04.1 LTS conservando `/home`, l'accesso remoto per chiave funziona come `ssh studio` anche in modo non interattivo, la sospensione automatica che la faceva scomparire dalla rete è disattivata, e l'ambiente Wine è ricostruito con Akabak e VACS funzionanti e la licenza verificata valida. Il vincolo che resta è un acquisto: la macchina ha la sola scheda audio integrata, quindi non esiste un ingresso microfonico con alimentazione phantom, e senza di esso non si misura nulla. È PA-012, ed è una decisione condivisa con il progetto gemello di home recording perché l'interfaccia serve a entrambi.
 
 ## Priorità
 
-La prima priorità è aprire l'accesso remoto alla macchina, perché è il presupposto di tutto il resto e costa un solo comando con la password. Si genera una chiave dedicata a quell'host, separata da quelle di GitHub, e la si installa: la procedura è la fase 10.3 di `docs/10-ambiente/installazione-pulita-26-04.md`.
+Le prime cinque priorità di questa scheda, come era scritta il 2026-09-04, sono compiute, e restano elencate in forma sintetica perché la loro chiusura è ciò che spiega da dove riparte il resto. L'accesso remoto è aperto con una chiave dedicata. La fotografia della macchina precedente è stata prodotta prima della formattazione, in quattordici file, ed è ciò che ha portato alla scoperta dei 32 bit di ADR-016. I materiali sono stati trasferiti e verificati per impronta, 281 file per 728 MB, con la copia di sicurezza di `/home` fuori dalla macchina. L'installazione pulita della 26.04 LTS è stata eseguita conservando `/home`, ed è verificata. L'ambiente Wine è ricostruito, e nella forma che ADR-016 e ADR-019 prescrivono e non in quella che questa scheda dava per buona: l'architettura `i386` va dichiarata e non evitata, e il comando su un prefix a 32 bit è `wine32` e non `wine`. La cronologia con il razionale di ciascun passo è in `docs/10-ambiente/setup-macchina-2026-09.md`.
 
-La seconda priorità è la fotografia completa della macchina attuale, cioè la fase 0 della stessa procedura, in quattordici file. Confermare o smentire la diagnosi del blocco di aggiornamento, leggere lo stato di salute dell'SSD, inventariare i prefix Wine esistenti, e verificare che il Machine Identifier di Akabak sia ancora quello a cui il Release Code è legato. Viene prima dell'installazione perché dopo la formattazione quelle informazioni non sarebbero più recuperabili.
+La prima priorità aperta è la scelta dell'interfaccia audio, che è PA-012. Viene prima di tutto il resto per una ragione di dipendenza e non di preferenza: da essa dipende la scelta del microfono di misura, e dal microfono dipende la prima misura reale, che è il primo dato vero del progetto. Due parametri non sono ancora stati dichiarati dall'utente e vanno chiesti invece di essere assunti, cioè il numero di ingressi simultanei necessari alla registrazione, che è il vincolo che elimina più modelli di ogni altro, e un eventuale tetto di spesa. I due vincoli già fissati sono dispositivo di classe audio che il kernel veda senza driver proprietari, e capacità di reggere anche le misure e non solo la registrazione.
 
-La terza priorità è il trasferimento dei materiali e del corredo software, circa 682 mebibyte, secondo `docs/TRANSFER-MANIFEST.md`, insieme alla copia di sicurezza di `/home` fuori dalla macchina. Vanno eseguiti prima della reinstallazione e non dopo: la destinazione è sotto `/home`, e la copia di sicurezza copre l'unico rischio irreversibile della procedura, cioè l'errore umano nella selezione delle partizioni.
+La seconda priorità è chiudere la fase 8 per la parte che non dipende da acquisti, cioè l'installazione del corredo secondo le sottofasi da 8.3 a 8.9: il limite delle pipeline COM da configurare subito, gli esempi di Akabak, VituixCAD, EASE Focus 3.1.260 con il servizio di database AFMG, e ARTA. Ramsete resta fuori finché PA-002 non è risolta.
 
-La quarta priorità è l'installazione pulita di Ubuntu Studio 26.04 LTS conservando `/home`, decisa e registrata come ADR-006. Viene qui perché una macchina su un rilascio fuori supporto accumula attrito a ogni intervento successivo, e perché la ricostruzione pulita dell'ambiente Wine risolve nello stesso passaggio i guasti registrati in `docs/10-ambiente/wine-troubleshooting.md`.
+La terza priorità è l'acquisto del microfono di misura, cioè il Dayton Audio EMM-6 o la Sonarworks equivalente, con il suo file di calibrazione individuale. Dipende dalla prima e non le si può anteporre.
 
-La quinta priorità è la ricostruzione dell'ambiente Wine con un prefix per programma e senza architettura a 32 bit, e la reinstallazione di Akabak, VACS, VituixCAD, EASE Focus 3.1.260 con il suo servizio di database, e ARTA. Il criterio di completamento è che ciascuno apra la propria finestra e carichi un file di esempio, che EASE Focus carichi almeno un GLL dal database, e che Akabak accetti il Release Code esistente senza che VACS ne chieda un secondo. Quest'ultimo è anche la prova pratica dell'affermazione sulla licenza legata alla macchina registrata in ADR-003.
+La quarta priorità è la misura reale della stanza. È il primo dato vero del progetto e va fatta prima di qualunque altra cosa di progettazione, perché fino ad allora ogni simulazione è priva di riscontro. Si può eseguire con un diffusore qualsiasi come sorgente, quindi non attende l'acquisto dei driver.
 
-La sesta priorità è l'acquisto del microfono di misura, cioè il Dayton Audio EMM-6 o la Sonarworks equivalente, con il suo file di calibrazione individuale. È il primo acquisto del progetto e sblocca la fase 1, che è la fase da cui dipendono sia il modello della stanza sia la scelta dei driver.
+La quinta priorità è il backup completo della macchina, che è PA-011, e la sua collocazione qui e non più in fondo è una conseguenza di questa settimana: la ricostruzione è costata più di un giorno di lavoro, e il suo scopo è renderla ripetibile in poche ore. Va preso a fase 8 chiusa e verificata, non prima, perché un backup di uno stato intermedio non è uno stato che qualcuno voglia ripristinare.
 
-La settima priorità è la misura reale della stanza. È il primo dato vero del progetto e va fatta prima di qualunque altra cosa, perché fino ad allora ogni simulazione è priva di riscontro. Si può eseguire con un diffusore qualsiasi come sorgente, quindi non attende l'acquisto dei driver.
+La sesta priorità è la coppia modellazione e validazione, cioè la geometria in Blender e l'analisi modale in Octave, con il confronto contro la misura. Il criterio di uscita è l'accordo verificato fra modi predetti e picchi misurati, non la produzione di un grafico.
 
-L'ottava priorità è la coppia modellazione e validazione, cioè la geometria in Blender e l'analisi modale in Octave, con il confronto contro la misura. Il criterio di uscita è l'accordo verificato fra modi predetti e picchi misurati, non la produzione di un grafico.
+La settima priorità è la definizione della risposta target, che precede la scelta dei driver e oggi è ancora una decisione aperta fra una risposta piatta e una curva con lieve enfasi sui bassi.
 
-La nona priorità è la definizione della risposta target, che precede la scelta dei driver e oggi è ancora una decisione aperta fra una risposta piatta e una curva con lieve enfasi sui bassi.
-
-La decima priorità è la progettazione in VituixCAD, poi l'acquisto dei driver, poi la progettazione meccanica in FreeCAD, poi la simulazione finale in Akabak, poi la costruzione, poi la verifica finale. Da qui in avanti l'ordine è quello del workflow e non richiede argomentazione ulteriore.
+L'ottava priorità è la progettazione in VituixCAD, poi l'acquisto dei driver, poi la progettazione meccanica in FreeCAD, poi la simulazione finale in Akabak, poi la costruzione, poi la verifica finale. Da qui in avanti l'ordine è quello del workflow e non richiede argomentazione ulteriore.
 
 ## Decisioni aperte
 
@@ -61,11 +59,21 @@ Il canale di approvvigionamento dei driver, che condiziona quali driver sono rea
 
 La strategia di correzione residua dopo la verifica finale, cioè intervento sul crossover, equalizzazione digitale, oppure accettazione dello scarto. La premessa del progetto spinge verso il crossover, ma la decisione dipende da quanto grande sia lo scarto e da dove cada in frequenza.
 
+## Direzioni future, dichiarate non urgenti
+
+Questa sezione raccoglie ciò che l'utente ha indicato come direzione e non come lavoro, e la distinzione va conservata: una voce qui non ha una condizione di sblocco, altrimenti apparterrebbe a `docs/PENDING-ACTIONS.md`, e non ha un criterio di finito, altrimenti apparterrebbe alle priorità. Sta qui perché orienta scelte che si stanno facendo adesso.
+
+*La replica del setup sul secondo portatile.* L'utente ha indicato il 2026-09-10 la replica dello stesso setup di Ubuntu Studio sul proprio secondo portatile, un Asus F550CC-XX698H oggi su Ubuntu 24.04 LTS, dichiarando esplicitamente che non è urgente. La macchina è un portatile consumer del 2013: schermo da 15,6 pollici a 1366 per 768, processore Intel Core i3 di terza generazione, 4 GB di RAM DDR3 espandibili, disco meccanico da 500 GB a 5400 giri, grafica dedicata NVIDIA GeForce GT 720M con 2 GB di VRAM DDR3, raffreddamento a un solo heatpipe con ventola, batteria agli ioni di litio da circa 37 Wh, peso attorno ai 2,3 kg. Le porte sono USB 2.0 e 3.0, HDMI, VGA, lettore di schede SD e jack audio combinato. La rete wireless è una Intel Centrino Wireless-N 2230, che copre 802.11b/g/n sulla sola banda a 2,4 GHz fino a 300 Mbps con WEP, WPA e WPA2 e non ha supporto nativo per i 5 GHz; la rete cablata è un controller Realtek PCIe GBE fino a 1 Gbps con Wake-on-LAN. Il numero di serie e il codice di configurazione sono stati forniti in forma oscurata e restano tali, perché non servono a nessuna decisione tecnica e un identificativo di dispositivo non ha motivo di stare in un repository.
+
+Su questa direzione vanno enunciati i due punti che decidono se valga la pena, e vanno enunciati adesso perché sono il genere di cosa che si scopre dopo aver formattato. Il primo è che quel portatile non può essere una seconda postazione di lavoro equivalente: 4 GB di RAM sono il vincolo dominante, e un processo a 32 bit sotto Wine ne vede al massimo 2047 MByte, il che sul solo Akabak può bastare ma lascia poco margine al resto del sistema; il disco meccanico a 5400 giri è il secondo vincolo, e su un carico di simulazione che scrive risultati intermedi si sente. Il secondo è che la parte del setup che si replica non è la stessa per tutto: la catena Wine con il prefix a 32 bit, gli installer e la procedura sono replicabili integralmente, mentre la licenza di Akabak non lo è, perché il Release Code è legato al Machine Identifier di una macchina sola, come ADR-003 stabilisce e come MS-085 ha ora verificato sperimentalmente. Una seconda macchina richiederebbe quindi una seconda licenza, o l'accettazione di usare là soltanto il software che non ne ha bisogno. La domanda vera da porsi prima di iniziare è dunque a che cosa serva quella macchina: se serve a leggere la documentazione e a lavorare in Octave, FreeCAD e Blender, la replica ha senso e non tocca la licenza; se serve a simulare in Akabak, non è una replica ma una seconda installazione con un proprio costo.
+
+*L'altro dei due progetti che condividono la macchina.* Il Nektar Impact GX49 dichiarato dall'utente il 2026-09-10 è hardware presente e pertinente al progetto gemello di home recording, non a questo: una tastiera di controllo non produce suono da sé e non misura nulla, quindi non entra in alcuna delle otto fasi del flusso di progettazione dei monitor. È inventariato in `docs/10-ambiente/setup-macchina-2026-09.md`, che è il blocco condiviso fra i due progetti, e il suo collaudo va rifatto sul sistema reinstallato perché quello ricordato dall'utente appartiene al sistema precedente.
+
 ## Idee e ipotesi da verificare
 
-L'esistenza e la data di rilascio di Ubuntu Studio 26.04 LTS come immagine scaricabile, da confermare dal sito del progetto e non dedurre dal calendario dei rilasci.
+*Risolta il 2026-09-08.* L'esistenza e la data di rilascio di Ubuntu Studio 26.04 LTS come immagine scaricabile era una ipotesi da confermare: l'immagine esiste, e il punto da prendere è il point release `ubuntustudio-26.04.1-desktop-amd64.iso` e non la 26.04 iniziale. Il sistema installato si dichiara `Ubuntu 26.04.1 LTS` con supporto `Resolute Raccoon` build 20260826.
 
-Il modo in cui la 26.04 fornisce il kernel a bassa latenza, che è il tipo di dettaglio che cambia fra un rilascio e l'altro.
+*Risolta il 2026-09-09.* Il modo in cui la 26.04 fornisce la bassa latenza non è un kernel separato: il kernel installato è `7.0.0-31-generic`, generico e non `lowlatency`, e la bassa latenza viene dai parametri di avvio `preempt=full threadirqs rcu_nocbs=all` che Ubuntu Studio scrive in `/etc/default/grub.d/ubuntustudio.cfg`, più i limiti realtime `rtprio 95` e `memlock unlimited`. Questi ultimi erano scritti e non in vigore, perché l'utente non apparteneva ai gruppi `audio` e `pipewire`, e la correzione è in MS-077: la lezione è che i limiti si verificano con `ulimit` in una sessione di login e non leggendo il file che li dichiara.
 
 Se ITA-Toolbox convenga come complemento a MATAA per il calcolo del RT60 e la visualizzazione, invece di scrivere quelle funzioni da zero.
 
