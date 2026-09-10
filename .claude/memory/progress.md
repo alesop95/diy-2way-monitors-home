@@ -2,6 +2,26 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-09, sera - AKABAK riparte nel prefix sopravvissuto, e nasce il livello didattico
+
+Commit di partenza: ce42d7a.
+
+File toccati: `.claude/context/studio-didattico-master.md` e `.claude/context/refactor-01-wine-32-bit-su-ubuntu.md` nuovi, `.claude/memory/decisions.md` con ADR-019, `docs/OPERATIONS-LOG.md` con MS-084, `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 7, `docs/10-ambiente/scheda-reinstallazione.md`, `docs/10-ambiente/setup-macchina-2026-09.md` con il ritiro dichiarato, `CLAUDE.md` con l'adozione del livello didattico. Sulla macchina: `wine32:i386` installato, scrivania separata dal magazzino, due lanciatori corretti.
+
+Motivo: l'avvio di AKABAK nel prefix sopravvissuto alla reinstallazione è fallito malgrado ogni passo della procedura risultasse eseguito, e l'utente ha chiesto una documentazione tecnico-didattica dedicata su che cosa fosse successo. La richiesta esplicita è l'adozione del livello previsto dalla skill `studio-didattico`, che questo progetto non aveva.
+
+Esito in sintesi. Il programma parte: `3.2.4 b126 - 32 Professional` nel prefix `~/.wine` migrato da Wine 9 a Wine 10, con copia di sicurezza da 831 MB fatta prima. La fase 8 si riduce quindi a una verifica invece di una reinstallazione con riattivazione, ed è la prima volta che la separazione fra radice e `/home` produce un risparmio misurabile e non solo un presidio.
+
+La causa del fallimento era la quarta di quattro architetture che la documentazione trattava come una: il comando. Su Ubuntu `wine` è un collegamento a uno script che sceglie il caricatore a 64 bit ogni volta che `wine64` esiste, senza guardare il prefix, e ADR-016 impone di averlo. Su un prefix `win32` fallisce sempre. La forma corretta è `wine32` con `WINEPREFIX` dichiarato, ed è ADR-019.
+
+Il difetto peggiore non era però nei comandi ma nel presidio: il controllo di uscita della fase 7 era `wine --version`, che risponde bene senza caricare alcun prefix, quindi passava su un ambiente incapace di eseguire il programma. È il terzo caso della stessa forma in questo progetto, dopo il nome del kernel nella fase 6 e la lettura dei file dei limiti realtime invece di `ulimit`. Sostituito con lo stato di installazione di `wine32:i386`.
+
+Due miei errori ritirati, entrambi con la causa isolata come regola. Avevo dichiarato che una sessione SSH non ha display, mentre la finestra è comparsa lanciando da remoto: l'assenza di una variabile non dimostra l'assenza della risorsa, perché la libreria di Wayland ricade sul socket predefinito dentro `XDG_RUNTIME_DIR`, che la sessione remota eredita. E avevo dichiarato rotti due lanciatori perché invocavano `wine-stable`, nome che credevo inesistente: quel file esiste ed è lo stesso script di `wine`, quindi la correzione era una non-operazione che lasciava intatto il difetto vero. La causa è aver trasferito al binario una conclusione verificata sul pacchetto.
+
+Il perché di tutto questo, con gli script letti riga per riga, gli output reali e la classificazione delle righe `err` e `fixme`, sta nel deep-dive `refactor-01-wine-32-bit-su-ubuntu.md`; questa voce lo indicizza e non lo duplica.
+
+Resta una discrepanza aperta e dichiarata: la finestra riporta l'edizione `32 Professional` mentre la documentazione afferma che l'edizione ottenuta sia Standard. Va accertata leggendo lo stato del release code dal menu di aiuto, non assunta.
+
 ## 2026-09-09 - Installazione eseguita, verificata da remoto e documentata
 
 Commit di partenza: d9912b1.
