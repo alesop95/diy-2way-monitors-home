@@ -259,3 +259,23 @@ Conseguenza sulla sequenza delle decisioni, ed è la parte operativa di questo e
 Due parametri restano non fissati e la loro assenza è dichiarata invece di essere riempita per ipotesi: il numero di ingressi simultanei necessari alla registrazione, che è il vincolo che elimina più modelli di ogni altro, e un eventuale tetto di spesa. Vanno chiesti quando la valutazione si apre, e non assunti.
 
 Alternativa scartata, e vale registrarla perché era la via più rapida. Impiegare in questo progetto l'interfaccia che l'utente già possiede, risolvendo il problema con zero spesa. Scartata perché è una decisione dell'utente sull'uso del proprio hardware e l'ha già presa in senso contrario; il progetto registra la scelta e non la discute.
+
+## ADR-019 - Emendamento ad ADR-016: il prefix a 32 bit si usa con `wine32`, non con `wine`
+
+Data: 2026-09-09. Stato: accettata. Completa ADR-016 senza modificarne le conclusioni.
+
+Contesto. ADR-016 aveva stabilito, sulla base dell'ispezione dell'eseguibile installato, che Akabak e VACS sono a 32 bit e che l'architettura `i386` va dichiarata sul sistema e non evitata, rovesciando tre decisioni precedenti. Quella decisione era corretta e resta valida, ma era incompleta in un punto che si è manifestato solo all'esecuzione: diceva come predisporre l'ambiente e non come usarlo.
+
+Il fatto misurato. Su Ubuntu il comando `wine` è un collegamento che attraverso il sistema delle alternative arriva a uno script, il quale seleziona il caricatore a 64 bit ogni volta che `wine64` è presente sul sistema, senza ispezionare né il prefix né l'architettura dell'eseguibile passato come argomento, e ripiega sul caricatore a 32 bit soltanto se il primo manca. Poiché ADR-016 impone di installare il ramo a 32 bit accanto a quello a 64, entrambi i caricatori esistono, quindi il comando `wine` sceglie sempre quello sbagliato per il prefix di Akabak. L'avvio fallisce con `is a 32-bit installation, it cannot support 64-bit applications`, messaggio che nomina il prefix e accusa il caricatore.
+
+Decisione. Ogni comando rivolto a un prefix a 32 bit si scrive con `wine32` e con `WINEPREFIX` dichiarato esplicitamente. Vale per l'avvio dei programmi, per `winecfg`, per `wineboot` e per `winetricks`, perché tutti passano dal medesimo wrapper. Per i prefix a 64 bit il comando resta `wine`, e la differenza va scritta accanto a ciascun prefix nella tabella della procedura invece di essere ricordata.
+
+Motivazione della dichiarazione esplicita del prefix, che non è ridondanza. Lo script `wine32` impone `WINEPREFIX` a `~/.wine32` quando la variabile non è definita, quindi un comando senza prefix dichiarato non fallisce: crea al volo un prefix vuoto e vi lavora dentro, facendo concludere che il programma non sia installato. È un modo di sbagliare che non produce un errore ma un risultato falso, ed è peggiore di un errore.
+
+Conseguenze. La fase 7 della procedura di installazione pulita e la scheda di stampa portano ora questa prescrizione. Il controllo di uscita della stessa fase è stato sostituito, perché interrogava `wine --version`, che risponde con la versione senza caricare alcun prefix e quindi passa anche su un ambiente incapace di eseguire il programma: il controllo corretto è lo stato di installazione di `wine32:i386`, oppure l'avvio effettivo dentro il prefix. I due lanciatori sulla scrivania della macchina sono stati corretti a `wine32`.
+
+Un fatto che discende da questa decisione e che vale registrare perché cambia il costo di una fase. Il prefix `~/.wine` è sopravvissuto alla reinstallazione, dato che vive in `/home`, e conteneva Akabak e VACS installati con l'attivazione della licenza scritta nel proprio registro. Aperto con `wine32` sotto Wine 10, dopo una copia di sicurezza da 831 MB, si è migrato senza rompersi e il programma è partito. La fase 8, che prevedeva reinstallazione e riattivazione, si riduce quindi a una verifica.
+
+Resta aperta una discrepanza da accertare e non da assumere: la finestra dichiara l'edizione `32 Professional`, mentre la documentazione del progetto afferma che l'edizione ottenuta sia Standard malgrado il nome dell'installer. Le due affermazioni non sono conciliabili senza una verifica dello stato del release code dal menu di aiuto.
+
+Il racconto completo, con gli script letti riga per riga e i due miei errori di diagnosi ritirati, è nel deep-dive didattico `refactor-01-wine-32-bit-su-ubuntu.md`.
