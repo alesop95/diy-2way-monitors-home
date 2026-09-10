@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: d8ebf45
+last-verified-commit: 633c513
 ---
 
 # Lavoro corrente
@@ -87,7 +87,7 @@ Dal 2026-09-09 la documentazione nuova rispetta lo stile del template, e `docs/1
 
 Le fasi da 0 a 7 sono chiuse, e della fase 8 sono chiuse le due sottofasi che riguardano l'installazione e la licenza, per il motivo detto sopra. Il prossimo passo è quindi la fase 8 dalla sottofase 8.3 in avanti, che è lavoro eseguibile adesso e non dipende da alcun acquisto: il limite delle pipeline COM da impostare nelle preferenze di AKABAK, il pacchetto degli esempi da estrarre, poi VituixCAD, EASE Focus 3.1.260 con il servizio di database AFMG e il suo database dei GLL, e ARTA. Ramsete resta fuori finché PA-002 non è risolta.
 
-Resta un accertamento aperto e piccolo, che non blocca il seguito ma non va perso: l'edizione di AKABAK. La finestra del release code non la dichiara, la barra del titolo del programma riporta `32 Professional`, e le osservazioni del 2026-09-07 su cui poggiano tre pagine di documentazione riportavano `Standard Edition`. Si chiude aprendo la finestra di informazioni sul programma dal menu di aiuto, che è l'unica a dichiarare l'edizione, e va fatta con la barra del titolo visibile nello stesso fotogramma perché è il confronto fra le due stringhe a decidere.
+L'accertamento sull'edizione è chiuso il 2026-09-10 e non resta nulla di aperto nelle sottofasi 8.1 e 8.2. L'edizione è `Standard Edition`, come le tre pagine che la affermavano già dicevano, e la finestra di informazioni sul programma porta insieme a essa `Valid Release Code`, il profilo `NT 10.0 (Build 19043)` e la memoria `1876 / 2047 MBytes`. La discrepanza che avevo dichiarato non esisteva: il `32 Professional` della barra del titolo non è l'edizione di AKABAK, e averlo trattato come tale è l'errore di lettura ritirato in MS-089.
 
 Attenzione a una prescrizione ritirata il 2026-09-09, perché una versione precedente di questa sezione diceva il contrario: il passo successivo non è collegare la Focusrite Scarlett 2i2 per completare la fase 6. Quella interfaccia esiste ma non appartiene a questo progetto, il ritiro è in MS-079, e la misura del 2026-09-10 lo conferma indipendentemente, dato che `/proc/asound/cards` riporta la sola scheda integrata. La fase 6 non attende un cavo ma la decisione di acquisto di PA-012, e da quella dipende la scelta del microfono in un ordine che non si può invertire.
 
