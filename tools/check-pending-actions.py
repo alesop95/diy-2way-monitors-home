@@ -314,10 +314,15 @@ def controlla_pa010_pa011() -> None:
     print("\nPA-011  Backup Veeam della macchina, a ricostruzione finita")
     riga("  ", "condizione: fasi da 6 a 9 compiute e verificate")
     riga("ok", "catena audio: parametri di avvio attivi da /etc/default/grub.d/ubuntustudio.cfg")
-    riga("  ", "limiti realtime: utente non nei gruppi audio e pipewire, da correggere")
-    riga("  ", "Wine: non installato, architettura i386 non dichiarata")
+    riga("ok", "limiti realtime: rtprio 95 e memlock unlimited, con ulimit, MS-077")
+    riga("ok", "Wine: i386 dichiarata, wine32:i386 in stato ii alla versione 10.0")
+    riga("ok", "Akabak e VACS: prefix ~/.wine migrato, licenza valida, MS-085")
+    riga("  ", "fase 8 dalla 8.3 in avanti: corredo non installato")
+    riga("  ", "fase 6: bloccata da PA-012, la macchina ha la sola scheda integrata")
     print("  BLOCCATA: un backup preso adesso congelerebbe uno stato intermedio.")
     print("  Da definire alla riapertura: prodotto, destinazione e prova di ripristino.")
+    print("  Discrepanza dichiarata il 2026-09-10 sull'esperienza precedente con")
+    print("  Veeam su Linux, da chiarire quando la voce si sblocca: vedi PA-011.")
 
 
 def main() -> int:
