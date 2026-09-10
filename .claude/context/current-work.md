@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: d9912b1
+last-verified-commit: d8ebf45
 ---
 
 # Lavoro corrente
@@ -19,11 +19,11 @@ Ricostruzione dell'ambiente sulla macchina reinstallata, dal 2026-09-09.
 
 L'installazione è compiuta e verificata, quindi il fronte non è più documentale ma operativo, e si svolge sulla macchina via `ssh studio`. Lo stato di partenza è fotografato in `docs/10-ambiente/setup-macchina-2026-09.md`, che è anche il documento dove la cronologia e il razionale del setup vanno tenuti aggiornati mano a mano.
 
-Definizione di finito per questo fronte. La catena audio verificata per quanto è verificabile senza acquisti, cioè i parametri di avvio e i limiti realtime, che sono già a posto, più i dispositivi presenti visti in ingresso e in uscita con una riproduzione di prova che si sente. L'ambiente Wine ricostruito con l'architettura `i386` dichiarata prima dell'installazione di Wine, per ADR-016. Akabak e VACS funzionanti in un prefix a 32 bit con la licenza riattivata. Il corredo `Progetto stanza` installato secondo le sottofasi da 8.5 a 8.9.
+Definizione di finito per questo fronte. La catena audio verificata per quanto è verificabile senza acquisti, cioè i parametri di avvio e i limiti realtime, che sono già a posto, più i dispositivi presenti visti in ingresso e in uscita con una riproduzione di prova che si sente. L'ambiente Wine ricostruito con l'architettura `i386` dichiarata prima dell'installazione di Wine, per ADR-016. Akabak e VACS funzionanti in un prefix a 32 bit con la licenza valida: raggiunto il 2026-09-09 e verificato il 2026-09-10, e per una via diversa da quella prevista, cioè senza reinstallare e senza reinserire il codice. Il corredo `Progetto stanza` installato secondo le sottofasi da 8.5 a 8.9.
 
 Bloccato da una decisione e non da una condizione fisica, e la differenza è emersa il 2026-09-09. Sulla macchina c'è la sola scheda integrata `ALC887-VD`, e l'interfaccia esterna che i documenti dichiaravano come presente non appartiene a questo progetto: il ritiro è in MS-079. Quale interfaccia acquisire è una scelta condivisa con il progetto gemello di home recording, con due vincoli fissati dall'utente, cioè dispositivo di classe audio senza driver proprietari e capacità di reggere anche le misure della fase 8. Da quella scelta dipende quella del microfono, e l'ordine non è invertibile.
 
-Una possibilità da mettere alla prova prima di ricostruire, dichiarata come ipotesi e non come piano. Il prefix `~/.wine` è sopravvissuto all'azzeramento con AKABAK installato dentro e la sua attivazione nel registro, e il Machine Identifier della macchina non è cambiato. Se quel prefix risultasse utilizzabile dopo la migrazione automatica che Wine applica ai prefix creati da versioni molto precedenti, salterebbero sia la reinstallazione sia la riattivazione. Se la migrazione lo rompesse non si perde nulla, perché gli installer stanno in `~/electroacoustics/installers/` e il codice è nel file riservato. La prova va fatta dopo aver dichiarato `i386`, non prima.
+*Ipotesi risolta il 2026-09-09, e il suo esito ha ridotto il fronte.* Il prefix `~/.wine` è sopravvissuto all'azzeramento della radice con AKABAK installato dentro e la licenza attiva, e la domanda era se la migrazione automatica che Wine applica ai prefix creati da versioni molto precedenti lo avrebbe rotto. Non lo ha rotto: aperto con `wine32` sotto Wine 10, dopo una copia di sicurezza da 831 MB, il prefix si è migrato e il programma è partito. Il 2026-09-10 lo stato della licenza è stato verificato per due vie indipendenti, cioè il file di configurazione a livello di macchina e la finestra `Release code` del menu di aiuto, che dichiara `Release Code valid` con il Machine Identifier invariato. Le sottofasi 8.1 e 8.2, cioè reinstallazione e riattivazione, non vanno quindi eseguite: il racconto è in MS-085. Restano in procedura per chi ricostruisse da zero, e il loro comando è stato corretto insieme alle altre ventuno occorrenze sbagliate censite in MS-087.
 
 ## Fronte chiuso il 2026-09-04: impianto del progetto
 
@@ -85,12 +85,14 @@ Dal 2026-09-09 la documentazione nuova rispetta lo stile del template, e `docs/1
 
 ## Prossimo passo concreto
 
-Le fasi da 0 a 5 sono chiuse: l'installazione è eseguita, `/home` conservato, l'accesso remoto ripristinato e i tre difetti dell'installazione corretti. Il prossimo passo è la fase 6 completata, cioè collegare la Scarlett 2i2 e verificare che compaia in ingresso e in uscita con una riproduzione di prova che si sente. È l'unica parte della catena audio ancora non osservata, dato che parametri di avvio e limiti realtime sono verificati.
+Le fasi da 0 a 7 sono chiuse, e della fase 8 sono chiuse le due sottofasi che riguardano l'installazione e la licenza, per il motivo detto sopra. Il prossimo passo è quindi la fase 8 dalla sottofase 8.3 in avanti, che è lavoro eseguibile adesso e non dipende da alcun acquisto: il limite delle pipeline COM da impostare nelle preferenze di AKABAK, il pacchetto degli esempi da estrarre, poi VituixCAD, EASE Focus 3.1.260 con il servizio di database AFMG e il suo database dei GLL, e ARTA. Ramsete resta fuori finché PA-002 non è risolta.
 
-Subito dopo la fase 7, con l'ordine obbligato di ADR-016: `sudo dpkg --add-architecture i386`, poi l'installazione di Wine, e solo allora il prefix a 32 bit. Prima di crearne uno nuovo conviene provare il prefix `~/.wine` sopravvissuto, che contiene AKABAK installato e attivato: se la migrazione automatica di Wine non lo rompe, la fase 8 si riduce a una verifica.
+Resta un accertamento aperto e piccolo, che non blocca il seguito ma non va perso: l'edizione di AKABAK. La finestra del release code non la dichiara, la barra del titolo del programma riporta `32 Professional`, e le osservazioni del 2026-09-07 su cui poggiano tre pagine di documentazione riportavano `Standard Edition`. Si chiude aprendo la finestra di informazioni sul programma dal menu di aiuto, che è l'unica a dichiarare l'edizione, e va fatta con la barra del titolo visibile nello stesso fotogramma perché è il confronto fra le due stringhe a decidere.
+
+Attenzione a una prescrizione ritirata il 2026-09-09, perché una versione precedente di questa sezione diceva il contrario: il passo successivo non è collegare la Focusrite Scarlett 2i2 per completare la fase 6. Quella interfaccia esiste ma non appartiene a questo progetto, il ritiro è in MS-079, e la misura del 2026-09-10 lo conferma indipendentemente, dato che `/proc/asound/cards` riporta la sola scheda integrata. La fase 6 non attende un cavo ma la decisione di acquisto di PA-012, e da quella dipende la scelta del microfono in un ordine che non si può invertire.
 
 Prima di cancellare qualunque copia esterna di materiale personale va compiuta PA-010, cioè l'inventario per impronta fra le copie esterne e `/home`. I due controlli fatti finora coprono un perimetro molto più stretto di quello che serve, e la cancellazione non è autorizzata da un'impressione visiva.
 
-A ricostruzione compiuta e verificata va preso il backup Veeam di PA-011, che è cosa diversa dall'archivio di `/home` già esistente: quello contiene i dati e non il sistema, e lo scopo del secondo è rendere ripetibile in poche ore un risultato che è costato più di un giorno.
+A fase 8 chiusa e verificata va preso il backup completo della macchina di PA-011, che è cosa diversa dall'archivio di `/home` già esistente: quello contiene i dati e non il sistema, e lo scopo del secondo è rendere ripetibile in poche ore un risultato che è costato più di un giorno. Sulla voce esiste ora una discrepanza dichiarata a proposito dell'esperienza precedente dell'utente con Veeam su Linux, ed è annotata in PA-011.
 
-Una decisione resta da prendere e non è mia: se ripulire la deriva di stile rispetto al template nella documentazione già committata, quantificata nella sezione dedicata qui sopra.
+Una decisione resta da prendere e non è mia: se ripulire la deriva di stile rispetto al template nella documentazione già committata, quantificata nella sezione dedicata più sopra.

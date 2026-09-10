@@ -62,6 +62,8 @@ Sull'esperienza precedente dell'utente va registrato un accertamento fatto il 20
 
 Da definire, e non va inventato adesso. Se l'agente gratuito per Linux basti allo scopo, quale sia la destinazione e con quale frequenza. Sono decisioni che si prendono quando la voce si sblocca, e la loro assenza qui è voluta.
 
+Aggiunta del 2026-09-10, che apre una discrepanza invece di chiuderla. L'utente ha riconfermato l'intenzione e ha aggiunto di avere già sperimentato Veeam da Ubuntu proprio nel progetto `home-lab-cybersec-networking`. L'affermazione non coincide con l'accertamento riportato nel paragrafo precedente, che in quel repository ha trovato una sola pagina di strategia di backup, dedicata all'agente per Windows, e nessuna occorrenza di `linux` o `ubuntu` nel blocco. Le due si conciliano in due modi con conseguenze diverse, quindi la discrepanza si dichiara. Se l'esperimento su Linux è stato eseguito e non documentato, esiste esperienza riutilizzabile da recuperare, e la sua assenza da quel repository è un difetto di tracciamento di quel progetto e non di questo. Se invece riguardava l'agente per Windows, come la sola pagina esistente suggerisce, l'agente per Linux resta da documentare da zero e la conclusione qui sopra non cambia. La verifica costa una domanda e va fatta quando la voce si sblocca; fino ad allora nessuna delle due versioni va scritta come fatto.
+
 ## PA-012 - Scegliere l'interfaccia audio, che serve a due progetti e non a uno
 
 Data di apertura: 2026-09-09. Stato: aperta.
