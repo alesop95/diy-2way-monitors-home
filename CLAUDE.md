@@ -32,6 +32,8 @@ Schede tecniche sotto `.claude/context/`: `STACK.md` per la catena di strumenti 
 
 Meta-stato sotto `.claude/memory/`: `index.md`, `progress.md`, `decisions.md`.
 
+Livello documentale didattico sotto `.claude/context/`, adottato il 2026-09-09 su richiesta esplicita e non per default: `studio-didattico-master.md` è il punto d'ingresso, un racconto evolutivo che cresce per voci numerate e non si riscrive, e per ogni voce esiste un approfondimento `refactor-NN-<slug>.md` che entra nel codice e negli output reali. Risponde a una domanda che gli altri livelli non coprono, cioè perché una certa forma di fare le cose era fragile e perché quella che l'ha sostituita è migliore. Le schede di stato restano la fonte su che cosa è vero oggi, e questo livello non le sostituisce: chi clona il progetto deve poter rispondere da `STACK.md` senza leggere il racconto. La procedura è nella skill `.claude/skills/studio-didattico/`.
+
 ## Materiali e dati
 
 Il materiale scritto a mano vive alla radice come file di testo ed è escluso dal versionamento da pattern ancorati alla radice nel `.gitignore`. I materiali pesanti, cioè installer e pacchetto di esempi, stanno in `Akabak + VACS/`, esclusa per nome, e il documento sorgente della documentazione è archiviato sotto `_notes/`, anch'esso ignorato.
