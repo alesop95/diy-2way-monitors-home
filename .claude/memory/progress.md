@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14, quarta parte - Il registro non diceva a che cosa servisse, e il pattern entra nel template
+
+Commit di partenza: fe64db6, con MS-095 e MS-096 non ancora committati.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-097 e MS-098 e con la sezione `Convenzione` estesa; nuova pagina `docs/90-riferimenti/tracciabilita-microstep.md`; `docs/README.md` e `docs/90-riferimenti/README.md` per i rimandi; `docs/PENDING-ACTIONS.md` con PA-003 aggiornata due volte; `CLAUDE.md`. Nel template, cioè in un altro repository: il pacchetto nuovo `.claude/templates/operations-log/` con tre file e la riga nel catalogo `PACKAGES.md`.
+
+Motivo: l'utente ha rilevato che il registro racconta il come e la verifica ma non dice a che cosa serva ciascun intervento rispetto all'obiettivo, cioè due monitor da costruire, e ha chiesto che la lacuna fosse sanata anche per il passato. Ha poi chiesto che il registro esista nel template, perché ogni microstep di ogni progetto sia tracciato.
+
+*La correzione retroattiva non poteva essere retroattiva nella forma ovvia.* Aggiungere un paragrafo a novantasei voci è vietato dalla convenzione del registro e sarebbe stato sbagliato comunque, perché produrrebbe un documento che sembra essere sempre stato completo. La forma adottata è additiva in due pezzi: il legame per il passato in una pagina che mappa sette blocchi di microstep sulla fase che servono, e per il futuro un obbligo scritto nella convenzione. Il settimo blocco dichiara di non servire alcuna fase, ed è la voce che rende onesta tutta la mappa.
+
+*Una domanda dell'utente, con risposta verificata.* La convenzione di non riscrivere non fa perdere pezzi: lascia l'affermazione sbagliata leggibile accanto a quella che la corregge, ed è in uso, con sette ritiri espliciti nel registro. Non deriva dal template, verificato e non ricordato: `PROJECT-SYSTEM.md` non contiene alcuna occorrenza di `OPERATIONS-LOG` né di `microstep`, mentre prescrive `append-only` per il work log e per il registro delle decisioni. Il difetto reale della convenzione era un altro, cioè che una voce superata non sa di esserlo, e la correzione compatibile con la regola è un indice a parte, ora presente con sette relazioni ricavate dalle dichiarazioni delle voci stesse.
+
+*Il pacchetto nel template, e la scoperta che lo accompagna.* Il registro è ora un pacchetto opzionale con README, modello e gate esplicito, compreso il gate negativo che ne evita l'abuso. Verificando `git status` in quel repository sono però emersi ventuno file modificati e quattro non tracciati, tutti non committati, e fra essi esattamente i file da cui MS-091 ha preso le versioni nuove. Ne discende una correzione di lettura: il template è avanti sul disco e non nella storia di git, quindi chi lo clonasse oggi non riceverebbe nulla di quel lavoro. È MS-098, e la propagazione resta non compiuta finché quel commit non esiste.
+
 ## 2026-09-14, terza parte - La sottofase 8.4 non si esegue, e la cartella di lavoro prende posto
 
 Commit di partenza: fe64db6.

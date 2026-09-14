@@ -19,3 +19,5 @@ Le cinque incoerenze del documento sorgente, spiegate una per una con la ragione
 La prova che il documento sorgente è stato convertito integralmente, sezione per sezione, sta in [copertura-sorgente.md](copertura-sorgente.md).
 
 Le fonti citate nel documento sorgente, raccolte per argomento, stanno in [fonti.md](fonti.md).
+
+[tracciabilita-microstep.md](tracciabilita-microstep.md) lega il registro dei microstep alle fasi del progetto, per blocchi: dice a che cosa serva ciascun gruppo di interventi e che cosa sarebbe impossibile senza di esso, e dichiara apertamente il blocco che non serve alcuna fase. Esiste perché il registro racconta il come e la verifica, non il perché di progetto.
