@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: 3aab559
+last-verified-commit: b02a547
 ---
 
 # Lavoro corrente
@@ -85,7 +85,7 @@ Dal 2026-09-09 la documentazione nuova rispetta lo stile del template, e `docs/1
 
 ## Prossimo passo concreto
 
-Le fasi da 0 a 7 sono chiuse, e della fase 8 sono chiuse le due sottofasi che riguardano l'installazione e la licenza, per il motivo detto sopra. La sottofase 8.3 è preparata ma non eseguita: MS-090 ha stabilito dalla guida del programma che le alternative a COM sono due, gli appunti e i file, e ADR-020 sceglie i file; resta da aprire `Options/Preferences`, pagina `VACS`, impostare il modo e verificare che persista alla riapertura. Il prossimo passo è quindi quella verifica e poi la fase 8 dalla sottofase 8.4 in avanti, che è lavoro eseguibile adesso e non dipende da alcun acquisto: il limite delle pipeline COM da impostare nelle preferenze di AKABAK, il pacchetto degli esempi da estrarre, poi VituixCAD, EASE Focus 3.1.260 con il servizio di database AFMG e il suo database dei GLL, e ARTA. Ramsete resta fuori finché PA-002 non è risolta.
+Le fasi da 0 a 7 sono chiuse, e della fase 8 sono chiuse le due sottofasi che riguardano l'installazione e la licenza, per il motivo detto sopra. La sottofase 8.3 è preparata ma non eseguita: MS-090 ha stabilito dalla guida del programma che le alternative a COM sono due, gli appunti e i file, e ADR-020 sceglie i file; resta da aprire `Options/Preferences`, pagina `VACS`, impostare il modo e verificare che persista alla riapertura. Il primo tentativo del 2026-09-14 non è arrivato alla finestra, perché da una sessione SSH Wine non trova un display: la forma di comando corretta e la diagnosi sono in MS-093 e nella scheda di `wine-troubleshooting.md`. Il prossimo passo è quindi quella verifica e poi la fase 8 dalla sottofase 8.4 in avanti, che è lavoro eseguibile adesso e non dipende da alcun acquisto: il limite delle pipeline COM da impostare nelle preferenze di AKABAK, il pacchetto degli esempi da estrarre, poi VituixCAD, EASE Focus 3.1.260 con il servizio di database AFMG e il suo database dei GLL, e ARTA. Ramsete resta fuori finché PA-002 non è risolta.
 
 L'accertamento sull'edizione è chiuso il 2026-09-10 e non resta nulla di aperto nelle sottofasi 8.1 e 8.2. L'edizione è `Standard Edition`, come le tre pagine che la affermavano già dicevano, e la finestra di informazioni sul programma porta insieme a essa `Valid Release Code`, il profilo `NT 10.0 (Build 19043)` e la memoria `1876 / 2047 MBytes`. La discrepanza che avevo dichiarato non esisteva: il `32 Professional` della barra del titolo non è l'edizione di AKABAK, e averlo trattato come tale è l'errore di lettura ritirato in MS-089.
 
