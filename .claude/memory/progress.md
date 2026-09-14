@@ -2,6 +2,16 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14, settima parte - Sottofase 8.5 chiusa: VituixCAD funziona
+
+Commit di partenza: 407ac4f.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-106; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.5, propagato al gemello; schede di stato.
+
+Esito. Il primo avvio riuscito ha prodotto centinaia di righe che nominano `mscorsvw.exe`, cioè il servizio con cui .NET precompila le proprie librerie dopo una installazione nuova. Non è un guasto e si esaurisce da sé: la verifica non è stata guardare il terminale, che non distingue un lavoro finito da uno bloccato, ma contare i processi. Nessun `mscorsvw` attivo, carico tornato a riposo, e il processo di VituixCAD vivo da oltre quindici minuti.
+
+La sottofase 8.5 è quindi chiusa in tutti i suoi pezzi: prefix a 64 bit creato, programma installato, architettura reale accertata come AnyCPU con uno strumento scritto per l'occasione, runtime risolto con `dotnet48` dopo avere misurato che Mono non bastava, e primo avvio verificato. Il prossimo passo è la sottofase 8.6, cioè EASE Focus 3.1.260 con il servizio di database AFMG, seguita dalla copia dei 451 MB del database dei GLL, che è lavoro da riga di comando.
+
 ## 2026-09-14, sesta parte - Il prefix di VituixCAD, e la voce 2 del racconto didattico
 
 Commit di partenza: f9a829c.
