@@ -1862,6 +1862,40 @@ Sul metodo va annotata una imprecisione mia, che questa volta non ha prodotto un
 
 Esito: fatto. Il prefix è pronto e caratterizzato. La sottofase 8.5 prosegue con l'installer, e il runtime .NET si decide al primo avvio del programma.
 
+### MS-101 - VituixCAD installato, e il controllo di uscita prescritto avrebbe concluso il contrario del vero
+
+Perimetro: installazione di VituixCAD nel prefix `~/wineprefixes/vituixcad64`, accertamento del percorso reale e dell'architettura dell'eseguibile installato, creazione dello strumento `tools/arch-dotnet.py`, correzione della sottofase 8.5 e della pagina del corredo. Il programma non è ancora stato avviato.
+
+Legame con il progetto: serve la fase 4a, la progettazione del crossover con la direttività. VituixCAD è lo strumento che decide come woofer e tweeter si sommano attorno alla frequenza di incrocio, cioè nella regione dove due driver in controfase producono un buco, che in un monitor da nearfield è il difetto più udibile di tutti.
+
+*Che cosa è stato installato, e dove.* L'installazione è riuscita ed è finita in `C:\Program Files (x86)\VituixCAD`, con tre file: `VituixCAD.exe`, `unins000.exe` e `unins000.dat`. La documentazione del progetto se ne aspettava un'altra, cioè `C:\Program Files\VituixCAD2`, quindi le discrepanze sono due e indipendenti: la vista di `Program Files`, che è quella a 32 bit invece di quella a 64, e il nome della cartella, che è `VituixCAD` senza la cifra.
+
+La ragione della prima è nota e non è un difetto: l'installer è un eseguibile a 32 bit costruito con Inno Setup, e un installer a 32 bit che non dichiari la propria modalità a 64 bit risolve la cartella dei programmi nella vista a 32, che su Windows si chiama `Program Files (x86)` e che Wine riproduce fedelmente. La collocazione è quindi cosmeticamente strana e funzionalmente irrilevante, per la ragione detta sotto, e non va corretta spostando la cartella: sarebbe un intervento che rompe il disinstallatore senza guadagnare nulla.
+
+*Il punto del microstep, ed è il controllo di uscita.* La pagina del corredo prescrive come verifica dell'architettura il comando `file` sull'eseguibile installato, e la documentazione afferma che VituixCAD 2 sia una applicazione .NET a 64 bit, il che è la ragione per cui il prefix è stato creato a 64 bit. Eseguito il controllo prescritto, la risposta è questa.
+
+```
+VituixCAD.exe   PE32 executable for MS Windows 4.00 (GUI), Intel i386 Mono/.Net assembly
+```
+
+Letta come si legge per un programma nativo, quella risposta dice 32 bit e smentisce la documentazione, e con essa la scelta del prefix. La conclusione sarebbe falsa. Per un assembly .NET l'intestazione PE non determina l'architettura di esecuzione: un assembly compilato *AnyCPU* è anch'esso `PE32` e gira alla larghezza della macchina, quindi a 64 bit su una macchina a 64. Ciò che decide sono tre flag dell'intestazione del runtime CLI, che è la voce 14 della tabella delle directory del PE, e che `file` non guarda.
+
+Letti quei flag, il valore è `0x00000001`, cioè il solo `ILONLY`, con `32BITREQUIRED` e `32BITPREFERRED` entrambi spenti. VituixCAD è quindi AnyCPU e gira davvero a 64 bit: la documentazione aveva ragione, il prefix a 64 bit era la scelta corretta, e il fatto che l'installer abbia messo la cartella nella vista a 32 bit non cambia l'architettura con cui il programma verrà eseguito.
+
+Il controllo prescritto apparteneva quindi alla stessa famiglia di difetti che questo progetto ha già pagato tre volte, cioè un controllo che risponde a una domanda diversa da quella che si sta ponendo e la cui risposta è utilizzabile in entrambi i casi senza distinguerli. È la quarta occorrenza, dopo `wine --version` come prova di un ambiente a 32 bit, la lettura dei file dei limiti realtime invece di `ulimit`, e il nome del kernel come prova della bassa latenza. La differenza rispetto alle altre tre è che qui il controllo non era troppo debole ma proprio sbagliato di segno: avrebbe fatto smontare una configurazione corretta.
+
+*Lo strumento.* Poiché la lettura dei flag CLI non è memorizzabile e non si improvvisa, è stata resa uno strumento del repository, `tools/arch-dotnet.py`. Legge l'intestazione PE, individua la directory del runtime CLI, traduce l'indirizzo virtuale in scostamento nel file attraverso la tabella delle sezioni, e interpreta i tre flag; se l'intestazione CLI manca dichiara il file nativo e riporta l'architettura del formato, che per un nativo è corretta. È di sola lettura, senza dipendenze, e apre il file una volta sola.
+
+È stato verificato su tre casi e non su uno, perché uno strumento provato sul solo caso che lo ha motivato non è provato. Su `VituixCAD.exe` risponde assembly .NET AnyCPU a 64 bit. Su `AKABAK.exe` risponde intestazione CLI assente, eseguibile nativo, 32 bit, che coincide con quanto ADR-016 aveva accertato per altra via. Su `/etc/hostname`, che non è un eseguibile, risponde che manca la firma `MZ` ed esce con codice 2.
+
+*Due letture dell'output dell'installer, registrate perché ricorreranno.* Il primo processo è stato avviato da `Z:\home\alesop95\electroacoustics\progetto-stanza\diy\VituixCAD_setup.exe`, cioè attraverso la lettera che mappa la radice del filesystem Linux: è la conferma pratica che un eseguibile non ha bisogno di stare dentro il prefix per esservi eseguito. Il secondo processo è `VituixCAD_setup.tmp` con l'argomento `/SL5=$1005E,564220,57856,...`, che è la firma di Inno Setup: il primo eseguibile è un contenitore che estrae in una cartella temporanea il vero installatore e gli passa gli scostamenti a cui trovare i dati dentro il file originale. Sapere che i processi sono due e non uno cambia dove si guarda se un giorno una installazione si bloccasse.
+
+Verificato con: confronto del contenuto delle due cartelle `Program Files` prima e dopo l'installazione, con la comparsa della sola voce `VituixCAD` nella vista a 32 bit; `file` sui due eseguibili installati; `python tools/arch-dotnet.py` sui tre casi descritti; elenco dei processi durante l'installazione, che mostra il contenitore e il secondo stadio di Inno Setup; elenco dei processi dopo, che non mostra alcun programma Windows attivo, quindi il programma non è stato avviato.
+
+Sul metodo va annotato un mio errore ripetuto. Il primo controllo sui processi usava `pgrep -f` con il trucco delle parentesi per evitare l'autoriconoscimento, e ha riconosciuto ugualmente la propria riga di comando, perché il modello conteneva altre stringhe presenti nella riga stessa. Il trucco delle parentesi difende dal caso semplice e non da questo. La forma robusta è leggere l'elenco dei processi con `ps` ed escludere esplicitamente la riga del proprio comando, ed è quella usata nella verifica finale. È la seconda occorrenza dello stesso difetto dopo MS-096, e la conclusione allora tratta resta valida: un controllo capace di riconoscere se stesso non è un controllo.
+
+Esito: fatto per l'installazione e per la verifica dell'architettura. Il primo avvio è il passo successivo ed è dove si deciderà la questione del runtime .NET.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

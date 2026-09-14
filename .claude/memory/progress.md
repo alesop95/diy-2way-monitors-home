@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14, sesta parte - Il prefix di VituixCAD, e la voce 2 del racconto didattico
+
+Commit di partenza: f9a829c.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-100; `.claude/context/studio-didattico-master.md` con la voce 2; `.claude/context/refactor-02-il-prefix-non-e-una-cartella.md`, nuovo. Sulla macchina: creato il prefix `~/wineprefixes/vituixcad64`.
+
+Motivo: l'utente ha chiesto che ogni dettaglio di ciò che sta accadendo venga spiegato, e questo è precisamente il bisogno che il livello didattico copre, distinto dal registro che dice che cosa è stato fatto e come è stato verificato.
+
+Esito tecnico. Il prefix esiste, dichiara `#arch=win64` come deve, e non ha alcun runtime .NET: Mono assente, `Microsoft.NET` assente, e la cartella `gecko` che sembra un'installazione contiene soltanto un segnaposto. Né Mono né Gecko sono nel sistema, e `wine-mono` non è nei repository di Ubuntu, quindi Wine dovrà scaricarli; il sito risponde. La decisione fra Mono e `dotnet48` si prende al primo avvio del programma, che è il momento in cui Wine chiede da sé. È MS-100.
+
+La voce 2 del racconto didattico generalizza i tre inciampi di questa sottofase in una sola diagnosi: la documentazione trattava il prefix come un percorso mentre è uno stato, ed è la stessa forma della voce 1, dove quattro architetture erano trattate come una. Il deep-dive entra nell'anatomia del prefix con gli output reali, spiega i cinque assi che lo caratterizzano compreso il wow64 sperimentale emerso ora, spiega che cosa siano Mono e Gecko e perché non stiano dentro Wine, e chiude con le quattro letture da fare prima di installare qualunque programma in un prefix nuovo.
+
+Un guadagno di metodo registrato nella stessa voce: una inferenza marcata come tale in MS-085 è stata confermata cinque giorni dopo da una osservazione indipendente, e non lo sarebbe stata se fosse stata scritta come certezza.
+
 ## 2026-09-14, quinta parte - Il primo comando della 8.5 fallisce, e la fase 7 aveva lo stesso difetto
 
 Commit di partenza: e45752e.
