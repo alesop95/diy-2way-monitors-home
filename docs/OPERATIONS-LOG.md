@@ -2017,6 +2017,37 @@ Esito: fatto. La sottofase 8.5 è chiusa e la fase 8 prosegue con la 8.6, cioè 
 
 [^1]: *NTLM*, NT LAN Manager - protocollo di autenticazione di rete di Windows, precedente a Kerberos e ancora usato da condivisioni e server legacy; Wine non lo implementa direttamente ma si appoggia al programma esterno `ntlm_auth`, distribuito su Ubuntu nel pacchetto `winbind`.
 
+### MS-106 - Il diluvio di righe dopo il primo avvio: che cos'è, perché finisce da sé, e la prova che è finito
+
+Perimetro: classificazione dell'uscita del terminale dopo il primo avvio di VituixCAD, verifica che il fenomeno si sia esaurito e che il programma sia utilizzabile. Nessun intervento sul sistema.
+
+Legame con il progetto: serve la fase 4a, e serve in un senso preciso. Il programma del crossover funziona, ma il suo primo avvio produce centinaia di righe che sembrano errori: senza una classificazione scritta, chiunque ripercorra questo setup si fermerà a chiedersi se qualcosa sia rotto, e il tempo speso a chiederselo è esattamente ciò che questa documentazione esiste per risparmiare.
+
+*Il fenomeno.* Subito dopo il primo avvio riuscito, il terminale si è riempito di due righe che si alternano per centinaia di ripetizioni.
+
+```
+err:environ:init_peb starting L"C:\windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe" in experimental wow64 mode
+err:ole:ifproxy_release_public_refs IRemUnknown_RemRelease failed with error 0x800706be
+```
+
+*Che cos'è `mscorsvw.exe`.* È il servizio di generazione delle immagini native di .NET, comunemente chiamato ngen[^1]. Il suo compito discende direttamente da come .NET funziona: un programma .NET contiene codice intermedio che va tradotto in istruzioni macchina, e farlo ogni volta che il programma parte costa tempo all'avvio. Dopo una installazione del framework, quel servizio traduce in anticipo le librerie di sistema e ne salva il risultato su disco, cosicché gli avvii successivi siano più rapidi. È quindi un lavoro una tantum e per definizione temporaneo.
+
+La ragione per cui compare centinaia di volte è che il servizio non è un processo unico e longevo: lavora a code, avvia un processo per ciascun gruppo di librerie da precompilare, lo lascia terminare e ne avvia un altro. Ogni avvio produce una riga, perché Wine annota l'avvio di ogni processo a 32 bit nella modalità WoW64 sperimentale, che è quella di questo prefix come MS-100 aveva registrato.
+
+*La riga che l'accompagna.* `IRemUnknown_RemRelease failed with error 0x800706be` riguarda COM, cioè il meccanismo con cui due processi Windows si scambiano oggetti, e il codice di errore corrisponde a una chiamata remota interrotta. È il sintomo atteso della situazione descritta sopra: i processi del servizio nascono e muoiono in rapida successione, e ogni volta che uno muore le maniglie che altri processi tenevano verso di esso diventano invalide. Non è una anomalia ma la conseguenza meccanica di un ciclo di vita breve.
+
+*La prova che è finito, e non l'impressione.* La distinzione conta, perché un diluvio di righe che smette di scorrere può significare due cose opposte, cioè che il lavoro è finito oppure che si è bloccato. La verifica è stata fatta contando i processi invece di guardare il terminale: `ps` non trova alcun `mscorsvw.exe` attivo, il carico della macchina è tornato basso, e il processo di VituixCAD è vivo da oltre quindici minuti. Le tre letture insieme dicono che la precompilazione si è esaurita da sé e che il programma sta funzionando, che è esattamente ciò che il terminale da solo non poteva dire.
+
+*La conseguenza pratica, per chi ripercorre questo setup.* Il fenomeno è atteso e non richiede alcun intervento, ma va previsto perché altrimenti si interviene per errore, tipicamente interrompendo il programma nel mezzo della precompilazione. Si presenta una volta sola per prefix, dopo l'installazione del framework, e non si ripete agli avvii successivi. Chi volesse un terminale leggibile può semplicemente ignorarne l'uscita, che non contiene informazioni utili in questa fase, oppure avviare il programma dal suo lanciatore invece che da riga di comando una volta che il lanciatore esisterà.
+
+Va segnalato che lo stesso fenomeno si ripresenterà sul prefix di EASE Focus se anche quello richiederà il framework, quindi la classificazione scritta qui vale per la sottofase successiva e non solo per questa.
+
+Verificato con: `ps` con esclusione della propria riga, che non trova processi `mscorsvw.exe` attivi; `ps` sul processo di VituixCAD, vivo da quindici minuti e trentasette secondi; `uptime`, che riporta un carico tornato a valori di riposo.
+
+Esito: fatto. Il fenomeno è classificato, si è esaurito da sé, e il programma della fase 4a è funzionante.
+
+[^1]: *ngen*, Native Image Generator - il servizio con cui .NET traduce in anticipo il codice intermedio delle librerie in istruzioni macchina e ne salva il risultato, per accorciare i tempi di avvio dei programmi che le usano.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

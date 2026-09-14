@@ -6,9 +6,9 @@
 
 ```
 Branch attivo:          main
-Commit di riferimento:  fe64db6
+Commit di riferimento:  407ac4f
 Data snapshot:          2026-09-10
-Modifiche non committate: sì, da MS-095 a MS-098
+Modifiche non committate: sì, MS-106 e le schede
 ```
 
 Il repository conta 37 commit e origin è in pari fino a `fe64db6`, che porta MS-094, cioè la chiusura della sottofase 8.3. Prima di esso `ea79de4` porta MS-093, cioè la diagnosi del mancato avvio da SSH. Prima di esso `b02a547` porta i microstep da MS-090 a MS-092, cioè la pipeline COM letta dalla guida, il riallineamento al template e l'inventario di `_notes`. I due più recenti sono del 2026-09-10: `d8ebf45`, con cui il livello didattico e ADR-019, scritti la sera prima e lasciati sul disco dal riavvio, sono entrati nella storia, e `633c513` con i microstep da MS-085 a MS-088, il censimento dei comandi di Wine e le schede riallineate. I quattro precedenti sono del 2026-09-09 e riguardano tutti la fase 7: `14fcea4` con il setup della macchina documentato e lo stile allineato al template, `8e2e9a7` con il ritiro della Scarlett e l'apertura di PA-012 e ADR-018, `547b2dd` con il nome del pacchetto Wine corretto e l'architettura `i386` verificata, e `b514c33` con la scoperta che il prefix a 32 bit vuole `wine32` e il ritiro di MS-083. Prima di essi, `d9912b1` porta l'installazione eseguita con `/home` intatto, l'accesso SSH e quattro correzioni, e `81793e9` la scheda di stampa generata da uno strumento. Del 2026-09-08 sono `d2905ba` con il Machine Identifier confermato, `351252d` con PA-007 chiusa e il controllo nuovo sulle fini riga, e `cadf335` con la fase 2 chiusa; `1b4e801` porta la sequenza operativa e le verifiche dell'immagine di installazione. I due del 2026-09-04 che hanno impiantato il progetto sono `9e9517e`, con l'allineamento al template e la conversione del documento sorgente, e `3eac5f3`, con l'approfondimento su Wine, la procedura di installazione pulita e lo storico di Akabak e VACS. Commit e push restano operazioni manuali dell'utente.
@@ -24,8 +24,8 @@ Progettazione e costruzione di una coppia di monitor da studio a due vie per un 
 | Scheda | last-verified | Stato |
 |---|---|---|
 | STACK.md | ba69e0c | da rileggere: la catena tipografica è stata aggiornata alle versioni del template il 2026-09-12, si veda MS-091 |
-| roadmap.md | fe64db6 | aggiornata il 2026-09-10: priorità riscritte, due ipotesi risolte, direzioni future |
-| current-work.md | fe64db6 | aggiornata il 2026-09-14 |
+| roadmap.md | 407ac4f | aggiornata il 2026-09-10: priorità riscritte, due ipotesi risolte, direzioni future |
+| current-work.md | 407ac4f | aggiornata il 2026-09-14 |
 | design-and-security.md | - | non creata: il progetto non ha codice applicativo né superficie di attacco |
 | deployment.md | - | non creata: non c'è deploy; il suo equivalente è `docs/TRANSFER-MANIFEST.md` |
 | dev-testing.md | - | non creata: i test sono le suite degli strumenti, descritte in STACK.md |
