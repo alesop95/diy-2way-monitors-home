@@ -1931,6 +1931,57 @@ Verificato con: lettura del messaggio di errore; `strings -el` su `appwiz.cpl` p
 
 Esito: fatto. Il runtime è installato e il primo avvio di VituixCAD è il passo successivo.
 
+### MS-103 - Mono non basta per VituixCAD, e la scommessa si chiude con una ragione invece che con un sospetto
+
+Perimetro: primo avvio di VituixCAD con Wine Mono installato, lettura dell'eccezione, e avvio dell'installazione del vero .NET Framework con `winetricks dotnet48` nel prefix `~/wineprefixes/vituixcad64`.
+
+Legame con il progetto: serve la fase 4a. Senza un runtime che accetti il codice del programma, lo strumento con cui si progetta il crossover non si apre, quindi la fase 4a non è eseguibile.
+
+Il programma non è partito, e l'eccezione è specifica.
+
+```
+System.TypeInitializationException: The type initializer for 'Vituixman.KSPub' threw an exception.
+  ---> System.InvalidProgramException: Invalid IL code in n9i7aXZkmgvOPW0gfW.Psp6qc4024IfeqC1sh:QH7DUSQmKI (int): IL_020a: brfalse IL_0522
+```
+
+*Come si legge, e che cosa dice davvero.* `InvalidProgramException` significa che il runtime ha rifiutato il codice intermedio del programma: non è un file danneggiato né una dipendenza mancante, è il verificatore del runtime che ha giudicato non valida una istruzione, qui un salto condizionato a una certa posizione.
+
+Il dato che spiega il resto sta nei nomi. La classe si chiama `n9i7aXZkmgvOPW0gfW`, il tipo `Psp6qc4024IfeqC1sh` e il metodo `QH7DUSQmKI`, mentre la classe esterna conserva un nome leggibile, `Vituixman.KSPub`. Nomi di quella forma non li scrive nessuno: sono il prodotto di un offuscatore, cioè di uno strumento che dopo la compilazione riscrive un programma .NET rendendolo illeggibile a chi tentasse di decompilarlo. È una inferenza dai nomi e non una misura, ma è una inferenza forte, perché quella forma di identificatore non ha altra origine plausibile.
+
+*Perché questo rompe proprio su Mono.* Gli offuscatori, per rendere difficile la decompilazione, producono deliberatamente codice intermedio ai margini di ciò che la specifica consente, contando sul fatto che il runtime di Microsoft lo accetti. Mono ha un verificatore diverso e più severo su quei margini, quindi rifiuta ciò che l'altro esegue. È un modo di fallire noto e ricorrente per le applicazioni .NET protette, e la sua firma è esattamente questa: una eccezione di codice non valido su un metodo dal nome incomprensibile.
+
+*La scommessa, e perché si chiude bene anche se ha perso.* Il progetto aveva deciso di provare Mono prima di installare il vero .NET Framework, con un ragionamento asimmetrico dichiarato in anticipo: se fosse bastato si sarebbe evitato il passo più fragile della fase 8, e se non fosse bastato si sarebbe pagata una attesa e si sarebbe guadagnata la ragione per cui quel passo serve. È andata nel secondo modo, e il guadagno è reale: `dotnet48` non è più una prescrizione ereditata dalla documentazione del corredo e applicata per prudenza, ma la risposta a un difetto misurato e documentato. Chi rileggesse la procedura fra un anno troverà scritto non soltanto che cosa installare ma perché, e potrà riconoscere il caso in cui quel passo si può saltare.
+
+Il costo effettivo della prova va dichiarato perché la valutazione sia onesta: uno scaricamento di ottantaquattro megabyte, 233 MB occupati nel prefix e qualche minuto. Non è nullo, ed è comunque inferiore al costo di non sapere.
+
+*Che cosa comporta il passo successivo.* `winetricks -q dotnet48` scarica l'installatore ufficiale di Microsoft e lo esegue dentro il prefix, in modo non interattivo. È l'operazione più lunga e più fragile di tutta la fase 8, e comporta la rimozione di Wine Mono dal prefix, perché i due runtime non convivono: winetricks lo fa da sé come parte del verbo. All'avvio lo strumento ha emesso tre avvertimenti informativi, cioè che non riconosce l'architettura di `/usr/bin/wine`, che il prefix è a 64 bit mentre molti verbi installano componenti a 32, e che non è riuscito a determinare il tipo di WoW64. Nessuno dei tre è bloccante, e il terzo è coerente con quanto MS-100 aveva già registrato, cioè che questo prefix usa la modalità WoW64 sperimentale.
+
+Verificato con: esecuzione del programma nel prefix con il runtime Mono installato, che restituisce l'eccezione riportata; lettura dei nomi degli identificatori nell'eccezione; avvio di `winetricks -q dotnet48` in modo non interattivo sulla macchina, con l'uscita registrata in un file di log per poterne seguire l'andamento.
+
+Esito: aperto. L'installazione del framework è in corso e il suo esito va verificato riavviando il programma.
+
+### MS-104 - Il pop-up al login era l'aggiornamento automatico di Firefox, e sulla scrivania non c'è nulla da vedere
+
+Perimetro: diagnosi di due osservazioni dell'utente sulla macchina, cioè un avviso comparso e scomparso troppo in fretta per essere letto al nuovo accesso, e l'assenza di qualunque novità sulla scrivania dopo l'installazione di VituixCAD. Nessun intervento, solo lettura.
+
+Legame con il progetto: nessuno diretto, e lo dichiaro. È igiene della macchina di lavoro: un evento non spiegato su di essa resta un sospetto, e un sospetto costa attenzione a ogni sessione successiva finché qualcuno non lo chiude.
+
+*Il pop-up.* Il registro di sistema dell'utente mostra, alle 15:23:28, quattro righe consecutive del demone di KDE che dichiarano di avere soppresso delle notifiche perché troppe e troppo simili in rapida successione. È quindi accertato che una raffica di avvisi sia stata generata e in parte scartata dal sistema, il che spiega perché sia stata percepita come un lampo. Il contenuto di una notifica non finisce nel registro, quindi da solo quel dato non basta.
+
+La causa si ricava dalla coincidenza di tre eventi nello stesso intervallo di pochi secondi. Alle 15:23:33 il sistema chiude il processo di Firefox, riportandone il consumo su cinque giorni di attività. Alle 15:23:34 entra in scena il componente di integrazione di snap con la scrivania, che da quel momento tenta ogni secondo di aggiornare un indicatore di avanzamento sul lanciatore e viene bloccato dal profilo di sicurezza, il che è un difetto noto di quel componente sotto Plasma e non un problema della macchina. E l'elenco delle operazioni di snap riporta, alle 15:23 di oggi, un aggiornamento automatico del pacchetto `firefox`.
+
+La ricostruzione coerente è quindi questa: il gestore dei pacchetti snap aveva un aggiornamento di Firefox in attesa e non poteva applicarlo mentre il programma era in esecuzione; alla disconnessione Firefox si è chiuso, e al nuovo accesso l'aggiornamento è stato applicato con la relativa notifica, che il sistema ha mostrato e in parte soppresso. Non ha alcuna relazione con il lavoro su Wine, e non richiede alcun intervento: al momento della verifica non risultano né aggiornamenti di sistema in attesa, con `apt` che riporta zero pacchetti, né snap da aggiornare.
+
+Va detto che cosa resta non provato, perché la ricostruzione è coerente ma indiretta: il testo dell'avviso non è recuperabile dal registro. Se in futuro dovesse ricapitare, il modo di leggerlo senza ricostruzioni è lo storico delle notifiche di Plasma, accessibile dal vassoio di sistema, che conserva gli avvisi recenti con il loro testo.
+
+*La scrivania.* L'installazione di VituixCAD non ha creato alcuna icona sulla scrivania, e non è un difetto: l'installer ha creato la sola voce di menu, che esiste in `~/.local/share/applications/wine/Programs/VituixCAD/VituixCAD.desktop`. La scrivania contiene ancora le sole quattro voci preesistenti, cioè i due lanciatori di AKABAK e di VACS, il collegamento `Progetto-stanza` e la cartella dei progetti di Ardour, esattamente come MS-083 le aveva lasciate.
+
+Non ho aggiunto un lanciatore sulla scrivania e la ragione è che sarebbe prematuro: il programma non parte ancora, e un lanciatore che non funziona è peggio di nessun lanciatore. Va inoltre ricordato che i lanciatori di questo progetto hanno già dato un problema di forma, cioè invocavano il comando sbagliato per la loro architettura, quindi quando se ne creerà uno andrà scritto con il comando giusto per il suo prefix e verificato cliccandolo, non solo scrivendolo.
+
+Verificato con: `journalctl --user` sull'intervallo, che mostra la soppressione delle notifiche, la chiusura del processo di Firefox e l'attività del componente di integrazione di snap; `snap changes`, che riporta l'aggiornamento automatico di `firefox` alle 15:23 di oggi; `snap refresh --list`, che dichiara tutto aggiornato; `apt list --upgradable`, che riporta zero pacchetti; `ls` sulla scrivania e ricerca delle voci di menu create dall'installer.
+
+Esito: fatto. Entrambe le osservazioni sono spiegate e nessuna richiede un intervento.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
