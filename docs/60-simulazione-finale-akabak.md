@@ -32,10 +32,10 @@ La verifica di fase è il controllo che in un monitor da nearfield conta più di
 
 ## La struttura del progetto sul disco
 
-La convenzione di organizzazione dei file per un monitor a due vie è la seguente.
+La convenzione di organizzazione dei file per un monitor a due vie è la seguente. La radice di lavoro è `~/Documents/AkabakProjects`, che dentro il prefix Wine è `C:\users\alesop95\Documents\AkabakProjects` perché la cartella dei documenti è un collegamento, ed è il percorso a cui la chiave `InitialDir` punta dal 2026-09-14: la scelta e le sue ragioni sono in MS-096.
 
 ```
-~/AkabakProjects/2Way_Monitor/
+~/Documents/AkabakProjects/2Way_Monitor/
 ├─ Drivers/
 │   ├─ Woofer.frd        risposta in frequenza del woofer
 │   └─ Tweeter.frd       risposta in frequenza del tweeter

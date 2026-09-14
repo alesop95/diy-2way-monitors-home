@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14, terza parte - La sottofase 8.4 non si esegue, e la cartella di lavoro prende posto
+
+Commit di partenza: fe64db6.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-095 e MS-096; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.4, riscritta e propagata al gemello; `docs/60-simulazione-finale-akabak.md` per la radice di lavoro; schede di stato. Sulla macchina: creata `~/Documents/AkabakProjects` e corretta la chiave `InitialDir` nel prefix.
+
+*Sulla 8.4, il punto non è che estrarre fosse inutile ma che fosse dannoso.* Gli esempi erano già nel prefix, nella cartella che la chiave `ExamplePath` dichiara, cioè quella che il menu `File/Open Example` apre. Estrarne una seconda copia in `~/AkabakProjects/esempi` avrebbe prodotto 159 MB in un percorso che il programma non conosce, con la documentazione che nomina l'una e il programma che apre l'altra: due copie della stessa cosa che divergono senza che nessuno se ne accorga. La sottofase è stata riscritta perché chi la rilegge verifichi prima e non esegua per abitudine.
+
+La verifica è passata per tre gradini, e i primi due non bastavano. Il conteggio grezzo dava 632 contro 681 e sembrava uno scarto, mentre era solo `unzip -l` che conta anche le cartelle. Il confronto dei nomi dava zero differenze, ma nomi uguali non dicono nulla sui contenuti, perché una estrazione interrotta lascia proprio nomi giusti e file troncati. Il gradino che decide è il confronto per impronta, e i CRC-32 stanno già dentro l'archivio: 632 contro 632, zero divergenze.
+
+*Sulla cartella di lavoro, il tempismo era la ragione.* La finestra di apertura di AKABAK partiva da dentro `Program Files`, e con ADR-020 che manda i dati spettrali nella cartella del progetto, quella radice decide anche dove si accumulano tutti i risultati delle molte iterazioni della fase 5. Correggerla prima che esista un progetto costa una riga; dopo costerebbe spostare file. La radice scelta è `~/Documents/AkabakProjects` e non `~/AkabakProjects` come la procedura diceva, per tre ragioni: dentro il prefix è un percorso su `C:` invece che su `Z:`, il che è ciò che un programma Windows si aspetta; VACS puntava già alla cartella dei documenti e i due programmi lavorano in sequenza; e sta comunque in `/home`, quindi sotto il presidio della separazione delle partizioni.
+
+*Un mio errore di metodo, con esito innocuo per fortuna.* Avevo messo una guardia per non scrivere il file di configurazione con il programma aperto, e ha fallito due volte nello stesso comando: ha dato un falso positivo, perché `pgrep -f` riconosce anche la propria riga di comando, e soprattutto non ha impedito nulla, perché l'avevo concatenata con `&&` a un `echo` che riesce sempre. Il programma davvero non era in esecuzione, accertato dopo, quindi il danno non c'è stato. La regola che ne discende è che una guardia che stampa un avviso senza interrompere non è una guardia ma un commento, e che un controllo capace di riconoscere se stesso non è un controllo: entrambi danno l'impressione di un presidio dove non c'è, ed è la terza volta che questo progetto paga quella conseguenza in forme diverse.
+
 ## 2026-09-14, seconda parte - La sottofase 8.3 è chiusa, e il confronto ha dato la chiave
 
 Commit di partenza: b02a547, con MS-093 non ancora committato.
