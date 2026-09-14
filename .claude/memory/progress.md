@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14 - AKABAK non parte da SSH, e una mia spiegazione cade alla prima prova
+
+Commit di partenza: b02a547.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-093; `docs/10-ambiente/wine-troubleshooting.md` con la scheda sull'errore `no driver could be loaded`; `docs/10-ambiente/installazione-pulita-26-04.md` con il rimando nella sottofase 8.3, entrambi propagati al gemello; schede di stato riallineate.
+
+Motivo: il lavoro doveva essere la verifica in interfaccia della sottofase 8.3, cioè impostare il modo di trasferimento verso VACS. Il programma non si è aperto, quindi il microstep si è spostato sulla causa.
+
+Esito. Non era il prefix e non era la licenza: in una sessione SSH `DISPLAY` e `WAYLAND_DISPLAY` sono vuote, quindi Wine non ha un indirizzo a cui mandare la finestra. Prima di arrivarci ho escluso tre cause con altrettante misure, cioè driver assenti per i 32 bit, sessione grafica non attiva e driver sbagliato dichiarato nel registro del prefix: nessuna delle tre. La forma che funziona vuole `DISPLAY=:0` insieme a `XAUTHORITY` ricavato dal file della sessione, e le prove sono state fatte con `notepad` sotto `timeout` invece che con AKABAK, contando le occorrenze dell'errore: due con la sola variabile Wayland, due con la sola `DISPLAY`, zero con le due insieme.
+
+*Un mio errore, di una forma nuova per questo progetto.* Il 2026-09-09 avevo scritto che una sessione SSH dispone comunque di un display perché la libreria di Wayland ricade sul socket dentro `XDG_RUNTIME_DIR`. La prova di oggi la smentisce: la variabile è impostata, il socket esiste, e l'avvio fallisce lo stesso; anche forzando `WAYLAND_DISPLAY` il fallimento resta. Il dato osservato allora, cioè che la finestra comparve, resta vero, ed è quasi certo che fosse stata lanciata dalla sessione grafica della macchina. Ciò che era sbagliato è il meccanismo che le avevo attribuito. Non avevo misurato nulla di falso: avevo costruito una spiegazione plausibile e l'avevo scritta come accertata. La regola che ne discende, ed è diversa dalle precedenti di questo registro, è che una spiegazione che si adatta a una osservazione non è verificata finché non ne predice una seconda, e che il momento di metterla alla prova è quello in cui la si scrive.
+
+La sottofase 8.3 resta da eseguire ed è ora sbloccata.
+
 ## 2026-09-12 - La pipeline COM letta dalla fonte, il riallineamento al template e l'inventario di `_notes`
 
 Commit di partenza: 633c513.
