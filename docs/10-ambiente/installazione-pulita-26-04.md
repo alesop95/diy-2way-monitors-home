@@ -625,7 +625,11 @@ Qui la procedura corregge due errori del documento sorgente, entrambi scoperti i
 
 Il primo è il nome dell'installer. Il sorgente indicava `EASE_Focus_Setup_v3.1.260.exe`, e quel file non esiste: il pacchetto è un InstallShield composto da `setup.exe`, `EASE Focus 3.msi`, `Data1.cab` e `ISSetup.dll`. Ne segue che va lanciato da dentro la sua cartella, perché `setup.exe` cerca gli altri file accanto a sé, e copiare il solo eseguibile altrove produce un errore che non nomina la causa vera.
 
-Il secondo è un passo che mancava del tutto. Accanto all'installer principale ci sono `AFMGDatabaseService` e `AFMGDatabaseService_x64`, due installer MSI distinti: è il servizio di database che la tabella del changelog nello stesso documento valutava di impatto alto, perché evita di scaricare a mano ogni GLL dal sito del costruttore. Va installato, nella variante a 64 bit dato che il prefix è a 64 bit.
+Il secondo è un passo che mancava del tutto. Accanto all'installer principale ci sono `AFMGDatabaseService` e `AFMGDatabaseService_x64`, due installer MSI distinti: è il servizio di database che la tabella del changelog nello stesso documento valutava di impatto alto, perché evita di scaricare a mano ogni GLL dal sito del costruttore.
+
+Va però verificato prima di essere eseguito, perché l'esecuzione del 2026-09-14 ha mostrato che l'installatore principale installa già il servizio, nella vista a 64 bit, e ne scrive la configurazione nel registro; ciò che non risulta registrato è il servizio di sistema, il che è coerente con l'avvertenza in fondo a questa sottofase. Se il programma non lamenta l'assenza del database, l'installatore separato è ridondante. Il racconto è in MS-107.
+
+Va inoltre corretta la ragione per cui questo prefix è a 64 bit, perché quella scritta era sbagliata e una ragione sbagliata non sopravvive al primo caso diverso. Il programma principale, misurato con `tools/arch-dotnet.py`, è un assembly .NET con il flag `32BITREQUIRED` acceso, quindi gira sempre a 32 bit e da solo starebbe benissimo in un prefix a 32. È il servizio di database a essere un eseguibile nativo a 64 bit, e un prefix a 32 bit non potrebbe eseguirlo affatto: il prefix a 64 bit serve per il servizio, non per il programma, ed è anche la ragione per cui va presa la variante `x64` del servizio.
 
 ```bash
 cd ~/electroacoustics/progetto-stanza/room/EASE_Focus_v3.1.260
