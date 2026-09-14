@@ -67,7 +67,11 @@ Sono quattro, più i dati. Per ciascuno il prefix di destinazione segue la regol
 
 ### VituixCAD 2
 
-Già previsto dalla procedura di installazione pulita, fase 8.5. Prefix `~/wineprefixes/vituixcad64` a 64 bit, con `dotnet48` e `corefonts`.
+Già previsto dalla procedura di installazione pulita, fase 8.5. Prefix `~/wineprefixes/vituixcad64` a 64 bit, con `dotnet48`.
+
+Sulla dipendenza `dotnet48` vale una nota, perché il 2026-09-14 è passata da prescrizione ereditata a fatto verificato e la differenza cambia che cosa si può dedurne. È stata prima provata la via leggera, cioè Wine Mono, che è l'implementazione libera di .NET che Wine scarica da sé e che per molte applicazioni basta. Non basta per questa: il programma è protetto da un offuscatore, riconoscibile dai nomi degli identificatori nell'eccezione, e gli offuscatori producono deliberatamente codice intermedio ai margini di ciò che la specifica consente, contando sul fatto che il runtime di Microsoft lo accetti. Mono ha un verificatore più severo su quei margini e lo rifiuta con `InvalidProgramException`. Con `dotnet48` il programma si apre. Il racconto è in MS-103 e MS-105.
+
+Il costo va conosciuto prima di replicare l'operazione: l'installazione porta il prefix a 2,1 GB e rimuove Mono, perché i due runtime non convivono. E la conclusione non si estende automaticamente agli altri programmi .NET del corredo: per uno non offuscato Mono potrebbe bastare, e la via corretta resta provare prima quella leggera.
 
 ```bash
 cd ~/electroacoustics/progetto-stanza/diy

@@ -1982,6 +1982,41 @@ Verificato con: `journalctl --user` sull'intervallo, che mostra la soppressione 
 
 Esito: fatto. Entrambe le osservazioni sono spiegate e nessuna richiede un intervento.
 
+### MS-105 - VituixCAD si apre con .NET 4.8, e la dipendenza prescritta è ora verificata invece che ereditata
+
+Perimetro: installazione del .NET Framework 4.8 nel prefix `~/wineprefixes/vituixcad64` con `winetricks -q dotnet48`, rimozione automatica di Wine Mono, primo avvio riuscito del programma, e aggiornamento della pagina del corredo e della sottofase 8.5 con la dipendenza verificata. Chiude la sottofase 8.5.
+
+Legame con il progetto: serve la fase 4a. VituixCAD è lo strumento con cui si progetta il crossover, cioè la rete di filtri che divide il segnale fra woofer e tweeter, e con cui si verifica come le due risposte si sommano attorno alla frequenza di incrocio anche fuori asse. Da questo microstep in avanti quella fase ha il proprio strumento funzionante.
+
+*Che cosa ha fatto l'installazione.* Il verbo `dotnet48` di winetricks ha scaricato ed eseguito l'installatore ufficiale di Microsoft dentro il prefix, in modo non interattivo. Ha rimosso Wine Mono, perché i due runtime non convivono e la rimozione è parte del verbo. Ha scritto `C:\windows\Microsoft.NET\Framework\v4.0.30319` con 435 file, ha registrato le sostituzioni di libreria necessarie con due passaggi di `regedit`, uno nella vista a 32 bit e uno in quella a 64, e ha lasciato un file marcatore `dotnet48.installed.workaround` che serve a winetricks per sapere che il verbo è stato applicato. Il prefix è passato da poche centinaia di megabyte a 2,1 GB, che è il costo reale di questa dipendenza e va conosciuto prima di replicare l'operazione su altri prefix.
+
+*L'esito.* Il programma si avvia. L'eccezione `InvalidProgramException` che Mono produceva su un metodo offuscato non compare più, e il processo resta vivo, il che distingue un avvio riuscito da un avvio che termina subito. La scommessa dichiarata in MS-095 e chiusa in MS-103 è quindi completamente risolta: Mono non basta per questo programma, `dotnet48` sì, e la prescrizione della pagina del corredo passa da ereditata a verificata. Chi rileggerà la procedura troverà scritto non soltanto che cosa installare ma perché, e saprà riconoscere il caso in cui quel passo si può saltare, cioè un programma .NET non offuscato.
+
+*Due righe dell'avvio, classificate.* La prima è `mscorsvw.exe` avviato in modalità WoW64 sperimentale: è il servizio con cui .NET precompila le proprie librerie in codice macchina, gira in secondo piano dopo una installazione nuova e si esaurisce da solo; la sua presenza al primo avvio è attesa e non è un difetto.
+
+La seconda merita più attenzione perché nomina una assenza reale.
+
+```
+err:winediag:ntlm_check_version ntlm_auth was not found. Make sure that ntlm_auth >= 3.0.25 is in your path.
+err:ntlm:ntlm_LsaApInitializePackage no NTLM support, expect problems
+```
+
+NTLM[^1] è il vecchio protocollo di autenticazione di rete di Windows, e Wine lo implementa appoggiandosi a un programma esterno, `ntlm_auth`, che su Ubuntu sta nel pacchetto `winbind` e che su questa macchina non è installato. La conseguenza va dimensionata invece di essere temuta: quel protocollo serve a un programma che si autentichi verso un dominio Windows, una condivisione di rete o un server aziendale, e VituixCAD non fa nulla di tutto ciò, perché è uno strumento di simulazione che lavora su file locali. L'avviso è quindi innocuo in questo contesto, e il pacchetto non è stato installato perché aggiungere una dipendenza per zitto un messaggio è il genere di intervento che questo progetto evita. Va però registrato dove diventerebbe rilevante: se un programma del corredo dovesse in futuro accedere a una risorsa di rete autenticata, quella riga passerebbe da rumore a causa, e la soluzione sarebbe installare `winbind`.
+
+*Un mio errore, terza occorrenza dello stesso difetto.* Durante l'attesa avevo verificato se l'installazione fosse terminata con `pgrep -f winetricks`, che ha risposto affermativamente per nove minuti dopo la fine reale, perché riconosceva la propria riga di comando: la stringa cercata compariva nel comando che la cercava. È la terza volta, dopo MS-096 e MS-101, e le prime due correzioni erano insufficienti: il trucco di spezzare il nome con una classe di caratteri difende solo dal caso più semplice. La forma che funziona davvero, e che è stata usata per la verifica finale, non usa `pgrep` ma legge l'elenco dei processi e scarta esplicitamente la riga del proprio comando.
+
+```bash
+ps -eo pid,args --no-headers | awk "/VituixCAD\.exe/ && !/awk/ {print \$1}"
+```
+
+La regola generale, ormai pagata tre volte, è che un controllo il cui criterio compare nel controllo stesso non è un controllo, e che la difesa non è rendere il criterio più astuto ma escludere esplicitamente il proprio processo.
+
+Verificato con: `winetricks -q dotnet48` eseguito in modo non interattivo con l'uscita registrata su file; conteggio dei file in `Microsoft.NET\Framework\v4.0.30319`, 435; presenza del marcatore `dotnet48.installed.workaround`; assenza di `C:\windows\mono`, rimosso come atteso; `du` sul prefix, 2,1 GB; avvio del programma senza eccezioni; `ps` con esclusione della propria riga, che mostra il processo vivo.
+
+Esito: fatto. La sottofase 8.5 è chiusa e la fase 8 prosegue con la 8.6, cioè EASE Focus 3.1.260 con il servizio di database AFMG e il database dei GLL.
+
+[^1]: *NTLM*, NT LAN Manager - protocollo di autenticazione di rete di Windows, precedente a Kerberos e ancora usato da condivisioni e server legacy; Wine non lo implementa direttamente ma si appoggia al programma esterno `ntlm_auth`, distribuito su Ubuntu nel pacchetto `winbind`.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
