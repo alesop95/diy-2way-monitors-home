@@ -2048,6 +2048,41 @@ Esito: fatto. Il fenomeno è classificato, si è esaurito da sé, e il programma
 
 [^1]: *ngen*, Native Image Generator - il servizio con cui .NET traduce in anticipo il codice intermedio delle librerie in istruzioni macchina e ne salva il risultato, per accorciare i tempi di avvio dei programmi che le usano.
 
+### MS-107 - EASE Focus installato, ed è a 32 bit: il prefix a 64 è giusto ma non per la ragione scritta
+
+Perimetro: creazione del prefix `~/wineprefixes/easefocus64`, installazione di EASE Focus 3.1.260 con l'installatore principale, accertamento dei percorsi e delle architetture reali dei due eseguibili installati, verifica dello stato di registrazione del servizio di database. L'installatore separato del servizio non è stato eseguito e la sua necessità resta da accertare.
+
+Legame con il progetto: serve due fasi e non una. EASE Focus simula la copertura acustica di diffusori a partire da modelli GLL forniti dai costruttori, quindi serve alla fase 3 come termine di confronto per la stanza e alla fase 8, quando il monitor autocostruito esisterà e si vorrà confrontarne il comportamento con quello di prodotti commerciali. Il database dei GLL, 451 MB, è il materiale su cui quel confronto si fa.
+
+*Una conferma che arriva gratis.* Alla creazione del prefix Wine ha installato Mono da sé, come mostrano le righe che nominano `removeuserinstalls-x86.exe` e `installinf-x86.exe` sotto `C:\windows\mono\mono-2.0\support`. È la conferma della previsione fatta in MS-102: il pacchetto scaricato una volta e messo nella cache dell'utente serve a tutti i prefix futuri, senza scaricamenti né finestre. Vale registrarlo perché era una previsione e non una constatazione, e ora è verificata.
+
+*La scelta fatta nell'installatore.* Alla schermata `Setup Type` è stato scelto `Typical` invece di `Custom`. La ragione non è la comodità: `Custom` avrebbe permesso di spostare le cartelle dati e la posizione dei file di licenza, ma il percorso in cui il programma cerca i GLL non è ancora noto e va letto dalle sue preferenze al primo avvio. Scegliere i valori predefiniti e poi misurarli è preferibile a sceglierli al buio, ed è la stessa logica con cui in MS-095 non si è spostato il pacchetto degli esempi di AKABAK.
+
+*Che cosa è stato installato, e dove.* L'installatore, di tipo InstallShield con un passaggio da `msiexec`, ha prodotto due componenti in due viste diverse di `Program Files`, e la distinzione non è casuale. Il programma sta in `C:\Program Files (x86)\AFMG\EASE Focus 3\`, insieme a una cinquantina di librerie. Il servizio di database sta invece in `C:\Program Files\AFMG\AFMG Database Service\`, cioè nella vista a 64 bit, con `AFMGDatabaseService.exe` e `AFMGDatabaseUtility.exe`.
+
+*La misura che corregge la documentazione, ed è l'opposto del caso precedente.* Lo strumento `tools/arch-dotnet.py`, scritto in MS-101 proprio per questo genere di domanda, dà due risposte diverse sui due eseguibili.
+
+```
+EASE Focus 3.exe        PE32, assembly .NET, flag 0x00000003, 32BITREQUIRED acceso
+                        architettura reale: x86, gira sempre a 32 bit
+AFMGDatabaseService.exe PE32+, intestazione CLI assente, eseguibile nativo
+                        architettura reale: 64 bit
+```
+
+Il programma principale è quindi a 32 bit e basta, non AnyCPU: il flag `32BITREQUIRED` è acceso, il che significa che pretende i 32 bit anche su una macchina a 64. È l'esito opposto a quello di VituixCAD, che con lo stesso formato `PE32` risultava AnyCPU a 64 bit, e i due casi insieme mostrano perché lo strumento serve: `file` avrebbe risposto `PE32` a entrambi, cioè la stessa cosa per due situazioni opposte.
+
+Ne discende una correzione alla documentazione che non cambia la scelta ma ne cambia la ragione, e la distinzione conta perché una ragione sbagliata non sopravvive al primo caso diverso. La procedura prescrive per EASE Focus un prefix a 64 bit, e il prefix a 64 bit è effettivamente necessario: non però perché il programma sia a 64 bit, dato che non lo è, ma perché il servizio di database è un eseguibile nativo a 64 bit, e un prefix a 32 bit non potrebbe eseguirlo affatto. Il programma principale, da solo, sarebbe andato benissimo in un prefix a 32 bit. È anche la spiegazione del perché la documentazione prescrivesse la variante `x64` del servizio: quella prescrizione era corretta e la sua ragione era quella giusta, mentre la ragione attribuita al prefix era sbagliata.
+
+*Lo stato del servizio, e la domanda che resta aperta.* La procedura prescrive, dopo l'installatore principale, di eseguire separatamente quello del servizio di database che sta nella sottocartella `AFMGDatabaseService_x64`. L'installatore principale ha però già installato il servizio, quindi quella prescrizione va verificata invece di essere eseguita per abitudine.
+
+Lo stato accertato è intermedio e va descritto con precisione. I file del servizio ci sono. La configurazione c'è, sotto la chiave di registro `Software\AFMG\AFMG Database Service` con una sottochiave `Programs Sharing`. Ma nessun servizio Windows risulta registrato: una ricerca fra le chiavi dei servizi di sistema del prefix non trova alcuna voce che nomini AFMG. Questo è coerente con l'avvertenza che la procedura stessa porta, cioè che sotto Wine un servizio Windows non gira come servizio di sistema ma come processo dentro il prefix.
+
+La domanda se l'installatore separato serva ancora non si decide leggendo il registro ma provando il programma, ed è esattamente ciò che la procedura prescrive di fare in caso di dubbio: se il programma lamenta l'assenza del database, allora il servizio va installato o avviato; se non lo lamenta, l'installatore separato è ridondante e la procedura va corretta. Il passo successivo è quindi il primo avvio, che serve anche a leggere dalle preferenze il percorso in cui il programma cerca i GLL, dato che quel percorso decide dove andranno copiati i 451 MB del database.
+
+Verificato con: elenco delle due viste di `Program Files` nel prefix, con i due componenti in viste diverse; `find` sugli eseguibili installati; `python tools/arch-dotnet.py` su entrambi, con gli esiti riportati sopra; ricerca nel registro del prefix delle chiavi che nominano AFMG, 187 occorrenze, nessuna delle quali è una registrazione di servizio di sistema; `du` sul prefix, 1,6 GB.
+
+Esito: fatto per l'installazione. Restano aperti il primo avvio, la lettura del percorso dei GLL e la decisione sull'installatore separato del servizio.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
