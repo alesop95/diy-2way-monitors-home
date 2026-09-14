@@ -8,6 +8,34 @@ Ogni microstep ha un identificativo progressivo nella forma `MS-NNN`, una data, 
 
 Le voci si aggiungono in ordine cronologico crescente, così che il registro si legga come una storia. Non si riscrive una voce passata: se un intervento successivo la corregge, si aggiunge una voce nuova che dichiara di superarla.
 
+## Il legame con il progetto, obbligatorio dal 2026-09-14
+
+Ogni microstep dichiara in apertura, subito dopo il perimetro, a quale fase del workflow in otto fasi serve e che cosa del progetto dipenda da esso. È una frase e non una sezione. Quando l'intervento non serve alcuna fase lo dichiara apertamente, perché un legame inventato è peggio di un legame assente: fa credere che tutto sia giustificato e toglie valore alle giustificazioni vere.
+
+La convenzione nasce da una lacuna reale, cioè che le voci fino a MS-096 spiegano il perché tecnico e non il perché di progetto. Per quelle voci il legame è fornito per blocchi in `docs/90-riferimenti/tracciabilita-microstep.md`, che è la forma additiva della correzione, dato che riscriverle sarebbe vietato dalla regola qui sotto e produrrebbe comunque un documento che sembra essere sempre stato giusto.
+
+## Perché non si riscrive, e perché questo non fa perdere pezzi
+
+La regola di non riscrivere una voce passata è la ragione per cui questo registro conserva anche gli errori, e va capita nel verso giusto perché la sua formulazione ingenua suggerisce il contrario. Non significa che una affermazione sbagliata resti in piedi: significa che resta leggibile insieme a quella che la corregge, cosicché chi legge veda non soltanto la conclusione giusta ma anche come ci si è arrivati e che cosa si era creduto prima. Un registro che si corregge in silenzio racconta un lavoro senza errori, che non è mai esistito, e chi lo eredita ripete gli errori che nessuno ha scritto.
+
+La regola ha però un difetto reale, individuato il 2026-09-14, e la sua correzione è l'indice qui sotto. In un registro che cresce in avanti, una voce superata non sa di esserlo: chi legge MS-083 e si ferma là non ha modo di sapere che MS-084 la smentisce, e la responsabilità di scoprirlo ricade sul lettore che legge fino in fondo. Aggiungere un rimando dentro la voce vecchia sarebbe una riscrittura; aggiungere un indice a parte non lo è, ed è quindi la forma compatibile con la regola.
+
+L'indice va aggiornato ogni volta che una voce nuova ne supera una precedente, e questo è parte della convenzione e non un lavoro facoltativo.
+
+### Indice delle voci superate
+
+| Voce superata | Superata da | Su che cosa |
+|---|---|---|
+| MS-021 | MS-024 | l'inferenza che le due copie del corredo software differissero, smentita dal confronto diretto |
+| MS-059, MS-061, MS-065 | MS-067 | l'affermazione che dentro l'immagine di installazione esistesse un file oltre i 4 GiB, smentita dalla misura |
+| MS-065 | MS-066 | l'avvertenza sul rischio di confondere la chiavetta con il disco esterno, resa inutile dalla casella che rende impossibile quell'errore |
+| MS-069 | MS-073 | l'affermazione su come si verifichi il supporto di installazione, sostituita dal controllo automatico che il sistema registra da sé |
+| più pagine, non una voce sola | MS-079 | l'affermazione che la macchina possedesse la Focusrite Scarlett 2i2, ritirata perché nata da un segnalibro promosso a inventario |
+| MS-083 | MS-084 | l'affermazione che i due lanciatori della scrivania fossero rotti perché invocavano un nome inesistente |
+| MS-085 | MS-087 | l'affermazione che la correzione delle sottofasi 8.1 e 8.2 riguardasse anche il prefix e non il solo comando |
+
+Due ritiri di questa sessione non compaiono in tabella perché non riguardano una voce del registro ma una mia spiegazione scritta altrove: MS-089 ritira la lettura secondo cui la barra del titolo di AKABAK dichiarasse l'edizione, e MS-093 ritira la spiegazione del 2026-09-09 sul perché una sessione SSH disponesse di un display. Restano nominati qui perché chi cerca un ritiro lo cerca in questo elenco.
+
 ## 2026-09-04, sessione di allineamento e conversione
 
 ### MS-001 - Ricognizione dello stato reale
@@ -1743,6 +1771,52 @@ La regola che ne discende è più generale del caso: una guardia che stampa un a
 Verificato con: `ls -l` su `dosdevices` del prefix, che mostra `c:` verso `drive_c` e `z:` verso la radice; `ls -l` sulle cartelle utente del prefix, che mostra `Documents` come collegamento a `/home/alesop95/Documents`; `ls -ld` su `~/Documents`, che esiste ed era vuota; `grep` su `InitialDir` nei due file di configurazione, che mostrava l'asimmetria fra AKABAK e VACS; impronte MD5 del file prima e dopo la modifica; rilettura delle chiavi pertinenti dopo la scrittura; `ps -eo pid,comm,args` e `pgrep` su Wine e `wineserver`, che escludono processi attivi.
 
 Esito: fatto. La radice di lavoro esiste, è vuota, sta in `/home` e il programma vi punta. La fase 8 prosegue dalla sottofase 8.5, cioè l'installazione di VituixCAD, che richiede la presenza dell'utente perché è un installatore con interfaccia grafica.
+
+### MS-097 - Il registro non diceva a che cosa servisse: la catena col progetto, e l'indice delle voci superate
+
+Perimetro: nuova pagina `docs/90-riferimenti/tracciabilita-microstep.md`, estensione della sezione `Convenzione` del registro con due regole nuove e con l'indice delle voci superate, rimandi da `docs/README.md` e da `docs/90-riferimenti/README.md`, e una voce aggiunta a PA-003.
+
+Legame con il progetto: questo microstep non serve alcuna fase del workflow, e lo dichiara invece di inventarsi un legame. Serve il secondo esito dichiarato del progetto, cioè la comprensione: un registro che non dice a che cosa serva ciò che racconta è una cronaca, non una documentazione tecnico-didattica.
+
+*La lacuna, nominata per quello che è.* Fino a MS-096 le voci spiegano il perché tecnico dell'intervento, cioè perché quel comando e non un altro, e quasi mai il perché di progetto, cioè che cosa di due diffusori da costruire dipenda da quell'intervento. Chi legge il registro dall'inizio incontra fini riga, prefix Wine, allineamenti al template e diagnosi di driver grafici, e può legittimamente chiedersi dove siano finiti gli altoparlanti. La lacuna è stata sollevata dall'utente il 2026-09-14 ed è reale.
+
+*Perché la correzione non poteva essere retroattiva nella forma ovvia.* La forma ovvia sarebbe aggiungere un paragrafo a ciascuna delle novantasei voci. È vietata dalla convenzione del registro, che prescrive di non riscrivere una voce passata, e sarebbe sbagliata anche senza quel divieto: novantasei paragrafi scritti a posteriori produrrebbero un registro che sembra essere sempre stato completo, che è lo stesso difetto per cui questo progetto ritira una inferenza invece di cancellarla. La correzione è quindi additiva, in due pezzi: il legame per il passato si fornisce una volta sola e per blocchi in una pagina nuova, e per il futuro diventa un obbligo scritto nella convenzione.
+
+*Che cosa dice la pagina nuova.* Percorre la catena all'indietro, dall'obiettivo all'ambiente, perché è in quel verso che si capisce perché si passa il tempo su Wine: la risposta va misurata al punto di ascolto reale, quindi la stanza entra nel progetto come vincolo, quindi serve uno strumento che metta insieme stanza e diffusore in un solo calcolo, quindi serve Akabak, che è un programma Windows senza equivalente libero, quindi serve Wine, quindi ogni ora spesa a capire perché il comando `wine` sceglie il caricatore sbagliato è la condizione perché la fase 5 sia eseguibile e non un lavoro che ha sostituito il progetto. Poi mappa sette blocchi di microstep sulla fase che servono, dichiarando per ciascuno che cosa sarebbe impossibile senza di esso. Il settimo blocco, quello dell'igiene documentale e degli strumenti, dichiara di non servire alcuna fase, ed è la voce che rende onesta tutta la mappa.
+
+*Una domanda dell'utente, e la sua risposta verificata.* La convenzione di non riscrivere una voce passata solleva il sospetto che il progetto perda pezzi per costruzione. È il contrario, e vale spiegarlo perché la formulazione ingenua suggerisce l'opposto: la regola non lascia in piedi una affermazione sbagliata, la lascia leggibile accanto a quella che la corregge, cosicché resti visibile non solo la conclusione giusta ma anche che cosa si era creduto prima. Il meccanismo è in uso e si misura: il registro contiene sette ritiri espliciti e una decina di superamenti dichiarati.
+
+Alla domanda se la convenzione derivi dal template la risposta è no, verificata e non ricordata. Il template prescrive la forma `append-only` per `memory/progress.md` e per il registro delle decisioni in forma ADR-lite, ma il registro dei microstep non compare affatto in `PROJECT-SYSTEM.md`: zero occorrenze sia di `OPERATIONS-LOG` sia di `microstep`. Il documento e la sua convenzione sono quindi un'invenzione di questo progetto, ispirata alla stessa filosofia che il template applica ai file di memoria. Ne discende una voce nuova in PA-003: il registro dei microstep è un pattern che il template non ha e che vale la pena propagargli, perché risolve un problema che i suoi file di memoria non coprono, cioè il tracciamento dell'intervento singolo con la sua verifica.
+
+*Il difetto reale della convenzione, e la sua correzione.* In un registro che cresce in avanti una voce superata non sa di esserlo: chi legge MS-083 e si ferma là non ha modo di sapere che MS-084 la smentisce, e la responsabilità di scoprirlo ricade sul lettore che arriva in fondo. Il difetto è reale e la sua correzione doveva rispettare la regola: un rimando dentro la voce vecchia sarebbe una riscrittura, un indice a parte non lo è. La sezione `Convenzione` porta ora l'indice delle voci superate, con sette relazioni ricavate dalle dichiarazioni esplicite delle voci stesse e non dalla memoria, più due ritiri che non riguardano voci del registro ma mie spiegazioni scritte altrove, nominati lì perché è lì che un lettore li cerca. L'aggiornamento dell'indice è parte della convenzione e non un lavoro facoltativo.
+
+Verificato con: `grep` sulle dichiarazioni di superamento e di ritiro nel registro, con lettura della riga di perimetro di ciascuna voce coinvolta per ricavare quale voce superi quale, invece di dedurlo dai titoli; `grep` su `PROJECT-SYSTEM.md` del template per `OPERATIONS-LOG` e `microstep`, zero occorrenze, e per `append-only`, che compare per `progress.md` e per il registro delle decisioni; catena di verifica prima del commit eseguita per intera.
+
+Esito: fatto. Il legame col progetto esiste per il passato in forma di mappa e per il futuro in forma di obbligo, e le voci superate sono raggiungibili da un indice invece che da una lettura integrale.
+
+### MS-098 - Il registro dei microstep diventa un pacchetto del template, e il template risulta non committato
+
+Perimetro: creazione del pacchetto opzionale `operations-log` in `E:\template-claude-developing`, con README, modello del registro e modello della pagina di tracciabilità, più la riga nel catalogo `PACKAGES.md`. Chiude la voce di PA-003 aperta poche ore prima. Tocca un repository diverso da questo.
+
+Legame con il progetto: questo microstep non serve alcuna fase del workflow dei monitor. Serve il secondo esito dichiarato, cioè la comprensione riutilizzabile: un pattern che qui ha raggiunto novantasette voci resta patrimonio di questo solo progetto finché non entra nel template da cui i progetti nuovi discendono.
+
+*Perché si è fatto adesso e non si è rimandato.* PA-003 prescriveva di non toccare il template da qui, perché è una decisione dell'utente su un altro repository. L'utente l'ha presa esplicitamente il 2026-09-14, chiedendo che il registro esista nel template, quindi la condizione che rimandava l'intervento è caduta. Vale precisare che cosa fosse davvero mancante, perché la richiesta poteva essere fraintesa: in questo progetto ogni microstep è già tracciato e il registro conta novantasette voci; ciò che mancava era il pattern nel template, cioè in ciò che un progetto nuovo eredita.
+
+*La forma scelta, e perché non un'altra.* Il pacchetto è opzionale e vive sotto `.claude/templates/operations-log/`, con la riga corrispondente nel catalogo `PACKAGES.md`, che è il meccanismo con cui il template offre i propri pacchetti a un progetto in fase di inizializzazione o di allineamento. Non è stato toccato `PROJECT-SYSTEM.md`, e la ragione è duplice: il template non descrive là i pacchetti opzionali, e quel file era appena tornato identico fra template e progetto in MS-091, quindi modificarlo avrebbe riaperto una divergenza il giorno stesso in cui era stata chiusa.
+
+*Che cosa contiene il pacchetto, e quale parte è la sola non ovvia.* Il modello del registro porta la convenzione nella forma generalizzata, cioè identificativo progressivo, data, titolo, perimetro, legame con lo scopo, verifica ed esito, con gli stati `fatto`, `bloccato` e `aperto`, e la regola `append-only`. La parte che vale l'estrazione sono però i due presidi, perché non sono teorici: vengono entrambi da difetti osservati sul campo in questo progetto. Il primo è la dichiarazione del legame con lo scopo, che nasce da un registro diventato illeggibile come cronaca di sistemistica, rilevato dall'utente in MS-097. Il secondo è l'indice delle voci superate, che nasce dalla constatazione che in un registro che cresce in avanti una voce smentita non sa di esserlo, e che un rimando dentro di essa sarebbe una riscrittura vietata dalla convenzione stessa.
+
+Il gate del pacchetto dichiara anche quando non adottarlo, ed è la parte che ne evita l'abuso: non in un progetto di solo codice applicativo, dove alla domanda su come si sapesse che funzionava rispondono meglio i test, e non in un progetto piccolo dove basta il work log di sessione, perché un registro che nessuno aggiorna è peggio della sua assenza in quanto suggerisce una copertura che non c'è.
+
+Il terzo file è il modello della pagina di tracciabilità, e il suo gate è stretto: si istanzia soltanto in un progetto che abbia già molte voci prive del legame con lo scopo, cioè come correzione additiva del passato, e non in un progetto nuovo, dove quella dichiarazione la porta ogni voce.
+
+*Una scoperta collaterale che vale più del pacchetto, e riguarda il template e non questo progetto.* Eseguendo `git status` nel template per verificare che cosa avessi aggiunto, risultano ventuno file modificati e quattro non tracciati, tutti non committati. Fra essi ci sono `PROJECT-SYSTEM.md`, i cinque strumenti tipografici alla radice e nel pacchetto, `md-unwrap.py`, `CASE-STUDIES.md`, i due pacchetti `alignment` e `anonymization`, e la regola `chat-non-e-memoria.md`. Sono esattamente i file da cui MS-091 ha preso le versioni nuove.
+
+La conseguenza va enunciata con precisione perché cambia la lettura di MS-091. Quel microstep aveva concluso che il template fosse avanti rispetto a questo progetto, ed è vero sul disco; non è vero nella storia di git, dove quel lavoro non è mai entrato. Chi clonasse oggi `template-claude-developing` non riceverebbe né la regola `chat-non-e-memoria.md`, né la riparazione degli apostrofi orfani in `fix-accents.py`, né i due pacchetti, né ora il registro dei microstep. La correzione portata qui da MS-091 resta valida, perché veniva da file reali e verificati; ciò che va corretto è l'idea che il template li conservi. Il template ha lo stesso difetto che questo progetto ha avuto due volte questa settimana, cioè lavoro concluso e lasciato non committato, e la conseguenza è più grave là perché il template è la sorgente da cui altri progetti discendono.
+
+Verificato con: `ls` della cartella del pacchetto nel template, tre file creati; `grep -c` su `PACKAGES.md` per la riga nuova, una occorrenza; `git -C E:/template-claude-developing status --short`, che elenca ventuno file modificati e quattro non tracciati, fra cui la cartella del pacchetto appena creata.
+
+Esito: fatto per la creazione. Resta all'utente il commit nel template, che è un altro repository e la cui storia non è governata da questo progetto; la voce corrispondente di PA-003 è aggiornata di conseguenza e non chiusa, perché un pacchetto creato e non committato non è ancora propagato.
 
 ## Che cosa resta da fare, e da che cosa dipende
 

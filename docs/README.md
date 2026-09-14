@@ -18,7 +18,7 @@ La catena di riproduzione, cioè che cosa sta fra il computer e i monitor e come
 
 I riferimenti stanno nella cartella [90-riferimenti/](90-riferimenti/README.md), e comprendono l'inventario del software disponibile, lo stato delle licenze, lo storico verificato di Akabak e VACS, le cinque incoerenze del documento sorgente spiegate una per una, la prova di copertura della conversione e le fonti citate.
 
-Il registro cronologico dei microstep operativi, con l'esito verificato di ciascuno, sta in [OPERATIONS-LOG.md](OPERATIONS-LOG.md).
+Il registro cronologico dei microstep operativi, con l'esito verificato di ciascuno, sta in [OPERATIONS-LOG.md](OPERATIONS-LOG.md). A che cosa serva ciascun blocco di quel registro, cioè a quale fase del progetto dei monitor, lo dice [tracciabilita-microstep.md](90-riferimenti/tracciabilita-microstep.md), che esiste perché il registro racconta il come e non il perché di progetto.
 
 L'elenco dei materiali pesanti da spostare sulla macchina di lavoro, con destinazioni e impronte di verifica, sta in [TRANSFER-MANIFEST.md](TRANSFER-MANIFEST.md).
 
