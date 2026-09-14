@@ -1896,6 +1896,41 @@ Sul metodo va annotato un mio errore ripetuto. Il primo controllo sui processi u
 
 Esito: fatto per l'installazione e per la verifica dell'architettura. Il primo avvio è il passo successivo ed è dove si deciderà la questione del runtime .NET.
 
+### MS-102 - Wine Mono installato, con la versione letta dai binari invece che indovinata
+
+Perimetro: diagnosi del rifiuto di VituixCAD ad avviarsi, individuazione della versione di Wine Mono attesa da questa build, scaricamento del pacchetto, installazione nel prefix `~/wineprefixes/vituixcad64` e verifica. Nessuna modifica alla documentazione della procedura.
+
+Legame con il progetto: serve la fase 4a. VituixCAD è un programma .NET e senza un runtime non parte, quindi questo microstep è la condizione perché lo strumento con cui si progetta il crossover sia utilizzabile.
+
+Il sintomo è stato una riga sola, ed è insolitamente chiara per un messaggio di Wine.
+
+```
+err:mscoree:CLRRuntimeInfo_GetRuntimeHost Wine Mono is not installed
+```
+
+Conferma quanto MS-100 aveva accertato in anticipo, cioè che il prefix non aveva alcun runtime .NET, e conferma anche che l'accertamento anticipato era servito: senza di esso questo messaggio avrebbe aperto una diagnosi invece di chiuderne una.
+
+*Perché la finestra che offre il download non è mai comparsa.* Il meccanismo esiste, e l'ho verificato leggendo le stringhe di `appwiz.cpl`, dove il testo della finestra è presente per intero, compresa la nota che raccomanda di usare i pacchetti della propria distribuzione. Su Ubuntu però quei pacchetti non esistono, come MS-100 aveva già accertato con `apt-cache policy`. Perché in questa sessione la finestra non sia comparsa non è stato determinato, e lo dichiaro invece di attribuirlo a una causa plausibile: può essere comparsa durante la creazione del prefix senza che venisse notata, oppure la build di Ubuntu può sopprimerla. La domanda non è stata inseguita perché la via manuale è più deterministica di quella interattiva e va documentata comunque.
+
+*Come si trova la versione giusta senza indovinarla.* Ogni versione di Wine si aspetta una versione precisa di Mono, e installarne un'altra produce comportamenti che sembrano difetti del programma. Il numero non va cercato in rete ma letto dal Wine installato, perché è là che è scritto. Le stringhe di un file PE sono codificate a sedici bit, quindi una lettura ingenua non le trova, come è accaduto al primo tentativo; con la codifica giusta il nome del pacchetto compare per intero.
+
+```
+wine-mono-9.4.0-x86.msi
+wine-gecko-2.47.4-x86_64.msi
+```
+
+*Lo scaricamento e la verifica della provenienza.* Il pacchetto è stato preso dal sito di distribuzione di Wine, e prima di usarlo sono state controllate due cose. La dimensione scaricata coincide esattamente con quella dichiarata dal server, cioè 84.639.232 byte, il che esclude un trasferimento interrotto. E i metadati interni del file lo dichiarano per quello che deve essere, cioè un database di installazione MSI intitolato `Wine Mono Runtime` con autore `The Wine Project`, il che è una verifica di identità più forte del nome del file, che chiunque potrebbe scrivere.
+
+*Dove metterlo, e perché questo evita ogni finestra.* Wine cerca i propri componenti aggiuntivi in una cartella di cache dell'utente prima di proporne il download. Mettendo il pacchetto in `~/.cache/wine/`, il comando `wineboot -u` lo trova e lo installa da sé, senza interazione e senza rete. L'installazione è avvenuta in modo pulito e senza bisogno di una sessione grafica, e ha prodotto `C:\windows\mono\mono-2.0` per 233 MB.
+
+Va registrata una conseguenza che vale oltre questo prefix: quella cartella di cache è dell'utente e non del prefix, quindi il pacchetto scaricato una volta serve a tutti i prefix futuri. Ogni altro programma .NET del corredo riceverà Mono senza ripetere lo scaricamento, e la stessa cosa varrà per Gecko se un programma dovesse chiederlo, dato che il nome del pacchetto atteso è ora noto.
+
+*La decisione che questo microstep mette alla prova.* Restava aperta la scelta fra Mono e il vero .NET Framework di Microsoft installato con `winetricks dotnet48`, e il progetto aveva deciso di provare prima il primo. La ragione era asimmetrica: se Mono basta si evita il passo più fragile della fase 8, e se non basta si è pagata solo una attesa e si è guadagnata la ragione per cui quel passo serve. Il verdetto arriva al prossimo avvio del programma.
+
+Verificato con: lettura del messaggio di errore; `strings -el` su `appwiz.cpl` per la versione attesa e per il testo della finestra mai comparsa; `curl -I` sull'indirizzo del pacchetto, che risponde `HTTP 200` con `content-length` di 84.639.232 byte e tipo `application/x-msi`; confronto della dimensione del file scaricato con quella dichiarata, coincidenti; `file` sul pacchetto, che ne dichiara titolo, oggetto e autore; `wineboot -u` nel prefix, senza errori residui dopo il filtraggio del rumore noto; `ls` e `du` su `C:\windows\mono`, che esiste con `mono-2.0` per 233 MB.
+
+Esito: fatto. Il runtime è installato e il primo avvio di VituixCAD è il passo successivo.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
