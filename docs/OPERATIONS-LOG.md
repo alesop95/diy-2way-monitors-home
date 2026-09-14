@@ -1838,6 +1838,30 @@ Va annotato che la prova senza display ha prodotto tre righe `err:ole` sul marsh
 
 Esito: fatto. La sottofase 8.5 è sbloccata e il suo primo comando può essere rilanciato senza modifiche.
 
+### MS-100 - Il prefix di VituixCAD esiste e non ha alcun runtime .NET, e una inferenza di MS-085 è confermata
+
+Perimetro: creazione del prefix `~/wineprefixes/vituixcad64` e sua caratterizzazione, accertamento della disponibilità di un runtime .NET, lettura dell'output di creazione. Non tocca la documentazione della procedura.
+
+Legame con il progetto: serve la fase 4a, cioè la progettazione del crossover con la direttività. VituixCAD è il programma che decide come woofer e tweeter si sommano attorno alla frequenza di incrocio, ed è una applicazione .NET: senza un runtime non parte, quindi sapere adesso che nel prefix non ce n'è alcuno evita di scoprirlo a installazione fatta.
+
+Il prefix è stato creato e dichiara `#arch=win64` nel proprio `system.reg`, che è l'architettura voluta: VituixCAD è una applicazione a 64 bit anche se il suo installer è PE32 a 32 bit, e la distinzione fra le due architetture è quella spiegata in `wine-corredo-progetto-stanza.md`.
+
+*Che cosa non c'è, e come si è accertato senza fidarsi delle apparenze.* Dentro il prefix esiste una cartella `gecko` sia in `system32` sia in `syswow64`, il che a prima vista suggerisce che il motore di rendering sia installato. Non lo è: la cartella contiene soltanto `plugin`, cioè è un segnaposto che Wine crea comunque. Di Mono non esiste traccia, e `Microsoft.NET` non esiste. Il prefix è quindi privo di qualunque runtime .NET.
+
+A livello di sistema la situazione è la stessa e ha una causa dichiarabile: né `/usr/share/wine/gecko` né `/usr/share/wine/mono` esistono, e `wine-mono` non è disponibile nei repository di Ubuntu, dove `apt-cache policy` non restituisce nulla. Ne segue che Wine non ha una copia locale da installare e deve scaricarla; il sito da cui la prende risponde `HTTP 200` in meno di un secondo, quindi la via è praticabile. Su `winetricks` non esiste un verbo per Mono, mentre esiste `dotnet48`, che scarica e installa il vero .NET Framework di Microsoft.
+
+La conseguenza operativa è che la decisione fra le due vie non va presa adesso ma al primo avvio del programma, che è il momento in cui Wine chiede da sé di scaricare Mono. Se Mono basta, il passo più fragile della fase 8 è evitato; se non basta, si installa `dotnet48` sapendo perché serviva invece di averlo messo per prudenza.
+
+*Una inferenza di MS-085 confermata, e vale registrarlo perché era stata marcata come da verificare.* In quella voce avevo attribuito la riga `err:setupapi:do_file_copyW Unsupported style(s) 0x10`, comparsa all'avvio di AKABAK, a un processo di servizio del prefix e non al programma, deducendolo dal fatto che portasse un identificativo di processo diverso. Era una inferenza dai numeri e l'avevo dichiarata tale. La creazione di questo prefix la conferma per via indipendente: la stessa riga compare cinque volte durante `wineboot -u`, quando nessun programma applicativo è in esecuzione e l'unica attività è la costruzione del prefix. L'inferenza diventa quindi un fatto, e la riga si può classificare come rumore della fase di setup.
+
+*Due altre righe dell'output, classificate perché non allarmino chi le rilegge.* Le righe `err:ole` sul marshalling delle interfacce e su `RpcSs` compaiono alla prima costruzione di un prefix e non impediscono nulla, come mostra il fatto che il prefix sia completo. La riga `err:environ:init_peb starting L"C:\\windows\\syswow64\\rundll32.exe" in experimental wow64 mode` dichiara invece un fatto che vale conoscere prima di installare: in questo prefix a 64 bit i processi a 32 bit girano nella modalità wow64 sperimentale di Wine, cioè senza un caricatore a 32 bit separato. È il modo in cui girerà anche l'installer di VituixCAD, che è a 32 bit, ed è quindi la prima cosa da sospettare se quell'installer si comportasse in modo anomalo.
+
+Verificato con: `grep` su `#arch` in `system.reg` del prefix, che risponde `win64`; `ls` sul contenuto della cartella `gecko` del prefix, che contiene il solo `plugin`; assenza di `windows/mono` e di `windows/Microsoft.NET`; controllo separato di `/usr/share/wine/gecko` e `/usr/share/wine/mono`, entrambi assenti; `apt-cache policy wine-mono`, senza risultati; `curl -I` sul sito di distribuzione di Wine Mono, `HTTP 200`; `winetricks list-all` filtrato, che non offre un verbo per Mono e offre `dotnet48`; `wine --version`, che risponde `wine-10.0`.
+
+Sul metodo va annotata una imprecisione mia, che questa volta non ha prodotto una conclusione sbagliata ma avrebbe potuto. Il primo controllo sulle due cartelle di sistema era `ls cartellaA cartellaB || echo assenti`, che stampa il messaggio anche quando una sola delle due manca: la conclusione era corretta perché mancavano entrambe, ma il controllo non poteva distinguere i due casi. È la terza volta in questa settimana che un controllo scritto in fretta non è in grado di distinguere ciò che deve distinguere, ed è lo stesso difetto della guardia di MS-096 e del rilevamento delle fini riga di MS-088.
+
+Esito: fatto. Il prefix è pronto e caratterizzato. La sottofase 8.5 prosegue con l'installer, e il runtime .NET si decide al primo avvio del programma.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
