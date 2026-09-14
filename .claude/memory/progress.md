@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14, seconda parte - La sottofase 8.3 è chiusa, e il confronto ha dato la chiave
+
+Commit di partenza: b02a547, con MS-093 non ancora committato.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-094; `.claude/memory/decisions.md`, dove ADR-020 passa ad accettata; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.3, propagato al gemello; `docs/90-riferimenti/timeline-akabak-vacs.md`; schede di stato.
+
+Esito. L'impostazione esiste ed è fatta. Il controllo si chiama `Spectrum way of output` e sta nella scheda `VACS` della finestra delle preferenze, quindi ha ragione il capitolo dell'appendice della guida e non la pagina che la descriveva come puramente informativa.
+
+Il guadagno vero non è l'impostazione ma il metodo con cui è stata verificata. Avendo registrato prima le impronte dei tre file di configurazione del prefix, il confronto dopo l'azione ha detto che è cambiato il solo `AppData\Local\RDTeam\Akabak.ini` e che vi sono comparse tre chiavi, cioè `SpectrumOutputType=3`, `SpectrumOutputAsText=0` e `SpectrumOutputFolder=` vuota. Da adesso quella preferenza si può scrivere su un prefix nuovo invece di ripetere un giro di menu, e il file della licenza resta dimostrabilmente intatto.
+
+Due scoperte collaterali. La conferma delle preferenze materializza su disco l'intero insieme delle impostazioni e non la sola voce toccata, da cinque a ventotto chiavi, quindi la configurazione del programma è diventata un file di testo confrontabile e alcuni valori utili alla fase 5 sono già leggibili, fra cui il numero di thread del solutore, il metodo predefinito di compensazione della non unicità e l'intervallo di frequenza predefinito. E il testo informativo dentro la pagina delle preferenze sottostima le vie di trasferimento esattamente come facevano l'email dell'autore e una pagina della guida, nominando solo COM e appunti mentre il controllo sotto di esso offre i file: la ragione si legge nel testo stesso, che nomina `ABEC` e non AKABAK, cioè la finestra è condivisa con il programma gemello ed è rimasta indietro rispetto ai propri controlli.
+
+Confermata anche la forma remota di MS-093 sul programma vero e non solo sulla prova con `notepad`: l'avvio da SSH con `DISPLAY` e `XAUTHORITY` non produce alcuna riga di errore sul driver e la chiusura è regolare.
+
 ## 2026-09-14 - AKABAK non parte da SSH, e una mia spiegazione cade alla prima prova
 
 Commit di partenza: b02a547.
