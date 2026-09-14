@@ -72,6 +72,8 @@ Il file `tools/check-pending-actions.py` verifica quali azioni differite di `doc
 
 Il file `tools/latest-screenshot.ps1` restituisce lo screenshot più recente della cartella di cattura, per i passi manuali che l'agente non può osservare da sé.
 
+Il file `tools/arch-dotnet.py` dice l'architettura reale di un eseguibile Windows, ed esiste perché per un assembly .NET il comando `file` risponde a una domanda diversa da quella che si sta ponendo. Per un programma nativo `PE32` significa 32 bit e `PE32+` significa 64, e la lettura basta; per un assembly .NET compilato *AnyCPU* il formato resta `PE32` mentre il programma gira alla larghezza della macchina, quindi a 64 bit su una macchina a 64. Lo strumento legge i tre flag dell'intestazione del runtime CLI che decidono davvero, e sui file nativi dichiara l'assenza di quella intestazione e riporta l'architettura del formato. È di sola lettura, senza dipendenze, e restituisce codice 2 su un file che non sia un eseguibile Windows. La ragione per cui è nato è in MS-101: il controllo prescritto avrebbe fatto concludere che VituixCAD fosse a 32 bit e smontare un prefix corretto.
+
 ## Rapporto con gli altri progetti
 
 Il blocco `docs/10-ambiente/` è condiviso con `home-recording-training-mixing-setup`, perché la macchina Ubuntu Studio serve a entrambi. La copia canonica è quella di questo progetto e la propagazione è unidirezionale.

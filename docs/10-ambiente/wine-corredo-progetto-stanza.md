@@ -45,11 +45,17 @@ Questo è il punto tecnico più utile della pagina, perché è la causa più com
 
 Tutti gli installer del corredo sono a 32 bit, `VituixCAD_setup.exe` compreso. Eppure VituixCAD 2 è una applicazione .NET a 64 bit, e la pagina dei programmi Windows prescrive per essa un prefix a 64 bit. Le due cose non sono in contraddizione: un installer a 32 bit gira senza problemi in un prefix a 64 bit, perché Windows, e Wine con esso, mantiene uno strato di compatibilità che permette a un processo a 32 bit di girare su un sistema a 64. È lo stesso meccanismo per cui su Windows reale si installano ancora programmi con installer datati.
 
-La regola corretta è quindi guardare l'architettura dell'applicazione installata, non quella del suo installer, e l'architettura dell'applicazione si desume dalla documentazione del produttore o si legge sull'eseguibile dopo l'installazione.
+La regola corretta è quindi guardare l'architettura dell'applicazione installata, non quella del suo installer. Come la si legge è però il punto in cui questa pagina sbagliava fino al 2026-09-14, e l'errore avrebbe fatto smontare una configurazione corretta.
+
+Per un programma nativo l'architettura si legge dall'intestazione del formato e `file` basta: `PE32` significa 32 bit, `PE32+` significa 64. Per un assembly .NET quella lettura non decide, perché un assembly compilato *AnyCPU* è anch'esso `PE32` e gira alla larghezza della macchina, quindi a 64 bit su una macchina a 64. Su `VituixCAD.exe` il comando `file` risponde infatti `PE32 ... Intel i386 Mono/.Net assembly`, che letto come si legge per un nativo direbbe 32 bit ed è falso.
+
+Ciò che decide sono tre flag dell'intestazione del runtime CLI, e lo strumento del repository che li legge è `tools/arch-dotnet.py`, che dichiara anche i nativi e in quel caso riporta l'architettura del formato, che per un nativo è corretta.
 
 ```bash
-file ~/wineprefixes/vituixcad64/drive_c/Program\ Files/VituixCAD2/VituixCAD.exe
+python tools/arch-dotnet.py "$HOME/wineprefixes/vituixcad64/drive_c/Program Files (x86)/VituixCAD/VituixCAD.exe"
 ```
+
+Esito misurato il 2026-09-14: flag `0x00000001`, cioè il solo `ILONLY`, quindi AnyCPU a 64 bit. La documentazione aveva ragione sull'architettura e il prefix a 64 bit è la scelta corretta. Il racconto è in MS-101.
 
 C'è una sola eccezione, ed è netta: un eseguibile a 16 bit non gira in un prefix a 64 bit. Su Wine il supporto ai 16 bit esiste soltanto nei prefix a 32 bit, perché deriva dallo stesso strato di compatibilità che i sistemi a 64 bit hanno rimosso. Nel corredo c'è esattamente un caso, ed è `SETUP.EXE` di LSPCad 5.25, riconoscibile dal formato NE dichiarato per Windows 3.1.
 

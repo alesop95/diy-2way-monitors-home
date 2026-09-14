@@ -609,6 +609,14 @@ cd ~/electroacoustics/progetto-stanza/diy
 WINEPREFIX=~/wineprefixes/vituixcad64 wine VituixCAD_setup.exe
 ```
 
+Eseguita il 2026-09-14, ed è MS-101. Due cose vanno sapute prima e non dopo. L'installer è costruito con Inno Setup, quindi produce due processi e non uno: il primo è un contenitore che estrae il vero installatore in una cartella temporanea e glielo passa. E la destinazione proposta non è quella che questa procedura si aspettava: il programma finisce in `C:\Program Files (x86)\VituixCAD`, perché un installer a 32 bit che non dichiari la modalità a 64 risolve la cartella dei programmi nella vista a 32 bit. Non va spostato: il programma è AnyCPU e gira a 64 bit comunque, e spostarlo romperebbe il disinstallatore.
+
+Controllo di uscita della sottofase: l'architettura reale dell'eseguibile, che per un assembly .NET non si legge con `file`. Il perché è nella pagina del corredo e il racconto in MS-101.
+
+```bash
+python tools/arch-dotnet.py "$HOME/wineprefixes/vituixcad64/drive_c/Program Files (x86)/VituixCAD/VituixCAD.exe"
+```
+
 ### 8.6 EASE Focus 3.1.260 e il servizio di database AFMG
 
 Qui la procedura corregge due errori del documento sorgente, entrambi scoperti ispezionando i file e documentati come incoerenza 6 in `docs/90-riferimenti/incoerenze-sorgente.md`.
