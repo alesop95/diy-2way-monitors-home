@@ -172,6 +172,62 @@ def prova_front_matter(nome):
     return problemi
 
 
+# Il difetto della doppia correzione, trovato il 2026-09-09 su file già corrotti.
+# La forma con l'apostrofo appartiene a `fix-accents.py`; se anche `fix-missing-accents.py`
+# la tocca, il risultato è una vocale accentata seguita da apostrofo, che in italiano non
+# esiste e che nessuno dei due sapeva più riconoscere. La prova è discriminante nei due
+# versi: verifica che il primo strumento non tocchi quella forma, e che il secondo ripari
+# il residuo se lo trova già scritto. I frammenti si costruiscono per concatenazione,
+# perché scritti per intero verrebbero corretti dagli strumenti alla prima passata su
+# questo stesso file, che è la trappola già pagata quattro volte in questo progetto.
+def prova_residuo_apostrofo():
+    AP = chr(39)
+    E_ACUTA = chr(0x00E9)
+    A_GRAVE = chr(0x00E0)
+    prima = "Serve perch" + "e" + AP + " conta, ed è gi" + "a" + AP + " scritto."
+    residuo = "Serve perch" + E_ACUTA + AP + " conta, ed è gi" + A_GRAVE + AP + " scritto."
+    atteso = "perch" + E_ACUTA
+    falliti = 0
+    cartella = os.path.join(ROOT, "_notes", "tmp")
+    os.makedirs(cartella, exist_ok=True)
+
+    def gira(nome, contenuto):
+        handle, percorso = tempfile.mkstemp(suffix=".md", dir=cartella)
+        with os.fdopen(handle, "wb") as f:
+            f.write((contenuto + NL).encode("utf-8"))
+        try:
+            modulo = carica(nome)
+            cambiato, dati = modulo.elabora(percorso, *argomenti_accessori(modulo))
+            if cambiato:
+                with open(percorso, "wb") as f:
+                    f.write(dati)
+            return open(percorso, "rb").read().decode("utf-8")
+        finally:
+            os.unlink(percorso)
+
+    dopo = gira("fix-missing-accents.py", prima)
+    if dopo.strip() != prima:
+        print("  FALLITA  residuo apostrofo        fix-missing-accents tocca la forma "
+              "con apostrofo, che non è sua")
+        falliti += 1
+
+    dopo = gira("fix-accents.py", residuo)
+    if AP in dopo or atteso not in dopo:
+        print("  FALLITA  residuo apostrofo        fix-accents non ripara la vocale "
+              "accentata seguita da apostrofo")
+        falliti += 1
+
+    dopo = gira("fix-accents.py", prima)
+    if atteso not in dopo:
+        print("  FALLITA  residuo apostrofo        fix-accents non converte più la "
+              "forma con apostrofo")
+        falliti += 1
+
+    if falliti == 0:
+        print("  ok       residuo apostrofo        i due strumenti non si sovrappongono")
+    return falliti
+
+
 def main():
     falliti = 0
     for nome in STRUMENTI:
@@ -211,6 +267,8 @@ def main():
             falliti += 1
     if falliti == 0:
         print("  ok       catena dei tre           prosa corretta, identificatori intatti")
+
+    falliti += prova_residuo_apostrofo()
 
     print("test-tipografia: %d controlli falliti" % falliti)
     return 1 if falliti else 0

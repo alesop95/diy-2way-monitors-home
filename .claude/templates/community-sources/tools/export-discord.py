@@ -206,7 +206,6 @@ def interi(a):
             print(etichetta + ": la cartella esiste e non è vuota, salto; "
                   "con --forza si riesporta")
             continue
-        os.makedirs(cartella, exist_ok=True)
         comando = [exe, "exportguild", "-t", "<token>" if a.dry_run else t,
                    "-g", gid, "-f", "Json", "-o", cartella + os.sep]
         if a.after:
@@ -216,6 +215,10 @@ def interi(a):
         print(etichetta)
         if a.dry_run:
             continue
+        # La cartella si crea soltanto quando si esporta davvero, e non una riga prima: una
+        # prova a vuoto che lasciasse dietro di sé le cartelle di destinazione non sarebbe una
+        # prova a vuoto, ed è l'ordine che il percorso per canali tiene già in `main()`.
+        os.makedirs(cartella, exist_ok=True)
         esito = subprocess.run(comando)
         if esito.returncode == 0:
             fatti += 1

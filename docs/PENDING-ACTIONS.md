@@ -136,16 +136,25 @@ Il criterio di completamento. Una risposta documentata con la fonte, e la conseg
 
 Nota di priorità. Bassa. Il ruolo di Ramsete nel workflow sarebbe l'acustica architettonica, che è già coperta da Akabak, licenziato e funzionante. È un supplemento facoltativo e non un tassello mancante, quindi non blocca nulla.
 
-## PA-003 - Propagare al template le quattro correzioni trovate
+## PA-003 - Propagare al template le correzioni trovate qui
 
-Data di apertura: 2026-09-04. Stato: *aperta*.
+Data di apertura: 2026-09-04. Stato: aperta su due voci su cinque, riscritta sui fatti il 2026-09-12.
 
-Che cosa va fatto. Portare in `template-claude-developing` le quattro correzioni individuate lavorando su questo progetto, elencate in `.claude/context/current-work.md` e diagnosticate in MS-004 e MS-014 del registro dei microstep.
+Che cosa va fatto. Portare al progetto `template-claude-developing` le correzioni nate qui, così che non vadano perdute alla prossima istanziazione. La voce è stata riscritta il 2026-09-12 perché tre delle quattro correzioni originali erano già state fatte nel template da una sessione che ha lavorato là, e continuare a elencarle come aperte avrebbe fatto rifare lavoro fatto.
 
-Perché è differita. Sono modifiche a un altro repository, e la decisione se farle è dell'utente. Finché non sono propagate, ogni progetto nuovo istanziato dal template eredita i quattro difetti.
+Chiusa il 2026-09-09, nel template e non qui. La ripropagazione degli strumenti tipografici nel pacchetto `fix-typography`, che era rimasto indietro rispetto alle copie in `tools/`: il confronto del 2026-09-12 mostra che nel template la copia alla radice e quella nel pacchetto sono ora identiche per tutti e cinque i file, quindi lo sfasamento non esiste più. Chiusa anche l'incoerenza fra le regole di prudenza di `fix-accents.py` e `fix-missing-accents.py`, che corrompeva le forme elise nei file di codice: la versione nuova di `fix-accents.py` porta una funzione dedicata, `togli_residuo`, che rimuove l'apostrofo rimasto dopo una vocale già accentata e lo conta in una voce propria delle statistiche, cioè dichiara quante volte ha riparato invece di quante volte ha convertito.
 
-Il criterio di completamento. Le quattro correzioni sono nel template e le due divergenze annotate nel `.gitignore` e in `.claude/context/STACK.md` di questo progetto possono essere riscritte come allineamento invece che come divergenza.
+Conseguenza per questo progetto, ed è il motivo per cui la voce ha prodotto lavoro invece di essere solo aggiornata. Il progetto era rimasto indietro rispetto al template su quattro strumenti su cinque, e le sue copie portavano ventidue apostrofi orfani prodotti proprio dal difetto che il template ha poi corretto: nove in `tools/fix-dashes.py`, due in `tools/md-unwrap.py` e gli undici corrispondenti nelle copie sotto `.claude/templates/`. Adottando le versioni del template le ventidue occorrenze sono sparite, verificato con una ricerca dedicata. Il racconto è in MS-091.
 
+Aperta, e va verso il template. La negazione nel `.gitignore` che rende versionabili i modelli `_notes` sotto `.claude/templates/`: nel template quel percorso resta escluso senza eccezione, quindi chi clona il template non riceve i modelli `DIARIO.md`, `RESOCONTO.md`, `RESUME-PROMPT.md` e `TEST-CHECKLIST.md`, che qui sono tracciati. È un difetto e non una scelta, perché quei file esistono per essere copiati in un progetto nuovo.
+
+Aperta, e va verso il template. La correzione di stile nella skill `studio-didattico`: la versione del template marca in grassetto la locuzione sul crescere per voci numerate, mentre la regola di stile che il template stesso prescrive vuole il corsivo per i termini densi e vieta il grassetto nella prosa. La versione di questo progetto è corretta e differisce per quella sola riga.
+
+Non aperta e non chiusa, perché il confronto non l'ha decisa. La gestione dei percorsi cross-disco nei tre strumenti tipografici, diagnosticata in MS-014: il confronto per occorrenze degli idiomi rilevanti dà lo stesso numero nelle due versioni, quindi l'aggiornamento non l'ha né introdotta né tolta. Va verificata con un caso minimo su due lettere di unità diverse prima di dichiararla in un verso o nell'altro, e il caso minimo è già descritto in MS-014.
+
+Criterio di completamento. Le due voci aperte risultano presenti nel template, verificate con un confronto e non con un ricordo, e questa voce si chiude dichiarando la data. La verifica non decisa produce invece un microstep con il suo esito.
+
+Perché non si fa da qui e subito. È una modifica a un altro repository, quindi è una decisione dell'utente su quel progetto, e va fatta aprendo una sessione là invece di scrivere da qui: la direzione di propagazione del blocco dell'ambiente è unidirezionale per scelta, e lo stesso principio vale a maggior ragione fra un progetto e il template da cui discende.
 ## PA-004 - Ispezionare il disco G: e il materiale EASE Focus 3.1.10 del workshop K-array
 
 Data di apertura: 2026-09-07. Stato: *aperta, bloccata*.

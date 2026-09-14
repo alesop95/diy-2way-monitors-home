@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-12 - La pipeline COM letta dalla fonte, il riallineamento al template e l'inventario di `_notes`
+
+Commit di partenza: 633c513.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-090, MS-091 e MS-092; `.claude/memory/decisions.md` con ADR-020; `docs/90-riferimenti/timeline-akabak-vacs.md` nella sezione concettuale su COM; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.3, poi propagato al gemello; `.claude/context/roadmap.md` con la direzione del report LaTeX; `.claude/PROJECT-SYSTEM.md`, `CLAUDE.md`, `docs/PENDING-ACTIONS.md` con PA-003 riscritta; ventinove file allineati dal template fra `.claude/` e `tools/`; `_notes` ripulita di due voci.
+
+Motivo: la sessione è ripartita dal microstep successivo, cioè la sottofase 8.3 sul limite delle pipeline COM, e durante il lavoro l'utente ha aggiunto due richieste, cioè verificare l'allineamento al template e ripulire `_notes` trasformando in documentazione ciò che merita di restare.
+
+*Sulla pipeline COM, il guadagno è venuto dall'avere letto la fonte invece dei menu.* Il file di aiuto compilato di AKABAK vive dentro il prefix e un file di aiuto di Windows è un archivio, quindi `7z x` lo apre su Linux senza aprire il programma: 1092 file estratti, due letti. Il capitolo autorevole dice più dell'email dell'autore su cui il progetto poggiava dal 2025, e la differenza non è di dettaglio: le alternative a COM sono due e non una, cioè gli appunti e i file su disco. Il progetto sceglie i file, ed è ADR-020, per riproducibilità, ispezionabilità dello stato intermedio, difesa dall'errore silenzioso di portare in VACS un risultato vecchio, e traccia della convergenza attraverso le molte iterazioni della fase 5. Ne è uscito anche il nome esatto dei menu, quindi la verifica in interfaccia è ora mirata invece che una ricerca a vista, ed è MS-090.
+
+*Sul template, il risultato rovescia quanto il progetto affermava.* `CLAUDE.md` dichiarava che qui vivessero le versioni più recenti degli strumenti tipografici: era vero al 2026-09-04 e falso dal 2026-09-09, perché il template ha lavorato nel frattempo. Il progetto era indietro su quattro strumenti su cinque e portava ventidue apostrofi orfani nei docstring, prodotti dal difetto che il template ha poi corretto con una funzione dedicata. Adottate le versioni del template le ventidue occorrenze sono zero. Dodici file nuovi e diciassette aggiornati, `PROJECT-SYSTEM.md` tornato identico, e soprattutto la regola `chat-non-e-memoria.md` finalmente istanziata qui: era nata da una direttiva data in questo progetto il 2026-09-09, era stata scritta nel template, e il progetto che l'aveva generata era l'unico a non averla. È MS-091.
+
+La lezione di metodo vale oltre il caso, e l'ho scritta nel microstep. Una divergenza dichiarata in un documento descrive un rapporto fra due cose, quindi resta vera soltanto finché entrambe stanno ferme, e invecchia peggio di qualunque altra affermazione perché nessuno la rilegge. La forma difendibile è dichiarare accanto ad essa la data del confronto.
+
+*Su `_notes`, ho rimosso soltanto ciò la cui perdita è dimostrabilmente nulla.* La cartella non è versionata, quindi una cancellazione non è recuperabile da git e il criterio non può essere che una cosa sembri obsoleta. Rimossi il `.docx` della scheda, che è l'uscita predefinita di uno strumento versionato e la cui rigenerazione ho provato prima di cancellare, e la cartella `tmp`, vuota. Restano in decisione dell'utente il documento sorgente, i due elenchi di backup da trentanove megabyte e la scheda composta a mano prima dello strumento: nessuno dei tre è riproducibile. Sui due elenchi ho accertato tre fatti che li riguardano, cioè che non contengono impronte ma solo dimensioni, che descrivono il backup generale della postazione e non questo progetto, e che nessun documento tracciato li cita. È MS-092.
+
 ## 2026-09-10 - Ripresa dopo il riavvio, licenza verificata, e il censimento del comando sbagliato
 
 Commit di partenza: b514c33, con il lavoro non committato del 2026-09-09 ancora sul disco; quel lavoro è stato committato durante la sessione come `d8ebf45`, che è quindi il commit di riferimento di questa voce.
