@@ -26,7 +26,7 @@ Tre casi che si è tentati di non scrivere e che invece vanno scritti sempre. Gl
 
 ## Satelliti tracciati
 
-Regole modulari sotto `.claude/rules/`: `interaction-style.md` da caricare sempre, più `git-commands-format.md`, `git-identity-and-repo.md`, `manual-screenshots.md`, `security-permissions.md`, `token-economy.md` e `web-sources-not-fetchable.md`.
+Regole modulari sotto `.claude/rules/`: `interaction-style.md` e `chat-non-e-memoria.md` da caricare sempre, più `git-commands-format.md`, `git-identity-and-repo.md`, `manual-screenshots.md`, `security-permissions.md`, `token-economy.md` e `web-sources-not-fetchable.md`. La seconda delle due da caricare sempre è la forma modulare e generale della prescrizione sul tracciamento integrale scritta qui sopra: nasce da una direttiva data in questo progetto il 2026-09-09, è stata scritta nel template e istanziata qui il 2026-09-12, ed è il motivo per cui quella prescrizione ora vive in un file caricabile invece che nella sola prosa di questo indice.
 
 Schede tecniche sotto `.claude/context/`: `STACK.md` per la catena di strumenti e gli script di manutenzione, `roadmap.md` per la direzione e le priorità, `current-work.md` per il fronte attivo.
 
@@ -65,7 +65,9 @@ git locale, identità `alesop95`, alias SSH `github-personal`, remoto `git@githu
 
 ## Standard
 
-Struttura standard `.claude/PROJECT-SYSTEM.md`, istanziata da `template-claude-developing`. Due divergenze da quel template sono volute e annotate nei file stessi: la negazione nel `.gitignore` che rende versionabili i modelli `_notes` sotto `.claude/templates/`, e l'uso delle versioni più recenti degli strumenti tipografici, che nel template vivono in `tools/` alla radice e non nel pacchetto di istanziazione. Entrambe sono da propagare all'indietro al template.
+Struttura standard `.claude/PROJECT-SYSTEM.md`, istanziata da `template-claude-developing` e riallineata il 2026-09-12, quando `PROJECT-SYSTEM.md` è tornato identico a quello del template, la regola `chat-non-e-memoria.md` è stata istanziata, due pacchetti di modelli mancanti sono stati portati qui e la catena tipografica è stata aggiornata alle versioni del template, che nel frattempo l'avevano superata. Il censimento e le sue conseguenze sono in MS-091.
+
+Restano due divergenze, e vanno in direzioni opposte. Verso il template, cioè da propagare all'indietro, la negazione nel `.gitignore` che rende versionabili i modelli `_notes` sotto `.claude/templates/`: nel template quel blocco è ancora escluso senza eccezione, quindi chi clona il template non riceve i propri modelli, ed è un difetto e non una scelta. Sempre verso il template, la correzione di stile nella skill `studio-didattico`, dove una locuzione è in grassetto invece che in corsivo contro la regola di stile che il template stesso prescrive. Verso questo progetto non resta nulla: l'affermazione precedente secondo cui qui vivessero le versioni più recenti degli strumenti tipografici era vera fino al 2026-09-09 e non lo è più, perché il template le ha aggiornate e ha sanato da sé lo sfasamento fra le sue due copie.
 
 ## Onestà del contenuto, che qui pesa più del solito
 

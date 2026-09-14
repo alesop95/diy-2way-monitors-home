@@ -67,7 +67,7 @@ python tools/fix-missing-accents.py .
 python tools/fix-dashes.py --ext .md,.tex,.py .
 ```
 
-Il secondo strumento ha una sua fase di lettura che vale la pena non saltare, perché' produce l'unico elenco che nessuno strumento potrà mai risolvere.
+Il secondo strumento ha una sua fase di lettura che vale la pena non saltare, perché produce l'unico elenco che nessuno strumento potrà mai risolvere.
 
 ```
 python tools/fix-missing-accents.py --autotest

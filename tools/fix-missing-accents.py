@@ -249,9 +249,18 @@ DOCSTRING = re.compile(r'"""(?:.|\n)*?"""')
 # Il candidato: parola intera, senza distinzione di maiuscole, non attaccata a trattini o
 # a caratteri di parola. Il trattino conta come confine perche' nei nomi di file compaiono
 # forme come identita-pokemon, che sono identificatori e non prosa.
+# L'apostrofo dopo la parola la esclude, ed e' la correzione del 2026-09-09. Una parola
+# scritta come perche' non ha l'accento mancante: ha l'accento reso con l'apostrofo,
+# che e' la convenzione di cui si occupa `fix-accents.py`. Senza questa esclusione i due
+# strumenti si sovrappongono nel verso peggiore, perche' questo accenta la vocale e
+# lascia l'apostrofo dov'era, producendo perche con l'acuto seguito da apostrofo: una
+# forma che in italiano non esiste, che nessuno dei due strumenti sapeva piu' cogliere
+# perche' la parola non finisce piu' con una lettera ASCII, e che ha corrotto in silenzio
+# trentasei punti dei file del template copiati in questo progetto piu' undici dei suoi
+# strumenti. La riparazione di cio' che e' gia' corrotto sta in `fix-accents.py`.
 def costruisci_regex(chiavi):
     alternative = "|".join(sorted(chiavi, key=len, reverse=True))
-    return re.compile(r"(?<![\w\-])(" + alternative + r")(?![\w\-])", re.I)
+    return re.compile(r"(?<![\w\-])(" + alternative + r")(?![\w\-'’])", re.I)
 
 
 SICURE_RE = costruisci_regex(SICURE)
