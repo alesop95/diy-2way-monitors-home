@@ -282,7 +282,7 @@ Il racconto completo, con gli script letti riga per riga e i due miei errori di 
 
 ## ADR-020 - Il trasferimento AKABAK verso VACS si imposta su `Files` e non su `Clipboard`
 
-Data: 2026-09-10. Stato: proposta, da promuovere ad accettata quando la verifica in interfaccia della sottofase 8.3 confermerà che l'opzione esiste in questa versione del programma.
+Data: 2026-09-10. Stato: accettata il 2026-09-14, quando la verifica in interfaccia ha confermato che l'opzione esiste e l'ha impostata. Il controllo si chiama `Spectrum way of output` e sta nella scheda `VACS` della finestra delle preferenze; il valore scelto si scrive come `SpectrumOutputType=3` in `AppData\Local\RDTeam\Akabak.ini`, accanto a `SpectrumOutputAsText=0` e a `SpectrumOutputFolder=` lasciata vuota, che significa cartella del progetto. Il racconto della verifica è MS-094.
 
 Contesto. Su Windows AKABAK consegna i risultati spettrali a VACS attraverso COM, in modo automatico e senza intervento dell'operatore. Wine implementa COM solo in parte e non copre questo caso, e la guida del programma dichiara esplicitamente che su Linux serve una alternativa. Fino a MS-090 il progetto credeva che l'alternativa fosse una sola, gli appunti di sistema, perché così l'autore aveva risposto in una email del 14 agosto 2025; la guida del prodotto ne documenta due, cioè `Clipboard` e `Files`.
 
