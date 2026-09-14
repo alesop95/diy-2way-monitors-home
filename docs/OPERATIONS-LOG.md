@@ -1818,6 +1818,26 @@ Verificato con: `ls` della cartella del pacchetto nel template, tre file creati;
 
 Esito: fatto per la creazione. Resta all'utente il commit nel template, che è un altro repository e la cui storia non è governata da questo progetto; la voce corrispondente di PA-003 è aggiornata di conseguenza e non chiusa, perché un pacchetto creato e non committato non è ancora propagato.
 
+### MS-099 - Wine crea il prefix ma non le cartelle che lo contengono, e la fase 7 non poteva funzionare
+
+Perimetro: diagnosi del fallimento del primo comando della sottofase 8.5, creazione della cartella `~/wineprefixes` sulla macchina, correzione della fase 7 della procedura, e correzione di una affermazione di MS-098 sullo stato del template.
+
+Legame con il progetto: serve la fase 4a, cioè la progettazione del crossover con la direttività in VituixCAD, che è il programma che decide come woofer e tweeter si sommano attorno alla frequenza di incrocio. Senza un prefix a 64 bit quel programma non si installa, quindi questo microstep è ciò che sblocca la sottofase 8.5.
+
+Il sintomo è stato `wine: chdir to /home/alesop95/wineprefixes/vituixcad64 : No such file or directory`, restituito da `wineboot -u` su un prefix che doveva essere creato in quel momento. Il messaggio è preciso e va letto come dice: Wine non stava cercando di creare la cartella, stava cercando di entrarci.
+
+La causa è che Wine crea la cartella del prefix ma non le cartelle che la contengono, e `~/wineprefixes` non esisteva affatto su questa macchina, perché è il primo prefix che vi si crea dopo la reinstallazione: l'unico esistente, `~/.wine`, sta direttamente nella cartella dell'utente. La verifica è stata fatta con un prefix usa e getta invece che ragionando: creata la sola cartella padre, lo stesso comando risponde `wine: created the configuration directory` e produce `dosdevices` e `drive_c`. Il prefix di prova è stato poi rimosso.
+
+*Il difetto non era del mio comando soltanto, ed è la parte che vale.* La fase 7 della procedura crea i quattro prefix con quattro righe di `winecfg`, e nessuna delle precedenti crea `~/wineprefixes`. Chi eseguisse la fase 7 su una macchina ricostruita da zero fallirebbe al primo comando esattamente come è fallito questo, e con lo stesso messaggio, che non nomina la causa. È la stessa famiglia di difetti che questo progetto ha già incontrato più volte, cioè un comando prescritto che non può riuscire nell'ambiente in cui la procedura dice di eseguirlo, ed è l'ennesima conferma che una procedura non eseguita è una procedura non verificata. La fase 7 porta ora la creazione della cartella come primo passo, con la ragione accanto.
+
+*Una correzione a MS-098, che ho scritto ieri sulla base di una lettura parziale.* Avevo registrato che il template avesse ventuno file modificati e quattro non tracciati, tutti non committati, e ne avevo tratto che chi lo clonasse oggi non riceverebbe nulla di quel lavoro. Il `git status` completo, letto dall'utente, mostra un dato che il mio non mostrava: il template non è su `main` ma sul ramo `pacchetto-allineamento`, e quel ramo è allineato con il proprio remoto. La correzione ha due parti. La prima è che il lavoro non è appeso a un disco solo per la parte già committata su quel ramo, perché il ramo è pubblicato. La seconda è che i ventuno file modificati restano modifiche del solo albero di lavoro, quindi per essi l'affermazione resta vera. Ne discende una conseguenza in più che non avevo visto: anche quando quei file saranno committati, resteranno su un ramo di lavoro, quindi non raggiungeranno chi clona il template finché quel ramo non sarà unito al principale. La propagazione di PA-003 non si chiude con un commit ma con una unione.
+
+Verificato con: lettura del messaggio di errore, che parla di `chdir` e non di creazione; `ls -ld` su `~/wineprefixes`, assente; creazione della sola cartella padre e riprova con un prefix usa e getta, che risponde `created the configuration directory` e produce `dosdevices` e `drive_c`; rimozione del prefix di prova; lettura della fase 7 della procedura, che crea quattro prefix e non crea mai la cartella che li contiene; `git status` del template fornito dall'utente, che dichiara il ramo `pacchetto-allineamento` allineato con origin.
+
+Va annotato che la prova senza display ha prodotto tre righe `err:ole` sul marshalling delle interfacce: non sono guasti del prefix ma la conseguenza dell'assenza di una sessione grafica, e il prefix è stato creato correttamente lo stesso.
+
+Esito: fatto. La sottofase 8.5 è sbloccata e il suo primo comando può essere rilanciato senza modifiche.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

@@ -2,6 +2,16 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14, quinta parte - Il primo comando della 8.5 fallisce, e la fase 7 aveva lo stesso difetto
+
+Commit di partenza: e45752e.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-099; `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 7, propagato al gemello; `docs/PENDING-ACTIONS.md` con PA-003 precisata. Sulla macchina: creata `~/wineprefixes`.
+
+Esito. Wine crea la cartella del prefix ma non quelle che la contengono, e `~/wineprefixes` non esisteva perché l'unico prefix della macchina, `~/.wine`, sta direttamente nella cartella dell'utente. Il difetto non era del mio comando soltanto: la fase 7 della procedura crea quattro prefix e non crea mai la cartella che li contiene, quindi sarebbe fallita al primo comando con un messaggio che parla di accesso e non di creazione. La fase 7 porta ora quel passo con la ragione accanto.
+
+Corretta anche una affermazione di MS-098, scritta ieri su una lettura parziale: il template non è su `main` ma sul ramo `pacchetto-allineamento`, allineato con il remoto. Ne segue che la propagazione di PA-003 non si chiude con un commit ma con una unione, perché anche una volta committati quei file resterebbero su un ramo di lavoro.
+
 ## 2026-09-14, quarta parte - Il registro non diceva a che cosa servisse, e il pattern entra nel template
 
 Commit di partenza: fe64db6, con MS-095 e MS-096 non ancora committati.
