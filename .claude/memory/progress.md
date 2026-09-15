@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-14, ottava parte - EASE Focus installato e bloccato su GDI+, sessione chiusa
+
+Commit di partenza: 84525ce.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-108 e MS-109; `_notes/resume-prompt.md`, nuovo; schede di stato.
+
+Esito. EASE Focus 3.1.260 è installato ma non si apre, e il blocco è stato circoscritto in due passaggi invece che in uno. Con il solo Mono falliva con `ArgumentException` dentro il costruttore di `System.Drawing.Icon`; installato `dotnet48` il messaggio cambia in `ExternalException: A generic error occurred in GDI+` mentre la catena delle chiamate resta identica. Il framework era quindi necessario ma non sufficiente, e la causa non è l'implementazione .NET della grafica ma GDI+ come Wine lo fornisce.
+
+Va registrato che questo rovescia la diagnosi che avevo scritto in MS-108, dove avevo attribuito il fallimento all'incompletezza della libreria grafica di Mono: era plausibile e l'esperimento l'ha smentita. Il valore dell'aver installato una dipendenza alla volta si vede qui: installando in blocco tutte e quattro quelle prescritte dalla documentazione si sarebbe ottenuto lo stesso fallimento senza sapere quale componente avesse cambiato qualcosa.
+
+Il candidato successivo è dichiarato come ipotesi e non come piano: sostituire GDI+ di Wine con la libreria originale di Windows tramite `winetricks -q gdiplus`. Se il programma si apre la causa era quella, se fallisce ancora la diagnosi riprende dalla catena delle chiamate.
+
+La sessione si chiude qui e la ripresa è preparata in `_notes/resume-prompt.md`, con lo stato raggiunto, il blocco in tre righe, i comandi pronti e il prompt da incollare alla riapertura.
+
 ## 2026-09-14, settima parte - Sottofase 8.5 chiusa: VituixCAD funziona
 
 Commit di partenza: 407ac4f.
