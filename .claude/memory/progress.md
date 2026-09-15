@@ -2,7 +2,23 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
-## 2026-09-15 - EASE Focus si apre: GDI+ era la causa, e i 451 MB non vanno copiati
+## 2026-09-15, seconda parte - L'interfaccia guidata da remoto, e il blocco nuovo sull'importazione dei GLL
+
+Commit di partenza: l'ultimo fatto a mano dopo la prima parte.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-111 e MS-112; `docs/10-ambiente/wine-troubleshooting.md` con una scheda nuova sull'automazione dell'interfaccia sotto Wayland; `docs/10-ambiente/wine-corredo-progetto-stanza.md` e `docs/10-ambiente/installazione-pulita-26-04.md`, corretti sul ruolo della cartella dei GLL e sul blocco corrente; schede di stato e `_notes/resume-prompt.md`.
+
+Esito della prima metà. Le due verifiche in interfaccia che restavano sulla sottofase 8.6 sono state rese eseguibili da remoto, cosa che prima si dava per impossibile senza la presenza dell'utente davanti allo schermo. `xdotool` da solo non basta, perché la sessione è Wayland e le finestre di Wine vivono dentro XWayland: le interrogazioni rispondono tutte come previsto e l'iniezione di clic e tasti non arriva, che è un fallimento che riporta successo. La via che funziona è un server X privato con `Xvfb`, dove non esiste compositore a possedere l'input, e lì la prima azione ha funzionato al primo colpo. È MS-111, con due trappole registrate, cioè il comando che uccide la propria shell e gli acceleratori da tastiera incostanti.
+
+Esito della seconda metà, che è un blocco e va detto come tale. L'ipotesi di MS-110 sul database è confermata: il catalogo dei modelli si alimenta per importazione e non copiando file, e la cartella su `Z:` è la sorgente e non la posizione di lettura. L'importazione però rifiuta ogni file provato, compreso un modello che l'installatore stesso del programma ha depositato nel prefix, il che esclude l'età del database e la versione del formato. Quattro cause sono state escluse per misura, cioè un modulo mancante, il servizio di database, i file e la libreria dei certificati. La traccia del caricamento delle librerie isola un solo evento pertinente, il provider di firma digitale `dssenh.dll` che rifiuta i flag richiesti, ed è una ipotesi forte ma non una prova. È MS-112.
+
+Esito della terza parte, che è un ritiro. Il provider è stato sostituito con la libreria originale di Windows presa dalla postazione, in entrambe le architetture e con un override dato sulla riga di comando per poter annullare l'esperimento: il rifiuto di flag scompare, quindi la sostituzione ha funzionato come sostituzione, ma l'importazione fallisce identica. La crittografia è quindi esclusa per misura e l'ipotesi di MS-112 è ritirata, con il prefix riportato allo stato precedente. È MS-113, dove sono registrate anche due osservazioni non cercate, cioè che la preferenza sul riquadro della newsletter non è stabile fra un avvio e l'altro e che il programma non offre alcun registro diagnostico.
+
+Il candidato ora più forte è la versione di Wine, che sulla macchina è quella dei repository della distribuzione invece dei pacchetti ufficiali di WineHQ. È una decisione sull'ambiente e non una prova rapida, perché le due provenienze non si mescolano, quindi va posta all'utente prima di essere eseguita.
+
+Una modifica di convenzione, chiesta dall'utente il 2026-09-15 e resa vincolante invece che ricordata: i comandi git per un repository diverso da quello aperto nella sessione si danno sempre con il proprio `cd` in testa al blocco. La regola `.claude/rules/git-commands-format.md` lo prescrive ora esplicitamente.
+
+## 2026-09-15, prima parte - EASE Focus si apre: GDI+ era la causa, e i 451 MB non vanno copiati
 
 Commit di partenza: dd3d630.
 
