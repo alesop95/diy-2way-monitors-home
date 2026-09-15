@@ -2083,6 +2083,62 @@ Verificato con: elenco delle due viste di `Program Files` nel prefix, con i due 
 
 Esito: fatto per l'installazione. Restano aperti il primo avvio, la lettura del percorso dei GLL e la decisione sull'installatore separato del servizio.
 
+### MS-108 - Anche EASE Focus rifiuta Mono, e il modo di fallire è diverso ma la causa è la stessa famiglia
+
+Perimetro: primo avvio di EASE Focus nel prefix `~/wineprefixes/easefocus64` con il solo Mono installato, lettura dell'eccezione, e avvio dell'installazione di `dotnet48` in quel prefix. Non è stato installato nient'altro di quanto la pagina del corredo prescrive, e la ragione è dichiarata sotto.
+
+Legame con il progetto: serve la fase 3 e la fase 8. EASE Focus simula la copertura acustica di diffusori a partire dai modelli GLL dei costruttori, quindi serve come termine di confronto per la stanza e, a monitor costruito, per confrontare il proprio diffusore con prodotti commerciali.
+
+Il programma non si apre e l'eccezione è questa.
+
+```
+System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]
+  at s4dth.eqpe.nwrv (System.String tsnb, System.Byte[] tsnc)
+  at ef.yxzl.tkqc (System.String vybb)
+  ...
+  at ef.yyaj..ctor (System.Drawing.Icon vybb)
+```
+
+*Come si legge.* La catena delle chiamate termina nel costruttore di un oggetto `System.Drawing.Icon`, cioè nel codice che carica una icona, e l'errore viene da GDI+[^1], che è il sottosistema grafico di Windows incaricato del disegno. Il programma quindi non fallisce facendo acustica: fallisce costruendo la propria interfaccia, prima ancora di mostrarla.
+
+I nomi delle classi e dei metodi sono di nuovo incomprensibili, cioè `s4dth.eqpe.nwrv` e `ef.yxzl.tkqc`, il che dice che anche questo programma è passato per un offuscatore, come VituixCAD.
+
+*Perché è la stessa famiglia di causa, pur essendo un errore diverso.* In VituixCAD Mono aveva rifiutato il codice intermedio, con `InvalidProgramException`; qui il codice viene eseguito e fallisce dentro l'implementazione di una libreria. La differenza è reale e vale spiegarla, perché altrimenti sembra un difetto senza rapporto con il precedente. Mono non è soltanto un traduttore di codice intermedio: è anche una reimplementazione della libreria standard di .NET, e la parte grafica di quella libreria, `System.Drawing`, è storicamente la meno completa, perché poggia su una riscrittura di GDI+ invece che su quella di Microsoft. Il risultato è che un programma che usi funzioni grafiche poco comuni, come il caricamento di una icona da un vettore di byte, incontra un comportamento diverso da quello atteso.
+
+Il denominatore comune è quindi che Mono è una implementazione alternativa, non la stessa cosa in un pacchetto diverso, e che uno scarto di implementazione si manifesta là dove il programma esce dai sentieri battuti, per offuscamento nel primo caso e per uso della grafica nel secondo.
+
+*La decisione, e perché non si installa tutto ciò che la documentazione elenca.* La pagina del corredo prescrive per questo prefix `dotnet48`, `corefonts`, `vcrun2013` e `vcrun2019`. È stato installato il solo `dotnet48`, e la ragione è di metodo, non di risparmio: `dotnet48` risponde a un difetto misurato, cioè questa eccezione, mentre degli altri tre non esiste ancora alcuna prova che servano. Installarli adesso renderebbe impossibile sapere quale fosse necessario, e produrrebbe una documentazione che elenca dipendenze senza saper dire perché, che è precisamente la situazione da cui questo progetto sta uscendo.
+
+La ragione per cui gli altri tre sono comunque plausibili va però registrata, perché non è arbitraria: la stessa pagina spiega che alcuni moduli GLL portano librerie proprie compilate con compilatori diversi, quindi i redistributabili di Visual C++ diventano sospetti quando un GLL specifico non si carica. È un difetto che si manifesterà, se si manifesterà, soltanto quando il database dei GLL sarà in posizione e si proverà ad aprirne uno, cioè in un microstep successivo e non in questo.
+
+Verificato con: avvio del programma nel prefix con il solo Mono installato, che restituisce l'eccezione riportata; lettura della catena delle chiamate fino al costruttore di `System.Drawing.Icon`; avvio di `winetricks -q dotnet48` su questo prefix in modo non interattivo, con l'uscita registrata su file.
+
+Esito: aperto. L'installazione del framework è in corso e il suo esito va verificato riavviando il programma.
+
+[^1]: *GDI+*, Graphics Device Interface Plus - il sottosistema grafico di Windows per il disegno bidimensionale, le immagini e i caratteri; Mono lo reimplementa in una libreria propria, che è la parte della sua libreria standard storicamente meno completa.
+
+### MS-109 - Per EASE Focus il framework era necessario ma non sufficiente: il blocco è GDI+ di Wine
+
+Perimetro: secondo avvio di EASE Focus nel prefix `~/wineprefixes/easefocus64` dopo l'installazione di `dotnet48`, lettura della nuova eccezione, e confronto con quella prodotta da Mono. Nessun altro intervento.
+
+Legame con il progetto: serve la fase 3 e la fase 8, cioè il confronto con modelli GLL di diffusori commerciali. Finché il programma non si apre, quel confronto non è possibile.
+
+*Che cosa è cambiato, e che cosa no.* L'installazione del framework ha prodotto un effetto misurabile: l'eccezione non è più la stessa. Con Mono era `System.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]`; con .NET 4.8 è `System.Runtime.InteropServices.ExternalException: A generic error occurred in GDI+`. Sono due messaggi diversi prodotti da due implementazioni diverse della stessa libreria, il che conferma che il runtime è davvero cambiato e che `dotnet48` è stato installato correttamente.
+
+Ciò che non è cambiato è la catena delle chiamate, identica fino all'ultimo elemento: il programma fallisce dentro il costruttore di `System.Drawing.Icon`, chiamato da `ef.yyce.Main()`, cioè nel punto in cui costruisce la propria icona prima ancora di mostrare qualunque finestra.
+
+*La conclusione, e perché rovescia la diagnosi di MS-108.* In MS-108 avevo attribuito il fallimento all'incompletezza della libreria grafica di Mono, ed era una spiegazione plausibile che l'esito ha smentito: sostituita la libreria di Mono con quella di Microsoft, il fallimento resta nello stesso punto. La causa non è quindi l'implementazione .NET della grafica ma lo strato sottostante, cioè GDI+ come Wine lo fornisce. Il framework di Microsoft non porta con sé un proprio GDI+: si appoggia a quello del sistema, che qui è la reimplementazione di Wine.
+
+Va detto con chiarezza che `dotnet48` non è stato inutile: senza di esso il programma falliva comunque, quindi era necessario. Non era però sufficiente, e la distinzione fra necessario e sufficiente è precisamente ciò che l'esperimento ha misurato. Questo è anche il motivo per cui installare in blocco tutte le dipendenze prescritte sarebbe stato un errore di metodo: avrebbe prodotto lo stesso fallimento senza dire quale componente avesse cambiato qualcosa e quale no.
+
+*Il candidato successivo, dichiarato come ipotesi.* Il rimedio standard per un fallimento di GDI+ sotto Wine è sostituire la reimplementazione di Wine con la libreria originale di Windows, operazione che `winetricks` esegue con il verbo `gdiplus`. È una ipotesi ragionevole e non una certezza, e va provata come tale: se il programma si apre, la causa era quella; se fallisce ancora, la causa sta più a fondo e la diagnosi riprende dalla catena delle chiamate. Non è stata provata in questa sessione perché la sessione si chiude qui.
+
+*Una nota sul rumore, che ora è classificato.* L'avvio ha prodotto di nuovo centinaia di righe che nominano `mscorsvw.exe`, cioè il servizio di precompilazione di .NET, esattamente come MS-106 aveva previsto per il prefix successivo. La previsione si è avverata e la classificazione scritta là vale qui senza ripeterla: è lavoro una tantum che si esaurisce da sé e non va interrotto.
+
+Verificato con: avvio del programma nel prefix con `dotnet48` installato, che restituisce `ExternalException: A generic error occurred in GDI+` invece della `ArgumentException` di Mono; confronto delle due catene di chiamate, identiche fino al costruttore di `System.Drawing.Icon`; presenza delle righe di `mscorsvw.exe` attese dopo una installazione nuova del framework.
+
+Esito: bloccato. Dipende da una prova non ancora eseguita, cioè la sostituzione di GDI+ con la libreria originale di Windows tramite `winetricks -q gdiplus` nel prefix `~/wineprefixes/easefocus64`, seguita da un nuovo avvio.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
