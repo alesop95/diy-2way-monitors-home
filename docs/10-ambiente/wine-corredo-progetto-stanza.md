@@ -99,32 +99,39 @@ C'è un punto da verificare sul campo e non da assumere: ARTA è un programma di
 
 Qui l'ispezione ha corretto un errore che era passato nella procedura: il documento sorgente indicava un installer chiamato `EASE_Focus_Setup_v3.1.260.exe`, e quel file non esiste. La cartella contiene un installer InstallShield composto da `setup.exe`, `EASE Focus 3.msi`, `Data1.cab`, `ISSetup.dll` e `Setup.ini`. Ne segue che l'installazione va lanciata da dentro quella cartella e non copiando il solo eseguibile altrove, perché `setup.exe` cerca gli altri file accanto a sé.
 
-L'ispezione ha anche rivelato un passo di installazione che il piano non prevedeva. Accanto all'installer principale ci sono due cartelle, `AFMGDatabaseService` e `AFMGDatabaseService_x64`, ciascuna con il proprio installer MSI. È il servizio di database introdotto con la linea 3.1, quello che nella tabella del changelog era valutato di impatto alto perché evita di scaricare a mano ogni GLL dal sito del costruttore. Va installato, e nella variante a 64 bit dato che il prefix è a 64 bit.
+L'ispezione ha anche rivelato un passo di installazione che il piano non prevedeva. Accanto all'installer principale ci sono due cartelle, `AFMGDatabaseService` e `AFMGDatabaseService_x64`, ciascuna con il proprio installer MSI. È il servizio di database introdotto con la linea 3.1, quello che nella tabella del changelog era valutato di impatto alto perché evita di scaricare a mano ogni GLL dal sito del costruttore.
+
+Quel passo non va però eseguito, e la correzione è misurata e non dedotta. L'installatore principale installa già il servizio, in `C:\Program Files\AFMG\AFMG Database Service`, ed è il programma stesso ad avviarlo quando parte: otto secondi dopo il primo avvio il processo `AFMGDatabaseService.exe` compare accanto a quello del programma, con la propria riga di comando, e il programma non lamenta alcuna assenza di database. Eseguire a mano l'installatore separato sarebbe quindi lavoro inutile su un componente già presente. La misura è in MS-110, e la variante a 64 bit resta comunque quella giusta per la ragione accertata in MS-107, cioè che il servizio è un eseguibile nativo a 64 bit mentre il programma è a 32.
 
 ```bash
 WINEARCH=win64 WINEPREFIX=~/wineprefixes/easefocus64 winecfg
-WINEPREFIX=~/wineprefixes/easefocus64 winetricks -q dotnet48 corefonts vcrun2013 vcrun2019
+WINEPREFIX=~/wineprefixes/easefocus64 winetricks -q dotnet48
+WINEPREFIX=~/wineprefixes/easefocus64 winetricks -q gdiplus
 cd ~/electroacoustics/progetto-stanza/room/EASE_Focus_v3.1.260
-WINEPREFIX=~/wineprefixes/easefocus64 wine setup.exe
-cd AFMGDatabaseService_x64
 WINEPREFIX=~/wineprefixes/easefocus64 wine setup.exe
 ```
 
-Sulle dipendenze, il documento sorgente indicava requisiti più larghi di quanto la documentazione ufficiale lasci intendere, cioè .NET Framework 4.0 o superiore e i redistributable di Visual C++ almeno nelle versioni 2010, 2013 e 2015, perché alcuni moduli GLL portano DLL proprie compilate con quei compilatori. I verbi di winetricks sopra coprono il caso; se un GLL specifico non si carica, il redistributable mancante è il primo sospetto.
+Sulle dipendenze la pagina diceva più di quanto sapesse, e il 2026-09-15 la lista è stata divisa in due parti che vanno tenute distinte. Le dipendenze misurate sono due: `dotnet48`, senza il quale il programma fallisce, e `gdiplus`, cioè la libreria grafica originale di Windows al posto della reimplementazione di Wine, senza la quale il programma fallisce comunque. La seconda non era prevista da nessuna delle fonti e si è scoperta soltanto perché il fallimento è stato letto invece che aggirato installando tutto: il racconto sta in MS-108, MS-109 e MS-110.
 
-Un avvertimento sul servizio di database. Un servizio Windows, sotto Wine, non gira come servizio di sistema ma come processo dentro il prefix, e la sua esecuzione dipende da `wineserver`. Se il programma lamenta l'assenza del database, la verifica è che il servizio sia stato installato in quel prefix e non in un altro. È un punto che va provato sul campo e che al momento non è verificato.
+Le dipendenze soltanto plausibili sono le altre tre che il documento sorgente elencava, cioè `corefonts`, `vcrun2013` e `vcrun2019`. Non sono installate e la loro necessità non è assunta, perché nessun difetto osservato le chiama in causa. La ragione per cui restano plausibili non è però arbitraria, ed è verificabile nel pacchetto dei GLL: 26 dei suoi 221 file sono librerie `.dll` del costruttore, compilate con compilatori diversi, quindi il redistributable mancante è il primo sospetto quando un modello specifico non si carica, e quello è il momento in cui installarli uno per volta invece che tutti insieme.
+
+Un avvertimento sul servizio di database, che il 2026-09-15 è passato da previsione a fatto. Un servizio Windows, sotto Wine, non gira come servizio di sistema ma come processo dentro il prefix, e la sua esecuzione dipende da `wineserver`: la ricerca nel registro del prefix, in MS-107, non ha infatti trovato alcun servizio di sistema registrato, il che sembrava un difetto e non lo era. Il programma lo avvia da sé come processo ordinario, e la riga di comando osservata dice anche che cos'è: `AFMGDatabaseService.exe --smallfiles --dbpath "C:\ProgramData\AFMG\AFMG Database Service" --port 27072 --bind_ip 127.0.0.1`, cioè una istanza di MongoDB che ascolta soltanto da dentro la macchina.
+
+Ne discende una conseguenza sul database dei GLL che è ancora una ipotesi e va trattata come tale: se il catalogo vive in una base di dati a documenti, alimentarlo è importarvi i modelli e non copiarli in una cartella, ed è plausibile che serva a questo l'eseguibile `AFMGDatabaseUtility.exe` installato accanto al servizio. Si decide in interfaccia, al primo caricamento di un modello.
 
 ### Il database GLL del 2016
 
-Sono dati e non un programma: 221 file, di cui 174 con estensione `.gll`, per 451 MB. Vanno copiati nella cartella che EASE Focus usa per cercarli, che dentro il prefix corrisponde a un percorso sotto i documenti dell'utente.
+Sono dati e non un programma: 221 file, di cui 174 con estensione `.gll`, 26 `.dll` e 21 `.bin`, per 471.669.804 byte misurati dall'interno del prefix.
+
+La prescrizione di copiarli dentro il prefix, che questa pagina portava fino al 2026-09-15, va ritirata. Wine mappa l'unità `Z:` sulla radice del filesystem Linux, quindi la cartella è già visibile al programma dove si trova, senza copiare nulla: il `dir` eseguito da `cmd` dentro il prefix ne conta tutti e 221 i file. Una copia sarebbe mezzo gigabyte occupato due volte, e sarebbe anche una seconda origine da tenere allineata alla prima. È la stessa lezione di MS-095, dove gli esempi di AKABAK erano già nel prefix e una seconda copia sarebbe stata dannosa invece che ridondante.
+
+Va detto con precisione che cosa è verificato e che cosa no, perché la differenza decide se questa sezione è finita. È verificata la visibilità della cartella dall'interno del prefix; non è ancora verificato che il programma carichi un modello da quel percorso, il che richiede una prova in interfaccia. Il comando qui sotto stampa il percorso nella forma che il programma si aspetta, da incollare nella sua finestra di apertura.
 
 ```bash
-mkdir -p ~/wineprefixes/easefocus64/drive_c/users/$USER/Documents/EASE\ Focus\ 3/GLL
-cp -r ~/electroacoustics/progetto-stanza/room/EASE_Focus_3_GLL_Database_2016_10_11/* ~/wineprefixes/easefocus64/drive_c/users/$USER/Documents/EASE\ Focus\ 3/GLL/
-ls ~/wineprefixes/easefocus64/drive_c/users/$USER/Documents/EASE\ Focus\ 3/GLL | wc -l
+WINEPREFIX=~/wineprefixes/easefocus64 winepath -w ~/electroacoustics/progetto-stanza/room/EASE_Focus_3_GLL_Database_2016_10_11
 ```
 
-Il dettaglio che fa perdere tempo se non lo si sa, già registrato nella pagina dei programmi: alcuni costruttori distribuiscono un `.gll` accompagnato da file `.dll` e `.bin`, e i tre devono restare nella stessa cartella o il modulo non si carica. Il conteggio di 221 file contro 174 GLL è precisamente la misura di quanti file di accompagnamento ci sono, e spiega perché la copia deve essere dell'intera cartella e non selettiva sui soli `.gll`.
+Il dettaglio che fa perdere tempo se non lo si sa, già registrato nella pagina dei programmi: alcuni costruttori distribuiscono un `.gll` accompagnato da file `.dll` e `.bin`, e i tre devono restare nella stessa cartella o il modulo non si carica. Il conteggio di 221 file contro 174 GLL è precisamente la misura di quanti file di accompagnamento ci sono. Con la copia ritirata l'avvertenza non perde valore ma cambia bersaglio: vale per chiunque sia tentato di portarsi altrove un singolo modello, e vale per la scelta di lasciare la cartella intatta dov'è invece di riorganizzarla.
 
 ### EASE Focus 3.0.18
 
@@ -185,7 +192,7 @@ Il consiglio operativo che ne deriva è di non dichiarare l'architettura `i386` 
 |---|---|---|---|
 | `~/wineprefixes/akabak32` | **32 bit** | Akabak 3, VACS a 32 bit | nessuna: la configurazione funzionante non ha winetricks, .NET né corefonts |
 | `~/wineprefixes/vituixcad64` | 64 bit | VituixCAD 2 | `dotnet48`, `corefonts` |
-| `~/wineprefixes/easefocus64` | 64 bit | EASE Focus 3.1.260, servizio database AFMG | `dotnet48`, `corefonts`, `vcrun2013`, `vcrun2019` |
+| `~/wineprefixes/easefocus64` | 64 bit | EASE Focus 3.1.260, servizio database AFMG | `dotnet48` e `gdiplus`, misurate; `corefonts`, `vcrun2013` e `vcrun2019` non installate |
 | `~/wineprefixes/arta64` | 64 bit | ARTA 1.7.1 | `vcrun2019`, `corefonts` |
 | `~/wineprefixes/ramsete32` | 32 bit, condizionato | Ramsete 27b | `vb6run`, `corefonts` |
 

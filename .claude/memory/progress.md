@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-15 - EASE Focus si apre: GDI+ era la causa, e i 451 MB non vanno copiati
+
+Commit di partenza: dd3d630.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-110; `docs/10-ambiente/wine-corredo-progetto-stanza.md`, `docs/10-ambiente/installazione-pulita-26-04.md` e `docs/10-ambiente/wine-troubleshooting.md`, che porta una scheda nuova sul fallimento dentro `System.Drawing`; `.claude/memory/index.md`, `.claude/context/current-work.md` e `.claude/context/roadmap.md`, riallineate al commit corrente; `_notes/resume-prompt.md`.
+
+Esito. L'ipotesi lasciata aperta da MS-109 era giusta: installato `gdiplus` nel prefix, EASE Focus 3.1.260 si apre. La catena delle dipendenze di questo programma sotto Wine è quindi misurata invece che ereditata, ed è `dotnet48` più `gdiplus`, mentre le altre tre prescritte dalla documentazione restano non installate e non assunte.
+
+Tre accertamenti sono arrivati insieme all'avvio e nessuno era previsto in questa forma. Il primo risolve la domanda aperta in MS-107: l'installatore separato del servizio di database è superfluo, perché il programma avvia il servizio da sé otto secondi dopo la partenza. Il secondo è che quel servizio è una istanza di MongoDB, creata vuota al primo avvio e legata al solo indirizzo locale, il che rende plausibile che il catalogo dei GLL voglia una importazione invece di una cartella, e questa resta una ipotesi da decidere in interfaccia. Il terzo è che i 451 MB del database dei GLL non vanno copiati affatto, perché il prefix mappa `Z:` sulla radice del filesystem e la cartella è già visibile dov'è, con tutti e 221 i suoi file contati da dentro il prefix.
+
+Un residuo va saputo riconoscere: l'elenco delle finestre riporta anche `Wine Debugger` e `Program Error`, che appartengono all'istanza fallita ieri e viva da oltre ventitré ore, non all'avvio di oggi.
+
+La sottofase 8.6 non si chiude qui. Restano due verifiche che richiedono la presenza dell'utente davanti allo schermo, cioè il caricamento di un modello GLL dal percorso su `Z:` e l'osservazione di come il programma tratti il proprio database.
+
 ## 2026-09-14, ottava parte - EASE Focus installato e bloccato su GDI+, sessione chiusa
 
 Commit di partenza: 84525ce.
