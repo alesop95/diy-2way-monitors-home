@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: 84525ce
+last-verified-commit: dd3d630
 ---
 
 # Lavoro corrente
@@ -20,6 +20,8 @@ Ricostruzione dell'ambiente sulla macchina reinstallata, dal 2026-09-09.
 L'installazione è compiuta e verificata, quindi il fronte non è più documentale ma operativo, e si svolge sulla macchina via `ssh studio`. Lo stato di partenza è fotografato in `docs/10-ambiente/setup-macchina-2026-09.md`, che è anche il documento dove la cronologia e il razionale del setup vanno tenuti aggiornati mano a mano.
 
 Definizione di finito per questo fronte. La catena audio verificata per quanto è verificabile senza acquisti, cioè i parametri di avvio e i limiti realtime, che sono già a posto, più i dispositivi presenti visti in ingresso e in uscita con una riproduzione di prova che si sente. L'ambiente Wine ricostruito con l'architettura `i386` dichiarata prima dell'installazione di Wine, per ADR-016. Akabak e VACS funzionanti in un prefix a 32 bit con la licenza valida: raggiunto il 2026-09-09 e verificato il 2026-09-10, e per una via diversa da quella prevista, cioè senza reinstallare e senza reinserire il codice. Il corredo `Progetto stanza` installato secondo le sottofasi da 8.5 a 8.9.
+
+Stato al 2026-09-15. La sottofase 8.6 è aperta e non più bloccata: EASE Focus 3.1.260 si apre nel prefix `~/wineprefixes/easefocus64` una volta sostituito GDI+ di Wine con la libreria originale di Windows, quindi le dipendenze misurate del programma sono `dotnet48` e `gdiplus` e non le quattro che la documentazione elencava. Restano da fare in interfaccia, e quindi con l'utente davanti allo schermo della macchina, il caricamento di un modello GLL e l'osservazione di come il programma tratti il proprio database; il database dei GLL non va copiato dentro il prefix, perché `Z:` lo rende già visibile dov'è. Il racconto è in MS-110.
 
 Bloccato da una decisione e non da una condizione fisica, e la differenza è emersa il 2026-09-09. Sulla macchina c'è la sola scheda integrata `ALC887-VD`, e l'interfaccia esterna che i documenti dichiaravano come presente non appartiene a questo progetto: il ritiro è in MS-079. Quale interfaccia acquisire è una scelta condivisa con il progetto gemello di home recording, con due vincoli fissati dall'utente, cioè dispositivo di classe audio senza driver proprietari e capacità di reggere anche le misure della fase 8. Da quella scelta dipende quella del microfono, e l'ordine non è invertibile.
 

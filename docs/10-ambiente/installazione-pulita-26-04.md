@@ -627,32 +627,34 @@ Il primo è il nome dell'installer. Il sorgente indicava `EASE_Focus_Setup_v3.1.
 
 Il secondo è un passo che mancava del tutto. Accanto all'installer principale ci sono `AFMGDatabaseService` e `AFMGDatabaseService_x64`, due installer MSI distinti: è il servizio di database che la tabella del changelog nello stesso documento valutava di impatto alto, perché evita di scaricare a mano ogni GLL dal sito del costruttore.
 
-Va però verificato prima di essere eseguito, perché l'esecuzione del 2026-09-14 ha mostrato che l'installatore principale installa già il servizio, nella vista a 64 bit, e ne scrive la configurazione nel registro; ciò che non risulta registrato è il servizio di sistema, il che è coerente con l'avvertenza in fondo a questa sottofase. Se il programma non lamenta l'assenza del database, l'installatore separato è ridondante. Il racconto è in MS-107.
+Quel passo non va eseguito, e la verifica che lo esclude è stata fatta il 2026-09-15. L'esecuzione del 2026-09-14 aveva già mostrato che l'installatore principale installa da sé il servizio, nella vista a 64 bit, e ne scrive la configurazione nel registro senza registrare alcun servizio di sistema, il che è coerente con l'avvertenza in fondo a questa sottofase; restava da vedere se il programma ne lamentasse l'assenza. Non la lamenta, e il motivo è che avvia il servizio da sé: otto secondi dopo il primo avvio il processo `AFMGDatabaseService.exe` compare accanto a quello del programma. L'installatore separato è quindi ridondante e le due righe che lo eseguivano sono state rimosse dal blocco qui sotto. Il racconto è in MS-107 e MS-110.
+
+Va aggiunta invece una dipendenza che nessuna fonte prevedeva e che senza di essa il programma non parte affatto, cioè `gdiplus`, la libreria grafica originale di Windows in sostituzione della reimplementazione di Wine. Il programma falliva nel costruttore della propria icona prima di mostrare qualunque finestra, prima con Mono e poi con .NET 4.8, e la seconda volta ha dimostrato che il framework era necessario ma non sufficiente. Il verbo costa uno scaricamento grosso, circa 1,8 GB per i due pacchetti di Windows 7 SP1 da cui estrae la libreria nelle due architetture, ed entrambe servono perché qui il programma è a 32 bit e il servizio a 64. La diagnosi è in MS-108 e MS-109, la conferma in MS-110.
 
 Va inoltre corretta la ragione per cui questo prefix è a 64 bit, perché quella scritta era sbagliata e una ragione sbagliata non sopravvive al primo caso diverso. Il programma principale, misurato con `tools/arch-dotnet.py`, è un assembly .NET con il flag `32BITREQUIRED` acceso, quindi gira sempre a 32 bit e da solo starebbe benissimo in un prefix a 32. È il servizio di database a essere un eseguibile nativo a 64 bit, e un prefix a 32 bit non potrebbe eseguirlo affatto: il prefix a 64 bit serve per il servizio, non per il programma, ed è anche la ragione per cui va presa la variante `x64` del servizio.
 
 ```bash
+WINEPREFIX=~/wineprefixes/easefocus64 winetricks -q dotnet48
+WINEPREFIX=~/wineprefixes/easefocus64 winetricks -q gdiplus
 cd ~/electroacoustics/progetto-stanza/room/EASE_Focus_v3.1.260
 WINEPREFIX=~/wineprefixes/easefocus64 wine setup.exe
-cd AFMGDatabaseService_x64
-WINEPREFIX=~/wineprefixes/easefocus64 wine setup.exe
 ```
 
-Sulle dipendenze, i requisiti reali sono più larghi di quanto la documentazione ufficiale lasci intendere, perché alcuni moduli GLL portano DLL proprie compilate con compilatori diversi. Se un GLL specifico non si carica, un redistributable Visual C++ mancante è il primo sospetto.
+Sulle altre dipendenze, i requisiti reali sono più larghi di quanto la documentazione ufficiale lasci intendere, perché alcuni moduli GLL portano DLL proprie compilate con compilatori diversi. Non sono state installate, e la ragione è di metodo: installarle insieme al resto avrebbe reso impossibile sapere quale dei componenti risolvesse il difetto misurato. Se un modello specifico non si carica, un redistributable Visual C++ mancante è il primo sospetto, e quello è il momento di installarlo.
 
-Poi il database dei GLL, che sono dati e non un programma: 221 file, di cui 174 con estensione `.gll`, per 451 MB. La copia deve essere dell'intera cartella e non selettiva sui soli `.gll`, e la ragione è precisamente la differenza fra quei due numeri: alcuni costruttori distribuiscono un `.gll` accompagnato da file `.dll` e `.bin`, e i tre devono restare nella stessa cartella o il modulo non si carica.
+Poi il database dei GLL, che sono dati e non un programma: 221 file, di cui 174 con estensione `.gll`, 26 `.dll` e 21 `.bin`, per 471.669.804 byte. La differenza fra 221 e 174 non è rumore e va conosciuta: alcuni costruttori distribuiscono un `.gll` accompagnato da file `.dll` e `.bin`, e i tre devono restare nella stessa cartella o il modulo non si carica, quindi la cartella si tratta come un blocco e non si spiluccano i soli `.gll`.
+
+La copia dentro il prefix, che questa procedura prescriveva, va però ritirata. Wine mappa l'unità `Z:` sulla radice del filesystem Linux, quindi la cartella è già visibile al programma dove si trova: il `dir` eseguito da `cmd` dentro il prefix ne conta tutti e 221 i file. Copiarla significherebbe occupare mezzo gigabyte due volte e crearsi una seconda origine da tenere allineata, che è il difetto già evitato in MS-095 con gli esempi di AKABAK. Il comando qui sotto stampa il percorso nella forma che il programma si aspetta, da incollare nella sua finestra di apertura.
 
 ```bash
-mkdir -p ~/wineprefixes/easefocus64/drive_c/users/$USER/Documents/EASE_Focus_3_GLL
-cp -r ~/electroacoustics/progetto-stanza/room/EASE_Focus_3_GLL_Database_2016_10_11/. ~/wineprefixes/easefocus64/drive_c/users/$USER/Documents/EASE_Focus_3_GLL/
-ls ~/wineprefixes/easefocus64/drive_c/users/$USER/Documents/EASE_Focus_3_GLL | wc -l
+WINEPREFIX=~/wineprefixes/easefocus64 winepath -w ~/electroacoustics/progetto-stanza/room/EASE_Focus_3_GLL_Database_2016_10_11
 ```
 
-Il percorso esatto in cui il programma cerca i GLL va confermato dalle sue preferenze al primo avvio, perché dipende dalla versione: la cartella creata qui è una destinazione di comodo, e se il programma ne indica un'altra si sposta il contenuto invece di duplicarlo.
+Resta da verificare in interfaccia che il programma carichi davvero un modello da quel percorso: la visibilità della cartella dall'interno del prefix è misurata, il caricamento no, e la distinzione va tenuta perché è la sola cosa che separa questa sottofase dalla sua chiusura. Nella stessa occasione va osservato se il programma offra una funzione di importazione nel proprio database, dato che il servizio è una istanza di MongoDB creata vuota al primo avvio, e che quindi il catalogo possa volere una importazione invece di una cartella è una ipotesi aperta.
 
 Di EASE Focus si installa soltanto la 3.1.260. La 3.0.18 e la 3.1.10 restano materiale d'archivio: tre versioni dello stesso programma in tre prefix sono manutenzione senza ritorno, e la retrocompatibilità dei GLL rende la più recente sufficiente. Della 3.1.10, sulla copia di lavoro del corredo, esiste soltanto un collegamento e non la cartella: il contenuto vive probabilmente sul solo SSD esterno.
 
-Un punto da provare e non da assumere: il servizio di database è un servizio Windows, e sotto Wine non gira come servizio di sistema ma come processo dentro il prefix, dipendente da `wineserver`. Se il programma lamenta l'assenza del database, la verifica è che il servizio sia stato installato in quel prefix e non in un altro.
+Un punto che era da provare e ora è provato: il servizio di database è un servizio Windows, e sotto Wine non gira come servizio di sistema ma come processo dentro il prefix, dipendente da `wineserver`. La ricerca nel registro non trova quindi alcuna registrazione di servizio di sistema, e non è un difetto. Lo avvia il programma, con la riga di comando `AFMGDatabaseService.exe --smallfiles --dbpath "C:\ProgramData\AFMG\AFMG Database Service" --port 27072 --bind_ip 127.0.0.1`, che si lega al solo indirizzo locale e non si espone sulla rete.
 
 ### 8.7 ARTA 1.7.1
 
