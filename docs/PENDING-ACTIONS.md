@@ -282,7 +282,7 @@ Che cosa non va fatto adesso. Comprare la licenza in anticipo perché sembra la 
 
 ## PA-015 - Impedire meccanicamente agli strumenti tipografici di scrivere sotto .claude/templates/
 
-Data di apertura: 2026-09-16. Stato: aperta.
+Data di apertura: 2026-09-16. Stato: compiuta nel template il 2026-09-16, in attesa di tornare qui con la prossima istanziazione degli strumenti. Il racconto è in MS-124.
 
 Che cosa va fatto. Aggiungere agli strumenti `fix-accents.py`, `fix-missing-accents.py` e `fix-dashes.py` un rifiuto esplicito a scrivere qualunque file che si trovi sotto `.claude/templates/`, con un messaggio che ne spieghi la ragione invece di fallire in silenzio.
 
@@ -293,6 +293,8 @@ Il principio non è nuovo in questo progetto ed è precisamente quello che rende
 Condizione di sblocco. Nessuna condizione esterna la blocca, ma la modifica non va fatta in questo repository: quegli strumenti sono condivisi con `template-claude-developing` e una modifica locale allargherebbe proprio la divergenza in questione. Appartiene quindi alla propagazione all'indietro tracciata in PA-003, ed è una ragione in più per eseguirla.
 
 Criterio di completamento. I tre strumenti rifiutano un percorso sotto `.claude/templates/` con un messaggio esplicito, il rifiuto è coperto da un caso nella suite `tools/test-tipografia.py`, e la modifica è nel template e non soltanto qui.
+
+Esito del 2026-09-16. Tutti e tre i criteri sono soddisfatti nel template, con una aggiunta che la prova ha reso necessaria: il rifiuto ha un interruttore esplicito, `--includi-modelli`, perché dentro il template quei file sono gli originali e una guardia senza scavalcamento avrebbe impedito la manutenzione tipografica del template stesso. La prova nuova lancia gli strumenti come processi, perché la guardia vive nella raccolta dei file e non nella funzione di trasformazione, ed è stata sottoposta alla verifica di non vacuità prescritta da `prove-che-misurano.md`.
 
 ## PA-013 - Escludere i backup Veeam dalla sincronizzazione giornaliera di sync-dev
 
