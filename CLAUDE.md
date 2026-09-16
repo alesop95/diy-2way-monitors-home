@@ -10,7 +10,11 @@ L'impostazione che ne determina la forma è descritta in `README.md` e formalizz
 
 ## Da dove partire in una sessione nuova
 
-Leggere `.claude/memory/index.md` per primo, che è lo snapshot di sincronizzazione e dice cosa è fatto e dove si riprende. Poi `.claude/context/current-work.md` per il fronte attivo e i blocchi.
+Il primo comando non legge: verifica che ci si possa credere. Lo strumento `python tools/verifica-ripresa.py` confronta l'impronta registrata alla chiusura della sessione precedente, cioè commit e forma dell'albero di lavoro in quel momento, con lo stato reale di adesso, e dice che cosa una sessione caduta a metà non ha scritto. La procedura che ne interpreta l'esito è la skill `riprendi`, da invocare come primo atto di ogni sessione nuova. La ragione è che un file di ripresa non aggiornato ha esattamente lo stesso aspetto di uno aggiornato, e il danno non è perdere il lavoro, che sta su disco e in git, ma costruire sopra una fotografia vecchia senza accorgersene.
+
+Fatta la verifica, leggere `.claude/memory/index.md`, che è lo snapshot di sincronizzazione e dice cosa è fatto e dove si riprende. Poi `.claude/context/current-work.md` per il fronte attivo e i blocchi. Il file di ripresa rapida è `_notes/RESUME-PROMPT.md`, ignorato da git, e non è una seconda fonte di verità: lo stato canonico resta lo snapshot.
+
+L'ultimo atto di ogni sessione, dopo che l'utente ha fatto i propri commit e dopo aver aggiornato il file di ripresa, è registrare l'impronta con `python tools/verifica-ripresa.py --registra`. Registrarla prima dei commit produce un falso positivo alla riapertura, e un presidio che dà falsi positivi è un presidio che si impara a ignorare.
 
 Poi lanciare `python tools/check-pending-actions.py`, che dice quali azioni differite sono diventate eseguibili. Serve perché alcune dipendono da condizioni esterne che cambiano fra una sessione e l'altra, per esempio un disco esterno collegato o no, e un promemoria che vive solo in una conversazione andrebbe perduto.
 
