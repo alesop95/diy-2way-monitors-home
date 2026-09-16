@@ -312,17 +312,39 @@ def controlla_pa010_pa011() -> None:
     print("  e l'ordine non e' invertibile: vedi docs/20-misura-stanza.md e MS-079.")
 
     print("\nPA-011  Backup Veeam della macchina, a ricostruzione finita")
-    riga("  ", "condizione: fasi da 6 a 9 compiute e verificate")
+    riga("  ", "condizione: corredo installato e verificato, poi il backup")
     riga("ok", "catena audio: parametri di avvio attivi da /etc/default/grub.d/ubuntustudio.cfg")
     riga("ok", "limiti realtime: rtprio 95 e memlock unlimited, con ulimit, MS-077")
     riga("ok", "Wine: i386 dichiarata, wine32:i386 in stato ii alla versione 10.0")
     riga("ok", "Akabak e VACS: prefix ~/.wine migrato, licenza valida, MS-085")
-    riga("  ", "fase 8 dalla 8.3 in avanti: corredo non installato")
-    riga("  ", "fase 6: bloccata da PA-012, la macchina ha la sola scheda integrata")
-    print("  BLOCCATA: un backup preso adesso congelerebbe uno stato intermedio.")
-    print("  Da definire alla riapertura: prodotto, destinazione e prova di ripristino.")
+    riga("ok", "sottofase 8.5: VituixCAD installato e funzionante, MS-105")
+    riga("  ", "sottofase 8.6: EASE Focus si apre ma non importa i modelli, MS-114")
+    riga("  ", "sottofase 8.7: ARTA non ancora installato")
+    # La destinazione scelta il 2026-09-15 e' la radice dell'SSD esterno T7, cioe'
+    # il volume J: della postazione, ed e' dichiaratamente provvisoria in attesa
+    # del NAS domestico. Il disco e' rimovibile, quindi la sua presenza e' una
+    # condizione transitoria esattamente come per PA-001 e PA-008. Vedi PA-011.
+    dest_presente = Path("J:/").exists()
+    riga("ok" if dest_presente else "  ",
+         "destinazione J: collegata, scelta il 2026-09-15 come copia di cautela")
+    if not dest_presente:
+        print("  IN ATTESA DEL DISCO: J: non e' collegato, quindi il backup non si")
+        print("  puo' scrivere dove e' stato deciso. Ricollegarlo e rilanciare.")
+    print("  APERTA: la destinazione e' fissata e provvisoria, il NAS domestico la")
+    print("  sostituira' (vedi E:\\home-lab-cybersec-networking\\nas-consolidation).")
+    print("  Ordine fissato dall'utente: prima si finisce di installare, poi il backup.")
+    print("  Resta da definire il prodotto e la prova di ripristino, che e' il criterio")
+    print("  di completamento: un backup mai riletto e' una speranza e non una copia.")
     print("  Discrepanza dichiarata il 2026-09-10 sull'esperienza precedente con")
-    print("  Veeam su Linux, da chiarire quando la voce si sblocca: vedi PA-011.")
+    print("  Veeam su Linux, da chiarire adesso che la voce si sblocca: vedi PA-011.")
+
+    print("\nPA-013  Escludere i backup Veeam dalla sincronizzazione di sync-dev")
+    riga("  ", "regola di esclusione in C:\\Scripts\\sync-dev: da scrivere")
+    riga("ok", "non urgente: la destinazione scelta e' J: e non un percorso sotto E:")
+    print("  APERTA e non bloccata da nulla: eseguibile in qualunque momento sulla")
+    print("  postazione. Diventa obbligatoria se una destinazione di backup cade")
+    print("  sotto un percorso che sync-dev copia, perche' sarebbero circa 30 GB")
+    print("  ricopiati ogni giorno su un SSD per duplicare una copia che non cambia.")
 
 
 def main() -> int:
