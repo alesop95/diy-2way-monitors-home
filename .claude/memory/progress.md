@@ -2,6 +2,18 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-16 - Veeam allestito, il livello di volume escluso per misura, conoscenza estratta in una pagina
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-117, MS-118, MS-119, MS-120, MS-121 e MS-122; `docs/10-ambiente/veeam-agent-linux.md`, nuovo; `docs/10-ambiente/README.md`; `docs/PENDING-ACTIONS.md`; `tools/check-pending-actions.py`; schede di stato.
+
+Esito. La discrepanza di PA-011 è chiusa leggendo l'altro progetto: l'esperienza esisteva, con ripristino reale collaudato, e viveva in un censimento hardware invece che nella cartella della strategia di backup. L'agente è installato. Il backup a livello di volume è però escluso per misura su questa macchina, e sono cadute due strade in sequenza: la variante senza modulo non lo sa fare su partizioni semplici perché si appoggia agli istantanei di LVM, che qui non c'è, e i due moduli del kernel esistenti non compilano contro il 7.0 perché usano funzioni e strutture rimosse.
+
+Due errori di forma miei, registrati. Un comando con redirezione dato come primo contatto con un programma sconosciuto ha nascosto la richiesta di accettazione della licenza, facendo sembrare bloccato un comando che aspettava una risposta. E un comando che concatenava tre operazioni di `apt` ha fatto ripetere tre volte la stessa compilazione fallita, allungando l'uscita senza aggiungere informazione.
+
+Su richiesta esplicita dell'utente la conoscenza è stata estratta in una pagina prescrittiva, `docs/10-ambiente/veeam-agent-linux.md`, scritta per essere riusabile anche in `home-lab-cybersec-networking`, dove la stessa conoscenza manca.
+
+Resta da creare il lavoro a livello di file, eseguirlo, trasferirlo su J: e provarne il ripristino.
+
 ## 2026-09-15, quinta parte - ARTA installato, fase 8 verificata, backup fissato e rimandato a domani
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-116; `docs/PENDING-ACTIONS.md` con PA-013 e PA-014 e con l'aggiunta a PA-011; `tools/check-pending-actions.py`; `docs/10-ambiente/installazione-pulita-26-04.md` e `docs/10-ambiente/wine-corredo-progetto-stanza.md`; schede di stato.

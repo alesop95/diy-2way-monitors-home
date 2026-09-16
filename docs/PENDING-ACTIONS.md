@@ -70,7 +70,21 @@ Le alternative scartate e il perché, così che la decisione non vada rifatta da
 
 L'utente ha inoltre fissato l'ordine: il backup si prende dopo avere finito di installare il corredo, ARTA compreso, e non prima. È la stessa condizione di sblocco già scritta qui sopra, ribadita esplicitamente il 2026-09-15.
 
+Aggiunta del 2026-09-16 sulla forma dell'accesso, decisa dall'utente. Il T7 resta collegato alla postazione Windows e non viene spostato sulla macchina, quindi Veeam scrive su un percorso locale della macchina e il risultato viene poi trasferito su `J:` attraverso la rete. La scelta ha due conseguenze che vanno scritte perché non sono evidenti e perché nessuna delle due la rende sbagliata, ma entrambe vanno conosciute prima del ripristino.
+
+La prima è che la copia transita sul disco interno della macchina, cioè proprio il disco che il backup esiste per proteggere: finché il trasferimento non è compiuto, quel backup non protegge da un guasto del disco, e l'unico stato che conta come raggiunto è quello in cui i file sono su `J:`. La seconda è che al momento del ripristino il T7 andrà comunque collegato alla macchina, oppure il backup andrà riportato su di essa attraverso la rete, perché il supporto di avvio di Veeam deve poter leggere l'archivio: lo spostamento fisico non è evitato, è rimandato al momento peggiore per farlo. Se questo diventasse scomodo, l'alternativa resta collegare il T7 direttamente alla macchina, che era la via più breve.
+
+Accertamento del 2026-09-16 che cambia la natura della copia, e va letto prima di ogni altra cosa. Su questa macchina il backup a livello di volume con Veeam non è disponibile: la variante senza modulo del kernel non lo sa fare su partizioni semplici, e i due moduli esistenti, `veeamsnap` e `blksnap`, non compilano contro il kernel `7.0.0-31-generic` perché appartengono a una generazione precedente. Il racconto è in MS-120, MS-121 e MS-122, e la pagina prescrittiva che ne è stata estratta è `docs/10-ambiente/veeam-agent-linux.md`.
+
+Ne discende che questa voce si soddisfa con un backup a livello di file dell'intero sistema, che conserva i file con permessi e proprietà ma non produce una immagine avviabile. La differenza va dichiarata perché cambia il criterio di completamento: il ripristino non è l'avvio di un supporto che riscrive i volumi, ma una installazione nuova del sistema seguita dal riversamento dei file. Per questo progetto la perdita si misura in un'ora di reinstallazione e non in contenuto, perché ciò che costa ricostruire, cioè i quattro prefix Wine, le licenze attivate e la configurazione della catena audio, vive interamente in file.
+
+Resta aperta e consigliata una seconda via per l'immagine avviabile vera, che non passa da Veeam e non dipende dal kernel installato: Clonezilla avviato da chiavetta a macchina spenta, che copia le partizioni così come sono. Richiede la presenza fisica davanti alla macchina e il disco di destinazione collegato a lei, quindi non sostituisce la copia da remoto ma la completa, ed è il modo ragionevole di avere entrambe.
+
+Un fatto misurato il 2026-09-16 sul supporto: il T7 è formattato exFAT, 500 GB complessivi e 78 GB liberi. Non è un impedimento, perché Veeam vi deposita file e l'exFAT non pone limiti di dimensione che contino a questa scala, ma è il motivo per cui l'archivio non porta con sé permessi e proprietà dei file: quelli vivono dentro l'archivio di Veeam e non nel filesystem che lo ospita, il che è esattamente il comportamento voluto.
+
 Aggiunta del 2026-09-10, che apre una discrepanza invece di chiuderla. L'utente ha riconfermato l'intenzione e ha aggiunto di avere già sperimentato Veeam da Ubuntu proprio nel progetto `home-lab-cybersec-networking`. L'affermazione non coincide con l'accertamento riportato nel paragrafo precedente, che in quel repository ha trovato una sola pagina di strategia di backup, dedicata all'agente per Windows, e nessuna occorrenza di `linux` o `ubuntu` nel blocco. Le due si conciliano in due modi con conseguenze diverse, quindi la discrepanza si dichiara. Se l'esperimento su Linux è stato eseguito e non documentato, esiste esperienza riutilizzabile da recuperare, e la sua assenza da quel repository è un difetto di tracciamento di quel progetto e non di questo. Se invece riguardava l'agente per Windows, come la sola pagina esistente suggerisce, l'agente per Linux resta da documentare da zero e la conclusione qui sopra non cambia. La verifica costa una domanda e va fatta quando la voce si sblocca; fino ad allora nessuna delle due versioni va scritta come fatto.
+
+Chiusura del 2026-09-16, per lettura e non per domanda. La discrepanza si risolve nel primo dei due rami: l'esperienza su Linux esiste ed è documentata, ma non nella cartella della strategia di backup, dove era stata cercata. Sta nel censimento hardware del sottoprogetto di consolidamento, dove una delle due macchine Linux porta installati `veeam-libs` e `veeam-nosnap` alla versione `6.3.2.1307` insieme al pacchetto del repository ufficiale, e sta nel documento di passaggio dello stesso sottoprogetto, che dichiara il backup delle due macchine Linux eseguito e collaudato con un ripristino reale, con le macchine riavviate e verificate dall'interno. Il dettaglio riutilizzabile che conta è la variante `nosnap`, cioè quella che non compila alcun modulo del kernel, ed è la scelta giusta anche qui perché Ubuntu Studio porta un kernel proprio. Il racconto, con il compromesso che quella variante comporta, è in MS-117.
 
 ## PA-012 - Scegliere l'interfaccia audio, che serve a due progetti e non a uno
 
@@ -260,9 +274,25 @@ Perché esiste. ARTA è shareware, e il limite della modalità dimostrativa è s
 
 Condizione di sblocco. Nessuna condizione esterna la blocca in senso stretto, ma non ha senso deciderla adesso: la fase 8 richiede un diffusore costruito e misurato, che non esiste. La voce si sblocca quando il progetto arriva alla caratterizzazione del prototipo.
 
-Criterio di completamento. La via è scelta e motivata, e le alternative scartate sono nominate. Le tre che si vedono oggi, e nessuna è stata istruita, sono l'acquisto della licenza di ARTA, l'uso di uno strumento diverso per la produzione del GLL, e la rinuncia al GLL nel caso in cui il confronto con i diffusori commerciali si possa fare per altra via. Quale sia la meno cara non è ovvio e non va deciso per intuizione.
+Direttiva dell'utente del 2026-09-16, che restringe il campo e va rispettata invece di essere riaperta. La via da cercare è un sostituto gratuito e open source che copra quella funzione, non l'acquisto della licenza. L'acquisto resta l'ultima risorsa, da considerare soltanto se la ricerca dimostra che un sostituto non esiste, e quella dimostrazione va fatta e scritta, non assunta.
+
+Criterio di completamento. La via è scelta e motivata, e le alternative scartate sono nominate. La ricerca parte dagli strumenti liberi che misurano una risposta e ne esportano i dati, e deve chiarire un punto che oggi non è chiaro: se il formato GLL sia producibile soltanto con gli strumenti del suo autore, nel qual caso il sostituto non riguarda la produzione del GLL ma il modo di fare il confronto senza di esso. Distinguere le due cose è la prima cosa da fare, perché cercare un sostituto per una funzione che nessuno strumento libero può svolgere sarebbe tempo perso.
 
 Che cosa non va fatto adesso. Comprare la licenza in anticipo perché sembra la via più semplice. Il programma serve alla fine del progetto, i prezzi e le versioni cambiano, e una licenza acquistata oggi per un uso fra molti mesi è denaro immobilizzato su una scelta non ancora istruita.
+
+## PA-015 - Impedire meccanicamente agli strumenti tipografici di scrivere sotto .claude/templates/
+
+Data di apertura: 2026-09-16. Stato: aperta.
+
+Che cosa va fatto. Aggiungere agli strumenti `fix-accents.py`, `fix-missing-accents.py` e `fix-dashes.py` un rifiuto esplicito a scrivere qualunque file che si trovi sotto `.claude/templates/`, con un messaggio che ne spieghi la ragione invece di fallire in silenzio.
+
+Perché esiste. `CLAUDE.md` vieta di correggere in questo repository i file che sono copie del template, perché farlo allarga la divergenza che PA-003 esiste per chiudere. Il divieto è oggi affidato all'attenzione di chi lancia il comando, ed è stato violato due volte nella stessa sessione del 2026-09-15 e 2026-09-16, la seconda meno di un'ora dopo averlo scritto come regola in MS-115. Il racconto della ripetizione e della conseguenza che se ne trae è in MS-123.
+
+Il principio non è nuovo in questo progetto ed è precisamente quello che rende affidabile `md-unwrap`, che si rifiuta di scrivere un file il cui rendering cambierebbe invece di fidarsi di chi lo lancia. Una convenzione che un comando può violare per distrazione va difesa dal comando.
+
+Condizione di sblocco. Nessuna condizione esterna la blocca, ma la modifica non va fatta in questo repository: quegli strumenti sono condivisi con `template-claude-developing` e una modifica locale allargherebbe proprio la divergenza in questione. Appartiene quindi alla propagazione all'indietro tracciata in PA-003, ed è una ragione in più per eseguirla.
+
+Criterio di completamento. I tre strumenti rifiutano un percorso sotto `.claude/templates/` con un messaggio esplicito, il rifiuto è coperto da un caso nella suite `tools/test-tipografia.py`, e la modifica è nel template e non soltanto qui.
 
 ## PA-013 - Escludere i backup Veeam dalla sincronizzazione giornaliera di sync-dev
 
