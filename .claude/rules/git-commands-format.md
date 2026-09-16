@@ -14,6 +14,8 @@ Il vincolo va verificato, non solo dichiarato, perché lo strumento `md-unwrap` 
 
 Ogni sessione di comandi git si presenta come due blocchi separati: uno per PowerShell (Windows) e uno per bash (Linux). I blocchi contengono le stesse operazioni nella stessa sequenza, adattate solo per le differenze di sintassi minime (che nella pratica di `git add`, `git commit -m` e `git push` sono quasi nessuna).
 
+La doppia forma serve dove il progetto si sviluppa indifferentemente sui due sistemi, e va omessa dove non serve. Su una macchina di sviluppo di sistema noto si consegna il solo blocco di quel sistema, perché un secondo blocco che nessuno userà è rumore fra il lettore e il comando da copiare, e obbliga a scegliere una cosa già decisa. Su questa macchina, che è Windows, si consegna il solo blocco PowerShell. La prescrizione nasce da una richiesta dell'utente del 2026-09-15.
+
 ```powershell
 git add "percorso/file-uno" "percorso/file-due" "percorso/file-tre"
 git commit -m "Messaggio sintetico del commit"

@@ -62,6 +62,14 @@ Sull'esperienza precedente dell'utente va registrato un accertamento fatto il 20
 
 Da definire, e non va inventato adesso. Se l'agente gratuito per Linux basti allo scopo, quale sia la destinazione e con quale frequenza. Sono decisioni che si prendono quando la voce si sblocca, e la loro assenza qui è voluta.
 
+Aggiunta del 2026-09-15, che chiude la destinazione in forma dichiaratamente provvisoria. L'utente ha scelto l'SSD esterno T7, cioè il volume `J:` della postazione, scrivendo alla sua radice, e ha dichiarato il motivo per cui la scelta è temporanea: il consolidamento di un NAS per la macchina privata è un progetto in corso tracciato altrove, sotto `E:\home-lab-cybersec-networking\nas-consolidation`, e i backup organizzati partiranno quando quel NAS esisterà. Fino ad allora queste sono copie di cautela, il cui scopo dichiarato è ripartire da una macchina con tutto installato se qualcosa va storto, non una politica di ritenzione.
+
+La scelta va letta insieme a due fatti già registrati qui, e non li contraddice: PA-009 dice che un disco rimovibile non è il posto dove tenere l'unica copia, e resta vero, ma una copia di cautela su disco rimovibile è comunque incomparabilmente meglio di nessuna copia, e la sua provvisorietà è dichiarata invece che dimenticata. Lo spazio disponibile su quel volume era di 78,2 GB al 2026-09-15, contro circa 31 GB occupati sulla macchina fra radice e `/home`, quindi basta per una copia e non per molte, il che è coerente con lo scopo dichiarato.
+
+Le alternative scartate e il perché, così che la decisione non vada rifatta da zero. Le due condivisioni di rete `\\NAS-INTRA\Backup` e `\\NAS-INTRA3\Public`, con 2952 e 1529 GB liberi, sono NAS aziendali e il progetto è personale. Un disco interno della postazione, tipicamente `E:`, è stato scartato per una ragione tecnica precisa e non per preferenza, ed è il motivo per cui esiste PA-013.
+
+L'utente ha inoltre fissato l'ordine: il backup si prende dopo avere finito di installare il corredo, ARTA compreso, e non prima. È la stessa condizione di sblocco già scritta qui sopra, ribadita esplicitamente il 2026-09-15.
+
 Aggiunta del 2026-09-10, che apre una discrepanza invece di chiuderla. L'utente ha riconfermato l'intenzione e ha aggiunto di avere già sperimentato Veeam da Ubuntu proprio nel progetto `home-lab-cybersec-networking`. L'affermazione non coincide con l'accertamento riportato nel paragrafo precedente, che in quel repository ha trovato una sola pagina di strategia di backup, dedicata all'agente per Windows, e nessuna occorrenza di `linux` o `ubuntu` nel blocco. Le due si conciliano in due modi con conseguenze diverse, quindi la discrepanza si dichiara. Se l'esperimento su Linux è stato eseguito e non documentato, esiste esperienza riutilizzabile da recuperare, e la sua assenza da quel repository è un difetto di tracciamento di quel progetto e non di questo. Se invece riguardava l'agente per Windows, come la sola pagina esistente suggerisce, l'agente per Linux resta da documentare da zero e la conclusione qui sopra non cambia. La verifica costa una domanda e va fatta quando la voce si sblocca; fino ad allora nessuna delle due versioni va scritta come fatto.
 
 ## PA-012 - Scegliere l'interfaccia audio, che serve a due progetti e non a uno
@@ -241,6 +249,36 @@ Remove-Item -LiteralPath "C:\Users\Utente\Desktop\Progetto stanza (software)" -R
 ```
 
 Il primo comando non è decorativo: riverifica che il materiale sulla macchina corrisponda ancora, e va lanciato subito prima della cancellazione e non ore prima.
+
+## PA-014 - Decidere la via verso il GLL del monitor, dato che ARTA in modalità dimostrativa non salva
+
+Data di apertura: 2026-09-15. Stato: aperta.
+
+Che cosa va fatto. Decidere come si produrrà il file GLL del monitor autocostruito, sapendo che la via attribuita finora a questo compito non è percorribile senza spesa.
+
+Perché esiste. ARTA è shareware, e il limite della modalità dimostrativa è stato misurato il 2026-09-15 invece di essere rimandato: il programma è pienamente funzionante tranne che per il caricamento e il salvataggio dei file, come dichiarano concordi la finestra di avvio e il file `Readme.txt`. Produrre un GLL è esattamente un salvataggio, quindi il ruolo che la documentazione di questo progetto assegna ad ARTA non è esercitabile senza licenza. Non è una limitazione aggirabile con un accorgimento, perché non riguarda che cosa il programma sappia fare ma che cosa gli sia permesso conservare. Il racconto è in MS-116.
+
+Condizione di sblocco. Nessuna condizione esterna la blocca in senso stretto, ma non ha senso deciderla adesso: la fase 8 richiede un diffusore costruito e misurato, che non esiste. La voce si sblocca quando il progetto arriva alla caratterizzazione del prototipo.
+
+Criterio di completamento. La via è scelta e motivata, e le alternative scartate sono nominate. Le tre che si vedono oggi, e nessuna è stata istruita, sono l'acquisto della licenza di ARTA, l'uso di uno strumento diverso per la produzione del GLL, e la rinuncia al GLL nel caso in cui il confronto con i diffusori commerciali si possa fare per altra via. Quale sia la meno cara non è ovvio e non va deciso per intuizione.
+
+Che cosa non va fatto adesso. Comprare la licenza in anticipo perché sembra la via più semplice. Il programma serve alla fine del progetto, i prezzi e le versioni cambiano, e una licenza acquistata oggi per un uso fra molti mesi è denaro immobilizzato su una scelta non ancora istruita.
+
+## PA-013 - Escludere i backup Veeam dalla sincronizzazione giornaliera di sync-dev
+
+Data di apertura: 2026-09-15. Stato: aperta, e da compiere prima del primo backup se la destinazione cambiasse.
+
+Che cosa va fatto. Dichiarare allo script `C:\Scripts\sync-dev` della postazione di ignorare i backup Veeam, sia quello di questa macchina sia gli altri che vi si accumuleranno suddivisi per macchina, finché il NAS domestico non sarà disponibile.
+
+Perché esiste, e perché non è un dettaglio. Lo script copia ogni giorno il contenuto di `E:` verso l'SSD esterno T7, cioè il volume `J:`. Un backup di macchina intera collocato sotto `E:` verrebbe quindi ricopiato integralmente ogni giorno verso `J:`, che è circa 30 GB di traffico e di scrittura quotidiani su un disco a stato solido, per duplicare una copia che non cambia. È il motivo per cui la destinazione scelta in PA-011 è la radice di `J:` e non una cartella di `E:`: si evita il problema invece di risolverlo.
+
+La voce resta aperta lo stesso, e non è una precauzione oziosa. La destinazione attuale è dichiaratamente provvisoria e cambierà quando il NAS esisterà; nel momento in cui un backup finisse sotto `E:`, anche solo di passaggio, l'esclusione diventerebbe necessaria e nessuno se ne ricorderebbe. La conoscenza che serve a scriverla, cioè che lo script esiste e che cosa copia, è disponibile adesso e va fissata adesso.
+
+Condizione di sblocco. Nessuna condizione esterna la blocca: è eseguibile in qualunque momento sulla postazione. Diventa obbligatoria quando una destinazione di backup cade sotto un percorso che `sync-dev` copia.
+
+Criterio di completamento. Lo script porta una regola di esclusione che nomina i backup Veeam per percorso o per estensione, la regola è verificata con una corsa a vuoto che mostra il backup non fra i file da copiare, e il comportamento è documentato nel repository che possiede lo script, che non è questo.
+
+Dove vive la decisione di fondo. Il consolidamento del NAS per la macchina privata è tracciato in `E:\home-lab-cybersec-networking\nas-consolidation`, ed è quello il progetto che chiuderà sia questa voce sia la provvisorietà della destinazione di PA-011. Qui resta il legame, perché una voce che dipende da un altro progetto senza nominarlo è una voce che nessuno sa chiudere.
 
 ## PA-008 - Recuperare 1,2 GiB di cartelle di servizio su J:
 

@@ -2,6 +2,16 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-15, quinta parte - ARTA installato, fase 8 verificata, backup fissato e rimandato a domani
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-116; `docs/PENDING-ACTIONS.md` con PA-013 e PA-014 e con l'aggiunta a PA-011; `tools/check-pending-actions.py`; `docs/10-ambiente/installazione-pulita-26-04.md` e `docs/10-ambiente/wine-corredo-progetto-stanza.md`; schede di stato.
+
+Esito. La sottofase 8.7 è chiusa: ARTA 1.7.1 installato nel prefix `arta64`, che si apre, con il limite della modalità dimostrativa misurato invece che rimandato. Il controllo di uscita della fase 8 è stato eseguito aprendo i cinque programmi tutti insieme, il che prova che i quattro prefix convivono, e passa in quattro criteri su cinque.
+
+Tre decisioni dell'utente registrate. La destinazione del backup è la radice dell'SSD esterno T7, dichiaratamente provvisoria in attesa del NAS domestico tracciato in un altro progetto. L'ordine è prima finire di installare e poi il backup. E i comandi git si consegnano d'ora in poi con il proprio `cd` e nel solo blocco PowerShell, cosa scritta nella regola invece che ricordata.
+
+Il disco J: è stato staccato dall'utente in corso di sessione e tornerà domattina, quindi il backup slitta a domani; la condizione è ora verificata dallo strumento e non dalla memoria.
+
 ## 2026-09-15, seconda parte - L'interfaccia guidata da remoto, e il blocco nuovo sull'importazione dei GLL
 
 Commit di partenza: l'ultimo fatto a mano dopo la prima parte.
@@ -14,7 +24,9 @@ Esito della seconda metà, che è un blocco e va detto come tale. L'ipotesi di M
 
 Esito della terza parte, che è un ritiro. Il provider è stato sostituito con la libreria originale di Windows presa dalla postazione, in entrambe le architetture e con un override dato sulla riga di comando per poter annullare l'esperimento: il rifiuto di flag scompare, quindi la sostituzione ha funzionato come sostituzione, ma l'importazione fallisce identica. La crittografia è quindi esclusa per misura e l'ipotesi di MS-112 è ritirata, con il prefix riportato allo stato precedente. È MS-113, dove sono registrate anche due osservazioni non cercate, cioè che la preferenza sul riquadro della newsletter non è stabile fra un avvio e l'altro e che il programma non offre alcun registro diagnostico.
 
-Il candidato ora più forte è la versione di Wine, che sulla macchina è quella dei repository della distribuzione invece dei pacchetti ufficiali di WineHQ. È una decisione sull'ambiente e non una prova rapida, perché le due provenienze non si mescolano, quindi va posta all'utente prima di essere eseguita.
+Esito della quarta parte, che è un doppio restringimento. Un modello GLL pubblicato nel gennaio 2026, scaricato dal sito di un costruttore, è rifiutato come quelli del 2016 e del 2022, quindi l'età del modello non discrimina; e le tre sole librerie native del programma non importano alcun redistributabile di Visual C++, quindi quel candidato cade a sua volta. Il lettore dei modelli risulta essere codice gestito, il che spiega perché il registro di Wine non riporti errori di caricamento. È MS-114.
+
+Resta un solo candidato, cioè la versione di Wine, che sulla macchina è quella dei repository della distribuzione invece dei pacchetti ufficiali di WineHQ. È una decisione sull'ambiente e non una prova rapida, perché le due provenienze non si mescolano, quindi va posta all'utente prima di essere eseguita.
 
 Una modifica di convenzione, chiesta dall'utente il 2026-09-15 e resa vincolante invece che ricordata: i comandi git per un repository diverso da quello aperto nella sessione si danno sempre con il proprio `cd` in testa al blocco. La regola `.claude/rules/git-commands-format.md` lo prescrive ora esplicitamente.
 
