@@ -312,14 +312,15 @@ def controlla_pa010_pa011() -> None:
     print("  e l'ordine non e' invertibile: vedi docs/20-misura-stanza.md e MS-079.")
 
     print("\nPA-011  Backup Veeam della macchina, a ricostruzione finita")
-    riga("  ", "condizione: corredo installato e verificato, poi il backup")
+    riga("ok", "condizione: corredo installato, resta il solo import GLL di EASE Focus")
     riga("ok", "catena audio: parametri di avvio attivi da /etc/default/grub.d/ubuntustudio.cfg")
     riga("ok", "limiti realtime: rtprio 95 e memlock unlimited, con ulimit, MS-077")
     riga("ok", "Wine: i386 dichiarata, wine32:i386 in stato ii alla versione 10.0")
     riga("ok", "Akabak e VACS: prefix ~/.wine migrato, licenza valida, MS-085")
     riga("ok", "sottofase 8.5: VituixCAD installato e funzionante, MS-105")
     riga("  ", "sottofase 8.6: EASE Focus si apre ma non importa i modelli, MS-114")
-    riga("  ", "sottofase 8.7: ARTA non ancora installato")
+    riga("ok", "sottofase 8.7: ARTA installato e funzionante, MS-116")
+    riga("ok", "controllo di uscita fase 8: i cinque programmi aprono insieme, MS-116")
     # La destinazione scelta il 2026-09-15 e' la radice dell'SSD esterno T7, cioe'
     # il volume J: della postazione, ed e' dichiaratamente provvisoria in attesa
     # del NAS domestico. Il disco e' rimovibile, quindi la sua presenza e' una

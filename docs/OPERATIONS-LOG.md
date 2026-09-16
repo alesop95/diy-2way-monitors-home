@@ -34,6 +34,7 @@ L'indice va aggiornato ogni volta che una voce nuova ne supera una precedente, e
 | MS-083 | MS-084 | l'affermazione che i due lanciatori della scrivania fossero rotti perché invocavano un nome inesistente |
 | MS-085 | MS-087 | l'affermazione che la correzione delle sottofasi 8.1 e 8.2 riguardasse anche il prefix e non il solo comando |
 | MS-112 | MS-113 | l'ipotesi che il rifiuto dei modelli GLL venisse dal provider crittografico di Wine, smentita sostituendolo con quello originale di Windows |
+| MS-117, MS-118 | MS-120 | la conclusione che la variante `nosnap` fosse quella giusta anche qui, smentita dal rifiuto del backup a livello di volume su partizioni non LVM |
 
 Due ritiri di questa sessione non compaiono in tabella perché non riguardano una voce del registro ma una mia spiegazione scritta altrove: MS-089 ritira la lettura secondo cui la barra del titolo di AKABAK dichiarasse l'edizione, e MS-093 ritira la spiegazione del 2026-09-09 sul perché una sessione SSH disponesse di un display. Restano nominati qui perché chi cerca un ritiro lo cerca in questo elenco.
 
@@ -2351,6 +2352,200 @@ Il criterio non soddisfatto è quello su EASE Focus, che resta bloccato per la r
 Verificato con: `file` sull'installatore, che riporta PE32 per Intel i386; installazione guidata in interfaccia sul display privato, con le schermate di destinazione e di riepilogo fotografate; elenco del contenuto della cartella di installazione, con i tre eseguibili, i tre manuali e la cartella di esempio; `du -sh` sul prefix, 1,6 GB; primo avvio, che apre la finestra di registrazione della licenza, e prosecuzione in modalità dimostrativa, che apre la finestra principale a 1252 per 753 con lo stato `Ready`; lettura del testo di licenza nella finestra e in `Readme.txt`, concordi; apertura simultanea dei cinque programmi del corredo e lettura dell'elenco delle finestre; conteggio e misura dei quattro prefix.
 
 Esito: fatto. La sottofase 8.7 è chiusa, il controllo di uscita della fase 8 è superato in quattro criteri su cinque, e il quinto dipende dal blocco già tracciato su EASE Focus.
+
+### MS-117 - La discrepanza di PA-011 si chiude leggendo, e l'esperienza riutilizzabile è più consistente di quanto la voce ipotizzasse
+
+Perimetro: ricerca di materiale su Veeam per Linux nel progetto `home-lab-cybersec-networking`, lettura del censimento hardware e del documento di passaggio del suo sottoprogetto di consolidamento, e chiusura della discrepanza dichiarata in PA-011 il 2026-09-10. Nessun intervento sulla macchina.
+
+Legame con il progetto: serve la fase 10, cioè l'igiene successiva all'installazione, e in particolare PA-011, che è il backup di macchina intera. Non tocca la progettazione dei diffusori, e lo dichiara: serve a non rifare da zero un lavoro già fatto altrove.
+
+*La discrepanza, e perché non si poteva risolvere prima.* PA-011 registrava due affermazioni che non coincidevano. L'utente ricordava di avere già sperimentato Veeam su Ubuntu nel progetto `home-lab-cybersec-networking`; una ricerca del 2026-09-09 in quel repository aveva però trovato, sotto la cartella della strategia di backup, la sola pagina dedicata all'agente per Windows e nessuna occorrenza di `linux` o `ubuntu` in quel blocco. La voce non risolveva la contraddizione a favore di nessuna delle due parti e prescriveva di verificarla quando la voce si fosse sbloccata, che è adesso.
+
+*Che cosa dice la lettura, ed è la prima delle due possibilità previste.* L'esperienza esiste, è documentata, e non sta dove la si era cercata. Il sottoprogetto di consolidamento di quel repository porta un censimento hardware di quattro macchine, prodotto da uno script che fra le altre cose interroga esplicitamente i pacchetti installati cercando `veeam` e `blksnap`: la domanda era quindi già stata posta là, e non da questo progetto. Su una delle due macchine Linux censite il censimento riporta tre pacchetti installati, cioè `veeam-libs` e `veeam-nosnap` alla versione `6.3.2.1307` e `veeam-release-deb` alla `1.0.11`, che è il pacchetto che aggiunge il repository ufficiale di Veeam con la propria chiave di firma.
+
+Il documento di passaggio dello stesso sottoprogetto dice di più, e alza il valore di quell'esperienza da esperimento a procedura collaudata: il backup delle due macchine Linux risulta non soltanto eseguito ma provato con un ripristino reale, con le macchine ripristinate avviate e verificate dall'interno. È esattamente il criterio di completamento che PA-011 pone per sé, cioè che un backup mai riletto è una speranza e non una copia, già soddisfatto una volta su un'altra macchina.
+
+Ne segue che la lettura del 2026-09-09 era corretta nella sua affermazione stretta e fuorviante nella conclusione che se ne poteva trarre. La cartella della strategia di backup di quel repository contiene davvero la sola pagina su Windows; la traccia dell'agente per Linux vive nel censimento e in un documento di passaggio non versionato, cioè in due posti dove nessuno cerca una strategia di backup. È un difetto di tracciamento di quel progetto e non di questo, esattamente come PA-011 aveva previsto nel primo dei due rami, e va segnalato a chi lo mantiene invece di essere corretto da qui.
+
+*Il fatto tecnico che vale più di tutti gli altri.* La variante installata è `veeam-nosnap` e non quella basata sul modulo del kernel. Veeam Agent for Linux può prendere gli istantanei di un volume in due modi: con un proprio modulo del kernel, che va compilato contro il kernel in uso e ricompilato a ogni suo aggiornamento, oppure senza, con il pacchetto `nosnap`, che rinuncia all'istantanea a livello di blocco e copia il filesystem montato. La scelta ha un costo e un guadagno che vanno conosciuti prima di ripeterla: il guadagno è che non esiste alcun modulo da compilare, quindi nessuna dipendenza dai sorgenti del kernel e nessuna rottura al primo aggiornamento; il costo è che una copia presa senza istantanea non è coerente a un istante, quindi un file modificato durante la corsa può finire nell'archivio in uno stato intermedio.
+
+Su questa macchina quel compromesso è ragionevole e vale dirlo apertamente invece di sottintenderlo. Ubuntu Studio porta un kernel proprio orientato alla bassa latenza, e un modulo di terze parti da ricompilare a ogni aggiornamento è precisamente il genere di dipendenza che questo progetto ha già pagato caro altrove. Il materiale da salvare, inoltre, è un sistema con dei programmi installati e dei prefix Wine, non una base di dati in scrittura continua: il rischio di incoerenza si riduce a chiudere i programmi prima di lanciare il backup, che è una prescrizione operativa e non un problema tecnico.
+
+*Che cosa resta da decidere, che la lettura non decide.* La destinazione di quel backup era una condivisione di rete di un contesto che non è questo, quindi non si trasferisce; la destinazione di questo progetto è già decisa in PA-011 ed è la radice dell'SSD esterno collegato alla postazione. Restano da stabilire la forma dell'accesso dalla macchina a quel volume e il modo di provare il ripristino, che sono i due punti su cui l'esperienza precedente non aiuta, perché là il ripristino si provava dentro un ipervisore già presente.
+
+Verificato con: ricerca ricorsiva di `veeam` nel repository `home-lab-cybersec-networking`, che restituisce la pagina sull'agente per Windows, il suo indice, lo script di censimento, i quattro rapporti di censimento e due file non versionati; lettura della sezione dei pacchetti nei quattro rapporti, con le tre righe di Veeam presenti su una sola delle due macchine Linux e assenti sulla macchina Ubuntu Studio di questo progetto; lettura della tabella di stato del documento di passaggio, che dichiara il backup delle due macchine Linux fatto e collaudato con ripristino reale.
+
+Esito: fatto. La discrepanza è chiusa, l'esperienza riutilizzabile è identificata nella variante `nosnap` e nella pratica del ripristino provato, e nessun dato appartenente a quell'altro contesto è stato copiato qui.
+
+### MS-118 - Veeam Agent for Linux installato nella variante senza modulo del kernel, su una distribuzione più nuova di quella già collaudata
+
+Perimetro: accertamento preventivo che il repository di Veeam copra Ubuntu 26.04, verifica delle dipendenze rinominate dalla transizione a 64 bit del tipo `time_t`, scaricamento e verifica per impronta del pacchetto di repository, installazione di `veeam-nosnap` e dei suoi sette pacchetti di supporto, e verifica dello stato risultante. Nessun backup è stato ancora preso.
+
+Legame con il progetto: serve la fase 10, cioè l'igiene successiva all'installazione, e in particolare PA-011. Lo scopo dichiarato dall'utente è poter ripartire da una macchina con tutto installato se qualcosa va storto, dato che la ricostruzione dell'ambiente è costata più di un giorno di lavoro.
+
+*Perché l'accertamento preventivo non era formalità.* L'esperienza riutilizzabile identificata in MS-117 riguardava una macchina Ubuntu 24.04, mentre questa è una 26.04 con kernel 7.0, e due cose potevano non reggere il salto. La prima era il repository: molti fornitori pubblicano un ramo per ogni nome in codice di Ubuntu, e per una versione uscita da pochi mesi quel ramo può non esistere. La seconda erano le dipendenze dichiarate dal pacchetto, che nominano `libfuse2` e `libgcc1`, due nomi che sulla 26.04 non esistono più.
+
+Entrambe si sono risolte, e vale scrivere come, perché la stessa verifica servirà al prossimo aggiornamento di sistema. Il repository di Veeam non è legato ad alcuna versione di Ubuntu: il suo file di riferimento dichiara una sola distribuzione chiamata `stable` con un solo componente chiamato `veeam`, per le architetture `amd64` e `i386`, aggiornata a giugno 2026. Le due dipendenze si risolvono da sé perché i pacchetti che hanno preso il posto dei vecchi ne dichiarano il nome: `libfuse2t64` dichiara di fornire `libfuse2` e `libgcc-s1` dichiara di fornire `libgcc1`. È il meccanismo con cui una distribuzione rinomina un pacchetto senza rompere chi lo nomina per il nome vecchio, e conoscerlo evita di concludere che un programma sia incompatibile quando invece non lo è.
+
+*Il pacchetto di repository, verificato prima di essere installato.* Il file `veeam-release-deb` versione 1.0.11, cioè la stessa della macchina già collaudata, è stato scaricato dal repository ufficiale e la sua impronta SHA-256 è stata confrontata con quella pubblicata nell'indice dei pacchetti dello stesso repository, risultando identica. Non è una garanzia di provenienza forte, perché indice e file vengono dalla stessa fonte, ma esclude la classe di errori più comune, cioè uno scaricamento troncato o corrotto, che si manifesterebbe più avanti come un guasto inspiegabile.
+
+*Che cosa è stato installato, e in quale variante.* Il pacchetto scelto è `veeam-nosnap` alla versione `6.3.2.1405`, più recente della `6.3.2.1307` osservata in MS-117 sulla macchina già collaudata. Con esso sono entrati `veeam-libs` della stessa versione e sei pacchetti della distribuzione, cioè `lvm2`, `dmeventd`, `libdevmapper-event1.02.1`, `liblvm2cmd2.03`, `libaio1t64` e `thin-provisioning-tools`, per 47,9 MB scaricati e 179 MB occupati. La presenza di `lvm2` fra le dipendenze merita una riga perché sorprende su una macchina che non usa volumi logici: l'agente lo richiede per saper leggere quel tipo di volume se lo incontra, non perché questa macchina ne abbia.
+
+La scelta della variante è il punto tecnico di questo microstep ed è motivata in MS-117: `nosnap` non porta alcun modulo del kernel, quindi non c'è nulla da compilare contro il kernel in uso e nulla che si rompa al primo aggiornamento. La verifica che sia davvero così è diretta: a installazione compiuta nessun modulo di nome `veeamsnap` o `blksnap` risulta caricato, e non ne esiste alcuno da caricare.
+
+*Che cosa l'installazione ha cambiato nel sistema, oltre ai file.* Il servizio `veeamservice` è stato abilitato all'avvio e avviato, con il collegamento creato sotto l'obiettivo multiutente, e risulta attivo. Sono stati inoltre abilitati tre servizi di `lvm2` e un socket di `dmeventd`, che vengono dalle dipendenze e non dall'agente. L'ultima riga dell'installazione ha rigenerato l'immagine iniziale del sistema, cioè l'`initramfs`, perché il gestore dei pacchetti ha un innesco che lo fa a ogni modifica rilevante: è normale e non significa che sia stato installato qualcosa nel kernel, e va detto perché in un registro di installazione quella riga è precisamente ciò che fa sospettare il contrario.
+
+*Una osservazione raccolta di passaggio, che decide un ordine.* L'aggiornamento degli indici ha riportato tredici pacchetti aggiornabili, fra cui quelli di `polkit` che provengono anche dal ramo di sicurezza. Non sono stati applicati, ed è una scelta e non una dimenticanza: il backup esiste per congelare uno stato che funziona, e applicare tredici aggiornamenti subito prima di congelarlo significherebbe congelare uno stato non ancora provato. L'ordine corretto è quindi prendere il backup adesso e aggiornare dopo, perché così un aggiornamento che rompesse qualcosa avrebbe un punto di ritorno, che è esattamente lo scopo per cui l'utente ha chiesto questo backup.
+
+*Un vincolo operativo che si scopre subito e conviene sapere.* Gli strumenti dell'agente, cioè `veeamconfig` per la riga di comando e `veeam` per l'interfaccia a caratteri, non sono eseguibili da utente non privilegiato: rispondono con un rifiuto di permesso. Ne segue che ogni passo successivo, dalla creazione del deposito al lancio del lavoro, è lavoro privilegiato e quindi lavoro dell'utente su comandi preparati, come questo progetto già fa per tutto ciò che richiede `sudo`.
+
+Verificato con: lettura del file di riferimento del repository di Veeam con `curl`, che riporta distribuzione `stable`, componente `veeam` e architetture `amd64` e `i386`; lettura dell'indice dei pacchetti, che riporta `veeam-nosnap` alla `6.3.2.1405` con le sue dipendenze; `apt-cache show` su `libfuse2t64` e `libgcc-s1`, che dichiarano di fornire i nomi vecchi; `sha256sum` sul pacchetto scaricato, coincidente con l'impronta pubblicata; `dpkg -l`, che riporta i tre pacchetti in stato `ii`; `systemctl is-enabled` e `is-active` su `veeamservice`, che rispondono `enabled` e `active`; `lsmod` filtrato sui due nomi di modulo, che non trova nulla; `command -v` su `veeamconfig` e `veeam`, presenti in `/usr/bin`, e loro esecuzione da utente normale, rifiutata per permessi.
+
+Esito: fatto. L'agente è installato, avviato e nella variante voluta. Restano la creazione del deposito, il lavoro di backup, la sua esecuzione e la prova di ripristino, che è il criterio di completamento di PA-011.
+
+### MS-119 - Un comando che sembra bloccato e invece aspetta una risposta invisibile: la redirezione che nasconde una domanda
+
+Perimetro: diagnosi di un comando apparentemente sospeso sul terminale dell'utente durante la preparazione del backup, individuazione della causa, e regola operativa che ne discende. Nessuna modifica alla macchina.
+
+Legame con il progetto: serve la fase 10, perché è accaduto preparando il backup di PA-011. Il contenuto tecnico è però generale e non riguarda né Veeam né il backup, quindi vale oltre questa fase.
+
+*Il sintomo, e perché porta fuori strada.* Il comando preparato raccoglieva in un file gli aiuti di tre sottocomandi, redirigendo uscita standard ed errori. Sul terminale non compariva nulla e il cursore lampeggiava senza tornare al prompt. La lettura naturale è che il programma sia bloccato, e da quella lettura discendono due reazioni entrambe sbagliate: aspettare, oppure interrompere e concludere che il programma non funzioni su questa macchina.
+
+*La causa, accertata da una sessione separata.* Il programma non era bloccato: aspettava una risposta. Il primo dei tre comandi era andato a buon fine e aveva scritto nel file l'elenco dei sottocomandi disponibili; il secondo aveva fatto comparire la richiesta di accettazione del contratto di licenza, che termina con una domanda a scelta fra due parole. Quella domanda è uscita sull'uscita standard, che era rediretta nel file, mentre la risposta era attesa dall'ingresso standard, che era rimasto il terminale. Il risultato è un programma che chiede qualcosa in un posto e ascolta in un altro.
+
+La diagnosi non ha richiesto di toccare il terminale dell'utente, ed è il modo giusto di farla: da una seconda sessione si è letto il file, che conteneva l'aiuto seguito dalla domanda pendente, e si è guardato l'elenco dei processi, che mostrava il secondo comando ancora vivo. Due osservazioni indipendenti che dicono la stessa cosa.
+
+*La regola che ne discende, ed è generale.* Un comando che redirige l'uscita non deve mai essere il primo contatto con un programma che non si conosce, perché la redirezione rende invisibile qualunque domanda interattiva e trasforma un'attesa in un blocco apparente. La forma prudente è eseguire il programma una prima volta senza redirezione, osservare che cosa chiede, e solo dopo automatizzarlo. Dove la redirezione serve comunque, chiudere l'ingresso standard con un reindirizzamento da un dispositivo vuoto rende il fallimento immediato e leggibile invece che silenzioso: meglio un errore subito che un cursore che lampeggia.
+
+Vale anche il rovescio, ed è la parte che questo progetto ha già imparato altrove in MS-111 con l'automazione dell'interfaccia: un programma che non risponde non è necessariamente rotto, e prima di concluderlo va guardato da fuori, cioè dai suoi processi e dai file che scrive, invece che dal terminale in cui è stato lanciato.
+
+*Perché l'accettazione non è stata data dall'agente.* Il contratto di licenza vincola chi usa il programma, non chi lo installa per conto di altri: accettarlo è una decisione dell'utente e non un passaggio tecnico da sbrigare. Il testo sta sulla macchina in `/usr/share/veeam/EULA`, è leggibile senza privilegi, conta 291 righe ed è aggiornato ad aprile 2025.
+
+Verificato con: lettura da una seconda sessione del file di destinazione, che contiene l'elenco dei sottocomandi seguito dalla richiesta di accettazione e dalla domanda rimasta senza risposta; `pgrep` con la riga di comando completa, che mostra il secondo dei tre comandi ancora in esecuzione; `ls -l` e `wc -l` sul file del contratto.
+
+Esito: fatto per la diagnosi. Il proseguimento dipende dall'accettazione del contratto da parte dell'utente.
+
+### MS-120 - La variante senza modulo del kernel non sa copiare un volume su partizioni semplici, e il perché riconcilia l'esperienza precedente
+
+Perimetro: creazione del deposito di backup, tentativo fallito di creazione del lavoro a livello di volume, lettura del motivo del rifiuto, accertamento dei presupposti per la variante con modulo del kernel. Supera in parte MS-117 e MS-118.
+
+Legame con il progetto: serve la fase 10 e PA-011, cioè il backup di macchina intera che deve rendere ripetibile in poche ore una ricostruzione costata più di un giorno.
+
+*Che cosa è riuscito e che cosa no.* Il deposito è stato creato senza obiezioni, in `/home/veeam-repo`, di tipo locale, e risulta accessibile. Il lavoro di backup a livello di volume non è stato creato, e il motivo è una sola riga che vale citare perché è precisa e non generica.
+
+```
+Item cannot be backed up without veeam snapshot kernel module: /dev/nvme0n1p2, /dev/nvme0n1p4
+```
+
+Le due partizioni nominate sono la radice e `/home`, cioè esattamente ciò che un backup di macchina intera deve copiare. L'elenco dei lavori, interrogato subito dopo, riporta la sola intestazione: il lavoro non esiste.
+
+*Il ritiro, e la sua forma esatta.* MS-117 concludeva che la variante `nosnap` fosse la scelta giusta anche qui, e MS-118 l'ha installata su quella base. La conclusione era motivata bene sul piano del rischio, perché evita un modulo da ricompilare a ogni aggiornamento del kernel, e poggiava però su una capacità che quella variante non ha in questa configurazione. Va ritirata, e con precisione: non è falso che `nosnap` sappia fare un backup a livello di volume, è falso che sappia farlo qui.
+
+*La spiegazione, che riconcilia l'esperienza precedente invece di contraddirla.* La variante senza modulo non rinuncia all'istantanea: rinuncia a prenderla da sé. Dove il volume vive dentro LVM, cioè il gestore di volumi logici di Linux, l'istantanea la fornisce LVM e l'agente se ne serve, ed è precisamente il motivo per cui `lvm2` compare fra le dipendenze del pacchetto, dettaglio che MS-118 aveva registrato come curioso senza saperne spiegare la ragione. Dove invece il volume è una partizione semplice, come su questa macchina che ha due partizioni dirette su NVMe, non esiste alcun meccanismo di istantanea a cui appoggiarsi, e senza istantanea un backup a livello di volume non è possibile.
+
+Ne segue che la macchina di MS-117 su cui `nosnap` aveva funzionato usava quasi certamente LVM, che è la disposizione predefinita di molte installazioni, e che le due situazioni non sono in contraddizione ma diverse. È il genere di differenza che non si vede confrontando i pacchetti installati, ed è per questo che copiare una configurazione da una macchina a un'altra va sempre accompagnato dalla verifica che i presupposti coincidano.
+
+*I presupposti della via alternativa, misurati prima di proporla.* La variante con modulo dichiara di dipendere da `veeamsnap` oppure da `blksnap`, e nel repository esiste `blksnap` alla stessa versione `6.3.2.1405` dell'agente, che a sua volta dipende da `dkms`, cioè dal sistema che ricompila un modulo di terze parti a ogni cambio di kernel. Sulla macchina gli header del kernel in uso ci sono già, tutti e tre i pacchetti alla versione `7.0.0-31.31` corrispondente al kernel `7.0.0-31-generic`, mentre `dkms` non è installato ed è disponibile nei repository della distribuzione.
+
+Il rischio residuo è che il modulo non compili contro un kernel molto più recente di quello per cui è stato scritto, ed è un rischio visibile e non silenzioso: la compilazione fallisce durante l'installazione, a schermo, e un modulo non costruito non lascia danni al sistema. Il ripiego, se accadesse, è il backup a livello di file, che la variante senza modulo sa fare anche su partizioni semplici e che copre i file ma non restituisce una immagine avviabile.
+
+*Che cosa resta vero di MS-117.* La lettura che ha chiuso la discrepanza di PA-011 resta valida in tutto il resto: l'esperienza precedente esiste, il backup era stato collaudato con un ripristino reale, e la pratica di provare il ripristino invece di fidarsi dell'archivio resta il criterio di completamento. Cade soltanto la trasferibilità della variante, che era un dettaglio di quella lettura e non la sua sostanza.
+
+Verificato con: creazione del deposito, che risponde con conferma e compare nell'elenco con identificativo, percorso, tipo locale e stato accessibile; tentativo di creazione del lavoro a livello di volume, che risponde con la riga citata e non crea nulla, confermato dall'elenco dei lavori vuoto; lettura dell'indice dei pacchetti del repository di Veeam, che riporta `blksnap` alla versione dell'agente con dipendenza da `dkms`; `dpkg -l` sugli header del kernel, presenti e corrispondenti al kernel in uso; verifica che `dkms` non sia installato.
+
+Esito: bloccato in questa forma. Dipende da una decisione dell'utente fra la variante con modulo del kernel, che dà l'immagine avviabile, e il backup a livello di file, che non la dà.
+
+### MS-121 - Il modulo di istantanea di Veeam non compila sul kernel 7.0, e le righe di errore dicono esattamente perché
+
+Perimetro: sostituzione della variante senza modulo con quella che lo porta, fallimento della compilazione del modulo `veeamsnap` contro il kernel in uso, lettura del registro di compilazione, individuazione del successore `blksnap` come via alternativa. La macchina resta in uno stato intermedio dichiarato sotto.
+
+Legame con il progetto: serve la fase 10 e PA-011. Senza un modulo di istantanea funzionante il backup di macchina intera non è possibile in forma di immagine, quindi lo scopo dichiarato dall'utente, cioè ripartire da una macchina con tutto installato, non è raggiungibile per quella via.
+
+*Che cosa è successo.* L'installazione ha rimosso `veeam-nosnap`, ha portato trentadue pacchetti fra cui l'intera catena di compilazione e `dkms`, e ha tentato di costruire il modulo `veeamsnap` versione `6.3.2.1405` contro il kernel `7.0.0-31-generic`. La compilazione è fallita, e con essa la configurazione di `veeamsnap` e quella di `veeam`, che da esso dipende.
+
+*Perché è fallita, ed è una incompatibilità strutturale e non un incidente.* Il registro di compilazione nomina funzioni del kernel che il modulo chiama e che nel kernel 7.0 non esistono più.
+
+```
+blk_util.c:37: error: implicit declaration of function 'blkdev_get_by_dev'
+blk_util.c:54: error: implicit declaration of function 'blkdev_put'; did you mean 'bdev_fput'?
+blk_direct.c:127: error: too few arguments to function 'bio_alloc_bioset'; expected 5, have 3
+blk_direct.c:143: error: implicit declaration of function 'bio_set_op_attrs'
+```
+
+Le prime due riguardano il modo di aprire e chiudere un dispositivo a blocchi, sostituito nei kernel recenti da una coppia di funzioni diverse, e il compilatore lo dice apertamente suggerendo il nome nuovo. La terza riguarda una funzione che ha cambiato firma, passando da tre a cinque argomenti. La quarta una funzione semplicemente rimossa. Non sono quattro difetti da correggere: sono il segno che quel modulo è scritto per una generazione di kernel precedente e che nessuna opzione di compilazione lo aggira.
+
+Va detto che questo non è un difetto del prodotto ma un disallineamento di calendario, ed è esattamente il rischio che MS-117 aveva nominato quando aveva preferito la variante senza modulo: un modulo di terze parti insegue il kernel, e su una distribuzione appena uscita può non averlo ancora raggiunto. La differenza è che allora il rischio era teorico e adesso è misurato.
+
+*Lo stato in cui la macchina è rimasta, dichiarato perché non è pulito.* I pacchetti risultano così: `veeam` scompattato ma non configurato, `veeamsnap` in stato di configurazione fallita, `veeam-nosnap` rimosso con la sola configurazione residua, `veeam-libs` installato correttamente. Il servizio dell'agente è stato fermato e disabilitato durante la rimozione della variante precedente. In pratica al momento non esiste un agente funzionante sulla macchina, ed è uno stato da cui si esce in un verso o nell'altro ma in cui non si resta.
+
+*La via alternativa, individuata e non ancora provata.* Il pacchetto `veeam` dichiara di dipendere da `veeamsnap` oppure da `blksnap`, e il secondo esiste nel repository alla stessa versione `6.3.2.1405`, distribuito anch'esso come modulo da compilare. `blksnap` è la riscrittura del meccanismo di istantanea per i kernel moderni, ed è quindi il candidato ragionevole: se compila, la dipendenza alternativa è soddisfatta e `veeam` si configura; se non compila, la conclusione è che su questo kernel il backup a livello di volume non sia disponibile e si ripiega su quello a livello di file, che la variante senza modulo sa fare anche su partizioni semplici.
+
+Vale registrare fin d'ora che cosa cambierebbe quel ripiego, perché non è una differenza di comodità. Un backup a livello di file conserva i file con i loro permessi e proprietà, quindi permette di ricostruire il contenuto della macchina, ma non produce una immagine avviabile: il ripristino passa da una installazione nuova del sistema seguita dal riversamento dei file, invece che dall'avvio di un supporto di ripristino che riscrive i volumi. Per questo progetto il ripiego non sarebbe drammatico, perché la procedura di installazione pulita è documentata passo per passo e il tempo perso è quello di rieseguirla, che è precisamente il tempo che il backup vorrebbe risparmiare.
+
+Verificato con: uscita completa dell'installazione, che riporta la rimozione di `veeam-nosnap`, la costruzione tentata del modulo e l'errore di ritorno; lettura del registro di compilazione in `/var/lib/dkms/veeamsnap/6.3.2.1405/build/make.log`, 65158 byte, con le quattro classi di errore citate; `dpkg -l` filtrato, che riporta gli stati `iU`, `iF`, `rc` e `ii` dei quattro pacchetti; lettura dell'indice del repository, che conferma l'esistenza di `blksnap` alla stessa versione.
+
+Esito: bloccato. Dipende dalla prova di compilazione di `blksnap`, non ancora eseguita.
+
+### MS-122 - Anche il modulo nuovo non compila: il livello di volume non è disponibile, lo stato è stato sanato e la conoscenza estratta in una pagina
+
+Perimetro: tentativo di compilazione del modulo `blksnap` come alternativa a `veeamsnap`, lettura del suo registro di compilazione, ripristino di uno stato dei pacchetti coerente con la reinstallazione della variante senza modulo, e stesura della pagina `docs/10-ambiente/veeam-agent-linux.md` con la conoscenza accumulata. Chiude il blocco aperto da MS-120 e MS-121.
+
+Legame con il progetto: serve la fase 10 e PA-011. Determina in modo definitivo quale tipo di backup questa macchina possa produrre oggi, il che decide la forma del ripristino e quindi il valore stesso della copia.
+
+*Perché si è provato `blksnap` e non si è concluso subito dopo `veeamsnap`.* Il pacchetto `veeam` dichiara di dipendere da `veeamsnap` oppure da `blksnap`, alla stessa versione, e i due non sono due nomi della stessa cosa: `veeamsnap` è il modulo storico e `blksnap` la riscrittura del meccanismo di istantanea per i kernel moderni. Fermarsi al fallimento del primo avrebbe confuso una incompatibilità di un modulo con l'indisponibilità della funzione, che sono cose diverse, e la seconda si afferma solo dopo aver provato entrambi. È lo stesso metodo già applicato in MS-113, dove una ipotesi forte è stata provata invece di essere lasciata in piedi.
+
+*Come è fallito, e perché la forma dell'errore è la parte informativa.* La compilazione si è fermata per quattro ragioni distinte, tutte della stessa famiglia.
+
+```
+cbt_map.c:7: fatal error: linux/blk_snap.h: No such file or directory
+chunk.c:21: error: redefinition of 'bdev_nr_sectors'
+chunk.c:23: error: 'struct block_device' has no member named 'bd_inode'
+chunk.c:80: error: implicit declaration of function 'LIMIT_BEGIN'
+```
+
+La prima dice che il modulo cerca una intestazione che si aspetta di trovare fra quelle del kernel e che il kernel 7.0 non fornisce. La seconda che il modulo definisce per conto proprio una funzione che il kernel ora fornisce già, il che significa che era stata aggiunta come compatibilità per kernel più vecchi e adesso collide. La terza che una struttura fondamentale del sottosistema a blocchi ha perso un membro che il modulo usa. La quarta riguarda tre macro di limitazione della frequenza dei messaggi che il modulo si aspetta e che non esistono con quel nome.
+
+Messe insieme dicono una cosa sola e vale enunciarla come regola: quando gli errori nominano intestazioni assenti, membri di strutture rimossi e funzioni con firma diversa, il modulo appartiene a una generazione di kernel precedente e nessuna opzione di compilazione lo recupera. La distinzione rispetto a un ambiente incompleto, dove mancano header o compilatore, è netta e si fa leggendo il registro, non riprovando.
+
+*Tre dettagli dell'uscita che sembrano guasti e non lo sono.* Il primo è che la costruzione del modulo è stata tentata tre volte di seguito. La causa è il comando che avevo preparato, che concatenava tre operazioni di `apt` nella stessa riga: ciascuna, trovando un pacchetto scompattato e non configurato, ha ritentato la configurazione e quindi la compilazione. Non è un ciclo del gestore dei pacchetti ma una conseguenza della forma del comando, ed è una imprecisione mia: concatenare operazioni che si influenzano a vicenda rende l'uscita tre volte più lunga senza aggiungere informazione.
+
+Il secondo è il messaggio `Cannot create report: File exists: /var/crash/blksnap.0.crash`, che compare dalla seconda ripetizione in poi. Non è un secondo guasto: è il meccanismo di segnalazione automatica dei difetti della distribuzione che tenta di depositare un rapporto e trova quello del tentativo precedente ancora lì. È rumore prodotto dalla ripetizione, non un difetto in sé.
+
+Il terzo è `rmmod: ERROR: Module bdevfilter is not currently loaded`, che compare durante la rimozione. Il modulo `blksnap` si accompagna a un secondo modulo chiamato `bdevfilter`, e lo script di rimozione tenta di scaricarlo dal kernel; poiché non era mai stato costruito non era caricato, e il comando lo dichiara. È l'esito corretto di una rimozione su un modulo mai installato, e leggerlo come errore porterebbe a cercare un problema che non c'è.
+
+*Che cosa è stato fatto per uscire dallo stato rotto, e perché in quest'ordine.* Sono stati eliminati con purga i tre pacchetti che riguardano il modulo e l'agente che ne dipende, cioè `blksnap`, `veeam` e `veeamsnap`, e poi reinstallata la variante `veeam-nosnap`. La purga invece della semplice rimozione serve a togliere anche le configurazioni residue, che altrimenti restano in stato `rc` e riappaiono in ogni elenco confondendo chi legge. L'ordine conta: rimuovere prima e installare dopo evita che il gestore dei pacchetti si trovi a risolvere una dipendenza alternativa mentre uno dei due rami è in errore.
+
+Lo stato finale è pulito e verificato: `veeam-libs`, `veeam-nosnap` e `veeam-release-deb` tutti in stato `ii`, nessuna traccia di `blksnap` o `veeamsnap`, e il servizio `veeamservice` riabilitato e riavviato dal pacchetto stesso. Va notato un dettaglio che il gestore dei pacchetti ha segnalato durante la purga, cioè che `veeam-libs` risultava installato automaticamente e non più necessario: la reinstallazione della variante senza modulo lo ha reso di nuovo necessario, quindi non va rimosso, e chi avesse eseguito la rimozione automatica suggerita nel mezzo della sequenza avrebbe scaricato quarantaquattro megabyte per riscaricarli subito dopo.
+
+*Un residuo da decidere, dichiarato perché altrimenti si dimentica.* Il passaggio alla variante con modulo ha trascinato trentadue pacchetti, cioè l'intera catena di compilazione con compilatore, librerie di sviluppo e `dkms`, per circa duecentocinque megabyte. Il tentativo è fallito e non verrà ripetuto su questo kernel, quindi quel materiale è ora inutile. Rimuoverlo non è urgente ma ha una ragione concreta oltre all'ordine: tutto ciò che sta sul disco finisce dentro il backup, quindi duecento megabyte di strumenti mai usati diventano duecento megabyte in ogni copia. La rimozione va però fatta guardando prima che cosa il gestore dei pacchetti proponga di togliere, perché una catena di compilazione può essere richiesta anche da altro.
+
+*La conclusione operativa, che chiude tre microstep.* Su questa macchina, con kernel `7.0.0-31-generic` e agente `6.3.2.1405`, il backup a livello di volume con Veeam non è disponibile. Non è una configurazione sbagliata e non si aggira: i due soli moduli esistenti appartengono a una generazione di kernel precedente. Resta il backup a livello di file, che la variante senza modulo esegue su qualunque disco, e che conserva i file con permessi e proprietà ma non produce una immagine avviabile.
+
+Per questo progetto la perdita è misurabile e non drammatica, e vale dirlo con precisione invece di consolarsi. Ciò che il backup deve salvare non è il sistema di base, che si reinstalla in un'ora seguendo una procedura documentata passo per passo in questo stesso blocco, ma l'ambiente costruito sopra di esso, cioè i quattro prefix Wine con i programmi installati, le licenze attivate, le chiavi di registro modificate e la configurazione della catena audio: tutto materiale che vive in file e che un backup a livello di file conserva integralmente. La differenza reale si misura in tempo di ripristino, cioè un'ora di reinstallazione in più, non in perdita di contenuto.
+
+*La pagina estratta, e perché esiste.* La conoscenza accumulata fra MS-117 e questo microstep è sparsa in sei voci di registro, che è la forma giusta per capire come ci si è arrivati e quella sbagliata per rifare la cosa. È stata quindi estratta in `docs/10-ambiente/veeam-agent-linux.md`, che è una pagina prescrittiva e non narrativa: la scelta fra le due varianti con la tabella che la decide, le tre verifiche preliminari, la sequenza di installazione, le due trappole con il sintomo e la causa, il modo di uscire dallo stato rotto, le alternative quando il livello di volume non è disponibile, e il criterio del ripristino provato. La pagina dichiara in apertura da dove viene e rimanda ai microstep per il racconto, così che i due livelli non si sovrappongano.
+
+La pagina serve anche un secondo progetto, cioè `home-lab-cybersec-networking`, da cui viene l'esperienza precedente letta in MS-117 e dove la stessa conoscenza manca: là esiste una sola pagina sull'agente per Windows, mentre la traccia dell'agente per Linux vive in un censimento hardware e in un documento non versionato. Segnalarlo a chi mantiene quel progetto è fuori dal perimetro di questo, ma la pagina è scritta in modo da poter essere copiata lì senza modifiche.
+
+Verificato con: uscita completa del comando di installazione di `blksnap`, che riporta la rimozione di `veeamsnap`, tre tentativi di costruzione e tre fallimenti; lettura del registro di compilazione in `/var/lib/dkms/blksnap/6.3.2.1405/build/make.log`, 12801 byte, con le quattro classi di errore citate; uscita del comando di purga e reinstallazione, che riporta la rimozione dei tre pacchetti, l'installazione di `veeam-nosnap` e la riabilitazione del servizio; `dpkg -l` filtrato, che riporta i tre pacchetti residui tutti in stato `ii` e nessun pacchetto di modulo.
+
+Esito: fatto. Lo stato della macchina è coerente, la via del livello di volume è esclusa per misura, e la conoscenza è su disco invece che in conversazione. Resta da creare il lavoro di backup a livello di file, eseguirlo, trasferirlo e provarne il ripristino.
+
+### MS-123 - La stessa violazione di perimetro ripetuta un'ora dopo averla scritta come regola, e la conseguenza che ne traggo
+
+Perimetro: ripetizione dell'errore descritto in MS-115, ripristino del file toccato, e apertura di PA-015. Non serve alcuna fase del progetto e lo dichiara: è un errore mio, registrato perché la convenzione di questo registro lo prescrive e perché la ripetizione insegna qualcosa che la prima occorrenza non insegnava.
+
+*Che cosa è successo.* Concludendo il lavoro su Veeam ho lanciato di nuovo la catena tipografica passando `.claude` come percorso invece dei soli file scritti, e lo strumento ha di nuovo corretto una forma apostrofata dentro `.claude/templates/context/sub-subproject.md`, che è una copia del template e che `CLAUDE.md` vieta esplicitamente di correggere qui. Il file è stato ripristinato con `git checkout --`, come la volta precedente.
+
+*Perché la ripetizione conta più dell'errore.* MS-115 aveva descritto esattamente questo caso e ne aveva tratto una regola, cioè lanciare la catena sui soli file del giro di lavoro corrente e mai su `.claude/templates/`. La regola era scritta, era corretta, ed è stata violata dalla stessa persona che l'aveva scritta, nella stessa sessione, meno di un'ora dopo. Non è un problema di conoscenza ma di attenzione, e le regole che dipendono dall'attenzione in un momento di stanchezza sono precisamente quelle che falliscono.
+
+Ne traggo la conseguenza che MS-115 non aveva tratto: una convenzione che un comando può violare per distrazione va difesa dal comando stesso e non dalla memoria di chi lo lancia. Gli strumenti tipografici dovrebbero rifiutarsi di scrivere sotto `.claude/templates/`, così come `md-unwrap` già si rifiuta di scrivere un file il cui rendering cambierebbe: è lo stesso principio di presidio meccanico che questo progetto applica altrove, e la sua assenza qui è una lacuna e non una scelta. La modifica non è stata fatta adesso perché quegli strumenti sono condivisi con il template e una modifica locale allargherebbe la divergenza che PA-003 esiste per chiudere, quindi appartiene alla propagazione all'indietro. È tracciata come PA-015.
+
+*Che cosa resta valido.* La regola di MS-115 resta in vigore, e questa voce non la sostituisce: la rafforza dichiarando che da sola non basta. Fino a quando il presidio meccanico non esiste, la forma sicura resta elencare i file invece di passare una cartella, e la verifica dopo ogni lancio è `git status`, che mostra immediatamente un file toccato e non atteso.
+
+Verificato con: `git status` dopo il lancio, che elencava il file del modello fra i modificati; `git diff --stat` sullo stesso, una riga cambiata; `git checkout --` e nuovo `git status`, che non lo elenca più.
+
+Esito: fatto per il ripristino. Il presidio meccanico resta da costruire ed è PA-015.
 
 ## Che cosa resta da fare, e da che cosa dipende
 
