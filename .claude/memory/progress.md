@@ -2,6 +2,16 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-16, chiusura - Allineamento al template per la ripresa di sessione
+
+Commit di partenza: a7dea2b.
+
+File toccati: `tools/verifica-ripresa.py` e `.claude/skills/riprendi/`, nuovi e istanziati dal template; `.claude/PROJECT-SYSTEM.md`, riportato identico a quello del template; `CLAUDE.md`, con la procedura di ripresa nella forma nuova; `_notes/RESUME-PROMPT.md`, rinominato dal minuscolo e riscritto; schede di stato riallineate ad `a7dea2b`.
+
+Motivo. Il template ha introdotto un presidio che questo progetto non aveva: una impronta dello stato di git registrata come ultimo atto della sessione e verificata come primo atto della successiva. Serve a distinguere un file di ripresa aggiornato da uno che non lo è, che dall'esterno hanno lo stesso aspetto, e a dire che cosa una sessione caduta a metà non ha scritto. La prima corsa dello strumento, ancora senza impronta, ha comunque trovato subito uno scarto reale, cioè lo snapshot fermo a `dd3d630` mentre HEAD era già ad `a7dea2b`.
+
+Che cosa resta divergente dal template e non è stato portato qui: la skill `gate-pacchetti`, che riguarda l'adozione dei pacchetti opzionali e non il tracciamento, e che verrà istanziata se e quando servirà.
+
 ## 2026-09-16 - Veeam allestito, il livello di volume escluso per misura, conoscenza estratta in una pagina
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-117, MS-118, MS-119, MS-120, MS-121 e MS-122; `docs/10-ambiente/veeam-agent-linux.md`, nuovo; `docs/10-ambiente/README.md`; `docs/PENDING-ACTIONS.md`; `tools/check-pending-actions.py`; schede di stato.
