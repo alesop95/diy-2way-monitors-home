@@ -34,6 +34,8 @@ Discussione di comunità sull'esecuzione di Akabak sotto Wine: `https://www.diya
 
 Download gratuito di EASE Focus 3: `https://www.afmg.eu/en/ease-focus-3-free-download`
 
+Modelli GLL di costruttori, scaricabili senza registrazione, usati il 2026-09-15 per la prova di compatibilità di MS-114: `https://audiocenter.com/ease-downloads/`. La pagina elenca archivi per singolo prodotto, con date che arrivano al 2026, ed è utile proprio perché consente di procurarsi un modello recente senza aprire un account, cosa che diversi costruttori richiedono.
+
 ## Microfoni di misura
 
 MiniDSP UMIK-1, microfono USB omnidirezionale calibrato: `https://www.costruireaudio.com/minidsp-umik-1-microfono-usb-omnidirezionale-calibrato-per-misurazione.html`

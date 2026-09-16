@@ -2272,6 +2272,86 @@ Verificato con: copia dei due file dalla postazione e loro installazione nel pre
 
 Esito: bloccato, e il blocco è lo stesso di MS-112 con un candidato in meno. L'ipotesi sul provider crittografico è ritirata.
 
+### MS-114 - Il rifiuto non dipende dall'età del modello, e i redistributabili non c'entrano: due candidati caduti insieme
+
+Perimetro: scaricamento di un modello GLL pubblicato nel 2026 dal sito di un costruttore, sua importazione, classificazione delle librerie del programma che leggono i modelli, lettura delle loro tabelle di importazione, e ispezione del file di configurazione .NET del programma. Nessun modello è stato importato.
+
+Legame con il progetto: serve la fase 3 e la fase 8, per la stessa ragione di MS-112, cioè che il catalogo dei diffusori commerciali è il materiale su cui il confronto si fa.
+
+*La domanda che questo microstep chiude, e il perché era rimasta aperta.* MS-113 aveva lasciato una verifica a basso costo non fatta: provare un modello scaricato oggi, per sapere se il rifiuto colpisca tutti i modelli o soltanto quelli prodotti prima di una certa data. La distinzione non era oziosa, perché le tre prove precedenti riguardavano modelli del 2016 e del 2022, e una incompatibilità di formato fra un programma e modelli più vecchi di lui è un fenomeno reale e documentato nel messaggio stesso, che nomina esplicitamente la compatibilità con la versione dell'applicazione.
+
+Il modello scelto è quello di un diffusore amplificato pubblicato il 30 gennaio 2026, 1.059.561 byte, con la firma `EGLL` verificata dopo lo scaricamento. È stato rifiutato esattamente come gli altri. Il rifiuto copre quindi modelli del 2016, del 2022 e del 2026, e l'età del modello è esclusa come fattore: qualunque sia la causa, non discrimina per data.
+
+Va registrato anche il modo in cui il materiale è arrivato, perché è la prima volta in questo progetto che una fonte esterna produce un file e non una informazione. Lo scaricamento è stato fatto con `curl` dalla macchina, con uno user agent da browser, e ha risposto con codice 200 e 974.565 byte; l'archivio contiene un solo file. Il materiale sta in `~/electroacoustics/gll-prova-2026` e non è versionato, coerentemente con il trattamento di tutto il corredo.
+
+*Il terzo candidato di MS-108, finalmente misurato invece che assunto.* MS-108 aveva elencato `corefonts`, `vcrun2013` e `vcrun2019` come dipendenze plausibili, con la ragione che alcuni moduli GLL portano librerie proprie compilate con compilatori diversi, e aveva deciso di non installarle finché un difetto non le chiamasse in causa. La misura di oggi chiude la questione per quanto riguarda il programma.
+
+Lo strumento `tools/arch-dotnet.py`, portato sulla macchina per l'occasione, divide le librerie del programma in due gruppi. Quelle che leggono i modelli sono codice gestito: `S4.FormatSpecs.Gll.dll` è un assembly .NET con il flag `32BITREQUIRED` acceso, `S3.GLI.dll` e `Crc32.dll` sono assembly .NET indipendenti dall'architettura, `S4.Cryptography.dll` è un assembly .NET a 32 bit. Native sono soltanto tre librerie, `EaseLAud.dll`, `Nspp5.dll` e `Nelson_Dll.dll`, tutte PE32 a 32 bit, e la lettura delle loro tabelle di importazione con `objdump` dice che cosa chiedono al sistema: la prima nomina `VERSION`, `KERNEL32`, `USER32`, `SHLWAPI`, `OLEACC`, `GDI32`, `WINSPOOL.DRV`, `comdlg32` e `OLEAUT32`, la seconda `KERNEL32` e `USER32`, la terza il solo `KERNEL32`. Nessuna nomina un redistributabile di Visual C++, il che significa che incorporano staticamente la propria libreria di esecuzione.
+
+Ne segue che `vcrun2013` e `vcrun2019` non servono al programma e la loro assenza non può spiegare il rifiuto. Resta vera la ragione originale per cui erano plausibili, e va tenuta distinta: riguarda le librerie che alcuni costruttori distribuiscono dentro i propri modelli, 26 delle quali stanno nel pacchetto del 2016, e quella questione si porrà soltanto quando l'importazione funzionerà e si aprirà uno di quei modelli. È una domanda diversa, rimandata e non chiusa.
+
+Il fatto che il lettore dei modelli sia codice gestito spiega inoltre un dato che finora era soltanto negativo, cioè l'assenza di errori di caricamento nel registro di Wine: un assembly .NET che fallisca non produce un errore di modulo, produce una eccezione che il programma può intercettare, ed è esattamente ciò che si osserva.
+
+*Due osservazioni dal file di configurazione, registrate come tali e non come cause.* Il programma porta un file di configurazione .NET di 55.628 byte con centinaia di impostazioni, e tre di esse riguardano la base di dati: `NoSqlDatabaseName`, `NoSqlGllCollectionName` e `NoSqlServerConnectionString`, tutte e tre con valore vuoto. Non se ne deduce nulla, perché un valore vuoto in quel file può essere sovrascritto a tempo di esecuzione, e la finestra di gestione dei modelli interroga la base di dati senza lamentarsi; sono registrate perché nominano esattamente la parte del programma che fallisce e perché chi riprende la diagnosi vorrà sapere che esistono. La seconda osservazione è che il programma dichiara di essere compilato per il .NET Framework 4.6.1, requisito che la versione 4.8 installata soddisfa.
+
+Il file non contiene alcun interruttore di traccia e alcuna sezione di diagnostica, il che conferma dall'interno ciò che MS-113 aveva constatato dalle opzioni: la diagnosi non può venire da dentro il programma.
+
+*Che cosa resta.* Delle tre cause plausibili elencate a settembre ne sono cadute due misurate, cioè la crittografia in MS-113 e i redistributabili qui, e con esse è caduta l'età del modello. Il candidato che resta è l'ambiente, cioè la versione di Wine, e la sua verifica non è un esperimento rapido ma una decisione: la macchina ha `wine-10.0` dai repository della distribuzione, la documentazione di questo progetto raccomanda da sempre i pacchetti ufficiali di WineHQ, e le due provenienze non si mescolano. Va quindi posta all'utente invece di essere eseguita.
+
+Verificato con: `curl` con user agent da browser sul sito del costruttore, codice 200 e 974.565 byte scaricati; `unzip` e `head -c` sul file estratto, 1.059.561 byte con firma `EGLL`; importazione del modello, con la finestra di rifiuto identica nel testo a quelle precedenti; `python3 tools/arch-dotnet.py` su sette librerie del programma, con gli esiti riportati sopra; `objdump -p` sulle tre librerie native e lettura delle loro tabelle di importazione; lettura del file di configurazione del programma e ricerca al suo interno di sezioni di diagnostica, che non esistono, e delle tre impostazioni sulla base di dati, tutte vuote.
+
+Esito: bloccato. Due candidati sono caduti e la diagnosi si è ristretta all'ambiente; la prova successiva è una decisione dell'utente sulla provenienza dei pacchetti di Wine.
+
+### MS-115 - La catena tipografica lanciata su un perimetro troppo largo, e la regola che ne discende
+
+Perimetro: correzione di un apostrofo in `.claude/context/STACK.md` e ripristino di una correzione analoga in `.claude/templates/context/sub-subproject.md`, che non andava fatta in questo repository. Non serve alcuna fase del progetto e lo dichiara apertamente: è un errore mio e la voce esiste perché la convenzione di questo registro prescrive di scrivere anche quelli.
+
+*Che cosa è successo.* Al termine del lavoro di MS-114 ho lanciato `fix-accents.py` e `fix-dashes.py` passando come percorsi `docs` e `.claude` interi, invece dei soli file che avevo scritto. I due strumenti hanno fatto esattamente il loro mestiere e hanno corretto due difetti reali che stavano lì da prima e che non avevo toccato io: un `e'` in `STACK.md` e un gruppo di sei forme apostrofate in un modello sotto `.claude/templates/`.
+
+*Perché una delle due correzioni era un danno e non un guadagno.* La prima resta, perché `STACK.md` è una scheda di questo progetto e la convenzione tipografica vi si applica: correggerla è ciò che la regola chiede, anche se l'ho fatto per sbaglio. La seconda è stata ripristinata, perché i file sotto `.claude/templates/` sono copie del template `template-claude-developing` e `CLAUDE.md` prescrive esplicitamente di non correggerveli qui: la correzione appartiene alla propagazione all'indietro tracciata come PA-003, e farla in questo repository allarga la divergenza che quella voce esiste per chiudere, trasformando una differenza nota e sanabile in una differenza in più da conciliare.
+
+È la stessa classe di errore di MS-014 e MS-027, cioè uno strumento corretto applicato a un perimetro sbagliato, e il fatto che si ripresenti dopo che la documentazione lo descriveva già dice che descriverlo non basta.
+
+*La regola che ne discende.* La catena tipografica si lancia sui soli file scritti o modificati nel giro di lavoro corrente, elencandoli, e non su una cartella intera. Il lancio su `.` resta legittimo nella sola forma di verifica non distruttiva prima di un commit, cioè con `--check` dove lo strumento lo prevede, perché là serve sapere se qualcosa non rispetti la convenzione senza riscrivere nulla. Su `.claude/templates/` non si lancia mai, in nessuna forma che scriva.
+
+Verificato con: `git status` dopo il lancio, che ha mostrato due file modificati e non attesi; `git diff` su entrambi, che ha mostrato la natura delle due correzioni; `git checkout --` sul solo file del modello, con `git status` che dopo il ripristino non lo elenca più.
+
+Esito: fatto. Una correzione conservata perché legittima, una annullata perché fuori perimetro, e la regola scritta qui invece che ricordata.
+
+### MS-116 - ARTA installato e sottofase 8.7 chiusa, con il limite della modalità dimostrativa misurato invece che rimandato
+
+Perimetro: creazione del prefix `~/wineprefixes/arta64`, installazione di ARTA 1.7.1 guidata in interfaccia dal display privato di MS-111, primo avvio, lettura del testo di licenza sia nella finestra sia nel file di accompagnamento, e controllo di uscita della fase 8 con l'apertura simultanea di tutti i programmi del corredo. Apre PA-014.
+
+Legame con il progetto: serve la fase 8, quella in cui il monitor autocostruito esiste e va caratterizzato. Fino a quel momento ARTA resta inutilizzato, perché la misura acustica la fa REW, che è nativo e non passa da Wine. La sottofase esisteva per avere lo strumento pronto e verificato prima di averne bisogno, non per usarlo adesso.
+
+*L'installazione, senza sorprese.* Il pacchetto `ArtaSetup171.exe` è un PE32 a 32 bit del 2018 costruito con Inno Setup, e produce quindi due processi come già osservato per VituixCAD in MS-101. La destinazione proposta è `C:\Program Files (x86)\ArtaSoftware` ed è stata accettata, per la stessa ragione di MS-101: un installatore a 32 bit risolve la cartella dei programmi nella vista a 32 bit, spostare il risultato romperebbe il disinstallatore, e non c'è alcun vantaggio nel farlo. Il prefix pesa 1,6 GB.
+
+Ciò che si installa sono tre programmi e non uno, e la distinzione serve perché la documentazione del progetto nomina soltanto il primo. `Arta.exe` misura la risposta all'impulso e fa analisi di spettro in tempo reale, `Steps.exe` misura la risposta in frequenza con eccitazione a sinusoide a gradini, `Limp.exe` misura l'impedenza del diffusore e ne stima i parametri. Accanto stanno i tre manuali in formato di aiuto compilato e una cartella di esempio con un solo file.
+
+*Il punto che la procedura aveva lasciato aperto, ora chiuso.* La pagina del corredo dichiarava che ARTA è shareware e che senza registrazione funziona in modalità dimostrativa con limitazioni da verificare al momento dell'uso. La verifica è stata fatta adesso invece che rimandata, e il limite è dichiarato in due posti concordi: la finestra che il programma mostra all'avvio e il file `Readme.txt` accanto all'eseguibile, che lo scrive così, e vale citarlo alla lettera perché una parafrasi lo ammorbidirebbe.
+
+```
+The demo mode of the program is fully functional except loading and saving of files.
+```
+
+La modalità dimostrativa è quindi pienamente funzionante tranne che per il caricamento e il salvataggio dei file. Si misura, si vede il risultato a schermo, e non lo si conserva.
+
+*La conseguenza per il progetto, che non è piccola e va detta adesso.* Il ruolo che questo progetto attribuisce ad ARTA è produrre un file GLL a partire da un diffusore misurato, cioè esattamente un salvataggio. In modalità dimostrativa quel ruolo non è esercitabile, e nessun accorgimento lo aggira, perché non è una limitazione di funzionalità ma di persistenza. Ne segue che, quando la fase 8 arriverà, o si acquista la licenza o si sceglie un'altra via verso il GLL. Non blocca nulla oggi, perché la fase 8 richiede un diffusore che non esiste ancora, e proprio per questo la decisione va registrata invece di essere presa di corsa fra un anno: è PA-014.
+
+*Una discrepanza minore, registrata perché non risolta.* Il file di accompagnamento si apre dichiarando `ARTA Software, release 1.7.0`, mentre il pacchetto si chiama `ArtaSetup171.exe` e la documentazione del progetto parla di 1.7.1. La spiegazione più semplice è un file non aggiornato dall'autore, ma non è stata verificata leggendo la finestra di informazioni del programma, quindi resta una osservazione e non un fatto.
+
+*Il controllo di uscita della fase 8, eseguito.* La procedura prescrive che Akabak, VACS, VituixCAD, EASE Focus e ARTA aprano la propria finestra, che Akabak sia attivato con il codice esistente e VACS non ne chieda un secondo, che EASE Focus carichi almeno un GLL dal database, e che i prefix siano quattro e non cinque.
+
+Quattro criteri su cinque sono soddisfatti, e il modo in cui è stato verificato il primo merita una riga: i cinque programmi sono stati aperti tutti insieme sullo stesso display, e l'elenco delle finestre li riporta contemporaneamente, cioè `Akabak - (new)` a 1272 per 686, `VACS - (new)` a 992 per 599, `VituixCAD` a 1358 per 710, `[New EASE Focus Project] - EASE Focus 3, Version 3.1.260` a 1432 per 752 e `Untitled - Arta` a 1252 per 753. Aprirli insieme invece che uno per volta non è esibizionismo: è la prova che i quattro prefix convivono senza interferenze, che è precisamente ciò che la separazione in prefix distinti esiste per garantire e che finora era una aspettativa. I prefix sono quattro, cioè `~/.wine` con 838 MB, `arta64` con 1,6 GB, `easefocus64` con 2,7 GB e `vituixcad64` con 2,6 GB, come prescritto.
+
+Il criterio non soddisfatto è quello su EASE Focus, che resta bloccato per la ragione di MS-112 e MS-114, cioè che il catalogo dei modelli non si lascia alimentare. È l'unico residuo della fase 8.
+
+*Che cosa resta non verificabile, e va detto invece di essere taciuto.* L'avvertimento della pagina del corredo sull'accesso di ARTA alla scheda audio sotto Wine non è stato messo alla prova e non lo sarà finché l'interfaccia audio di PA-012 non esisterà. Il programma si apre e disegna, il che dice che l'interfaccia grafica funziona, e non dice nulla sulla latenza né sulla stabilità di una misura dal vivo. La documentazione già indica REW per quel compito, quindi la questione non è urgente, ma non va scambiata per risolta.
+
+Verificato con: `file` sull'installatore, che riporta PE32 per Intel i386; installazione guidata in interfaccia sul display privato, con le schermate di destinazione e di riepilogo fotografate; elenco del contenuto della cartella di installazione, con i tre eseguibili, i tre manuali e la cartella di esempio; `du -sh` sul prefix, 1,6 GB; primo avvio, che apre la finestra di registrazione della licenza, e prosecuzione in modalità dimostrativa, che apre la finestra principale a 1252 per 753 con lo stato `Ready`; lettura del testo di licenza nella finestra e in `Readme.txt`, concordi; apertura simultanea dei cinque programmi del corredo e lettura dell'elenco delle finestre; conteggio e misura dei quattro prefix.
+
+Esito: fatto. La sottofase 8.7 è chiusa, il controllo di uscita della fase 8 è superato in quattro criteri su cinque, e il quinto dipende dal blocco già tracciato su EASE Focus.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
