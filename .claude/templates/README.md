@@ -4,7 +4,9 @@
 
 ## Registro dei pacchetti opzionali
 
-`PACKAGES.md` è il registro dei pacchetti opzionali che il sistema sa offrire (`latex`, `diagrams`, `code-context`, e i futuri `knowledge-wiki` e `book-to-skill`), con per ciascuno il trigger che dice quando proporlo. La skill `init-project-system` lo consulta al gate dei pacchetti, sia in inizializzazione sia in allineamento, e propone solo quelli pertinenti, sempre su conferma esplicita. A differenza degli altri template, `PACKAGES.md` non si istanzia nella radice del progetto: resta qui come riferimento del bundle.
+`PACKAGES.md` è il registro dei pacchetti opzionali che il sistema sa offrire, oltre settanta, diviso in dieci settori: fondamenta e igiene del progetto, scrittura e tipografia, fonti e corpus documentali, voce e trascrizione, domini scientifici, comprensione di una codebase, sviluppo e qualità del codice, apprendimento guidato, economia del contesto, orchestrazione e cataloghi di agenti. Ogni settore apre con la frase che dice a chi serve e che cosa chiedere per saperlo, e ogni riga porta il trigger concreto che dice quando proporre quel pacchetto.
+
+La divisione per settore non è una comodità di lettura ma il modo in cui il gate lo attraversa: la skill `gate-pacchetti` riconosce dai fatti del progetto a quali settori appartenga, dichiara il riconoscimento e lo fa correggere, e propone i soli pacchetti dei settori riconosciuti, uno per volta e con che cosa fa, perché a questo progetto potrebbe servire e che cosa costa. Un progetto appartiene a due o tre settori su dieci, quindi la scelta passa da settanta domande a una decina, tutte pertinenti. La skill si esegue in inizializzazione, a ogni tornata di allineamento e ogni volta che l'obiettivo del progetto cambia; `init-project-system` la invoca al proprio Passo 4. A differenza degli altri template, `PACKAGES.md` non si istanzia nella radice del progetto: resta qui come riferimento del bundle.
 
 ## Mappa di istanziazione
 
@@ -17,8 +19,11 @@ templates/gitignore.snippet    ->  da unire al <radice>/.gitignore       (tracci
 templates/settings.json        ->  <radice>/.claude/settings.json        (tracciato)
 templates/memory/*.md          ->  <radice>/.claude/memory/*.md          (tracciato)
 templates/context/*.md         ->  <radice>/.claude/context/*.md         (tracciato)
+templates/context/sub-subproject.md ->  <radice>/.claude/context/<nome-sottoprogetto>.md  (tracciato, una copia per sottoprogetto)
 templates/_notes/*.md          ->  <radice>/_notes/*.md                  (ignorato; solo dopo che _notes e ignorato)
 ```
+
+Una precisazione sulla riga delle schede di contesto, perché la forma con l'asterisco la nasconde: `sub-subproject.md` non è una scheda che si copia una volta con il proprio nome, ma un modello che si istanzia una volta per ogni sottoprogetto, rinominandolo con il nome di quello e compilandone il `covers-paths` con la sua cartella. Le istruzioni di istanziazione stanno dentro il modello, e comprendono il passo che si dimentica più spesso, cioè estendere il `covers-paths` delle schede trasversali alla cartella nuova: senza quel passo il motore di riconciliazione non guarda mai il sottoprogetto appena aggiunto.
 
 Anatomia di radice opzionale: README pubblico per GitHub, da istanziare su gate esplicito.
 
@@ -106,12 +111,47 @@ Strumento per i passi manuali e visivi, da istanziare nel progetto quando lo svi
 templates/tools/latest-screenshot.ps1 ->  <radice>/tools/latest-screenshot.ps1  (tracciato, opzionale)
 ```
 
-Strumenti di igiene dell'account, non del progetto: agiscono sulla home dell'account Claude Code, non sul repository. Non si istanziano nella radice del progetto; restano nel bundle e si invocano da li, mentre `session-end-wipe.ps1` e il suo companion `scrub-claude-json.js` si installano insieme nella home dell'account. Vedi PROJECT-SYSTEM.md sezione 15.
+Strumenti di igiene dell'account, non del progetto: agiscono sulla home dell'account Claude Code, non sul repository. Non si istanziano nella radice del progetto; restano nel bundle e si invocano da li, mentre `session-end-wipe.ps1` e il suo companion `scrub-claude-json.js` si installano insieme nella home dell'account. Lo script di wipe non si installa mai così com'è: porta segnaposto al posto dei prefissi da preservare, e prima di compilarlo si elencano gli slug realmente presenti con il suo modo di sola lettura e si chiede all'utente quali radici tenere, perché quei prefissi dipendono dalla macchina e su Linux non hanno nemmeno la forma di una lettera di disco. Vedi PROJECT-SYSTEM.md sezione 15.
 
 ```
 templates/tools/check-account-hygiene.ps1 ->  si esegue dal bundle al Passo 0   (verifica, non istanziato)
-templates/tools/session-end-wipe.ps1      ->  <CLAUDE_CONFIG_DIR>/hooks/session-end-wipe.ps1   (installato per-account)
+templates/tools/session-end-wipe.ps1      ->  <CLAUDE_CONFIG_DIR>/hooks/session-end-wipe.ps1   (installato per-account, da compilare)
 templates/tools/scrub-claude-json.js      ->  <CLAUDE_CONFIG_DIR>/hooks/scrub-claude-json.js   (installato per-account)
+```
+
+Strumento di rilevazione dei profili SSH, anch'esso di macchina e non di progetto: si esegue dal bundle al Passo 0.5 per leggere gli alias verso GitHub realmente configurati, con le chiavi che selezionano e l'identità git corrente, così che il remoto si agganci a un profilo che esiste invece che a uno preso da un'altra installazione. Non ha varianti per sistema operativo, perché il formato di `ssh_config` non ne ha.
+
+```
+templates/tools/detect-ssh-profiles.py    ->  si esegue dal bundle al Passo 0.5  (rilevazione, non istanziato)
+```
+
+Strumento di verifica della ripresa, che invece e di progetto e si istanzia: confronta l'impronta registrata alla chiusura della sessione precedente con lo stato reale di git, e dice che cosa una sessione caduta a meta non ha scritto. La skill `riprendi` e la procedura che ne interpreta l'esito; l'impronta si registra come ultimo atto della sessione, dopo i commit dell'utente.
+
+```
+templates/tools/verifica-ripresa.py        ->  tools/verifica-ripresa.py   (tracciato)
+templates/tools/lint-doc-references.py     ->  tools/lint-doc-references.py (tracciato)
+```
+
+Il secondo dei due trova nella documentazione i riferimenti a file che non esistono, dividendoli in categorie invece di ammucchiarli: un documento vivo che nomina un file assente va corretto, una voce datata che lo nomina era vera quel giorno e non si riscrive. Le radici che identificano un percorso si leggono da git e non si configurano.
+
+Pacchetto opzionale per la trascrizione e la sintesi vocale in locale, appoggiato a VoiceStudio, che resta una applicazione esterna e non entra nel repository. Istanzia un solo strumento, senza segnaposto da sostituire, che scrive le trascrizioni sotto `_notes/fonti/` con la provenienza davanti al testo. La mappa di dettaglio, l'allestimento per sistema operativo e le note su licenza e consenso alla clonazione di una voce stanno in `templates/voicestudio/README.md`.
+
+```
+templates/voicestudio/tools/trascrivi.py  ->  tools/trascrivi.py
+```
+
+Pacchetto opzionale per la raccolta di skill scientifiche di K-Dense. Non installa skill: istanzia lo strumento che ne genera la mappa e la mappa già generata, che il progetto tiene dove tiene i propri documenti. Richiede una riga nel `.gitignore` per la copia locale della raccolta, che è materiale di terzi. La procedura in quattro mosse per prendere una skill e i numeri misurati sulla raccolta stanno in `templates/scientific-skills/README.md`.
+
+```
+templates/scientific-skills/tools/mappa-skill-scientifiche.py  ->  tools/mappa-skill-scientifiche.py
+templates/scientific-skills/MAPPA-SKILL-SCIENTIFICHE.md        ->  docs/MAPPA-SKILL-SCIENTIFICHE.md (o dove il progetto tiene i documenti)
+                                                                   .tmp-skills/ nel .gitignore
+```
+
+Pacchetto opzionale di sola guida alla scelta, che non istanzia file nel progetto: le skill si prendono a monte, come plugin gestito oppure come file copiati, e la scelta fra le due vie dipende da quali skill si prendono, perché tre di esse vanno adattate ai percorsi di questo sistema. La mappa in tre gruppi, cioè i buchi reali, le duplicazioni e ciò che va adattato, sta in `templates/matt-pocock-skills/README.md`.
+
+```
+templates/matt-pocock-skills/README.md  ->  nessun file istanziato: e' la guida alla scelta
 ```
 
 ## Ancoraggio al primo commit
