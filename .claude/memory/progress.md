@@ -2,6 +2,38 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-17, chiusura - Backup di macchina chiuso, procedura resa portabile, riallineamento al template
+
+Commit di partenza: d2efb3d.
+
+File toccati in questa seconda metà della giornata: `docs/OPERATIONS-LOG.md` con i microstep da MS-128 a MS-135; `docs/10-ambiente/veeam-agent-linux.md`, riscritto in forma parametrica e portato da 152 a oltre 430 righe, più la sua copia nel progetto gemello; `docs/PENDING-ACTIONS.md` con PA-011 chiusa, PA-015 chiusa, PA-003 riscritta e PA-016 aperta e in gran parte compiuta; `tools/check-pending-actions.py`; `CLAUDE.md`; e nel template `.gitignore` e `.claude/rules/git-commands-format.md`.
+
+PA-011 è chiusa dopo sette giorni. L'ordine dei passi è stato quello che la voce prescriveva, cioè prima si finisce di installare e poi si fa il backup, e il criterio di completamento non è stato interpretato al ribasso: l'archivio è stato riletto montandolo e confrontandolo, non soltanto prodotto. Tre limiti restano dichiarati invece di essere taciuti, cioè la destinazione provvisoria, la cifratura rinviata con motivazione e l'assenza di una immagine avviabile.
+
+Due direttive dell'utente hanno cambiato il modo di lavorare, e sono la parte di questa giornata che sopravvive al fronte. La prima è che ogni fronte operativo produca, oltre ai microstep, una procedura replicabile con i soli comandi e il troubleshooting: era stata soddisfatta il 2026-09-16 e non più oggi, ed è ora scritta come obbligo in `CLAUDE.md` invece di dipendere dalla mia attenzione. La seconda è che quella procedura serva su qualunque macchina Linux e non solo su questa, e ha prodotto la riscrittura parametrica della pagina, con i valori da sostituire raccolti in un blocco unico e le tre decisioni che cambiano da macchina a macchina dichiarate accanto.
+
+Il presidio che ne discende è però debole e lo dichiaro: è una riga in un file che va letto, non un controllo che fallisce. Il presidio forte sarebbe uno strumento che si accorge che un fronte operativo ha prodotto microstep senza toccare alcuna pagina prescrittiva, e non esiste. È lo stesso schema di PA-015, che oggi si è chiusa proprio perché una convenzione era stata trasformata in una guardia meccanica.
+
+Tre errori miei sono registrati nei microstep e non nascosti. Un comando consegnato senza dichiarare da quale macchina andasse eseguito, che è MS-126 ed è diventato la quinta causa nella regola sul contesto di shell, portata anche al template. Una affermazione sul deposito dedotta da un `ls` invece che misurata con il comando del programma, ritirata in MS-128. E una affermazione su che cosa riceva chi clona il template, ereditata da PA-003 e da me ripetuta, smentita da `git ls-files` in MS-130. A queste si aggiunge un percorso Windows corrotto in caratteri di controllo mentre scrivevo la chiusura di PA-011, trovato e riparato dentro MS-135.
+
+Il fronte torna alla sottofase 8.6, cioè all'import GLL di EASE Focus, che è l'unico criterio di uscita della fase 8 ancora non soddisfatto e ha un solo candidato residuo, cioè il passaggio ai pacchetti ufficiali di WineHQ. La decisione è dell'utente e oggi è meno rischiosa di due giorni fa, perché lo stato della macchina è recuperabile.
+
+## 2026-09-17 - Ricognizione prima del backup, un comando senza punto di esecuzione, e lo scarto dal template riaperto
+
+Commit di partenza: d2efb3d.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-126, MS-127, MS-128 e MS-129; `docs/PENDING-ACTIONS.md` con PA-016 aperta e in gran parte chiusa lo stesso giorno, PA-015 chiusa e PA-003 riscritta; `CLAUDE.md`; `.claude/PROJECT-SYSTEM.md`; quattro regole sotto `.claude/rules/`, di cui una nuova; la skill `studio-didattico`; l'agente `security-auditor`; i quattro strumenti tipografici sotto `tools/` e i loro modelli; i due controlli nuovi `check-copie-modelli.py` e `check-catalogo.py`; sei pacchetti di modelli sotto `.claude/templates/`; questo file.
+
+Il riallineamento al template è stato eseguito oggi e non rimandato. Avevo proposto di rimandarlo a dopo la chiusura di PA-011 per non mescolare due giri di lavoro, l'utente ha ripetuto l'istruzione, e la sua decisione supera la mia proposta: la separazione fra i due giri resta comunque netta, perché il backup non era ancora partito quando il riallineamento è cominciato. Il racconto è in MS-129 e la misura che lo ha preceduto in MS-127.
+
+Motivo. La sessione si è aperta con la skill `riprendi`, e la verifica è uscita pulita: l'impronta del 2026-09-16 descriveva il presente e i due file modificati nell'albero erano quelli attesi. Il fronte è PA-011, cioè il backup di macchina, e prima di creare il lavoro ho misurato lo stato dell'agente invece di fidarmi del comando scritto nel file di ripresa.
+
+Due cose meritano il meta-stato e non solo il registro. La prima è che il primo comando consegnato è fallito per una causa che non sta nel comando: era scritto per la postazione e si apriva con `ssh -t studio`, e l'utente lo ha incollato in un terminale già aperto sulla macchina di destinazione, dove quell'alias non esiste. È una quinta causa rispetto alle quattro che il template sta censendo in queste ore nella regola sul formato dei comandi, e riguarda la macchina invece dello stato di una shell sulla stessa macchina. Vale la pena portarla al template quando si chiude PA-016.
+
+La seconda è che l'utente ha chiesto se stessi tracciando, e la risposta onesta era no: fino a quel momento questa sessione aveva prodotto misure e nessun file, cioè esattamente lo stato che `chat-non-e-memoria.md` esiste per impedire. Il presidio previsto dalla regola, cioè la riga che dichiara quali file sono stati scritti, era assente dalle prime due risposte, ed è così che la sua assenza si nota. Il debito è stato pagato nello stesso giro.
+
+Lo scarto dal template è stato misurato su domanda dell'utente e non chiuso: sei commit dal 2026-09-15, fra cui una regola che qui non esiste e un paragrafo nuovo in una regola che qui si carica sempre. È PA-016, ed è deliberatamente rimandata a dopo la chiusura di PA-011 per non mescolare due giri di lavoro.
+
 ## 2026-09-16, chiusura - Allineamento al template per la ripresa di sessione
 
 Commit di partenza: a7dea2b.
@@ -11,6 +43,8 @@ File toccati: `tools/verifica-ripresa.py` e `.claude/skills/riprendi/`, nuovi e 
 Motivo. Il template ha introdotto un presidio che questo progetto non aveva: una impronta dello stato di git registrata come ultimo atto della sessione e verificata come primo atto della successiva. Serve a distinguere un file di ripresa aggiornato da uno che non lo è, che dall'esterno hanno lo stesso aspetto, e a dire che cosa una sessione caduta a metà non ha scritto. La prima corsa dello strumento, ancora senza impronta, ha comunque trovato subito uno scarto reale, cioè lo snapshot fermo a `dd3d630` mentre HEAD era già ad `a7dea2b`.
 
 Che cosa resta divergente dal template e non è stato portato qui: la skill `gate-pacchetti`, che riguarda l'adozione dei pacchetti opzionali e non il tracciamento, e che verrà istanziata se e quando servirà.
+
+Come si chiude senza produrre un falso positivo, scoperto usando il presidio la prima volta e scritto qui perché altrimenti si ripete l'errore a ogni chiusura. Lo strumento pretende che lo snapshot di memoria dichiari esattamente `HEAD`, senza tolleranza per il commit padre. Aggiornare lo snapshot e poi committarlo lo rimette indietro di uno, perché il commit che lo porta è successivo a quello che dichiara, e la cosa si ripete all'infinito. La sequenza che funziona è quindi: l'utente committa tutto il lavoro, poi si aggiorna lo snapshot perché dichiari il commit appena fatto, e lo si lascia non committato; l'impronta registra insieme il commit e la forma dell'albero, quindi quel singolo file modificato è parte della fotografia e non una anomalia. La sessione successiva lo trova come atteso e lo committa insieme al proprio lavoro. Verificato: con lo snapshot committato il controllo esce con codice 1 e segnala la divergenza, con lo snapshot aggiornato e lasciato sul posto esce con codice 0 e dichiara nessuna divergenza.
 
 ## 2026-09-16 - Veeam allestito, il livello di volume escluso per misura, conoscenza estratta in una pagina
 

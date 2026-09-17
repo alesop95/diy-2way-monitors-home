@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: a7dea2b
+last-verified-commit: d2efb3d
 ---
 
 # Lavoro corrente
@@ -30,6 +30,12 @@ Il lavoro in interfaccia non richiede più la presenza dell'utente davanti allo 
 Bloccato da una decisione e non da una condizione fisica, e la differenza è emersa il 2026-09-09. Sulla macchina c'è la sola scheda integrata `ALC887-VD`, e l'interfaccia esterna che i documenti dichiaravano come presente non appartiene a questo progetto: il ritiro è in MS-079. Quale interfaccia acquisire è una scelta condivisa con il progetto gemello di home recording, con due vincoli fissati dall'utente, cioè dispositivo di classe audio senza driver proprietari e capacità di reggere anche le misure della fase 8. Da quella scelta dipende quella del microfono, e l'ordine non è invertibile.
 
 *Ipotesi risolta il 2026-09-09, e il suo esito ha ridotto il fronte.* Il prefix `~/.wine` è sopravvissuto all'azzeramento della radice con AKABAK installato dentro e la licenza attiva, e la domanda era se la migrazione automatica che Wine applica ai prefix creati da versioni molto precedenti lo avrebbe rotto. Non lo ha rotto: aperto con `wine32` sotto Wine 10, dopo una copia di sicurezza da 831 MB, il prefix si è migrato e il programma è partito. Il 2026-09-10 lo stato della licenza è stato verificato per due vie indipendenti, cioè il file di configurazione a livello di macchina e la finestra `Release code` del menu di aiuto, che dichiara `Release Code valid` con il Machine Identifier invariato. Le sottofasi 8.1 e 8.2, cioè reinstallazione e riattivazione, non vanno quindi eseguite: il racconto è in MS-085. Restano in procedura per chi ricostruisse da zero, e il loro comando è stato corretto insieme alle altre ventuno occorrenze sbagliate censite in MS-087.
+
+Stato al 2026-09-17. PA-011 è chiusa: il backup di macchina esiste, è stato riletto e sta anche fuori dalla macchina. Il lavoro a livello di file con Veeam ha prodotto in sette minuti un archivio da 17 627 570 176 byte con esito dichiarato `Success`, la prova di ripristino è stata eseguita montando il punto e confrontando sei impronte e quattro conteggi di file, e la copia su `J:` è verificata per impronta alle due estremità. Sono i microstep da MS-126 a MS-135, e la procedura replicabile che ne è stata estratta, ora in forma parametrica per qualunque macchina Linux, è `docs/10-ambiente/veeam-agent-linux.md`. Restano dichiarati tre limiti: la destinazione è provvisoria in attesa del NAS, la cifratura è stata rinviata con motivazione, e un backup a livello di file non dà una immagine avviabile, che resta da prendere con Clonezilla a macchina spenta.
+
+Il fronte torna quindi alla sottofase 8.6, cioè all'unico criterio di uscita della fase 8 ancora non soddisfatto: EASE Focus si apre ma rifiuta ogni modello GLL, sette cause sono escluse per misura, e resta il solo candidato del passaggio ai pacchetti ufficiali di WineHQ, che è una decisione sull'ambiente e va posta all'utente. Ora che il backup esiste quella decisione è meno rischiosa di quanto fosse il 2026-09-15, perché uno stato ricostruito in due settimane è recuperabile.
+
+Fuori dal fronte, il 2026-09-17 il progetto è stato riallineato al template dopo che lo scarto si era riaperto in cinque giorni, ed è MS-127 con MS-129. Sono arrivate la regola `prove-che-misurano.md`, l'eccezione sul grassetto in `interaction-style.md`, la sezione sul contesto di shell in `git-commands-format.md`, la sezione 9 di `PROJECT-SYSTEM.md`, i quattro strumenti tipografici con la guardia di PA-015 e il rientro corretto di `--check`, e due controlli nuovi, di cui `check-copie-modelli.py` è entrato nella catena di verifica prima di un commit. Due cose nate qui sono state portate al template ed è MS-130. Resta aperta in PA-016 la re-istanziazione di `git-identity-and-repo.md` per il quarto asse della GitHub CLI, più la decisione su `hooks-starter`.
 
 ## Fronte chiuso il 2026-09-04: impianto del progetto
 
