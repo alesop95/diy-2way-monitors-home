@@ -392,6 +392,22 @@ Voce discendente aggiunta il 2026-09-17 mentre la propagazione ascendente era in
 
 Esito del 2026-09-17, poche ore dopo l'apertura, su istruzione esplicita dell'utente che ha superato la mia proposta di rimandare. Quattro criteri su cinque sono soddisfatti e verificati: la regola nuova è presente e nominata in `CLAUDE.md`, `interaction-style.md` porta il paragrafo dell'eccezione, i quattro strumenti coincidono con quelli del template per confronto byte per byte tramite `check-copie-modelli.py`, e la catena di verifica passa per intero. Sono arrivati inoltre due controlli che l'apertura non prevedeva, cioè `check-copie-modelli.py`, entrato nella sequenza obbligatoria, e `check-catalogo.py`, e i sei pacchetti di modelli che mancavano. PA-015 si chiude con questa, perché la guardia è ora presente qui e la sua efficacia è stata misurata e non solo dichiarata. Resta aperto il quinto criterio, cioè la decisione su `hooks-starter`, che è una scelta e non un travaso: va posta all'utente quando il fronte operativo sarà chiuso.
 
+## PA-017 - Secondo backup a setup finito, e la decisione se renderlo incrementale
+
+Data di apertura: 2026-09-17. Stato: aperta, con condizione di sblocco non ancora soddisfatta.
+
+Che cosa va fatto. Prendere un secondo backup della macchina quando la ricostruzione sarà davvero finita, cioè a sottofase 8.6 chiusa e fase 8 superata in tutti e cinque i criteri di uscita, e decidere in quella occasione se il secondo punto debba essere una copia completa nuova oppure un incrementale sul primo.
+
+Perché esiste. L'archivio del 2026-09-17 che chiude PA-011 fotografa una macchina il cui allestimento è superato in quattro criteri su cinque: manca l'import GLL di EASE Focus, e se quel criterio si chiuderà cambiando la provenienza dei pacchetti di Wine, come MS-137 misura, lo stato del sistema sarà sensibilmente diverso da quello fotografato. Un archivio che non contiene l'ultima parte del lavoro protegge dal guasto del disco e non dal rifare il passo che è costato di più.
+
+La richiesta dell'utente del 2026-09-17 parla di un backup manuale incrementale, e la parola incrementale porta con sé una decisione che conviene prendere consapevolmente invece di ereditarla dal comando. Il lavoro è già creato con `--maxPoints 2`, quindi una seconda corsa produce per costruzione un secondo punto di ripristino sulla stessa catena e non una copia indipendente: è il comportamento predefinito e non va chiesto. Il punto è che una catena lega i punti fra loro, quindi il secondo dipende dal primo, e un archivio danneggiato porta con sé entrambi. Una copia piena indipendente costa altri 17 GiB e non ha quella dipendenza.
+
+Condizione di sblocco. Che la fase 8 sia chiusa in tutti e cinque i criteri di uscita, oppure che la sottofase 8.6 sia dichiarata chiusa in altro modo, per esempio rinunciando a EASE Focus. Un backup preso prima ripeterebbe l'errore che PA-011 evitava, cioè congelare uno stato intermedio che nessuno vuole ripristinare.
+
+Criterio di completamento. Il secondo punto esiste, il suo esito è `Success`, è stato riletto con la stessa procedura del primo, cioè montandolo e confrontando impronte e conteggi, ed è stato portato fuori dalla macchina e verificato per impronta. La decisione fra catena incrementale e copia piena indipendente è registrata con il suo motivo, qualunque sia, perché una scelta ereditata da un valore predefinito non è una scelta. Vanno inoltre riprese in quella occasione le due cose che PA-011 ha rinviato dichiarandole, cioè la cifratura e la destinazione definitiva.
+
+La procedura da seguire è quella di `docs/10-ambiente/veeam-agent-linux.md`, che dalla fase 5 in avanti vale identica per una corsa successiva.
+
 ## Azioni compiute
 
 Nessuna, per ora. Le voci compiute si spostano qui con la data e l'esito, e non si cancellano.
