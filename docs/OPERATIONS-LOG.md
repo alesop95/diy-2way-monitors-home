@@ -2849,6 +2849,48 @@ Verificato con: `scp` dei due file, entrambi con stato di uscita zero; `ls -l` a
 
 Esito: fatto. PA-011 è chiusa, e il fronte operativo torna alla sottofase 8.6.
 
+### MS-136 - Il template si è mosso ancora nella stessa giornata, e il suo `main` è indietro di dodici commit rispetto al lavoro
+
+Perimetro: secondo giro di riallineamento al template nella stessa giornata, e accertamento della struttura dei rami del template in risposta a una domanda dell'utente. Nessuna modifica al template.
+
+Legame con il progetto: nessuna fase del progetto lo richiede, e lo dichiaro apertamente. Riguarda l'igiene del sistema di lavoro condiviso.
+
+*Perché un secondo giro poche ore dopo il primo.* Dopo MS-129 il template ha ricevuto altri due commit, cioè `afcd78a` che porta le due cose propagate da qui in MS-130, e `88b559b` che aggiunge trentuno righe a `fix-accents.py` in entrambe le sue copie, con una guardia nuova che fa rifiutare allo strumento i file sorgente. Quella guardia è stata portata qui insieme al suo modello, perché è una protezione e non una preferenza, e `check-copie-modelli.py` riporta le quattordici copie allineate.
+
+Nello stesso giro è stata eliminata una divergenza che avevo introdotto io. La regola `git-commands-format.md` qui nominava l'alias reale `studio` nella quinta causa, mentre la versione portata al template usa un segnaposto: due testi che dicono la stessa cosa con una parola diversa sono una divergenza da tracciare per sempre in cambio di nulla, dato che il caso concreto è raccontato per intero in MS-126. La copia di questo progetto è ora identica a quella del template.
+
+*La domanda sui rami, e la risposta misurata.* L'utente ha chiesto perché il template avesse un ramo e se si fosse perso qualche avanzamento. Nulla è perduto, e i numeri lo dicono con precisione. Il template ha tre rami: `main`, fermo a `4555f8e` dell'8 settembre; `pacchetto-allineamento`, che è quello di lavoro e sta dodici commit avanti a `main` e zero indietro, allineato con il proprio remoto; e `pacchetto-anonimizzazione`, un terzo ramo di lavoro. Tutto ciò che è stato scritto dal 9 settembre in poi, compresi i due commit di oggi, sta su `pacchetto-allineamento` ed è su GitHub.
+
+Ne segue però una conseguenza che vale enunciare perché non è visibile guardando il proprio disco. Chi clona il template riceve il ramo predefinito, cioè `main`, quindi oggi riceverebbe lo stato dell'8 settembre: senza la regola `prove-che-misurano.md`, senza la sezione sul contesto di shell, senza i due controlli nuovi, senza le guardie degli strumenti tipografici e senza i sei pacchetti di modelli. Il lavoro non è perduto, è invisibile a chiunque non sia su quel ramo, che per un template è quasi la stessa cosa: un template esiste per essere clonato.
+
+Questo precisa e conferma quanto PA-003 dichiarava già dal 2026-09-14, cioè che la propagazione all'indietro non si chiude con un commit ma con una unione. Il numero dodici è nuovo e va aggiornato quando cambia, perché è la misura di quanto il ramo predefinito sia indietro rispetto al lavoro.
+
+Verificato con: `git branch -vv` nel template, che elenca i tre rami con i rispettivi remoti; `git rev-list --left-right --count main...pacchetto-allineamento`, che risponde `0 12`; `git log main..pacchetto-allineamento`, che elenca i dodici commit dal 2026-09-09 a oggi; `git show --stat 88b559b`, che riporta le trentuno righe aggiunte a entrambe le copie di `fix-accents.py`; `diff` fra le copie di questo progetto e quelle del template su strumenti e regole, prima e dopo; `python tools/check-copie-modelli.py`, `python tools/check-catalogo.py` e la catena di verifica completa, tutte pulite.
+
+Esito: fatto per l'allineamento. L'unione del ramo del template resta una decisione dell'utente su quel repository ed è tracciata in PA-003.
+
+### MS-137 - I presupposti del passaggio a WineHQ misurati prima di proporlo: il repository per Ubuntu 26.04 esiste e porta Wine 11
+
+Perimetro: accertamento non privilegiato dei presupposti dell'unico candidato residuo per la sottofase 8.6, cioè il passaggio dai pacchetti Wine della distribuzione a quelli ufficiali di WineHQ. Nessuna modifica alla macchina.
+
+Legame con il progetto: serve la sottofase 8.6 della fase 8, che è l'unico criterio di uscita della fase ancora non soddisfatto. Da questo accertamento dipende la decisione dell'utente sull'ambiente, che senza di esso sarebbe presa al buio.
+
+*Perché misurare prima di proporre.* Dopo MS-114 resta un solo candidato per il rifiuto dei modelli GLL da parte di EASE Focus, e la documentazione del progetto raccomanda i pacchetti ufficiali di WineHQ mentre la macchina ha quelli della distribuzione. La proposta però poggia su un presupposto che nessuno aveva verificato: che WineHQ pubblichi un repository per questa versione di Ubuntu. Ubuntu 26.04 è uscita da poco, e un fornitore di terze parti insegue le distribuzioni con un ritardo proprio, come il modulo del kernel di Veeam ha dimostrato in MS-121 e MS-122. Proporre un passaggio la cui destinazione non esiste avrebbe fatto perdere una sessione.
+
+*Lo stato di partenza, misurato.* Sulla macchina sono installati `wine`, `wine64`, `wine32:i386`, `wine-common`, `libwine` in entrambe le architetture e `winetricks`, tutti alla versione `10.0~repack-12ubuntu1`, e `wine --version` risponde `wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)`. La provenienza è il componente `universe` dell'archivio Ubuntu per la distribuzione `resolute`, che è il nome in codice della 26.04: non esiste alcuna altra origine configurata per quei pacchetti, quindi il passaggio è una sostituzione completa e non un aggiornamento.
+
+*Il presupposto, verificato.* L'elenco delle distribuzioni pubblicate da WineHQ contiene `resolute`, e la richiesta del file `Release` di quella distribuzione risponde con codice 200. Il repository esiste, quindi il passaggio non richiede di puntare al nome in codice di una versione precedente di Ubuntu, che sarebbe stata la variante rischiosa perché avrebbe mescolato librerie compilate contro un'altra base.
+
+*Che cosa offre, con i numeri.* Le versioni più alte disponibili per `resolute` sono `11.0.0.0` per il ramo stabile, `11.16` per quello staging e `11.17` per quello di sviluppo. Il salto rispetto a quanto installato non è quindi una revisione ma una versione maggiore intera: dalla 10.0 alla 11.0 nel caso più conservativo. È una informazione che cambia il peso della proposta, perché un anno di sviluppo di Wine separa le due, e il difetto osservato riguarda il caricamento di codice gestito, che è una delle aree dove Wine cambia di più.
+
+*Che cosa resta non misurato, e va detto.* Non è stato verificato che il passaggio risolva il rifiuto dei modelli GLL: resta un candidato, cioè l'ultimo rimasto dopo sette esclusioni per misura, e non una causa accertata. Non è stato verificato che i quattro prefix esistenti sopravvivano alla migrazione, che è la vera incognita dell'operazione: un prefix creato sotto Wine 10 viene migrato dalla versione nuova al primo avvio, e quella migrazione ha già funzionato una volta in MS-085, dove il prefix `~/.wine` è passato da una versione molto precedente alla 10 senza rompersi, ma un precedente favorevole non è una prova.
+
+Il rischio di quella incognita è però oggi diverso da quello che era il 2026-09-15, ed è il motivo per cui l'ordine dei lavori scelto dall'utente si è rivelato giusto: PA-011 è chiusa, quindi esiste un archivio verificato dell'intera macchina e uno stato costruito in due settimane è recuperabile. La decisione si prende ora con una rete sotto.
+
+Verificato con: `dpkg -l` filtrato sui pacchetti di Wine, che riporta i sette pacchetti alla versione citata; `wine --version`; `apt-cache policy` su `wine32:i386` e `wine64`, che riporta come unica origine l'archivio Ubuntu `resolute/universe`; lettura di `/etc/os-release`, che conferma `ubuntu 26.04 resolute`; elenco delle distribuzioni pubblicate da WineHQ, che contiene `resolute`; richiesta del file `Release` per `resolute`, che risponde 200; lettura dell'indice dei pacchetti di quel repository, da cui le tre versioni più alte dei tre rami.
+
+Esito: aperto, e la voce non è una esecuzione ma un accertamento. La decisione fra restare sui pacchetti della distribuzione e passare a WineHQ, e in quest'ultimo caso fra ramo stabile e staging, è dell'utente.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
