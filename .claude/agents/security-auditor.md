@@ -1,6 +1,6 @@
 ---
 name: security-auditor
-description: Esegue un audit di sicurezza focalizzato su un modulo o una feature specifica. Usa prima del deploy di funzionalita che gestiscono autenticazione, autorizzazione, input esterni o dati sensibili. Non modifica file.
+description: Esegue un audit di sicurezza focalizzato su un modulo o una feature specifica. Usa prima del deploy di funzionalità che gestiscono autenticazione, autorizzazione, input esterni o dati sensibili. Non modifica file.
 model: claude-sonnet-4-6
 tools: Read, Grep, Glob
 ---
