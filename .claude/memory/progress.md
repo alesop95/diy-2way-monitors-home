@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-17, sera - La fase 8 si chiude: WineHQ provato, fallito, annullato e documentato
+
+Commit di partenza: 44811c3.
+
+File toccati: `docs/OPERATIONS-LOG.md` con i microstep da MS-136 a MS-143; `docs/10-ambiente/architettura-ambiente-wine.md`, nuovo, con i diagrammi; `docs/10-ambiente/README.md`; `docs/PENDING-ACTIONS.md` con PA-017; le schede di stato; le copie di entrambe le pagine nel progetto gemello.
+
+Motivo. L'utente ha chiesto di andare fino in fondo sulla sottofase 8.6 e di avere una documentazione che permetta di ripercorrere ogni passo e di capire perché il sistema funziona, con un diagramma dell'architettura. Entrambe le cose sono state fatte, e la prima ha avuto esito negativo.
+
+L'ottava e ultima causa del rifiuto dei GLL da parte di EASE Focus era la provenienza dei pacchetti di Wine. È stata provata davvero: repository WineHQ aggiunto, pila della distribuzione rimossa, `winehq-stable` alla 11.0 installato, poi il ramo staging alla 11.16. Nessuno dei due popola il lato a 32 bit dei prefix su questa macchina, e tutti i programmi del progetto sono a 32 bit. Sette prove, con e senza display, su prefix migrati e creati da zero, sempre lo stesso esito. Il tentativo è stato annullato e la macchina è tornata ai pacchetti della distribuzione; i tre prefix a 64 bit sono stati ripristinati dall'archivio preso prima della sostituzione, con conteggi di file identici a quelli misurati dentro il backup Veeam; i quattro programmi sono stati riaperti tutti insieme sullo stesso display.
+
+La lezione di metodo che resta, e che vale oltre questo caso. L'archivio dei prefix preso prima di toccare qualcosa è servito per davvero, e il suo costo era stato di quattro minuti: è la seconda volta nella stessa giornata che una precauzione presa prima ha reso reversibile un passo, dopo il backup di macchina. E la sequenza che ha reso la prova onesta è stata ispezionare il pacchetto prima di installarlo, il che ha anticipato di un'ora la scoperta del nuovo WoW64 e ha permesso di sapere che cosa si stava rischiando invece di scoprirlo dopo.
+
+Tre ritiri sono registrati, tutti miei. L'attribuzione del messaggio sulla modalità wow64 sperimentale al contatto con Wine 11, smentita dai prefix ripristinati che non l'hanno mai incontrato. L'uso di `pkill -f` con un motivo presente nella riga di comando della sessione remota, che ha ucciso la sessione stessa, ripetuto due volte. E la rilettura dello stato di uscita alla fine di una pipeline invece che del comando, anch'essa ripetuta.
+
+Che cosa resta. La fase 11, cioè la fotografia finale della macchina, ora sbloccata. PA-017 per il secondo backup, con il prerequisito di cancellare prima i trentacinque gigabyte di residui del tentativo. PA-016 per la re-istanziazione di `git-identity-and-repo.md`. PA-014 per il GLL dei monitor.
+
 ## 2026-09-17, chiusura - Backup di macchina chiuso, procedura resa portabile, riallineamento al template
 
 Commit di partenza: d2efb3d.
