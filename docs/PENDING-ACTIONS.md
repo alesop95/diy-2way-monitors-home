@@ -406,6 +406,8 @@ Condizione di sblocco. Che la fase 8 sia chiusa in tutti e cinque i criteri di u
 
 Criterio di completamento. Il secondo punto esiste, il suo esito è `Success`, è stato riletto con la stessa procedura del primo, cioè montandolo e confrontando impronte e conteggi, ed è stato portato fuori dalla macchina e verificato per impronta. La decisione fra catena incrementale e copia piena indipendente è registrata con il suo motivo, qualunque sia, perché una scelta ereditata da un valore predefinito non è una scelta. Vanno inoltre riprese in quella occasione le due cose che PA-011 ha rinviato dichiarandole, cioè la cifratura e la destinazione definitiva.
 
+Un prerequisito nato il 2026-09-17 e da non dimenticare, perché costerebbe trentacinque gigabyte di archivio inutile. Sulla macchina restano due residui del tentativo di sostituzione di Wine, cioè l'archivio `~/prefix-prima-di-winehq-2026-09-17.tar` da 28 GiB e la copia danneggiata `~/wineprefixes.rotto-winehq` da 7,6 GiB. Sono entrambi sotto `/home`, quindi entrerebbero nel backup. Vanno cancellati prima della seconda corsa, e non prima di aver verificato che il corredo funzioni, il che è stato fatto in MS-142.
+
 La procedura da seguire è quella di `docs/10-ambiente/veeam-agent-linux.md`, che dalla fase 5 in avanti vale identica per una corsa successiva.
 
 ## Azioni compiute
