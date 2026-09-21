@@ -2,6 +2,24 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-21 - La fase 11 chiude la procedura, e il confronto trova tre cose che nessuno stava cercando
+
+Commit di partenza: d4d8cda.
+
+File toccati: `docs/OPERATIONS-LOG.md` con i microstep da MS-144 a MS-147 e due righe nuove nell'indice delle voci superate; `docs/10-ambiente/fotografia-macchina-post-reinstall.md`, nuovo, prescrittivo con la propria sezione di troubleshooting; `docs/10-ambiente/installazione-pulita-26-04.md` con la fase 11 dichiarata eseguita, il comando di censimento dei prefix corretto e una previsione ritirata; `docs/PENDING-ACTIONS.md` con PA-018 e PA-019; `tools/check-pending-actions.py` esteso a sei voci che taceva; i due indici `docs/README.md` e `docs/10-ambiente/README.md`; `.claude/memory/decisions.md` con ADR-021; le schede di stato. Fuori dal versionamento, `_notes/fotografia-post-reinstall-2026-09-21/` con i ventinove file della raccolta.
+
+Motivo. L'utente ha chiesto di riprendere dal file di ripresa e di procedere lungo la roadmap documentando tutto. Il fronte indicato era la fase 11, cioè la fotografia finale della macchina e il confronto con quella della fase 0, sbloccata dalla chiusura della fase 8 del 2026-09-17.
+
+Che cosa è andato come previsto. La raccolta ha prodotto ventinove voci, nessuna vuota, ed è stata portata sulla postazione con le impronte confrontate alle due estremità. Il confronto conferma le voci attese: sistema dalla 25.04 alla 26.04.1 LTS, direttiva di aggiornamento su `lts` e verificata in vigore dalla risposta del comando invece che dalla lettura del file, dispositivi audio identici, e soprattutto `/home` con l'identificativo univoco invariato, che è la prova della conservazione dei dati e l'unica affermazione dell'intera procedura che non si poteva verificare mentre la si faceva.
+
+Che cosa non era previsto, ed è la parte che ha occupato la giornata. Tre scarti. Il repository di WineHQ è rimasto configurato sulla macchina dopo l'annullamento di MS-142, e nel suo contenuto c'era la causa prima che MS-141 dichiarava di non avere isolato: WineHQ non pubblica alcuna metà a 32 bit per Ubuntu 26.04, verificato sul file `Release` di quattro suite, quindi l'esclusione ottava della sottofase 8.6 diventa una proprietà di un repository invece di un comportamento di una macchina. Ne è nata ADR-021 e la decisione sul residuo è PA-018. La catena audio letta da SSH riporta l'assenza di schede, e le due cause sono state isolate, cioè il posto tenuto dallo schermo di accesso e i gruppi mancanti in un processo nato prima di MS-077: la misura non è informativa e la verifica vera è PA-019. Un mio comando di censimento, riprodotto alla lettera dalla raccolta di quattordici giorni prima per poterla confrontare, riportava due prefix su sette, perché il suo limite di profondità era una assunzione sul terreno e il terreno era cambiato.
+
+Un difetto trovato mentre si scriveva, e corretto. Lo strumento delle azioni differite elencava tredici voci su diciannove e taceva su tutte quelle aperte dopo il 15 settembre, violando la regola che il suo stesso docstring enuncia. È MS-147, e la parte generalizzabile è che un controllo che elenca non può segnalare la propria incompletezza, perché una voce assente non lascia traccia nella sua uscita.
+
+Un attrito di sessione che vale registrare perché si ripeterà su questa postazione. I documenti lunghi in italiano non si possono scrivere con un heredoc passato alla shell, perché ogni apostrofo interrompe la citazione del wrapper e il comando termina con `unexpected EOF`. Costa due tentativi prima di capirlo. La forma che funziona è scrivere il contenuto con lo strumento di scrittura dei file, oppure passarlo a uno script Python scritto a parte, che è la via usata per tutte le modifiche a file con fini riga CRLF di questa giornata.
+
+Stato dei fronti a fine giornata. La procedura di installazione pulita è chiusa in tutte e dodici le sue fasi. Il fronte successivo è PA-017, cioè il secondo backup a setup finito, ora eseguibile, che chiede prima la cancellazione dei due residui sotto `/home` per trentacinque gigabyte e poi una decisione fra catena incrementale e copia piena indipendente. Restano PA-018 e PA-019 come conseguenze di oggi, PA-016 sui due punti residui del riallineamento al template, e la fase 6 bloccata da PA-012, che è un acquisto e non lavoro.
+
 ## 2026-09-17, sera - La fase 8 si chiude: WineHQ provato, fallito, annullato e documentato
 
 Commit di partenza: 44811c3.
