@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-21, terza sessione - Il riavvio chiude PA-019, la catena audio prende la sua pagina, e un controllo di completezza trova due omissioni
+
+Commit di partenza: a076366. Commit prodotto: 0112973, più il lavoro di MS-157 in attesa di commit.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-156 e MS-157 e due righe nell'indice delle voci superate; `docs/PENDING-ACTIONS.md` con la chiusura del quarto criterio di PA-019 e una voce nuova in PA-003; `docs/10-ambiente/catena-audio-pipewire.md`, nuova; `docs/10-ambiente/README.md` con la voce di indice; `tools/check-pending-actions.py` con i criteri di PA-019 aggiornati; i due file del blocco dell'ambiente propagati al gemello; questo work-log e `.claude/memory/index.md`.
+
+Apertura. La ripresa è uscita pulita, senza divergenze, con l'unico file modificato dichiarato come deliberato dalla sessione precedente. L'utente ha riavviato la macchina di propria iniziativa prima di aprire la sessione, che è la condizione che PA-019 attendeva per il suo quarto criterio.
+
+Che cosa la lettura dopo il riavvio ha prodotto, e sono tre cose invece di una. Il criterio sui gruppi è soddisfatto come MS-154 aveva previsto, e la previsione era un argomento che ora è una misura. Il limite di osservabilità dichiarato in MS-146 è caduto, e la sua portata va corretta: la non informatività di una misura raccolta da SSH era contingente su chi tenesse il posto, non una proprietà del canale, quindi era un limite dello stato e non dello strumento. E il ritorno dell'uscita predefinita al digitale, che sembrava una impostazione perduta, è spiegato dalla lettura dello stato su disco: nessuna preferenza di profilo è mai stata registrata, quindi il passaggio all'analogico di MS-154 era selezione automatica per priorità e non c'era nulla da persistere.
+
+La lacuna che la giornata ha scoperto su se stessa. La verifica della catena audio è un fronte operativo e non aveva la pagina prescrittiva che la regola del 2026-09-17 impone: la conoscenza viveva soltanto nella forma cronologica dei microstep, che non è la forma utile a chi deve rifare la stessa verifica fra sei mesi. La pagina è stata scritta nello stesso giro, in otto fasi e con otto voci di troubleshooting tutte da casi reali, e la sua parte riusabile fuori da questa macchina sono i tre assi che decidono se una misura audio valga qualcosa, cioè quale sessione tenga il posto, quanto sia vecchio il processo di gestione audio rispetto alle modifiche ai gruppi, e se i jack siano occupati. Tutti e tre hanno già prodotto qui una misura vacua.
+
+Il controllo di completezza, e perché vale come voce di questo log. Dopo il commit l'utente ha chiesto se tutto fosse tracciato, e la risposta onesta era no: due interventi del giro precedente, cioè l'aggiornamento dei criteri di PA-019 nello strumento e la propagazione al gemello, erano entrati nel commit senza comparire in alcun microstep. Sono stati registrati in MS-157 in forma additiva, perché la convenzione vieta di riscrivere una voce committata. Ne è nata la voce di PA-003 sul presidio che manca: nessuno dei sette controlli prima di un commit chiede se un fronte operativo abbia prodotto la propria pagina, quindi la completezza dipende da chi se ne ricorda, ed è la stessa forma del buco che `check-copie-modelli.py` ha chiuso il 2026-09-17.
+
+Il fronte non cambia e resta PA-020, cioè il rilievo geometrico della stanza, unico lavoro di progetto eseguibile mentre PA-012 è aperta. Resta da aggiornare `.claude/context/current-work.md`, il cui fronte attivo è ancora la ricostruzione dell'ambiente, che è chiusa: è una scheda di contesto e la modifica è stata proposta all'utente invece di essere applicata.
+
 ## 2026-09-21, coda - Tre direzioni nuove dall'utente, e una lacuna della fase 2 colmata
 
 Commit di partenza: 2b27e61.
