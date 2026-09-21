@@ -425,12 +425,17 @@ def controlla_voci_recenti() -> None:
     print("  dichiarato alle fasi 4 e 5, che non va anticipato.")
 
     print("\nPA-019  Verificare la catena audio da una sessione grafica attiva sulla console")
-    riga("ok", "ALSA vede la scheda integrata ALC887-VD, cinque dispositivi, MS-144")
-    riga("!!", "PipeWire da SSH non vede alcuna scheda: misura non informativa, MS-146")
-    riga("  ", "verifica da sessione attiva sulla console: DA FARE")
-    print("  BLOCCATA dalla presenza fisica dell'utente davanti alla macchina, e non")
-    print("  automatizzabile per costruzione: il contesto della sessione e' precisamente")
-    print("  cio' che va verificato, quindi simularlo da remoto vanificherebbe la prova.")
+    riga("ok", "profilo analogico disponibile dopo il collegamento delle cuffie, MS-154")
+    riga("ok", "uscita reale al posto di auto_null, porta analog-output-lineout, MS-154")
+    riga("ok", "riproduzione di prova udita dall'utente, MS-154")
+    riga("ok", "ordine dei canali corretto: primo sinistro, secondo destro, MS-155")
+    riga("ok", "simmetria fra i canali: nessuno scarto su alcun controllo, MS-155")
+    riga("? ", "gruppi 29 e 982 nel processo wireplumber: al prossimo riavvio, MS-154")
+    print("  COMPIUTA il 2026-09-21 per la parte di uscita. Il criterio sui gruppi e'")
+    print("  igiene e non requisito: il processo appartiene al gestore di servizi")
+    print("  dell'utente, che sopravvive al logout grafico finche' esiste una sessione,")
+    print("  comprese le connessioni SSH, quindi solo un riavvio lo rinnova.")
+    print("  La parte di ingresso della fase 6 resta bloccata da PA-012.")
 
 
 def main() -> int:

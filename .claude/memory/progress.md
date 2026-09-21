@@ -30,7 +30,11 @@ La batteria elettronica non è ancora stata acquistata, e questo cambia la natur
 
 Un chiarimento pratico dato all'utente e registrato perché ha valore diagnostico: le cuffie si possono collegare al jack frontale del case, che sulla scheda è un connettore distinto da quello posteriore e compare come porta separata. Se il profilo analogico diventa disponibile, la prova dimostra insieme che la catena audio funziona e che il cavetto interno del pannello frontale è innestato; se resta non disponibile non prova che la scheda sia muta, perché quel cavetto può semplicemente non essere collegato dentro il case, e in quel caso si riprova sul jack posteriore.
 
-PA-019 resta aperta e in attesa dell'utente alla console.
+La catena audio è verificata e PA-019 è compiuta per la parte di uscita, ed è MS-154 con MS-155. Collegate le cuffie al jack analogico posteriore, i profili analogici sono passati da non disponibili a disponibili e PipeWire è passato da solo all'uscita analogica: l'assenza di schede misurata in MS-146 descriveva fedelmente una presa vuota e non un guasto. Il tono è stato udito, l'ordine dei canali è corretto e la simmetria fra i canali non presenta alcuno scarto, né nel sink né su alcun controllo del mixer.
+
+Due errori miei nella conduzione delle prove, entrambi registrati. La prima riproduzione è stata mandata mentre l'utente era alla postazione Windows e le cuffie erano sulla macchina Ubuntu, quindi ha suonato in una stanza vuota. La prima verifica dell'ordine dei canali è stata lanciata mentre la prova precedente era ancora in esecuzione, e le due hanno suonato insieme producendo un risultato che sembrava incoerente ed era la loro somma: da qui la regola che lo stato di una riproduzione si legge e non si deduce dal tempo che si crede passato. La forma che risolve il problema dell'ordine dei canali è dichiarata in MS-155: o un segnale che dichiari il proprio nome, o una sequenza con una pausa iniziale dichiarata.
+
+Il criterio sui gruppi del processo audio è stato riformulato invece che spuntato, perché era scritto male: quel processo appartiene al gestore di servizi dell'utente, che sopravvive al logout grafico finché esiste una sessione qualsiasi, comprese le connessioni SSH, quindi solo un riavvio lo rinnova. Non è un requisito di funzionamento, e la prova è che la catena funziona senza.
 
 ## 2026-09-21 - La fase 11 chiude la procedura, e il confronto trova tre cose che nessuno stava cercando
 
