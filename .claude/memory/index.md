@@ -27,7 +27,7 @@ Progettazione e costruzione di una coppia di monitor da studio a due vie per un 
 |---|---|---|
 | STACK.md | ba69e0c | da rileggere: la catena tipografica è stata aggiornata alle versioni del template il 2026-09-12, si veda MS-091 |
 | roadmap.md | a7dea2b | aggiornata il 2026-09-10: priorità riscritte, due ipotesi risolte, direzioni future |
-| current-work.md | d4d8cda | aggiornata il 2026-09-21: fase 11 chiusa, tre scarti non attesi, PA-018 e PA-019 aperte |
+| current-work.md | c2c26f2 | aggiornata il 2026-09-21: fase 11 chiusa e PA-017 compiuta, PA-018 e PA-019 aperte |
 | design-and-security.md | - | non creata: il progetto non ha codice applicativo né superficie di attacco |
 | deployment.md | - | non creata: non c'è deploy; il suo equivalente è `docs/TRANSFER-MANIFEST.md` |
 | dev-testing.md | - | non creata: i test sono le suite degli strumenti, descritte in STACK.md |
@@ -44,7 +44,9 @@ Al 2026-09-21 la procedura di installazione pulita è chiusa in tutte le sue fas
 
 Il confronto ha prodotto tre scarti non attesi, ed è la ragione per cui questa fase non è una formalità. WineHQ non pubblica alcuna metà a 32 bit per Ubuntu 26.04, misurato sul file `Release` di quattro suite, quindi la causa prima del fallimento di MS-141 è ora nota e l'ottava esclusione di MS-143 diventa una proprietà di un repository invece di un comportamento di una macchina: è ADR-021, e il repository rimasto configurato è PA-018. La catena audio letta da SSH riporta l'assenza di schede per due cause isolate che non riguardano la configurazione, cioè il posto tenuto dallo schermo di accesso e i gruppi di un processo nato prima di MS-077, quindi quella misura non è informativa e la verifica vera è PA-019. Un mio comando di censimento riprodotto alla lettera riportava due prefix su sette, perché il suo limite di profondità era una assunzione sul terreno. Lo strumento delle azioni differite è stato inoltre esteso alle sei voci su cui taceva, ed è MS-147.
 
-Il fronte successivo è PA-017, il secondo backup a setup finito, ora eseguibile, preceduto dalla cancellazione dei due residui sotto `/home` per circa trentasei gigabyte complessivi.
+Nella seconda parte della giornata PA-017 è stata eseguita e chiusa, ed è MS-148, MS-149 e MS-150. I due residui sotto `/home` sono stati cancellati dopo la verifica di integrità dei prefix, e il secondo punto di ripristino è una copia piena indipendente per decisione dell'utente, da 18 214 821 888 byte, riletta montandola e portata su `J:` con le impronte verificate. La corsa ha prodotto una correzione che vale oltre Veeam: l'intera procedura è eseguibile senza `sudo` da una sessione che porti il gruppo `veeam`, mentre la pagina prescrittiva affermava il contrario, e l'affermazione era vera solo nella sessione in cui fu scritta, nata prima dell'installazione del pacchetto. È la terza occorrenza in dodici giorni della stessa forma.
+
+Il fronte successivo sono PA-018, cioè che fare del repository WineHQ rimasto, e PA-019, cioè la verifica della catena audio dalla console.
 
 Al 2026-09-17 il fronte è di nuovo la sottofase 8.6 e nient'altro, perché PA-011 è chiusa. Il backup di macchina esiste, è stato riletto montandolo e confrontandolo, e la sua copia su `J:` è verificata per impronta alle due estremità; la procedura per rifarlo su qualunque macchina Linux è `docs/10-ambiente/veeam-agent-linux.md`, in forma parametrica, con la sequenza dei soli comandi e dieci voci di troubleshooting. Sono i microstep da MS-126 a MS-135.
 
