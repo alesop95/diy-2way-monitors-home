@@ -318,7 +318,7 @@ def controlla_pa010_pa011() -> None:
     riga("ok", "Wine: i386 dichiarata, wine32:i386 in stato ii alla versione 10.0")
     riga("ok", "Akabak e VACS: prefix ~/.wine migrato, licenza valida, MS-085")
     riga("ok", "sottofase 8.5: VituixCAD installato e funzionante, MS-105")
-    riga("  ", "sottofase 8.6: EASE Focus si apre ma non importa i modelli, MS-114")
+    riga("ok", "sottofase 8.6: chiusa in MS-143, import GLL non soddisfacibile, otto cause escluse")
     riga("ok", "sottofase 8.7: ARTA installato e funzionante, MS-116")
     riga("ok", "controllo di uscita fase 8: i cinque programmi aprono insieme, MS-116")
     # La destinazione scelta il 2026-09-15 e' la radice dell'SSD esterno T7, cioe'
@@ -357,6 +357,58 @@ def controlla_pa010_pa011() -> None:
     print("  ricopiati ogni giorno su un SSD per duplicare una copia che non cambia.")
 
 
+def controlla_voci_recenti() -> None:
+    """Le voci da PA-014 a PA-019, che questo strumento taceva fino al 2026-09-21.
+
+    La loro assenza era il difetto che il docstring di controlla_pa010_pa011 dichiara
+    per altre voci: uno strumento che tace su una voce la fa sparire, e quattro voci
+    aperte fra il 15 e il 21 settembre non comparivano in alcun elenco eseguibile.
+    Le condizioni automatizzabili da qui sono poche, perche' quasi tutte riguardano
+    lo stato della macchina o una decisione dell'utente, ed e' precisamente il motivo
+    per cui vanno stampate lo stesso invece di essere omesse.
+    """
+    print("\nPA-014  Decidere come produrre il GLL dei monitor autocostruiti")
+    riga("? ", "ARTA in modalita' dimostrativa: non salva file, quindi non produce GLL, MS-116")
+    riga("  ", "decisione fra licenza ARTA, EASE SpeakerLab e rinuncia: NON presa")
+    print("  APERTA: non blocca nulla oggi, perche' il GLL serve dopo la costruzione.")
+    print("  Va decisa prima della fase 7 del workflow, non prima delle altre.")
+
+    print("\nPA-016  Riallineare il progetto al template")
+    riga("ok", "quattro criteri su cinque soddisfatti il 2026-09-17, MS-129")
+    riga("  ", "decisione su hooks-starter: NON presa, e una decisione e' un esito")
+    riga("  ", "re-istanziazione di git-identity-and-repo.md sul quarto asse: DA FARE")
+    print("  APERTA sui due punti residui. Il primo e' una scelta, il secondo e' lavoro.")
+
+    print("\nPA-017  Secondo backup a setup finito, e la scelta fra incrementale e copia piena")
+    riga("ok", "condizione di sblocco: fase 8 chiusa in MS-143 e fase 11 compiuta in MS-144")
+    riga("  ", "residuo ~/prefix-prima-di-winehq-2026-09-17.tar da 28 GiB: DA CANCELLARE")
+    riga("  ", "residuo ~/wineprefixes.rotto-winehq da 7,6 GiB: DA CANCELLARE")
+    riga("  ", "decisione fra catena incrementale e copia piena indipendente: NON presa")
+    dest_presente = Path("J:/").exists()
+    riga("ok" if dest_presente else "  ",
+         "destinazione J: collegata, necessaria per portare fuori l'archivio")
+    print("  ESEGUIBILE ADESSO: la condizione di sblocco e' soddisfatta dal 2026-09-21.")
+    print("  I due residui vanno cancellati prima della corsa, o entrano nell'archivio")
+    print("  per trentacinque gigabyte inutili. La procedura e' quella di")
+    print("  docs/10-ambiente/veeam-agent-linux.md dalla fase 5 in avanti.")
+
+    print("\nPA-018  Decidere che fare del repository WineHQ rimasto sulla macchina")
+    riga("? ", "/etc/apt/sources.list.d/winehq-resolute.sources presente il 2026-09-21, MS-145")
+    riga("  ", "decisione fra rimuovere, lasciare e disattivare: NON presa")
+    print("  APERTA e non bloccata. Non urgente, perche' nessun pacchetto di quella")
+    print("  provenienza e' installato, ma e' uno stato che i documenti non descrivono.")
+    print("  Per Ubuntu 26.04 quel repository non pubblica alcuna meta' a 32 bit, quindi")
+    print("  conservarlo non conserva alcuna capacita' utile a questo progetto.")
+
+    print("\nPA-019  Verificare la catena audio da una sessione grafica attiva sulla console")
+    riga("ok", "ALSA vede la scheda integrata ALC887-VD, cinque dispositivi, MS-144")
+    riga("!!", "PipeWire da SSH non vede alcuna scheda: misura non informativa, MS-146")
+    riga("  ", "verifica da sessione attiva sulla console: DA FARE")
+    print("  BLOCCATA dalla presenza fisica dell'utente davanti alla macchina, e non")
+    print("  automatizzabile per costruzione: il contesto della sessione e' precisamente")
+    print("  cio' che va verificato, quindi simularlo da remoto vanificherebbe la prova.")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -375,6 +427,7 @@ def main() -> int:
     controlla_pa004()
     controlla_manuali()
     controlla_pa010_pa011()
+    controlla_voci_recenti()
     print("\nLegenda: [ok] condizione soddisfatta, [? ] da confermare a mano,")
     print("         [  ] non soddisfatta, [!!] anomalia da guardare.")
     return 0

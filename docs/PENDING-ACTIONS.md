@@ -410,6 +410,36 @@ Un prerequisito nato il 2026-09-17 e da non dimenticare, perché costerebbe tren
 
 La procedura da seguire è quella di `docs/10-ambiente/veeam-agent-linux.md`, che dalla fase 5 in avanti vale identica per una corsa successiva.
 
+## PA-018 - Decidere che fare del repository WineHQ rimasto sulla macchina
+
+Data di apertura: 2026-09-21. Stato: aperta, senza condizione di sblocco. La misura che la apre è MS-145.
+
+Che cosa va fatto. Decidere se rimuovere il file `/etc/apt/sources.list.d/winehq-resolute.sources` con la sua chiave in `/etc/apt/keyrings/winehq-archive.asc`, se lasciarlo dove è, oppure se conservarlo disattivato, ed eseguire la decisione presa.
+
+Perché esiste. Il repository è il residuo del tentativo di sostituzione di Wine del 2026-09-17: MS-142 rimosse i pacchetti con purga e rimise quelli della distribuzione, ma il repository restò, e nessuno se ne accorse fino alla fotografia finale della fase 11. Non è una voce urgente, perché nessun pacchetto di quella provenienza è installato e `apt upgrade` non installa ciò che non c'è. È però uno stato dichiarato del sistema che nessuno ha deciso di lasciare, e la ragione per cui merita una decisione esplicita è che la prossima persona che legga quel file concluderà che il progetto usa WineHQ, che è esattamente il contrario di quanto MS-141, MS-142 e MS-145 hanno stabilito.
+
+Le tre opzioni, con il loro costo. Rimuovere il file e la chiave è la scelta che lascia la macchina nello stato che i documenti descrivono, costa due comandi privilegiati e perde soltanto la comodità di riprovare, che oggi non serve a nulla perché MS-145 ha accertato che per Ubuntu 26.04 quel repository non pubblica alcuna metà a 32 bit. Lasciarlo dove è non costa nulla e conserva la divergenza fra documento e macchina, che è il difetto da cui questa voce nasce. Conservarlo disattivato, cioè rinominandolo in modo che apt lo ignori, è la via di mezzo e ha senso soltanto se si prevede di riprovare quando WineHQ pubblicherà di nuovo i386, cosa che nessuno ha annunciato.
+
+La mia raccomandazione, che resta una raccomandazione. Rimuovere entrambi, perché il valore di una configurazione conservata sta nel poterla riusare, e qui la misura dice che non è riusabile su questa versione di Ubuntu. Se la decisione fosse invece di conservarla, va scritta qui con il motivo, perché una configurazione lasciata per scelta e una lasciata per dimenticanza hanno lo stesso aspetto.
+
+Condizione di sblocco. Nessuna. Va eseguita sulla macchina con `sudo`, quindi in un terminale interattivo, secondo la prassi del progetto per cui il lavoro privilegiato si esegue a mano su comandi preparati.
+
+Criterio di completamento. Lo stato delle sorgenti di apt sulla macchina coincide con quanto i documenti dichiarano, verificato rileggendo `/etc/apt/sources.list.d/` e non a memoria, e la decisione presa è scritta qui con il suo motivo qualunque essa sia.
+
+## PA-019 - Verificare la catena audio da una sessione grafica attiva sulla console
+
+Data di apertura: 2026-09-21. Stato: aperta, con una condizione di sblocco che dipende dalla presenza fisica dell'utente. L'accertamento che la apre è MS-146.
+
+Che cosa va fatto. Rifare la verifica della catena audio della fase 6 da una sessione grafica attiva sulla console della macchina, e non da SSH, leggendo che PipeWire veda la scheda integrata, che esistano una uscita e un ingresso reali al posto del dispositivo fittizio, e che una riproduzione di prova si senta.
+
+Perché esiste. La fotografia della fase 11 ha raccolto `pactl info` da una sessione SSH e ha riportato `Default Sink: auto_null`, cioè l'assenza di qualunque scheda, mentre ALSA vede regolarmente la `ALC887-VD`. MS-146 ha isolato due cause indipendenti, e nessuna delle due è un difetto di configurazione: la sessione grafica dell'utente non è la sessione attiva del posto, quindi `systemd-logind` ha assegnato allo schermo di accesso la lista di controllo di accesso sui nodi di `/dev/snd/`, e per giunta il processo `wireplumber` di quella sessione, iniziata il 2026-09-09, non ha i gruppi `audio` e `pipewire` che MS-077 aggiunse lo stesso giorno più tardi. Entrambe cadono con un accesso nuovo alla console.
+
+Il punto che rende questa voce diversa da una semplice verifica rimandata è che l'esito raccolto finora non vale né in positivo né in negativo. Una misura fatta nel contesto sbagliato non dice che la catena audio sia guasta e non dice che funzioni, e trattarla come una delle due cose sarebbe il difetto che la regola sulle prove che misurano chiama vacuità: un risultato che si legge senza esercitare ciò che dichiara di esercitare.
+
+Condizione di sblocco. Che l'utente si trovi davanti alla macchina e faccia un accesso nuovo alla sessione grafica. Non è automatizzabile e non va simulata da remoto, perché è precisamente il contesto a essere oggetto della verifica.
+
+Criterio di completamento. Da una sessione attiva sulla console, `pactl list short cards` riporta la scheda integrata, `pactl info` riporta una uscita reale al posto di `auto_null`, il processo `wireplumber` di quella sessione porta i gruppi 29 e 982, e una riproduzione di prova si sente. L'esito va scritto in un microstep, anche se positivo, perché è la chiusura misurata di una domanda che oggi è aperta.
+
 ## Azioni compiute
 
 Nessuna, per ora. Le voci compiute si spostano qui con la data e l'esito, e non si cancellano.
