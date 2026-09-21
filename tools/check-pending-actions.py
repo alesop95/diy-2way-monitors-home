@@ -381,16 +381,21 @@ def controlla_voci_recenti() -> None:
 
     print("\nPA-017  Secondo backup a setup finito, e la scelta fra incrementale e copia piena")
     riga("ok", "condizione di sblocco: fase 8 chiusa in MS-143 e fase 11 compiuta in MS-144")
-    riga("  ", "residuo ~/prefix-prima-di-winehq-2026-09-17.tar da 28 GiB: DA CANCELLARE")
-    riga("  ", "residuo ~/wineprefixes.rotto-winehq da 7,6 GiB: DA CANCELLARE")
-    riga("  ", "decisione fra catena incrementale e copia piena indipendente: NON presa")
+    riga("ok", "residui cancellati il 2026-09-21, 35 GB liberati su /home, MS-148")
+    riga("ok", "decisione presa: copia piena indipendente, non incrementale, MS-149")
+    riga("ok", "secondo punto prodotto: 18214821888 byte, esito Success, tipo Full")
+    riga("ok", "rilettura eseguita: tredici impronte e quattro conteggi coincidenti")
     dest_presente = Path("J:/").exists()
     riga("ok" if dest_presente else "  ",
-         "destinazione J: collegata, necessaria per portare fuori l'archivio")
-    print("  ESEGUIBILE ADESSO: la condizione di sblocco e' soddisfatta dal 2026-09-21.")
-    print("  I due residui vanno cancellati prima della corsa, o entrano nell'archivio")
-    print("  per trentacinque gigabyte inutili. La procedura e' quella di")
-    print("  docs/10-ambiente/veeam-agent-linux.md dalla fase 5 in avanti.")
+         "destinazione J: collegata, necessaria per rileggere la copia esterna")
+    archivio2 = Path("J:/backup-macchine/alessio-ubuntustudio/"
+                     "backup-file-sistema_2026-09-21T130457.vbk")
+    riga("ok" if (dest_presente and archivio2.exists()) else "  ",
+         "archivio del 2026-09-21 presente su J:, impronte verificate, MS-149")
+    print("  COMPIUTA il 2026-09-21. Restano dichiarate le tre cose gia' rinviate da")
+    print("  PA-011: la destinazione J: e' provvisoria in attesa del NAS, la cifratura")
+    print("  va ripresa quando la destinazione sara' definitiva, e un backup a livello")
+    print("  di file non da' una immagine avviabile, che resta Clonezilla a macchina spenta.")
 
     print("\nPA-018  Decidere che fare del repository WineHQ rimasto sulla macchina")
     riga("? ", "/etc/apt/sources.list.d/winehq-resolute.sources presente il 2026-09-21, MS-145")

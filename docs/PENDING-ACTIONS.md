@@ -394,7 +394,7 @@ Esito del 2026-09-17, poche ore dopo l'apertura, su istruzione esplicita dell'ut
 
 ## PA-017 - Secondo backup a setup finito, e la decisione se renderlo incrementale
 
-Data di apertura: 2026-09-17. Stato: aperta, con condizione di sblocco non ancora soddisfatta.
+Data di apertura: 2026-09-17. Stato: COMPIUTA il 2026-09-21. L'esecuzione è in MS-148 per il prerequisito e in MS-149 per la corsa, la rilettura e il trasferimento.
 
 Che cosa va fatto. Prendere un secondo backup della macchina quando la ricostruzione sarà davvero finita, cioè a sottofase 8.6 chiusa e fase 8 superata in tutti e cinque i criteri di uscita, e decidere in quella occasione se il secondo punto debba essere una copia completa nuova oppure un incrementale sul primo.
 
@@ -409,6 +409,10 @@ Criterio di completamento. Il secondo punto esiste, il suo esito è `Success`, �
 Un prerequisito nato il 2026-09-17 e da non dimenticare, perché costerebbe trentacinque gigabyte di archivio inutile. Sulla macchina restano due residui del tentativo di sostituzione di Wine, cioè l'archivio `~/prefix-prima-di-winehq-2026-09-17.tar` da 28 GiB e la copia danneggiata `~/wineprefixes.rotto-winehq` da 7,6 GiB. Sono entrambi sotto `/home`, quindi entrerebbero nel backup. Vanno cancellati prima della seconda corsa, e non prima di aver verificato che il corredo funzioni, il che è stato fatto in MS-142.
 
 La procedura da seguire è quella di `docs/10-ambiente/veeam-agent-linux.md`, che dalla fase 5 in avanti vale identica per una corsa successiva.
+
+Esito del 2026-09-21. Il prerequisito è compiuto: i due residui sono stati cancellati dopo avere verificato per conteggio che i prefix in uso fossero integri e che la loro ridondanza vivesse anche nel punto di ripristino del 17 settembre, e `/home` è passata da 66 a 31 GB. La decisione è registrata ed è stata dell'utente: copia piena indipendente e non incrementale sulla catena, perché il punto precedente fotografa uno stato intermedio che nessuno vorrebbe ripristinare e perché un incrementale non si porta fuori dalla macchina da solo. Il secondo punto è stato prodotto in sette minuti con `--activeFull`, pesa 18 214 821 888 byte, dichiara `Success`, e l'elenco dei punti riporta due voci entrambe di tipo `Full` e non corrotte. La prova di rilettura è stata eseguita montando il punto e confrontando tredici impronte e quattro conteggi, tutti coincidenti, con due controlli in più rispetto a quella di MS-132, cioè che i residui cancellati non siano nell'archivio e che il deposito non sia finito dentro se stesso. L'archivio e il file di metadati sono su `J:` con le impronte verificate alle due estremità.
+
+Restano dichiarate e non risolte le tre cose che PA-011 aveva già rinviato, e vanno ridette invece di essere date per note: la destinazione `J:` è provvisoria in attesa del NAS domestico, la cifratura resta rinviata e va ripresa quando la destinazione diventerà definitiva, e un backup a livello di file non dà una immagine avviabile, che resta da prendere con Clonezilla a macchina spenta. La pagina prescrittiva porta ora una fase 8 per la corsa successiva, scritta in MS-150 insieme al ritiro di una affermazione sbagliata sui privilegi.
 
 ## PA-018 - Decidere che fare del repository WineHQ rimasto sulla macchina
 
