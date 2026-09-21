@@ -43,6 +43,7 @@ L'indice va aggiornato ogni volta che una voce nuova ne supera una precedente, e
 | la fase 11 di `installazione-pulita-26-04.md`, non una voce del registro | MS-144 | la previsione che dopo la reinstallazione l'elenco delle architetture straniere sarebbe stato vuoto: contiene `i386` ed è corretto così, per ADR-016 |
 | MS-141 | MS-145 | la dichiarazione che la causa prima del lato a 32 bit non popolato non fosse isolata: lo è, ed è che WineHQ non pubblica alcuna metà a 32 bit per Ubuntu 26.04 |
 | la voce B del troubleshooting in `veeam-agent-linux.md`, non una voce del registro | MS-150 | l'affermazione che `veeamconfig` richieda `sudo` per ogni passo e che rimedio non ce ne sia: il gruppo `veeam` basta, e la sessione che ne era priva era nata prima dell'installazione |
+| la quinta causa della sezione sul contesto di shell in `git-commands-format.md` | MS-152 | non che sia falsa, ma che sia incompleta: dichiarare la macchina nella prosa accanto al blocco non basta, perché chi copia copia il blocco e non il paragrafo |
 
 Due ritiri di questa sessione non compaiono in tabella perché non riguardano una voce del registro ma una mia spiegazione scritta altrove: MS-089 ritira la lettura secondo cui la barra del titolo di AKABAK dichiarasse l'edizione, e MS-093 ritira la spiegazione del 2026-09-09 sul perché una sessione SSH disponesse di un display. Restano nominati qui perché chi cerca un ritiro lo cerca in questo elenco.
 
@@ -3194,6 +3195,44 @@ Legame con il progetto: nessuna fase del workflow, e va detto apertamente. Serve
 Verificato con: esecuzione senza `sudo`, da sessione SSH non interattiva, di `veeamconfig repository list`, `job list`, `job info`, `backup list`, `point list`, `job start --activeFull`, `point mount` e `session stop`, tutti con stato zero; `id -nG` sulla sessione, che riporta il gruppo `veeam`; `python tools/md-unwrap.py --check` e `python tools/lint-md-commands.py` sulla pagina modificata, entrambi puliti.
 
 Esito: fatto. La pagina dichiara ora una cosa vera dove ne dichiarava una falsa, e copre la corsa successiva oltre alla prima.
+
+### MS-151 - Il repository WineHQ rimosso dalla macchina con la sua chiave: PA-018 si chiude
+
+Perimetro: rimozione di `/etc/apt/sources.list.d/winehq-resolute.sources` e di `/etc/apt/keyrings/winehq-archive.asc` dalla macchina `alessio-ubuntustudio`, aggiornamento degli indici di apt, e verifica che la catena Wine della distribuzione sia rimasta quella. Chiude PA-018.
+
+Legame con il progetto: serve la fase 7 e la fase 8 in modo indiretto, perché riporta la configurazione delle sorgenti software a coincidere con quanto i documenti dichiarano. Non aggiunge alcuna capacità: toglie una divergenza fra documento e macchina, che è il genere di cosa che costa a chi legge fra sei mesi e non a chi lavora oggi.
+
+*La decisione e il suo motivo, che sono il contenuto della voce.* L'utente ha scelto di rimuovere entrambi invece di lasciarli o di disattivarli. Il motivo registrato è quello che MS-145 ha misurato: per Ubuntu 26.04 WineHQ non pubblica alcuna metà a 32 bit, quindi conservare quel repository non conserva alcuna capacità utile a questo progetto, il cui corredo è interamente a 32 bit. Una configurazione conservata vale per il poterla riusare, e qui la misura dice che non è riusabile su questa versione del sistema.
+
+*Che cosa è stato accertato prima di rimuovere.* La chiave era referenziata dal solo file di sorgenti che veniva rimosso insieme a essa, quindi non restava orfana alcuna altra sorgente; nessun pacchetto di provenienza WineHQ risultava installato; e la cartella `/etc/apt/keyrings/` conteneva quella sola chiave, mentre la chiave di Veeam vive altrove, in `/etc/apt/trusted.gpg.d/`, quindi svuotare la prima non tocca la seconda.
+
+*Lo stato dopo.* Le sorgenti sono tre, cioè `ubuntu.sources`, il suo originale dell'installatore e `veeam.list`; la cartella delle chiavi è vuota; e una ricerca di `winehq` sotto `/etc/apt/` non trova più nulla. Il pacchetto `winehq-stable` non è più nemmeno conosciuto da apt, e `wine-stable` risulta senza candidato. I sette pacchetti Wine della distribuzione sono intatti alla versione `10.0~repack-12ubuntu1`, `wine --version` risponde `wine-10.0`, e il prefix a 32 bit esegue con stato zero e zero righe di errore.
+
+Un dato osservato di passaggio e non trattato, perché non appartiene a questa voce: dopo l'aggiornamento degli indici la macchina riporta ventuno pacchetti aggiornabili, che sono i normali aggiornamenti della distribuzione e non hanno relazione con la rimozione. Aggiornarli è una decisione dell'utente e non un compito di questa voce, e si registra qui perché un numero visto e taciuto è un numero che nessuno rivedrà.
+
+Verificato con: `ls -la` su `/etc/apt/sources.list.d/` e su `/etc/apt/keyrings/`, che riportano tre file e nessuno; `grep -rl -i winehq /etc/apt/`, che non trova nulla; `apt policy winehq-stable wine-stable`, dove il primo non produce alcuna voce e il secondo riporta candidato assente; `dpkg -l | grep -i wine`, che riporta i sette pacchetti della distribuzione alla versione attesa; `wine --version`; `wine32 cmd /c echo` nel prefix a 32 bit, con stato zero e zero errori.
+
+Esito: fatto. PA-018 è compiuta e la configurazione delle sorgenti sulla macchina coincide con quanto i documenti dichiarano.
+
+### MS-152 - Un blocco di comandi incollato sulla macchina sbagliata, di nuovo, e la correzione della prescrizione che avrebbe dovuto impedirlo
+
+Perimetro: errore mio nella consegna dei comandi di MS-151, con il suo esito reale, e la conseguenza per la regola `.claude/rules/git-commands-format.md`, che va portata al template e quindi entra in PA-003. Nessun file della macchina è stato toccato da questa voce.
+
+Legame con il progetto: nessuna fase del workflow, e va detto apertamente. Serve la conduzione del lavoro, cioè il modo in cui i comandi arrivano da chi li scrive a chi li esegue, che in questo progetto è un passaggio costante perché il lavoro privilegiato è sempre manuale dell'utente.
+
+*Che cosa è successo.* I comandi di PA-018 sono stati consegnati come un blocco PowerShell per la postazione Windows, aperto da `ssh -t studio`, con una riga di prosa che dichiarava esplicitamente trattarsi della postazione e non della macchina di destinazione. L'utente lo ha incollato in un terminale già aperto sulla macchina di destinazione, dove l'alias `studio` non esiste, e la risposta è stata `ssh: Could not resolve hostname studio` ripetuta tre volte. Nessun danno: `ssh` non ha risolto il nome, quindi non ha eseguito nulla, e i due file erano ancora al loro posto quando è arrivato il blocco corretto.
+
+*Perché la prescrizione esistente non è bastata.* La quinta causa della sezione sul contesto di shell della regola prescrive che un blocco contenente `ssh` dichiari di essere per la macchina di partenza, e quella prescrizione era stata rispettata. L'errore è quindi avvenuto dentro una regola osservata, il che la rende incompleta e non violata. Il pezzo mancante è che una dichiarazione in prosa accanto al blocco non viaggia con il blocco: chi copia copia il riquadro, non il paragrafo che lo precede, ed è la stessa ragione per cui la terza causa prescrive di mettere il `cd` dentro il blocco invece di scrivere in prosa di spostarsi.
+
+*La correzione, in due parti.* La prima è che la scelta predefinita, quando il lavoro si svolge su una macchina remota, è consegnare il blocco nella forma che si esegue **su quella macchina**, senza `ssh`, perché è la forma che funziona nel terminale dove il lavoro accade. La forma con `ssh` si consegna soltanto quando l'utente ha dichiarato di trovarsi sulla postazione, e non per difetto. La seconda è che, quando la forma con `ssh` serve davvero, la dichiarazione della macchina va dentro il blocco come commento sulla prima riga, così da viaggiare con ciò che si copia.
+
+*Perché questa occorrenza è meno pericolosa di quanto sembri, e perché va scritta lo stesso.* È caduta rumorosamente, quindi nessuno l'ha scambiata per un successo, esattamente come la prima occorrenza della quinta causa. La variante silenziosa resta quella descritta nella regola, cioè un alias omonimo che sulla seconda macchina esista e punti altrove: là il comando riesce nel posto sbagliato senza dire niente. Il motivo per cui questa occorrenza va registrata non è il danno prodotto, che è nullo, ma il fatto che sia avvenuta dentro una regola rispettata: sono le uniche occorrenze che insegnano qualcosa alla regola invece che a chi la applica.
+
+*Dove va la correzione.* La regola vive sotto `.claude/rules/` come copia del template, e correggerla soltanto qui allargherebbe la divergenza che PA-003 esiste per chiudere. La conseguenza è quindi registrata come voce nuova di PA-003, con il testo da portare al template, ed è la terza volta che una prescrizione nasce quaggiù e deve risalire.
+
+Verificato con: l'output reale incollato dall'utente, con tre occorrenze di `ssh: Could not resolve hostname studio: Temporary failure in name resolution` e il prompt `alesop95@alessio-ubuntustudio` che dichiara la macchina in cui il blocco è stato incollato; lo stato dei due file dopo il fallimento, ancora presenti, che è la prova che nulla era stato eseguito.
+
+Esito: fatto come registrazione, aperto come propagazione. La correzione della regola è una voce di PA-003.
 
 ## Che cosa resta da fare, e da che cosa dipende
 
