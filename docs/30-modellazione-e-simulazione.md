@@ -24,6 +24,8 @@ La quarta è l'equivalente su Android, basato sull'interfaccia di profondità di
 
 Una avvertenza che non riguarda lo strumento ma la forma della stanza, e che in questo progetto decide quale applicazione usare. Le applicazioni che producono planimetrie, cioè quelle che restituiscono una pianta quotata, modellano una stanza come pareti estruse verticalmente sotto un soffitto piano. Sono le più comode e le più rapide, e su una stanza con il soffitto spiovente sbagliano precisamente la caratteristica che conta, perché la pendenza del soffitto è ciò che distingue il comportamento modale di questo ambiente da quello di una scatola. Dove il soffitto non sia piano serve uno scanner che produca una mesh, e la pendenza va comunque presa con il metro laser fra le quote di verifica.
 
+Quale sia l'elenco delle quote da prendere, con quale convenzione di origine, in quale ordine e su quali tabelle, non sta in questa pagina ma nel suo allegato operativo [35-rilievo-geometrico.md](35-rilievo-geometrico.md), scritto il 2026-09-21. La divisione è che qui si decide il metodo e là si esegue: questa sezione dice perché una scansione è una sagoma, l'allegato dice che senza il materiale di ogni superficie il calcolo del riverbero della fase 3 resta senza ingressi.
+
 ### La scansione è un riferimento su cui modellare, non il modello
 
 È il punto che decide se il rilievo faccia risparmiare tempo o lo faccia perdere, e va enunciato prima di scegliere lo strumento.
