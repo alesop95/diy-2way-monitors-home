@@ -69,3 +69,31 @@ desktop.ini
 # File di test della sessione (eliminare a mano)
 .claude2/
 __guardtest.md
+
+# LaTeX: il .tex e' la fonte, gli ausiliari sono derivati e non si versionano in
+# nessuna cartella, quindi questi pattern sono globali come quelli degli archivi.
+# Abilitato il 2026-09-21 con l'istanziazione del pacchetto latex.
+*.aux
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+
+# Il PDF generato NON entra qui come pattern globale, e la ragione e' la stessa
+# scritta in testa a questo file: un PDF puo' essere un riferimento legittimamente
+# versionato, quindi il suo pattern resta ancorato, cioe' /*.pdf piu' sopra. Quando
+# il documento LaTeX avra' una collocazione, si aggiunge il suo percorso preciso.
+
+# Il pacchetto latex istanzia tex-packages.txt alla radice, dove /*.txt lo
+# nasconderebbe: la negazione lo riporta nell'indice. E' lo stesso caso che il
+# commento in testa a questo file cita per la copia modello dello stesso file.
+!/tex-packages.txt

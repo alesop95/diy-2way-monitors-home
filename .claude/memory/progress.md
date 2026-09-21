@@ -2,6 +2,30 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-21, coda - Tre direzioni nuove dall'utente, e una lacuna della fase 2 colmata
+
+Commit di partenza: 2b27e61.
+
+File toccati: `docs/30-modellazione-e-simulazione.md` con la sezione nuova su come si ottiene la geometria; `docs/PENDING-ACTIONS.md` con PA-020 e PA-021 aperte e PA-012 rifondata sui requisiti nuovi; `tools/check-pending-actions.py` esteso alle due voci nuove; `.claude/context/roadmap.md` con il rilievo geometrico accanto alla quarta priorità e la distinzione fra i due report LaTeX.
+
+Motivo. Conversazione di indirizzo, non lavoro operativo: nessun comando è stato eseguito sulla macchina e non c'è alcun microstep. L'utente ha aperto tre fronti insieme, cioè il rilievo tridimensionale della stanza da fotografie o scansione, una interfaccia audio per registrare batteria elettronica e chitarra elettrica con missaggio dal vivo in Ardour e un mixer, e un report in LaTeX sul gain staging allineato al template.
+
+La lacuna che la prima domanda ha scoperto. La pagina della fase 2 prescriveva che cosa il modello geometrico debba contenere e con quale strumento si costruisca, e taceva su da dove escano le dimensioni. La sezione nuova descrive le quattro vie, cioè metro laser, fotogrammetria, scansione LiDAR e il suo equivalente Android, e fissa i due punti che decidono se il rilievo faccia risparmiare tempo o lo faccia perdere: una scansione è un riferimento su cui ricalcare un modello a poche facce e non il modello, perché a valle servono piani a cui assegnare un assorbimento e non una nuvola di triangoli; e l'errore da temere non è quello casuale su una quota ma la deriva di scala, che sposta tutte le frequenze modali nella stessa direzione e si presenterebbe come un disaccordo sistematico fra Octave e REW, cioè come un errore di modellazione invece che di rilievo.
+
+Il ridimensionamento della precisione, che è la parte utile. Il primo modo assiale su quattro metri cade attorno a 42,9 Hz, e cinque centimetri di errore lo spostano di circa mezzo hertz: il centimetro basta e il millimetro non serve. La verifica di scala con tre o quattro distanze prese col metro laser costa dieci minuti e va scritta con i numeri.
+
+Il cambio di natura di PA-012. Non è più la scelta di una interfaccia da misura che serva anche a registrare, ma la scelta di una catena di ingresso multicanale di cui la misura è il caso più semplice. Tre punti tecnici che le comparative comuni saltano sono stati scritti nella voce: l'impedenza di ingresso, perché un pickup passivo va in un ingresso strumento attorno al megaohm e non in un ingresso di linea; il numero di ingressi, che la lista dichiarata porta ad almeno cinque e nella pratica a otto, salvo che il modulo della batteria esponga una uscita USB multitraccia conforme alla classe audio; e la topologia, che sono tre strade distinte fra interfaccia multicanale, mixer analogico sommante e mixer digitale che è anche interfaccia, dove il vincolo di conformità alla classe audio pesa soprattutto sulla terza.
+
+La separazione fra i due progetti, dichiarata perché altrimenti questo repository assorbe lavoro non suo. Interfaccia, mixer e gain staging appartengono a `home-recording-training-mixing-setup`; questo progetto ne consuma il solo requisito dell'ingresso microfonico con phantom. La proposta sul pacchetto `latex` è di istanziarlo là e non qui, lasciando intatto l'innesco dichiarato nella roadmap per il report dei monitor alle fasi 4 e 5.
+
+Le risposte, arrivate nella stessa sessione. Otto ingressi simultanei, scelti con margine e non al minimo. Nessun tetto di spesa dichiarato, quindi la ricerca dovrà presentare i candidati per fascia dichiarando che cosa si guadagni salendo, con il rischio accettato di una raccomandazione meno netta. Dispositivo Android per la scansione, di modello ancora da dichiarare, che è il dato che decide se la via della scansione sia praticabile o se degradi a fotogrammetria. Pacchetto LaTeX istanziato in entrambi i progetti.
+
+L'istanziazione è stata eseguita ed è MS-153, con ADR-022 che registra la decisione e la mia obiezione superata. Sette file per progetto, copiati byte per byte dal modello; la distribuzione TeX non è installata perché è user-local e condivisa, quindi è un atto separato. Nel farlo ho introdotto due difetti nel `.gitignore` e ne ho corretti entrambi prima del commit: un `*.pdf` globale, che contraddice la ragione per cui in questo progetto i pattern per tipo di documento sono ancorati alla radice, e la copia istanziata di `tex-packages.txt`, che cadeva sotto `/*.txt` con una ironia particolare, dato che il commento in testa a quel file cita proprio la copia modello dello stesso file come esempio del problema opposto. Il metodo che li ha colti vale più dei due casi: dopo una copia di file, l'elenco di ciò che si è copiato va confrontato con ciò che git vede, perché la differenza fra i due è l'insieme dei file che il `.gitignore` nasconde in silenzio.
+
+Una misura non cercata nel gemello. Il suo `.gitignore` porta ancora i pattern per tipo in forma globale, e `git status --ignored` dice che là sono nascosti quattro elementi che dovrebbero essere versionati, fra cui la cartella dei modelli `_notes` e due file di testo dei pacchetti. Non l'ho corretto, perché ancorare quei pattern cambierebbe la convenzione di un altro repository e farebbe entrare quattro elementi nel suo indice: è una decisione dell'utente, e nel gemello ho aggiunto la sola negazione minima per la copia istanziata.
+
+Resta da chiedere quale sia il modello del dispositivo Android e quale il modulo della batteria elettronica, che è il solo dato capace di cambiare il conto degli ingressi. PA-019 resta aperta e in attesa dell'utente alla console.
+
 ## 2026-09-21 - La fase 11 chiude la procedura, e il confronto trova tre cose che nessuno stava cercando
 
 Commit di partenza: d4d8cda.

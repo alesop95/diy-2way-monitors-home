@@ -8,6 +8,40 @@ Il modello geometrico non serve a fare belle immagini: serve a essere validato d
 
 Lo strumento è Blender, per tre motivi concreti: dà libertà geometrica superiore a un CAD architettonico, esporta nei formati aperti che servono a valle, cioè `.obj` e `.dae`, ed è già preinstallato nella distribuzione Ubuntu Studio, quindi non aggiunge nulla da configurare.
 
+## Come si ottiene la geometria, che questa pagina dava per scontata
+
+La sezione precedente dice quale strumento costruisce il modello e che cosa il modello deve contenere, e tace su da dove escano le dimensioni. È una lacuna reale, emersa da una domanda dell'utente il 2026-09-21, e va colmata prima della fase 1 perché il rilievo si fa una volta sola e rifarlo costa quanto farlo.
+
+Le vie sono quattro e non valgono lo stesso. La scelta fra loro dipende da quale dispositivo si ha in mano, quindi resta aperta come PA-020 finché quel dato non è noto.
+
+La prima è il metro laser, che costa venti o trenta euro e misura al millimetro. È esatta e lenta. Funziona bene sulle tre dimensioni principali e male su tutto il resto: un soffitto spiovente richiede due altezze e una pendenza in punti spesso irraggiungibili, e rilevare a mano scrivania, schermo, seduta e mobili è mezza giornata che produce soprattutto errori di trascrizione.
+
+La seconda è la fotogrammetria da fotografie, con strumenti liberi e nativi su Linux come Meshroom, che usa AliceVision, oppure COLMAP. Il metodo ricostruisce la geometria riconoscendo gli stessi punti in immagini diverse, e una stanza è il suo caso peggiore: una parete tinteggiata non offre punti da riconoscere, quindi il modello risulta bucato proprio dove servono le superfici che contano. Porta inoltre un limite che non è un difetto ma una proprietà del metodo: dalle sole immagini non si ricava alcuna dimensione assoluta, quindi il modello nasce senza scala e va riscalato includendo nell'inquadratura un oggetto di lunghezza nota.
+
+La terza è la scansione LiDAR[^lidar] da un dispositivo mobile che ne abbia il sensore, cioè gli iPhone e gli iPad Pro dal modello 12 Pro in avanti. È la via che al chiuso funziona davvero, per due ragioni: il sensore misura distanze, quindi la scala è metrica per costruzione, e le superfici lisce non sono un ostacolo perché non occorre riconoscere alcuna trama. Le applicazioni costruite su RoomPlan restituiscono un modello parametrico con pareti, aperture e ingombri dei mobili già quotati; quelle come Polycam o Scaniverse restituiscono una mesh. In entrambi i casi il rilievo dura minuti e la precisione è dell'ordine del centimetro.
+
+La quarta è l'equivalente su Android, basato sull'interfaccia di profondità di ARCore o su un sensore a tempo di volo dove presente. Esiste e funziona, ma la resa dipende dal dispositivo molto più che nel caso precedente, quindi non si può raccomandare senza sapere quale sia.
+
+### La scansione è un riferimento su cui modellare, non il modello
+
+È il punto che decide se il rilievo faccia risparmiare tempo o lo faccia perdere, e va enunciato prima di scegliere lo strumento.
+
+Una mesh di scansione porta centinaia di migliaia di triangoli, con buchi, rumore e superfici che non sono piane. A valle non serve a nulla, e non per una questione di prestazioni: l'analisi modale e la simulazione vogliono piani ideali a cui assegnare un coefficiente di assorbimento, mentre una scansione offre una nuvola di triangoli a cui non si assegna niente. Il modo corretto di usarla è importarla in Blender come sagoma e ricalcarvi sopra una stanza pulita a poche facce, prendendo dalla scansione le proporzioni, gli ingombri e le posizioni, che sono precisamente le cose che a mano costano tempo. Il lavoro è di un'ora invece che di mezza giornata, e il modello che entra nel calcolo è quello ricalcato.
+
+Ne segue che la scansione non sostituisce la comprensione della stanza: la sostituisce soltanto la trascrizione.
+
+### Quanta precisione serve, e quale errore è quello pericoloso
+
+Conviene fissare l'ordine di grandezza, perché è facile inseguire una precisione che non cambia alcun risultato e trascurare l'errore che invece li cambia tutti.
+
+La frequenza del primo modo assiale su una dimensione vale `c/(2L)`, quindi su quattro metri cade attorno a 42,9 Hz con la velocità del suono a 343 metri al secondo. Sbagliare quella dimensione di cinque centimetri sposta il modo di circa mezzo hertz, cioè poco più dell'uno per cento, che è trascurabile rispetto all'errore che si commette comunque assumendo pareti perfettamente rigide. Il centimetro basta; il millimetro non serve e non si paga.
+
+L'errore da cui difendersi è di natura diversa, ed è la deriva di scala. Un rilievo che sbagli la scala del due per cento non produce un errore casuale su una quota, produce uno spostamento del due per cento su tutte le frequenze modali, tutte nella stessa direzione. Poiché il criterio di validazione del modello, enunciato nella pagina della fase 1, è che i modi previsti in Octave coincidano con i picchi misurati in REW, un errore di scala si presenta come un disaccordo sistematico fra modello e misura, e chi lo incontra lo attribuisce alla modellazione invece che al rilievo. Una scansione lunga può derivare in questo modo, un metro laser no.
+
+La regola operativa che ne discende costa dieci minuti e vale per tutte e quattro le vie. Si prendono con il metro laser tre o quattro distanze fra punti ben identificabili, scelte lunghe e in direzioni diverse, e si verifica che il modello le riproduca. Se non le riproduce, si riscala il modello su di esse prima di andare avanti. Le distanze misurate e lo scarto trovato si scrivono accanto al modello, perché una verifica di scala non ripetibile vale quanto una non fatta.
+
+[^lidar]: *LiDAR*, Light Detection and Ranging - sensore che misura la distanza di una superficie dal tempo di volo di un impulso luminoso; a differenza della fotogrammetria restituisce dimensioni assolute senza bisogno di un riferimento di lunghezza nota nell'inquadratura.
+
 ## La catena di simulazione, e la sua ambiguità nel sorgente
 
 Qui il documento sorgente propone due catene alternative senza scegliere, e il progetto ha bisogno di una scelta. Vale esporre entrambe e dire quale prevale.

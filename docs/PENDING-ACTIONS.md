@@ -108,6 +108,14 @@ Condizione di sblocco. Nessuna condizione esterna impedisce la valutazione, che 
 
 Criterio di completamento. Esiste un documento nel progetto gemello che confronta un numero limitato di candidati sui due vincoli dichiarati, con la verifica esplicita del supporto di classe audio su Linux fatta su fonte primaria e non su un forum, e la scelta è registrata come decisione architetturale in entrambi i progetti. Dopo l'acquisto, il controllo di uscita della fase 6 di `docs/10-ambiente/installazione-pulita-26-04.md` va riscritto nominando il dispositivo reale, e la scelta del microfono in `docs/20-misura-stanza.md` va promossa da condizionale a decisa.
 
+
+Requisiti dichiarati dall'utente il 2026-09-21, che cambiano la classe del dispositivo e non solo i suoi numeri. L'interfaccia deve permettere di registrare una batteria elettronica e una chitarra elettrica, e di suonare e mixare dal vivo dentro Ardour basso, chitarra, batteria e voce; l'utente considera inoltre di affiancarle un mixer. La voce nasce quindi rifondata: non è più la scelta di una interfaccia da misura che serva anche a registrare, ma la scelta di una catena di ingresso multicanale di cui la misura acustica è il caso più semplice.
+
+Tre punti tecnici che la valutazione dovrà affrontare e che le comparative comuni saltano. Il primo è l'impedenza di ingresso: una chitarra o un basso con pickup passivi sono sorgenti ad alta impedenza, e un ingresso di linea da qualche decina di kiloohm li carica abbassando la risonanza del pickup e togliendo le alte frequenze; serve un ingresso strumento ad alta impedenza, tipicamente attorno a un megaohm, ed è un requisito che elimina molti dispositivi. Il secondo è il numero di ingressi simultanei, che la lista dichiarata porta ad almeno cinque, cioè due per la batteria in stereo più chitarra, basso e voce, e quindi a otto nella pratica: una interfaccia a due ingressi, che sarebbe perfetta per la sola misura acustica, è esclusa. Il conto cambia se il modulo della batteria elettronica espone una uscita USB multitraccia conforme alla classe audio, nel qual caso non occupa alcun ingresso, e il modello del modulo va quindi accertato prima di contare. Il terzo è la topologia, che sono tre strade distinte: una interfaccia multicanale con il missaggio dentro Ardour, un mixer analogico che somma verso due canali di una interfaccia semplice, oppure un mixer digitale che è anche interfaccia multicanale. La seconda costa meno e perde la registrazione separata delle tracce, quindi la possibilità di correggere un bilanciamento dopo; la terza dà i fader fisici e le tracce separate insieme, ed è quella su cui il vincolo di conformità alla classe audio pesa di più, perché molti mixer digitali dipendono da driver che su Linux non esistono.
+
+Parametri dichiarati dall'utente il 2026-09-21, poche ore dopo l'apertura di questo paragrafo. Gli ingressi simultanei sono otto, scelti con margine sulla lista dichiarata e non al minimo, il che porta la valutazione nella fascia dove i mixer digitali con interfaccia multicanale diventano candidati reali. Non esiste un tetto di spesa dichiarato, quindi la ricerca non ha un filtro di prezzo e deve presentare i candidati per fascia dichiarando che cosa si guadagni salendo, con il rischio, che va accettato consapevolmente, di produrre più candidati e una raccomandazione meno netta. Resta da accertare il modello del modulo della batteria elettronica, che è il solo dato capace di cambiare il conto degli ingressi: un modulo con uscita USB multitraccia conforme alla classe audio non ne occupa alcuno.
+
+La valutazione appartiene al progetto gemello `home-recording-training-mixing-setup`, e questo progetto ne è un consumatore con un solo requisito proprio, cioè un ingresso microfonico con alimentazione phantom a 48 V che regga la misura acustica. Il report sul gain staging che l'utente ha chiesto è tracciato come PA-021.
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
 
 Data di apertura: 2026-09-04. *Compiuta il 2026-09-07.* Stato: chiusa.
@@ -449,6 +457,36 @@ Il punto che rende questa voce diversa da una semplice verifica rimandata è che
 Condizione di sblocco. Che l'utente si trovi davanti alla macchina e faccia un accesso nuovo alla sessione grafica. Non è automatizzabile e non va simulata da remoto, perché è precisamente il contesto a essere oggetto della verifica.
 
 Criterio di completamento. Da una sessione attiva sulla console, `pactl list short cards` riporta la scheda integrata, `pactl info` riporta una uscita reale al posto di `auto_null`, il processo `wireplumber` di quella sessione porta i gruppi 29 e 982, e una riproduzione di prova si sente. L'esito va scritto in un microstep, anche se positivo, perché è la chiusura misurata di una domanda che oggi è aperta.
+
+## PA-020 - Scegliere come rilevare la geometria della stanza, e rilevarla
+
+Data di apertura: 2026-09-21, da una domanda dell'utente. Stato: aperta, con una condizione di sblocco che dipende da un dato non ancora noto.
+
+Che cosa va fatto. Scegliere fra le quattro vie descritte in `docs/30-modellazione-e-simulazione.md`, eseguire il rilievo della stanza, verificarne la scala con il metro laser, e ricalcare in Blender il modello pulito a poche facce che la fase 2 richiede, con pareti, soffitto spiovente, mobili, schermo, scrivania, seduta e le posizioni candidate dei monitor.
+
+Perché esiste. La pagina della fase 2 prescriveva che cosa il modello debba contenere e con quale strumento si costruisca, e taceva su da dove escano le dimensioni. Il rilievo si fa una volta sola e rifarlo costa quanto farlo, quindi la scelta del metodo va fatta prima e non durante. La sezione che colma la lacuna è stata scritta lo stesso giorno.
+
+Condizione di sblocco, parzialmente soddisfatta il 2026-09-21: l'utente ha dichiarato di avere un dispositivo Android, e resta da sapere quale modello, perché su Android la resa dipende dal dispositivo molto più che su iOS. Serve sapere se abbia un sensore a tempo di volo e se supporti l'interfaccia di profondità di ARCore: senza almeno la seconda, la scansione degrada a fotogrammetria e conviene valutare il rilievo manuale. La condizione originaria, che resta la formulazione generale, era la seguente. Sapere quale dispositivo mobile sia disponibile, perché è il dato che decide la via. Un iPhone o un iPad Pro dal 12 Pro in avanti porta un sensore LiDAR e rende la scansione la via migliore, con scala metrica per costruzione; un dispositivo Android rende la via possibile ma di resa variabile; l'assenza di entrambi lascia la fotogrammetria, che al chiuso è il caso peggiore del metodo, oppure il rilievo manuale con il metro laser. Il metro laser serve comunque in tutti e quattro i casi per la verifica di scala, quindi il suo acquisto non dipende da questa scelta.
+
+Criterio di completamento. Esiste in Blender un modello a poche facce della stanza, tracciato e non importato grezzo; tre o quattro distanze lunghe prese con il metro laser sono state confrontate con il modello e lo scarto è scritto accanto a esso; e le posizioni candidate dei monitor sono nel modello. La verifica di scala va registrata con i numeri, perché una verifica non ripetibile vale quanto una non fatta.
+
+Un vincolo di ordine, da non invertire. Il modello non va validato prima della fase 1: il suo criterio di validazione è l'accordo fra i modi che l'analisi in Octave prevede e i picchi che la misura in REW mostra, quindi il modello si costruisce adesso e si valida quando la misura esisterà. Costruirlo adesso è comunque giusto, perché non dipende da alcun acquisto ed è l'unico lavoro di progetto eseguibile mentre PA-012 resta aperta.
+
+## PA-021 - Studio della catena di ingresso e report sul gain staging in LaTeX
+
+Data di apertura: 2026-09-21, su richiesta esplicita dell'utente. Stato: aperta, e appartiene in massima parte al progetto gemello.
+
+Che cosa va fatto. Produrre uno studio della catena di ingresso per l'home recording, con i livelli e le impedenze lungo tutta la catena, il margine di headroom, l'allineamento fra livello analogico e scala digitale del convertitore e il rumore di fondo, e reportizzarlo in LaTeX usando il pacchetto `latex` ereditato dal template, che nessuno dei due progetti ha ancora istanziato.
+
+Perché esiste. La scelta dell'interfaccia e del mixer non si fa su una tabella comparativa ma su un calcolo, e il calcolo va scritto perché è la parte che si dimentica e che serve di nuovo a ogni cambio di apparecchio. Il gain staging in particolare non è una preferenza: è la sequenza dei guadagni che determina dove il rumore entra e dove il segnale satura, e si sbaglia in silenzio.
+
+Deciso il 2026-09-21 dall'utente, ed è ADR-022: il pacchetto `latex` è istanziato in entrambi i progetti, eseguito in MS-153, e il report sul gain staging vive nel gemello mentre il report dei monitor resta previsto qui con il proprio innesco intatto. Il paragrafo seguente conserva i termini della decisione come erano posti, perché la scelta si legga insieme alle alternative che aveva.
+
+Dove vive, ed è una decisione e non un dettaglio. Il contenuto appartiene a `home-recording-training-mixing-setup`, perché là vive la valutazione dell'interfaccia e là stanno gli strumenti musicali; questo progetto ne consuma il solo esito relativo alla catena di misura. La proposta è quindi istanziare il pacchetto `latex` nel progetto gemello e tenere qui la voce già prevista dalla roadmap per il report di progetto dei monitor, che ha un innesco dichiarato alle fasi 4 e 5 e non va anticipato. La decisione resta dell'utente e va scritta qui qualunque sia.
+
+Condizione di sblocco. La stessa di PA-012 per la parte di scelta, cioè il numero di ingressi simultanei, il tetto di spesa e il modello del modulo della batteria elettronica. La parte di metodo, cioè la struttura del report e i calcoli sulla catena già nota, è invece eseguibile subito.
+
+Criterio di completamento. Il pacchetto `latex` è istanziato nel progetto che ospita il report, con la distribuzione TeX installata e una compilazione riuscita; il documento contiene i calcoli di gain staging con i numeri reali degli apparecchi scelti e non con valori di esempio; e ogni impedenza e ogni livello citati hanno una fonte, cioè una scheda tecnica del costruttore oppure una misura, mai un valore ricordato.
 
 ## Azioni compiute
 

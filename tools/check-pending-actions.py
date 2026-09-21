@@ -405,6 +405,25 @@ def controlla_voci_recenti() -> None:
     print("  per Ubuntu 26.04 WineHQ non pubblica alcuna meta' a 32 bit, quindi")
     print("  conservare quel repository non conservava alcuna capacita' utile.")
 
+    print("\nPA-020  Scegliere come rilevare la geometria della stanza, e rilevarla")
+    riga("  ", "dispositivo mobile disponibile: NON dichiarato, e decide la via")
+    riga("  ", "metro laser: serve in tutti i casi per la verifica di scala")
+    riga("  ", "modello a poche facce in Blender: DA COSTRUIRE")
+    print("  APERTA. Non dipende da alcun acquisto oltre al metro laser, ed e' l'unico")
+    print("  lavoro di progetto eseguibile mentre PA-012 resta aperta. Il modello si")
+    print("  costruisce adesso e si valida quando la misura della fase 1 esistera'.")
+
+    print("\nPA-021  Studio della catena di ingresso e report sul gain staging in LaTeX")
+    riga("  ", "pacchetto latex: ereditato dal template, NON istanziato in alcun progetto")
+    riga("  ", "decisione su quale progetto ospiti il report: NON presa")
+    riga("? ", "parte di metodo eseguibile subito, parte di scelta ferma su PA-012")
+    gemello = Path("E:/home-recording-training-mixing-setup")
+    riga("ok" if gemello.exists() else "  ",
+         "progetto gemello raggiungibile, dove il contenuto appartiene")
+    print("  APERTA. Il contenuto appartiene a home-recording-training-mixing-setup;")
+    print("  qui resta la voce della roadmap per il report dei monitor, con innesco")
+    print("  dichiarato alle fasi 4 e 5, che non va anticipato.")
+
     print("\nPA-019  Verificare la catena audio da una sessione grafica attiva sulla console")
     riga("ok", "ALSA vede la scheda integrata ALC887-VD, cinque dispositivi, MS-144")
     riga("!!", "PipeWire da SSH non vede alcuna scheda: misura non informativa, MS-146")
