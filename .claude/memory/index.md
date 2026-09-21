@@ -50,7 +50,9 @@ Nella terza parte della giornata PA-018 è compiuta: il file di sorgenti di Wine
 
 Il 2026-09-21 l'utente ha poi aperto tre direzioni nuove, tutte registrate. Il rilievo tridimensionale della stanza, che colma una lacuna della fase 2 e che è l'unico lavoro di progetto eseguibile mentre PA-012 resta aperta, tracciato come PA-020 con la sezione nuova in `docs/30-modellazione-e-simulazione.md`. La rifondazione di PA-012, che non è più la scelta di una interfaccia da misura ma di una catena di ingresso multicanale a otto ingressi senza tetto di spesa, con i tre punti tecnici che le comparative saltano, cioè impedenza di ingresso, conteggio reale dei canali e topologia fra interfaccia, mixer analogico e mixer digitale. E il report sul gain staging in LaTeX, che è PA-021, con il pacchetto istanziato in entrambi i progetti per ADR-022 ed eseguito in MS-153.
 
-Il fronte successivo è PA-019, cioè la verifica della catena audio da una sessione grafica attiva sulla console, che richiede la presenza fisica dell'utente.
+PA-019 è compiuta per la parte di uscita, ed è MS-154 con MS-155: la scheda è vista, l'uscita analogica è attiva e udibile, i canali non sono invertiti e la catena è simmetrica. Il criterio sui gruppi del processo audio è stato riformulato invece che spuntato, perché quel processo appartiene al gestore di servizi dell'utente e solo un riavvio lo rinnova.
+
+Il fronte successivo è PA-020, cioè il rilievo geometrico della stanza, unico lavoro di progetto eseguibile mentre PA-012 resta aperta.
 
 Al 2026-09-17 il fronte è di nuovo la sottofase 8.6 e nient'altro, perché PA-011 è chiusa. Il backup di macchina esiste, è stato riletto montandolo e confrontandolo, e la sua copia su `J:` è verificata per impronta alle due estremità; la procedura per rifarlo su qualunque macchina Linux è `docs/10-ambiente/veeam-agent-linux.md`, in forma parametrica, con la sequenza dei soli comandi e dieci voci di troubleshooting. Sono i microstep da MS-126 a MS-135.
 
