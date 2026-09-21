@@ -398,12 +398,12 @@ def controlla_voci_recenti() -> None:
     print("  di file non da' una immagine avviabile, che resta Clonezilla a macchina spenta.")
 
     print("\nPA-018  Decidere che fare del repository WineHQ rimasto sulla macchina")
-    riga("? ", "/etc/apt/sources.list.d/winehq-resolute.sources presente il 2026-09-21, MS-145")
-    riga("  ", "decisione fra rimuovere, lasciare e disattivare: NON presa")
-    print("  APERTA e non bloccata. Non urgente, perche' nessun pacchetto di quella")
-    print("  provenienza e' installato, ma e' uno stato che i documenti non descrivono.")
-    print("  Per Ubuntu 26.04 quel repository non pubblica alcuna meta' a 32 bit, quindi")
-    print("  conservarlo non conserva alcuna capacita' utile a questo progetto.")
+    riga("ok", "decisione presa: rimuovere il file di sorgenti e la sua chiave, MS-151")
+    riga("ok", "rimozione eseguita il 2026-09-21: nessun riferimento a winehq in /etc/apt")
+    riga("ok", "catena Wine intatta: sette pacchetti della distribuzione alla 10.0")
+    print("  COMPIUTA il 2026-09-21. Il motivo registrato e' quello misurato in MS-145:")
+    print("  per Ubuntu 26.04 WineHQ non pubblica alcuna meta' a 32 bit, quindi")
+    print("  conservare quel repository non conservava alcuna capacita' utile.")
 
     print("\nPA-019  Verificare la catena audio da una sessione grafica attiva sulla console")
     riga("ok", "ALSA vede la scheda integrata ALC887-VD, cinque dispositivi, MS-144")
