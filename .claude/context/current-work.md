@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: d2efb3d
+last-verified-commit: d4d8cda
 ---
 
 # Lavoro corrente
@@ -44,6 +44,14 @@ L'ottava esclusione è costata la giornata e va riassunta perché è la più gro
 Ne segue che ADR-016 resta in vigore e ne esce rafforzata: l'architettura `i386` dichiarata sul sistema è necessaria, e oggi lo è per una ragione in più rispetto a quando fu scritta, cioè che l'alternativa upstream è stata provata e non funziona. La forma dell'ambiente, con i diagrammi dei quattro strati e dei due modi di eseguire un programma a 32 bit, è ora documentata in `docs/10-ambiente/architettura-ambiente-wine.md`.
 
 Il fronte successivo è la fase 11, cioè la fotografia finale della macchina e il confronto con quella iniziale, che si fa a fase 8 chiusa e quindi è sbloccata adesso. Restano aperte PA-017, cioè il secondo backup a setup finito con la decisione fra catena incrementale e copia piena, e PA-014, cioè la via verso il GLL dei monitor che si stanno costruendo. La fase 6 resta bloccata dalla scelta dell'interfaccia audio, che è PA-012 e non dipende da questo lavoro.
+
+Stato al 2026-09-21. La fase 11 è compiuta e con essa la procedura di installazione pulita è chiusa in tutte le sue fasi, dalla 0 alla 11. La fotografia finale della macchina esiste in ventinove voci, nessuna vuota, sta anche fuori dalla macchina con le impronte confrontate alle due estremità, ed è confrontata voce per voce con quella del 2026-09-07. Il confronto conferma le voci attese e in particolare la conservazione di `/home`, il cui identificativo univoco è invariato, che è la prova che la reinstallazione non ha perso dati e l'unica affermazione della procedura che non poteva essere verificata mentre la si faceva. La pagina prescrittiva con la sequenza replicabile, il confronto e il troubleshooting è `docs/10-ambiente/fotografia-macchina-post-reinstall.md`, e i microstep sono da MS-144 a MS-147.
+
+Il confronto ha prodotto tre scarti non attesi, che sono il vero risultato della fase. Il primo è che il repository di WineHQ è rimasto configurato sulla macchina dopo l'annullamento di MS-142, e il suo contenuto contiene la causa prima che MS-141 dichiarava di non avere isolato: WineHQ non pubblica alcuna metà a 32 bit per Ubuntu 26.04, misurato sul file `Release` di quattro suite, dove `noble` e `plucky` dichiarano `amd64 i386` mentre `questing` e `resolute` dichiarano il solo `amd64`. L'ottava esclusione di MS-143 ne esce rafforzata, perché non è più un comportamento di questa macchina ma una proprietà verificabile di un repository, ed è ADR-021; che fare del residuo è PA-018. Il secondo è che la catena audio letta da una sessione SSH riporta l'assenza di schede mentre ALSA vede regolarmente la integrata, con due cause isolate e indipendenti, cioè il posto tenuto dallo schermo di accesso e i gruppi mancanti in un processo nato prima di MS-077: la misura non è informativa in nessuna delle due direzioni e la verifica vera va fatta dalla console, ed è PA-019. Il terzo è un difetto di un mio comando, riprodotto alla lettera dalla raccolta precedente per poterla confrontare, che riportava due prefix su sette perché il suo limite di profondità era una assunzione sul terreno e il terreno era cambiato.
+
+Fuori dal fronte, lo strumento `tools/check-pending-actions.py` è stato esteso alle sei voci su cui taceva, cioè da PA-014 in avanti, ed è MS-147. Il difetto violava la regola che il docstring dello strumento stesso enuncia, e la sua parte generalizzabile è che un controllo che elenca non può segnalare la propria incompletezza, perché una voce assente non lascia traccia nella sua uscita.
+
+Il fronte successivo è PA-017, cioè il secondo backup a setup finito, la cui condizione di sblocco è soddisfatta da oggi. Chiede due cose nell'ordine: cancellare dalla macchina i due residui del tentativo su Wine, cioè `~/prefix-prima-di-winehq-2026-09-17.tar` da 28 GiB e `~/wineprefixes.rotto-winehq` da 7,6 GiB, che sono sotto `/home` e finirebbero nell'archivio, e poi decidere fra una seconda corsa sulla catena esistente e una copia piena indipendente. Restano aperte PA-018 e PA-019, che nascono oggi, e PA-016 sui due punti residui del riallineamento al template. La fase 6 resta bloccata dalla scelta dell'interfaccia audio, che è PA-012 e non dipende da questo lavoro.
 
 ## Fronte chiuso il 2026-09-04: impianto del progetto
 
