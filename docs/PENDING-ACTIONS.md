@@ -448,7 +448,7 @@ Esito del 2026-09-21. La decisione dell'utente è stata la rimozione di entrambi
 
 ## PA-019 - Verificare la catena audio da una sessione grafica attiva sulla console
 
-Data di apertura: 2026-09-21. Stato: COMPIUTA lo stesso giorno per la parte di uscita. L'accertamento che la apre è MS-146, l'esecuzione è MS-154 e MS-155.
+Data di apertura: 2026-09-21. Stato: COMPIUTA lo stesso giorno, in tutti e quattro i criteri, per la parte di uscita. L'accertamento che la apre è MS-146, l'esecuzione è MS-154 e MS-155, e la chiusura del quarto criterio dopo il riavvio è MS-156.
 
 Che cosa va fatto. Rifare la verifica della catena audio della fase 6 da una sessione grafica attiva sulla console della macchina, e non da SSH, leggendo che PipeWire veda la scheda integrata, che esistano una uscita e un ingresso reali al posto del dispositivo fittizio, e che una riproduzione di prova si senta.
 
@@ -465,6 +465,12 @@ Esito del 2026-09-21. Tre criteri su quattro sono soddisfatti e il quarto va rif
 Il criterio sui gruppi del processo `wireplumber` non è soddisfatto e non era soddisfacibile nella forma in cui l'avevo scritto. Quel processo non appartiene alla sessione grafica ma al gestore di servizi dell'utente, che resta vivo finché esiste almeno una sessione di quell'utente, comprese le connessioni SSH; un logout grafico non lo tocca e un riavvio del servizio erediterebbe i gruppi del gestore. L'unica via è il riavvio della macchina, che è comunque opportuno per altre ragioni. Il criterio resta come igiene e non come requisito di funzionamento, e la prova che sia ridondante è che la catena funziona senza di esso, perché l'accesso ai dispositivi arriva dalla lista di controllo di accesso.
 
 Resta dichiarato un limite che questa voce non poteva coprire: la simmetria misurata è quella della catena elettrica e digitale, mentre la sonorità percepita alle due orecchie dipende anche dalle cuffie e non è verificabile senza un microfono di misura, che è ciò che PA-012 blocca.
+
+Chiusura del quarto criterio, lo stesso 2026-09-21 dopo il riavvio della macchina, ed è MS-156. Il processo `wireplumber` è nato con la macchina e porta i gruppi 29 e 982, insieme al 978 di `veeam`, quindi il criterio è soddisfatto nella forma riformulata sopra e la voce è compiuta in tutti e quattro i punti. La stessa lettura ha rimosso un limite che questa voce dava per strutturale: con la sessione dell'utente attiva sul posto, `pactl` interrogato da SSH riporta la scheda e una uscita reale, quindi la non informatività della misura remota era contingente su chi tenesse il posto e non una proprietà del canale.
+
+Due dichiarazioni restano al posto di due lavori, e vanno lette come chiusura e non come residuo. La prima è che dopo il riavvio l'uscita predefinita è tornata quella digitale S/PDIF, e non perché la scelta di MS-154 non sia sopravvissuta: nessuna scelta era stata registrata, perché il file `default-profile` di WirePlumber non esiste e il passaggio all'analogico di MS-154 era una selezione automatica per priorità. A jack analogici liberi il profilo digitale è il più prioritario fra quelli disponibili, dato che una presa S/PDIF non ha rilevamento della presenza e dichiara `availability unknown` invece di dichiararsi vuota, quindi l'uscita analogica torna da sé al collegamento del jack e non c'è alcuna persistenza da configurare. La seconda è che quando arriverà l'interfaccia esterna di PA-012 la macchina avrà due schede e la selezione automatica per priorità non sarà più sufficiente: là il dispositivo predefinito diventerà una scelta da dichiarare, e il posto di quella scelta è la parte di ingresso della fase 6, non questa voce.
+
+Resta registrato un residuo trovato dalla stessa lettura e non da una ricerca: il file `default-routes`, datato 14 novembre 2025 e sopravvissuto dentro `/home` alla reinstallazione, registra i volumi di `hdmi-output-0` a zero senza silenziamento. È inerte finché l'HDMI non è in uso, e la sua voce di troubleshooting sta in `docs/10-ambiente/catena-audio-pipewire.md` perché il modo in cui si manifesterebbe, cioè una uscita muta che sembra guasta, porta a cercare la causa nel cavo.
 
 ## PA-020 - Scegliere come rilevare la geometria della stanza, e rilevarla
 
