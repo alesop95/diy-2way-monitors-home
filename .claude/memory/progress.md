@@ -24,7 +24,13 @@ L'istanziazione è stata eseguita ed è MS-153, con ADR-022 che registra la deci
 
 Una misura non cercata nel gemello. Il suo `.gitignore` porta ancora i pattern per tipo in forma globale, e `git status --ignored` dice che là sono nascosti quattro elementi che dovrebbero essere versionati, fra cui la cartella dei modelli `_notes` e due file di testo dei pacchetti. Non l'ho corretto, perché ancorare quei pattern cambierebbe la convenzione di un altro repository e farebbe entrare quattro elementi nel suo indice: è una decisione dell'utente, e nel gemello ho aggiunto la sola negazione minima per la copia istanziata.
 
-Resta da chiedere quale sia il modello del dispositivo Android e quale il modulo della batteria elettronica, che è il solo dato capace di cambiare il conto degli ingressi. PA-019 resta aperta e in attesa dell'utente alla console.
+I due dati mancanti sono arrivati nella stessa sessione e hanno chiuso le rispettive voci. Il dispositivo è un Samsung Galaxy S25 Ultra: niente sensore di profondità dedicato, per quanto risulta e con la verifica dichiarata come da fare sul dispositivo, ma ARCore dà comunque scala metrica perché combina le immagini con i sensori inerziali, quindi la scansione non degrada a fotogrammetria pura. Il limite vero è un altro e riguarda questa stanza in particolare: le applicazioni che producono planimetrie assumono un soffitto piano, e qui il soffitto è spiovente, cioè proprio la caratteristica da cui dipende il comportamento modale. La via scelta è ibrida, con il telefono per la disposizione degli arredi e il metro laser per il guscio e la pendenza, e il modello si ricalca in Blender usando la prima come sagoma e le seconde come vincoli.
+
+La batteria elettronica non è ancora stata acquistata, e questo cambia la natura del problema invece di lasciarlo aperto: il modulo non è un vincolo da subire ma una variabile da progettare insieme all'interfaccia, perché un modulo con uscita USB multitraccia conforme alla classe audio non occupa ingressi e permette di registrare la batteria per pezzi invece che in stereo già sommato. Le due scelte si condizionano e vanno fatte insieme.
+
+Un chiarimento pratico dato all'utente e registrato perché ha valore diagnostico: le cuffie si possono collegare al jack frontale del case, che sulla scheda è un connettore distinto da quello posteriore e compare come porta separata. Se il profilo analogico diventa disponibile, la prova dimostra insieme che la catena audio funziona e che il cavetto interno del pannello frontale è innestato; se resta non disponibile non prova che la scheda sia muta, perché quel cavetto può semplicemente non essere collegato dentro il case, e in quel caso si riprova sul jack posteriore.
+
+PA-019 resta aperta e in attesa dell'utente alla console.
 
 ## 2026-09-21 - La fase 11 chiude la procedura, e il confronto trova tre cose che nessuno stava cercando
 
