@@ -2,7 +2,7 @@
 
 > Allegato operativo alla fase 2. La pagina della fase 2 decide con quale strumento si costruisce il modello e da dove escono le dimensioni; questa decide quali quote si prendono, in quale ordine e in quale formato si scrivono, perché il rilievo si fa una volta sola e una quota dimenticata costa un secondo viaggio nella stanza con la scala. Il fronte è tracciato come PA-020.
 >
-> Stato: protocollo non ancora eseguito, scritto il 2026-09-21. Non porta la sezione di troubleshooting che le pagine prescrittive di questo progetto portano, e l'assenza è voluta: una voce di troubleshooting nasce da un caso incontrato e non da una previsione, quindi la sezione si aggiunge dopo l'esecuzione, con i casi reali. Le quote delle tabelle sono vuote per la stessa ragione, e si riempiono in questa pagina, che diventa così il verbale del rilievo oltre che la sua procedura.
+> Stato: protocollo non ancora eseguito, scritto il 2026-09-21. Le quote delle tabelle sono vuote e si riempiono in questa pagina, che diventa così il verbale del rilievo oltre che la sua procedura. La sezione di troubleshooting nasce lo stesso giorno con due voci sole, e la sua brevità è la regola e non una mancanza: una voce nasce da un caso incontrato e non da una previsione, quindi qui stanno i due casi incontrati nella prova di cattura e nient'altro, e la sezione crescerà eseguendo.
 
 ## Perché esiste un protocollo invece di un pomeriggio di misure
 
@@ -22,7 +22,7 @@ La fase 1 misura la stanza con il microfono al punto di ascolto, all'altezza del
 
 ## La convenzione di origine e assi, da fissare prima della prima misura
 
-Senza un'origine dichiarata una posizione non è un dato: dire che la scrivania sta a due metri e dieci non dice da dove. Si scegli un angolo del pavimento, si fotografa, e lo si dichiara qui sotto come origine; tutte le posizioni sono poi distanze dai due muri che lo formano, misurate lungo il pavimento.
+Senza un'origine dichiarata una posizione non è un dato: dire che la scrivania sta a due metri e dieci non dice da dove. Si sceglie un angolo del pavimento, si fotografa, e lo si dichiara qui sotto come origine; tutte le posizioni sono poi distanze dai due muri che lo formano, misurate lungo il pavimento.
 
 ```
 z  altezza dal pavimento, positiva verso l'alto
@@ -43,7 +43,7 @@ La regola che rende utile la convenzione è che si misura sempre dagli stessi du
 
 Si comincia dal guscio con il metro laser, prima della scansione. La ragione è che la scansione va portata in scala sulle quote del guscio, quindi il guscio deve esistere prima: fare il contrario significa scalare la scansione su se stessa e scoprire dopo che non c'è nulla contro cui verificarla.
 
-Si prosegue con la scansione del telefono, nella stessa sessione e senza spostare nulla. Due accorgimenti vengono dalla pagina della fase 2 e non si ripetono se non nella forma operativa: si attaccano qualche decina di foglietti adesivi o crocette di nastro di carta sulle pareti lisce, distribuiti e non allineati, perché una parete tinteggiata non offre punti riconoscibili all'algoritmo; e il soffitto spiovente si inquadra deliberatamente, perché è la parte che si tende a saltare ed è quella da cui dipende tutto.
+Si prosegue con la scansione del telefono, nella stessa sessione e senza spostare nulla. A fine cattura l'applicazione chiede con quale modalità elaborare, e per la stanza si sceglie `Area`, che lavora per fusione di profondità, e non `Detail`, che lavora per fotogrammetria pur essendo quella che l'applicazione raccomanda: la raccomandazione vale per l'oggetto tipico dei suoi utenti e non per un ambiente, e la fotogrammetria dipende dal riconoscimento della trama. La distinzione è stata misurata in MS-161. Due accorgimenti vengono dalla pagina della fase 2 e non si ripetono se non nella forma operativa: si attaccano qualche decina di foglietti adesivi o crocette di nastro di carta sulle pareti lisce, distribuiti e non allineati, perché una parete tinteggiata non offre punti riconoscibili all'algoritmo, che è la stessa causa per cui `Detail` non va usata sull'ambiente; e il soffitto spiovente si inquadra deliberatamente, perché è la parte che si tende a saltare ed è quella da cui dipende tutto.
 
 Si prendono poi le quattro diagonali di controllo, con il metro laser, nella stessa sessione della scansione e con gli arredi nella stessa posizione. È il punto in cui un rilievo si salva o si perde: se qualcuno sposta una sedia fra la scansione e le diagonali, il confronto misura lo spostamento della sedia invece della deriva di scala.
 
@@ -133,3 +133,21 @@ Il criterio è che lo scarto resti sotto l'uno per cento su ciascuna delle quatt
 Il metro laser, che è l'unico acquisto e costa venti o trenta euro. Il telefono con Scaniverse installato, per la via decisa in PA-020. Qualche decina di foglietti adesivi o un rotolo di nastro di carta per le crocette. Una scala o uno sgabello per le altezze del soffitto, che è anche la ragione per cui conviene avere le tabelle stampate invece di battere le quote su un telefono tenendosi con una mano.
 
 Un metro a nastro non sostituisce il laser sulle altezze del soffitto spiovente, dove il punto da raggiungere è fuori portata, ma sostituisce benissimo il laser sugli ingombri degli arredi, che si misurano da vicino. Dove il laser non fosse ancora arrivato, le tabelle B, C, D ed E si possono riempire con un metro a nastro e la tabella A no, ed è un modo sensato di spezzare il lavoro invece di attenderlo tutto.
+
+## Troubleshooting: sintomo, causa, rimedio
+
+Due voci sole, ed è la regola di questo progetto: una voce nasce da un caso incontrato e non da una previsione. Entrambe vengono dalla prova di cattura del 2026-09-21 sul Galaxy S25 Ultra, registrata in MS-161.
+
+### A, l'elaborazione si ferma sul passo di ricerca dei punti corrispondenti
+
+Sintomo: scelta la modalità `Detail`, l'elaborazione avanza di pochi punti percentuali sul passo dichiarato come `MATCHING FEATURES` e si interrompe con un errore. Causa: quella modalità è fotogrammetrica, quindi ricostruisce la geometria riconoscendo gli stessi punti in immagini diverse, e il soggetto era un foglio bianco con una scatolina di cartone chiaro, cioè due superfici quasi prive di trama; il passo che fallisce è letteralmente quello che cerca i punti che non esistono. Rimedio: dare trama al soggetto oppure cambiare modalità.
+
+Per il riferimento di scala il rimedio migliore è il primo, e non costa nulla: si usa un foglio stampato invece di uno bianco, cioè una pagina di testo qualunque. Resta esattamente 297 millimetri per la ISO 216, quindi il riferimento non perde precisione, e diventa una superficie ricca di punti riconoscibili. Per la stanza il rimedio è il secondo, cioè `Area`, che non dipende dalla trama, ed è la ragione per cui la sequenza prescrive quella modalità e non la raccomandata.
+
+Il collegamento che vale ricordare è che questo non è un difetto dell'applicazione né del dispositivo: è il difetto strutturale della fotogrammetria che la pagina della fase 2 descrive per le pareti tinteggiate, incontrato su scala ridotta. La stessa causa spiega perché il protocollo prescrive i foglietti adesivi sulle pareti lisce.
+
+### B, l'anteprima della fotocamera appare a righe diagonali rosse e bianche
+
+Sintomo: registrando lo schermo durante la cattura, l'anteprima della fotocamera non si vede e al suo posto compare un motivo a righe diagonali rosse e bianche. Causa presunta, non verificata: Android sostituisce con un motivo segnaposto le superfici che non consente di registrare, e l'anteprima della fotocamera è una di queste, quindi l'artefatto sta nella registrazione e non nell'applicazione. Rimedio: non registrare lo schermo durante la cattura, e per documentare un passaggio usare uno scatto singolo o descriverlo.
+
+La voce resta marcata come presunta finché la verifica non è fatta, e la verifica costa un secondo: si guarda lo schermo mentre si scansiona senza registrare. La distinzione conta, perché se le righe comparissero anche senza registrazione il problema sarebbe nell'accesso alla fotocamera e nessuna scelta di modalità di elaborazione lo salverebbe.

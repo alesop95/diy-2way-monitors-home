@@ -53,3 +53,13 @@ REW è gratuito. Blender, Octave, MATAA e FreeCAD sono software libero. ARTA nel
 ## Il resto del pacchetto ereditato
 
 Come registrato nell'inventario, una parte del pacchetto software ereditato è costituita da copie con protezione rimossa, e quel materiale non ha una posizione di licenza da documentare perché non rientra nel workflow, non viene installato e non viene trasferito.
+
+## GitHub CLI, autorizzazione OAuth sulla postazione
+
+Non è una licenza ed è registrata qui per la stessa ragione per cui lo sono le licenze: è un legame durevole fra questa macchina e un account, creato una volta e destinato a sopravvivere alla sessione, al progetto e alla memoria di chi lo ha creato.
+
+Stato rilevato il 2026-09-22. La GitHub CLI è installata in `C:\Program Files\GitHub CLI\gh.exe` alla versione 2.100.0 ed è autenticata su `github.com` con l'account `alesop95`, con il token conservato nel portachiavi del sistema operativo e non in un file. Gli ambiti concessi sono `gist`, `read:org` e `repo`. La data in cui l'autorizzazione fu concessa non è accertata, perché lo stato dice che esiste e non quando è nata, e va scritto così invece di essere stimato.
+
+Dove si revoca. Dal pannello dell'account su GitHub, alla pagina delle applicazioni autorizzate, `https://github.com/settings/applications`, dove la voce della GitHub CLI si trova fra le applicazioni OAuth autorizzate. La revoca dal pannello non cancella il token dal portachiavi della macchina, quindi il gesto completo è duplice: si revoca sul pannello e si esegue `gh auth logout` sulla macchina. Farne uno solo lascia l'altra metà in piedi, e la metà che resta è quella che nessuno guarda.
+
+Perché è tracciata pur non producendo alcun costo. Il legame concede a chi ha accesso a questa macchina la capacità di operare sui repository dell'account con gli ambiti elencati, `repo` compreso, e quella capacità non scade da sé. Il giorno in cui questa postazione venisse dismessa, venduta o riassegnata, la revoca è un passo della dismissione, e un passo che non è scritto da nessuna parte non viene eseguito.
