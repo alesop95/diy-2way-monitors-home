@@ -2,6 +2,32 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-09-22 - La via della scansione cade, PA-016 si chiude, e il progetto prende i suoi hook
+
+Commit di partenza: eee2e3d. Commit prodotto: 0edd529, che porta da MS-159 a MS-164.
+
+File toccati: `docs/OPERATIONS-LOG.md` con sei microstep nuovi; `docs/PENDING-ACTIONS.md` con PA-016 chiusa, PA-020 cambiata di natura e due voci nuove in PA-003; `docs/35-rilievo-geometrico.md` con la sezione di troubleshooting e la prescrizione sulla modalità di elaborazione; `docs/90-riferimenti/fonti.md` e `docs/90-riferimenti/licenze-e-registrazioni.md`; `.claude/rules/git-identity-and-repo.md` con il quarto asse re-istanziato; `.claude/settings.json`, `.claude/hooks/` e `.claude/templates/hooks-starter/` per l'istanziazione degli hook; `CLAUDE.md`; `tools/obj-bbox.py` nuovo e `tools/check-pending-actions.py` aggiornato.
+
+La giornata si è aperta sul telefono e si è chiusa sul sistema di progetto, e le due metà non c'entrano nulla fra loro se non per il fatto che la prima è caduta.
+
+La verifica di Scaniverse ha prodotto tre fatti prima di fermarsi. L'applicazione offre due esperienze e a noi serviva `Classic`, che è una modalità di cattura dentro la stessa interfaccia e non una seconda interfaccia: una mia inferenza dalla forma della schermata iniziale era sbagliata ed è stata ritirata. A elaborazione offre due modalità, cioè `Area` per fusione di profondità e `Detail` per fotogrammetria, quindi su quel dispositivo la via per profondità esiste e la domanda con cui la verifica era nata, cioè se ci fosse una modalità basata su sensore, era mal posta. E il tentativo su un foglio bianco con una scatolina chiara è fallito al passo di ricerca dei punti corrispondenti, che è il difetto strutturale della fotogrammetria descritto nella pagina della fase 2, con il rimedio identificato nel foglio stampato.
+
+Il rimedio non è stato provato, perché l'utente ha deciso di lasciar perdere. La registrazione dice quindi che l'applicazione non ha funzionato nei tentativi fatti e non che non funzioni, perché la seconda affermazione scoraggerebbe un riesame futuro sulla base di una prova mai eseguita. PA-020 non resta bloccata: la scansione era un accorciamento e non un requisito, il rilievo torna alla quarta via e il protocollo scritto il giorno prima la copre senza modifiche. La voce cambia però natura e attende un acquisto, cioè il metro laser, come PA-012.
+
+Resta acquisito lo strumento nato per quella verifica, `tools/obj-bbox.py`, che misura il parallelepipedo contenente di una mesh e lo confronta con una dimensione nota per norma. Serve ancora, perché è l'attuazione delle quattro diagonali di controllo della tabella F, che finora era una prescrizione senza strumento. Scrivendolo è emerso un limite che ha cambiato la forma della prova invece dello strumento: il parallelepipedo è allineato agli assi del file, quindi i lati orizzontali sovrastimano su un oggetto ruotato, mentre il verticale è affidabile perché la mesh esce allineata alla gravità. La conseguenza è che la dimensione nota va messa in verticale, non che lo strumento vada sofisticato.
+
+La seconda metà ha chiuso PA-016 sui suoi due punti residui. Il quarto asse di identità è stato re-istanziato sui valori letti sulla postazione, e la distinzione fra copiare e re-istanziare era il contenuto stesso della voce: il template ha de-istanziato quel file nello stesso commit in cui gli aggiungeva la sezione, quindi copiarla avrebbe messo una prescrizione di rilevare dentro un documento che esiste per contenere il rilevamento. Dalla misura sono usciti due fatti non cercati, cioè che l'avvertenza del template sull'alias SSH qui non si verifica, e che il repository è pubblico, il che rende il vincolo sui valori segreti una condizione di riservatezza e non una formalità.
+
+Il pacchetto `hooks-starter` è istanziato con quattro hook su sette per decisione dell'utente. Prima di poterlo fare è emerso che il modello qui presente era fermo a tre hook su sette, con README e frammenti divergenti: ancora il verso discendente, e stavolta invisibile a qualunque presidio, perché `check-copie-modelli` confronta modello e copia istanziata dentro questo repository e la copia non esisteva. Quel limite è ora una voce di PA-003.
+
+I tre hook spenti hanno il motivo registrato, e uno dei tre merita di essere ricordato perché è un conflitto fra il pacchetto e una prescrizione di questo progetto: `chiusura-sessione` registrerebbe l'impronta a fine sessione senza sapere se i commit siano stati fatti, cioè produrrebbe esattamente il falso positivo che il `CLAUDE.md` prescrive di evitare. La registrazione resta quindi manuale per scelta e non per omissione.
+
+La prova degli hook vale come metodo oltre il caso. Il README del pacchetto avverte che un hook che non trova il proprio strumento esce zero senza fare nulla, e che un hook silenzioso è indistinguibile da uno che ha lavorato. `md-unwrap-auto` alla prima prova è uscito zero senza stampare niente, ed è stato distinto da uno rotto soltanto costruendo un file con un paragrafo davvero spezzato: cinque righe diventate tre. Senza quel caso costruito la prova sarebbe stata vacua.
+
+Un mio errore da ripetizione, registrato in MS-160: ho letto un codice di uscita attraverso una pipeline e ho ottenuto zero da un comando che restituiva uno, che è la trappola già scritta nella voce B del troubleshooting di Veeam. La regola esisteva e non l'ho applicata.
+
+Il fronte resta PA-020 e attende il metro laser. Il lavoro eseguibile senza acquisti è PA-013, cioè l'esclusione dei backup dalla sincronizzazione di `sync-dev`, e PA-008 se il disco esterno è collegato.
+
 ## 2026-09-21, terza sessione - Il riavvio chiude PA-019, la catena audio prende la sua pagina, e un controllo di completezza trova due omissioni
 
 Commit di partenza: a076366. Commit prodotto: 0112973, più il lavoro di MS-157 in attesa di commit.
