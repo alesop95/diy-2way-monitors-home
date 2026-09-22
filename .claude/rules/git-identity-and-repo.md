@@ -18,6 +18,42 @@ Questo asse resta indipendente dall'identità git descritta sotto. Un progetto p
 
 [^2]: *OAuth*, Open Authorization - protocollo di autorizzazione con cui Claude Code ottiene e rinnova un token di accesso all'account senza conservare la password; il token ha una scadenza e si rinnova tramite un refresh token, e quando il rinnovo non va a buon fine occorre ri-autenticarsi.
 
+## GitHub CLI, il quarto asse: l'API non passa da SSH
+
+Sezione istanziata su questa postazione il 2026-09-22, con i valori letti e non assunti, e corrisponde alla sezione che il template porta in forma generale. Dove il template dice di rilevare, qui sta il rilevamento già fatto, con la data, perché un valore letto una volta e non scritto va riletto ogni volta.
+
+La cosa da capire prima di usarlo è che `gh` non parla con la piattaforma via SSH, e questo lo rende un asse a sé rispetto agli altri tre. SSH serve a `git push`, cioè a spostare oggetti fra due copie del repository; `gh` usa l'API HTTPS con un token OAuth conservato nel gestore credenziali del sistema operativo. Autenticare `gh` quindi non tocca né la chiave SSH, né l'alias host, né l'identità con cui i commit vengono firmati: gli assi sono quattro e si verificano separatamente. La conseguenza pratica è che `gh auth status` risponde a una domanda diversa da `ssh -T git@github-personal`, e nessuna delle due risposte implica l'altra: si può avere `gh` autenticato sull'account sbagliato mentre i push funzionano perfettamente, e il sintomo sarebbe una pull request aperta sul repository di qualcun altro.
+
+### Lo stato rilevato su questa postazione
+
+L'eseguibile è presente e risponde. È la versione 2.100.0 del 2026-09-03, installata in `C:\Program Files\GitHub CLI\gh.exe`, ed è raggiungibile per nome perché quella cartella è nel PATH.
+
+L'autenticazione esiste e nomina l'account personale. `gh auth status` riporta l'accesso a `github.com` con l'account `alesop95`, il token conservato nel portachiavi del sistema e non in un file, l'account attivo, il protocollo delle operazioni git impostato su `ssh`, e gli ambiti `gist`, `read:org` e `repo`.
+
+Ne segue che su questa postazione i quattro assi coincidono tutti sull'identità personale, cioè `user.name` e `user.email` di `alesop95`, la chiave `id_ed25519_personal` selezionata dall'alias `github-personal`, l'account della GitHub CLI `alesop95`, e l'account Claude Code che resta indipendente e si verifica con `/status`. La coincidenza va letta come un fatto misurato e non come una necessità: è precisamente perché possono divergere che si verificano uno per uno.
+
+Il token vive nel portachiavi del sistema operativo, quindi nessun valore segreto entra in un file del repository, ed è la ragione per cui questa sezione può esistere in un file tracciato. Il repository, verificato lo stesso giorno, è pubblico: la documentazione di questo progetto è quindi leggibile da chiunque, il che non cambia nulla sul piano tecnico e rende il vincolo sui valori segreti nei file tracciati una condizione di riservatezza e non una formalità.
+
+### Il comando non si chiama `gh` finché non si riapre il terminale
+
+Vale anche qui, e va detto perché il messaggio di errore sembra un'installazione fallita mentre l'eseguibile c'è e funziona. Un processo eredita le variabili d'ambiente quando parte e non le rilegge mai più: l'installatore aggiorna il PATH permanente della macchina, non quello del terminale già aperto. Riaprire il terminale risolve, e nella sessione corrente si invoca l'eseguibile per percorso completo. È la quarta causa della sezione sul contesto di shell di `git-commands-format.md`, ed è la stessa forma del gruppo `veeam` mancante in una sessione nata prima dell'installazione del pacchetto.
+
+### L'alias SSH e il riconoscimento del repository, misurato qui e non presunto
+
+Il template avverte che `gh` ricava il repository leggendo il remoto `origin`, e che un remoto costruito su un alias host può non essere riconosciuto, perché l'alias non è un host reale. L'avvertenza è formulata come possibilità e va verificata dove si lavora, non riportata.
+
+Su questa postazione non si verifica. Il remoto di questo repository è `git@github-personal:alesop95/diy-2way-monitors-home.git`, quindi porta l'alias, e `gh repo view` senza alcun flag lo riconosce correttamente come `alesop95/diy-2way-monitors-home`, con codice di uscita zero. Misurato il 2026-09-22 con la versione 2.100.0.
+
+Ne segue che il flag `-R <owner>/<repo>` resta una precauzione e non una necessità, e va usato comunque nei comandi che si consegnano, per due ragioni che non dipendono da questa misura: non costa nulla, e rende il comando indipendente dalla cartella in cui viene incollato, che è la terza causa della sezione sul contesto di shell. Quello che non si fa, e che è la tentazione da evitare, è cambiare il remoto all'host reale: l'alias è ciò che seleziona la chiave giusta fra quelle configurate, quindi toglierlo romperebbe il meccanismo a più identità per risolvere un problema che qui non esiste. Va evitato anche il comando che memorizza il repository nella configurazione git locale, perché aggiungerebbe una seconda fonte di verità su quale sia il repository, destinata a divergere dal remoto.
+
+### Che cosa resta manuale, e perché
+
+`gh` può anche fondere una pull request. Non lo si usa per quello. La regola per cui commit, push e merge restano gesti dell'utente non nasce da un limite tecnico ma da una scelta: l'agente prepara il lavoro, la decisione di farlo atterrare è di una persona. Uno strumento che rende facile automatizzare quella decisione non è una ragione per cambiarla, ed è esattamente il momento in cui conviene ribadirla, perché la comodità è il modo in cui le regole si erodono.
+
+### L'autorizzazione è un legame durevole fra macchina e account
+
+L'autenticazione crea un legame che sopravvive alla sessione e al progetto, quindi va tracciato dove questo progetto registra le operazioni manuali sui pannelli web, cioè in `docs/90-riferimenti/licenze-e-registrazioni.md`, con la data e il luogo in cui si revoca. Un legame che nessuno ha scritto è un legame che nessuno saprà sciogliere il giorno in cui questa macchina non servirà più.
+
 ## Profili disponibili su questa macchina
 
 I profili si ricavano dagli alias host definiti in `C:\Users\Utente\.ssh\config`. Ogni alias fissa quale chiave usare verso `github.com`, e va abbinato all'identità corrispondente.

@@ -29,6 +29,48 @@
       "Bash(docker push:*)"
     ]
   },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"E:\\diy-2way-monitors-home\\.claude\\hooks\\session-context.ps1\"",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"E:\\diy-2way-monitors-home\\.claude\\hooks\\apertura-sessione.ps1\"",
+            "timeout": 20
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"E:\\diy-2way-monitors-home\\.claude\\hooks\\md-unwrap-auto.ps1\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"E:\\diy-2way-monitors-home\\.claude\\hooks\\protect-sensitive-files.ps1\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
   "env": {
     "PROJECT_NAME": "diy-2way-monitors-home",
     "PROJECT_PHASE": "<fase, es. init | sviluppo | staging | produzione>"
