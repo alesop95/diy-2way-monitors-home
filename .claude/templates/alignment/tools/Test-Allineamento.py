@@ -57,7 +57,7 @@
 #   python <percorso>/Test-Allineamento.py --radice X     radice del repository
 #   python <percorso>/Test-Allineamento.py --registro Y   percorso del registro JSON
 #
-# Codici di uscita: 0 allineato, 1 c'e' qualcosa di scaduto o arretrato,
+# Codici di uscita: 0 allineato, 1 c'è qualcosa di scaduto o arretrato,
 # 2 non giudicabile (registro mancante o illeggibile).
 
 import json
@@ -686,7 +686,7 @@ def main():
 
     stampa("SCADENZE  (entro %d giorni; le più lontane sono contate e non elencate)" % orizzonte, scadenze, silenzioso)
     stampa("FRESCHEZZA DELLE MISURE  (età della misura contro la cadenza dichiarata)", freschezza, silenzioso)
-    stampa("INVARIANTI  (ciò che i documenti affermano contro ciò che c'e' davvero)", invarianti, silenzioso)
+    stampa("INVARIANTI  (ciò che i documenti affermano contro ciò che c'è davvero)", invarianti, silenzioso)
     stampa("ASSERZIONI UMANE  (nessun programma può verificarle: sono domande)", asserzioni, silenzioso)
 
     gravi = sum(e.problemi for e in (scadenze, freschezza, invarianti, asserzioni))
