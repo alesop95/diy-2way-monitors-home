@@ -4,9 +4,9 @@
 
 ## Registro dei pacchetti opzionali
 
-`PACKAGES.md` è il registro dei pacchetti opzionali che il sistema sa offrire, oltre settanta, diviso in dieci settori: fondamenta e igiene del progetto, scrittura e tipografia, fonti e corpus documentali, voce e trascrizione, domini scientifici, comprensione di una codebase, sviluppo e qualità del codice, apprendimento guidato, economia del contesto, orchestrazione e cataloghi di agenti. Ogni settore apre con la frase che dice a chi serve e che cosa chiedere per saperlo, e ogni riga porta il trigger concreto che dice quando proporre quel pacchetto.
+`PACKAGES.md` è il registro delle voci opzionali che il sistema sa offrire, più di ottanta, diviso in dieci settori: fondamenta e igiene del progetto, scrittura e tipografia, fonti e corpus documentali, voce e trascrizione, domini scientifici, comprensione di una codebase, sviluppo e qualità del codice, apprendimento guidato, economia del contesto, orchestrazione e cataloghi di agenti. Ogni settore apre con la frase che dice a chi serve e che cosa chiedere per saperlo, e ogni riga porta il trigger concreto che dice quando proporre quel pacchetto.
 
-La divisione per settore non è una comodità di lettura ma il modo in cui il gate lo attraversa: la skill `gate-pacchetti` riconosce dai fatti del progetto a quali settori appartenga, dichiara il riconoscimento e lo fa correggere, e propone i soli pacchetti dei settori riconosciuti, uno per volta e con che cosa fa, perché a questo progetto potrebbe servire e che cosa costa. Un progetto appartiene a due o tre settori su dieci, quindi la scelta passa da settanta domande a una decina, tutte pertinenti. La skill si esegue in inizializzazione, a ogni tornata di allineamento e ogni volta che l'obiettivo del progetto cambia; `init-project-system` la invoca al proprio Passo 4. A differenza degli altri template, `PACKAGES.md` non si istanzia nella radice del progetto: resta qui come riferimento del bundle.
+La divisione per settore guida il gate: la skill `gate-pacchetti` riconosce dai fatti del progetto a quali settori appartenga, dichiara il riconoscimento e lo fa correggere, poi propone le voci pertinenti una per volta con funzione, ragione e costo. Si esegue in inizializzazione, a ogni tornata di allineamento e quando cambia l'obiettivo; `init-project-system` la invoca al Passo 4. Per i progetti di ricerca scientifica o tecnica chiede separatamente OpenAlex MCP, PaperQA2 e Feynman, con istruzioni in [academic-researcher/INTEGRAZIONI-TOOL.md](academic-researcher/INTEGRAZIONI-TOOL.md). `PACKAGES.md` resta nel bundle come riferimento e non si istanzia nella radice del progetto.
 
 ## Mappa di istanziazione
 
@@ -14,6 +14,7 @@ Anatomia sempre creata. La colonna git indica se il file istanziato è tracciato
 
 ```
 templates/CLAUDE.md            ->  <radice>/CLAUDE.md                    (tracciato)
+templates/AGENTS.md            ->  <radice>/AGENTS.md                    (tracciato)
 templates/CLAUDE.local.md      ->  <radice>/CLAUDE.local.md             (ignorato)
 templates/gitignore.snippet    ->  da unire al <radice>/.gitignore       (tracciato)
 templates/settings.json        ->  <radice>/.claude/settings.json        (tracciato)
@@ -21,7 +22,10 @@ templates/memory/*.md          ->  <radice>/.claude/memory/*.md          (tracci
 templates/context/*.md         ->  <radice>/.claude/context/*.md         (tracciato)
 templates/context/sub-subproject.md ->  <radice>/.claude/context/<nome-sottoprogetto>.md  (tracciato, una copia per sottoprogetto)
 templates/_notes/*.md          ->  <radice>/_notes/*.md                  (ignorato; solo dopo che _notes e ignorato)
+templates/tools/sync-codex-skills.py -> <radice>/tools/sync-codex-skills.py (tracciato)
 ```
+
+`AGENTS.md` non duplica `CLAUDE.md`: lo indica come fonte canonica e traduce soltanto il punto di ingresso per Codex. Lo strumento `sync-codex-skills.py` crea sotto `.agents/skills/` wrapper minimi per ogni skill canonica presente in `.claude/skills/`; nome, descrizione e policy di invocazione restano così scopribili nativamente da Codex, mentre il corpo della procedura continua a vivere in un solo file. Lo strumento si riesegue dopo ogni installazione, rimozione o modifica di una skill e si verifica con `--check`.
 
 Una precisazione sulla riga delle schede di contesto, perché la forma con l'asterisco la nasconde: `sub-subproject.md` non è una scheda che si copia una volta con il proprio nome, ma un modello che si istanzia una volta per ogni sottoprogetto, rinominandolo con il nome di quello e compilandone il `covers-paths` con la sua cartella. Le istruzioni di istanziazione stanno dentro il modello, e comprendono il passo che si dimentica più spesso, cioè estendere il `covers-paths` delle schede trasversali alla cartella nuova: senza quel passo il motore di riconciliazione non guarda mai il sottoprogetto appena aggiunto.
 
@@ -86,6 +90,15 @@ Pacchetto opzionale degli hook pronti all'uso, mai attivi dopo l'istanziazione: 
 templates/hooks-starter/hooks/  ->  .claude/hooks/ (variante OS .ps1 o .sh; attivazione manuale via settings.json)
 ```
 
+Pacchetto opzionale per un README pubblico che cresce nel tempo: una skill verifica e aggiorna la prosa contro codice e documentazione, mentre uno strumento deterministico genera l'indice navigabile e controlla i link locali. Nel repository del template genera anche l'inventario dei pacchetti dal catalogo. Dettaglio in `templates/readme-sync/README.md`.
+
+```
+templates/readme-sync/tools/sync-readme.py          ->  <radice>/tools/sync-readme.py
+templates/readme-sync/skills/sync-readme/SKILL.md  ->  <radice>/.claude/skills/sync-readme/SKILL.md
+templates/readme-sync/githooks/pre-commit           ->  <radice>/.githooks/pre-commit (opzionale, da attivare in git locale)
+templates/readme-sync/githooks/commit-msg           ->  <radice>/.githooks/commit-msg (stessa attivazione)
+```
+
 Pacchetto opzionale delle skill di sviluppo, da scegliere una per una al gate: `test-generator` e `mcp-tool-scaffold` non duplicano nulla, `code-review` e `security-review` si istanziano solo dichiarando la sovrapposizione con le skill native omonime. Dettaglio e nota sul naming in `templates/dev-skills/README.md`.
 
 ```
@@ -129,10 +142,13 @@ Strumento di verifica della ripresa, che invece e di progetto e si istanzia: con
 
 ```
 templates/tools/verifica-ripresa.py        ->  tools/verifica-ripresa.py   (tracciato)
+templates/tools/chiudi-sessione.ps1        ->  tools/chiudi-sessione.ps1   (tracciato)
+templates/tools/chiudi-sessione.sh         ->  tools/chiudi-sessione.sh    (tracciato)
+templates/tools/installa-chiudi.sh          ->  uso dal bundle per il profilo Bash/Zsh (non istanziato)
 templates/tools/lint-doc-references.py     ->  tools/lint-doc-references.py (tracciato)
 ```
 
-Il secondo dei due trova nella documentazione i riferimenti a file che non esistono, dividendoli in categorie invece di ammucchiarli: un documento vivo che nomina un file assente va corretto, una voce datata che lo nomina era vera quel giorno e non si riscrive. Le radici che identificano un percorso si leggono da git e non si configurano.
+`chiudi-sessione` lega in un comando la chiusura: controlli istanziati, commit con conferma dell'utente, push verificato, impronta di ripresa e wipe degli account quando nessuna sessione Claude Code è aperta. `lint-doc-references` trova nella documentazione i riferimenti a file che non esistono, dividendoli in categorie invece di ammucchiarli: un documento vivo che nomina un file assente va corretto, una voce datata che lo nomina era vera quel giorno e non si riscrive. Le radici che identificano un percorso si leggono da git e non si configurano.
 
 Pacchetto opzionale per la trascrizione e la sintesi vocale in locale, appoggiato a VoiceStudio, che resta una applicazione esterna e non entra nel repository. Istanzia un solo strumento, senza segnaposto da sostituire, che scrive le trascrizioni sotto `_notes/fonti/` con la provenienza davanti al testo. La mappa di dettaglio, l'allestimento per sistema operativo e le note su licenza e consenso alla clonazione di una voce stanno in `templates/voicestudio/README.md`.
 

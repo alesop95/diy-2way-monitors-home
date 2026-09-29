@@ -89,3 +89,10 @@ Le due divergenze che andavano verso il template sono state portate là lo stess
 ## Onestà del contenuto, che qui pesa più del solito
 
 Buona parte della documentazione riguarda una macchina che non è quella su cui si apre la sessione, e che al momento della stesura non era raggiungibile in rete. Le pagine che descrivono stati non osservati lo dichiarano in apertura. Nessuna affermazione su quella macchina va promossa da ipotesi a fatto senza averla verificata con un comando eseguito su di essa. La lezione non è teorica: una pagina di diagnosi scritta per ipotesi è stata poi smentita in tre punti su quattro dalla misura, ed è stata rimossa. Il quadro reale è in `docs/10-ambiente/fotografia-macchina-2026-09-07.md`, e il record dell'errore in MS-029 del registro dei microstep.
+
+Norme caricate su richiesta, una riga per situazione con le parole con cui si presenta, così che il caricamento non dipenda dal ricordare che la norma esista.
+
+- `git worktree list` mostra più di un albero, se ne crea o se ne rimuove uno, si deve decidere da dove leggere la memoria versionata: skill `alberi-di-lavoro`.
+- Un recupero web fallisce con 403 o con una pagina di verifica anti-bot, la fonte sta su Reddit o su Discord, serve la trascrizione di un video, si sta per annotare una fonte non letta: skill `fonti-non-recuperabili`.
+- Si scrive o si valuta una prova automatica, si chiude un difetto, una verifica manuale smentisce una suite verde, si sta per dichiarare completo un intervento il cui scopo era un effetto misurabile: skill `prove-che-misurano`.
+- Si inizializza o si allinea il progetto, oppure cambia il modo in cui si prova e si rilascia, e va deciso come separare test e produzione: skill `separazione-ambienti`.
