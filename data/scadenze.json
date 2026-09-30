@@ -1,0 +1,93 @@
+{
+  "_commento": "Registro delle affermazioni che invecchiano, del pacchetto alignment, istanziato il 2026-09-30 con MS-167. Va tracciato: contiene date, cadenze e riferimenti a documenti, mai valori reali. Nessun importo, nessun identificativo d'ordine, nessun indirizzo, nessun nome di persona: l'esito di questo controllo finisce sotto gli occhi di chiunque guardi la sessione.",
+  "_regola": "Ogni affermazione dei file tracciati deve avere una verifica meccanica, una scadenza dichiarata dopo la quale torna a stato non verificata, oppure una marcatura esplicita di non verificabile con la domanda gia' scritta e la persona a cui porla. Non esiste un quarto caso: un'affermazione senza nessuna delle tre invecchia in silenzio.",
+  "_come_si_usa": "Le voci di esempio del modello vivono in .claude/templates/alignment/scadenze.example.json e qui non si copiano. Le scadenze e le misure con cadenza sono vuote per un fatto e non per dimenticanza: al 2026-09-30 nessun documento del progetto dichiara una data di scadenza o una misura su disco con una cadenza. Le affermazioni su fatti esterni stanno fra le asserzioni umane.",
+  "revisione": 1,
+  "aggiornato": "2026-09-30",
+  "percorsi": {
+    "_commento": "L'anatomia di questo progetto. Gli script stanno sotto tools/. Il registro numerato dei microstep usa intestazioni e non righe di tabella, quindi l'invariante sui numeri di registro non gli si applica e registro_voci resta null.",
+    "schede": ".claude/context",
+    "stack": ".claude/context/STACK.md",
+    "decisioni": ".claude/memory/decisions.md",
+    "script": "tools",
+    "estensioni_script": [
+      ".ps1",
+      ".py",
+      ".sh"
+    ],
+    "campi_firma": [
+      "last-verified-commit",
+      "last-verified"
+    ],
+    "registro_voci": null,
+    "richiami_cifre": [
+      2,
+      3
+    ],
+    "marcatori_fallimento": null
+  },
+  "scadenze": [],
+  "freschezza": [],
+  "asserzioni_umane": [
+    {
+      "id": "AKABAK-LICENZA",
+      "afferma": "Il Release Code di AKABAK e' valido sulla macchina Ubuntu con il Machine Identifier invariato dopo la reinstallazione",
+      "stato": "Verificato il 2026-09-10 per due vie indipendenti, il file di configurazione a livello di macchina e la finestra Release code (MS-085)",
+      "verificata_il": "2026-09-10",
+      "validita_giorni": 180,
+      "domanda": "La finestra Release code di AKABAK dichiara ancora Release Code valid, con lo stesso Machine Identifier registrato in ADR-003? Se il Machine Identifier e' cambiato, per esempio dopo una sostituzione di hardware, la licenza va richiesta di nuovo all'autore.",
+      "a_chi": "L'utente, davanti alla macchina Ubuntu",
+      "dove": "docs/90-riferimenti/licenze-e-registrazioni.md"
+    },
+    {
+      "id": "WINEHQ-SENZA-I386",
+      "afferma": "WineHQ non pubblica alcuna meta' a 32 bit per Ubuntu 26.04, quindi su questa macchina Wine viene dai pacchetti della distribuzione",
+      "stato": "Misurato il 2026-09-21 sul file Release di quattro suite: resolute dichiara il solo amd64 e l'indice binary-i386 risponde 404 (ADR-021)",
+      "verificata_il": "2026-09-21",
+      "validita_giorni": 90,
+      "domanda": "Il file Release di WineHQ per la suite resolute dichiara ancora il solo amd64? Se dichiara anche i386, ADR-021 va riaperta con una voce nuova.",
+      "a_chi": "Chi lavora sul progetto, con una lettura del file Release",
+      "dove": ".claude/memory/decisions.md"
+    },
+    {
+      "id": "BACKUP-DESTINAZIONE-PROVVISORIA",
+      "afferma": "I punti di ripristino Veeam della macchina stanno su una destinazione provvisoria in attesa del NAS",
+      "stato": "Al 2026-09-21 due punti pieni indipendenti, l'ultimo di MS-149, con la copia fuori macchina verificata per impronta",
+      "verificata_il": "2026-09-21",
+      "validita_giorni": 60,
+      "domanda": "Il NAS e' arrivato, oppure la destinazione dei punti di ripristino e' cambiata? Se si', PA-013 va compiuta prima del backup successivo, e la pagina veeam-agent-linux.md va aggiornata.",
+      "a_chi": "L'utente",
+      "dove": "docs/10-ambiente/veeam-agent-linux.md"
+    },
+    {
+      "id": "UBUNTU-STUDIO-SUPPORTO",
+      "afferma": "La 26.04 LTS porta la macchina su una base con supporto fino al 2031",
+      "stato": "Scritto in ADR-006 senza una fonte registrata. Da verificare: il periodo di supporto di un flavor LTS come Ubuntu Studio puo' essere piu' breve di quello della base Ubuntu, e va letto nella nota di rilascio del flavor",
+      "verificata_il": "2026-09-04",
+      "validita_giorni": 1,
+      "domanda": "Quale periodo di supporto dichiara la nota di rilascio di Ubuntu Studio 26.04 LTS, distinto da quello della base Ubuntu? Il valore letto va scritto in ADR-006 con la fonte, e se e' diverso dal 2031 va aperta qui una scadenza con la sua data.",
+      "a_chi": "Chi lavora sul progetto, dalla nota di rilascio ufficiale",
+      "dove": ".claude/memory/decisions.md"
+    },
+    {
+      "id": "GH-CLI-AUTORIZZAZIONE",
+      "afferma": "La GitHub CLI della postazione Windows e' autorizzata sull'account personale con l'ambito repo, e il legame non scade da se'",
+      "stato": "Verificato con gh auth status il 2026-09-22 (MS-163) e registrato fra le operazioni manuali",
+      "verificata_il": "2026-09-22",
+      "validita_giorni": 180,
+      "domanda": "La postazione serve ancora a questo progetto? Se e' stata dismessa, venduta o riassegnata, l'autorizzazione va revocata dalla pagina indicata nel registro delle licenze.",
+      "a_chi": "L'utente",
+      "dove": "docs/90-riferimenti/licenze-e-registrazioni.md"
+    },
+    {
+      "id": "BACKUP-A-MANO-PRIMA-DEI-CAMBI",
+      "afferma": "Prima di ogni cambio rischioso alla macchina si prende un punto di ripristino Veeam o un archivio dei prefix Wine, a mano e senza cadenza pianificata",
+      "stato": "Scelta dichiarata dall'utente il 2026-09-30 al gate della separazione (ADR-024), come presidio del modello R0",
+      "verificata_il": "2026-09-30",
+      "validita_giorni": 90,
+      "domanda": "Dall'ultima verifica ci sono stati cambi rischiosi alla macchina, come aggiornamenti di rilascio, prefix nuovi o programmi installati, e per ciascuno esiste un punto o un archivio preso prima? Se la risposta e' no anche una volta, la scelta va rivista a favore di un lavoro pianificato.",
+      "a_chi": "L'utente",
+      "dove": ".claude/context/deployment.md"
+    }
+  ]
+}

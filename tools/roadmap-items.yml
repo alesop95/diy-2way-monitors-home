@@ -1,0 +1,190 @@
+# Voci aperte del progetto, fonte unica della roadmap operativa.
+#
+# Questo file contiene solo ciò che una macchina non può dedurre: quale lavoro resta, dove vive e
+# perché. Lo stato misurabile (commit, distanza delle schede da HEAD, esito dei controlli) non si
+# scrive qui: lo misura tools/roadmap.py a ogni esecuzione.
+#
+# Istanziato il 2026-09-30 con MS-167 dal pacchetto roadmap. Le voci vengono da
+# docs/PENDING-ACTIONS.md, dalla sezione "Lavoro noto e non fatto" di current-work.md e dal
+# runbook di inizializzazione dello stesso giorno. Il dettaglio del perché di ciascuna resta nel
+# documento indicato in `fonte`: qui sta il costo e il passo che la chiude.
+
+titolo: Roadmap operativa di diy-2way-monitors-home
+
+cartella-schede: .claude/context
+
+# I controlli sono quelli della sequenza "Verifica prima di un commit" di CLAUDE.md, più i due
+# presidi di memoria arrivati il 2026-09-30.
+controlli:
+  - nome: convenzione Markdown
+    chiave: mdunwrap
+    comando: python tools/md-unwrap.py --check .
+    filtro: solo-file-tracciati
+    rimedio: python tools/md-unwrap.py <file>
+  - nome: comandi nei blocchi di shell
+    chiave: comandi
+    comando: python tools/lint-md-commands.py .
+  - nome: fini riga coerenti
+    chiave: eol
+    comando: python tools/check-eol.py .
+  - nome: catena tipografica
+    chiave: tipografia
+    comando: python tools/test-tipografia.py
+  - nome: blocco ambiente propagato al gemello
+    chiave: ambiente
+    comando: python tools/sync-ambiente.py --check
+  - nome: copie dei modelli
+    chiave: copie
+    comando: python tools/check-copie-modelli.py
+  - nome: budget delle istruzioni
+    chiave: budget
+    comando: python tools/misura-istruzioni.py
+  - nome: tabelle Markdown
+    chiave: tabelle
+    comando: python tools/lint-md-tables.py .
+  - nome: wrapper Codex
+    chiave: codex
+    comando: python tools/sync-codex-skills.py --check
+  - nome: lavoro senza traccia in memoria
+    chiave: memoria
+    comando: python tools/lint-memoria.py
+  - nome: affermazioni che invecchiano
+    chiave: allineamento
+    comando: python tools/Test-Allineamento.py --silenzioso
+
+livelli:
+  0: "Minuti, nessuna decisione da prendere"
+  1: "Mezz'ora, ancora nessuna decisione di contenuto"
+  2: "Sessione dedicata, decisione di contenuto dell'utente"
+  3: "Fuori da questo repository, ma è da qui che dipende il resto"
+
+voci:
+  - id: 1
+    livello: 1
+    dove: questo repository
+    titolo: STACK.md non elenca undici strumenti presenti sotto tools/
+    stato: La scheda è ferma al commit d9912b1 e non cita, fra gli altri, verifica-ripresa.py, check-copie-modelli.py, obj-bbox.py e gli strumenti arrivati il 2026-09-30.
+    passo: Rileggere la sezione degli strumenti di manutenzione, aggiungere i mancanti e portare last-verified-commit a HEAD.
+    fonte: ".claude/context/STACK.md"
+    sonda: "assente:.claude/context/STACK.md:verifica-ripresa\\.py"
+
+  - id: 2
+    livello: 0
+    dove: questo repository
+    titolo: Il prossimo passo di current-work.md descrive la fase 8, chiusa dal 2026-09-17
+    stato: La sezione "Prossimo passo concreto" indica ancora la sottofase 8.3 e le seguenti, mentre il fronte è PA-020.
+    passo: Riscrivere la sezione sul fronte reale e portare last-verified-commit a HEAD.
+    fonte: ".claude/context/current-work.md"
+    sonda: "presente:.claude/context/current-work.md:La sottofase 8\\.3 è preparata ma non eseguita"
+
+  - id: 3
+    livello: 1
+    dove: questo repository
+    titolo: Periodo di supporto di Ubuntu Studio 26.04 LTS senza fonte
+    stato: ADR-006 scrive che la base è supportata fino al 2031 senza citare una fonte, e il supporto di un flavor può essere più breve di quello della base.
+    passo: Leggere la nota di rilascio del flavor, scrivere il valore con la fonte in ADR-006 e aggiornare la voce UBUNTU-STUDIO-SUPPORTO di data/scadenze.json.
+    fonte: "data/scadenze.json"
+
+  - id: 4
+    livello: 1
+    dove: postazione Windows
+    titolo: PA-013, escludere i backup Veeam dalla sincronizzazione di sync-dev
+    stato: Da compiere prima del primo backup se la destinazione dei punti di ripristino cambiasse.
+    passo: Aggiungere l'esclusione nella configurazione di sync-dev e verificarla con una corsa a secco.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 5
+    livello: 1
+    dove: "disco esterno J:"
+    titolo: PA-008, recuperare 1,2 GiB di cartelle di servizio
+    stato: Tre cartelle di servizio con frammenti orfani di chkdsk, verificate presenti il 2026-09-07; eseguibile quando il disco è collegato, e check-pending-actions.py dice se lo è.
+    passo: "Cancellare da J: le tre cartelle elencate nella voce."
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 6
+    livello: 1
+    dove: macchina Ubuntu e router
+    titolo: Due residui della fase 10 di igiene post-installazione
+    stato: Restano la disattivazione dell'autenticazione per password su SSH e la prenotazione dell'indirizzo sul router, entrambe azioni dell'utente e nessuna delle due blocca il progetto.
+    passo: Eseguirle a mano e registrarle come microstep con la verifica.
+    fonte: "docs/OPERATIONS-LOG.md"
+
+  - id: 7
+    livello: 2
+    dove: questo repository e il gemello
+    titolo: PA-012, scegliere la catena di ingresso audio
+    stato: Blocca la fase 6 e la scelta del microfono di misura, in quest'ordine; serve anche al progetto gemello.
+    passo: Decidere l'acquisto sui criteri già registrati nella voce.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 8
+    livello: 2
+    dove: questo repository
+    titolo: PA-014, la via verso il GLL dei monitor
+    stato: ARTA in modalità dimostrativa non salva, quindi non produce un GLL; la voce si sblocca quando il progetto arriva alla caratterizzazione del prototipo.
+    passo: Per direttiva dell'utente del 2026-09-16, cercare un sostituto gratuito e open source; la licenza resta l'ultima risorsa.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 9
+    livello: 2
+    dove: postazione e macchina Ubuntu
+    titolo: PA-010, inventario per impronta prima di cancellare copie esterne
+    stato: I due controlli fatti coprono un perimetro più stretto di quello che serve; nessuna copia esterna di materiale personale si cancella prima.
+    passo: Decidere il perimetro dell'inventario e lanciarlo.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 10
+    livello: 2
+    dove: questo repository
+    titolo: PA-002, stato di licenza di Ramsete 27b
+    stato: "Priorità bassa: il suo ruolo è coperto da Akabak, e il programma resta fuori dal corredo finché la licenza non è chiarita."
+    passo: Accertare dal sito del produttore se la copia è dimostrativa e distribuibile o richiede licenza, con la fonte.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 11
+    livello: 2
+    dove: questo repository
+    titolo: PA-005, chiudere la terza voce privilegiata della fase 0
+    stato: Due voci su tre sono compiute e la terza, l'esito di sudo apt update, è resa irrilevante da ADR-013.
+    passo: Decidere se chiudere la voce dichiarando l'irrilevanza.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 12
+    livello: 2
+    dove: questo repository
+    titolo: Deriva di stile nella documentazione già committata
+    stato: Grassetto in prosa in voci storiche del registro e in tre pagine dell'ambiente; la convenzione vieta di riscrivere una voce passata.
+    passo: Decidere se ripulire il pregresso, che è una modifica di forma a documentazione storica.
+    fonte: ".claude/context/current-work.md"
+
+  - id: 13
+    livello: 3
+    dove: acquisto
+    titolo: PA-020, rilievo geometrico della stanza
+    stato: Il protocollo è scritto e la via è il rilievo a metro laser con ricalco in Blender; attende l'acquisto del metro laser.
+    passo: Acquistare il metro laser, poi seguire docs/35-rilievo-geometrico.md.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 14
+    livello: 3
+    dove: template-claude-developing
+    titolo: PA-003, propagare al template le correzioni nate qui
+    stato: Voci aperte, fra cui le quattro del 2026-09-30 su allinea-tutti.ps1, chiudi-sessione.ps1, md-unwrap --only-tracked e check-copie-modelli.
+    passo: Aprire una sessione nel template e portarle là, verificando con un confronto.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 15
+    livello: 3
+    dove: "disco G:"
+    titolo: "PA-004, ispezionare il disco G: e il materiale EASE Focus del workshop"
+    stato: Bloccata dalla disponibilità del disco.
+    passo: Ispezione quando il disco è raggiungibile.
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 16
+    livello: 3
+    dove: home-recording-training-mixing-setup
+    titolo: PA-021, studio della catena di ingresso e report sul gain staging
+    stato: Appartiene in massima parte al progetto gemello.
+    passo: Proseguire nel gemello.
+    fonte: "docs/PENDING-ACTIONS.md"

@@ -48,4 +48,4 @@ Il blocco di documentazione sull'ambiente, cioè [docs/10-ambiente/](docs/10-amb
 
 ## Stato
 
-Fase di progettazione documentata. Il prossimo passo concreto non è di progetto ma di infrastruttura: rimettere in servizio la macchina di lavoro, che è su un rilascio di Ubuntu fuori supporto, prima di iniziare le misure.
+La macchina di lavoro è reinstallata su Ubuntu Studio 26.04 LTS e la procedura di installazione pulita è chiusa in tutte le sue fasi, dalla 0 alla 11: il corredo Wine è verificato, la catena audio in uscita è verificata e la macchina ha due punti di ripristino. Il lavoro elettroacustico parte dal rilievo geometrico della stanza, che attende un metro laser; le misure attendono la scelta dell'interfaccia audio. Stato di dettaglio e azioni differite in [docs/PENDING-ACTIONS.md](docs/PENDING-ACTIONS.md).
