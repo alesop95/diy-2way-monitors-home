@@ -22,6 +22,8 @@ La Fase H ha riletto le tre schede in ritardo e le ha portate a `HEAD`, secondo 
 
 Due errori miei, entrambi in MS-167: ho messo in stage i tre hook con `git update-index --add` per dar loro il bit di esecuzione, e l'ho annullato subito; e ho scritto in `deployment.md` che la pagina di Veeam contiene il ritorno a un punto, che non contiene, corretto dichiarando la lacuna. Un attrito della postazione, nuovo: il Bash dell'agente dimezza le barre rovesciate anche dentro un heredoc quotato, quindi gli script con barre rovesciate si scrivono su file.
 
+Dopo il runbook, su richiesta dell'utente di proseguire, MS-168: il supporto di Ubuntu Studio 26.04 LTS finisce ad aprile 2029 e non nel 2031, letto nell'annuncio di rilascio; ADR-006 porta una nota additiva e il registro delle scadenze la voce `UBUNTU-STUDIO-EOL`. PA-013 resta aperta perché l'esclusione va scritta in `C:\Scripts\sync-dev`, che è un altro repository: la modifica pronta è aggiungere `'*.vbk','*.vib','*.vbm'` a `$ExcludeFiles` in `Config-sync-dev.ps1`.
+
 Il commit proposto è in `_notes/COMMIT-MSG.txt`. Prima di `chiudi` vanno registrate nell'indice la cancellazione dei due PROMPT e il bit di esecuzione dei tre hook, con i comandi consegnati all'utente, perché `md-unwrap --only-tracked` conta come saltati i file tracciati e assenti e ferma la chiusura.
 
 ## 2026-09-22 - La via della scansione cade, PA-016 si chiude, e il progetto prende i suoi hook
