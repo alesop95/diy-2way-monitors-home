@@ -10,6 +10,8 @@ Panoramica delle funzionalità audio della distribuzione: `https://ubuntustudio.
 
 Metapacchetto per aggiungere l'ambiente Studio a una Ubuntu normale: `https://ubuntustudio.org/ubuntu-studio-installer/`
 
+Annuncio del rilascio di Ubuntu Studio 26.04 LTS, letto il 2026-09-30 ed è la fonte del periodo di supporto del flavor, cioè tre anni fino ad aprile 2029, più breve dei cinque della base Ubuntu: `https://ubuntustudio.org/2026/04/ubuntu-studio-26-04-lts-released/`. È la sola voce di questa sezione recuperata e letta, a differenza di quanto dice la nota in testa per le altre.
+
 Strumento di verifica dello stato del disco usato per la diagnosi dell'SSD: `https://crystalmark.info/en/software/crystaldiskinfo/`
 
 ## Interfaccia audio

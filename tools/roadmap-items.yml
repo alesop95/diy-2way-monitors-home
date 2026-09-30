@@ -77,14 +77,6 @@ voci:
     fonte: ".claude/context/current-work.md"
     sonda: "presente:.claude/context/current-work.md:La sottofase 8\\.3 è preparata ma non eseguita"
 
-  - id: 3
-    livello: 1
-    dove: questo repository
-    titolo: Periodo di supporto di Ubuntu Studio 26.04 LTS senza fonte
-    stato: ADR-006 scrive che la base è supportata fino al 2031 senza citare una fonte, e il supporto di un flavor può essere più breve di quello della base.
-    passo: Leggere la nota di rilascio del flavor, scrivere il valore con la fonte in ADR-006 e aggiornare la voce UBUNTU-STUDIO-SUPPORTO di data/scadenze.json.
-    fonte: "data/scadenze.json"
-
   - id: 4
     livello: 1
     dove: postazione Windows
