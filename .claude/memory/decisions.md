@@ -323,3 +323,25 @@ Motivazione, che è dell'utente e non mia, e va riportata come tale. Avere l'amb
 La mia obiezione, registrata perché sia verificabile e perché l'utente l'ha superata. Avevo proposto di istanziare nel solo gemello, sul ragionamento che l'innesco dichiarato nella roadmap esiste per impedire che il report dei monitor nasca prima di avere qualcosa da raccontare, e che istanziare l'ambiente qui lo rende disponibile e quindi invitante. L'obiezione resta valida come rischio e non come divieto: l'innesco riguarda quando si scrive il documento, non quando esiste l'ambiente per compilarlo, e tenere le due cose distinte è precisamente ciò che questa voce fa.
 
 Conseguenze. Il primo documento LaTeX del progetto resta quello previsto per le fasi 4 e 5, e scriverne uno prima richiede una voce nuova che dichiari di superare questa. La distribuzione TeX non è installata da questa decisione: `scripts/setup-tex` va eseguito una volta sulla postazione, e serve a entrambi i progetti. Il blocco degli artefatti nel `.gitignore` ha richiesto due correzioni rispetto al modello, raccontate in MS-153, ed entrambe derivano dalla convenzione di questo progetto sull'ancoraggio dei pattern.
+
+## ADR-023 - Nessun server MCP di progetto, per decisione presa al gate dell'inizializzazione
+
+Data: 2026-09-30. Stato: accettata.
+
+Contesto. Il Passo 4 del runbook di inizializzazione chiede sempre, anche in allineamento, se configurare un server MCP di progetto in `.mcp.json`, e in allineamento il consigliato è `code-context-provider-mcp`, che espone struttura e simboli di una base di codice. Questo progetto non ha codice applicativo: il repository contiene documentazione e script di manutenzione piccoli e senza dipendenze.
+
+Decisione. Nessun `.mcp.json` e nessuna cartella `mcp/`. Il progetto resta a sole skill locali.
+
+Motivazione. Il server consigliato serve a mappare una base di codice che qui non c'è, e ogni server connesso occupa token a ogni turno anche quando nessuno lo usa, secondo il vincolo del gate dei pacchetti. I server già attivi a livello di account, come quello sui vault Obsidian, non dipendono da questa scelta.
+
+Conseguenze. Il gate si ripropone a ogni tornata di allineamento, e la domanda torna pertinente se il progetto acquisisce un servizio esterno da interrogare o una base di codice da mappare.
+
+## ADR-024 - Modello di separazione fra test e produzione: R0, P1 senza richiesta di modifica, D non applicabile, L1
+
+- Data: 2026-09-30
+- Stato: accettata
+- Contesto: fatti dichiarati al gate del runbook di inizializzazione, raccolti in sola lettura. L'unica produzione è la macchina Ubuntu Studio con programmi di terzi sotto Wine, raggiunta come `ssh studio`; una persona; nessun codice proprio da provare; nessun dato sensibile di utenti e nessun fornitore di identità; nessuna pipeline, nessun file di composizione, nessun `.env`; un solo albero di lavoro e la sola branch `main`, con i commit dell'utente diretti su di essa.
+- Decisione: R0, cioè un solo ambiente con la rete di sicurezza nel ripristino, in esercizio; P1 nella variante senza richiesta di modifica, con tutti i percorsi dichiarati diretti sulla branch principale, perché il repository contiene soltanto documentazione, memoria e script di manutenzione; D non applicabile, perché non esiste un ambiente di prova con dati propri; L1.
+- Alternative considerate: R1 e R2 richiederebbero un secondo ambiente dove provare prima, che per programmi di terzi installati sotto Wine nessuno manterrebbe allineato, secondo il campo "Che cosa significa sceglierla" di R0 in `docs/separazione-ambienti/GUIDA.md`; P1 con richiesta di modifica aggiungerebbe una revisione e una verifica automatica su un repository senza codice applicativo e con un solo autore.
+- Conseguenze: il rischio principale di R0, cioè il backup che resta un proposito, qui è coperto da una scelta dichiarata dall'utente: un punto Veeam o un archivio dei prefix preso a mano prima di ogni cambio rischioso, senza cadenza pianificata, con la dichiarazione riproposta come domanda da `data/scadenze.json`. Il secondo rischio, provare dentro la produzione, è già accaduto con WineHQ il 2026-09-17 ed è stato riportato indietro dall'archivio dei prefix. Il ritorno della macchina intera a un punto Veeam non è mai stato eseguito, e la scheda `deployment.md` lo dichiara come lacuna. Si passa ad altro se il progetto comincia a scrivere codice proprio da eseguire sulla macchina, o se la macchina comincia a servire più persone.
+- Fonti: C8 per R0; F13, F16 e C1 per P1; le sigle sono in `docs/separazione-ambienti/FONTI.md`.

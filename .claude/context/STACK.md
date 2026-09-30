@@ -5,7 +5,7 @@ generated-date: 2026-09-04
 covers-paths:
   - tools/**
   - docs/**
-last-verified-commit: d9912b1
+last-verified-commit: 0189667
 ---
 
 # Stack del progetto
@@ -62,7 +62,7 @@ Il file `tools/fix-emphasis.py` attua il divieto di grassetto nella prosa prescr
 
 I file `tools/fix-accents.py`, `tools/fix-missing-accents.py` e `tools/fix-dashes.py` attuano le convenzioni tipografiche: accenti veri al posto dell'apostrofo, ripristino degli accenti mancanti dove la forma senza accento non è una parola italiana, e trattini brevi al posto dei trattini lunghi. Il file `tools/test-tipografia.py` è la loro suite di prova, e `tools/dashes-exclude.txt` il loro sidecar di esclusioni.
 
-Su questi tre strumenti valgono due avvertenze, entrambe verificate con casi minimi e documentate in MS-014 del registro dei microstep. Si eseguono sui soli file Markdown e non su `.`, perché su un file di codice le regole di prudenza di `fix-accents.py` e `fix-missing-accents.py` sono incoerenti fra loro: il primo si astiene sulle forme elise come `c'e'`, il secondo no, e la catena dei due lascia un apostrofo orfano producendo `c'è'`, che poi nessuno dei due riconosce più. E terminano con un errore se ricevono un percorso su un'altra lettera di unità, difetto che `md-unwrap.py` ha già corretto e questi no.
+Su questi tre strumenti valeva una doppia avvertenza, diagnosticata con casi minimi in MS-014, e va letta con la sua data. L'incoerenza fra le regole di prudenza di `fix-accents.py` e `fix-missing-accents.py` sulle forme elise, che lasciava un apostrofo orfano su `c'e'` producendo `c'è'`, è stata chiusa nel template e adottata qui il 2026-09-12 con MS-091, e dal 2026-09-17 una guardia impedisce agli strumenti di scrivere sotto `.claude/templates/` (PA-015); la catena si lancia quindi anche in controllo su `.`, come fa `chiudi`. La gestione dei percorsi su un'altra lettera di unità resta invece non verificata in nessuno dei due versi, ed è una voce di PA-003.
 
 Il file `tools/sync-ambiente.py` propaga il blocco `docs/10-ambiente/` al progetto gemello di home recording, in una sola direzione, marcando le copie e segnalando gli orfani senza rimuoverli.
 
@@ -74,11 +74,27 @@ Il file `tools/latest-screenshot.ps1` restituisce lo screenshot più recente del
 
 Il file `tools/arch-dotnet.py` dice l'architettura reale di un eseguibile Windows, ed esiste perché per un assembly .NET il comando `file` risponde a una domanda diversa da quella che si sta ponendo. Per un programma nativo `PE32` significa 32 bit e `PE32+` significa 64, e la lettura basta; per un assembly .NET compilato *AnyCPU* il formato resta `PE32` mentre il programma gira alla larghezza della macchina, quindi a 64 bit su una macchina a 64. Lo strumento legge i tre flag dell'intestazione del runtime CLI che decidono davvero, e sui file nativi dichiara l'assenza di quella intestazione e riporta l'architettura del formato. È di sola lettura, senza dipendenze, e restituisce codice 2 su un file che non sia un eseguibile Windows. La ragione per cui è nato è in MS-101: il controllo prescritto avrebbe fatto concludere che VituixCAD fosse a 32 bit e smontare un prefix corretto.
 
+Il file `tools/analisi-ssd-esterno.py` misura lo spazio recuperabile sull'SSD esterno e segnala gli indizi di guasto, fra cui le cartelle `FOUND.00x` lasciate da più riparazioni di `chkdsk`. È di sola lettura ed è lo strumento dietro PA-008.
+
+Il file `tools/obj-bbox.py` misura il parallelepipedo che contiene una mesh OBJ e lo confronta con una dimensione nota, per verificare la scala di una scansione. È nato per la via della scansione di PA-020, poi abbandonata, e resta l'attuazione delle diagonali di controllo della tabella F del protocollo di rilievo; il suo limite, che i lati orizzontali sovrastimano su un oggetto ruotato, è in MS-160.
+
+Gli strumenti che seguono sono quelli del sistema di progetto, e la ragione per cui sono qui è la stessa degli altri: fare di una convenzione un controllo.
+
+Il file `tools/verifica-ripresa.py` confronta, alla riapertura, l'impronta registrata a fine sessione con lo stato reale di git, e con `--registra` la registra dopo i commit. È eseguito da sé dall'hook `apertura-sessione`, e la skill `riprendi` ne interpreta l'esito.
+
+Il file `tools/check-copie-modelli.py` confronta byte per byte ogni strumento istanziato con il suo modello sotto `.claude/templates/` e fallisce quando divergono, senza scegliere il verso della riconciliazione. Il file `tools/check-catalogo.py` verifica che il catalogo dei pacchetti descriva le cartelle presenti sul disco; qui il catalogo è una copia e non la sorgente, quindi non sta nella sequenza obbligatoria.
+
+Il file `tools/misura-istruzioni.py` somma i caratteri degli instruction file che Claude Code carica a ogni avvio, cioè `CLAUDE.md` e le regole, e fallisce oltre la soglia di guardia di 100 000. Il file `tools/lint-md-tables.py` controlla che ogni cella di una tabella Markdown stia su una riga e che ogni riga porti tutte le colonne, cosa che `md-unwrap` per contratto non guarda. Il file `tools/sync-codex-skills.py` genera sotto `.agents/skills/` i wrapper con cui Codex scopre le skill canoniche, e con `--check` ne verifica l'allineamento. Il file `tools/chiudi-sessione.ps1` è lo script che la funzione `chiudi` del profilo PowerShell lancia: controlli, commit con conferma, push verificato, registrazione dell'impronta e wipe degli account. In un progetto esegue soltanto i controlli generici, e non quelli propri di questo progetto, che è una voce di PA-003.
+
+Il file `tools/lint-memoria.py` segnala i commit più recenti dell'ultima voce del work-log e le pendenze chiuse senza data, ed è adattato ai registri di questo progetto come il suo pacchetto prescrive. Il file `tools/Test-Allineamento.py` legge `data/scadenze.json` e dice quali affermazioni stanno invecchiando: scadenze, misure con una cadenza, asserzioni umane con la loro validità, più quattro invarianti fra cui l'elenco degli strumenti di questa scheda. Gira all'apertura di ogni sessione e attua la regola `affermazioni-verificabili.md`.
+
+Il file `tools/roadmap.py` rigenera la lista di che cosa resta da fare da `tools/roadmap-items.yml`, ordinata per costo e non per importanza, con l'esito dei controlli misurato dal vivo; `--format html --write` scrive una pagina stampabile sotto `build/`, ignorata. Il file `tools/costruisci-timeline.py` rigenera `docs/TIMELINE.html`, la linea temporale che affianca a ogni passo la sua ragione, dai microstep che portano il campo `Data:` e dal work-log. Il file `tools/lint-prosa.py` segnala i segni ricorrenti del testo generato e non riscrive nulla; gira come avviso nel `pre-commit` dei commit manuali, e la guida con le fonti sta in `docs/anti-slop/`.
+
 ## Rapporto con gli altri progetti
 
 Il blocco `docs/10-ambiente/` è condiviso con `home-recording-training-mixing-setup`, perché la macchina Ubuntu Studio serve a entrambi. La copia canonica è quella di questo progetto e la propagazione è unidirezionale.
 
-Il sistema sotto `.claude/` è istanziato da `template-claude-developing`, che è la sua sorgente. Due divergenze da quel template sono volute e annotate: la negazione nel `.gitignore` che rende versionabili i modelli `_notes` sotto `.claude/templates/`, e l'uso delle versioni più recenti degli strumenti tipografici, che nel template stanno in `tools/` alla radice e non nel pacchetto di istanziazione.
+Il sistema sotto `.claude/` è istanziato da `template-claude-developing`, che è la sua sorgente, e si riallinea con lo strumento `allinea-tutti.ps1` del template, che registra l'ultimo allineamento in `.claude/allineamento-template.json`. Le due divergenze che questa scheda dichiarava fino al 2026-09-12 non esistono più: la negazione nel `.gitignore` sui modelli `_notes` è stata portata al template il 2026-09-17, e gli strumenti tipografici sono identici ai modelli, come misura `check-copie-modelli.py`. Le copie che divergono per mestiere sono dichiarate in quello strumento, cioè `tools/dashes-exclude.txt` e `tools/lint-memoria.py`.
 
 ## Verifica prima di un commit
 
@@ -90,5 +106,13 @@ python tools/lint-md-commands.py .
 python tools/check-eol.py .
 python tools/test-tipografia.py
 python tools/sync-ambiente.py --check
+python tools/check-copie-modelli.py
 python tools/check-pending-actions.py
+python tools/misura-istruzioni.py
+python tools/lint-md-tables.py .
+python tools/sync-codex-skills.py --check
+python tools/lint-memoria.py
+python tools/Test-Allineamento.py
 ```
+
+La sequenza è la stessa di `CLAUDE.md`, che ne è la fonte, e va eseguita per intero prima di proporre `chiudi`.

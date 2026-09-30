@@ -42,6 +42,11 @@
             "type": "command",
             "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"E:\\diy-2way-monitors-home\\.claude\\hooks\\apertura-sessione.ps1\"",
             "timeout": 20
+          },
+          {
+            "type": "command",
+            "command": "python \"E:\\diy-2way-monitors-home\\tools\\Test-Allineamento.py\" --silenzioso",
+            "timeout": 20
           }
         ]
       }

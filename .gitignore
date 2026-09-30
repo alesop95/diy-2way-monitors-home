@@ -45,7 +45,8 @@ _notes/
 # Eccezione: sotto .claude/templates/ i _notes non sono appunti reali ma i modelli
 # da cui si istanziano, quindi vanno versionati. Senza questa negazione un clone
 # perderebbe i modelli DIARIO, RESOCONTO, RESUME-PROMPT e TEST-CHECKLIST.
-# Divergenza voluta dal template di origine, che ha lo stesso difetto: da propagare.
+# Propagata al template il 2026-09-17 (MS-130): non e' piu' una divergenza. Vale come
+# prevenzione di un caso futuro, perche' i modelli erano gia' tracciati.
 !.claude/templates/_notes/
 !.claude/templates/community-sources/_notes/
 
@@ -53,6 +54,25 @@ _notes/
 # Ancorati alla radice, cosi' il modello .claude/templates/CLAUDE.local.md resta tracciato.
 /CLAUDE.local.md
 /.claude/settings.local.json
+
+# Segreti e materiale di credenziale, dallo snippet del template (sezione 6), aggiunti
+# il 2026-09-30 al Passo 2 del runbook. Qui non esiste alcun .env: e' difesa in
+# profondita', accanto all'hook protect-sensitive-files.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Estratti temporanei di documenti voluminosi (cartelle scratch di doc-ingest).
+.tmp-doc-*/
+
+# Dallo snippet NON si prende *.docx globale: i pattern per tipo di file restano
+# ancorati alla radice, come dice la testa di questo file (/*.docx piu' sopra).
+
+# Derivati rigenerabili del pacchetto roadmap (pagina HTML e Markdown della roadmap):
+# si rigenerano con tools/roadmap.py --write e non si versionano. Aggiunto il 2026-09-30.
+/build/
 
 # Ambiente di sviluppo
 node_modules/
