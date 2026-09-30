@@ -6,7 +6,8 @@
 #
 # Istanziato il 2026-09-30 con MS-167 dal pacchetto roadmap. Le voci vengono da
 # docs/PENDING-ACTIONS.md, dalla sezione "Lavoro noto e non fatto" di current-work.md e dal
-# runbook di inizializzazione dello stesso giorno. Il dettaglio del perché di ciascuna resta nel
+# runbook di inizializzazione dello stesso giorno. Le voci 1, 2, 3, 4 e 11 sono state tolte il
+# 2026-09-30 perché compiute (MS-167, MS-168, MS-169, MS-170): i loro id non si riusano. Il dettaglio del perché di ciascuna resta nel
 # documento indicato in `fonte`: qui sta il costo e il passo che la chiude.
 
 titolo: Roadmap operativa di diy-2way-monitors-home
@@ -59,32 +60,6 @@ livelli:
   3: "Fuori da questo repository, ma è da qui che dipende il resto"
 
 voci:
-  - id: 1
-    livello: 1
-    dove: questo repository
-    titolo: STACK.md non elenca undici strumenti presenti sotto tools/
-    stato: La scheda è ferma al commit d9912b1 e non cita, fra gli altri, verifica-ripresa.py, check-copie-modelli.py, obj-bbox.py e gli strumenti arrivati il 2026-09-30.
-    passo: Rileggere la sezione degli strumenti di manutenzione, aggiungere i mancanti e portare last-verified-commit a HEAD.
-    fonte: ".claude/context/STACK.md"
-    sonda: "assente:.claude/context/STACK.md:verifica-ripresa\\.py"
-
-  - id: 2
-    livello: 0
-    dove: questo repository
-    titolo: Il prossimo passo di current-work.md descrive la fase 8, chiusa dal 2026-09-17
-    stato: La sezione "Prossimo passo concreto" indica ancora la sottofase 8.3 e le seguenti, mentre il fronte è PA-020.
-    passo: Riscrivere la sezione sul fronte reale e portare last-verified-commit a HEAD.
-    fonte: ".claude/context/current-work.md"
-    sonda: "presente:.claude/context/current-work.md:La sottofase 8\\.3 è preparata ma non eseguita"
-
-  - id: 4
-    livello: 1
-    dove: postazione Windows
-    titolo: PA-013, escludere i backup Veeam dalla sincronizzazione di sync-dev
-    stato: Da compiere prima del primo backup se la destinazione dei punti di ripristino cambiasse.
-    passo: Aggiungere l'esclusione nella configurazione di sync-dev e verificarla con una corsa a secco.
-    fonte: "docs/PENDING-ACTIONS.md"
-
   - id: 5
     livello: 1
     dove: "disco esterno J:"
@@ -133,20 +108,12 @@ voci:
     passo: Accertare dal sito del produttore se la copia è dimostrativa e distribuibile o richiede licenza, con la fonte.
     fonte: "docs/PENDING-ACTIONS.md"
 
-  - id: 11
-    livello: 2
-    dove: questo repository
-    titolo: PA-005, chiudere la terza voce privilegiata della fase 0
-    stato: Due voci su tre sono compiute e la terza, l'esito di sudo apt update, è resa irrilevante da ADR-013.
-    passo: Decidere se chiudere la voce dichiarando l'irrilevanza.
-    fonte: "docs/PENDING-ACTIONS.md"
-
   - id: 12
     livello: 2
     dove: questo repository
-    titolo: Deriva di stile nella documentazione già committata
+    titolo: Deriva di stile nei documenti vivi, pulizia decisa il 2026-09-30 (ADR-025)
     stato: Grassetto in prosa in voci storiche del registro e in tre pagine dell'ambiente; la convenzione vieta di riscrivere una voce passata.
-    passo: Decidere se ripulire il pregresso, che è una modifica di forma a documentazione storica.
+    passo: Ripulire grassetto in prosa e segnalazioni di lint-prosa nei soli documenti vivi, lasciando intatti il registro dei microstep e le voci storiche.
     fonte: ".claude/context/current-work.md"
 
   - id: 13

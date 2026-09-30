@@ -347,3 +347,15 @@ Conseguenze. Il gate si ripropone a ogni tornata di allineamento, e la domanda t
 - Alternative considerate: R1 e R2 richiederebbero un secondo ambiente dove provare prima, che per programmi di terzi installati sotto Wine nessuno manterrebbe allineato, secondo il campo "Che cosa significa sceglierla" di R0 in `docs/separazione-ambienti/GUIDA.md`; P1 con richiesta di modifica aggiungerebbe una revisione e una verifica automatica su un repository senza codice applicativo e con un solo autore.
 - Conseguenze: il rischio principale di R0, cioè il backup che resta un proposito, qui è coperto da una scelta dichiarata dall'utente: un punto Veeam o un archivio dei prefix preso a mano prima di ogni cambio rischioso, senza cadenza pianificata, con la dichiarazione riproposta come domanda da `data/scadenze.json`. Il secondo rischio, provare dentro la produzione, è già accaduto con WineHQ il 2026-09-17 ed è stato riportato indietro dall'archivio dei prefix. Il ritorno della macchina intera a un punto Veeam non è mai stato eseguito, e la scheda `deployment.md` lo dichiara come lacuna. Si passa ad altro se il progetto comincia a scrivere codice proprio da eseguire sulla macchina, o se la macchina comincia a servire più persone.
 - Fonti: C8 per R0; F13, F16 e C1 per P1; le sigle sono in `docs/separazione-ambienti/FONTI.md`.
+
+## ADR-025 - La deriva di stile si ripulisce nei soli documenti vivi, e il registro storico resta com'è
+
+Data: 2026-09-30. Stato: accettata.
+
+Contesto. La documentazione già committata porta grassetto in prosa, che lo stile del template vieta, e `tools/lint-prosa.py` vi riporta 76 segnalazioni in 23 file, 62 delle quali sono parallelismi negativi. La convenzione del registro dei microstep vieta di riscrivere una voce passata, e la maggior parte del grassetto sta proprio in voci storiche. La decisione era aperta dal 2026-09-09 nella scheda del lavoro corrente.
+
+Decisione. Si ripuliscono i soli documenti vivi, cioè le pagine di `docs/` che descrivono uno stato o una procedura, le schede di `.claude/context/` e il README. Non si toccano il registro dei microstep, le voci datate del work-log, il registro delle decisioni e le voci datate delle pendenze, che sono documentazione storica.
+
+Motivazione. Un documento vivo si legge per sapere com'è una cosa oggi, e la sua forma conta per ogni lettore futuro; una voce storica si legge per sapere che cosa è successo e perché, e riscriverla, anche solo nella forma, produce un documento che sembra essere sempre stato giusto, cioè il difetto che la convenzione del registro esiste per evitare. Le segnalazioni di `lint-prosa.py` sono indizi da rileggere e non errori, quindi la pulizia le valuta una per una e non le sostituisce in blocco.
+
+Conseguenze. La pulizia è una milestone a sé, con il proprio microstep e il conteggio prima e dopo, perimetro dichiarato. Il registro storico continuerà a mostrare le segnalazioni, e questo è atteso.

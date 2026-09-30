@@ -131,9 +131,9 @@ Dal 2026-09-09 la documentazione nuova rispetta lo stile del template, e `docs/1
 
 Questa sezione è stata riscritta il 2026-09-30 perché dal 2026-09-17 indicava ancora come passo successivo la sottofase 8.3 e le seguenti, tutte chiuse: la sua versione precedente sta nella storia di git, e il racconto di quelle sottofasi nei microstep da MS-090 a MS-143.
 
-Il prossimo passo di progetto è PA-020: acquistare il metro laser e seguire il protocollo di `docs/35-rilievo-geometrico.md`, con il ricalco in Blender come modello che entra nel calcolo. Non dipende da altro, ed è l'unico lavoro di progetto eseguibile finché PA-012 resta aperta.
+Impegno preso con l'utente il 2026-09-30: quando PA-020 diventa eseguibile, cioè con il metro laser in mano, l'agente gli spiega esattamente che cosa fare, passo per passo e tabella per tabella, prima che entri nella stanza. Il prossimo passo di progetto è PA-020: acquistare il metro laser e seguire il protocollo di `docs/35-rilievo-geometrico.md`, con il ricalco in Blender come modello che entra nel calcolo. Non dipende da altro, ed è l'unico lavoro di progetto eseguibile finché PA-012 resta aperta.
 
-Il lavoro eseguibile senza acquisti e senza decisioni sta ai livelli 0 e 1 della roadmap generata: la verifica del periodo di supporto di Ubuntu Studio 26.04 LTS, che ADR-006 afferma senza fonte; PA-013 sulla postazione; PA-008 quando il disco esterno è collegato; i due residui della fase 10.
+Il lavoro eseguibile senza acquisti e senza decisioni sta al livello 1 della roadmap generata: PA-008 quando il disco esterno è collegato e i due residui della fase 10. La verifica del supporto di Ubuntu Studio e PA-013 sono compiute il 2026-09-30, in MS-168 e MS-169.
 
 Le decisioni che spettano all'utente, al livello 2: la catena di ingresso di PA-012, da cui dipende il microfono di misura in un ordine che non si inverte; la via verso il GLL dei monitor di PA-014, che si sblocca con il prototipo; il perimetro dell'inventario di PA-010, da compiere prima di cancellare qualunque copia esterna di materiale personale; e se ripulire la deriva di stile e le segnalazioni di `lint-prosa.py` nella documentazione già committata.
 

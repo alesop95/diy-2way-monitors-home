@@ -13,7 +13,7 @@
 # scrivere un file il cui rendering cambierebbe, quindi il caso peggiore e' che non faccia
 # nulla, mai che rovini un file.
 #
-# Tocca soltanto i file .md, e soltanto dentro la radice del progetto.
+# Tocca soltanto i file .md, e soltanto dentro la radice del progetto, verificato piu' sotto.
 
 $ErrorActionPreference = "SilentlyContinue"
 
@@ -27,6 +27,16 @@ if ($percorso -notmatch '\.md$') { exit 0 }
 if (-not (Test-Path $percorso)) { exit 0 }
 
 $radice = if ($env:CLAUDE_PROJECT_DIR) { $env:CLAUDE_PROJECT_DIR } else { (Get-Location).Path }
+
+# Il perimetro dichiarato in testa si verifica qui. Fino al 2026-09-30 era soltanto scritto: il
+# codice non confrontava mai il percorso con la radice, e una modifica a un file .md di un altro
+# repository fatta da una sessione aperta su questo progetto e' stata normalizzata per intero,
+# cioe' trecentoquindici righe riavvolte in un README che porta le righe spezzate per scelta.
+# Un file fuori dalla radice appartiene a un progetto che puo' avere altre convenzioni, e
+# l'hook non lo tocca.
+$pieno = [System.IO.Path]::GetFullPath($percorso)
+$base = [System.IO.Path]::GetFullPath($radice).TrimEnd('\', '/') + [System.IO.Path]::DirectorySeparatorChar
+if (-not $pieno.StartsWith($base, [System.StringComparison]::OrdinalIgnoreCase)) { exit 0 }
 
 # Ricerca a cascata dello strumento. Le collocazioni legittime sono due e non una: in un
 # progetto istanziato gli strumenti condivisi stanno in tools\ della radice, mentre nel

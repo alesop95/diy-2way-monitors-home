@@ -3593,6 +3593,38 @@ Verificato con: ricerca web sul periodo di supporto, e lettura della pagina `htt
 
 Esito: fatto.
 
+### MS-169 - PA-013 compiuta: i backup Veeam esclusi da sync-dev per estensione, e un hook che normalizzava file fuori dal progetto
+
+Data: 2026-09-30
+
+Perimetro: `C:\Scripts\sync-dev\Config-sync-dev.ps1` e `C:\Scripts\sync-dev\README.md`, nel repository `alesop95/sync-dev`, che non è questo; gli hook `md-unwrap-auto.ps1` e `md-unwrap-auto.sh`, nella copia attiva sotto `.claude/hooks/` e nel modello sotto `.claude/templates/hooks-starter/hooks/`. Nessun comando eseguito sulla macchina Ubuntu.
+
+Legame con il progetto: serve la fase 1, cioè l'ambiente, perché protegge la catena dei punti di ripristino di ADR-024 dal giorno in cui la loro destinazione cambierà; non serve alcuna fase di progettazione elettroacustica.
+
+*L'esclusione.* Lo script copia ogni giorno `E:\` sull'SSD esterno con robocopy, e le esclusioni stanno in due variabili del file di configurazione. A `$ExcludeFiles` sono state aggiunte `*.vbk`, `*.vib` e `*.vbm`, cioè il file pieno, quello incrementale e quello dei metadati, come li elenca la pagina "Types of Backup Files" della guida di Veeam Agent for Linux, letta il 2026-09-30. Le estensioni coincidono con i file osservati sulla destinazione attuale, cioè `backup-file-sistema_2026-09-21T130457.vbk` e `backup-file-sistema.vbm` di MS-149. L'esclusione è per estensione e non per cartella perché la collocazione futura sotto `E:\` non è nota, ed è valida a ogni profondità. Il README di `sync-dev` porta un paragrafo nuovo, nello stile a righe spezzate di quel repository, con la ragione e la fonte.
+
+*La prova, che poteva fallire.* Una sorgente costruita nello scratchpad con i tre file Veeam e un file Markdown, e `robocopy /L` lanciato con le esclusioni lette dal file di configurazione vero, e non ricopiate a mano: robocopy copierebbe il solo `nota.md`. Il controllo negativo, con le stesse esclusioni meno le tre estensioni, elenca anche i tre file Veeam, quindi la prova distingue. Una ricerca su tutto `E:\`, durata 42 secondi, non trova alcun file `.vbk`, `.vib` o `.vbm`: oggi l'esclusione previene un caso futuro e non ne ripara uno in corso, che è la situazione che PA-013 descriveva.
+
+*L'hook che ha scritto nel repository sbagliato.* La modifica al README di `sync-dev` è stata fatta con lo strumento di modifica di questa sessione, e l'hook `md-unwrap-auto` l'ha normalizzata per intero: trecentoquindici righe riavvolte in un file che porta le righe spezzate per convenzione del proprio repository. La testa dell'hook dichiara «soltanto dentro la radice del progetto», ma il codice non confrontava mai il percorso con la radice: una promessa scritta senza presidio. Il README è stato ripristinato dalla versione in `HEAD` letta con `git show`, che è di sola lettura, e la mia aggiunta riapplicata con uno script, così che il diff di `sync-dev` sia di sedici righe fra i due file. L'hook ora confronta il percorso pieno con la radice del progetto e non tocca ciò che sta fuori, in entrambe le varianti e in entrambe le copie, che restano identiche. Provato con un payload costruito correttamente: un file fuori dalla radice resta di quattro righe, un file sotto `docs/` passa da quattro a tre. Un primo tentativo di prova dava il file interno non normalizzato, ed era un mio errore di prova e non dell'hook: il JSON costruito nel Bash aveva perso le barre rovesciate del percorso. Il difetto dell'hook appartiene al pacchetto `hooks-starter` del template ed è una voce nuova di PA-003.
+
+Verificato con: `git -C C:/Scripts/sync-dev diff`, sedici righe su due file; la corsa a vuoto e il suo controllo negativo; la ricerca su `E:\`; la prova dell'hook nei due versi; `cmp` fra copia attiva e modello dell'hook; `check-copie-modelli.py`, trentotto copie allineate.
+
+Esito: fatto. PA-013 è compiuta sul disco; il commit di `sync-dev` è un gesto dell'utente, con i comandi consegnati in sessione.
+
+### MS-170 - Quattro decisioni dell'utente: PA-012 avviata, pulizia dello stile nei soli documenti vivi, PA-005 chiusa, roadmap sfoltita
+
+Data: 2026-09-30
+
+Perimetro: `docs/PENDING-ACTIONS.md`, `.claude/memory/decisions.md`, `tools/roadmap-items.yml`. Nessun comando eseguito sulla macchina Ubuntu.
+
+Legame con il progetto: la prima decisione serve la fase 6, cioè le misure, e con essa la scelta del microfono di misura, che ne dipende in un ordine che non si inverte; le altre tre servono il sistema di lavoro e nessuna fase.
+
+L'utente ha chiesto di prendere le decisioni che servono adesso, e gli sono state poste le quattro che non dipendono da una condizione esterna. PA-014 non è stata posta perché si sblocca solo con il prototipo, e PA-010 perché serve solo prima di cancellare una copia esterna. Le risposte, in ordine. La valutazione di PA-012 si avvia adesso: la ricerca dei candidati è partita in questa sessione e il documento di confronto nascerà nel progetto gemello, come la voce prescrive. La deriva di stile si ripulisce nei soli documenti vivi, lasciando intatto il registro storico, ed è ADR-025. PA-005 è chiusa, con la terza voce dichiarata irrilevante per ADR-013. Le voci della roadmap compiute, cioè la 1, la 2 e la 4, sono tolte dal file delle voci, e con esse la 11, che era PA-005.
+
+Verificato con: `roadmap.py` dopo la modifica, `lint-memoria.py` sulla chiusura di PA-005 datata, la catena di verifica prima del commit.
+
+Esito: fatto per le tre decisioni che si chiudono con una registrazione; aperto per PA-012, che attende il documento di confronto, e per la pulizia dello stile, che è la milestone successiva.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
