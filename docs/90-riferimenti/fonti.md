@@ -12,6 +12,20 @@ Metapacchetto per aggiungere l'ambiente Studio a una Ubuntu normale: `https://ub
 
 Annuncio del rilascio di Ubuntu Studio 26.04 LTS, letto il 2026-09-30 ed è la fonte del periodo di supporto del flavor, cioè tre anni fino ad aprile 2029, più breve dei cinque della base Ubuntu: `https://ubuntustudio.org/2026/04/ubuntu-studio-26-04-lts-released/`. È la sola voce di questa sezione recuperata e letta, a differenza di quanto dice la nota in testa per le altre.
 
+Note di rilascio della base Ubuntu 26.04 LTS: `https://documentation.ubuntu.com/release-notes/26.04/`. Elencata dalla ricerca del 2026-09-30 sul periodo di supporto e non letta: il supporto della base resta quindi affermato da ADR-006 e non da questa pagina.
+
+Discussione sull'annuncio di Ubuntu Studio 26.04 LTS e note di rilascio sul forum della comunità Ubuntu: `https://discourse.ubuntu.com/t/ubuntu-studio-26-04-lts-released/80832` e `https://discourse.ubuntu.com/t/ubuntu-studio-26-04-lts-release-notes/79113`. Elencate dalla stessa ricerca e non lette.
+
+## Backup di macchina
+
+Guida di Veeam Agent for Linux, pagina "Types of Backup Files", letta il 2026-09-30: `https://helpcenter.veeam.com/docs/agentforlinux/userguide/backup_files.html`. È autorevole sulle tre estensioni dei file di backup, cioè `.vbk` per il pieno, `.vib` per l'incrementale e `.vbm` per i metadati aggiornati a ogni sessione, ed è la fonte dell'esclusione di PA-013 in MS-169.
+
+Elenco delle estensioni dei file Veeam sul sito della comunità Veeam: `https://community.veeam.com/blogs-and-podcasts-57/veeam-file-extensions-6020`. Elencato dalla ricerca del 2026-09-30 e non letto; la guida ufficiale qui sopra basta al perimetro di PA-013, che riguarda il solo agente per Linux.
+
+## Sistema di progetto
+
+Le fonti su cui poggiano i due pacchetti istanziati il 2026-09-30 non si duplicano qui: stanno nei registri che i pacchetti portano con sé, cioè `docs/anti-slop/FONTI.md` per i segni del testo generato e `docs/separazione-ambienti/FONTI.md` per il modello di ADR-024, dove le sigle C8, F13, F16 e C1 sono quelle citate da quella decisione.
+
 Strumento di verifica dello stato del disco usato per la diagnosi dell'SSD: `https://crystalmark.info/en/software/crystaldiskinfo/`
 
 ## Interfaccia audio
