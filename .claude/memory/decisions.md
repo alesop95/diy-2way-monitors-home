@@ -76,6 +76,8 @@ Conseguenze: il trasferimento dei materiali va eseguito prima della reinstallazi
 
 La decisione è stata confermata dall'utente in sessione. La diagnosi su cui poggia resta non verificata sulla macchina, e questo non contraddice la decisione: la verifica è il primo passo della procedura, così che se la ricostruzione fosse sbagliata lo si scopra prima di toccare il disco e non dopo. La procedura operativa completa, in undici fasi con i controlli di uscita di ciascuna, è in `docs/10-ambiente/installazione-pulita-26-04.md`.
 
+Nota del 2026-09-30, MS-168. Il quarto motivo, cioè la base supportata fino al 2031, era scritto senza fonte e va precisato: il 2031 è il supporto standard della base Ubuntu 26.04 LTS, mentre il flavor Ubuntu Studio dichiara nel proprio annuncio di rilascio un supporto di tre anni, fino ad aprile 2029. La fonte è in `docs/90-riferimenti/fonti.md` e la scadenza è `UBUNTU-STUDIO-EOL` in `data/scadenze.json`. Il motivo resta valido, perché anche tre anni di supporto sono un orizzonte adeguato, ma la macchina va portata alla LTS successiva prima di aprile 2029 e non del 2031.
+
 ## ADR-007 - Accettare il passaggio dati per appunti fra Akabak e VACS
 
 Data: 2026-09-04. Stato: accettata.

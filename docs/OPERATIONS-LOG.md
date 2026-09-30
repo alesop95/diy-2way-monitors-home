@@ -3579,6 +3579,20 @@ Verificato con: `lint-memoria.py` sullo stato attuale e sul caso costruito; `Tes
 
 Esito: fatto, con una verifica aperta, cioè il passo di `anti-slop` osservato su un commit reale, e con `Test-Allineamento.py` rosso finché `STACK.md` non viene riletta nella Fase H.
 
+### MS-168 - Il supporto di Ubuntu Studio 26.04 LTS finisce ad aprile 2029, non nel 2031
+
+Data: 2026-09-30
+
+Perimetro: verifica della voce 3 della roadmap e dell'asserzione `UBUNTU-STUDIO-SUPPORTO` di `data/scadenze.json`, con una ricerca web e la lettura della fonte primaria. Nessun comando eseguito sulla macchina Ubuntu.
+
+Legame con il progetto: serve la fase 1, cioè l'ambiente, perché fissa quando la macchina di lavoro dovrà cambiare rilascio; da questa data dipende il prossimo intervento di sistema sulla macchina.
+
+ADR-006 scriveva che la 26.04 LTS porta la macchina su una base supportata fino al 2031, senza fonte. L'annuncio di rilascio di Ubuntu Studio 26.04 LTS dice: «This Long-Term Support (LTS) release is supported for 3 years, through April 2029.» Il 2031 è quindi il supporto della base Ubuntu e non quello del flavor installato. ADR-006 porta ora una nota additiva, l'asserzione umana è sostituita dalla scadenza `UBUNTU-STUDIO-EOL` al 2029-04-30 con 180 giorni di preavviso, la fonte è registrata in `docs/90-riferimenti/fonti.md`, e la voce 3 è tolta da `tools/roadmap-items.yml` perché compiuta.
+
+Verificato con: ricerca web sul periodo di supporto, e lettura della pagina `https://ubuntustudio.org/2026/04/ubuntu-studio-26-04-lts-released/`, da cui viene la frase citata; `Test-Allineamento.py` dopo la modifica, con la scadenza contata e nessuna voce rotta.
+
+Esito: fatto.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

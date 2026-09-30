@@ -2,7 +2,7 @@
   "_commento": "Registro delle affermazioni che invecchiano, del pacchetto alignment, istanziato il 2026-09-30 con MS-167. Va tracciato: contiene date, cadenze e riferimenti a documenti, mai valori reali. Nessun importo, nessun identificativo d'ordine, nessun indirizzo, nessun nome di persona: l'esito di questo controllo finisce sotto gli occhi di chiunque guardi la sessione.",
   "_regola": "Ogni affermazione dei file tracciati deve avere una verifica meccanica, una scadenza dichiarata dopo la quale torna a stato non verificata, oppure una marcatura esplicita di non verificabile con la domanda gia' scritta e la persona a cui porla. Non esiste un quarto caso: un'affermazione senza nessuna delle tre invecchia in silenzio.",
   "_come_si_usa": "Le voci di esempio del modello vivono in .claude/templates/alignment/scadenze.example.json e qui non si copiano. Le scadenze e le misure con cadenza sono vuote per un fatto e non per dimenticanza: al 2026-09-30 nessun documento del progetto dichiara una data di scadenza o una misura su disco con una cadenza. Le affermazioni su fatti esterni stanno fra le asserzioni umane.",
-  "revisione": 1,
+  "revisione": 2,
   "aggiornato": "2026-09-30",
   "percorsi": {
     "_commento": "L'anatomia di questo progetto. Gli script stanno sotto tools/. Il registro numerato dei microstep usa intestazioni e non righe di tabella, quindi l'invariante sui numeri di registro non gli si applica e registro_voci resta null.",
@@ -26,7 +26,16 @@
     ],
     "marcatori_fallimento": null
   },
-  "scadenze": [],
+  "scadenze": [
+    {
+      "id": "UBUNTU-STUDIO-EOL",
+      "cosa": "Fine del supporto di Ubuntu Studio 26.04 LTS sulla macchina di lavoro",
+      "data": "2029-04-30",
+      "preavviso_giorni": 180,
+      "rompe": "Dal mese dopo il flavor non riceve piu' aggiornamenti: la macchina va portata alla LTS successiva, con un punto di ripristino preso prima secondo ADR-024 e con la verifica che Wine a 32 bit sia ancora disponibile per ADR-021.",
+      "dove": ".claude/memory/decisions.md"
+    }
+  ],
   "freschezza": [],
   "asserzioni_umane": [
     {
@@ -58,16 +67,6 @@
       "domanda": "Il NAS e' arrivato, oppure la destinazione dei punti di ripristino e' cambiata? Se si', PA-013 va compiuta prima del backup successivo, e la pagina veeam-agent-linux.md va aggiornata.",
       "a_chi": "L'utente",
       "dove": "docs/10-ambiente/veeam-agent-linux.md"
-    },
-    {
-      "id": "UBUNTU-STUDIO-SUPPORTO",
-      "afferma": "La 26.04 LTS porta la macchina su una base con supporto fino al 2031",
-      "stato": "Scritto in ADR-006 senza una fonte registrata. Da verificare: il periodo di supporto di un flavor LTS come Ubuntu Studio puo' essere piu' breve di quello della base Ubuntu, e va letto nella nota di rilascio del flavor",
-      "verificata_il": "2026-09-04",
-      "validita_giorni": 1,
-      "domanda": "Quale periodo di supporto dichiara la nota di rilascio di Ubuntu Studio 26.04 LTS, distinto da quello della base Ubuntu? Il valore letto va scritto in ADR-006 con la fonte, e se e' diverso dal 2031 va aperta qui una scadenza con la sua data.",
-      "a_chi": "Chi lavora sul progetto, dalla nota di rilascio ufficiale",
-      "dove": ".claude/memory/decisions.md"
     },
     {
       "id": "GH-CLI-AUTORIZZAZIONE",
