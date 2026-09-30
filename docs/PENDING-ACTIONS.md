@@ -117,6 +117,8 @@ Parametri dichiarati dall'utente il 2026-09-21, poche ore dopo l'apertura di que
 
 La conseguenza è che le due scelte si condizionano e vanno fatte insieme. Un modulo che esponga una uscita USB audio multitraccia conforme alla classe audio manda al computer i singoli pezzi della batteria su canali separati senza occupare alcun ingresso dell'interfaccia e senza driver proprietari; con un modulo così gli ingressi dell'interfaccia restano tutti liberi per il resto, e la batteria si registra per pezzi invece che in stereo già sommato, che è la differenza fra poter rifare un bilanciamento dopo e non poterlo fare. Un modulo con le sole uscite analogiche ne consuma due e consegna la batteria già mixata. Ne segue che la scelta del modulo non viene dopo quella dell'interfaccia: un modulo con USB multitraccia può permettere una interfaccia più piccola, e una interfaccia a otto ingressi rende meno critico il modulo.
 
+Valutazione avviata il 2026-09-30 per decisione dell'utente (MS-170): una ricerca dei candidati per le tre topologie e per i moduli di batteria con uscita USB multitraccia, con la conformità di classe verificata su fonte primaria e ogni fonte registrata come letta o soltanto elencata. Il documento di confronto nasce nel progetto gemello, come il criterio di completamento prescrive, e la voce resta aperta finché l'utente non sceglie.
+
 La valutazione appartiene al progetto gemello `home-recording-training-mixing-setup`, e questo progetto ne è un consumatore con un solo requisito proprio, cioè un ingresso microfonico con alimentazione phantom a 48 V che regga la misura acustica. Il report sul gain staging che l'utente ha chiesto è tracciato come PA-021.
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
 
@@ -210,6 +212,8 @@ Aperte il 2026-09-30, tre constatazioni su `chiudi-sessione.ps1` e su `md-unwrap
 
 Aperte il 2026-09-30, tre constatazioni sui pacchetti istanziati in MS-167. La prima: il README di `memoria-di-progetto` chiede di adattare le costanti in testa a `lint-memoria.py`, ma due dei valori da adattare, i prefissi del codice e la data di adozione, sono scritti dentro `main()`, e il controllo sui pendenti chiusi legge soltanto registri in tabella; inoltre `check-copie-modelli.py` non dichiara `lint-memoria.py` fra le copie che divergono per mestiere, quindi ogni progetto che lo adatta riceve una segnalazione perpetua. Qui la dichiarazione è stata aggiunta nelle due copie locali, e va portata nel template. La seconda: l'elenco `dashes-exclude.txt` del pacchetto `fix-typography` non esclude `costruisci-timeline.py`, le cui espressioni regolari contengono di proposito il trattino en, quindi ogni progetto che adotta `timeline-progetto` si vede fallire `fix-dashes.py --check`. La terza: `costruisci-timeline.py` legge la data di un microstep solo dal campo `Data:`, e il modello `operations-log` del template non lo chiede, quindi un registro nato da quel modello produce una linea temporale che omette in silenzio tutte le sue voci.
 
+Aperta il 2026-09-30, MS-169. L'hook `md-unwrap-auto` del pacchetto `hooks-starter` dichiara di toccare soltanto i file dentro la radice del progetto, ma non lo verificava: una modifica fatta da una sessione di questo progetto a un file `.md` di un altro repository ne ha riavvolto l'intero README. La correzione, cioè il confronto del percorso pieno con la radice in entrambe le varianti, è fatta qui nella copia attiva e nel modello locale, identici, e va portata nel template.
+
 Criterio di completamento. Le voci aperte risultano presenti nel template, verificate con un confronto e non con un ricordo, e questa voce si chiude dichiarando la data. La verifica non decisa produce invece un microstep con il suo esito.
 
 Perché non si fa da qui e subito. È una modifica a un altro repository, quindi è una decisione dell'utente su quel progetto, e va fatta aprendo una sessione là invece di scrivere da qui: la direzione di propagazione del blocco dell'ambiente è unidirezionale per scelta, e lo stesso principio vale a maggior ragione fra un progetto e il template da cui discende.
@@ -233,7 +237,7 @@ Nota metodologica. Questa voce nasce da una inferenza sbagliata corretta: si era
 
 ## PA-005 - Completare le tre voci privilegiate della fase 0
 
-Data di apertura: 2026-09-07. Stato: *aperta, due voci su tre compiute, e la terza è irrilevante*.
+Data di apertura: 2026-09-07. Stato: COMPIUTA il 2026-09-30 per decisione dell'utente (MS-170): due voci su tre sono state eseguite, e la terza, cioè l'esito reale di `sudo apt update` sul sistema precedente, è chiusa come irrilevante perché ADR-013 ha azzerato quel sistema e il suo esito non poteva più informare alcuna scelta.
 
 Che cosa va fatto. Tre controlli della fase 0 che l'accesso via chiave non permette di eseguire, perché `sudo` sulla macchina chiede la password e perché uno dei tre è un controllo in interfaccia grafica.
 
@@ -330,7 +334,7 @@ Esito del 2026-09-16. Tutti e tre i criteri sono soddisfatti nel template, con u
 
 ## PA-013 - Escludere i backup Veeam dalla sincronizzazione giornaliera di sync-dev
 
-Data di apertura: 2026-09-15. Stato: aperta, e da compiere prima del primo backup se la destinazione cambiasse.
+Data di apertura: 2026-09-15. Stato: COMPIUTA il 2026-09-30 con MS-169: `$ExcludeFiles` di `C:\Scripts\sync-dev\Config-sync-dev.ps1` esclude `*.vbk`, `*.vib` e `*.vbm`, verificato con una corsa a vuoto e il suo controllo negativo, e documentato nel README di quel repository. Il commit in `sync-dev` resta un gesto dell'utente.
 
 Che cosa va fatto. Dichiarare allo script `C:\Scripts\sync-dev` della postazione di ignorare i backup Veeam, sia quello di questa macchina sia gli altri che vi si accumuleranno suddivisi per macchina, finché il NAS domestico non sarà disponibile.
 

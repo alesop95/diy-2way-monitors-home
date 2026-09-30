@@ -30,6 +30,15 @@ esac
 
 RADICE="${CLAUDE_PROJECT_DIR:-$PWD}"
 
+# Il perimetro dichiarato in testa si verifica qui. Fino al 2026-09-30 era soltanto scritto, e
+# nella variante Windows una modifica a un file .md di un altro repository ne ha riavvolto
+# l'intero README: un file fuori dalla radice appartiene a un progetto che puo' avere altre
+# convenzioni, e l'hook non lo tocca.
+case "$PERCORSO" in
+    "${RADICE%/}"/*) ;;
+    *) exit 0 ;;
+esac
+
 # Ricerca a cascata dello strumento. Le collocazioni legittime sono due e non una: in un
 # progetto istanziato gli strumenti condivisi stanno in tools/ della radice, mentre nel
 # repository che li produce, cioe' il template stesso, gli originali vivono sotto
