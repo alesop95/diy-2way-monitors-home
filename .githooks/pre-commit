@@ -1,0 +1,22 @@
+#!/bin/sh
+# Pre-commit dei commit manuali di diy-2way-monitors-home, scritto il 2026-09-30 con MS-167.
+# Esegue in ordine gli script di .githooks/pre-commit.d/, con cui i pacchetti aggiungono il
+# proprio passo senza modificare questo file, che git ammette uno solo. Uno script che esce
+# diverso da zero ferma il commit; uno che vuole soltanto avvisare esce zero. Non mette mai
+# file in stage.
+#
+# Il template porta questo dispatcher dentro l'hook del pacchetto readme-sync, che qui non e'
+# adottato perche' il README e' breve e scritto a mano: il README di anti-slop prescrive, dove
+# quell'hook manca, di richiamarne il passo da un hook proprio, ed e' questo.
+set -eu
+
+root=$(git rev-parse --show-toplevel)
+dir="$root/.githooks/pre-commit.d"
+[ -d "$dir" ] || exit 0
+
+for passo in "$dir"/*; do
+    [ -f "$passo" ] || continue
+    sh "$passo"
+done
+
+exit 0
