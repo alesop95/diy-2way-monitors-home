@@ -109,13 +109,12 @@ voci:
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 12
-    livello: 2
+    livello: 1
     dove: questo repository
-    titolo: Deriva di stile nei documenti vivi, pulizia decisa il 2026-09-30 (ADR-025)
-    stato: Grassetto in prosa in voci storiche del registro e in tre pagine dell'ambiente; la convenzione vieta di riscrivere una voce passata.
-    passo: Ripulire grassetto in prosa e segnalazioni di lint-prosa nei soli documenti vivi, lasciando intatti il registro dei microstep e le voci storiche.
-    fonte: ".claude/context/current-work.md"
-
+    titolo: Rileggere le prevalenze di elenchi a tre in undici documenti vivi
+    stato: "Dopo MS-171 grassetto e parallelismi negativi sono a posto; lint-prosa segnala ancora il segno P4 in undici documenti vivi, cioè elenchi quasi tutti di tre elementi."
+    passo: Rileggere ogni elenco e tenere i tre solo dove le cose sono tre, secondo interaction-style.md; il registro storico resta fuori per ADR-025.
+    fonte: "docs/OPERATIONS-LOG.md"
   - id: 13
     livello: 3
     dove: acquisto

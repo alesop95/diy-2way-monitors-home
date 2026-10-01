@@ -123,10 +123,7 @@ Nei file di documentazione del progetto la grafia è invece stata sanata il 2026
 
 ## Deriva di stile rispetto al template
 
-Il template `template-claude-developing` prescrive alla sezione 8 di `PROJECT-SYSTEM.md` che nella prosa non si usino elenchi puntati, emoji né grassetto, e che gli acronimi si spieghino in note a piè di pagina numerate. Parte della documentazione di questo progetto non lo rispetta, e la deriva è quantificata: `docs/OPERATIONS-LOG.md` contiene grassetto in prosa in gran quantità, `docs/10-ambiente/installazione-pulita-26-04.md` in ventotto punti, `docs/10-ambiente/fotografia-macchina-2026-09-07.md` in ventiquattro, e `.claude/memory/progress.md` in undici. Le note a piè di pagina esistono in cinque pagine su dodici del blocco ambiente.
-
-Dal 2026-09-09 la documentazione nuova rispetta lo stile del template, e `docs/10-ambiente/setup-macchina-2026-09.md` ne è la prima applicazione integrale, con zero grassetto in prosa e sei note a piè di pagina. La ripulitura del pregresso non è stata eseguita per una ragione che va dichiarata invece di sembrare una dimenticanza: il registro dei microstep proibisce di riscrivere una voce passata, e la maggior parte del grassetto in prosa vive dentro voci già committate. La riscrittura di quelle voci va quindi decisa esplicitamente, perché è una modifica alla forma di documentazione storica e non una correzione di contenuto.
-
+Sezione riscritta il 2026-09-30, perché descriveva lo stato di prima di MS-078. Nei documenti vivi il grassetto in prosa è a zero dal 2026-09-09, misurato di nuovo il 2026-09-30 su 46 file; nei registri storici ne resta uno, in MS-152, che per ADR-025 non si tocca. La pulizia decisa con ADR-025 è MS-171: dei parallelismi negativi segnalati da `tools/lint-prosa.py` nei documenti vivi, diciassette sono riscritti e cinque restano perché qualcuno aveva davvero sostenuto la tesi opposta. Restano da rileggere le prevalenze di elenchi a tre in undici documenti vivi, voce 12 della roadmap.
 ## Prossimo passo concreto
 
 Questa sezione è stata riscritta il 2026-09-30 perché dal 2026-09-17 indicava ancora come passo successivo la sottofase 8.3 e le seguenti, tutte chiuse: la sua versione precedente sta nella storia di git, e il racconto di quelle sottofasi nei microstep da MS-090 a MS-143.

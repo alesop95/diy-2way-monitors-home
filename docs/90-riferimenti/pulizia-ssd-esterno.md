@@ -73,7 +73,7 @@ Va detto che su un volume di decine di gigabyte la misura richiede qualche minut
 
 Questa è l'osservazione che vale più dello spazio, ed è emersa guardando la radice del volume senza cercarla.
 
-Una cartella `FOUND.00x` non è una cartella qualsiasi: è il deposito in cui `chkdsk` mette i frammenti orfani quando ripara il filesystem, cioè i pezzi di file di cui ha trovato i dati ma non il nome. Averne una significa che il filesystem è stato riparato una volta. Sul volume ce ne sono *cinque*, `FOUND.000` fino a `FOUND.004`, con date che vanno dal 30 giugno al 3 settembre. Cinque riparazioni in poco più di due mesi.
+Una cartella `FOUND.00x` è il deposito in cui `chkdsk` mette i frammenti orfani quando ripara il filesystem, cioè i pezzi di file di cui ha trovato i dati ma non il nome. Averne una significa che il filesystem è stato riparato una volta. Sul volume ce ne sono *cinque*, `FOUND.000` fino a `FOUND.004`, con date che vanno dal 30 giugno al 3 settembre. Cinque riparazioni in poco più di due mesi.
 
 Le cause tipiche sono due e vanno distinte, perché portano a rimedi opposti.
 
