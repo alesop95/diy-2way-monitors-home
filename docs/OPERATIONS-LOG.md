@@ -3757,6 +3757,28 @@ Verificato con: elenco della radice di `J:` dopo la cancellazione; ricerca del t
 
 Esito: l'errore non si annulla; il vincolo è scritto dove ogni sessione lo legge per primo.
 
+### MS-178 - Fase 10: l'autenticazione SSH per password disattivata, dopo un primo tentativo rotto da PowerShell, e la prenotazione dell'indirizzo rinviata al trasloco
+
+Data: 2026-10-01
+
+Perimetro: `/etc/ssh/sshd_config.d/10-solo-chiave.conf` sulla macchina Ubuntu, scritto dall'utente con `sudo` dalla postazione Windows; la sottofase 10.3 e il troubleshooting di `docs/10-ambiente/installazione-pulita-26-04.md`; PA-022; la voce 6 della roadmap.
+
+Legame con il progetto: serve la procedura di installazione della macchina, sottofasi 10.3 e 10.4; nessuna fase del workflow elettroacustico.
+
+*Il primo tentativo.* Il comando consegnato usava `sed` con l'espressione fra virgolette doppie dentro una stringa fra apici singoli, da lanciare con `ssh -t studio` da Windows PowerShell 5.1. Dopo la password `sed` ha risposto `unterminated 's' command`: PowerShell toglie le virgolette doppie interne passando la stringa a `ssh`, e l'espressione si è spezzata al primo spazio. Il primo comando della catena aveva già creato `/etc/ssh/sshd_config.bak-2026-10-01`, e i successivi non sono partiti. Letto dopo, in sola lettura: il file principale era identico al backup e la riga 78 ancora `#PasswordAuthentication yes`. L'errore è del comando che ho consegnato, perché la regola sul contesto di shell chiede di consegnare la sintassi della macchina su cui si incolla, e una stringa annidata per due shell è un contesto che andava provato prima.
+
+*La forma che ha funzionato.* Senza virgolette interne e senza toccare il file principale: `echo PasswordAuthentication no | sudo tee` su un file di `sshd_config.d`, che `sshd_config` include alla riga 24, prima della riga 78, e in OpenSSH vale il primo valore letto. L'uscita è stata `PasswordAuthentication no` dal file e `passwordauthentication no` da `sshd -T`, cioè la configurazione effettiva.
+
+*La verifica nei due versi, dalla postazione.* Senza chiave, con le sole autenticazioni per password e interattiva, il server risponde `Authentications that can continue: publickey` e `Permission denied (publickey)`, uscita 255. Con la chiave entra, uscita zero. Il file aggiunto pesa 26 byte e appartiene a `root`; il servizio `ssh` è attivo; il backup del file principale resta accanto, ed è innocuo.
+
+*La sottofase 10.4 non si esegue.* L'utente ha precisato che la rete attuale è quella dell'azienda e che la macchina andrà a casa: una prenotazione DHCP fatta qui resterebbe sul router sbagliato. È rinviata con PA-022, che ricorda anche l'alias `studio` della postazione, oggi legato a `192.168.10.204`.
+
+*La procedura.* La sottofase 10.3 porta ora la forma eseguita davvero, nelle due varianti, per il terminale della macchina e per PowerShell dalla postazione, con l'esito atteso e la verifica nei due versi, e il troubleshooting della pagina ha la voce A con sintomo, causa e rimedio. La pagina è propagata al gemello.
+
+Verificato con: l'uscita del comando incollata dall'utente; `ssh -v` senza chiave e `ssh` con chiave dalla postazione; `cat`, `ls -l` e `systemctl is-active ssh` sulla macchina.
+
+Esito: fatto per la 10.3; la 10.4 è rinviata con PA-022.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
@@ -3771,7 +3793,7 @@ La fase 8 dalla sottofase 8.3 in avanti, che è il prossimo passo concreto e non
 
 La fase 6, che è l'unica bloccata, e non da una condizione fisica ma da una decisione di acquisto. La macchina ha la sola scheda integrata, verificato due volte a un giorno di distanza, e l'interfaccia esterna che i documenti dichiaravano come propria non appartiene a questo progetto: il ritiro è in MS-079 e la scelta è PA-012. Due parametri della scelta non sono stati dichiarati e vanno chiesti, cioè il numero di ingressi simultanei e un eventuale tetto di spesa.
 
-La fase 10, cioè l'igiene post-installazione, è compiuta nelle sue parti che contano: la direttiva di aggiornamento su `Prompt=lts` era già impostata di serie, la sospensione automatica è disattivata con quattro target `masked`, e la chiave SSH dedicata è installata e funzionante. Restano la disattivazione dell'autenticazione per password e la prenotazione dell'indirizzo sul router, che sono entrambe azioni dell'utente e nessuna delle due blocca il progetto.
+La fase 10, cioè l'igiene post-installazione, è compiuta nelle sue parti che contano: la direttiva di aggiornamento su `Prompt=lts` era già impostata di serie, la sospensione automatica è disattivata con quattro target `masked`, e la chiave SSH dedicata è installata e funzionante. La disattivazione dell'autenticazione per password è compiuta il 2026-10-01, MS-178; la prenotazione dell'indirizzo è rinviata al trasloco della macchina a casa, PA-022.
 
 La fase 11, cioè la fotografia finale e il confronto con quella iniziale, che si fa a fase 8 chiusa.
 
