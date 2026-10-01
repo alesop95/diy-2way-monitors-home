@@ -34,7 +34,7 @@ Restano fuori da questa sequenza le voci a bassa priorità che non dipendono da 
 
 ## PA-010 - Verificare che i file personali siano tutti sulla macchina, prima di cancellarli altrove
 
-Data di apertura: 2026-09-09. Stato: aperta.
+Data di apertura: 2026-09-09. Stato: aperta e dormiente dal 2026-10-01: l'utente ha dichiarato che non ha in programma alcuna cancellazione, quindi l'inventario non si fa finché una cancellazione non viene decisa da lui. Nessuna copia esterna si cancella in ogni caso senza il suo permesso, secondo il vincolo di `CLAUDE.md`.
 
 Che cosa va fatto. Prima di cancellare qualunque copia di materiale personale che oggi vive fuori dalla macchina Ubuntu Studio, cioè sulla postazione Windows, sull'SSD esterno `J:` o sul disco `G:` non ancora ispezionato, va accertato che il corrispondente sia presente e integro dentro `/home/alesop95`. La verifica riguarda i file di lavoro personali e non il solo corredo software, quindi comprende i progetti Ardour, il materiale di acustica della stanza, i simulatori, i documenti sciolti sulla scrivania e tutto ciò che l'utente riconosce come proprio.
 
@@ -352,7 +352,7 @@ Dove vive la decisione di fondo. Il consolidamento del NAS per la macchina priva
 
 ## PA-008 - Recuperare 1,2 GiB di cartelle di servizio su J:
 
-Data di apertura: 2026-09-07. Stato: COMPIUTA il 2026-10-01 con MS-176. `FOUND.002` e `.Spotlight-V100` risultavano già assenti; `FOUND.000` e `FOUND.001` erano state ricreate da due riparazioni di `chkdsk` del 2026-09-14 e del 2026-09-29, con un frammento da 128 KiB ciascuna, lette e cancellate. Lo spazio recuperabile misurato è zero.
+Data di apertura: 2026-09-07. Stato: COMPIUTA il 2026-10-01 con MS-176. `FOUND.002` e `.Spotlight-V100` risultavano già assenti; `FOUND.000` e `FOUND.001` erano state ricreate da due riparazioni di `chkdsk` del 2026-09-14 e del 2026-09-29, con un frammento da 128 KiB ciascuna, lette e cancellate dall'agente senza un permesso esplicito per quei file: è l'errore registrato in MS-177, da cui nasce il vincolo scritto in `CLAUDE.md`. Lo spazio recuperabile misurato è zero.
 
 Che cosa va fatto. Cancellare da `J:` le tre cartelle di servizio che contengono lo spazio recuperabile, verificate presenti il 2026-09-07.
 

@@ -222,7 +222,8 @@ def controlla_manuali() -> None:
             else:
                 riga("ok", f"{cartella.name}: assente")
         if residuo:
-            print(f"  ESEGUIBILE ADESSO: {residuo / (1 << 20):.1f} MiB da recuperare. Il comando e' in PA-008.")
+            print(f"  DA DECIDERE DALL'UTENTE: {residuo / (1 << 20):.1f} MiB recuperabili. Nessuna cancellazione")
+            print("  su J: senza il suo permesso esplicito per quei file (CLAUDE.md, MS-177).")
             print("  I due archivi .7z NON si cancellano: nessuno dei due contiene l'altro.")
             print("  Una FOUND nuova dice che chkdsk ha riparato il disco: espellere prima di staccare.")
         else:
