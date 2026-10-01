@@ -216,6 +216,8 @@ Aperta il 2026-09-30, MS-169. L'hook `md-unwrap-auto` del pacchetto `hooks-start
 
 Aperta il 2026-10-01, MS-174. Il segno P4 di `lint-prosa.py` del pacchetto `anti-slop` conta come elenco qualunque sequenza della forma «A, B e C» con elementi di una o due parole, e quindi anche un confine di frase o un'apposizione seguiti da una congiunzione, per esempio «a valle, cioè X e X» o «l'esito atteso, si ferma e si». Su undici documenti di questo progetto le corrispondenze a tre elementi erano 110, e 61 non erano elenchi. La prevalenza delle terne che lo strumento segnala è quindi in buona parte un prodotto della misura: la correzione da portare nel template è escludere le corrispondenze il cui primo elemento è introdotto da una virgola di inciso, o che contengono parole funzionali come «cioè», «si», «è», «con» o «dove», e aggiungere alle prove interne un caso negativo per ciascuna forma.
 
+Aperta il 2026-10-01, MS-179. `check-eol.py` del template escludeva `_notes`, `node_modules` e le fixture ma non `.venv`, quindi un progetto con un ambiente virtuale Python riceveva segnalazioni sui file delle librerie installate. La correzione, cioè `.venv` e `venv` fra le cartelle escluse, è fatta qui nelle due copie identiche e va portata nel template.
+
 Criterio di completamento. Le voci aperte risultano presenti nel template, verificate con un confronto e non con un ricordo, e questa voce si chiude dichiarando la data. La verifica non decisa produce invece un microstep con il suo esito.
 
 Perché non si fa da qui e subito. È una modifica a un altro repository, quindi è una decisione dell'utente su quel progetto, e va fatta aprendo una sessione là invece di scrivere da qui: la direzione di propagazione del blocco dell'ambiente è unidirezionale per scelta, e lo stesso principio vale a maggior ragione fra un progetto e il template da cui discende.
@@ -559,6 +561,22 @@ Conseguenza da non dimenticare. L'alias `studio` nel file `~/.ssh/config` della 
 Condizione di sblocco. La macchina accesa e collegata nella rete di casa.
 
 Criterio di completamento. Una prenotazione DHCP sul router di casa per il MAC `2c:4d:54:53:a4:fb`, oppure un indirizzo statico configurato sulla macchina, con l'indirizzo scritto nella procedura; l'alias `studio` aggiornato sulla postazione da cui la si raggiunge; `ssh studio` verificato con la sola chiave.
+
+## PA-023 - Configurare le credenziali dei tre strumenti di ricerca
+
+Data di apertura: 2026-10-01. Stato: aperta, eseguibile dall'utente.
+
+Che cosa va fatto. Tre configurazioni che l'agente non può e non deve fare al posto dell'utente, perché passano da login e chiavi che vivono negli archivi privati dei programmi e mai in file tracciati.
+
+OpenAlex. Aprire una sessione nuova di Claude Code nel progetto, approvare il server di progetto `openalex` che legge da `.mcp.json`, e completare il login OAuth con `/mcp`. Verifica: `search_works` su una query breve e `get_work` su un DOI noto.
+
+PaperQA2. È installato nell'ambiente virtuale del progetto, `.venv`, alla versione 2026.8.12, con la riga di comando `.venv\Scripts\pqa.exe`. Serve un modello compatibile con LiteLLM e la sua chiave, oppure un modello locale: la chiave va nel livello privato, per esempio una variabile d'ambiente della sessione, e l'indice in una cartella ignorata indicata con `PQA_HOME`, per esempio `_notes/.pqa`.
+
+Feynman. È installato globalmente con npm alla versione 0.5.19, con la telemetria spenta da `FEYNMAN_TELEMETRY=off`. Va eseguito `feynman setup` per scegliere provider e modello, poi `feynman status` deve dichiarare un modello valido.
+
+Condizione di sblocco. Nessuna: dipende da azioni dell'utente.
+
+Criterio di completamento. Le tre verifiche riuscite, con versione, provider e modello di ciascuno annotati nel registro delle licenze e registrazioni, e nessuna credenziale in un file tracciato.
 
 ## Azioni compiute
 

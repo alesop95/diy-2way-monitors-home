@@ -74,6 +74,16 @@ _notes/
 # si rigenerano con tools/roadmap.py --write e non si versionano. Aggiunto il 2026-09-30.
 /build/
 
+# Conoscenza costruita sui libri e sugli appunti dell'utente (ADR-028, 2026-10-01): il
+# repository e' pubblico e quel materiale non si pubblica, quindi restano locali le fonti,
+# le pagine compilate della wiki, le skill generate dai libri con il prefisso libro- e i
+# loro wrapper per Codex. Restano tracciati lo schema della wiki, il suo registro e le
+# skill di procedura (wiki-digest, book-digest). Copie e cache stanno gia' sotto _notes/.
+/knowledge/sources/
+/knowledge/wiki/
+/.claude/skills/libro-*/
+/.agents/skills/libro-*/
+
 # Ambiente di sviluppo
 node_modules/
 .venv/

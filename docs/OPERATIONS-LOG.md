@@ -3779,6 +3779,30 @@ Verificato con: l'uscita del comando incollata dall'utente; `ssh -v` senza chiav
 
 Esito: fatto per la 10.3; la 10.4 è rinviata con PA-022.
 
+### MS-179 - La base di conoscenza e la ricerca: sedici documenti convertiti, sei pacchetti istanziati, tre strumenti in attesa di credenziali
+
+Data: 2026-10-01
+
+Perimetro: lettura in sola lettura di due cartelle di `J:` indicate dall'utente; copia locale del primo lotto in `_notes/fonti-studio/lotto-01/`; i pacchetti `doc-ingest`, `knowledge-wiki`, `book-to-skill`, `academic-researcher`, `book-bib-extract` e il server MCP di OpenAlex; PaperQA2 nell'ambiente virtuale `.venv`; Feynman installato globalmente con npm; tre correzioni a strumenti e configurazione; ADR-028, ADR-029 e ADR-030; PA-023. Nessun file scritto su `J:` e nessun comando sulla macchina Ubuntu.
+
+Legame con il progetto: serve le fasi 3, 4a e 5 del workflow, cioè simulazione, progettazione acustica e simulazione finale, che chiedono teoria dei filtri e letteratura, e serve il report LaTeX del progetto, che è il secondo esito dichiarato dalla roadmap.
+
+*Le richieste dell'utente.* Dopo la proposta di confrontare monitor attivi e passivi, l'utente ha detto di aver dato per scontato il passivo e ha chiesto prima il confronto scritto, poi la decisione. Ha chiesto di usare le skill del template per costruire conoscenza sui propri appunti e libri e di scrivere un report LaTeX dettagliato anche matematicamente, e ha precisato che il progetto deve essere completo come il template per scrivere e usare le skill. Le scelte sono state poste una per una e registrate: base di conoscenza con `doc-ingest`, `knowledge-wiki` e `book-to-skill`; `academic-researcher` con la norma su richiesta; `book-bib-extract`; OpenAlex; PaperQA2 e Feynman. Sui libri di provenienza Library Genesis l'utente ha scelto l'uso in locale, ed è ADR-028.
+
+*L'inventario, in sola lettura.* `J:\_____da sistemare ancora\analog_ele utili` contiene 11 file, di cui 8 PDF per 155,6 MiB; `J:\MAIN\ANALOG (AUDIO) ELECTRONICS` 563 file, di cui 264 PDF per 2.934,7 MiB, 52 video per 7.896,3 MiB e 14 DOCX. Gran parte riguarda elettronica per chitarra, progettazione di PCB e valvole, estranee ai diffusori. Nessun testo è specifico sulla progettazione dei diffusori, ed è una lacuna dichiarata.
+
+*Il primo lotto.* Diciotto file pertinenti, cioè teoria dei filtri e delle funzioni di trasferimento, elettronica audio e gli appunti del corso EEASE; due erano doppioni per impronta, quindi sedici copiati, con origine e impronta in `_notes/fonti-studio/lotto-01-origine.json`. `tools/doc-ingest.py`, istanziato dal modello, li ha convertiti tutti senza errori, per circa 1,84 milioni di parole: un corpus che non entra in contesto e si legge per livelli, dall'indice `_INDEX.md` della cache. Un documento, quello di Izadian, è uscito a zero parole, probabilmente una scansione senza strato di testo, e chiederà il motore Docling o l'OCR.
+
+*I pacchetti.* `knowledge/` porta lo schema e il registro tracciati, con una sezione di progetto che dichiara che fonti e pagine compilate restano locali, e la skill `wiki-digest`. `book-digest` è istanziata, e le skill che genererà prendono il prefisso `libro-` perché il `.gitignore` le escluda con i loro wrapper per Codex. Le nove skill di `academic-researcher` sono sotto `.claude/skills/` con `research-vault/reference/`; la sua regola `no-uncited-claims` avrebbe portato il budget delle istruzioni da 95.336 a 100.176 caratteri, oltre la soglia di guardia, ed è istanziata come `RIFERIMENTO.md` di `citation-tracker` con la riga di innesco in `CLAUDE.md`, come prescrive la sezione 24 di `PROJECT-SYSTEM.md`. `book-bib-extract` porta la skill e due strumenti, e usa Poppler 25.07, già installato. `.mcp.json` e `.codex/config.toml` dichiarano OpenAlex senza alcun token.
+
+*Gli strumenti esterni.* PaperQA2 2026.8.12 è installato in `.venv`, che il `.gitignore` già escludeva, e `pqa --help` risponde. Feynman 0.5.19 è installato con `npm install -g` alla versione esplicita, su Node 22.23.1, e `feynman status` con `FEYNMAN_TELEMETRY=off` dichiara telemetria spenta e nessun modello configurato. Le credenziali dei tre strumenti sono dell'utente, ed è PA-023.
+
+*Tre correzioni nate dai controlli.* La cache delle conversioni e le copie del lotto hanno un marcatore `.md-unwrap-ignore` locale, perché `md-unwrap` non riformatti materiale generato o esterno. `check-eol.py` escludeva `_notes` ma non `.venv`, e segnalava i file delle librerie installate: la correzione è nelle due copie identiche e in PA-003. Il documento di riferimento di `academic-researcher`, copiato tale e quale da fonte esterna, è dichiarato in `tools/dashes-exclude.txt` come nel template.
+
+Verificato con: l'inventario per estensione e peso delle due cartelle; la copia con controllo delle impronte; l'uscita di `doc-ingest.py`, sedici nuovi e zero errori, e il conteggio delle parole per documento; `git check-ignore -v` sui percorsi di fonti, wiki e skill dei libri; `pip show paper-qa`, `pqa --help`, `feynman --version` e `feynman status`; la catena di verifica prima di un commit; `misura-istruzioni.py`.
+
+Esito: fatto per l'istanziazione; aperti PA-023 per le credenziali, il confronto fra attivo e passivo e lo scheletro del report, che sono i passi successivi.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
