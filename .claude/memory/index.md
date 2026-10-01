@@ -8,7 +8,7 @@
 Branch attivo:          main
 Commit di riferimento:  3780920
 Data snapshot:          2026-10-01
-Modifiche non committate: questo snapshot portato a HEAD, e MS-173 con MS-174
+Modifiche non committate: i microstep da MS-173 a MS-176 con le loro registrazioni
 ```
 
 Il repository conta 76 commit e `HEAD` è `3780920`, il commit dell'utente del 2026-10-01 che porta MS-171 e MS-172, cioè la pulizia dello stile nei documenti vivi e la valutazione di PA-012 scritta nel gemello. Prima di esso `55666b7`. I tre commit del 2026-09-30 sono dell'utente, fatti con `chiudi` a tre punti fermi: `da8c4f2` porta da MS-165 a MS-167, cioè il runbook di inizializzazione; `1b222d5` aggiunge MS-168, il supporto di Ubuntu Studio; `55666b7` aggiunge MS-169 e MS-170, cioè PA-013 e le decisioni. Prima di essi `0189667` è la terza di tre tornate di allineamento al template prodotte da `allinea-tutti.ps1`: `7eebe82` e `f0b5a42` del 2026-09-29 e `0189667` del 2026-09-30, che portano il template a `ec124d7`. Prima di esse `52ba60a` e `74a3f65` sono lo snapshot e il work-log della sessione del 2026-09-22. Le tre tornate hanno copiato modelli, skill e norme senza istanziare nulla, e hanno trasformato due regole in norme caricate su richiesta; il loro racconto misurato è MS-165, scritto il 2026-09-30 perché nessun documento le raccontava. Il paragrafo seguente descrive lo stato al `0edd529` e resta valido per tutto ciò che quelle tornate non hanno toccato.

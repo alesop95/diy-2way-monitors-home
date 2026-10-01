@@ -132,10 +132,11 @@ def controlla_pa001() -> None:
 
 def controlla_pa002() -> None:
     print("\nPA-002  Verificare lo stato di licenza di Ramsete 27b")
-    ramsete = COPIA_LAVORO / "Room acoustics" / "Ramsete27b - room acoustics"
-    riga("ok" if ramsete.is_dir() else "  ", f"materiale presente: {ramsete.name}")
-    print("  APERTA: verifica da fare sul sito del produttore, non automatizzabile.")
-    print("  Priorita' bassa: il ruolo di Ramsete e' coperto da Akabak.")
+    # La copia sul Desktop, che questa riga verificava, e' stata cancellata con PA-007:
+    # la copia di lavoro sta sulla macchina Ubuntu, verificata per impronta in MS-173.
+    riga("ok", "COMPIUTA il 2026-10-01, MS-173: copia identica per impronta allo zip degli autori")
+    print("  Uso completo con chiave acquistabile tramite Spectra, senza chiave modalita'")
+    print("  dimostrativa a precisione ridotta. Escluso dal corredo con ADR-026, revocabile.")
 
 
 def controlla_pa003() -> None:
@@ -177,10 +178,9 @@ def controlla_manuali() -> None:
     print("\nPA-005  Completare le tre voci privilegiate della fase 0")
     riga("ok", "stato di salute dell'SSD: letto il 2026-09-07, PASSED, usura 9 per cento")
     riga("ok", "Machine Identifier: letto in interfaccia il 2026-09-07, coincide con _notes")
-    riga("? ", "esito reale di sudo apt update")
-    print("  APERTA su una voce su tre, e quella voce e' resa irrilevante da ADR-013:")
-    print("  su un sistema che verra' azzerato l'esito di apt update non decide nulla.")
-    print("  Le due voci che contavano sono chiuse: disco sano, licenza confermata valida.")
+    riga("ok", "esito reale di sudo apt update: chiuso come irrilevante per ADR-013")
+    print("  COMPIUTA il 2026-09-30 per decisione dell'utente, MS-170: il sistema su cui")
+    print("  apt update andava letto e' stato azzerato, quindi l'esito non decide nulla.")
 
     print("\nPA-007  Cancellare la copia del corredo sul Desktop della postazione")
     if COPIA_LAVORO.is_dir():
@@ -207,18 +207,26 @@ def controlla_manuali() -> None:
     print("\nPA-008  Recuperare 1,2 GiB di cartelle di servizio su J:")
     disco = COPIA_SSD.parent
     if disco.is_dir():
-        voci = [("FOUND.002", 429), ("FOUND.000", 412), (".Spotlight-V100", 371)]
+        # Il peso si misura e non si ricorda: fino al 2026-10-01 questa voce riportava
+        # pesi scritti nel codice, e dava ~412 MiB per una FOUND.000 che chkdsk aveva
+        # ricreato con un solo frammento da 128 KiB. Si guardano anche le FOUND nuove,
+        # perche' ogni riparazione di chkdsk ne crea una (MS-176).
+        voci = sorted(x for x in disco.iterdir() if x.is_dir() and x.name.upper().startswith("FOUND."))
+        voci += [disco / ".Spotlight-V100"]
         residuo = 0
-        for nome, mib_atteso in voci:
-            presente = (disco / nome).is_dir()
-            riga("  " if presente else "ok", f"{nome}: {'presente, ~' + str(mib_atteso) + ' MiB' if presente else 'rimossa'}")
-            if presente:
-                residuo += mib_atteso
+        for cartella in voci:
+            if cartella.is_dir():
+                byte = sum(f.stat().st_size for f in cartella.rglob("*") if f.is_file())
+                riga("  ", f"{cartella.name}: presente, {byte / (1 << 20):.1f} MiB misurati")
+                residuo += byte
+            else:
+                riga("ok", f"{cartella.name}: assente")
         if residuo:
-            print(f"  ESEGUIBILE ADESSO: ~{residuo} MiB da recuperare. Il comando e' in PA-008.")
+            print(f"  ESEGUIBILE ADESSO: {residuo / (1 << 20):.1f} MiB da recuperare. Il comando e' in PA-008.")
             print("  I due archivi .7z NON si cancellano: nessuno dei due contiene l'altro.")
+            print("  Una FOUND nuova dice che chkdsk ha riparato il disco: espellere prima di staccare.")
         else:
-            print("  COMPIUTA: le tre voci non ci sono piu'.")
+            print("  COMPIUTA il 2026-10-01, MS-176: nessuna cartella di servizio da recuperare.")
     else:
         print("  IN ATTESA DEL DISCO: J: non e' collegato.")
 
@@ -305,9 +313,12 @@ def controlla_pa010_pa011() -> None:
     print("\nPA-012  Scegliere l'interfaccia audio, che serve a due progetti")
     riga("? ", "vincolo 1: dispositivo di classe audio senza driver proprietari")
     riga("? ", "vincolo 2: deve reggere anche le misure, quindi phantom a 48 V")
-    riga("  ", "numero di ingressi simultanei: NON dichiarato, da chiedere")
-    riga("  ", "tetto di spesa: NON dichiarato, da chiedere")
-    print("  APERTA: la valutazione vive nel progetto gemello, la scelta vincola")
+    riga("ok", "ingressi simultanei: otto, dichiarati dall'utente il 2026-09-21")
+    riga("ok", "tetto di spesa: nessuno, dichiarato dall'utente il 2026-09-21")
+    gemello = Path("E:/home-recording-training-mixing-setup/docs/20-catena-di-ingresso.md")
+    riga("ok" if gemello.is_file() else "  ", "valutazione dei candidati scritta nel gemello, MS-172")
+    print("  APERTA sulla scelta dell'utente, che compera alla fine tutti gli acquisti")
+    print("  insieme (decisione del 2026-10-01, MS-176). La valutazione vive nel gemello, la scelta vincola")
     print("  anche la fase 8 di questo. La scelta del microfono dipende da questa")
     print("  e l'ordine non e' invertibile: vedi docs/20-misura-stanza.md e MS-079.")
 
@@ -349,12 +360,15 @@ def controlla_pa010_pa011() -> None:
     print("  Clonezilla a macchina spenta.")
 
     print("\nPA-013  Escludere i backup Veeam dalla sincronizzazione di sync-dev")
-    riga("  ", "regola di esclusione in C:\\Scripts\\sync-dev: da scrivere")
-    riga("ok", "non urgente: la destinazione scelta e' J: e non un percorso sotto E:")
-    print("  APERTA e non bloccata da nulla: eseguibile in qualunque momento sulla")
-    print("  postazione. Diventa obbligatoria se una destinazione di backup cade")
-    print("  sotto un percorso che sync-dev copia, perche' sarebbero circa 30 GB")
-    print("  ricopiati ogni giorno su un SSD per duplicare una copia che non cambia.")
+    config = Path("C:/Scripts/sync-dev/Config-sync-dev.ps1")
+    testo = config.read_text(encoding="utf-8", errors="replace") if config.is_file() else ""
+    esclusi = all(e in testo for e in ("'*.vbk'", "'*.vib'", "'*.vbm'"))
+    riga("ok" if esclusi else "!!", "esclusione di *.vbk, *.vib e *.vbm letta in Config-sync-dev.ps1"
+         if esclusi else "esclusione dei file Veeam NON trovata in Config-sync-dev.ps1")
+    if esclusi:
+        print("  COMPIUTA il 2026-09-30, MS-169, commit 172270b del repository sync-dev.")
+    else:
+        print("  ANOMALIA: la voce risulta compiuta in MS-169 ma la regola non c'e' piu'.")
 
 
 def controlla_voci_recenti() -> None:

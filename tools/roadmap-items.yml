@@ -8,7 +8,7 @@
 # docs/PENDING-ACTIONS.md, dalla sezione "Lavoro noto e non fatto" di current-work.md e dal
 # runbook di inizializzazione dello stesso giorno. Le voci 1, 2, 3, 4 e 11 sono state tolte il
 # 2026-09-30 perché compiute (MS-167, MS-168, MS-169, MS-170), le voci 10 e 12 il 2026-10-01
-# (MS-173, MS-174): i loro id non si riusano. Il dettaglio del perché di ciascuna resta nel
+# (MS-173, MS-174) e la 5 lo stesso giorno (MS-176): i loro id non si riusano. Il dettaglio del perché di ciascuna resta nel
 # documento indicato in `fonte`: qui sta il costo e il passo che la chiude.
 
 titolo: Roadmap operativa di diy-2way-monitors-home
@@ -61,14 +61,6 @@ livelli:
   3: "Fuori da questo repository, ma è da qui che dipende il resto"
 
 voci:
-  - id: 5
-    livello: 1
-    dove: "disco esterno J:"
-    titolo: PA-008, recuperare 1,2 GiB di cartelle di servizio
-    stato: Tre cartelle di servizio con frammenti orfani di chkdsk, verificate presenti il 2026-09-07; eseguibile quando il disco è collegato, e check-pending-actions.py dice se lo è.
-    passo: "Cancellare da J: le tre cartelle elencate nella voce."
-    fonte: "docs/PENDING-ACTIONS.md"
-
   - id: 6
     livello: 1
     dove: macchina Ubuntu e router
@@ -82,7 +74,7 @@ voci:
     dove: questo repository e il gemello
     titolo: PA-012, scegliere la catena di ingresso audio
     stato: Blocca la fase 6 e la scelta del microfono di misura, in quest'ordine; serve anche al progetto gemello.
-    passo: Decidere l'acquisto sui criteri già registrati nella voce.
+    passo: "Scegliere sul confronto di docs/20-catena-di-ingresso.md del gemello; l'acquisto si fa alla fine con gli altri, per ADR-027."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 8
@@ -106,7 +98,7 @@ voci:
     dove: acquisto
     titolo: PA-020, rilievo geometrico della stanza
     stato: Il protocollo è scritto e la via è il rilievo a metro laser con ricalco in Blender; attende l'acquisto del metro laser.
-    passo: Acquistare il metro laser, poi seguire docs/35-rilievo-geometrico.md.
+    passo: "Subito, con un metro a nastro: tabelle B, C, D ed E di docs/35-rilievo-geometrico.md. Alla fine, con gli altri acquisti per ADR-027: metro laser e tabella A."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 14
