@@ -2,6 +2,20 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-01 - Ramsete accertato ed escluso, la voce sulle triadi chiusa senza riscritture
+
+Commit di partenza: 3780920, cioè il commit dell'utente del 2026-10-01 alle 11:11 che porta MS-171 e MS-172; nel progetto gemello il commit dell'utente `98e6e04` porta la valutazione della catena di ingresso e il blocco ambiente riallineato. Commit prodotto: da fare con `chiudi` e il messaggio di `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-173, MS-174 e MS-175 sotto una intestazione di sessione nuova; `docs/PENDING-ACTIONS.md` con PA-002 compiuta e una voce nuova in PA-003; `docs/10-ambiente/wine-corredo-progetto-stanza.md` con l'accertamento e il percorso corretto, propagato al gemello; `docs/90-riferimenti/fonti.md` con la sezione sull'acustica della stanza; `.claude/memory/decisions.md` con ADR-026; `tools/roadmap-items.yml` senza le voci 10 e 12; `docs/TIMELINE.html`; `.claude/memory/index.md` e questo file; fuori dal repository `_notes/RESUME-PROMPT.md` e `_notes/COMMIT-MSG.txt`.
+
+L'utente ha chiesto di chiudere le voci 10 e 12 della roadmap e di spiegare bene che cosa manca. La voce 10, cioè PA-002, si è chiusa con una prova più forte di quella cercata: lo zip `Ramsete27b.zip` pubblicato dagli autori nel repository che il sito ufficiale indica per il download contiene esattamente i tre file del corredo, e le impronte coincidono sulle due copie della macchina. Il diritto d'uso completo passa da una chiave acquistabile tramite Spectra, e senza chiave il programma lavora a precisione ridotta, quindi Ramsete resta escluso con ADR-026. La procedura di installazione della pagina del corredo puntava a una cartella inesistente, ed è corretta.
+
+La voce 12 si è chiusa senza riscrivere nulla: delle 110 terne che `lint-prosa.py` contava negli undici documenti vivi, 61 sono confini di frase presi per elenchi e 49 sono elenchi veri di tre cose reali. Il difetto dell'espressione dello strumento è una voce di PA-003.
+
+Un mio errore di lettura, registrato in MS-175: in MS-170 e MS-172 ho legato la catena di ingresso alla "fase 6" mescolando le otto fasi del workflow con le fasi da 0 a 11 della procedura di installazione; la catena serve le fasi 1 e 8 del workflow, e il rilievo la fase 2.
+
+Un limite del presidio sulla memoria, osservato oggi: `lint-memoria.py` confronta per data, quindi un commit fatto dopo la mezzanotte su lavoro raccontato nella voce del giorno prima risulta senza traccia. Qui la voce del 2026-10-01 serviva comunque; il caso va tenuto presente prima di leggere un suo difetto come lavoro perduto.
+
 ## 2026-09-30 - Il runbook di inizializzazione ripercorso in modalità allineamento
 
 Commit di partenza: 0189667. Commit prodotti dall'utente con `chiudi`: `da8c4f2` (MS-165..167), `1b222d5` (MS-168) e `55666b7` (MS-169..170), tutti su origin; nel repository `sync-dev` il commit `172270b` per PA-013, anch'esso su origin. L'impronta di ripresa è registrata da `chiudi` alle 17:58.
