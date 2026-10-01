@@ -472,6 +472,12 @@ def controlla_voci_recenti() -> None:
     print("  una scelta da dichiarare, nella parte di ingresso della fase 6.")
     print("  La parte di ingresso della fase 6 resta bloccata da PA-012.")
 
+    print("\nPA-022  Indirizzo stabile e accesso alla macchina nella rete di casa")
+    riga("  ", "macchina nella rete di casa: NO al 2026-10-01, sta nella rete dell'azienda")
+    riga("ok", "MAC di enp3s0 noto e verificato il 2026-10-01: 2c:4d:54:53:a4:fb")
+    print("  BLOCCATA dal trasloco. Allora: prenotazione DHCP sul router di casa per quel")
+    print("  MAC e alias studio aggiornato, perche' oggi punta a 192.168.10.204.")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
