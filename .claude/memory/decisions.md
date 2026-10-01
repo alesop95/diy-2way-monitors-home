@@ -359,3 +359,15 @@ Decisione. Si ripuliscono i soli documenti vivi, cioè le pagine di `docs/` che 
 Motivazione. Un documento vivo si legge per sapere com'è una cosa oggi, e la sua forma conta per ogni lettore futuro; una voce storica si legge per sapere che cosa è successo e perché, e riscriverla, anche solo nella forma, produce un documento che sembra essere sempre stato giusto, cioè il difetto che la convenzione del registro esiste per evitare. Le segnalazioni di `lint-prosa.py` sono indizi da rileggere e non errori, quindi la pulizia le valuta una per una e non le sostituisce in blocco.
 
 Conseguenze. La pulizia è una milestone a sé, con il proprio microstep e il conteggio prima e dopo, perimetro dichiarato. Il registro storico continuerà a mostrare le segnalazioni, e questo è atteso.
+
+## ADR-026 - Ramsete 2.7b resta fuori dal corredo, con la provenienza accertata e il diritto d'uso chiarito
+
+Data: 2026-10-01. Stato: accettata, revocabile.
+
+Contesto. PA-002 chiedeva se la copia di Ramsete 27b del corredo fosse una versione dimostrativa liberamente distribuibile o una copia completa che richiede licenza, e legava a questa risposta l'installazione o l'esclusione. MS-173 ha accertato che i tre file della copia coincidono per impronta con lo zip `Ramsete27b.zip` pubblicato dagli autori nel repository che il sito ufficiale indica per il download, e che le fonti degli autori legano l'uso completo a una chiave acquistabile tramite Spectra, con una modalità dimostrativa a precisione ridotta in sua assenza.
+
+Decisione. Ramsete non si installa. Il prefix a 32 bit `ramsete32` non si crea.
+
+Motivazione. Una modalità a precisione ridotta non serve a un calcolo su cui si progettano due diffusori, e la versione completa è un acquisto che il progetto non ha motivo di fare, perché il ruolo di Ramsete, cioè l'acustica della stanza, è coperto da Akabak, licenziato e funzionante. La parte condizionata di ADR-009, che apriva a un prefix a 32 bit anche per Ramsete, decade senza effetti pratici, perché l'architettura `i386` è comunque necessaria per Akabak secondo ADR-016.
+
+Conseguenze. La procedura di installazione resta scritta in `docs/10-ambiente/wine-corredo-progetto-stanza.md`, con il percorso corretto, per il caso in cui la decisione venga rivista. Si rivede se le simulazioni di Akabak si rivelassero insufficienti sull'acustica della stanza, oppure se diventasse disponibile una licenza.

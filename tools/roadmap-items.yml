@@ -7,7 +7,8 @@
 # Istanziato il 2026-09-30 con MS-167 dal pacchetto roadmap. Le voci vengono da
 # docs/PENDING-ACTIONS.md, dalla sezione "Lavoro noto e non fatto" di current-work.md e dal
 # runbook di inizializzazione dello stesso giorno. Le voci 1, 2, 3, 4 e 11 sono state tolte il
-# 2026-09-30 perché compiute (MS-167, MS-168, MS-169, MS-170): i loro id non si riusano. Il dettaglio del perché di ciascuna resta nel
+# 2026-09-30 perché compiute (MS-167, MS-168, MS-169, MS-170), le voci 10 e 12 il 2026-10-01
+# (MS-173, MS-174): i loro id non si riusano. Il dettaglio del perché di ciascuna resta nel
 # documento indicato in `fonte`: qui sta il costo e il passo che la chiude.
 
 titolo: Roadmap operativa di diy-2way-monitors-home
@@ -100,21 +101,6 @@ voci:
     passo: Decidere il perimetro dell'inventario e lanciarlo.
     fonte: "docs/PENDING-ACTIONS.md"
 
-  - id: 10
-    livello: 2
-    dove: questo repository
-    titolo: PA-002, stato di licenza di Ramsete 27b
-    stato: "Priorità bassa: il suo ruolo è coperto da Akabak, e il programma resta fuori dal corredo finché la licenza non è chiarita."
-    passo: Accertare dal sito del produttore se la copia è dimostrativa e distribuibile o richiede licenza, con la fonte.
-    fonte: "docs/PENDING-ACTIONS.md"
-
-  - id: 12
-    livello: 1
-    dove: questo repository
-    titolo: Rileggere le prevalenze di elenchi a tre in undici documenti vivi
-    stato: "Dopo MS-171 grassetto e parallelismi negativi sono a posto; lint-prosa segnala ancora il segno P4 in undici documenti vivi, cioè elenchi quasi tutti di tre elementi."
-    passo: Rileggere ogni elenco e tenere i tre solo dove le cose sono tre, secondo interaction-style.md; il registro storico resta fuori per ADR-025.
-    fonte: "docs/OPERATIONS-LOG.md"
   - id: 13
     livello: 3
     dove: acquisto
