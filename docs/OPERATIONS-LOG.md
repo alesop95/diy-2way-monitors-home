@@ -3661,6 +3661,64 @@ Verificato con: `md-unwrap.py --check`, `lint-md-tables.py` e `fix-dashes.py --c
 
 Esito: fatto per la valutazione; PA-012 resta aperta sulla scelta dell'utente.
 
+## 2026-10-01, due voci della roadmap chiuse
+
+### MS-173 - PA-002 compiuta: la copia di Ramsete 27b è l'installatore originale degli autori, e resta esclusa
+
+Data: 2026-10-01
+
+Perimetro: lettura delle fonti degli autori di Ramsete, scaricamento nello scratchpad del pacchetto pubblicato `Ramsete27b.zip`, lettura in sola lettura delle impronte dei file sulla macchina Ubuntu con `ssh studio`, e le registrazioni che ne seguono: `docs/10-ambiente/wine-corredo-progetto-stanza.md`, PA-002, ADR-026 e il registro delle fonti. Sulla macchina nessun file è stato scritto.
+
+Legame con il progetto: serve la fase 3, cioè la simulazione dell'acustica della stanza, perché chiude l'ultima domanda aperta sul corredo di simulazione; da questa voce dipendeva anche la parte condizionata di ADR-009 sui prefix a 32 bit.
+
+*Le fonti.* Il sito ufficiale `ramsete.com`, letto, dichiara come ultima versione la 3.02 del 2018, dice che il programma funziona in modalità dimostrativa senza la nuova chiave USB, e indica come cartella di download un repository GitHub degli autori. Il repository, letto, dice che i moduli funzionano senza chiave hardware in modalità dimostrativa, con precisione ridotta e funzioni avanzate limitate, corrispondente a Ramsete Lite; il readme della cartella di download, letto, dice che la versione completa richiede un file `ramsete.key` e si acquista tramite il distributore Spectra. La pagina dell'Università di Parma non è stata letta, perché il server rifiuta la connessione sicura che lo strumento impone.
+
+*La prova di provenienza, che non era prevista e vale più delle fonti.* La cartella `dowload/OldVersions` del repository contiene `Ramsete27b.zip`. Scaricato, contiene esattamente i tre file del corredo. Le impronte SHA-256 dei tre file, lette sulla macchina in due copie, cioè quella di lavoro sotto `~/electroacoustics/progetto-stanza/room/Ramsete27b - room acoustics` e quella sotto `~/archivio/Room acoustics/`, coincidono una per una con quelle dei file dello zip: `setup.exe` 3d0041832e8b6f5b95cb33d286c24c53ccc9341549589ae8822c6084e8d2aa5c, `Ramsete27b.CAB` 34673fdcd18dcf1e49fe7531c455e325030f9bcc41e631bf466eaa2e65fe8377, `SETUP.LST` 1365d3f926a9b89669be759def3a97ad46f7e29774cdf6d1f177c7b5ba7c7723. La copia è quindi l'installatore originale pubblicato dagli autori. Nella stessa cartella esiste anche un `Ramsete27_cracked.zip`, che non è la copia del corredo e non è stato scaricato.
+
+*Il limite dichiarato.* Che la modalità dimostrativa senza chiave valga identica per la 2.7b è plausibile e non verificato: le frasi delle fonti sono scritte per le versioni recenti, e il programma non è stato installato.
+
+*Un difetto di documentazione trovato strada facendo.* La procedura di installazione della pagina del corredo faceva `cd` in una cartella senza il suffisso ` - room acoustics`, che non esiste: il comando sarebbe fallito. Non era mai stato eseguito, ed è la ragione per cui nessuno se ne era accorto. Il percorso è corretto, e la procedura dichiara di non essere mai stata eseguita.
+
+*L'esito.* La decisione è ADR-026: Ramsete resta fuori, perché la modalità dimostrativa ha una precisione che non serve a un calcolo di progetto, la versione completa è un acquisto, e il ruolo è coperto da Akabak.
+
+Verificato con: lettura di `ramsete.com`, del repository degli autori, della sua cartella delle versioni vecchie e del readme di download; `curl` dello zip e `sha256` dei tre file contenuti; `ssh studio` con `find` e `sha256sum` sulle due copie della macchina.
+
+Esito: fatto. PA-002 è compiuta.
+
+### MS-174 - La voce 12 della roadmap chiusa senza riscritture: delle 110 terne segnalate, 61 non erano elenchi
+
+Data: 2026-10-01
+
+Perimetro: gli undici documenti vivi che `tools/lint-prosa.py` segnalava per prevalenza di elenchi a tre, cioè `docs/30-modellazione-e-simulazione.md`, `docs/60-simulazione-finale-akabak.md`, quattro pagine di `docs/10-ambiente/`, `docs/90-riferimenti/licenze-e-registrazioni.md` e le schede `STACK.md`, `current-work.md` e `roadmap.md`. Nessun file di prosa modificato.
+
+Legame con il progetto: nessuna fase del workflow, e lo dichiaro. Serve la documentazione tecnico-didattica, cioè il secondo esito del progetto.
+
+*Il metodo.* Le corrispondenze sono state estratte con le stesse funzioni dello strumento, cioè la sua espressione degli elenchi applicata ai paragrafi di prosa che lui stesso isola, e lette una per una con il contesto. Le corrispondenze a tre elementi erano 110 su 129 elenchi riconosciuti.
+
+*Il risultato.* 61 non sono elenchi: sono un confine di frase o un'apposizione seguiti da una congiunzione, che l'espressione dello strumento prende per elementi di un elenco, come «a valle, cioè X e X», «l'esito atteso, si ferma e si» o «64 bit, esiste ed è». Le altre 49 sono elenchi di tre cose reali, e ciascuna si conta: tre prodotti nominati come AmpliTube, Guitar Rig e POD, tre versioni come 2010, 2013 e 2015, tre microstep come MS-015, MS-016 e MS-028, tre superfici come pareti, soffitto e arredi, tre esiti di una verifica. Nessuna è una terna messa per abitudine, che è il solo caso che la regola di `interaction-style.md` chiede di correggere. Il conteggio per documento, nell'ordine del perimetro, è di 5 elenchi veri su 8, 1 su 6, 5 su 12, 5 su 15, 3 su 8, 3 su 12, 3 su 7, 7 su 9, 3 su 7, 6 su 12 e 8 su 14. La classificazione è un giudizio mio, fatto riga per riga, e non una misura dello strumento.
+
+*La conseguenza.* Il segnale P4 su questi documenti è in buona parte prodotto dalla misura, quindi la voce 12 si chiude senza riscritture, e il difetto dell'espressione è una voce nuova di PA-003, con la correzione proposta.
+
+Verificato con: uno script che importa `tools/lint-prosa.py` e ne usa le funzioni `paragrafi`, `pulisci` e l'espressione `ELENCO`, eseguito sugli undici documenti, e la lettura delle 110 corrispondenze.
+
+Esito: fatto.
+
+### MS-175 - Correzione di lettura: due numerazioni di fasi, e due miei legami scritti mescolandole
+
+Data: 2026-10-01
+
+Perimetro: i campi "Legame con il progetto" di MS-170 e MS-172, rilevati rileggendo `docs/00-workflow.md` per spiegare all'utente che cosa manca. Nessun file corretto all'indietro, perché il registro non riscrive le voci passate.
+
+Legame con il progetto: nessuna fase, e lo dichiaro; serve la tracciabilità, cioè la convenzione del 2026-09-14 per cui ogni microstep dichiara a quale fase serve.
+
+Nel progetto convivono due numerazioni. Il workflow elettroacustico di `docs/00-workflow.md` ha otto fasi: 1 misura reale, 2 modellazione della stanza, 3 simulazione acustica, 4a progettazione acustica, 4b progettazione meccanica, 5 simulazione finale, 6 acquisto dei driver, 7 montaggio, 8 verifica finale. La procedura di installazione della macchina, `docs/10-ambiente/installazione-pulita-26-04.md`, ha le fasi da 0 a 11, in cui la fase 6 è il controllo della catena audio e la fase 8 è il corredo dei programmi. PA-012 usa la seconda quando dice che la fase 6 resta bloccata, e la prima quando dice che la fase 8 misura i diffusori costruiti.
+
+In MS-170 ho scritto che la scelta della catena di ingresso serve "la fase 6, cioè le misure", e in MS-172 "la fase 6, cioè la misura acustica": è un miscuglio delle due numerazioni. La lettura corretta è questa. La catena di ingresso serve la fase 1 del workflow, cioè la misura reale della stanza, e la fase 8 del workflow, cioè la verifica finale dei diffusori, e chiude il controllo della fase 6 della procedura di installazione. Il rilievo geometrico di PA-020 serve la fase 2 del workflow. Da qui in avanti un legame che nomina una fase dichiara anche quale delle due numerazioni usa, quando il contesto non lo rende ovvio.
+
+Verificato con: lettura della tabella delle otto fasi di `docs/00-workflow.md` e delle voci MS-170, MS-172 e PA-012.
+
+Esito: fatto, come correzione additiva.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

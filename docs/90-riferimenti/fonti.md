@@ -16,6 +16,18 @@ Note di rilascio della base Ubuntu 26.04 LTS: `https://documentation.ubuntu.com/
 
 Discussione sull'annuncio di Ubuntu Studio 26.04 LTS e note di rilascio sul forum della comunità Ubuntu: `https://discourse.ubuntu.com/t/ubuntu-studio-26-04-lts-released/80832` e `https://discourse.ubuntu.com/t/ubuntu-studio-26-04-lts-release-notes/79113`. Elencate dalla stessa ricerca e non lette.
 
+## Acustica della stanza
+
+Sito ufficiale di Ramsete, letto il 2026-10-01: `http://ramsete.com/`. Autorevole sull'ultima versione pubblicata, cioè la 3.02 del 2018, sul fatto che il programma funziona in modalità dimostrativa senza la chiave, e sulla cartella di download, che rimanda al repository qui sotto.
+
+Repository degli autori con i pacchetti di installazione, letto il 2026-10-01: `https://github.com/xorgol/Ramsete_Ultimo`. Autorevole sulla modalità dimostrativa senza chiave hardware, con precisione ridotta e funzioni avanzate limitate, corrispondente a Ramsete Lite. La sua cartella `dowload/OldVersions`, letta lo stesso giorno, contiene `Ramsete27b.zip`, scaricato e confrontato per impronta con la copia del corredo in MS-173. Il file `dowload/readme.md`, letto, dice che serve un file `ramsete.key` e che il programma si acquista tramite Spectra.
+
+Pagina di download di `ramsete.com`, letta il 2026-10-01: `http://ramsete.com/download.htm`. Contiene soltanto collegamenti, e non dichiara condizioni di licenza.
+
+Pagina di Ramsete presso l'Università di Parma: `http://pcfarina.eng.unipr.it/ramsete/`. Elencata dalla ricerca e non letta, perché lo strumento di lettura impone HTTPS e il server rifiuta la connessione sulla porta 443.
+
+Distributore italiano Spectra: `https://www.spectra.it/prodotti/software/ramsete/`. Nominato dal readme degli autori come canale d'acquisto e non letto.
+
 ## Backup di macchina
 
 Guida di Veeam Agent for Linux, pagina "Types of Backup Files", letta il 2026-09-30: `https://helpcenter.veeam.com/docs/agentforlinux/userguide/backup_files.html`. È autorevole sulle tre estensioni dei file di backup, cioè `.vbk` per il pieno, `.vib` per l'incrementale e `.vbm` per i metadati aggiornati a ogni sessione, ed è la fonte dell'esclusione di PA-013 in MS-169.
