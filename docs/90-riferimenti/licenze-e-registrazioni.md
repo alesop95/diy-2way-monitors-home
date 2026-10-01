@@ -4,7 +4,7 @@
 
 ## Akabak 3 e VACS
 
-Il software si scarica dal sito dell'autore, R&D-Team di Joerg Panzer. La versione scaricabile non è una demo limitata nel tempo o nelle funzioni: è la versione completa. Richiede licenza per uso commerciale ed è gratuita per uso privato, hobbistico o di ricerca senza scopo di lucro, previa registrazione di un account e download dal link che appare nel profilo dopo l'accesso.
+Il software si scarica dal sito dell'autore, R&D-Team di Joerg Panzer. La versione scaricabile è quella completa, senza limiti di tempo o di funzioni. Richiede licenza per uso commerciale ed è gratuita per uso privato, hobbistico o di ricerca senza scopo di lucro, previa registrazione di un account e download dal link che appare nel profilo dopo l'accesso.
 
 La richiesta è stata inviata il 13 agosto 2025, chiedendo se fosse possibile usare una licenza per uso non commerciale su una macchina Ubuntu Studio dopo la registrazione, e se ci fosse qualcosa da acquistare. La risposta dell'autore è arrivata registrando l'utente per una student license, con cinque passi: scaricare la versione professionale di Akabak e di VACS dai link forniti, installare ed eseguire entrambi, aprire nel menu di aiuto la voce del release code, inviare per posta elettronica il Machine Identifier indicato, e ricevere in cambio un release code valido per quel computer.
 
@@ -32,7 +32,7 @@ Il secondo è il profilo di Windows dichiarato dal prefix, che il programma ripo
 
 Il terzo è la memoria, riportata come `1897 / 2047 MBytes` su una macchina che ha 16 GB di RAM installata. Non è un difetto ed è la firma inconfondibile di un processo a 32 bit, che dispone di 2 GB di spazio di indirizzamento in modo utente indipendentemente da quanta memoria fisica esista. È una conferma indipendente di ADR-016, e il suo aspetto scomodo è trattato in MS-053: era visibile in uno screenshot esistente prima dell'indagine che ha stabilito quel fatto per altra via.
 
-Una nota finale sul meccanismo di licenza, che la finestra rende visibile. Sotto il release code compare la scritta `Security key not connected to the USB port`, cioè Akabak prevede anche una chiave hardware come portatore alternativo del diritto d'uso. Non è in uso in questo progetto e non serve procurarsela: la scritta non è un errore, è la constatazione che quella via non è quella scelta. Vale saperlo perché in caso di cambio di hardware, l'unico caso che invaliderebbe il release code, la chiave USB sarebbe l'alternativa tecnica da valutare invece di ricontattare l'autore.
+Una nota finale sul meccanismo di licenza, che la finestra rende visibile. Sotto il release code compare la scritta `Security key not connected to the USB port`, cioè Akabak prevede anche una chiave hardware come portatore alternativo del diritto d'uso. Non è in uso in questo progetto e non serve procurarsela: la scritta constata soltanto che quella via non è quella scelta. Vale saperlo perché in caso di cambio di hardware, l'unico caso che invaliderebbe il release code, la chiave USB sarebbe l'alternativa tecnica da valutare invece di ricontattare l'autore.
 
 ## VituixCAD 2
 

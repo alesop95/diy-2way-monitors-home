@@ -28,7 +28,7 @@ La tabella riassume le otto fasi nella forma ingresso, uscita, strumento e tecni
 
 La regola di scelta è stata prendere nativo Linux tutto ciò che si può, e ricorrere a Wine soltanto dove non esiste un equivalente serio. Nativi sono REW, Blender, Octave con MATAA e FreeCAD, e su Ubuntu Studio hanno il vantaggio della gestione a bassa latenza di JACK[^3], PulseAudio e PipeWire, che per la catena di misura conta. Sotto Wine restano tre programmi: VituixCAD, che non ha equivalente libero per il crossover multivia con direttività, Akabak, che è l'unico gratuito a fare elettroacustica e acustica ambientale insieme, e WinISD, che è comodo per l'accordo bass reflex ma è in buona parte ridondante se si usano già gli altri due.
 
-Questa divisione ha una conseguenza pratica sul carico di lavoro dell'ambiente: la parte fragile del setup non è Linux, è Wine, e per questo l'ambiente ha una cartella di documentazione propria invece di una nota a margine.
+Questa divisione ha una conseguenza pratica sul carico di lavoro dell'ambiente: la parte fragile del setup è Wine, mentre Linux regge da sé, e per questo l'ambiente ha una cartella di documentazione propria invece di una nota a margine.
 
 ## Lo stato di avanzamento
 

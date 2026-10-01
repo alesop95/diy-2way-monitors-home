@@ -22,6 +22,10 @@ Guida di Veeam Agent for Linux, pagina "Types of Backup Files", letta il 2026-09
 
 Elenco delle estensioni dei file Veeam sul sito della comunità Veeam: `https://community.veeam.com/blogs-and-podcasts-57/veeam-file-extensions-6020`. Elencato dalla ricerca del 2026-09-30 e non letto; la guida ufficiale qui sopra basta al perimetro di PA-013, che riguarda il solo agente per Linux.
 
+## Catena di ingresso audio
+
+Le settantasei fonti, quarantasette delle quali lette, della valutazione di PA-012 del 2026-09-30, fra pagine dei produttori, sorgenti del kernel Linux, manuali, rivenditori e forum, ciascuna con ciò per cui è autorevole e con lo stato di lettura, sono registrate in fondo alla pagina `docs/20-catena-di-ingresso.md` del progetto gemello `home-recording-training-mixing-setup`, a cui la valutazione appartiene. Non si duplicano qui, perché due copie di un registro divergono.
+
 ## Sistema di progetto
 
 Le fonti su cui poggiano i due pacchetti istanziati il 2026-09-30 non si duplicano qui: stanno nei registri che i pacchetti portano con sé, cioè `docs/anti-slop/FONTI.md` per i segni del testo generato e `docs/separazione-ambienti/FONTI.md` per il modello di ADR-024, dove le sigle C8, F13, F16 e C1 sono quelle citate da quella decisione.

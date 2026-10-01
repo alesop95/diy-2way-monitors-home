@@ -3625,6 +3625,42 @@ Verificato con: `roadmap.py` dopo la modifica, `lint-memoria.py` sulla chiusura 
 
 Esito: fatto per le tre decisioni che si chiudono con una registrazione; aperto per PA-012, che attende il documento di confronto, e per la pulizia dello stile, che è la milestone successiva.
 
+### MS-171 - La pulizia dello stile nei documenti vivi: diciassette parallelismi negativi riscritti, cinque mantenuti con la ragione, e il grassetto già a zero
+
+Data: 2026-09-30
+
+Perimetro: i documenti vivi secondo ADR-025, cioè le pagine di fase sotto `docs/`, `docs/README.md`, `docs/TRANSFER-MANIFEST.md`, `docs/10-ambiente/`, `docs/90-riferimenti/`, le schede di `.claude/context/` e il `README.md`. Esclusi per la stessa decisione, perché storici: il registro dei microstep, il work-log, il registro delle decisioni, il registro delle pendenze, la cronologia `docs/90-riferimenti/timeline-akabak-vacs.md`, le tabelle `docs/90-riferimenti/tracciabilita-microstep.md` e il racconto didattico `refactor-NN` sotto `.claude/context/`, che per regola non si riscrive. Esclusi anche `docs/anti-slop/` e `docs/separazione-ambienti/`, copiati interi dai pacchetti. Nessun comando eseguito sulla macchina Ubuntu.
+
+Legame con il progetto: nessuna fase del workflow, e lo dichiaro. Serve il secondo esito del progetto dichiarato nella roadmap, cioè la documentazione tecnico-didattica leggibile da chi arriva dopo.
+
+*La misura prima, che ha cambiato il lavoro.* `tools/fix-emphasis.py --check` sul perimetro trova zero grassetti in prosa su 46 file: la conversione l'aveva già fatta MS-078 il 2026-09-09, e la sezione "Deriva di stile" di `current-work.md`, che parlava di grassetto in gran quantità, descriveva lo stato di prima di quel microstep. Sui quattro registri storici lo stesso strumento trova un solo grassetto, in MS-152, che per ADR-025 resta. `tools/lint-prosa.py` sul perimetro trovava 43 segnalazioni in 25 file, di cui 30 parallelismi negativi e 13 documenti con prevalenza di elenchi a tre.
+
+*I parallelismi negativi, uno per uno.* Otto stavano in documenti storici e restano. Dei ventidue nei documenti vivi, ciascuno è stato letto con la frase che lo precede, secondo la regola di `interaction-style.md` per cui la forma resta soltanto quando qualcuno ha davvero sostenuto la tesi opposta. In cinque casi l'ha sostenuta, e la forma resta: in `catena-audio-pipewire.md` la verifica dalla console era stata prescritta da PA-019; in `installazione-pulita-26-04.md` la documentazione aveva trattato `ssh-copy-id` come un eseguibile, errore registrato in MS-027; in `veeam-agent-linux.md` la pagina stessa affermava che servisse `sudo`, ritirata in MS-150; in `incoerenze-sorgente.md` il documento sorgente chiamava tweeter un altoparlante da quattro pollici, e presentava la catena con Pachyderm come alternativa. Gli altri diciassette sono riscritti in forma affermativa, senza cambiarne il contenuto, in `00-workflow.md`, `35-rilievo-geometrico.md`, `40-analisi-octave.md`, `TRANSFER-MANIFEST.md`, `licenze-e-registrazioni.md`, `pulizia-ssd-esterno.md` e in sette pagine di `docs/10-ambiente/`.
+
+*La propagazione.* Otto file del blocco `docs/10-ambiente/` sono cambiati, e `tools/sync-ambiente.py` li ha propagati al progetto gemello, dove sono le sole modifiche presenti; `--check` riporta poi nessuna deriva. Il commit nel gemello è un gesto dell'utente.
+
+*Che cosa non è stato fatto.* Le tredici segnalazioni di prevalenza delle triadi non sono state toccate: il segno è a livello di documento, un elenco di tre cose è corretto quando le cose sono tre, e distinguerlo richiede di rileggere ogni elenco. Undici stanno in documenti vivi e restano come voce 12 della roadmap, riformulata.
+
+Verificato con: `fix-emphasis.py --check` sul perimetro e sui registri storici; `lint-prosa.py` sul perimetro prima e dopo, da 30 a 13 parallelismi negativi, cioè i cinque mantenuti più gli otto storici; `sync-ambiente.py` e `--check`; `git -C E:/home-recording-training-mixing-setup status --short`, otto file; la catena di verifica prima di un commit.
+
+Esito: fatto per il grassetto e per i parallelismi negativi; aperto per le triadi, con la voce in roadmap.
+
+### MS-172 - La valutazione della catena di ingresso di PA-012, scritta nel progetto gemello
+
+Data: 2026-09-30
+
+Perimetro: una ricerca documentale condotta da un agente in sola lettura, senza scrivere su disco, e il documento che ne è nato, `E:\home-recording-training-mixing-setup\docs\20-catena-di-ingresso.md`, con l'indice e la PA-001 del gemello aggiornati; qui PA-012 e il registro delle fonti. Nessun comando eseguito sulla macchina Ubuntu e nessun dispositivo provato.
+
+Legame con il progetto: serve la fase 6, cioè la misura acustica, perché da questa scelta dipende quella del microfono di misura, e la fase 8, cioè la misura dei diffusori costruiti.
+
+La ricerca ha coperto le tre topologie scritte in PA-012 e i moduli di batteria con audio USB multitraccia. La conformità alla classe è stata cercata su fonte primaria, cioè pagine e manuali dei produttori e il sorgente del driver USB audio del kernel, e dove c'era soltanto un forum lo dichiara. Il risultato, in breve. Nella topologia A la Scarlett 18i20 di quarta generazione ha il supporto più completo, con il mixer interno governabile da Linux grazie al driver FCP del kernel dal 6.14; la RME UCX II ha la dichiarazione Linux più esplicita, nel manuale del produttore, e due soli ingressi microfonici; la MOTU UltraLite-mk5 ha il mixer configurabile solo da macOS, Windows e iOS, e la PreSonus 1824c è esaurita. Nella topologia C l'XR18 è l'unico mixer configurabile per intero da Linux, e il TASCAM Model 12 è la scelta se servono fader fisici. Nessun modulo di batteria trovato dichiara insieme conformità alla classe e multitraccia, e anche un modulo multitraccia porterebbe un secondo clock da ricampionare, inferenza dichiarata come tale: l'interfaccia si dimensiona quindi sulle uscite analogiche del modulo.
+
+I limiti sono scritti nel documento e vanno letti prima di comprare: nessun dispositivo provato, il sorgente del kernel letto è il ramo principale e non il 7.0 di Ubuntu, molte pagine dei produttori hanno risposto 403, due documenti primari sono stati letti da copie ospitate da terzi, e i prezzi vengono da un solo rivenditore in un solo giorno. Le fonti sono settantasei, contate sulle righe della tabella, di cui quarantasette lette, e sono registrate nel documento con lo stato di lettura di ciascuna.
+
+Verificato con: `md-unwrap.py --check`, `lint-md-tables.py` e `fix-dashes.py --check` sul documento nuovo; rilettura delle tabelle contro il rapporto dell'agente.
+
+Esito: fatto per la valutazione; PA-012 resta aperta sulla scelta dell'utente.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

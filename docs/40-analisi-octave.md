@@ -4,7 +4,7 @@
 
 ## MATAA e il carattere di questa fase
 
-MATAA è un insieme di funzioni open source scritte per GNU Octave, il clone libero di MATLAB. Non è un programma con interfaccia grafica: è una raccolta di funzioni che si richiamano da riga di comando o da script, ed è nativo Linux al cento per cento.
+MATAA è un insieme di funzioni open source scritte per GNU Octave, il clone libero di MATLAB. È una raccolta di funzioni senza interfaccia grafica, che si richiamano da riga di comando o da script, ed è nativo Linux al cento per cento.
 
 Questa natura è un vantaggio e non un limite, e vale spiegare perché, dato che a prima vista sembra un passo indietro rispetto a un simulatore commerciale. I dati che escono da REW, cioè la risposta all'impulso e la risposta in frequenza, entrano in Octave come vettori numerici, e ciò che si fa con essi è scritto in script leggibili e modificabili. Non c'è una scatola nera che restituisce un grafico: c'è un calcolo che si può ispezionare, correggere e rieseguire. Su un progetto il cui scopo è capire, non solo ottenere un risultato, questo conta.
 

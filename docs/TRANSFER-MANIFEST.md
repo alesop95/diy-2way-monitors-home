@@ -37,7 +37,7 @@ Il totale di questa prima parte è di circa 166 megabyte.
 
 ## Che cosa si trasferisce, parte seconda: il corredo Progetto stanza
 
-Il corredo software raccolto sotto `C:\Users\Utente\Desktop\Progetto stanza (software)` pesa 2,3 GB, e va sulla macchina soltanto in parte. La selezione non è arbitraria: è il sottoinsieme legittimo e utile, e il criterio con cui ogni voce è stata inclusa o esclusa è documentato voce per voce in `docs/10-ambiente/wine-corredo-progetto-stanza.md`, con il formato reale di ciascun installer letto dai file e non dedotto dal nome.
+Il corredo software raccolto sotto `C:\Users\Utente\Desktop\Progetto stanza (software)` pesa 2,3 GB, e va sulla macchina soltanto in parte. La selezione è il sottoinsieme legittimo e utile, e il criterio con cui ogni voce è stata inclusa o esclusa è documentato voce per voce in `docs/10-ambiente/wine-corredo-progetto-stanza.md`, con il formato reale di ciascun installer letto dai file e non dedotto dal nome.
 
 | Voce | Tipo | Dimensione | Destinazione | Perché |
 |---|---|---|---|---|

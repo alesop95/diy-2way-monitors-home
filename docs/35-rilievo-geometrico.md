@@ -144,7 +144,7 @@ Sintomo: scelta la modalità `Detail`, l'elaborazione avanza di pochi punti perc
 
 Per il riferimento di scala il rimedio migliore è il primo, e non costa nulla: si usa un foglio stampato invece di uno bianco, cioè una pagina di testo qualunque. Resta esattamente 297 millimetri per la ISO 216, quindi il riferimento non perde precisione, e diventa una superficie ricca di punti riconoscibili. Per la stanza il rimedio è il secondo, cioè `Area`, che non dipende dalla trama, ed è la ragione per cui la sequenza prescrive quella modalità e non la raccomandata.
 
-Il collegamento che vale ricordare è che questo non è un difetto dell'applicazione né del dispositivo: è il difetto strutturale della fotogrammetria che la pagina della fase 2 descrive per le pareti tinteggiate, incontrato su scala ridotta. La stessa causa spiega perché il protocollo prescrive i foglietti adesivi sulle pareti lisce.
+Il collegamento che vale ricordare è che questo è il difetto strutturale della fotogrammetria che la pagina della fase 2 descrive per le pareti tinteggiate, incontrato su scala ridotta, e ricadrebbe su qualunque applicazione e qualunque dispositivo. La stessa causa spiega perché il protocollo prescrive i foglietti adesivi sulle pareti lisce.
 
 ### B, l'anteprima della fotocamera appare a righe diagonali rosse e bianche
 
