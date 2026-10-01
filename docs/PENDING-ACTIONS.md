@@ -546,6 +546,20 @@ Condizione di sblocco. La stessa di PA-012 per la parte di scelta, cioè il nume
 
 Criterio di completamento. Il pacchetto `latex` è istanziato nel progetto che ospita il report, con la distribuzione TeX installata e una compilazione riuscita; il documento contiene i calcoli di gain staging con i numeri reali degli apparecchi scelti e non con valori di esempio; e ogni impedenza e ogni livello citati hanno una fonte, cioè una scheda tecnica del costruttore oppure una misura, mai un valore ricordato.
 
+## PA-022 - Indirizzo stabile e accesso alla macchina nella rete di casa, dopo il trasloco
+
+Data di apertura: 2026-10-01, da una precisazione dell'utente. Stato: aperta, bloccata dal trasloco della macchina.
+
+Che cosa va fatto. Quando la macchina Ubuntu sarà nella rete di casa, dove vivrà, dare all'indirizzo una forma stabile e rifare il collegamento per nome dalla postazione da cui la si raggiungerà.
+
+Perché esiste. La sottofase 10.4 della procedura di installazione prescrive una prenotazione DHCP sul router per l'indirizzo `192.168.10.204` e il MAC `2c:4d:54:53:a4:fb`. Il 2026-10-01 l'utente ha precisato che la rete attuale è quella dell'azienda e non quella finale: la macchina andrà a casa. Una prenotazione fatta oggi starebbe su un router che la macchina lascerà, quindi la sottofase non si esegue adesso. Il MAC resta valido, perché è della scheda e non della rete; l'indirizzo e la sottorete cambieranno.
+
+Conseguenza da non dimenticare. L'alias `studio` nel file `~/.ssh/config` della postazione punta oggi a `192.168.10.204`, e con esso ogni comando di questo progetto che dice `ssh studio`. Nella rete di casa quell'indirizzo non varrà più, e va riletto da quale postazione si raggiungerà la macchina, perché la postazione Windows attuale è in azienda.
+
+Condizione di sblocco. La macchina accesa e collegata nella rete di casa.
+
+Criterio di completamento. Una prenotazione DHCP sul router di casa per il MAC `2c:4d:54:53:a4:fb`, oppure un indirizzo statico configurato sulla macchina, con l'indirizzo scritto nella procedura; l'alias `studio` aggiornato sulla postazione da cui la si raggiunge; `ssh studio` verificato con la sola chiave.
+
 ## Azioni compiute
 
 Nessuna, per ora. Le voci compiute si spostano qui con la data e l'esito, e non si cancellano.
