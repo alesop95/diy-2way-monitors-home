@@ -5,7 +5,7 @@ generated-date: 2026-09-30
 covers-paths:
   - .claude/context/deployment.md
   - docs/10-ambiente/veeam-agent-linux.md
-last-verified-commit: 0189667
+last-verified-commit: 93bb1e1
 ---
 
 # Deployment

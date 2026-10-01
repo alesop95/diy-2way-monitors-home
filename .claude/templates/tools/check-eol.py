@@ -40,7 +40,7 @@ ESTENSIONI = {".md", ".py", ".sh", ".ps1", ".json", ".txt", ".toml", ".yml", ".y
 
 # Cartelle da non percorrere: metadati di git, materiale locale non versionato,
 # e le fixture di md-unwrap, che sono miste di proposito.
-CARTELLE_ESCLUSE = {".git", "_notes", "__pycache__", "node_modules", "fixtures"}
+CARTELLE_ESCLUSE = {".git", "_notes", "__pycache__", "node_modules", "fixtures", ".venv", "venv"}
 
 
 def conta(percorso: Path) -> tuple[int, int]:

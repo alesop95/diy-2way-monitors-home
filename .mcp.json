@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "openalex": {
+      "type": "http",
+      "url": "https://mcp.openalex.org/mcp"
+    }
+  }
+}
