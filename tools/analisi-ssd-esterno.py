@@ -60,6 +60,12 @@ def mib(byte: int) -> str:
 
 
 def main() -> int:
+    # Il disco contiene nomi di cartella con caratteri fuori da cp1252, la codifica della
+    # console di Windows: il 2026-10-01 un'emoji in un nome ha interrotto l'elenco a meta'
+    # con un'eccezione, prima del totale. L'uscita si forza in UTF-8, sostituendo cio' che
+    # la console non sa mostrare invece di fermarsi (MS-176).
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--disco", default="J:", help="lettera del disco esterno, per esempio J:")
