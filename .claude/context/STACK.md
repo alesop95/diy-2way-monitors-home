@@ -5,7 +5,7 @@ generated-date: 2026-09-04
 covers-paths:
   - tools/**
   - docs/**
-last-verified-commit: 0189667
+last-verified-commit: 93bb1e1
 ---
 
 # Stack del progetto
@@ -89,6 +89,8 @@ Il file `tools/misura-istruzioni.py` somma i caratteri degli instruction file ch
 Il file `tools/lint-memoria.py` segnala i commit più recenti dell'ultima voce del work-log e le pendenze chiuse senza data, ed è adattato ai registri di questo progetto come il suo pacchetto prescrive. Il file `tools/Test-Allineamento.py` legge `data/scadenze.json` e dice quali affermazioni stanno invecchiando: scadenze, misure con una cadenza, asserzioni umane con la loro validità, più quattro invarianti fra cui l'elenco degli strumenti di questa scheda. Gira all'apertura di ogni sessione e attua la regola `affermazioni-verificabili.md`.
 
 Il file `tools/roadmap.py` rigenera la lista di che cosa resta da fare da `tools/roadmap-items.yml`, ordinata per costo e non per importanza, con l'esito dei controlli misurato dal vivo; `--format html --write` scrive una pagina stampabile sotto `build/`, ignorata. Il file `tools/costruisci-timeline.py` rigenera `docs/TIMELINE.html`, la linea temporale che affianca a ogni passo la sua ragione, dai microstep che portano il campo `Data:` e dal work-log. Il file `tools/lint-prosa.py` segnala i segni ricorrenti del testo generato e non riscrive nulla; gira come avviso nel `pre-commit` dei commit manuali, e la guida con le fonti sta in `docs/anti-slop/`.
+
+Strumenti della base di conoscenza, arrivati il 2026-10-01 con MS-179. Il file `tools/doc-ingest.py` converte PDF, DOCX e affini in Markdown con `markitdown`, in locale e senza modelli, nella cache ignorata `_notes/.tmp-doc-cache/` con un indice dei capitoli, e riconverte soltanto ciò che cambia. I file `tools/extract-titlepages.py` e `tools/render-bib-registry.py` sono del pacchetto `book-bib-extract`: il primo rende in immagine le pagine di frontespizio con Poppler, il secondo rigenera la tabella leggibile del registro bibliografico `_notes/book-bib-registry.json`. Fuori da `tools/` stanno PaperQA2, nell'ambiente virtuale `.venv` del progetto, e Feynman, installato globalmente con npm: entrambi aspettano le credenziali di PA-023.
 
 ## Rapporto con gli altri progetti
 

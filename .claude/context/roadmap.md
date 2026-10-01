@@ -4,7 +4,7 @@ generated-from-branch: main
 generated-date: 2026-09-04
 covers-paths:
   - docs/**
-last-verified-commit: 0189667
+last-verified-commit: 93bb1e1
 ---
 
 # Roadmap

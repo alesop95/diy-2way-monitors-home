@@ -38,6 +38,14 @@ Elenco delle estensioni dei file Veeam sul sito della comunità Veeam: `https://
 
 Le settantasei fonti, quarantasette delle quali lette, della valutazione di PA-012 del 2026-09-30, fra pagine dei produttori, sorgenti del kernel Linux, manuali, rivenditori e forum, ciascuna con ciò per cui è autorevole e con lo stato di lettura, sono registrate in fondo alla pagina `docs/20-catena-di-ingresso.md` del progetto gemello `home-recording-training-mixing-setup`, a cui la valutazione appartiene. Non si duplicano qui, perché due copie di un registro divergono.
 
+## Strumenti di ricerca
+
+Le fonti operative dei tre strumenti, elencate dal runbook `INTEGRAZIONI-TOOL.md` del pacchetto `academic-researcher` e non lette: il server MCP ufficiale di OpenAlex, `https://github.com/ourresearch/openalex-mcp-server`; PaperQA2, `https://github.com/Future-House/paper-qa`; Feynman, `https://github.com/Companion-Inc/feynman`. Il pacchetto npm `@companion-ai/feynman` è stato interrogato con `npm view` il 2026-10-01, che ha restituito come ultima versione la 0.5.19, quella installata.
+
+## Materiale di studio dell'utente
+
+I libri e gli appunti su cui si costruisce la base di conoscenza, sedici documenti del primo lotto, sono registrati con percorso di origine e impronta SHA-256 in `_notes/fonti-studio/lotto-01-origine.json`, che è locale come il materiale stesso per ADR-028. Le voci bibliografiche dei libri citati dal report si scrivono con `book-bib-extract`, soltanto dopo la conferma dell'utente sul colophon.
+
 ## Sistema di progetto
 
 Le fonti su cui poggiano i due pacchetti istanziati il 2026-09-30 non si duplicano qui: stanno nei registri che i pacchetti portano con sé, cioè `docs/anti-slop/FONTI.md` per i segni del testo generato e `docs/separazione-ambienti/FONTI.md` per il modello di ADR-024, dove le sigle C8, F13, F16 e C1 sono quelle citate da quella decisione.

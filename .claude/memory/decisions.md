@@ -381,3 +381,39 @@ Contesto. Tre voci aperte dipendono da un acquisto: il metro laser di PA-020, la
 Decisione. L'utente compera tutto alla fine, in un'unica tornata, e non voce per voce.
 
 Conseguenze. Le fasi 1 e 2 del workflow restano ferme fino agli acquisti, e con esse le fasi successive che ne dipendono. Nel frattempo si fa il lavoro che non chiede di comprare nulla: le tabelle B, C, D ed E del protocollo di rilievo con un metro a nastro, la fase 10 della procedura di installazione, e le decisioni di progetto che non dipendono da una misura. La valutazione di PA-012 resta valida, ma i prezzi letti il 2026-09-30 vanno riletti al momento dell'acquisto.
+
+## ADR-028 - Il materiale di studio dell'utente, libri compresi, si usa soltanto in locale e non entra mai nel repository
+
+Data: 2026-10-01. Stato: accettata, su scelta esplicita dell'utente.
+
+Contesto. L'utente ha chiesto di costruire una base di conoscenza sui propri appunti e libri di elettronica e di filtri, che stanno su `J:`, per sostenere le decisioni di progetto e il report. Per una parte dei PDF la provenienza non è documentata. ADR-010 aveva escluso dal corredo il software di provenienza non lecita, e la domanda è stata posta per coerenza. Il repository è pubblico.
+
+Decisione. Si usano tutti i materiali indicati, per studio personale e soltanto in locale. Le copie stanno in `_notes/fonti-studio/`, le conversioni in `_notes/.tmp-doc-cache/`, la wiki compilata e le sue fonti in `knowledge/sources/` e `knowledge/wiki/`, le skill generate dai libri sotto `.claude/skills/libro-*/`: tutti ignorati da git. Restano tracciati soltanto gli strumenti, le skill di procedura, lo schema e il registro della wiki. Il report cita i testi in bibliografia e non ne riproduce il contenuto.
+
+Motivazione. La scelta è dell'utente, che ha preferito l'uso locale per studio alla lista di testi da procurarsi. La differenza rispetto ad ADR-010 è che quella decisione riguarda programmi installati ed eseguiti come corredo del progetto, mentre qui si tratta di materiale di studio che non viene ridistribuito né incorporato.
+
+Conseguenze. Nessun estratto testuale di quei libri entra nei documenti tracciati: le pagine di `docs/` e il report parafrasano e citano. I file su `J:` si leggono e basta, secondo il vincolo di `CLAUDE.md`.
+
+## ADR-029 - Il report LaTeX dei monitor si apre adesso e cresce con il progetto, superando l'innesco di ADR-022
+
+Data: 2026-10-01. Stato: accettata, su scelta esplicita dell'utente.
+
+Contesto. ADR-022 lasciava intatto l'innesco della roadmap per cui il report di progetto si scrive soltanto arrivati alle fasi 4 e 5, per non scrivere la teoria di due metodi prima di averne l'applicazione. L'utente ha chiesto un report LaTeX dettagliato anche matematicamente, da ingegnere elettroacustico, di ciò che il progetto fa.
+
+Decisione. Il report si apre adesso con la struttura completa, e ogni capitolo si scrive quando la fase corrispondente produce dati o decisioni, con la matematica e le fonti; la teoria entra quando serve a una decisione reale, cominciando dal confronto fra crossover passivo e attivo.
+
+Motivazione. L'innesco di ADR-022 proteggeva dal rischio di un documento teorico scollegato dal diffusore. Un report che cresce capitolo per capitolo, legato alle decisioni man mano che si prendono, conserva quella protezione senza rimandare la scrittura.
+
+Conseguenze. ADR-022 resta valida per l'istanziazione del pacchetto `latex` e decade soltanto per l'innesco. Ogni capitolo dichiara lo stato delle grandezze che usa, cioè misurate, simulate o ipotizzate.
+
+## ADR-030 - Il server MCP di OpenAlex entra nel progetto, superando ADR-023
+
+Data: 2026-10-01. Stato: accettata, su scelta esplicita dell'utente al gate dei pacchetti.
+
+Contesto. ADR-023 non configurava alcun server MCP, perché il progetto non aveva un servizio esterno da interrogare. Con il report ingegneristico e la base di conoscenza il progetto ha bisogno di letteratura scientifica con metadati verificabili, ed era l'innesco dichiarato del rinvio di OpenAlex.
+
+Decisione. `.mcp.json` in radice dichiara il server ufficiale `openalex` su `https://mcp.openalex.org/mcp`, e `.codex/config.toml` lo stesso per Codex. Nessun token nei file: il login OAuth si fa nello store privato del client.
+
+Motivazione. È il server ufficiale indicato dal runbook del pacchetto, e copre la scoperta di articoli e la risoluzione dei riferimenti, che il report richiederà.
+
+Conseguenze. Il server occupa token a ogni turno quando è connesso. Il login lo fa l'utente con `/mcp` in una sessione nuova di Claude Code. Il conteggio dei server di progetto passa da zero a uno.
