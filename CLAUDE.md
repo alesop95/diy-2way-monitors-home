@@ -83,6 +83,10 @@ Il terzo comando, `check-eol.py`, cerca i file di testo che mescolano fini riga 
 
 La catena tipografica, cioè `fix-accents.py`, `fix-missing-accents.py` e `fix-dashes.py`, non entra in questa sequenza e non si lancia su `.`. Si esegue sui soli file Markdown, e la ragione è un difetto isolato in MS-014 del registro dei microstep: su un file di codice le regole di prudenza dei due strumenti sugli accenti sono incoerenti fra loro, e la catena dei due lascia un apostrofo orfano su forme come `c'e'`, producendo `c'è'`. Gli stessi strumenti terminano inoltre con un errore se ricevono un percorso su un'altra lettera di unità.
 
+## Dati personali: nessuna cancellazione senza permesso esplicito
+
+Istruzione vincolante dell'utente del 2026-10-01, data dopo un errore dell'agente registrato in MS-177. Sull'SSD esterno `J:` c'è il materiale personale dell'utente, e la stessa regola vale per ogni disco esterno, per la postazione e per `/home` della macchina Ubuntu. L'agente non cancella, non sposta e non sovrascrive alcun file fuori dal repository senza il permesso esplicito dell'utente dato in quel momento per quei file nominati uno per uno. Collegare un disco, chiedere di smarcare una voce o trovare un comando di cancellazione scritto in una pendenza non sono un permesso: il comando si consegna all'utente, che lo esegue o lo autorizza. L'agente resta inoltre sul perimetro di questo progetto, cioè i monitor e la macchina che li progetta, e non fa manutenzione di dischi o cartelle che al progetto non servono.
+
 ## Sviluppo e identità
 
 git locale, identità `alesop95`, alias SSH `github-personal`, remoto `git@github-personal:alesop95/diy-2way-monitors-home.git` già collegato. Commit e push sono sempre manuali dell'utente, e vanno presentati nel formato della regola `git-commands-format.md`.
