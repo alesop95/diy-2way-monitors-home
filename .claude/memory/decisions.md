@@ -371,3 +371,13 @@ Decisione. Ramsete non si installa. Il prefix a 32 bit `ramsete32` non si crea.
 Motivazione. Una modalità a precisione ridotta non serve a un calcolo su cui si progettano due diffusori, e la versione completa è un acquisto che il progetto non ha motivo di fare, perché il ruolo di Ramsete, cioè l'acustica della stanza, è coperto da Akabak, licenziato e funzionante. La parte condizionata di ADR-009, che apriva a un prefix a 32 bit anche per Ramsete, decade senza effetti pratici, perché l'architettura `i386` è comunque necessaria per Akabak secondo ADR-016.
 
 Conseguenze. La procedura di installazione resta scritta in `docs/10-ambiente/wine-corredo-progetto-stanza.md`, con il percorso corretto, per il caso in cui la decisione venga rivista. Si rivede se le simulazioni di Akabak si rivelassero insufficienti sull'acustica della stanza, oppure se diventasse disponibile una licenza.
+
+## ADR-027 - Gli acquisti si fanno tutti insieme, alla fine
+
+Data: 2026-10-01. Stato: accettata.
+
+Contesto. Tre voci aperte dipendono da un acquisto: il metro laser di PA-020, la catena di ingresso di PA-012 e il microfono di misura che ne dipende. Le prime due bloccano le fasi 2 e 1 del workflow.
+
+Decisione. L'utente compera tutto alla fine, in un'unica tornata, e non voce per voce.
+
+Conseguenze. Le fasi 1 e 2 del workflow restano ferme fino agli acquisti, e con esse le fasi successive che ne dipendono. Nel frattempo si fa il lavoro che non chiede di comprare nulla: le tabelle B, C, D ed E del protocollo di rilievo con un metro a nastro, la fase 10 della procedura di installazione, e le decisioni di progetto che non dipendono da una misura. La valutazione di PA-012 resta valida, ma i prezzi letti il 2026-09-30 vanno riletti al momento dell'acquisto.

@@ -117,7 +117,7 @@ Parametri dichiarati dall'utente il 2026-09-21, poche ore dopo l'apertura di que
 
 La conseguenza è che le due scelte si condizionano e vanno fatte insieme. Un modulo che esponga una uscita USB audio multitraccia conforme alla classe audio manda al computer i singoli pezzi della batteria su canali separati senza occupare alcun ingresso dell'interfaccia e senza driver proprietari; con un modulo così gli ingressi dell'interfaccia restano tutti liberi per il resto, e la batteria si registra per pezzi invece che in stereo già sommato, che è la differenza fra poter rifare un bilanciamento dopo e non poterlo fare. Un modulo con le sole uscite analogiche ne consuma due e consegna la batteria già mixata. Ne segue che la scelta del modulo non viene dopo quella dell'interfaccia: un modulo con USB multitraccia può permettere una interfaccia più piccola, e una interfaccia a otto ingressi rende meno critico il modulo.
 
-Valutazione avviata il 2026-09-30 per decisione dell'utente (MS-170): una ricerca dei candidati per le tre topologie e per i moduli di batteria con uscita USB multitraccia, con la conformità di classe verificata su fonte primaria e ogni fonte registrata come letta o soltanto elencata. Il documento di confronto nasce nel progetto gemello, come il criterio di completamento prescrive, e la voce resta aperta finché l'utente non sceglie. Scritto lo stesso giorno: `E:\home-recording-training-mixing-setup\docs\20-catena-di-ingresso.md`, MS-172. La raccomandazione della ricerca è la topologia A con la Focusrite Scarlett 18i20 di quarta generazione, con la RME Fireface UCX II a spesa libera e il TASCAM Model 12 se servono fader fisici; nessun modulo di batteria trovato dichiara insieme conformità alla classe e multitraccia, quindi l'interfaccia si dimensiona sulle uscite analogiche del modulo.
+Valutazione avviata il 2026-09-30 per decisione dell'utente (MS-170): una ricerca dei candidati per le tre topologie e per i moduli di batteria con uscita USB multitraccia, con la conformità di classe verificata su fonte primaria e ogni fonte registrata come letta o soltanto elencata. Il documento di confronto nasce nel progetto gemello, come il criterio di completamento prescrive, e la voce resta aperta finché l'utente non sceglie. Scritto lo stesso giorno: `E:\home-recording-training-mixing-setup\docs\20-catena-di-ingresso.md`, MS-172. Dal 2026-10-01 l'acquisto si fa alla fine insieme agli altri, per ADR-027, e i prezzi vanno riletti in quel momento. La raccomandazione della ricerca è la topologia A con la Focusrite Scarlett 18i20 di quarta generazione, con la RME Fireface UCX II a spesa libera e il TASCAM Model 12 se servono fader fisici; nessun modulo di batteria trovato dichiara insieme conformità alla classe e multitraccia, quindi l'interfaccia si dimensiona sulle uscite analogiche del modulo.
 
 La valutazione appartiene al progetto gemello `home-recording-training-mixing-setup`, e questo progetto ne è un consumatore con un solo requisito proprio, cioè un ingresso microfonico con alimentazione phantom a 48 V che regga la misura acustica. Il report sul gain staging che l'utente ha chiesto è tracciato come PA-021.
 ## PA-001 - Cancellare la copia del corredo software su SSD esterno
@@ -352,7 +352,7 @@ Dove vive la decisione di fondo. Il consolidamento del NAS per la macchina priva
 
 ## PA-008 - Recuperare 1,2 GiB di cartelle di servizio su J:
 
-Data di apertura: 2026-09-07. Stato: *aperta, eseguibile adesso*.
+Data di apertura: 2026-09-07. Stato: COMPIUTA il 2026-10-01 con MS-176. `FOUND.002` e `.Spotlight-V100` risultavano già assenti; `FOUND.000` e `FOUND.001` erano state ricreate da due riparazioni di `chkdsk` del 2026-09-14 e del 2026-09-29, con un frammento da 128 KiB ciascuna, lette e cancellate. Lo spazio recuperabile misurato è zero.
 
 Che cosa va fatto. Cancellare da `J:` le tre cartelle di servizio che contengono lo spazio recuperabile, verificate presenti il 2026-09-07.
 
@@ -496,7 +496,7 @@ Resta registrato un residuo trovato dalla stessa lettura e non da una ricerca: i
 
 ## PA-020 - Scegliere come rilevare la geometria della stanza, e rilevarla
 
-Data di apertura: 2026-09-21, da una domanda dell'utente. Stato: aperta, con una condizione di sblocco che dipende da un dato non ancora noto.
+Data di apertura: 2026-09-21, da una domanda dell'utente. Stato: aperta, con una condizione di sblocco che dipende da un dato non ancora noto. Dal 2026-10-01 il metro laser si compera alla fine insieme agli altri acquisti, per ADR-027; le tabelle B, C, D ed E del protocollo, che chiedono un metro a nastro, restano eseguibili adesso.
 
 Che cosa va fatto. Scegliere fra le quattro vie descritte in `docs/30-modellazione-e-simulazione.md`, eseguire il rilievo della stanza, verificarne la scala con il metro laser, e ricalcare in Blender il modello pulito a poche facce che la fase 2 richiede, con pareti, soffitto spiovente, mobili, schermo, scrivania, seduta e le posizioni candidate dei monitor.
 
