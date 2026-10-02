@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-02 - Monitor attivi, e la chiusura di sessione con wipe
+
+Commit di partenza: 24efd0c, cioè il commit dell'utente del 2026-10-02 che porta da MS-180 a MS-182. Commit prodotto: quello di `chiudi` con il messaggio di `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-183 sotto una intestazione di sessione nuova; `docs/PENDING-ACTIONS.md` con PA-024; `docs/52-crossover-passivo-o-attivo.md` con la decisione in testa; `.claude/memory/decisions.md` con ADR-033; `tools/roadmap-items.yml`; `tools/check-pending-actions.py` con PA-024; `docs/TIMELINE.html`; `.claude/memory/index.md`, `.claude/context/current-work.md` e questo file; fuori da git `report/capitoli/04-crossover.tex`, `_notes/RESUME-PROMPT.md` e `_notes/COMMIT-MSG.txt`.
+
+L'utente ha scelto l'attivo con processore digitale, ADR-033, e ha chiesto quali altre fonti fra quelle indicate vadano ingerite: il lotto 02 è identificato in MS-183 e messo come voce 19 della roadmap. Ha chiesto poi di chiudere la sessione e riaprirne una nuova con il wipe dell'account, come prescrive il template, senza perdere nulla: tutto lo stato vive nel repository, nel livello privato `_notes/` e nel report locale `report/`, che il wipe non tocca perché agisce soltanto sulle trascrizioni dell'account Claude; il file di ripresa è riscritto per intero per la sessione nuova.
+
 ## 2026-10-01 - Ramsete accertato ed escluso, la voce sulle triadi chiusa senza riscritture
 
 Commit di partenza: 3780920, cioè il commit dell'utente del 2026-10-01 alle 11:11 che porta MS-171 e MS-172; nel progetto gemello il commit dell'utente `98e6e04` porta la valutazione della catena di ingresso e il blocco ambiente riallineato. Commit prodotto: da fare con `chiudi` e il messaggio di `_notes/COMMIT-MSG.txt`.

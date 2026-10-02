@@ -578,6 +578,18 @@ Condizione di sblocco. Nessuna: dipende da azioni dell'utente.
 
 Criterio di completamento. Le tre verifiche riuscite, con versione, provider e modello di ciascuno annotati nel registro delle licenze e registrazioni, e nessuna credenziale in un file tracciato.
 
+## PA-024 - Scegliere il modulo di amplificazione e processore per i cabinet attivi, verificandone il software su Linux
+
+Data di apertura: 2026-10-02, da ADR-033. Stato: aperta, eseguibile come ricerca; l'acquisto si fa alla fine con gli altri, per ADR-027.
+
+Che cosa va fatto. Scegliere, per ciascun cabinet, due canali di amplificazione e un processore digitale per il crossover, separati oppure integrati in un modulo da montare sul retro. Dimensionare la potenza sugli altoparlanti che la fase 4a sceglierà.
+
+Il vincolo che pesa più degli altri. Il processore si configura di solito con un programma del costruttore, e la macchina di progetto è Linux. Per ogni candidato va accertato, su fonte primaria, come si caricano i coefficienti biquad esportati da VituixCAD: programma nativo per Linux, programma per Windows che giri sotto Wine, configurazione da un'altra macchina, oppure formato aperto. È lo stesso tipo di verifica fatto per l'interfaccia audio in PA-012.
+
+Condizione di sblocco. Nessuna per la ricerca; la scelta definitiva della potenza dipende dagli altoparlanti della fase 4a.
+
+Criterio di completamento. Un confronto scritto dei candidati con le fonti lette, la verifica della configurazione da Linux per ciascuno, la scelta dell'utente registrata come ADR, e la voce nella lista degli acquisti finali.
+
 ## Azioni compiute
 
 Nessuna, per ora. Le voci compiute si spostano qui con la data e l'esito, e non si cancellano.
