@@ -439,3 +439,15 @@ Contesto. ADR-029 ha aperto il report dei monitor come documento che cresce con 
 Decisione. La cartella `report/` è nel `.gitignore`. Quando il report sarà completo si toglie quella riga e lo si versiona.
 
 Conseguenze. Finché resta ignorato, il report non è nella storia di git né su GitHub: la sua sola copia di sicurezza è quella giornaliera di `sync-dev`, che copia `E:\` sull'SSD esterno. Lo stato del report si traccia comunque nel registro dei microstep e nel work-log, capitolo per capitolo, così che il lavoro sia ricostruibile anche senza il sorgente.
+
+## ADR-033 - I monitor si progettano attivi, con il crossover in un processore digitale
+
+Data: 2026-10-02. Stato: accettata, su scelta esplicita dell'utente.
+
+Contesto. L'utente partiva dall'ipotesi del passivo e ha chiesto un confronto scritto prima di decidere, che è `docs/52-crossover-passivo-o-attivo.md` con il capitolo sul crossover del report. Il confronto ha indicato due punti propri di questo progetto: con un processore digitale la risposta si corregge dopo la misura in stanza, compresi i modi della stanza alle basse frequenze, e la stanza non è trattabile acusticamente; e il programma di configurazione di un processore va verificato su Linux. Ha dichiarato anche che le due fonti tecniche lette, Linkwitz ed Elliott, sono favorevoli all'attivo.
+
+Decisione. Diffusori attivi a due vie, con un canale di amplificazione per altoparlante e il crossover realizzato in un processore digitale di segnale.
+
+Motivazione. La possibilità di correggere in un processore è il vantaggio più legato alla premessa del progetto, cioè una stanza nota e non trattabile, con una verifica finale al punto di ascolto; l'attivo toglie inoltre la dipendenza del filtro dall'impedenza degli altoparlanti, e completa la catena di ascolto di ADR-012 senza un amplificatore di potenza esterno.
+
+Conseguenze. Il progetto in VituixCAD produce coefficienti biquad e ritardi invece di valori di componenti. Gli acquisti finali di ADR-027 comprendono, per ciascun cabinet, due canali di amplificazione e un processore, oppure un modulo che li integri, invece dell'amplificatore stereo esterno e dei componenti della rete; la scelta del modulo e la verifica della compatibilità con Linux del suo programma di configurazione sono PA-024. Il capitolo del report sul crossover prosegue sulla realizzazione digitale.

@@ -3855,6 +3855,24 @@ Verificato con: `verifica_crossover.py`, che stampa tutte le identità verificat
 
 Esito: fatto per lo scheletro e per il capitolo sul crossover; gli altri capitoli si scrivono quando le fasi producono dati.
 
+## 2026-10-02, la decisione sull'architettura e la chiusura di sessione
+
+### MS-183 - Monitor attivi con processore digitale, e il lotto 02 del materiale di studio identificato
+
+Data: 2026-10-02
+
+Perimetro: ADR-033, PA-024, `docs/52-crossover-passivo-o-attivo.md`, il capitolo sul crossover del report, le voci 17, 18 e 19 della roadmap; un elenco in sola lettura di due cartelle di `J:` non ancora aperte.
+
+Legame con il progetto: serve la fase 4a del workflow, cioè la progettazione acustica, che ora produrrà coefficienti di filtri digitali, e la lista degli acquisti finali di ADR-027.
+
+*La decisione.* Letto il confronto, l'utente ha scelto l'attivo, citando i due punti del confronto propri del progetto, cioè la correzione dopo la misura in una stanza non trattabile e la verifica del software del processore su Linux, e la parzialità dichiarata delle fonti. È ADR-033: due vie attive, un canale di amplificazione per altoparlante, crossover in un processore digitale. La scelta del modulo e la verifica del caricamento dei coefficienti da Linux sono PA-024. Il documento di confronto porta la decisione in testa senza essere riscritto, e il capitolo del report dichiara la scelta e la direzione delle sezioni successive.
+
+*Le fonti ancora da ingerire.* Alla domanda dell'utente, l'elenco in sola lettura di `electro_circuit theory 03.02.2023 2HD`, con 85 PDF di elettronica generale, e di `ragionamenti_simo_MUSIC`, materiale sulla chitarra e sull'amplificazione per chitarra pertinente semmai al progetto gemello, conferma che il primo lotto ha preso il materiale sui filtri. Con l'attivo diventano pertinenti il libro di Self sugli amplificatori di potenza del 2013, 13,7 MiB, e `self2010audio.pdf`, più la riconversione di Izadian, uscito a zero parole. Restano a bassa priorità i testi generali come Horowitz, Nilsson e Dorf. Il lotto 02 e la prima compilazione della wiki sono la voce 19 della roadmap.
+
+Verificato con: l'elenco per nome ed estensione delle due cartelle; la ricompilazione del report dopo la modifica del capitolo; la catena di verifica prima di un commit.
+
+Esito: fatto.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

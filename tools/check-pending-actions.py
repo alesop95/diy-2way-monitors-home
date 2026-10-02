@@ -483,6 +483,11 @@ def controlla_voci_recenti() -> None:
     riga("ok" if tolti else "!!", ".mcp.json e .venv assenti, come decide ADR-031" if tolti else ".mcp.json o .venv presenti, contro ADR-031")
     print("  CHIUSA il 2026-10-01 per rinuncia, ADR-031: nessuno strumento a consumo.")
 
+    print("\nPA-024  Scegliere il modulo di amplificazione e processore per i cabinet attivi")
+    riga("ok", "architettura decisa il 2026-10-02: attivo con processore digitale, ADR-033")
+    riga("? ", "candidati e configurazione dei biquad da Linux: da accertare su fonte primaria")
+    print("  APERTA come ricerca; l'acquisto si fa alla fine con gli altri, ADR-027.")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
