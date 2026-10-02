@@ -479,14 +479,9 @@ def controlla_voci_recenti() -> None:
     print("  MAC e alias studio aggiornato, perche' oggi punta a 192.168.10.204.")
 
     print("\nPA-023  Configurare le credenziali dei tre strumenti di ricerca")
-    mcp = Path("E:/diy-2way-monitors-home/.mcp.json")
-    riga("ok" if mcp.is_file() and "openalex" in mcp.read_text(encoding="utf-8") else "  ",
-         "server openalex dichiarato in .mcp.json (ADR-030)")
-    pqa = Path("E:/diy-2way-monitors-home/.venv/Scripts/pqa.exe")
-    riga("ok" if pqa.is_file() else "  ", "PaperQA2 installato in .venv (pqa.exe)")
-    riga("? ", "login OAuth di OpenAlex con /mcp, modello di PaperQA2, feynman setup: dell'utente")
-    print("  APERTA: le credenziali vivono negli archivi privati dei programmi, mai in")
-    print("  file tracciati. Le verifiche sono scritte nella voce.")
+    tolti = not Path("E:/diy-2way-monitors-home/.mcp.json").exists() and not Path("E:/diy-2way-monitors-home/.venv").exists()
+    riga("ok" if tolti else "!!", ".mcp.json e .venv assenti, come decide ADR-031" if tolti else ".mcp.json o .venv presenti, contro ADR-031")
+    print("  CHIUSA il 2026-10-01 per rinuncia, ADR-031: nessuno strumento a consumo.")
 
 
 def main() -> int:

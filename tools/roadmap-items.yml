@@ -116,3 +116,11 @@ voci:
     stato: Appartiene in massima parte al progetto gemello.
     passo: Proseguire nel gemello.
     fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 17
+    livello: 2
+    dove: questo repository
+    titolo: Decidere fra crossover passivo e attivo
+    stato: "Il confronto è scritto in docs/52-crossover-passivo-o-attivo.md e nel capitolo sul crossover del report; la decisione è dell'utente, che partiva dall'ipotesi del passivo."
+    passo: "Leggere il confronto e scegliere; poi ADR, voce negli acquisti finali e capitolo del report sulla forma scelta."
+    fonte: "docs/52-crossover-passivo-o-attivo.md"

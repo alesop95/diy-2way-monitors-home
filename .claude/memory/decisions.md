@@ -417,3 +417,25 @@ Decisione. `.mcp.json` in radice dichiara il server ufficiale `openalex` su `htt
 Motivazione. È il server ufficiale indicato dal runbook del pacchetto, e copre la scoperta di articoli e la risoluzione dei riferimenti, che il report richiederà.
 
 Conseguenze. Il server occupa token a ogni turno quando è connesso. Il login lo fa l'utente con `/mcp` in una sessione nuova di Claude Code. Il conteggio dei server di progetto passa da zero a uno.
+
+## ADR-031 - Nessuno strumento di ricerca a consumo: OpenAlex, PaperQA2 e Feynman tolti, ADR-030 superata
+
+Data: 2026-10-01. Stato: accettata, su scelta esplicita dell'utente.
+
+Contesto. MS-179 aveva dichiarato OpenAlex in `.mcp.json` e installato PaperQA2 e Feynman, in attesa delle credenziali dell'utente. Spiegate le credenziali, l'utente ha chiesto se fossero a consumo e ha deciso di lasciar perdere: PaperQA2 e Feynman usano un modello linguistico tramite API, pagata per token e non coperta dall'abbonamento con cui si lavora qui, salvo un modello locale; OpenAlex ha un uso gratuito con limiti, con condizioni non verificate.
+
+Decisione. `.mcp.json` e `.codex/config.toml` sono tolti, l'ambiente virtuale `.venv` con PaperQA2 è rimosso, e Feynman è disinstallato dal sistema con il permesso esplicito dell'utente. Il progetto torna senza server MCP, come in ADR-023.
+
+Motivazione. Nessuno dei tre strumenti serve a ciò che il progetto fa senza una spesa ricorrente, e la ricerca bibliografica si fa con le fonti lette in rete e registrate, con la base di conoscenza locale e con le skill di `academic-researcher`, che restano.
+
+Conseguenze. ADR-030 è superata. Le skill di `academic-researcher` restano istanziate e funzionano senza i tre strumenti, con la ricerca manuale. Il gate si potrà riproporre se diventasse disponibile un modello locale adeguato.
+
+## ADR-032 - Il report LaTeX resta fuori dal versionamento finché non è completo
+
+Data: 2026-10-01. Stato: accettata, su scelta esplicita dell'utente.
+
+Contesto. ADR-029 ha aperto il report dei monitor come documento che cresce con il progetto. L'utente ha chiesto di versionarlo soltanto quando sarà completo.
+
+Decisione. La cartella `report/` è nel `.gitignore`. Quando il report sarà completo si toglie quella riga e lo si versiona.
+
+Conseguenze. Finché resta ignorato, il report non è nella storia di git né su GitHub: la sua sola copia di sicurezza è quella giornaliera di `sync-dev`, che copia `E:\` sull'SSD esterno. Lo stato del report si traccia comunque nel registro dei microstep e nel work-log, capitolo per capitolo, così che il lavoro sia ricostruibile anche senza il sorgente.
