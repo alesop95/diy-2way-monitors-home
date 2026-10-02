@@ -1,5 +1,7 @@
 # Crossover passivo o attivo: il confronto per questo progetto
 
+> Decisione del 2026-10-02: attivo, con il crossover in un processore digitale, registrata come ADR-033. La scelta del modulo e la verifica del suo software su Linux sono PA-024. Il confronto che segue è quello su cui la decisione è stata presa, e resta com'era.
+
 > Documento di confronto scritto il 2026-10-01 su richiesta dell'utente, che aveva dato per scontato un crossover passivo e ha chiesto di vedere le due strade prima di decidere. Non prende la decisione: la prepara. Le affermazioni generali vengono dalle fonti elencate in fondo, ciascuna con il suo stato di lettura; quelle sul progetto vengono dai documenti del repository. La trattazione matematica sta nel report LaTeX, capitolo sul crossover.
 
 ## Che cosa cambia fra le due architetture
