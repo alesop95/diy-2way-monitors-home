@@ -3803,6 +3803,58 @@ Verificato con: l'inventario per estensione e peso delle due cartelle; la copia 
 
 Esito: fatto per l'istanziazione; aperti PA-023 per le credenziali, il confronto fra attivo e passivo e lo scheletro del report, che sono i passi successivi.
 
+### MS-180 - I tre strumenti di ricerca a consumo tolti, e il report escluso da git finché non è completo
+
+Data: 2026-10-01
+
+Perimetro: `.mcp.json`, `.codex/config.toml`, `.venv`, il pacchetto npm globale `@companion-ai/feynman`, il `.gitignore`; ADR-031, ADR-032 e PA-023.
+
+Legame con il progetto: nessuna fase del workflow, e lo dichiaro: riguarda gli strumenti di lavoro e la gestione del report.
+
+Spiegate le credenziali dei tre strumenti, l'utente ha chiesto se fossero a consumo. PaperQA2 e Feynman usano un modello linguistico tramite API, pagato per token e non coperto dall'abbonamento con cui si lavora qui, salvo un modello locale; OpenAlex ha un uso gratuito con limiti, con condizioni attuali non verificate. L'utente ha deciso di lasciarli perdere, ed è ADR-031. Tolti `.mcp.json` e `.codex/config.toml`, che erano già entrati nel commit `dc5c111`, e rimosso l'ambiente virtuale `.venv`, 306 MiB creati in MS-179 dentro il repository. Feynman era installato fuori dal repository, quindi per il vincolo di `CLAUDE.md` è stato chiesto il permesso esplicito prima di disinstallarlo: `npm uninstall -g @companion-ai/feynman` ha tolto 451 pacchetti, e `which feynman` non trova più il comando. Le skill di `academic-researcher` restano, perché funzionano senza i tre strumenti.
+
+L'utente ha chiesto anche che il report LaTeX si versioni soltanto quando sarà completo: `report/` è nel `.gitignore`, ed è ADR-032, con la conseguenza dichiarata che fino ad allora la sua sola copia di sicurezza è quella giornaliera di `sync-dev`.
+
+Verificato con: l'uscita di `npm uninstall` e `which feynman`; `ls` sui file e sulla cartella tolti; `git check-ignore -v report/main.tex`.
+
+Esito: fatto.
+
+### MS-181 - Il confronto fra crossover passivo e attivo, scritto su tre fonti lette e sul materiale di studio
+
+Data: 2026-10-01
+
+Perimetro: `docs/52-crossover-passivo-o-attivo.md`, nuova, con il collegamento da `docs/README.md`; ricerca in rete e nella cache locale del materiale di studio.
+
+Legame con il progetto: serve la fase 4a del workflow, cioè la progettazione acustica, e la lista degli acquisti finali di ADR-027, che cambia con la scelta.
+
+L'utente partiva dall'ipotesi del passivo e ha chiesto il confronto prima di decidere. Fonti lette: la pagina "Crossovers" di Linkwitz Lab, revisione del 2023-02-15; l'articolo di Rod Elliott sul bi-amping, aggiornato il 2017-07-07, letto da `sound-au.com` dopo che `sound.whsites.net` non risolveva il nome; il manuale di VituixCAD 2.0.135.2 del 2026-04-25, che conferma il supporto a componenti passivi con le loro perdite, a filtri attivi e a biquad digitali con esportazione dei coefficienti. Nel materiale di studio, la cache di `doc-ingest` conta 46 occorrenze di «crossover» nel libro di Self del 2020, che rimanda per il dettaglio a due testi assenti dal corpus: Self 2018 sui crossover attivi e l'articolo di Linkwitz sul JAES, di cui l'anno, gennaio-febbraio 1976, e l'edizione del libro di Self, la terza, sono stati verificati nei riferimenti del libro invece che scritti a memoria.
+
+Il documento spiega le due architetture, i vantaggi e i limiti di ciascuna sul caso di questo progetto, cioè l'amplificatore esterno che il passivo chiede per ADR-012, la correzione in un processore che pesa per una stanza non trattabile, e la compatibilità con Linux del programma di configurazione di un processore. Dichiara che Linkwitz ed Elliott sono apertamente favorevoli all'attivo, e tiene distinta la loro preferenza dalle loro affermazioni tecniche. Porta una inclinazione motivata e non una decisione, che resta dell'utente.
+
+Verificato con: la lettura delle tre fonti; la ricerca delle occorrenze nella cache locale e la lettura dei riferimenti bibliografici di Self 2020; la catena di verifica prima di un commit.
+
+Esito: fatto; la decisione è la voce 17 della roadmap.
+
+### MS-182 - Lo scheletro del report LaTeX, con il capitolo sul crossover scritto e la sua matematica verificata
+
+Data: 2026-10-01
+
+Perimetro: `report/`, ignorato da git per ADR-032: `main.tex`, `preambolo.tex`, `bibliografia.bib`, dieci capitoli sotto `capitoli/` e lo script `verifiche/verifica_crossover.py`.
+
+Legame con il progetto: serve il secondo esito dichiarato dalla roadmap, cioè la documentazione tecnico-didattica, e la fase 4a, per il capitolo sul crossover.
+
+*La struttura.* Un capitolo per fase del workflow, più l'introduzione e l'appendice della notazione. Ogni capitolo non ancora scritto dichiara il proprio stato, e il preambolo definisce tre marcatori, misurata, simulata e ipotizzata, con cui ogni grandezza numerica dichiara la propria natura.
+
+*Il capitolo sul crossover.* Funzioni di trasferimento del secondo ordine e risposta di Butterworth; l'allineamento Linkwitz-Riley del quarto ordine con la dimostrazione che la somma dei due rami è un passa-tutto del secondo ordine; il Linkwitz-Riley del secondo ordine con il tweeter in polarità invertita; un grafico dei moduli; la rete passiva LC con le formule di dimensionamento, il limite del carico resistivo e la rete di Zobel; la cella di Sallen-Key a guadagno unitario; il biquad digitale con la trasformazione bilineare e il ritardo di allineamento; una tabella di confronto. Tutti i valori numerici sono marcati come ipotizzati.
+
+*La verifica della matematica, prima di scriverla.* Lo script verifica numericamente su sei frequenze che la somma LR4 coincide con il passa-tutto e ha modulo uno, che la differenza LR2 coincide con il passa-tutto del primo ordine, che in Butterworth la somma diretta si annulla e la differenza vale +3,01 dB, la funzione di trasferimento del partitore LC, il dimensionamento L = 0,900 mH e C = 7,03 uF per 8 ohm a 2 kHz, la rete di Zobel, il fattore di qualità della cella di Sallen-Key e il ritardo di 87,5 us per 3 cm.
+
+*La compilazione.* Con `scripts/build.ps1 -Main report/main.tex` su TinyTeX, con `biber`: 16 pagine, nessun riferimento né citazione irrisolti nel log finale, nessuna riga troppo lunga dopo la correzione di una tabella che usciva dal margine, vista leggendo le pagine del PDF. Due inciampi: lo script ha cercato `reportmain.tex` perché il Bash dell'agente ha tolto la barra rovesciata dal percorso, risolto con la barra in avanti; e un `\ref` in un capitolo generato da uno script è diventato un ritorno a capo per la stessa causa, trovato con un controllo dei caratteri di controllo e riscritto con lo strumento di scrittura dei file. `biber` segnalava il mese scritto come `jan`, corretto in numero.
+
+Verificato con: `verifica_crossover.py`, che stampa tutte le identità verificate; il log di `pdflatex` e di `biber`; la lettura delle pagine 7, 8, 9 e 10 del PDF.
+
+Esito: fatto per lo scheletro e per il capitolo sul crossover; gli altri capitoli si scrivono quando le fasi producono dati.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
