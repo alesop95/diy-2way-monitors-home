@@ -564,7 +564,7 @@ Criterio di completamento. Una prenotazione DHCP sul router di casa per il MAC `
 
 ## PA-023 - Configurare le credenziali dei tre strumenti di ricerca
 
-Data di apertura: 2026-10-01. Stato: aperta, eseguibile dall'utente.
+Data di apertura: 2026-10-01. Stato: CHIUSA lo stesso giorno per rinuncia, ADR-031: l'utente ha deciso di non usare strumenti a consumo, quindi le tre configurazioni non si fanno, `.mcp.json` e `.venv` sono tolti e Feynman è disinstallato. Il testo che segue descrive che cosa sarebbe servito.
 
 Che cosa va fatto. Tre configurazioni che l'agente non può e non deve fare al posto dell'utente, perché passano da login e chiavi che vivono negli archivi privati dei programmi e mai in file tracciati.
 

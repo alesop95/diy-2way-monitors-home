@@ -84,6 +84,11 @@ _notes/
 /.claude/skills/libro-*/
 /.agents/skills/libro-*/
 
+# Report LaTeX dei monitor (ADR-029): resta fuori dal versionamento finche' non e' completo,
+# per decisione dell'utente del 2026-10-01 (ADR-032). Vive sotto E:\ ed e' quindi nella copia
+# giornaliera di sync-dev; quando sara' completo si toglie questa riga e si versiona.
+/report/
+
 # Ambiente di sviluppo
 node_modules/
 .venv/

@@ -1,4 +1,0 @@
-# Server MCP di progetto per Codex, dal runbook INTEGRAZIONI-TOOL.md di academic-researcher
-# (ADR-030, 2026-10-01). Nessun token qui: il login OAuth vive nello store privato del client.
-[mcp_servers.openalex]
-url = "https://mcp.openalex.org/mcp"

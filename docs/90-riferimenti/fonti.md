@@ -38,9 +38,13 @@ Elenco delle estensioni dei file Veeam sul sito della comunità Veeam: `https://
 
 Le settantasei fonti, quarantasette delle quali lette, della valutazione di PA-012 del 2026-09-30, fra pagine dei produttori, sorgenti del kernel Linux, manuali, rivenditori e forum, ciascuna con ciò per cui è autorevole e con lo stato di lettura, sono registrate in fondo alla pagina `docs/20-catena-di-ingresso.md` del progetto gemello `home-recording-training-mixing-setup`, a cui la valutazione appartiene. Non si duplicano qui, perché due copie di un registro divergono.
 
+## Crossover
+
+Le sei fonti del confronto fra crossover passivo e attivo, cioè Linkwitz Lab, Elliott Sound Products e il manuale di VituixCAD lette il 2026-10-01, Self 2020 dal materiale di studio locale, e due testi citati da Self e non letti, cioè Self 2018 sui crossover attivi e l'articolo di Linkwitz del 1976 sul JAES, sono registrate con lo stato di lettura in fondo a `docs/52-crossover-passivo-o-attivo.md`, e sono le stesse della bibliografia del report.
+
 ## Strumenti di ricerca
 
-Le fonti operative dei tre strumenti, elencate dal runbook `INTEGRAZIONI-TOOL.md` del pacchetto `academic-researcher` e non lette: il server MCP ufficiale di OpenAlex, `https://github.com/ourresearch/openalex-mcp-server`; PaperQA2, `https://github.com/Future-House/paper-qa`; Feynman, `https://github.com/Companion-Inc/feynman`. Il pacchetto npm `@companion-ai/feynman` è stato interrogato con `npm view` il 2026-10-01, che ha restituito come ultima versione la 0.5.19, quella installata.
+Dal 2026-10-01 i tre strumenti non sono più nel progetto, per ADR-031; le fonti restano registrate perché sono quelle su cui la scelta è stata presa. Le fonti operative dei tre strumenti, elencate dal runbook `INTEGRAZIONI-TOOL.md` del pacchetto `academic-researcher` e non lette: il server MCP ufficiale di OpenAlex, `https://github.com/ourresearch/openalex-mcp-server`; PaperQA2, `https://github.com/Future-House/paper-qa`; Feynman, `https://github.com/Companion-Inc/feynman`. Il pacchetto npm `@companion-ai/feynman` è stato interrogato con `npm view` il 2026-10-01, che ha restituito come ultima versione la 0.5.19, quella installata.
 
 ## Materiale di studio dell'utente
 
