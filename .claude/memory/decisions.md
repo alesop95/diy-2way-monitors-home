@@ -532,7 +532,7 @@ Conseguenze. Questo progetto resta il proprietario dello strumento, delle regole
 
 Data: 2026-10-05. Stato: accettata, istruzione dell'utente; rafforza ADR-028.
 
-Contesto. Il repository è pubblico, e il materiale di studio viene dall'SSD privato dell'utente. ADR-028 teneva fuori dai file tracciati i percorsi e il contenuto dei libri, ma non i titoli dei file. Così il commit `34ffd73` ha pubblicato in `fonti.json` i titoli di 3300 file, compresi documenti personali e nomi di persone. L'utente ha chiesto di stare molto attenti a che cosa finisce su GitHub.
+Contesto. Il repository è pubblico, e il materiale di studio viene dall'SSD privato dell'utente. ADR-028 teneva fuori dai file tracciati i percorsi e il contenuto dei libri, ma non i titoli dei file. Così il commit della mattina del 2026-10-05, poi sostituito, ha pubblicato in `fonti.json` i titoli di 3300 file, compresi documenti personali e nomi di persone. L'utente ha chiesto di stare molto attenti a che cosa finisce su GitHub.
 
 Decisione. Nessun file tracciato contiene titoli, nomi di file, percorsi di singoli file o nomi di persone che vengono dal disco privato, salvo le citazioni bibliografiche di opere pubblicate. I registri e le regole che descrivono il disco vivono in `_notes/`, che è ignorata. Ogni commit passa da `tools/check-privato.py`, che cerca i termini dell'elenco locale `_notes/privacy/termini.txt`, le tracce di provenienza non ufficiale dei libri e i percorsi di singoli file su `J:`. Le persone da cui veniva il materiale si anonimizzano anche sul disco, con il permesso dell'utente elenco alla mano, e gli autori dei testi restano.
 

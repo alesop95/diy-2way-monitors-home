@@ -540,7 +540,7 @@ def controlla_voci_recenti() -> None:
         riga("ok" if locali == 0 else "!!", f"voci locali nel registro tracciato fonti.json: {locali}")
     except (OSError, ValueError) as exc:
         riga("!!", f"fonti.json non leggibile: {exc}")
-    riga("? ", "storia pubblicata: commit 34ffd73 e righe sulla provenienza dei PDF, rimedio dell'utente (MS-202)")
+    riga("? ", "storia pubblicata: commit della mattina sostituito da 2a5ba41; restano le righe sulla provenienza dei PDF in commit precedenti (MS-202, MS-203)")
     print("  APERTA per la sola storia pubblicata.")
 
     print("\nPA-029  Portare nei progetti di acustica il rimando al vault delle fonti")
