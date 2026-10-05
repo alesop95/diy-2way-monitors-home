@@ -17,6 +17,7 @@ Uso:
 from __future__ import annotations
 
 import argparse
+import json
 import hashlib
 import sys
 from pathlib import Path
@@ -487,6 +488,66 @@ def controlla_voci_recenti() -> None:
     riga("ok", "architettura decisa il 2026-10-02: attivo con processore digitale, ADR-033")
     riga("? ", "candidati e configurazione dei biquad da Linux: da accertare su fonte primaria")
     print("  APERTA come ricerca; l'acquisto si fa alla fine con gli altri, ADR-027.")
+
+    print("\nPA-025  Scaricare i PDF delle fonti selezionate per la tesi")
+    vault = Path("E:/diy-2way-monitors-home/research-vault")
+    try:
+        fonti = json.loads((vault / "fonti.json").read_text(encoding="utf-8"))
+        selezionate = [v for v in fonti if "proposta" in v["provenienze"] or "scaricata" in v["provenienze"]]
+        scaricate = sum(1 for v in selezionate if v.get("stato_pdf") in ("scaricato", "su J:"))
+        riga("ok" if scaricate == len(selezionate) else "? ", f"PDF disponibili, scaricati o gia su J:, {scaricate} su {len(selezionate)} fonti selezionate, misurato da fonti.json")
+    except (OSError, ValueError, KeyError) as exc:
+        riga("!!", f"fonti.json non leggibile: {exc}")
+    print("  APERTA: dipende dall'utente; elenco in research-vault/04-Paper-da-scaricare.md.")
+
+    print("\nPA-026  Indicizzare i lotti dal 02 al 09 del materiale di studio, e convertirli")
+    j = Path("J:/").exists()
+    riga("ok" if j else "--", "disco J: collegato" if j else "disco J: non collegato")
+    locali = vault / "fonti-locali"
+    voci = []
+    for m in sorted(locali.glob("lotti-manifest*.json")):
+        voci += json.loads(m.read_text(encoding="utf-8"))["voci"]
+    fatte = set()
+    for o in locali.glob("lotto-*-origine.json"):
+        fatte |= {v["origine"] for v in json.loads(o.read_text(encoding="utf-8")) if v.get("esito")}
+    riga("ok" if voci and all(v["origine"] in fatte for v in voci) else "? ", f"voci dei manifesti registrate {sum(1 for v in voci if v['origine'] in fatte)} su {len(voci)}")
+    indicizzati = bool(voci) and all(v["origine"] in fatte for v in voci)
+    conv_p = Path("E:/diy-2way-monitors-home/_notes/.tmp-doc-cache/fonti/manifest.json")
+    conv = json.loads(conv_p.read_text(encoding="utf-8")) if conv_p.exists() else {}
+    da_convertire = set()
+    for o in locali.glob("lotto-*-origine.json"):
+        da_convertire |= {v["sha256"] for v in json.loads(o.read_text(encoding="utf-8"))
+                          if v.get("esito") == "indicizzato" and Path(v.get("nome", "")).suffix.lower()
+                          in (".pdf", ".docx", ".doc", ".pptx", ".ppt", ".xlsx", ".html", ".htm", ".epub")}
+    fatti = len(da_convertire & set(conv))
+    vuoti = sum(1 for k in da_convertire & set(conv) if conv[k].get("parole", 0) < 50)
+    riga("ok" if fatti == len(da_convertire) else "? ", f"documenti convertiti {fatti} su {len(da_convertire)}, di cui {vuoti} con meno di 50 parole (scansioni da OCR)")
+    if indicizzati:
+        print("  INDICIZZAZIONE COMPIUTA; resta la conversione con tools/converti-fonti.py." if fatti < len(da_convertire)
+              else "  INDICIZZAZIONE E CONVERSIONE COMPIUTE; restano i documenti con poche parole, da OCR.")
+    else:
+        print("  " + ("ESEGUIBILE adesso con python tools/indicizza-lotti.py." if j and voci else "In attesa del disco J: o dei manifesti."))
+
+    print("\nPA-027  Censimento completo di J:, biblioteca alla maniera di JabRef, vault su J:")
+    riga("ok" if j else "--", "disco J: collegato" if j else "disco J: non collegato")
+    riga("ok", "cartelle, vault e biblioteca scelti dall'utente in ADR-038, generati in MS-201")
+    print("  APERTA: restano residui da classificare e OCR.")
+
+    print("\nPA-028  Titoli di documenti personali nel registro pubblico delle fonti")
+    try:
+        fonti = json.loads((vault / "fonti.json").read_text(encoding="utf-8"))
+        locali = sum(1 for v in fonti if "locale" in v.get("provenienze", []))
+        riga("ok" if locali == 0 else "!!", f"voci locali nel registro tracciato fonti.json: {locali}")
+    except (OSError, ValueError) as exc:
+        riga("!!", f"fonti.json non leggibile: {exc}")
+    riga("? ", "storia pubblicata: commit 34ffd73 e righe sulla provenienza dei PDF, rimedio dell'utente (MS-202)")
+    print("  APERTA per la sola storia pubblicata.")
+
+    print("\nPA-029  Portare nei progetti di acustica il rimando al vault delle fonti")
+    vault_j = Path("J:/MAIN/LOUDSPEAKERS & ELECTROACOUSTIC/_VAULT FONTI/Biblioteca.bib")
+    riga("ok" if vault_j.exists() else "--", "vault delle fonti presente su J:" if vault_j.exists() else "vault delle fonti non raggiungibile")
+    riga("? ", "rimando da portare nei progetti candidati, in una sessione aperta in ciascuno (ADR-039)")
+    print("  APERTA: elenco dei progetti da confermare con l'utente.")
 
 
 def main() -> int:

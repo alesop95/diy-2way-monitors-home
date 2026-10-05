@@ -3873,6 +3873,699 @@ Verificato con: l'elenco per nome ed estensione delle due cartelle; la ricompila
 
 Esito: fatto.
 
+## 2026-10-02, la ripresa: i lotti del materiale di studio
+
+### MS-184 - Tutti i lotti del materiale di studio fissati prima di assorbirne altri, e la lacuna di MS-179 spiegata
+
+Data: 2026-10-02
+
+Perimetro: elenco in sola lettura di `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC`, mai aperta prima, e riesame di `J:\MAIN\ANALOG (AUDIO) ELECTRONICS`; il piano locale `_notes/fonti-studio/piano-lotti.md`; la voce 19 della roadmap; le quattro schede di contesto rilette. Nessun file copiato, scritto o spostato su `J:`.
+
+Legame con il progetto: serve le fasi 3, 4a e 5 del workflow e il report, attraverso la base di conoscenza di MS-179; serve PA-024 per la parte sull'amplificazione e sul crossover digitale. Da questo microstep dipende l'assorbimento dei lotti dal 02 al 05.
+
+*La richiesta dell'utente.* Controllare in `J:\MAIN` se ci fosse altro di pertinente, soprattutto fra i suoi appunti in `LOUDSPEAKERS & ELECTROACOUSTIC`, e rivedere `ANALOG (AUDIO) ELECTRONICS`; poi, testualmente, «prima stabiliamo tutti i lotti delle fonti e poi le assorbiamo e le usiamo per il progetto». Ne discende l'ordine: nessuna copia finché il piano non è confermato.
+
+*La lacuna di MS-179 aveva una causa semplice.* Quel microstep dichiarava che nessun testo del materiale era specifico sulla progettazione dei diffusori. Era vero per le due cartelle aperte allora, e falso per il materiale dell'utente: la cartella che li contiene non era stata aperta. Conta 1058 file, di cui 625 PDF, 32 DOCX e 49 TXT, misurati per estensione con `find`. Dentro ci sono i testi di progettazione che mancavano, cioè Dickason, Eargle, Colloms, Borwick, Newell e Holland, Hill, Kleiner, Beranek e Mellow, gli articoli di Small e di Keele sugli allineamenti, gli articoli Genelec sul progetto di monitor attivi, Toole e Kuttruff per la stanza, una raccolta di 29 articoli sul crossover e sulla fase, i materiali dei corsi Klippel, la tesi dell'utente e i suoi appunti dei seminari EEASE del 2019.
+
+*I lotti.* Il lotto 02 è il nucleo di progettazione dei diffusori, con gli appunti dell'utente. Il lotto 04 è la stanza e l'ascolto, che per ADR-002 vengono prima del diffusore. Il lotto 03 è il crossover digitale, la fase e l'amplificazione, e prende da `ANALOG (AUDIO) ELECTRONICS` il libro di Self del 2013 sugli amplificatori di potenza, `self2010audio.pdf`, quattro articoli sugli amplificatori e cinque sul processore, più la riconversione di Izadian. Il lotto 05 è la misura. L'ordine proposto è 02, 04, 03, 05. Restano fuori, con il motivo scritto nel piano, trombe e driver a compressione, la simulazione agli elementi finiti, l'identificazione non lineare della tesi, l'acustica generale di riferimento, e il materiale estraneo come microfoni, MEMS, car audio, audio spaziale, chitarra e PCB. I percorsi completi stanno soltanto nel piano locale, per ADR-028.
+
+*Doppioni e scansioni, dichiarati prima della copia.* Diversi libri esistono in più copie con nomi diversi: il libro di Dickason tre volte, quello di Colloms cinque in edizioni forse diverse, il manuale di Borwick due volte, e gli appunti EEASE della radice sono con ogni probabilità quelli già copiati nel lotto 01. Si scartano per impronta al momento della copia e non per nome. Due file pesano più di cento megabyte, cioè Hill (234,9 MiB) e D'Appolito (126,3 MiB), e sono quasi certamente scansioni: come Izadian, chiederanno OCR o Docling. Due archivi `.rar` sul crossover non sono stati aperti, e il loro contenuto va elencato prima di decidere.
+
+*Le schede di contesto.* Su conferma dell'utente sono state rilette le quattro schede ferme a `93bb1e1`. `deployment.md` è risultata valida. `roadmap.md` dava ancora come aperta la scelta fra attivo e passivo, chiusa da ADR-033, e il pacchetto LaTeX come non istanziato, mentre lo è da MS-153 e il report è aperto da ADR-029; `current-work.md` indicava PA-020 come unico lavoro eseguibile e PA-008 come aperta. Le correzioni sono note datate in testa alle sezioni, senza riscriverle; `STACK.md` porta ora il processore digitale come anello della catena. Le quattro firme sono portate a `0685cfc`.
+
+Verificato con: `find` per estensione e per sottocartella sulle due cartelle; la lettura degli appunti `.txt` sotto i 20 KiB, che sono quasi tutti elenchi di collegamenti; il confronto con `_notes/fonti-studio/lotto-01-origine.json`; `git diff 93bb1e1..HEAD` sulle aree coperte dalle schede.
+
+Esito: fatto per il piano; l'assorbimento attende la conferma dell'utente.
+
+### MS-185 - Il progetto diventa una tesi: censimento completo di J:\MAIN, scope di ricerca e primo lotto di paper candidati
+
+Data: 2026-10-02
+
+Perimetro: tutte le cartelle di `J:\MAIN` non ancora censite, in sola lettura; ADR-034; `research-vault/scope.md` e `research-vault/tracked-sources.md`, nuovi e tracciati; la cartella `research-vault/papers/` con la sua riga nel `.gitignore`; il piano locale dei lotti con i tre censimenti accanto; la voce 20 della roadmap. Nessun file scritto su `J:` e nessun paper scaricato.
+
+Legame con il progetto: serve tutte le fasi, perché la tesi le racconta e le dimostra; in particolare la 4a, il cui capitolo sul crossover va ripreso con le derivazioni. Da questo microstep dipendono l'assorbimento dei lotti e la verifica delle fonti candidate.
+
+*La richiesta dell'utente.* Cercare in `J:\MAIN` anche il materiale sul DSP, perché del progetto vuole fare praticamente una tesi, con la matematica che dimostra le cose spiegata da zero e appendici di elettronica, acustica ed elettroacustica; finire il censimento; fare una ricerca bibliografica di paper, dicendo dove metterli nel progetto senza versionarli, e tenere la lista delle fonti come prescrive il template. Alle quattro domande di scope ha risposto così: tesi che cresce, con i resoconti Markdown di ogni punto sempre aggiornati perché nessun passaggio operativo vada perso; accesso ad AES E-Library, IEEE Xplore e ASA, più l'open access; bibliografia da zero in un solo `.bib`; autonomia nella forma propongo, poi l'utente conferma. È ADR-034.
+
+*Il censimento.* Tre agenti in parallelo, in sola lettura, hanno classificato per nome i documenti di quindici cartelle e scritto i risultati in tre file locali accanto al piano dei lotti. In totale 53, circa 89 e 45 voci o gruppi. Le scoperte che cambiano il piano:
+- il materiale sul DSP, cioè Oppenheim e Schafer, Kahrs e Brandenburg, Mitra, e i corsi universitari Multimedia Signal Processing e Sound Analysis, Synthesis and Processing;
+- il corso EEASE completo, con esami e slide;
+- gli appunti propri di acustica fondamentale, acustica applicata, misure elettroniche, elettrotecnica ed elettronica;
+- la tesi magistrale dell'utente del 2020, che diventa il modello di struttura.
+
+Nascono quattro lotti nuovi:
+- 06, appendice di matematica;
+- 07, appendice di elettrotecnica ed elettronica;
+- 08, appendice di fisica, elettromagnetismo e acustica di base;
+- 09, forma della tesi.
+
+L'ordine proposto mette il 09 per primo e assorbe le appendici un argomento alla volta, quando il capitolo che le chiede è in scrittura. Due limiti vanno detti. Il primo: le classificazioni vengono dai nomi dei file e non dal contenuto, quindi ogni voce si apre prima di copiarla. Il secondo: l'attribuzione di un file agli appunti propri dell'utente è un'ipotesi, da confermare con lui.
+
+*Dove vanno i paper.* In `research-vault/papers/`, ignorata da git perché molti testi sono sotto diritti dell'editore e il repository è pubblico, con il nome uguale alla chiave bibliografica, così che PDF, voce del `.bib` e riga del registro si leghino meccanicamente. Restano tracciati lo scope, il registro e il `.bib`, come vuole il pacchetto.
+
+*Il primo lotto di candidati.* Ventiquattro paper in `research-vault/tracked-sources.md`, divisi per i sette filoni dello scope: modello del driver e del cabinet, crossover digitale, correzione nella stanza, percezione, misura, amplificazione, implementazione. Sono proposti dalla conoscenza della letteratura e marcati tutti da verificare, perché autori, anni e sedi non sono ancora stati riscontrati su una pagina primaria; restano fuori di proposito quelli già presenti nei lotti locali. Nessuno passa nel `.bib` prima della verifica.
+
+Verificato con: le tre relazioni degli agenti e la lettura integrale di `censimento-C.md`; `git check-ignore -v` su un file sotto `research-vault/papers/`, che risponde con la riga nuova del `.gitignore`; la catena di verifica prima di un commit.
+
+Esito: fatto per censimento, scope e proposta. Lo stesso giorno l'utente ha confermato il piano dei nove lotti con il suo ordine, e ha chiesto i collegamenti dei 24 candidati per scaricarli in `research-vault/papers/`: la verifica dei candidati è MS-186.
+
+### MS-186 - I 24 paper candidati riscontrati sul web: 29 file con il loro collegamento, nessuno ancora verificato
+
+Data: 2026-10-02
+
+Perimetro: `research-vault/tracked-sources.md`, riscritto con i dati riscontrati; i tre resoconti di verifica in `_notes/fonti-studio/verifiche-paper/`, locali; la voce 20 della roadmap. Nessun PDF scaricato dall'agente.
+
+Legame con il progetto: serve la tesi di ADR-034, perché nessuna di queste fonti può entrare nel `.bib` prima della verifica. Da questo microstep dipende lo scaricamento dei PDF da parte dell'utente in `research-vault/papers/`.
+
+*La richiesta dell'utente.* Confermato il piano dei lotti, ha chiesto i 24 collegamenti per mettere i PDF in `research-vault/papers/`. I candidati erano stati proposti a memoria, quindi prima di consegnare un collegamento lo si è cercato: tre agenti in parallelo, otto paper ciascuno, con il vincolo di non riportare mai un collegamento, un DOI o un numero della E-Library che non avessero visto su una pagina.
+
+*Che cosa è cambiato rispetto alla proposta.* I lavori in più parti sono stati divisi, cioè Thiele in due, Small in quattro e Olive in due, quindi le righe sono 29. La chiave di Olson diventa `olson1969enclosures`, perché la versione JAES è la ripubblicazione del 1969. D'Appolito 1983 è un paper di convention. La nota di Bristow-Johnson si cita nella versione W3C del 2021, perché la data dell'originale non ha una fonte primaria. Anno e numerazione di Cecchi sono stati precisati. Due righe restano incomplete: per Vanderkooy 1991 non è emerso un collegamento confermato, e per Vanderkooy e Lipshitz 1984 il collegamento trovato è probabilmente quello del preprint del 1981.
+
+*Il limite del riscontro.* Le pagine della AES E-Library e di ASA hanno risposto 403 agli strumenti di recupero. Per gli articoli AES, i numeri della E-Library e i metadati vengono quindi dai risultati di ricerca che riportano quelle pagine, e non da una pagina aperta. I DOI di IEEE, ASA e MDPI sono riscontrati su Crossref o OpenAlex, e la copia dell'autore di Putzeys su Hypex è stata scaricata e letta. Per questo lo stato di tutte le righe è da verificare sul PDF: la verifica si chiude quando l'utente, con i propri accessi, scarica il file e se ne confrontano titolo, autori e pagine.
+
+Verificato con: i tre resoconti degli agenti, che riportano per ogni voce la pagina da cui viene ciascun dato; `python tools/lint-md-tables.py .` sul registro riscritto.
+
+Esito: fatto per il riscontro; la verifica sul PDF attende i file.
+
+### MS-187 - Una correzione sulla provenienza dei 24 candidati, e due basi bibliografiche già esistenti: la libreria JabRef e la tesi del 2020
+
+Data: 2026-10-02
+
+Perimetro: ricerca per nome di file su tutto `J:` (5941 PDF e DJVU) e sul repository `E:\feature-based_characterization_loudspeakers` (225 file); la cartella `J:\_____da sistemare ancora`; la tesi magistrale dell'utente; le copie locali in `_notes/fonti-studio/basi-bibliografiche/`. Su `J:` solo letture.
+
+Legame con il progetto: serve la tesi di ADR-034, perché la sua bibliografia deve partire da ciò che esiste già e non da una proposta. Da questo microstep dipende il registro unico delle fonti.
+
+*La correzione, che va scritta per prima.* L'utente ha chiesto se la selezione dei 24 paper venisse dall'aver controllato tutta `J:\MAIN` e `J:\_____da sistemare ancora` senza trovarli in locale. Non era così, e MS-185 lo lasciava intendere solo in parte. I candidati erano stati proposti a memoria, escludendo soltanto i lavori visti nell'elenco di `LOUDSPEAKERS & ELECTROACOUSTIC`. Nessuna ricerca era stata fatta per sapere se i 24 fossero già su disco. Di `_____da sistemare ancora`, poi, MS-179 aveva aperto la sola sottocartella `analog_ele utili`. La ricerca è stata fatta adesso.
+
+*Su disco i 24 non ci sono.* Per nome di file nessuno dei 24 risulta presente su `J:` né nel repository della tesi. È stata cercata anche una seconda via: gli articoli Genelec portano come nome un numero che sembra quello della E-Library, ma nessuno dei 21 numeri della E-Library dei candidati compare fra i nomi. Questa ricerca vede solo i nomi e non il contenuto: non vede un PDF rinominato a caso, né l'interno dei due archivi `.rar` sul crossover.
+
+*La libreria JabRef.* In `J:\_____da sistemare ancora\ELE_Technical_Library.bib` c'è una libreria JabRef di 5676 voci. Le voci dichiarano due proprietari, per 1927 e 116 voci, mentre le altre non lo dichiarano. Sono state inserite fra il 2013 e il 2016. 4538 voci hanno un PDF collegato con un percorso relativo, per esempio `b/bianchi2012psychoacoustic.pdf`. I gruppi più numerosi sono Loudspeakers con 1066 voci, Signal processing 916, Physics 500, Acoustics 267 e Mathematics 215. Le voci nei gruppi pertinenti al progetto sono 2601. La libreria contiene già dieci dei 24 candidati, cioè le due parti di Thiele 1971, Leach 2002, Regalia 1987, Norcross 2004, Allen 1979, Olive 2004, Rife 1989 e Struck 1994, oltre a lavori collegati come le rassegne di Bank del 2013 e del 2022 e Carini 2012. Dei 4538 PDF collegati, però, solo 137 hanno un omonimo su `J:`, e sono proprio i file di `paper xover_chiesti a ...`, di `power amplifier audio` e di `Spatial Sound with Loudspeakers\papers scelti`. La cartella che contiene gli altri non è stata trovata, e va chiesta all'utente.
+
+*La tesi magistrale del 2020.* la copia su `J:` della tesi magistrale e il PDF nel repository `feature-based_characterization_loudspeakers` hanno la stessa impronta. La tesi tratta la caratterizzazione per feature di quattro woofer e quattro tweeter, con i test d'ascolto e un modello predittivo della preferenza, cioè il filone di Olive e di Toole che il progetto riprende. La sua bibliografia ha 115 voci estratte con `pdftotext`: fra queste Olive 2004 parti I e II, Toole 1986 parti 1 e 2, Keele 1974, Klippel, Bech e Zacharov, e le raccomandazioni ITU sui test d'ascolto. Il repository della tesi porta anche gli script MATLAB di estrazione delle feature spettrali e quelli di validazione statistica.
+
+*Le copie locali.* La libreria, verificata per impronta identica all'originale, e il testo della bibliografia della tesi sono in `_notes/fonti-studio/basi-bibliografiche/`, insieme all'elenco dei candidati trovati nella libreria. La libreria resta locale perché è il lavoro bibliografico di terzi.
+
+Verificato con: `find` su `J:` e sul repository della tesi; la ricerca per nome e per numero della E-Library; il confronto per titolo dei 24 con la libreria, in uno script Python; `sha256sum` sulla libreria alle due estremità; `cmp` sulle impronte dei due PDF della tesi; `pdftotext -layout` sulla tesi.
+
+Esito: fatto per l'accertamento. Il registro unico delle fonti, che l'utente chiede completo di ciò che c'è, di ciò che scarica e di ciò che l'agente propone, attende la sua conferma della forma e la risposta su dove stiano i PDF della libreria.
+
+### MS-188 - Il vault di ricerca diventa un vault Obsidian come quello di intralino, con il registro unico delle fonti e le lezioni portate al template
+
+Data: 2026-10-02
+
+Perimetro:
+- `research-vault/`, riorganizzato come vault Obsidian;
+- gli strumenti nuovi `tools/registro-fonti.py` e `tools/copia-lotti.py`;
+- `tools/check-pending-actions.py` con PA-025 e PA-026;
+- il `.gitignore`;
+- `.claude/context/STACK.md`;
+- le voci 19 e 20 della roadmap;
+- ADR-035;
+- le skill `senior-researcher` e `literature-search`, nel template e nelle due copie di questo progetto.
+
+Lette in sola lettura la configurazione del vault di `D:\intralino-benchmark\whitepaper-vault` e la libreria su `J:`.
+
+Legame con il progetto: serve la tesi di ADR-034, perché ne è la base bibliografica. Da questo microstep dipendono la copia dei lotti dal 02 al 09, PA-026, e la verifica delle fonti selezionate, PA-025.
+
+*Le richieste dell'utente.* Portare nel vault di ricerca una copia di tutto ciò che serve, e inizializzarlo come vault Obsidian con le stesse caratteristiche di quello del progetto intralino. Aggiornare il template con le lezioni apprese sulle ricerche R&D senior. I PDF della libreria JabRef non li ha: la libreria è un elenco, e si scaricano i paper che servono. La forma del registro proposta in MS-187 va bene. Aggiornarlo sempre su roadmap e pendenze. E non perdere nulla della memoria del progetto, come prescrive il template.
+
+*Il modello.* Il vault di intralino ha queste caratteristiche:
+- la configurazione `.obsidian`, con i plugin comunitari `new-3d-graph` 2.5.0, `embed-html` 1.1.9 e `obsidian42-brat` 2.0.4;
+- una nota d'ingresso `00-START` e note numerate con frontmatter `tipo` e `aggiornato`;
+- una scheda breve per fonte in `paper/`;
+- `pdf/` con `manifest.json` delle impronte e `provenienza.json`;
+- il registro `fonti.json` e `bibliografia.bib`.
+
+Qui sono stati ripresi la configurazione, i plugin, la nota d'ingresso, le note numerate, le schede in `paper/`, il manifesto delle impronte e il registro. La cartella dei PDF resta `papers/`, il nome già comunicato all'utente in MS-185, perché nessun file era ancora stato scaricato e un secondo nome avrebbe solo creato confusione.
+
+*Che cosa è stato spostato nel vault.* Dentro il repository, da `_notes/fonti-studio/` a `research-vault/`:
+- in `fonti-locali/`: il lotto 01 con `lotto-01-origine.json`, il piano dei lotti e i tre censimenti;
+- in `basi/`: la libreria JabRef, la bibliografia della tesi e i resoconti di verifica dei paper.
+
+Su `J:` non è stato toccato nulla. La conversione del lotto 01 resta valida, perché `doc-ingest` registra i percorsi relativi alla cartella del lotto e non alla sua posizione.
+
+*Che cosa si versiona.* Restano locali, per il `.gitignore` nuovo:
+- le copie del materiale di studio;
+- la libreria di terzi;
+- i PDF;
+- i plugin comunitari;
+- lo stato dell'interfaccia di Obsidian.
+
+Si versionano le note, la configurazione, le schede, `fonti.json`, `fonti-proposte.json` e `papers/manifest.json`. Il controllo con `git check-ignore -v` su un file per ciascun caso ha dato l'esito atteso.
+
+*Il registro unico.* `tools/registro-fonti.py` fonde le cinque provenienze, cioè proposte, libreria, tesi 2020, copie locali e PDF scaricati, unendo i doppioni per DOI e poi per titolo normalizzato. Il primo risultato è di 5100 voci:
+- 29 proposte, di cui 17 già nella libreria;
+- 4986 dalla libreria;
+- 119 dalla tesi;
+- 15 copie locali del lotto 01;
+- nessun PDF scaricato.
+
+Genera la nota con i collegamenti da scaricare e la nota con i conteggi, e ha creato le 29 schede.
+
+Lo strumento è arrivato a questo risultato in quattro corse, ciascuna corretta su un difetto visto nell'uscita e non sui totali:
+- la prima ricavava i titoli delle proposte da una stringa e vi includeva un autore, quindi le proposte portano ora il titolo esplicito;
+- la seconda fondeva la parte 1 e la parte 2 di Thiele 1971 con il confronto approssimato, e ora il confronto non fonde mai due titoli i cui numeri differiscono;
+- la terza perdeva i titoli scritti su più righe della libreria, e il lettore conta ora le parentesi;
+- la quarta escludeva le circa 2486 voci della libreria senza alcun gruppo, fra cui Rife 1989, Norcross 2004 e Struck 1994, e ora si escludono soltanto le voci con gruppi tutti estranei.
+
+*Due correzioni a MS-187.* La bibliografia della tesi ha 119 voci e non 115: il primo conteggio prendeva solo i numeri a inizio riga, e quattro voci cominciano dentro una riga. E le proposte già presenti nella libreria sono 17 e non dieci: la ricerca di MS-187 confrontava i titoli soltanto contro le voci con un gruppo.
+
+*La copia dei lotti.* `tools/copia-lotti.py` legge i manifesti con un percorso esatto per ogni file e copia in `fonti-locali/lotto-NN/`. Apre l'origine solo in lettura, scarta i doppioni per impronta anche fra lotti diversi, verifica l'impronta dopo la copia e registra ogni esito. I manifesti dei lotti dal 02 al 09 si ricavano dai censimenti, e il passaggio richiede interpretazione, perché le righe usano abbreviazioni e gruppi: lo fanno due agenti. Un primo agente unico si era fermato per il limite di sessione senza scrivere nulla.
+
+*Le lezioni portate al template.* Nella skill `senior-researcher` del template c'è una sezione nuova, "Prima di proporre: l'inventario di ciò che esiste", con quattro errori di questa ricerca e la regola che ne discende per ciascuno:
+- proporre a memoria prima di fare l'inventario di ciò che l'utente ha già;
+- consegnare una proposta a memoria come elenco verificato;
+- trattare un metadato visto in un risultato di ricerca come una pagina aperta;
+- non dichiarare che cosa una ricerca per nome di file non può vedere.
+
+Si aggiunge la regola pratica del registro per provenienza. In `literature-search` c'è una frase che rimanda a quella sezione. Le due modifiche sono identiche nel template, in `.claude/templates/` e nelle skill istanziate di questo progetto, come verifica `check-copie-modelli.py`. Nel template restano non committate, insieme a tre file che un altro lavoro aveva già modificato e che qui non sono stati toccati.
+
+*Pendenze e roadmap.* Sono state aperte due pendenze:
+- PA-025: i PDF da scaricare, a cura dell'utente;
+- PA-026: la copia dei lotti, eseguibile con `J:` collegato.
+
+Lo strumento delle pendenze le misura da `fonti.json` e dai manifesti. Le voci 19 e 20 della roadmap sono riscritte.
+
+Verificato con:
+- `python tools/registro-fonti.py` e `--check`, con la lettura delle voci unite dopo ogni corsa;
+- `git check-ignore -v`;
+- `python tools/check-pending-actions.py`, che riporta per PA-025 zero PDF su 29 e per PA-026 il disco collegato;
+- `python tools/check-copie-modelli.py`, con 53 copie allineate;
+- `python tools/Test-Allineamento.py`, che prima della modifica a `STACK.md` segnalava i due strumenti non citati;
+- `md-unwrap --check`, `lint-prosa`, `fix-accents --check` e `fix-dashes --check` sulle skill modificate;
+- `sync-codex-skills.py --check`.
+
+Esito: fatto per il vault, il registro, gli strumenti e il template. Restano aperte la copia dei lotti, che attende i manifesti, e lo scaricamento dei PDF.
+
+### MS-189 - I lotti dal 02 al 09 e dieci archivi copiati nel vault, e i PDF della tesi del 2020 trovati dentro un archivio
+
+Data: 2026-10-02
+
+Perimetro:
+- i due manifesti `research-vault/fonti-locali/lotti-manifest-02-05.json` e `lotti-manifest-06-09.json`;
+- la copia con `tools/copia-lotti.py`;
+- lo strumento nuovo `tools/estrai-archivi.py` e l'estrazione dei dieci archivi;
+- due correzioni a `tools/registro-fonti.py`;
+- PA-025 e PA-026 in `tools/check-pending-actions.py`;
+- `.claude/context/STACK.md`.
+
+Su `J:` solo letture: lo strumento di copia e 7-Zip aprono l'origine in lettura e scrivono soltanto dentro il vault.
+
+Legame con il progetto: serve la tesi di ADR-034 e la base di conoscenza di MS-179, che lavoreranno su queste copie. Chiude la parte di copia di PA-026.
+
+*I manifesti.* Due agenti hanno tradotto il piano e i censimenti in un percorso esatto per ogni file, verificato su disco. Il risultato:
+- lotti 02-05: 443 voci, di cui 95 appunti propri dell'utente;
+- lotti 06-09: 527 voci, di cui 90 appunti propri;
+- nessuna voce non risolta in entrambi;
+- dieci archivi lasciati da parte come da aprire.
+
+Fra le scelte dichiarate dagli agenti e da rivedere:
+- esclusi i libri di fisica scansionati più pesanti, Strogatz, Bertsimas, i modelli Word e il tema beamer;
+- dei corsi universitari solo le parti indicate dal piano, per esempio di Multimedia Signal Processing I la teoria e i laboratori sui filtri;
+- tutta la cartella di Misure Elettroniche marcata come appunti propri;
+- escluso Isen, già nel lotto 01 con un altro percorso.
+
+*La copia.* Una corsa di prova, poi la copia vera, con l'impronta riverificata dopo ogni file:
+
+| Lotto | Copiati | Doppioni | Mancanti | MiB |
+|---|---|---|---|---|
+| 02 | 126 | 13 | 0 | 1002 |
+| 03 | 130 | 9 | 0 | 406 |
+| 04 | 64 | 2 | 0 | 248 |
+| 05 | 92 | 7 | 0 | 606 |
+| 06 | 371 | 21 | 0 | 1202 |
+| 07 | 33 | 0 | 0 | 84 |
+| 08 | 62 | 5 | 0 | 163 |
+| 09 | 33 | 2 | 0 | 81 |
+
+*Gli archivi, e il lavoro della tesi che contenevano.* L'elenco in sola lettura dei dieci archivi ha mostrato due cose.
+- `Tesi Sopranzi.zip` contiene la cartella dello studio bibliografico della tesi del 2020, con i PDF degli articoli e delle raccomandazioni ITU nominati con le chiavi della libreria JabRef, per esempio `olive2004multiple.pdf` e `toole1986loudspeaker.pdf`.
+- `articoli.zip`, nel backup della tesi, contiene 38 PDF numerati come la bibliografia.
+
+`tools/estrai-archivi.py` li ha estratti tutti: 3112 file nuovi e 1828 doppioni per impronta. Fra i doppioni ci sono i 38 di `articoli.zip`, uguali a quelli della tesi, e 20 dei 21 PDF numerati di `papers_ricerca XOVER.rar`, già presenti nei lotti. I doppioni sono stati cancellati dalla sola cartella di estrazione, che sta nel repository. In totale il vault contiene ora 4039 file copiati, 5,62 GiB, con 1889 doppioni scartati.
+
+*Due correzioni al registro.*
+- La tesi porta con sé dati, audio e codice, e contarli come fonti avrebbe riempito il registro di voci non bibliografiche: ora conta come fonte soltanto un documento.
+- Quando una proposta si univa a una voce della libreria, la chiave della libreria andava persa, e il PDF locale nominato con quella chiave non trovava più la sua voce: ora le chiavi alternative si conservano. Il caso che l'ha mostrato è Olive 2004 parte I, la cui copia locale `olive2004multiple.pdf` non veniva riconosciuta.
+
+Dopo le correzioni il registro conta 6145 voci, di cui 1135 con un documento in copia locale. Fra queste ci sono 75 voci della libreria e 10 della bibliografia della tesi; delle 29 proposte una sola ha la copia locale.
+
+*Un controllo che vedeva il materiale esterno.* Dopo la copia, `check-eol.py` ha segnalato due file a fini riga miste dentro l'archivio della tesi, cioè materiale copiato tale e quale che non va normalizzato. Invece di aggiungere all'elenco delle esclusioni i nomi propri di questo vault, lo strumento rispetta ora il marcatore `.md-unwrap-ignore`, che `md-unwrap` usa già per lo stesso scopo e che le cartelle `fonti-locali/` e `basi/` portano. La correzione è nelle tre copie, cioè lo strumento, il suo modello in `.claude/templates/tools/` e il modello del template, insieme all'esclusione di `.venv` di MS-179 che il template ancora non aveva, e chiude quella voce di PA-003. Dopo la correzione: 499 file esaminati e nessuno misto.
+
+*La conversione.* Avviata in background con `tools/doc-ingest.py`, lotto per lotto, nella cache `_notes/.tmp-doc-cache/lotto-NN/`. L'esito si registra alla fine.
+
+Verificato con:
+- `python tools/copia-lotti.py --prova` prima della copia, poi l'uscita della copia per ogni lotto;
+- il riepilogo di tutti i registri `lotto-*-origine.json`, contato con uno script;
+- l'elenco con `7z l` degli archivi prima dell'estrazione;
+- l'uscita di `estrai-archivi.py`;
+- `registro-fonti.py` con il conteggio delle voci unite;
+- `check-pending-actions.py`, che per PA-026 riporta 970 voci dei manifesti registrate su 970.
+
+Esito: fatto per la copia e l'estrazione; la conversione è in corso.
+
+### MS-190 - Il materiale di studio torna su J: e il progetto lo indicizza: 5,6 GiB fuori dalle copie di sicurezza
+
+Data: 2026-10-02
+
+Perimetro: le copie di MS-189 in `research-vault/fonti-locali/`; una scrittura su `J:`, cioè la cartella nuova `J:\MAIN\_ESTRATTI ARCHIVI TESI`, con il permesso esplicito dell'utente per quei file; i registri `lotto-NN-origine.json`; gli strumenti `tools/indicizza-lotti.py` e `tools/converti-fonti.py`, nuovi, `tools/estrai-archivi.py` riscritto, `tools/copia-lotti.py` tolto, e gli adeguamenti di `tools/registro-fonti.py` e `tools/check-pending-actions.py`; ADR-036; le note del vault e `STACK.md`.
+
+Legame con il progetto: serve la tesi di ADR-034 e la base di conoscenza, che lavorano sul materiale di studio; toglie dalle copie di sicurezza del progetto un peso che non vi aggiungeva nulla.
+
+*La richiesta dell'utente.* Il progetto è oggetto di una copia di sicurezza giornaliera due volte al giorno: spostare il materiale in `MAIN` e indicizzare tutto da questo progetto, prima di proseguire. La conversione in corso, che lavorava sulle copie, è stata fermata subito, per non fare lavoro da rifare. Le due vie possibili sono state poste come domanda, perché scrivere su `J:` richiede il permesso esplicito per i file nominati. L'utente ha scelto quella senza doppioni, e di lasciare la cache di conversione nel progetto. È ADR-036.
+
+*Che cosa è stato scritto su J:, e soltanto quello.* I 3112 file estratti dai dieci archivi, gli unici che su `J:` non esistevano già, sono stati copiati in `J:\MAIN\_ESTRATTI ARCHIVI TESI`, con l'impronta riverificata dopo ogni file e la posizione registrata in `lotto-archivi-origine.json`. Lo script controllava prima che la cartella non esistesse o fosse vuota, per non sovrascrivere niente. Un primo tentativo non era partito per un errore di sintassi dovuto alle barre rovesciate nello heredoc della shell, prima di scrivere alcunché. Nient'altro è stato scritto, spostato o cancellato su `J:`.
+
+*Prima di togliere le copie, gli originali.* Le copie dei lotti stavano solo nel progetto e gli originali su `J:` sarebbero diventati l'unico esemplare a cui l'indice punta, quindi sono stati riletti tutti prima della rimozione: 4039 posizioni su `J:` verificate per impronta, nessuna mancante e nessuna diversa. Solo dopo sono state tolte le cartelle `lotto-01` … `lotto-09` e `archivi` dentro il repository, e `fonti-locali/` è scesa da 5,7 GB a 3,7 MB. Un file aveva l'attributo di sola lettura, conservato dalla copia, e ha fermato la prima rimozione a metà; tolto l'attributo dalla sola copia, la rimozione si è completata.
+
+*Gli strumenti, da copia a indice.* I registri sono migrati: l'esito `copiato` è diventato `indicizzato` con la posizione su `J:`, in 4039 voci. Gli strumenti cambiano così:
+- `indicizza-lotti.py` sostituisce `copia-lotti.py`: legge il file su `J:`, ne calcola l'impronta e registra, senza copiare. Con `--verifica` rilegge tutte le posizioni, che è il controllo da fare prima di fidarsi di un indice vecchio.
+- `estrai-archivi.py` estrae in una cartella temporanea del progetto e scrive su `J:` soltanto i file nuovi, nella destinazione data con `--dest`, che non ha un valore predefinito. Non cancella e non sovrascrive nulla.
+- `converti-fonti.py` converte leggendo da `J:` con le funzioni di `doc-ingest.py`, importate e non duplicate perché `doc-ingest` è la copia di un modello del template. Scrive in `_notes/.tmp-doc-cache/fonti/` con un manifesto per impronta che segnala sotto le 50 parole le scansioni da OCR, e riusa le conversioni già fatte sulle copie, identiche per impronta.
+
+Il registro delle fonti chiama ora lo stato `su J:` invece di `copia locale`, e i suoi conteggi non cambiano: 6145 voci, 1135 con un documento su `J:`.
+
+*Lo spazio su J:.* Prima di scrivere, `df` riportava 21 GB liberi, contro i 29 misurati in mattinata, quando su `J:` erano state fatte solo letture: la differenza non viene da questo lavoro, e la causa più probabile è la copia di sicurezza giornaliera, che scrive su quel disco. È un'inferenza, non verificata.
+
+Verificato con:
+- l'impronta dopo ogni copia su `J:`;
+- `find` sulla destinazione, che conta 3112 file;
+- lo script di verifica delle 4039 posizioni prima della rimozione;
+- `du` su `fonti-locali/` prima e dopo;
+- `indicizza-lotti.py`, che non trova nulla da rileggere;
+- `estrai-archivi.py --prova`, che riporta tutti gli archivi già indicizzati;
+- `converti-fonti.py --lotto 01`, con 15 documenti riusati e uno nuovo;
+- `registro-fonti.py` con i conteggi invariati.
+
+Esito: fatto per lo spostamento e l'indice. La conversione da `J:` si è chiusa il 2026-10-03 con 1208 documenti convertiti su 1211, di cui 207 sotto le 50 parole, cioè scansioni da rifare con OCR o Docling. I tre mancanti restano da rilanciare con `J:` collegato, che alla misura risultava scollegato. Nella stessa corsa del registro è stato corretto il collegamento di `vanderkooy1984phase`, che portava in coda una virgola presa dal testo della tabella.
+
+## 2026-10-05, l'analisi del corpus e le formule degli appunti
+
+### MS-191 - Le formule degli appunti recuperate con pandoc, l'OCR in italiano, e il taglio della tesi dichiarato dall'utente
+
+Data: 2026-10-05
+
+Perimetro:
+- `tools/converti-fonti.py`, con la conversione dei `.docx` con pandoc, l'OCR in italiano e inglese e il filtro per nome;
+- l'installazione di pandoc 3.12 con winget nel profilo utente;
+- l'installazione della libreria `python-pptx` nel Python di sistema;
+- il modello di lingua italiana di Tesseract in `_notes/tessdata/`;
+- ADR-037;
+- l'analisi di copertura del corpus, `research-vault/07-Analisi-corpus.md`, affidata a un agente.
+
+Su `J:` solo letture.
+
+Legame con il progetto: serve la tesi di ADR-034 in tutti i capitoli, perché le formule degli appunti sono la base delle derivazioni. Da questo microstep dipende la ricerca bibliografica online, che parte dalle lacune dell'analisi.
+
+*Le richieste dell'utente.* Con `J:` ricollegato, fare un'analisi di ciò che ha già e completarla, poi procedere alla ricerca, e fare insieme una ricerca bibliografica online per tutto il corpus. A lavoro in corso ha aggiunto due cose: nella cartella `LOUDSPEAKERS & ELECTROACOUSTIC` ci sono i suoi `.docx` dove ha messo le formule e ha sbobinato le lezioni del Politecnico di Milano, e quello è il taglio della tesi. E sono interessanti anche EEASE II ed EEASE Exercises. Il taglio è ADR-037.
+
+*Un difetto che toglieva proprio le formule.* `markitdown`, il motore di `doc-ingest`, converte i `.docx` scartando le equazioni di Word. In `EEASE I.docx` ce ne sono 2491, contate come elementi `m:oMath` dentro `word/document.xml`, e nel testo convertito il 2026-10-01 non ne restava quasi nessuna. La conversione fatta finora aveva quindi perso la parte degli appunti che conta di più. pandoc, installato adesso, porta le equazioni in LaTeX fra dollari. Su EEASE I ha estratto 1720 espressioni in due secondi, per esempio `v_{O} = Z_{S}i_{S}`. `converti-fonti.py` usa ora pandoc per ogni `.docx` e ha riconvertito tutti i 146 `.docx` del corpus, per 24 414 espressioni. Le più ricche:
+
+| Documento | Espressioni |
+|---|---|
+| Musical Acoustics Part I | 3869 |
+| EEASE I | 2490 |
+| EEASE Exercises | 1914 |
+| EEASE II | 1725 |
+| Fundamentals of Acoustics | 1594 |
+| ESE FOA | 1406 |
+| Acustica applicata | 854 |
+| la tesi del 2020 | 632 |
+
+Il manifesto registra per ciascun documento il motore e il numero di espressioni. `doc-ingest.py` non è stato toccato, perché è la copia di un modello del template: la correzione vive nello strumento di questo progetto. Va portata al template come voce di PA-003, perché ogni progetto che converte appunti con le formule perde le formule allo stesso modo.
+
+*L'OCR in italiano.* L'OCR di `doc-ingest` chiama Tesseract senza indicare la lingua, quindi in solo inglese, e Tesseract sulla postazione aveva soltanto il modello inglese. Il modello italiano `ita.traineddata`, dalla raccolta `tessdata_fast`, sta in `_notes/tessdata/` insieme alle copie dei modelli inglese e di orientamento, senza toccare l'installazione di sistema. `converti-fonti.py --ocr` usa `ita+eng` a 200 dpi, una pagina alla volta. La prova su una lezione di Misure Elettroniche di 40 pagine ha richiesto 4 minuti e 38 secondi, cioè circa 7 secondi per pagina. La resa è buona sul testo delle slide e cattiva sui disegni a mano, che escono come rumore. L'OCR delle scansioni gira in background in ordine di priorità: prima i libri sui diffusori, cioè Dickason, Colloms e D'Appolito, poi Izadian, Kinsler, gli appunti dell'utente, Proakis, Mitra e Griffiths.
+
+*I diciassette documenti non convertiti.*
+- Cinque presentazioni non si convertivano perché mancava `python-pptx`; la libreria ora c'è, e la prima installazione era finita su un interprete diverso da quello che esegue gli strumenti.
+- Undici PDF sono protetti da password, verificato con `pdftotext`, che risponde password errata. Fra questi ci sono le tre parti di Illuminotecnica che il censimento dichiarava da escludere e che il manifesto ha incluso per errore, oltre a sette file del lotto 04 chiamati con sole X. Senza la password non si leggono.
+- Un PDF di Keele è danneggiato.
+
+*Il corpus, misurato.* 1212 documenti indicizzati, 1208 convertiti, 36,8 milioni di parole, 167 documenti propri dell'utente e 207 scansioni prima dell'OCR. Il dettaglio per lotto è nell'analisi.
+
+Verificato con:
+- il conteggio degli `m:oMath` in `EEASE I.docx` con 7-Zip;
+- la ricerca di espressioni nel testo di markitdown e in quello di pandoc;
+- `pandoc --version`;
+- `tesseract --list-langs` con la cartella dei modelli del progetto;
+- la prova di OCR sulla lezione e la lettura delle prime pagine estratte;
+- la corsa di `converti-fonti.py --nomi .docx`, con 146 nuovi e zero errori;
+- il riepilogo per lotto calcolato dal manifesto.
+
+Esito: fatto per le formule e per l'OCR in italiano. L'OCR delle scansioni e l'analisi di copertura sono in corso.
+
+### MS-192 - L'analisi di copertura del corpus, e il piano della ricerca online
+
+Data: 2026-10-05
+
+Perimetro: `research-vault/07-Analisi-corpus.md`, scritta da un agente che ha letto il manifesto, l'indice di Livello 1 e i registri d'origine senza aprire `J:`; `research-vault/08-Piano-ricerca-online.md`, nuovo.
+
+Legame con il progetto: serve tutti i capitoli della tesi, dicendo quali sono sostenuti dal corpus e quali no. Da questo microstep dipende il primo giro della ricerca online.
+
+*L'analisi.* Il corpus ha due strati. Sopra ci sono i manuali di riferimento, convertiti senza gerarchia di intestazioni, che coprono quasi tutto ma non dicono dove: 908 PDF su 957 non hanno intestazioni nell'indice, e per essi il giudizio viene dal titolo e da conteggi di termini, dichiarati come tali. Sotto ci sono gli appunti dell'utente, pochi documenti con molte formule e una struttura leggibile. Gli appunti fondano con certezza le appendici di elettronica, acustica ed elettroacustica e la parte elettroacustica del progetto, toccano il crossover solo dal lato analogico, e non contengono nulla di riconoscibile su crossover digitale, quantizzazione o correzione della stanza.
+
+I capitoli più scoperti sono cinque:
+- il progetto meccanico del cabinet;
+- la simulazione acustica;
+- la simulazione finale;
+- la misura della stanza;
+- la diffrazione del pannello nel progetto acustico.
+
+Le lacune principali sono sei:
+- la correzione su più punti;
+- la quantizzazione dei biquad nei processori;
+- la diffrazione dal bordo del pannello;
+- la guida d'onda e l'accordo di direttività;
+- la misura in stanza secondo CTA-2034, con l'interferenza dei confini;
+- i crossover misti FIR e IIR, con il centro acustico.
+
+Tre affermazioni dell'analisi sono state ricontrollate a campione sul manifesto e sull'indice, e tornano. La prima: una sola delle tre copie di Colloms è leggibile, con 293 092 parole. La seconda: i due PDF di Small sulla cassa chiusa sono a zero parole, e sono stati aggiunti all'OCR. La terza: la sezione sui modi negli ambienti chiusi di Musical Acoustics è presente.
+
+*Il piano.* Dodici filoni di ricerca, ciascuno con il capitolo che serve e le query del primo giro. Il metodo è quello di intralino: registro di ogni query con data, canale, risultati vagliati e motivi, una nota numerata per giro, criterio di arresto dopo due giri senza nuovi studi pertinenti. La divisione del lavoro: l'agente cerca, vaglia e riscontra i metadati; l'utente scarica i PDF e salva nel browser i risultati degli archivi che rispondono 403 agli strumenti. Prima di proporre, il controllo contro corpus, libreria e tesi del 2020. Il piano attende la conferma dell'utente.
+
+Verificato con: la lettura integrale dell'analisi; il riscontro delle tre affermazioni con il manifesto e con `grep` sull'indice.
+
+Esito: fatto per l'analisi e la proposta; il primo giro attende la conferma.
+
+### MS-193 - Un collegamento univoco per ogni paper: sei DOI, ventuno numeri della E-Library, e un formato AES sbagliato ritirato
+
+Data: 2026-10-05
+
+Perimetro: `research-vault/fonti-proposte.json`, con i campi `doi`, `elib` e `copia_libera` e un solo collegamento per fonte; `research-vault/tracked-sources.md`; la nota generata `04-Paper-da-scaricare.md`; i resoconti `elib-1.md`, `elib-2.md` e `doi_aes.json` in `research-vault/basi/verifiche-paper/`.
+
+Legame con il progetto: serve PA-025, lo scaricamento dei PDF da parte dell'utente.
+
+*La richiesta dell'utente.* Confermati i dodici filoni del piano della ricerca online, l'utente ha chiesto di ricevere i 28 paper ancora da scaricare con un collegamento univoco e preciso, e poi tutti i DOI.
+
+*Un formato ritirato.* Una richiesta diretta con `curl` ha mostrato due fatti. `www.aes.org`, in entrambi i formati `e-lib/browse.cfm?elib=N` e `publications/elibrary-page/?id=N`, risponde con un controllo anti-bot, cioè la pagina esiste. Il formato `aes2.org/publications/elibrary-page/?id=N` risponde invece 404. MS-186 aveva consegnato undici collegamenti in quel formato, e quei collegamenti sono ritirati. Per tutti i lavori AES vale ora la sola forma `https://www.aes.org/e-lib/browse.cfm?elib=N`.
+
+*I numeri della E-Library.* Due agenti hanno confermato i 21 numeri con il criterio dichiarato: un risultato di ricerca di una pagina AES che mostra il titolo esatto accanto al numero. Le pagine AES restano non apribili dagli strumenti, e solo per Putzeys c'è anche una seconda fonte indipendente. Tutti i numeri candidati sono confermati. Per Vanderkooy 1991 il numero mancante è 5952, insieme al riferimento completo, cioè JAES 39(12), pp. 923-933. Per Lipshitz 1982 sono confermati volume e pagine, JAES 30(9), pp. 580-595, e il numero 3662 è la versione del convegno del 1980, da non usare. Per Vanderkooy e Lipshitz 1984 il numero 11899 è il preprint della 70a Convention del 1981, paper 1857, e il numero della versione JAES 32(12) non è confermato. Per Olive 2004 parte I il numero 12794 compare nelle ricerche, ma quella parte è già nel corpus.
+
+*I DOI.* Interrogato Crossref per titolo e autore su tutti i 21 lavori AES, nessuno ha un DOI. Le tre corrispondenze restituite erano altre opere, verificate leggendo il record:
+- per Olson, un riassunto di una pagina di un intervento a congresso, JASA 23, p. 623, 1951;
+- per Toole, il libro *Sound Reproduction*;
+- per Rife, un lavoro del 1992 su un'altra misura.
+
+I DOI dei sei lavori non AES sono stati letti direttamente sull'API di Crossref, con titolo, rivista e anno coincidenti: Bank 2008, Cecchi 2018, che Crossref data 2017 per l'uscita online, Radlović 2000, Allen 1979, Blauert 1978 e Regalia 1987. La pagina W3C del cookbook risponde e non ha DOI. La correzione rispetto alla risposta precedente all'utente: i DOI sono sei, non sette.
+
+Verificato con: `curl` sui tre formati AES; l'API di Crossref per i sei DOI e per la ricerca per titolo dei 21 lavori AES; la lettura dei tre record trovati; `lint-md-tables` sul registro riscritto.
+
+Esito: fatto. I collegamenti sono pronti per l'utente; un solo numero resta da cercare a mano, quello della versione di rivista di Vanderkooy e Lipshitz 1984.
+
+### MS-194 - Ripresa dopo lo spegnimento, i primi sette paper registrati, e il formato AES che non apre nemmeno nel browser
+
+Data: 2026-10-05
+
+Perimetro: `research-vault/papers/`, cartella del repository ignorata da git; `_notes/COMMIT-MSG.txt`; il registro delle fonti rigenerato con `python tools/registro-fonti.py`.
+
+Legame con il progetto: serve PA-025 e quindi tutti i capitoli della tesi che citano quei lavori. Da questo microstep dipende la lettura dei paper e la loro promozione a verificati.
+
+*La ripresa.* Il computer si è spento a metà della sessione. La verifica di ripresa ha trovato 19 file modificati e 18 non tracciati rispetto all'impronta del 2026-10-02. Erano il lavoro da MS-184 a MS-193, dichiarato in `index.md` come da committare, e l'utente ha confermato che va tenuto tutto e che non c'erano decisioni prese a voce e non scritte. Il messaggio di commit proposto si fermava a MS-192 ed è stato esteso. La sequenza di verifica prima di un commit, eseguita per intero, è verde su tutti i dodici controlli. L'OCR delle scansioni lanciato in background si è interrotto con lo spegnimento: il manifesto di `converti-fonti.py` ne registra uno solo, e Dickason, Colloms IV, Izadian, Griffiths, Proakis, Mitra e i due Closed-Box di Small restano a zero parole. Lo strumento salva il manifesto ogni 25 documenti, quindi le sei lezioni di misure elettroniche scritte su disco dopo l'ultimo salvataggio verranno rifatte alla prossima corsa.
+
+*I sette PDF.* L'utente ha salvato sette file con il nome dato dall'editore e non con la chiave. Ciascuno è stato riconosciuto leggendone titolo e autori, con `pdfinfo` o con `pdftotext` sulla prima pagina, e poi rinominato con la chiave:
+
+| File salvato | Chiave | Riconosciuto da |
+|---|---|---|
+| `1.381841.pdf` | blauert1978groupdelay | metadati: Blauert e Laws, 6 pagine |
+| `1.382599.pdf` | allen1979image | metadati: Allen e Berkley, 8 pagine |
+| `89.841213.pdf` | radlovic2000robustness | metadati: titolo IEEE TSAP, 9 pagine |
+| `applsci-08-00016-v2.pdf` | cecchi2018review | metadati: Cecchi, Carini e Spors, 47 pagine |
+| `lsp.2008.921473.pdf` | bank2008parallel | DOI nel nome, 4 pagine; i metadati portano solo `PubTeX output` |
+| `tassp.1987.1165037.pdf` | regalia1987tunable | testo: titolo e autori Regalia e Mitra, 3 pagine |
+| generato dall'agente | w3c2021eqcookbook | testo: W3C Working Group Note dell'8 giugno 2021, 15 pagine |
+
+Il file che l'utente aveva salvato per il cookbook W3C è la stampa di una pagina di risultati di DuckDuckGo, non il cookbook. Il PDF vero è stato generato stampando la pagina W3C con Edge senza interfaccia, `msedge --headless --print-to-pdf`. Il file sbagliato resta in `papers/` con il suo nome originale finché l'utente non decide che cosa farne. Il registro dopo la corsa: scaricati 7, da scaricare 21, cioè tutti i lavori AES.
+
+*Un formato ritirato per la seconda volta.* L'utente riporta che `https://www.aes.org/e-lib/browse.cfm?elib=2173`, il formato prescritto da MS-193, nel suo browser risponde con la pagina "404 Error Sorry we couldn't seem to connect you to where you wanted to go", e lo stesso per 2163, 1967 e 1959. MS-193 aveva ritirato il formato `aes2.org` perché `curl` riceveva un 404, e aveva tenuto `www.aes.org/e-lib/browse.cfm` perché `curl` riceveva il controllo anti-bot, cioè la pagina sembrava esistere. Il secondo ragionamento era sbagliato: un controllo anti-bot protegge l'intero dominio e non dice nulla sull'esistenza di una pagina. La misura di oggi: `https://aes2.org/` risponde 301 verso `https://aes.org/`, e `aes2.org/publications/elibrary-page/?id=2173` risponde un 404 vero, con il titolo `404: Page not found - AES` nel corpo della risposta. Il sito è quindi tornato dal dominio `aes2.org` a `aes.org`. I motori di ricerca indicizzano ancora i vecchi indirizzi `aes2.org`, e per Thiele parte 1 associano il titolo esatto al numero 2173, quindi i numeri della E-Library restano confermati e il guasto riguarda soltanto il formato del collegamento. Il formato candidato è `https://aes.org/publications/elibrary-page/?id=N`, cioè il percorso di `aes2.org` sul dominio nuovo. Non è verificabile da qui, perché `aes.org` risponde 403 agli strumenti, quindi lo verifica l'utente nel browser su un solo numero prima di essere esteso agli altri 21.
+
+La regola che ne discende: un collegamento si dà per verificato solo quando una pagina con il titolo è stata vista aprirsi. Una risposta anti-bot non è una verifica, e i numeri confermati da un risultato di ricerca non confermano anche il formato del collegamento.
+
+Verificato con: `pdfinfo` e `pdftotext` sui sette file; `python tools/registro-fonti.py`, con 7 scaricati e 21 voci nella nota; `curl -I` su `aes2.org` e sulla pagina 2173; la lettura del titolo della pagina 404; le ricerche web per titolo di Thiele e di Small.
+
+Esito: fatto per i sette PDF. Il formato dei collegamenti AES attende la prova dell'utente.
+
+### MS-195 - Il formato AES provato nel browser, ventuno collegamenti riscritti, e Leach dalla copia dell'autore
+
+Data: 2026-10-05
+
+Perimetro: `research-vault/fonti-proposte.json`, `research-vault/tracked-sources.md`, la nota generata `04-Paper-da-scaricare.md`, `research-vault/papers/`.
+
+Legame con il progetto: serve PA-025. Da questo microstep dipende lo scaricamento dei 20 lavori AES rimasti.
+
+*La prova.* L'utente ha aperto nel browser `https://aes.org/publications/elibrary-page/?id=2173` e la pagina mostra Thiele, *Loudspeakers in Vented Boxes: Part 1*. È la prima verifica di un formato AES fatta vedendo la pagina aprirsi con il titolo, come richiede la regola di MS-194. Tutti i collegamenti `https://www.aes.org/e-lib/browse.cfm?elib=N` sono stati riscritti in `https://aes.org/publications/elibrary-page/?id=N` con una sostituzione meccanica, che ha lasciato invariati i numeri: 22 occorrenze nel file delle proposte e 23 nel registro, poi zero occorrenze del formato vecchio dopo la sostituzione. Il formato è provato su un solo numero. Per gli altri 20 vale l'avvertenza della nota generata: controllare che il titolo corrisponda prima di scaricare.
+
+*Leach.* La copia dell'autore è ora un PDF, `https://leachlegacy.ece.gatech.edu/papers/vcinduc.pdf`, e non la pagina HTML registrata in MS-193. L'utente l'ha scaricata. La prima pagina porta l'intestazione JAES vol. 50, n. 6, giugno 2002, a partire da pagina 442, con titolo e autore coincidenti. Sono 8 pagine. Il file è stato rinominato `leach2002inductance.pdf`.
+
+*Un file estraneo nel registro.* `registro-fonti.py` registra come scaricato ogni PDF presente in `papers/`, quindi conta come fonte anche la stampa di DuckDuckGo di MS-194, con il nome del file usato come chiave. Il conteggio dei scaricati è perciò 9, ma le fonti vere sono 8. Il file resta finché l'utente non decide.
+
+*Thiele, dalle copie di diyAudioProjects.* Subito dopo l'utente ha scaricato le due parti di Thiele da `https://diyaudioprojects.com/Technical/Papers/Loudspeakers-in-Vented-Boxes-Part-I.pdf` e `...-Part-II.pdf`. I metadati portano titolo e autore A. N. Thiele. Le pagine sono 11 e 13, e coincidono con gli intervalli di rivista pp. 382-392 e pp. 471-483. Sono scansioni senza testo, perché `pdftotext` restituisce zero parole, quindi vanno all'OCR. I file sono stati rinominati `thiele1971vented1.pdf` e `thiele1971vented2.pdf`.
+
+Verificato con: la prova dell'utente nel browser; `grep -c` del formato vecchio, a zero dopo la sostituzione; il caricamento del JSON; `pdftotext` sulla prima pagina di Leach; `pdfinfo` e `pdftotext` sui due Thiele; `python tools/registro-fonti.py`, con 11 scaricati, compreso il file estraneo, e 18 voci nella nota.
+
+Esito: fatto.
+
+### MS-196 - LOUDSPEAKERS & ELECTROACOUSTIC scandagliata in tutte le sottocartelle: il lotto 10
+
+Data: 2026-10-05
+
+Perimetro:
+- `research-vault/fonti-locali/lotti-manifest-10.json`, nuovo;
+- `lotto-10-origine.json`, nuovo, scritto da `tools/indicizza-lotti.py --lotto 10`;
+- la conversione con `tools/converti-fonti.py --lotto 10` nella cache `_notes/.tmp-doc-cache/fonti/lotto-10/`.
+
+Su `J:` solo letture.
+
+Legame con il progetto: serve la tesi di ADR-034 in tutti i capitoli di elettroacustica e di progetto, e PA-026. Da questo microstep dipende la nuova analisi di copertura, perché il corpus cresce di quasi cinquecento documenti.
+
+*La richiesta dell'utente.* `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC` va scandagliata in tutte le sottocartelle.
+
+*Che cosa mancava, misurato.* Su disco la cartella conta 1058 file in tutte le sottocartelle, e nei registri d'origine dei lotti ne comparivano per posizione 121. Il motivo non è un difetto di uno strumento ma una scelta di MS-184. Il piano dei lotti aveva selezionato a mano i file della cartella, cioè libri, paper e appunti nominati uno per uno. Aveva inoltre dichiarato estranee alcune sottocartelle: microfoni, MEMS, `Spatial Sound with Loudspeakers`, `Plane wave Tubes`, `Materiali`, `Modelli Termici Speaker` e il workshop K-Array. Tutto il resto di `Biblioteca speaker` era fuori dalla selezione senza essere stato dichiarato escluso. L'istruzione dell'utente supera quella selezione: entra tutto, e la pertinenza si giudica dopo, sul testo convertito e non sul nome del file. Le impronte calcolate prima di scrivere il manifesto separano i documenti non indicizzati in doppioni di contenuto già presente e contenuto nuovo:
+
+| Sottocartella | Documenti con contenuto nuovo |
+|---|---|
+| `Biblioteca speaker` | 453 |
+| `Spatial Sound with Loudspeakers` | 37 |
+| `K-ARRAY WORKSHOP` | 6 |
+| `MEMS speaker` | 3 |
+| `BERTUCCIO_THESIS ON MICS` | 2 |
+| `KLIPPEL` | 2 |
+| radice | 1 |
+| `CROSSOVER (design)` | 1, un file temporaneo di Word `~$`, escluso |
+
+Il totale è circa 1,4 GB. La sottocartella `tesi` ha 221 file assenti dall'indice per posizione, ma nessun documento con contenuto nuovo: sono doppioni o file non convertibili, come modelli COMSOL, script MATLAB e registrazioni.
+
+*Il lotto 10.* Il manifesto elenca ogni documento convertibile, cioè `.pdf`, `.docx`, `.pptx`, `.xlsx` e `.html`, che non aveva ancora una posizione nell'indice: 545 voci, più 21 archivi da aprire. L'indicizzazione ha dato 499 indicizzati, 46 doppioni per impronta e nessun mancante. Restano fuori dal lotto i formati che lo strumento non converte, cioè `.doc`, `.djvu` ed `.epub`, insieme a codice, dati e registrazioni. Gli archivi vanno estratti in `J:\MAIN\_ESTRATTI ARCHIVI TESI` con `tools/estrai-archivi.py`. È una scrittura su `J:`, quindi attende il permesso esplicito dell'utente.
+
+Verificato con: `os.walk` su tutta la cartella; l'impronta SHA-256 di ogni documento assente dall'indice, confrontata con quelle dei registri; `python tools/indicizza-lotti.py --lotto 10`.
+
+Esito: fatto per l'indicizzazione. La conversione è in corso, e dopo di essa l'OCR delle scansioni del lotto.
+
+### MS-197 - `chiudi` fermato dagli accenti, gli archivi del lotto 10 estratti, e il censimento di tutto `J:` chiesto dall'utente
+
+Data: 2026-10-05
+
+Perimetro:
+- `research-vault/tracked-sources.md`, `research-vault/fonti-proposte.json` e `docs/90-riferimenti/pulizia-ssd-esterno.md`, per gli accenti;
+- `J:\MAIN\_ESTRATTI ARCHIVI TESI`, con il permesso dell'utente dato in questa sessione;
+- `research-vault/fonti-locali/lotto-archivi-origine.json`, scritto da `tools/estrai-archivi.py`;
+- `research-vault/papers/`;
+- un conteggio in sola lettura di `J:\MAIN` e di `J:\_____da sistemare ancora`.
+
+Legame con il progetto: serve PA-025 e PA-026, e apre il lavoro sulla biblioteca completa delle fonti chiesto dall'utente, PA-027. Da questo microstep dipende il commit della sessione.
+
+*`chiudi` fermato.* L'utente ha lanciato `chiudi`, e lo script si è fermato prima del commit su `fix-accents.py --check`. Due `e'` stavano in una cella di `tracked-sources.md` scritta in MS-193, e la stessa frase stava in `fonti-proposte.json`. Il `da'` segnalato come ambiguo è in `pulizia-ssd-esterno.md` ed è l'indicativo di dare, cioè dà. Corretti tutti e tre: dopo la correzione i tre strumenti tipografici escono a zero. La sequenza di verifica di `CLAUDE.md` non contiene `fix-accents.py --check`, mentre `chiudi` lo esegue. Per questo la sequenza dell'agente era verde e lo script si è fermato. Il controllo va aggiunto alla sequenza.
+
+*Il file estraneo.* La stampa di DuckDuckGo di MS-194 è stata cancellata da `research-vault/papers/` con il permesso dell'utente. Il registro conta ora 10 scaricati.
+
+*Gli archivi.* L'utente ha dato il permesso di estrarre gli archivi del lotto 10 in `J:\MAIN\_ESTRATTI ARCHIVI TESI` e di cancellare poi le copie estratte che non servono. Dei 21 archivi, i due `.rar` di `CROSSOVER (design)` erano già stati estratti il 2026-10-02. Dei 19 restanti se ne sono estratti 18, con 254 file nuovi per impronta. `K-framework3-darwin-x64-0.7.11.zip` è un'applicazione per macOS, e 7-Zip ne ha rifiutato i collegamenti simbolici. Non è materiale di studio e non è stato estratto. Il suo residuo resta in `_notes/.tmp-estrazione/`, perché la regola dei permessi del progetto vieta all'agente la cancellazione ricorsiva. Fra gli estratti, i documenti sono i sette PDF di esercizi del corso di acustica del Politecnico di Torino e la pagina e il PDF di `WebRemoteInterface`, che vengono dalla tesi dell'utente. Il resto è software, dati e modelli: l'installatore di EASE Focus 3.1.10, i dati di scansione Klippel, i modelli COMSOL del corso di Roma del 2013, il toolbox MATLAB MPM per le trombe, gli script MATLAB di Spatial Sound e i modelli di Reaper. Che cosa cancellare l'agente lo propone file per file, e l'utente lo conferma.
+
+*Le richieste nuove dell'utente.* Tre, scritte qui con le sue parole perché diventano PA-027.
+- Fare di `Biblioteca speaker` una biblioteca completa, che citi tutti i punti presi nel progetto e contenga tutti i paper, suddivisi per gruppi come nella libreria JabRef `ELE_Technical_Library.bib`. L'albero dei gruppi di `ELE_Technical_Library.bib`, letto oggi dal blocco `jabref-meta: grouping`, ha sette rami di primo livello, con 39 voci in tutto contando la radice. I rami sono Computer science, Mathematics, Signal processing, Electronics and circuit theory, Physics con Acoustics, Music e Loudspeakers, più Musical Instruments e Amplifiers 2.0. Sono tutti gruppi statici, e ogni voce porta i suoi gruppi nel campo `groups`.
+- Fare l'analisi completa delle fonti, oltre a quelle web, controllando davvero tutte le sottocartelle pertinenti di `J:\_____da sistemare ancora` e di `J:\MAIN`.
+- Fare dentro `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC` il vault completissimo delle fonti che arrivano da tutte le parti.
+
+*Il censimento per cartella.* Conteggio per cartella di primo livello dei documenti `.pdf`, `.docx`, `.pptx`, `.xlsx`, `.html`, `.doc`, `.ppt`, `.djvu` ed `.epub`, contati come presenti nell'indice se la loro posizione compare in un registro d'origine. Un documento fuori dall'indice può essere un doppione per impronta di uno indicizzato altrove, quindi le cifre della colonna fuori sono un massimo.
+
+| Cartella di `J:\MAIN` | Documenti | Nell'indice | Fuori |
+|---|---|---|---|
+| `z_____UNIVERSITA` | 2858 | 526 | 2332 |
+| `PROGRAMMING and SOFTWARE DEVELOPING` | 3683 | 0 | 3683 |
+| `MUSIC` | 1075 | 6 | 1069 |
+| `ANALOG (AUDIO) ELECTRONICS` | 280 | 21 | 259 |
+| `ISTAO -STRATEGIA E MANAGEMENT IMPRESA` | 135 | 0 | 135 |
+| `Teaching` | 109 | 1 | 108 |
+| `MATH and CALCULUS` | 113 | 21 | 92 |
+| `TLC, SIGNAL PROCESSING and DIGITAL FILTERS` | 183 | 117 | 66 |
+| `COMPUTER MUSIC representation and models, psychoacoustics, hearing` | 52 | 18 | 34 |
+| `F.I.S.I.C.A and ELECTROMAGNETISM` | 37 | 4 | 33 |
+| `ENGLISH` | 24 | 0 | 24 |
+| `MACHINE LEARNING _ DEEP LEARN + (LINEAR ALGEBRA) STATISTICS` | 25 | 3 | 22 |
+| `SOFT SKILLS` | 14 | 0 | 14 |
+| `LATEX(+typesetting)` | 19 | 7 | 12 |
+| `PROJECT MANAGEMENT` | 10 | 0 | 10 |
+| `COMPUTER MUSIC language and systems` | 10 | 1 | 9 |
+| `LOUDSPEAKERS & ELECTROACOUSTIC` | 673 | 666 | 7 |
+| `DATA ANALYSIS and EXCEL (models)` | 5 | 0 | 5 |
+| `MARKETING` | 5 | 0 | 5 |
+| `SOLIDWORKS` | 5 | 0 | 5 |
+| `ELETTROTECNICA` | 30 | 27 | 3 |
+| `FIRMWARE ENGINEERING` | 2 | 0 | 2 |
+
+`J:\_____da sistemare ancora` ha 13 documenti fuori dall'indice in `ALTRO`, nessuno dei quali riguarda il progetto per nome. A questi si aggiungono, alla radice, `ELE_Technical_Library.bib`, `materiale_formazione_elettronica.docx`, un PDF COMSOL sull'analisi agli autovalori, tre archivi `.rar` e un file di testo vuoto intitolato `prendi tutte le reference proposte all'università e suddividi.txt`. Il titolo di quel file è un'istruzione dell'utente a sé stesso, e coincide con la prima richiesta.
+
+Verificato con: `fix-accents.py`, `fix-dashes.py` e `fix-missing-accents.py` con `--check`, a zero; `python tools/registro-fonti.py`; `estrai-archivi.py --prova`, poi la corsa vera; il riepilogo per tipo di file e dimensione di ogni cartella estratta; `os.walk` sulle due radici di `J:`, confrontato con le posizioni dei registri.
+
+Esito: fatto per accenti, file estraneo ed estrazione. Le tre richieste sono aperte in PA-027 e il censimento per cartella è il loro punto di partenza.
+
+### MS-198 - Le scelte dell'utente su censimento, vault e biblioteca, e il lotto 11
+
+Data: 2026-10-05
+
+Perimetro:
+- `.claude/memory/decisions.md` con ADR-038, normalizzato poi a fine riga `CRLF` perché l'aggiunta l'aveva reso misto;
+- `research-vault/fonti-locali/lotti-manifest-11.json` e `lotto-11-origine.json`;
+- il comando di pulizia di `J:\MAIN\_ESTRATTI ARCHIVI TESI`, consegnato all'utente.
+
+Legame con il progetto: serve PA-027 e quindi tutti i capitoli della tesi. Da questo microstep dipendono la conversione del lotto 11, la biblioteca e il vault su `J:`.
+
+*Le scelte.* Alle quattro domande l'utente ha risposto come segue. Il censimento copre le cartelle tecniche e l'università, l'elenco esatto è in ADR-038. Il vault su `J:` contiene le fonti, e la ricerca resta nel repository. La biblioteca va riorganizzata "nella versione più completa che sia mai esistita": l'albero della libreria JabRef è un punto di partenza e non un limite. Delle copie estratte si cancellano software e dati.
+
+*La pulizia.* La cancellazione ricorsiva è vietata all'agente dalle regole di permesso del progetto, e il tentativo di togliere il residuo di K-framework è stato rifiutato. Il comando di pulizia è quindi consegnato all'utente, in PowerShell, con le tredici cartelle nominate una per una. Dopo la sua esecuzione, le voci corrispondenti di `lotto-archivi-origine.json` vanno marcate come scartate, perché `indicizza-lotti.py --verifica` le troverebbe mancanti.
+
+*Il lotto 11.* Il manifesto elenca ogni documento convertibile delle cartelle scelte che non ha ancora una posizione nell'indice né una voce in un altro manifesto: 2812 documenti per 9,5 GiB, più 101 archivi da aprire. Comprende i sette documenti rimasti fuori in `LOUDSPEAKERS & ELECTROACOUSTIC`, il `.docx` di formazione in elettronica e il PDF COMSOL sull'analisi agli autovalori di `J:\_____da sistemare ancora`. `ELE_Technical_Library.bib` non è un documento da convertire: entra direttamente nella biblioteca. L'indicizzazione per impronta è avviata in background.
+
+Verificato con: `md-unwrap --check` e `check-eol.py` su `decisions.md`; il conteggio del manifesto; l'uscita di `indicizza-lotti.py --lotto 11`.
+
+*L'indicizzazione.* `python tools/indicizza-lotti.py --lotto 11` è terminata con 2650 documenti indicizzati, 162 doppioni per impronta e nessun mancante. La conversione del lotto 11 parte dopo quella del lotto 10, perché il manifesto di `converti-fonti.py` è uno solo.
+
+Esito: fatto per le scelte e l'indicizzazione. La conversione del lotto 11 è da avviare, e la pulizia attende l'utente.
+
+### MS-199 - `chiudi` fermato una seconda volta: `check-eol` caduto su un residuo, e cinque file passati da `CRLF` a `LF`
+
+Data: 2026-10-05
+
+Perimetro:
+- `tools/check-eol.py` e la sua copia `.claude/templates/tools/check-eol.py`;
+- le fini riga di `.claude/context/STACK.md`, `current-work.md` e `roadmap.md`, di `docs/90-riferimenti/pulizia-ssd-esterno.md` e di `tools/check-pending-actions.py`;
+- `research-vault/fonti-locali/lotto-archivi-origine.json`.
+
+Legame con il progetto: serve il commit della sessione e l'integrità dell'indice di PA-026. Non serve alcuna fase elettroacustica.
+
+*La pulizia eseguita.* L'utente ha eseguito il comando di MS-198 e ha cancellato le tredici cartelle estratte. Nell'indice le 58 voci che puntavano a quelle cartelle sono marcate `scartato`, con il motivo. Sono 16 file di EASE Focus, 32 dei dati Klippel, uno del training sulle non linearità, 6 degli script di Spatial Sound e 3 dei modelli di Reaper. Dopo la marcatura `indicizza-lotti.py --verifica` rilegge 7384 posizioni senza alcun problema.
+
+*Il primo difetto: uno strumento di controllo che cade.* Al secondo `chiudi`, `check-eol.py` è uscito con un `PermissionError` su una voce di `_notes/.tmp-estrazione/K-framework3-darwin-x64-0.7.11/`. È il residuo dell'estrazione fallita di MS-197, cioè un collegamento di un pacchetto per macOS che Windows rifiuta di leggere. Il controllo interrogava il disco con `is_file()` prima di applicare i filtri sul nome, e quindi anche dentro `_notes`, che pure esclude. Ora applica prima estensione e cartelle escluse, che non toccano il disco, e tratta un `OSError` come voce da saltare. La copia del modello è allineata, e `check-copie-modelli.py` riporta zero divergenze. Il residuo resta su disco, perché la sua cancellazione ricorsiva spetta all'utente, ma non ferma più nulla.
+
+*Il secondo difetto: `sed -i` cambia le fini riga.* Il riepilogo di `chiudi` riportava 1079 righe cambiate in `check-pending-actions.py` e 250 in `pulizia-ssd-esterno.md`, per due modifiche di poche righe ciascuna. Il confronto byte per byte con `HEAD` mostra la causa: `sed -i` di Git Bash ha riscritto i due file da `CRLF` a `LF`. `check-eol.py` non poteva accorgersene, perché un file tutto `LF` non è misto. Lo stesso confronto, esteso a tutti i file modificati, ha trovato altri tre file passati da `CRLF` a `LF` nella sessione precedente, cioè le schede `STACK.md`, `current-work.md` e `roadmap.md`. È per questo che il primo `chiudi` di oggi riportava più di 200 righe cambiate per ciascuna. Tutti e cinque sono tornati a `CRLF`. Dopo la correzione il diff complessivo è sceso da 2008 righe aggiunte e 1018 tolte a 1017 aggiunte e 27 tolte.
+
+La regola che ne discende per l'agente su questa postazione: un file con fine riga `CRLF` non si modifica con `sed -i`. Si usano lo strumento di modifica o uno script che scrive i byte. Prima di proporre un commit si confronta la fine riga prevalente di ogni file modificato con quella in `HEAD`, perché `check-eol.py` vede solo i file misti e non quelli convertiti per intero.
+
+Verificato con: il confronto byte per byte con `git show HEAD:<file>` di tutti i file modificati; `git diff --stat` prima e dopo; `check-eol.py .` su 504 file, senza misti; `check-copie-modelli.py`; `indicizza-lotti.py --verifica`.
+
+Esito: fatto.
+
+### MS-200 - Il lotto 10 convertito, la tassonomia della biblioteca confermata, e un nome tolto dai file tracciati
+
+Data: 2026-10-05
+
+Perimetro:
+- la cache `_notes/.tmp-doc-cache/fonti/lotto-10/`;
+- `research-vault/09-Biblioteca-tassonomia.md`, nuovo;
+- le frasi che nominavano una persona in `decisions.md`, `progress.md`, `OPERATIONS-LOG.md`, `PENDING-ACTIONS.md`, `05-Basi-esistenti.md` e `_notes/RESUME-PROMPT.md`;
+- `docs/TIMELINE.html`, rigenerata;
+- l'avvio della conversione del lotto 11.
+
+Legame con il progetto: serve PA-027, cioè la biblioteca e il vault su `J:`, e quindi tutti i capitoli della tesi. Da questo microstep dipende lo strumento che genera la biblioteca.
+
+*Il lotto 10.* `converti-fonti.py --lotto 10` ha convertito tutti i 499 documenti, nessuno con errore. Nel manifesto ci sono ora 1707 documenti, di cui 236 sotto le 50 parole, cioè scansioni da passare all'OCR.
+
+*La tassonomia.* La pagina `09-Biblioteca-tassonomia.md` specifica quattro alberi di gruppi. Il primo è la disciplina, cioè l'albero della libreria JabRef `ELE_Technical_Library.bib` esteso per collocare i 52 nomi di gruppo che le sue voci usano, più i rami nuovi. Il secondo è il progetto: capitoli, appendici, filoni R1-R12 e decisioni. Gli altri due sono la provenienza e lo stato di lettura. La pagina dice anche come si assegna una fonte ai gruppi, cioè con regole deterministiche e poi un agente sui soli residui, e che cosa si genera su `J:`. L'utente ha confermato la tassonomia, la cartella `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI\` e una nota per ogni voce, comprese le 4761 voci della libreria senza PDF.
+
+*Un nome tolto.* L'utente ha chiesto di togliere ogni riferimento a una persona che compariva come autrice dell'albero dei gruppi della libreria JabRef. Il repository è pubblico, quindi la correzione è estesa a tutti i file tracciati. Erano dodici frasi in sei file. Ora la libreria si nomina per il suo file, e i proprietari dichiarati nelle voci si contano senza nominarli. Fra i file tracciati il nome resta solo in `research-vault/fonti.json`, nei titoli di due documenti della tesi dell'utente ricavati dal nome del file, e la decisione su di essi spetta all'utente. Il nome resta anche nella storia di git, cioè nei commit già pubblicati fino a `34ffd73`. Toglierlo da lì richiederebbe di riscrivere la storia e forzare il push, che è un gesto dell'utente. La biblioteca generata non riporterà i campi `owner` delle voci.
+
+Verificato con: `git grep -i` sul nome, con zero risultati fuori da `fonti.json`; `md-unwrap --check`, `fix-accents --check` e `lint-prosa` sulla pagina nuova; l'uscita di `converti-fonti.py --lotto 10`.
+
+Esito: fatto. La conversione del lotto 11 è in corso.
+
+### MS-201 - La biblioteca completa e il vault delle fonti generati su J:, e i titoli personali nel registro pubblico
+
+Data: 2026-10-05
+
+Perimetro:
+- `tools/biblioteca.py` e `tools/censisci-cartelle.py`, nuovi;
+- `research-vault/biblioteca-regole.yml`, nuovo;
+- `docs/90-riferimenti/biblioteca-e-vault-fonti.md`, nuova pagina prescrittiva, e il suo rimando nell'indice dei riferimenti;
+- `.claude/context/STACK.md`, con i due strumenti citati;
+- `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI\`, scritto per ADR-038;
+- `_notes/biblioteca/`, con lo stato intermedio e la classificazione degli agenti;
+- l'avvio dell'OCR dei libri prioritari.
+
+Legame con il progetto: serve PA-027 e tutti i capitoli della tesi, perché ogni capitolo, appendice e filone ha ora l'elenco delle sue fonti. Da questo microstep dipendono la lettura delle fonti e la bibliografia della tesi.
+
+*La conversione del lotto 11.* `converti-fonti.py --lotto 11` ha dato 2648 nuovi e 2 errori. Il manifesto conta 4357 documenti, di cui 431 sotto le 50 parole.
+
+*Lo strumento e le regole.* `biblioteca.py` applica `biblioteca-regole.yml` in quattro passi. I gruppi della libreria JabRef sono collocati nell'albero. Una tabella di 70 prefissi di cartella di `J:` assegna le copie locali. Le parole chiave lavorano sul titolo e sulla sede, e anche sul percorso per le sole copie dell'università. Le appendici si derivano dalla disciplina. Poi lo strumento scrive `Biblioteca.bib` e il vault. La prima corsa di prova ha mostrato tre difetti. Due gruppi di stato erano a zero, per una chiave YAML con i due punti non quotata. Alcuni gruppi raccoglievano quasi tutto, per esempio Acustica classica con 1797 voci, perché le parole chiave guardavano anche il percorso e la cartella ombrello `LOUDSPEAKERS & ELECTROACOUSTIC` contiene acoustic. Le espressioni con `\b` cercavano invece una barra rovesciata letterale, per l'escape delle stringhe YAML. Corretti tutti e tre, le voci da classificare sono passate da 1509 a 1513, ma con gruppi sensati: per esempio Acustica classica è scesa a 36 voci e R12 da 1695 a 39.
+
+*La classificazione dei residui.* Le 1513 voci senza disciplina sono state divise in quattro lotti e date a quattro agenti con il modello economico. Gli agenti hanno classificato dal solo titolo, dagli autori, dalla sede e dalla cartella, con i nomi di gruppo ammessi in `_notes/biblioteca/gruppi.json`. L'esito è stato controllato prima dell'uso. Tre lotti tornano voce per voce con l'ingresso. Il terzo ne ha 374 su 379, mentre il resoconto del suo agente dichiarava 500 voci. I nomi di gruppo estranei all'albero, 24, sono stati scartati. Restano 1305 voci con almeno un gruppo, di cui 377 marcate come non pertinenti. Il campione di trenta voci regge, con qualche errore. Per esempio un lavoro sull'equazione di Helmholtz è finito in Audio electronics, e un ricevitore a massima verosimiglianza è stato marcato non pertinente. Ogni assegnazione dell'agente porta il motivo `agente` nello stato intermedio, quindi si riconosce e si corregge. Dopo l'unione, 208 voci restano da classificare.
+
+*Il vault.* `biblioteca.py` ha scritto in circa 40 secondi `Biblioteca.bib`, 8194 note di fonte, 148 note di gruppo e `00-INDICE.md`. La biblioteca ha 8197 blocchi, nessuno con parentesi sbilanciate, e 3300 voci con il campo `file`. Non contiene campi `owner`. La conservazione delle note di lettura è stata provata: una riga aggiunta in coda alla nota di `small1973vented1` è sopravvissuta a una seconda corsa ed è stata poi tolta. Nella biblioteca il nome della persona tolto in MS-200 compare ancora 44 volte. Sono nomi reali di file e cartelle su `J:`: due cartelle, due documenti della tesi e una cartella di materiale con il nome di un'altra persona. Toglierli vorrebbe dire rinominare file dell'utente su `J:`, e la decisione è sua.
+
+*Lo strumento del censimento.* I manifesti dei lotti 10 e 11 erano stati generati con script temporanei, e una sequenza replicabile non può citare uno script che non esiste. `censisci-cartelle.py` ne prende il posto. Con `--prova` dà zero documenti su `LOUDSPEAKERS & ELECTROACOUSTIC` e `z_____UNIVERSITA`, già censite, e 10 documenti con 7 archivi su `ENGLISH`, che non lo è.
+
+*I titoli personali nel registro pubblico.* Il campione dei residui ha mostrato fra le copie locali titoli di documenti personali e amministrativi dell'utente e della sua famiglia. Quei titoli entrano in `research-vault/fonti.json`, che è tracciato, e il repository è pubblico. Sono quindi già nella storia pubblicata, almeno dal commit `34ffd73`. ADR-028 teneva fuori dai file tracciati i percorsi su `J:` e il contenuto dei libri, ma non i titoli dei file. Lo stato intermedio di `biblioteca.py` e la classificazione degli agenti sono stati spostati subito in `_notes/biblioteca/`, che è ignorata. La decisione su `fonti.json` e sulla storia spetta all'utente, ed è PA-028.
+
+*Un errore ripetuto.* Aggiornando lo stato di PA-027 in `tools/check-pending-actions.py` ho usato di nuovo `sed -i` su un file `CRLF`, poche ore dopo averlo vietato in MS-199, e il file è passato a `LF`. Il confronto con `HEAD` lo ha colto subito, e il file è tornato a `CRLF`. Nello stesso passo un heredoc di Bash ha dimezzato la barra rovesciata di un `\n` dentro uno script Python. Ne è uscita una stringa spezzata su due righe, che il controllo ha rifiutato con un errore di sintassi. Sono le due trappole di questa postazione già scritte nel file di ripresa. Il fatto che io le abbia ripetute mostra che una regola scritta non basta, se il gesto sbagliato resta il più comodo. La correzione è di procedura: le modifiche ai file del repository passano dallo strumento di modifica, e Bash resta per leggere e lanciare.
+
+Verificato con: `biblioteca.py --prova` prima e dopo ogni correzione delle regole; il confronto delle chiavi e dei nomi di gruppo di ogni lotto degli agenti con l'ingresso; il campione di trenta voci; il conteggio dei file del vault; il bilanciamento delle parentesi per voce; la prova di conservazione delle note di lettura; `censisci-cartelle.py --prova`; `Test-Allineamento.py`, senza voci rotte.
+
+Esito: fatto per la biblioteca e il vault. Restano 208 voci da classificare, l'OCR in corso, la decisione dell'utente sui nomi nei file di `J:` e PA-028.
+
+### MS-202 - Anonimizzazione delle persone, contenuto letto davvero, e il presidio su ciò che va su GitHub
+
+Data: 2026-10-05
+
+Perimetro:
+- 19 rinomine su `J:`, autorizzate dall'utente elenco alla mano;
+- l'indice dei lotti, i manifesti e la cache convertita, riallineati ai nomi nuovi;
+- `tools/biblioteca.py`, con il passo sul contenuto, le regole locali e l'esclusione delle voci non pertinenti;
+- `tools/registro-fonti.py`, che separa il registro pubblico da quello completo locale;
+- `tools/check-privato.py`, nuovo;
+- `CLAUDE.md`, con il controllo nella sequenza prima di un commit;
+- `research-vault/biblioteca-regole.yml`, `research-vault/fonti.json` e `research-vault/07-Analisi-corpus.md`;
+- frasi in `decisions.md`, `progress.md`, `OPERATIONS-LOG.md` e `PENDING-ACTIONS.md`;
+- il vault su `J:`, rigenerato con la cancellazione di 379 note superate;
+- ADR-039 e ADR-040, PA-029.
+
+Legame con il progetto: serve PA-027 e PA-028, e la tutela dei dati dell'utente, che non è una fase del progetto ma una condizione di tutte. Da questo microstep dipende ogni commit successivo, che passa ora dal nuovo controllo.
+
+*Il vault come fonte comune.* L'utente ha chiesto che tutti i progetti di acustica cerchino le fonti nel vault su `J:`. È ADR-039, e la propagazione nei progetti candidati è PA-029.
+
+*Che cosa era stato letto davvero.* L'utente ha chiesto se le cartelle dell'elettronica analogica, del segnale, dell'università e di `analog_ele utili` fossero state lette nel profondo. La risposta misurata era di no. Tutti i documenti erano indicizzati e convertiti: 8 su 8, 244 su 244, 166 su 166 e 1711 su 1713. La classificazione però guardava soltanto il nome della cartella e il titolo, e in `TLC, SIGNAL PROCESSING` 142 documenti su 166 erano classificati dalla sola cartella. `biblioteca.py` ha ora un passo sul contenuto. Conta le parole chiave di ogni gruppo nei primi 200 000 caratteri del testo convertito, e assegna un gruppo solo se le occorrenze sono almeno 8, o almeno 8 per i capitoli e i filoni del progetto, e almeno un quarto di quelle del gruppo più frequente del documento. Tre gruppi restano assegnati dal solo titolo, perché le loro parole chiave ricorrono in testi di ogni argomento: A1 Notazione, Programming languages e Probability and statistics. Il passo assegna gruppi dal contenuto a 1842 voci. Il campione di venti è in gran parte giusto, per esempio Inman in Vibration e un white paper sui crossover a fase lineare in R6. Le voci da classificare sono scese da 208 a 173.
+
+*Le persone tolte.* L'utente ha chiesto di anonimizzare le persone da cui veniva il materiale. Gli autori dei testi restano, perché sono citazioni. Nei percorsi dell'indice sono state trovate nove persone indicate come provenienza, in nomi di cartelle e di file e in suffissi del tipo `(da ...)`. L'elenco delle 19 rinomine, dalla più profonda alla più alta e con il controllo che l'origine esista e la destinazione sia libera, è stato mostrato all'utente e da lui autorizzato. Le rinomine sono state eseguite tutte e 19. Poi sono stati riscritti con gli stessi nomi nuovi 11 file d'indice e il manifesto della conversione, e sono stati rinominati 17 file della cache. `indicizza-lotti.py --verifica` rilegge 7384 posizioni senza problemi. Nel vault rigenerato le occorrenze dei nomi sono zero.
+
+*I documenti personali.* Per scelta dell'utente le voci non pertinenti non entrano né nella biblioteca né nel vault. Sono documenti personali, amministrativi o estranei allo studio, riconosciuti dall'elenco locale e dalla classificazione degli agenti. Ne sono escluse 371, più l'elaborato di uno studente con la matricola nel titolo. Le 379 note superate sono state cancellate dal vault una per una, dopo aver verificato che nessuna contenesse note di lettura scritte a mano. Il vault conta ora 7822 note di fonte.
+
+*Il registro pubblico.* `research-vault/fonti.json` è tracciato e il repository è pubblico. Il commit `34ffd73` vi aveva portato i titoli di 3300 file dell'SSD. `registro-fonti.py` scrive ora il registro completo nel file locale `_notes/biblioteca/fonti-completo.json`, e nel tracciato tiene soltanto libreria JabRef, bibliografia della tesi del 2020, proposte e scaricati, senza i campi delle copie locali: 5085 voci invece di 8194. Per la stessa ragione la tabella delle cartelle, le provenienze ricavate dal percorso e l'elenco dei documenti non pertinenti sono usciti da `biblioteca-regole.yml` e stanno in `_notes/biblioteca/regole-locali.yml`.
+
+*Il presidio.* `check-privato.py` esamina tutto ciò che un `git add -A` porterebbe nel commit. Cerca i termini dell'elenco locale `_notes/privacy/termini.txt`, che è locale di proposito, perché scriverlo in un file tracciato pubblicherebbe ciò che protegge. Cerca anche le tracce di provenienza non ufficiale dei libri e i percorsi di singoli file su `J:`. La prima corsa ha trovato 16 occorrenze in 7 file:
+- la menzione della provenienza di alcuni PDF in `decisions.md` e `progress.md`;
+- il percorso del PDF della tesi magistrale dell'utente in `OPERATIONS-LOG.md`;
+- la descrizione dei documenti personali che io stesso avevo scritto in MS-201;
+- due nomi di file con il suffisso di un sito di libri in `07-Analisi-corpus.md`;
+- due termini nell'elenco dei documenti non pertinenti delle regole;
+- la timeline, che li ripeteva.
+
+Tutte sono state riscritte in forma generica. Resta un'eccezione dichiarata, l'espressione con cui `registro-fonti.py` toglie quel suffisso dai titoli. La seconda corsa dà zero occorrenze. Il controllo è ora l'ultimo della sequenza di `CLAUDE.md`.
+
+*La storia pubblicata.* Il repository risulta pubblico, letto con `gh repo view`. Contato con lo stesso elenco di termini, il commit `34ffd73` ha 51 occorrenze. I commit da `dc5c111` a `0685cfc` hanno soltanto le due righe sulla provenienza dei PDF e la timeline. I commit più vecchi hanno solo un falso positivo nella regola generica di anonimizzazione del template. Il primo commit con i nomi delle persone è `34ffd73`. I rimedi spettano all'utente: rendere privato il repository, sostituire `34ffd73` con un commit ripulito e forzare il push, ed eventualmente riscrivere i commit precedenti. I comandi sono consegnati nella risposta di sessione e sono la voce aperta di PA-028.
+
+*Un errore ripetuto per la terza volta.* Un heredoc di Bash ha dimezzato le barre rovesciate di un'espressione regolare, e lo script si è fermato a metà dopo avere già scritto due file. Gli script con barre rovesciate vivono ora in file scritti con lo strumento di scrittura.
+
+Verificato con: il conteggio per cartella di indicizzati, convertiti e base della classificazione; `biblioteca.py --prova` con il campione delle assegnazioni dal contenuto; l'esistenza di ogni origine e la libertà di ogni destinazione prima di ciascuna rinomina; `indicizza-lotti.py --verifica`; la ricerca dei nomi nel vault, a zero; la verifica delle note di lettura prima della cancellazione; `registro-fonti.py --check`; `check-privato.py` prima e dopo; `git grep` del medesimo elenco su ciascuno dei dodici commit più recenti; `gh repo view`.
+
+Esito: fatto per il disco, il vault e i file di lavoro. La storia pubblicata attende l'utente.
+
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

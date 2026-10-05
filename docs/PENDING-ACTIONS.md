@@ -216,7 +216,9 @@ Aperta il 2026-09-30, MS-169. L'hook `md-unwrap-auto` del pacchetto `hooks-start
 
 Aperta il 2026-10-01, MS-174. Il segno P4 di `lint-prosa.py` del pacchetto `anti-slop` conta come elenco qualunque sequenza della forma «A, B e C» con elementi di una o due parole, e quindi anche un confine di frase o un'apposizione seguiti da una congiunzione, per esempio «a valle, cioè X e X» o «l'esito atteso, si ferma e si». Su undici documenti di questo progetto le corrispondenze a tre elementi erano 110, e 61 non erano elenchi. La prevalenza delle terne che lo strumento segnala è quindi in buona parte un prodotto della misura: la correzione da portare nel template è escludere le corrispondenze il cui primo elemento è introdotto da una virgola di inciso, o che contengono parole funzionali come «cioè», «si», «è», «con» o «dove», e aggiungere alle prove interne un caso negativo per ciascuna forma.
 
-Aperta il 2026-10-01, MS-179. `check-eol.py` del template escludeva `_notes`, `node_modules` e le fixture ma non `.venv`, quindi un progetto con un ambiente virtuale Python riceveva segnalazioni sui file delle librerie installate. La correzione, cioè `.venv` e `venv` fra le cartelle escluse, è fatta qui nelle due copie identiche e va portata nel template.
+Aperta il 2026-10-01, MS-179. `check-eol.py` del template escludeva `_notes`, `node_modules` e le fixture ma non `.venv`, quindi un progetto con un ambiente virtuale Python riceveva segnalazioni sui file delle librerie installate. La correzione, cioè `.venv` e `venv` fra le cartelle escluse, è fatta qui nelle due copie identiche e va portata nel template. Compiuta il 2026-10-02 con MS-189: il modello del template porta ora `.venv` e `venv` e, in più, rispetta il marcatore `.md-unwrap-ignore` come materiale esterno da non controllare, una regola nata qui quando il vault di ricerca ha ricevuto 4039 file copiati tali e quali; le tre copie sono identiche e la modifica nel template resta non committata.
+
+Aperta il 2026-10-05, MS-191. `doc-ingest.py` del template converte i `.docx` con markitdown, che scarta le equazioni di Word: in un `.docx` di appunti con 2491 equazioni il testo convertito non ne conservava quasi nessuna. pandoc le porta in LaTeX. Qui la correzione vive in `tools/converti-fonti.py`, per non far divergere la copia del modello; nel template va decisa la forma, cioè pandoc come motore dei `.docx` in `doc-ingest` quando è installato, e va aggiunto all'OCR il parametro della lingua, che oggi manca e lascia Tesseract in solo inglese.
 
 Criterio di completamento. Le voci aperte risultano presenti nel template, verificate con un confronto e non con un ricordo, e questa voce si chiude dichiarando la data. La verifica non decisa produce invece un microstep con il suo esito.
 
@@ -589,6 +591,61 @@ Il vincolo che pesa più degli altri. Il processore si configura di solito con u
 Condizione di sblocco. Nessuna per la ricerca; la scelta definitiva della potenza dipende dagli altoparlanti della fase 4a.
 
 Criterio di completamento. Un confronto scritto dei candidati con le fonti lette, la verifica della configurazione da Linux per ciascuno, la scelta dell'utente registrata come ADR, e la voce nella lista degli acquisti finali.
+
+## PA-025 - Scaricare i PDF delle fonti selezionate per la tesi
+
+Data di apertura: 2026-10-02, da MS-186 e MS-188. Stato: aperta, dipende da un'azione dell'utente. Al 2026-10-05 sono scaricati e registrati otto lavori: i sette non AES con MS-194 e Leach dalla copia dell'autore con MS-195. Restano 20 lavori AES. Il formato `https://aes.org/publications/elibrary-page/?id=N` è provato nel browser dall'utente con MS-195.
+
+Che cosa va fatto. Scaricare con i propri accessi, cioè AES E-Library, IEEE Xplore, ASA e open access, i PDF delle fonti selezionate e salvarli in `research-vault/papers/` con il nome uguale alla chiave. L'elenco aggiornato, con i collegamenti, è la nota generata `research-vault/04-Paper-da-scaricare.md`; dopo ogni gruppo di file si rilancia `python tools/registro-fonti.py`, che li registra con l'impronta in `papers/manifest.json` e li toglie dall'elenco. Poi l'agente verifica ciascun PDF, cioè titolo, autori, sede e pagine, lo promuove a verificata e lo porta in `research-vault/bibliography.bib`. I PDF della libreria JabRef non esistono, come l'utente ha chiarito il 2026-10-02: i paper della libreria che servono alla tesi si aggiungono alla selezione e si scaricano allo stesso modo.
+
+Condizione di sblocco. Nessuna: dipende dall'utente.
+
+Criterio di completamento. Nessuna voce in `04-Paper-da-scaricare.md`, e ogni fonte selezionata verificata o scartata con il motivo.
+
+## PA-026 - Indicizzare e convertire i lotti dal 02 al 09 del materiale di studio
+
+Data di apertura: 2026-10-02, da MS-188; riformulata lo stesso giorno da ADR-036. Stato: indicizzazione compiuta il 2026-10-02 (MS-189, MS-190), conversione in corso. Il 2026-10-05, con MS-196, è stato aggiunto il lotto 10: tutte le sottocartelle di `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC`, con 499 documenti nuovi per impronta e 21 archivi da aprire, per i quali serve il permesso di scrittura su `J:`.
+
+Che cosa va fatto. Il materiale resta su `J:` e il progetto ne tiene l'indice. Indicizzare con `python tools/indicizza-lotti.py` le voci dei manifesti `research-vault/fonti-locali/lotti-manifest*.json`; estrarre gli archivi da aprire con `python tools/estrai-archivi.py --dest "J:/MAIN/_ESTRATTI ARCHIVI TESI"`, solo con il permesso dell'utente per la scrittura su `J:`; convertire con `python tools/converti-fonti.py`, poi con `--ocr` o `--engine docling` i documenti sotto le 50 parole; rigenerare il registro con `python tools/registro-fonti.py`. Prima di fidarsi di un indice vecchio, `python tools/indicizza-lotti.py --verifica`.
+
+Condizione di sblocco. Il disco `J:` collegato. Su `J:` nessun file si cancella o si sovrascrive.
+
+Criterio di completamento. Ogni voce dei manifesti registrata, ogni documento convertito, e quelli sotto le 50 parole riconvertiti o dichiarati illeggibili con il motivo.
+
+## PA-027 - Censimento completo di `J:`, biblioteca delle fonti alla maniera di JabRef, vault su `J:`
+
+Data di apertura: 2026-10-05, da MS-197. Stato: aperta. Forma decisa in ADR-038; il 2026-10-05, con MS-201, biblioteca e vault sono generati su `J:` da `tools/biblioteca.py`, con 8194 fonti e 208 ancora da classificare. Restano la classificazione dei residui, l'OCR delle scansioni e la decisione dell'utente sui nomi di persona nei file di `J:`.
+
+Che cosa va fatto. Le richieste dell'utente sono tre.
+- Analizzare le fonti, oltre a quelle web, controllando tutte le sottocartelle pertinenti di `J:\MAIN` e di `J:\_____da sistemare ancora`. Il conteggio di partenza per cartella è in MS-197.
+- Costruire una biblioteca completa, con tutti i paper e i punti presi nel progetto, suddivisa come l'albero dei gruppi di `ELE_Technical_Library.bib`.
+- Costruire dentro `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC` il vault completissimo delle fonti che arrivano da tutte le parti.
+
+Condizione di sblocco. Il disco `J:` collegato, la conferma dell'utente su quali cartelle siano pertinenti, e il suo permesso per scrivere il vault su `J:`. Su `J:` nessun file esistente si cancella o si sovrascrive.
+
+Criterio di completamento. Ogni cartella pertinente indicizzata e convertita. La biblioteca generata da uno strumento, con ogni fonte in almeno un gruppo. Il vault su `J:` aperto in Obsidian, con le note delle fonti e i collegamenti ai capitoli della tesi.
+
+## PA-028 - Titoli di documenti personali nel registro pubblico delle fonti
+
+Data di apertura: 2026-10-05, da MS-201. Stato: aperta per la sola storia pubblicata. Il 2026-10-05, con MS-202 e ADR-040, il registro tracciato non contiene più le copie locali e ogni commit passa da `tools/check-privato.py`; restano da rimediare il commit pubblicato `34ffd73` e le due righe sulla provenienza dei PDF nei commit da `dc5c111` a `0685cfc`, con i comandi consegnati all'utente.
+
+Che cosa va fatto. `research-vault/fonti.json` è tracciato, e il repository è pubblico. Il file contiene i titoli di tutte le copie locali indicizzate su `J:`, compresi documenti personali e amministrativi. Le vie sono due, e si possono combinare.
+- Togliere dal registro tracciato le voci locali, o i loro titoli, e tenerle in un registro locale ignorato.
+- Ripulire la storia pubblicata con una riscrittura e un push forzato, che sono gesti dell'utente.
+
+Condizione di sblocco. La scelta dell'utente.
+
+Criterio di completamento. Nessun titolo di documento personale in un file tracciato, e la decisione sulla storia registrata come ADR.
+
+## PA-029 - Portare nei progetti di acustica il rimando al vault delle fonti
+
+Data di apertura: 2026-10-05, da ADR-039. Stato: aperta.
+
+Che cosa va fatto. In ciascun progetto attinente all'acustica si aggiunge al `CLAUDE.md`, o alla regola che governa le fonti, il rimando al vault `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI\` come base bibliografica comune, con la consegna di ADR-039. I candidati, riconosciuti dal nome della cartella su `E:` il 2026-10-05 e da confermare con l'utente, sono `home-recording-training-mixing-setup`, `feature-based_characterization_loudspeakers`, `rodrainaudio-reverse-eng`, `harmonic-tension-vst3` e `thesis`. La regola generale va anche al template, come voce di PA-003.
+
+Condizione di sblocco. Una sessione aperta in ciascun progetto, e la conferma dell'utente sull'elenco.
+
+Criterio di completamento. Ogni progetto confermato porta il rimando, e il template porta la regola generale.
 
 ## Azioni compiute
 

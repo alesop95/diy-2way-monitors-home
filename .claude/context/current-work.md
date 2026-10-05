@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: 93bb1e1
+last-verified-commit: 0685cfc
 ---
 
 # Lavoro corrente
@@ -15,7 +15,7 @@ last-verified-commit: 93bb1e1
 
 ## Fronte attivo
 
-Stato al 2026-09-30, che precede e prevale sul racconto datato che segue. Il fronte di progetto è PA-020, cioè il rilievo geometrico della stanza con il metro laser, e attende l'acquisto dello strumento; la fase delle misure attende la scelta della catena di ingresso di PA-012. La ricostruzione dell'ambiente, che questa sezione racconta dal 2026-09-09, è chiusa: fasi da 0 a 11 della procedura di installazione pulita compiute, fase 8 chiusa il 2026-09-17, catena audio in uscita verificata, due punti di ripristino Veeam. Il 2026-09-30 la sessione non ha lavorato sul progetto elettroacustico ma sul sistema di lavoro: ha percorso il runbook di inizializzazione del template in modalità allineamento, da MS-165 a MS-167, con i presidi nuovi descritti in `CLAUDE.md` e il modello di separazione di ADR-024. Al 2026-10-01 sera il confronto è scritto in `docs/52-crossover-passivo-o-attivo.md` e il report è aperto in `report/`, con il capitolo sul crossover; il 2026-10-02 l'utente ha scelto l'attivo con processore digitale, ADR-033, e la scelta del modulo con la verifica del suo software su Linux è PA-024. Dal 2026-10-01 il fronte attivo senza acquisti è doppio: il confronto scritto fra crossover passivo e attivo, chiesto dall'utente prima di decidere, e il report LaTeX che cresce con il progetto per ADR-029, sostenuti dalla base di conoscenza sui materiali di studio istanziata in MS-179. Gli acquisti si fanno alla fine per ADR-027. Il lavoro che resta, ordinato per costo, è la roadmap generata da `python tools/roadmap.py`.
+Stato al 2026-10-02, che precede e prevale sul racconto datato che segue. Il fronte attivo è la base di conoscenza sui materiali di studio dell'utente: il 2026-10-02, con MS-184, sono stati fissati tutti i lotti prima di assorbirne altri, su richiesta dell'utente, e il piano con i percorsi su `J:` sta in `_notes/fonti-studio/piano-lotti.md`, locale per ADR-028. Il rilievo geometrico di PA-020 attende il metro laser e la fase delle misure la catena di ingresso di PA-012, entrambi acquisti che per ADR-027 si fanno alla fine. La ricostruzione dell'ambiente, che questa sezione racconta dal 2026-09-09, è chiusa: fasi da 0 a 11 della procedura di installazione pulita compiute, fase 8 chiusa il 2026-09-17, catena audio in uscita verificata, due punti di ripristino Veeam. Il 2026-09-30 la sessione non ha lavorato sul progetto elettroacustico ma sul sistema di lavoro: ha percorso il runbook di inizializzazione del template in modalità allineamento, da MS-165 a MS-167, con i presidi nuovi descritti in `CLAUDE.md` e il modello di separazione di ADR-024. Al 2026-10-01 sera il confronto è scritto in `docs/52-crossover-passivo-o-attivo.md` e il report è aperto in `report/`, con il capitolo sul crossover; il 2026-10-02 l'utente ha scelto l'attivo con processore digitale, ADR-033, e la scelta del modulo con la verifica del suo software su Linux è PA-024. Dal 2026-10-01 il fronte attivo senza acquisti è doppio: il confronto scritto fra crossover passivo e attivo, chiesto dall'utente prima di decidere, e il report LaTeX che cresce con il progetto per ADR-029, sostenuti dalla base di conoscenza sui materiali di studio istanziata in MS-179. Gli acquisti si fanno alla fine per ADR-027. Il lavoro che resta, ordinato per costo, è la roadmap generata da `python tools/roadmap.py`.
 
 Ricostruzione dell'ambiente sulla macchina reinstallata, dal 2026-09-09.
 
@@ -125,6 +125,8 @@ Nei file di documentazione del progetto la grafia è invece stata sanata il 2026
 
 Sezione riscritta il 2026-09-30, perché descriveva lo stato di prima di MS-078. Nei documenti vivi il grassetto in prosa è a zero dal 2026-09-09, misurato di nuovo il 2026-09-30 su 46 file; nei registri storici ne resta uno, in MS-152, che per ADR-025 non si tocca. La pulizia decisa con ADR-025 è MS-171: dei parallelismi negativi segnalati da `tools/lint-prosa.py` nei documenti vivi, diciassette sono riscritti e cinque restano perché qualcuno aveva davvero sostenuto la tesi opposta. Restano da rileggere le prevalenze di elenchi a tre in undici documenti vivi, voce 12 della roadmap.
 ## Prossimo passo concreto
+
+Nota del 2026-10-02, che prevale sui paragrafi seguenti dove li contraddice. PA-008 è compiuta dal 2026-10-01 (MS-176), e PA-020 non è più l'unico lavoro eseguibile, perché ADR-027 rimanda tutti gli acquisti alla fine. Il prossimo passo è l'assorbimento dei lotti fissati in MS-184, nell'ordine 02, 04, 03, 05: copia locale da `J:` in sola lettura, scarto dei doppioni per impronta, conversione con `tools/doc-ingest.py`, poi la prima compilazione della wiki con `wiki-digest` e delle skill dei libri con `book-digest`. Prima di copiare si chiede all'utente di confermare il piano.
 
 Questa sezione è stata riscritta il 2026-09-30 perché dal 2026-09-17 indicava ancora come passo successivo la sottofase 8.3 e le seguenti, tutte chiuse: la sua versione precedente sta nella storia di git, e il racconto di quelle sottofasi nei microstep da MS-090 a MS-143.
 

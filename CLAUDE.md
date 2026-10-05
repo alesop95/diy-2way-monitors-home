@@ -73,7 +73,10 @@ python tools/lint-md-tables.py .
 python tools/sync-codex-skills.py --check
 python tools/lint-memoria.py
 python tools/Test-Allineamento.py
+python tools/check-privato.py
 ```
+
+L'ultimo comando esiste perché il repository è pubblico e il materiale di studio viene dall'SSD privato dell'utente: cerca nei file che un commit porterebbe su GitHub i nomi e i documenti personali dell'elenco locale `_notes/privacy/termini.txt`, le tracce di provenienza non ufficiale dei libri e i percorsi di singoli file su `J:`. Nato con MS-202, dopo che il registro delle fonti aveva pubblicato i titoli di 3300 file del disco.
 
 Il quintultimo comando fallisce se il blocco `docs/10-ambiente/` è stato modificato qui e non ancora propagato al progetto gemello `home-recording-training-mixing-setup`, di cui questo repository è la copia canonica.
 

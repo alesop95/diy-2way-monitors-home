@@ -386,7 +386,7 @@ Conseguenze. Le fasi 1 e 2 del workflow restano ferme fino agli acquisti, e con 
 
 Data: 2026-10-01. Stato: accettata, su scelta esplicita dell'utente.
 
-Contesto. L'utente ha chiesto di costruire una base di conoscenza sui propri appunti e libri di elettronica e di filtri, che stanno su `J:`, per sostenere le decisioni di progetto e il report. Per una parte dei PDF la provenienza non è documentata. ADR-010 aveva escluso dal corredo il software di provenienza non lecita, e la domanda è stata posta per coerenza. Il repository è pubblico.
+Contesto. L'utente ha chiesto di costruire una base di conoscenza sui propri appunti e libri di elettronica e di filtri, che stanno su `J:`, per sostenere le decisioni di progetto e il report. Per una parte dei PDF la provenienza non è documentata. ADR-010 aveva escluso dal corredo il software di provenienza non lecita, e la domanda sull'uso del materiale è stata posta per coerenza. Il repository è pubblico.
 
 Decisione. Si usano tutti i materiali indicati, per studio personale e soltanto in locale. Le copie stanno in `_notes/fonti-studio/`, le conversioni in `_notes/.tmp-doc-cache/`, la wiki compilata e le sue fonti in `knowledge/sources/` e `knowledge/wiki/`, le skill generate dai libri sotto `.claude/skills/libro-*/`: tutti ignorati da git. Restano tracciati soltanto gli strumenti, le skill di procedura, lo schema e il registro della wiki. Il report cita i testi in bibliografia e non ne riproduce il contenuto.
 
@@ -451,3 +451,91 @@ Decisione. Diffusori attivi a due vie, con un canale di amplificazione per altop
 Motivazione. La possibilità di correggere in un processore è il vantaggio più legato alla premessa del progetto, cioè una stanza nota e non trattabile, con una verifica finale al punto di ascolto; l'attivo toglie inoltre la dipendenza del filtro dall'impedenza degli altoparlanti, e completa la catena di ascolto di ADR-012 senza un amplificatore di potenza esterno.
 
 Conseguenze. Il progetto in VituixCAD produce coefficienti biquad e ritardi invece di valori di componenti. Gli acquisti finali di ADR-027 comprendono, per ciascun cabinet, due canali di amplificazione e un processore, oppure un modulo che li integri, invece dell'amplificatore stereo esterno e dei componenti della rete; la scelta del modulo e la verifica della compatibilità con Linux del suo programma di configurazione sono PA-024. Il capitolo del report sul crossover prosegue sulla realizzazione digitale.
+
+## ADR-034 - Il progetto diventa una tesi, con la matematica dimostrata da zero, e la documentazione operativa resta aggiornata a ogni passo
+
+Data: 2026-10-02. Stato: accettata, su scelta esplicita dell'utente.
+
+Contesto. L'utente ha dichiarato di voler fare di questo progetto praticamente una tesi: matematica che dimostra le cose, spiegata come se si partisse da zero, con appendici di elettronica, acustica ed elettroacustica, e una ricerca bibliografica come prescrive il template. Il report LaTeX di ADR-029 esiste già in `report/` con un capitolo per fase e un'appendice di notazione.
+
+Decisione. Il report di ADR-029 diventa la tesi e continua a crescere con il progetto, invece di essere scritto alla fine o in un documento separato. Ogni risultato usato in un capitolo si deriva, e le basi che servono a derivarlo stanno in appendici: matematica, elettrotecnica ed elettronica, fisica ed elettromagnetismo, acustica, elettroacustica, elaborazione numerica del segnale. Accanto alla tesi, le pagine Markdown di `docs/` restano il resoconto contestuale e sempre aggiornato di ogni punto del progetto, comprese le operazioni e i setup eseguiti, secondo la regola delle pagine prescrittive di `CLAUDE.md`: l'utente ha chiesto esplicitamente che nessun passaggio operativo vada perso. La ricerca bibliografica segue il pacchetto `academic-researcher`, con lo scope in `research-vault/scope.md`, il registro in `research-vault/tracked-sources.md`, il `.bib` in `research-vault/bibliography.bib`, e i PDF in `research-vault/papers/`, ignorata da git. L'autonomia è propongo e l'utente conferma.
+
+Motivazione. Una tesi che cresce con il progetto obbliga a scrivere la ragione di una scelta quando la si prende, che è la stessa ragione per cui esiste `chat-non-e-memoria.md`; scriverla dopo significherebbe ricostruirla. Le due forme hanno lettori diversi: la tesi spiega perché e dimostra, le pagine di `docs/` dicono che cosa è stato fatto e come rifarlo.
+
+Conseguenze. Il capitolo sul crossover, già scritto, va ripreso con le derivazioni complete. Restano valide ADR-028 per i libri, ADR-031 per gli strumenti a consumo e ADR-032 per il versionamento della tesi. La tesi magistrale dell'utente del 2020, censita su `J:` in MS-185, è il primo modello di struttura e stile da leggere.
+
+## ADR-035 - Il vault di ricerca è un vault Obsidian sul modello di intralino, e contiene le copie locali di tutto il materiale
+
+Data: 2026-10-02. Stato: accettata, su richiesta esplicita dell'utente.
+
+Contesto. La ricerca bibliografica della tesi di ADR-034 aveva il materiale sparso: le copie dei lotti e la libreria JabRef sotto `_notes/fonti-studio/`, lo scope e il registro in `research-vault/`. L'utente ha chiesto di portare nel vault di ricerca una copia di tutto ciò che serve e di inizializzarlo come vault Obsidian con le stesse caratteristiche di quello del progetto `D:\intralino-benchmark`.
+
+Decisione. `research-vault/` è un vault Obsidian con la configurazione e i tre plugin comunitari di intralino, una nota d'ingresso `00-START`, note numerate, una scheda per fonte selezionata in `paper/`, il registro unico `fonti.json` generato da `tools/registro-fonti.py` e i PDF in `papers/` con il manifesto delle impronte. Le copie del materiale di studio stanno in `research-vault/fonti-locali/lotto-NN/`, copiate da `tools/copia-lotti.py`, e le basi di terzi in `research-vault/basi/`. Questo supera la posizione `_notes/fonti-studio/` di MS-179 e del piano di MS-184.
+
+Motivazione. Un solo posto per la ricerca rende possibile un registro unico delle provenienze, che l'utente ha chiesto completo di ciò che c'è, di ciò che scarica e di ciò che l'agente propone. Il grafo di Obsidian funziona soltanto se schede e note stanno nello stesso vault.
+
+Conseguenze. Il `.gitignore` tiene locali copie, basi di terzi, PDF, plugin e stato dell'interfaccia, per ADR-028; si versionano note, configurazione, schede, registro e manifesto. Chi clona il repository reinstalla i plugin con BRAT. Restano valide ADR-028 e ADR-031.
+
+## ADR-036 - Il materiale di studio resta su J: e il progetto lo indicizza, invece di copiarlo
+
+Data: 2026-10-02. Stato: accettata, su scelta esplicita dell'utente; supera la parte di ADR-035 che metteva le copie del materiale dentro il vault.
+
+Contesto. Con MS-189 il vault di ricerca conteneva 4039 file copiati da `J:`, per 5,62 GiB. Il progetto è oggetto di una copia di sicurezza giornaliera due volte al giorno, e l'utente ha chiesto di portare il materiale in `J:\MAIN` e di indicizzare tutto da questo progetto. Dei 5,62 GiB, 3,95 erano copie identiche per impronta di file che stanno già in `J:\MAIN`; gli altri 1,67 erano i file estratti dai dieci archivi, che su `J:` non esistevano estratti.
+
+Decisione. Fra due vie, l'utente ha scelto quella senza doppioni. Le copie dei lotti sono tolte dal progetto, e l'indice punta agli originali in `J:\MAIN`. I soli file estratti dagli archivi sono scritti su `J:`, nella cartella nuova `J:\MAIN\_ESTRATTI ARCHIVI TESI`, con il permesso esplicito dell'utente dato per quei file. Il progetto conserva i registri `lotto-NN-origine.json` con posizione e impronta di ogni file, il piano, i censimenti e i manifesti. La cache di conversione in Markdown resta nel progetto, in `_notes/.tmp-doc-cache/fonti/`: è testo leggero e serve anche con il disco scollegato.
+
+Motivazione. Un doppione di materiale che esiste già non aggiunge sicurezza e appesantisce ogni copia di sicurezza; un indice con l'impronta permette invece di accorgersi se un originale cambia o sparisce, con `tools/indicizza-lotti.py --verifica`.
+
+Conseguenze. La conversione e la lettura dei documenti richiedono `J:` collegato; la cache convertita no. Gli strumenti di copia diventano strumenti di indice: `copia-lotti.py` è sostituito da `indicizza-lotti.py`, `estrai-archivi.py` scrive solo nella destinazione indicata dall'utente e non cancella nulla, e `converti-fonti.py` legge da `J:`. Restano valide ADR-028, ADR-035 per la forma del vault, e il vincolo di `CLAUDE.md` su `J:`: nessuna scrittura senza permesso esplicito per i file nominati.
+
+## ADR-037 - Il taglio della tesi è quello degli appunti dell'utente sulle lezioni del Politecnico
+
+Data: 2026-10-05. Stato: accettata, dichiarata dall'utente.
+
+Contesto. ADR-034 fissa che la tesi dimostra la matematica da zero e ha appendici di base, ma non dice con quale taglio. L'utente ha indicato il 2026-10-05 che i suoi `.docx` della cartella `LOUDSPEAKERS & ELECTROACOUSTIC`, dove ha messo le formule e ha sbobinato le lezioni del Politecnico di Milano, sono quel taglio, e che EEASE II ed EEASE Exercises sono interessanti quanto EEASE I.
+
+Decisione. Il riferimento di stile e di livello della tesi sono quegli appunti, con EEASE I, EEASE II ed EEASE Exercises in testa, insieme a Fundamentals of Acoustics, Musical Acoustics e Acustica applicata: lo stesso ordine di derivazione, la stessa notazione dove possibile, lo stesso grado di dettaglio nei passaggi. I libri e i paper servono a completare, verificare e citare, non a cambiare il taglio.
+
+Motivazione. Gli appunti sono già la forma in cui l'utente ha capito la materia, e una tesi che li riprende resta la sua; un testo che riprendesse il taglio di un manuale sarebbe un riassunto.
+
+Conseguenze. Le formule degli appunti si estraggono con pandoc, perché markitdown le perde (MS-191). Prima di scrivere un capitolo si legge la parte degli appunti che lo tratta, e la notazione dell'appendice a1 si allinea a quella degli appunti, dichiarando le eccezioni.
+
+## ADR-038 - Le fonti vivono in un vault su J:, la ricerca resta nel repository, e la biblioteca è la più completa possibile
+
+Data: 2026-10-05. Stato: accettata, su scelta esplicita dell'utente; precisa ADR-035 e ADR-036.
+
+Contesto. Con MS-196 e MS-197 è emerso che l'indice copriva una parte selezionata a mano del materiale di `J:`. L'utente ha chiesto tre cose: l'analisi di tutte le sottocartelle pertinenti di `J:\MAIN` e di `J:\_____da sistemare ancora`; una biblioteca con tutti i paper, suddivisa per gruppi come la libreria JabRef `ELE_Technical_Library.bib`; e un vault completo delle fonti dentro `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC`.
+
+Decisione. Le scelte dell'utente sono quattro.
+- Il censimento copre le cartelle tecniche e l'università: `z_____UNIVERSITA`, `ANALOG (AUDIO) ELECTRONICS`, `MATH and CALCULUS`, `TLC, SIGNAL PROCESSING and DIGITAL FILTERS`, le due `COMPUTER MUSIC`, `F.I.S.I.C.A and ELECTROMAGNETISM`, `MACHINE LEARNING`, `LATEX(+typesetting)`, `SOLIDWORKS` ed `ELETTROTECNICA`, più `ELE_Technical_Library.bib` e `materiale_formazione_elettronica.docx` di `J:\_____da sistemare ancora`. Restano fuori `PROGRAMMING`, `ISTAO`, `MARKETING`, `ENGLISH`, `SOFT SKILLS`, `PROJECT MANAGEMENT`, `FIRMWARE`, `DATA ANALYSIS`, `MUSIC`, `Teaching` e `ALTRO`.
+- Il vault su `J:` contiene una nota per ogni fonte, accanto al materiale, organizzata per gruppi. `research-vault/` nel repository resta il luogo della ricerca, cioè protocollo, registri, piano e analisi, e rimanda al vault su `J:`. Uno strumento rigenera il vault su `J:` dall'indice senza sovrascrivere le note scritte a mano.
+- La biblioteca va riorganizzata "nella versione più completa che sia mai esistita", con le parole dell'utente. L'albero dei gruppi di quella libreria è il punto di partenza e non il limite. Entrano tutte le fonti dell'indice, dei paper scaricati, delle proposte e della libreria JabRef, con gruppi per disciplina, un ramo per i capitoli della tesi e per i filoni R1-R12, e il campo `file` verso la posizione su `J:`.
+- Delle copie estratte in `J:\MAIN\_ESTRATTI ARCHIVI TESI` si cancellano software e dati, e si tengono i documenti, i modelli COMSOL e il toolbox MPM.
+
+Motivazione. Il materiale vive su `J:` per ADR-036, quindi le note che lo descrivono stanno meglio accanto a esso, mentre il lavoro di ricerca, che cambia a ogni sessione, va versionato. Una biblioteca organizzata per disciplina e per capitolo risponde a due domande diverse: che cosa c'è su un argomento, e che cosa sostiene un punto della tesi.
+
+Conseguenze. Scrivere il vault su `J:` è una scrittura di file nuovi, autorizzata dall'utente con questa decisione, e lo strumento non cancella né sovrascrive nulla di esistente. La biblioteca si genera da uno strumento e non si compila a mano, così che si rigeneri quando l'indice cresce. Il lavoro è PA-027.
+
+## ADR-039 - Il vault delle fonti su J: è la fonte bibliografica di tutti i progetti di acustica
+
+Data: 2026-10-05. Stato: accettata, istruzione dell'utente; estende ADR-038 oltre questo progetto.
+
+Contesto. Con MS-201 `tools/biblioteca.py` ha generato in `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI\` la biblioteca JabRef e il vault con 8194 fonti. L'utente ha chiesto che tutti i progetti attinenti all'acustica vadano a cercare lì le loro fonti.
+
+Decisione. Il vault su `J:` è la base bibliografica comune dei progetti di acustica, elettroacustica, audio ed elaborazione del segnale dell'utente. Un progetto di quel dominio cerca prima nel vault, cita la chiave della biblioteca, e porta ciò che trova di nuovo nel registro di questo progetto, così che la rigenerazione lo includa. Le note di lettura scritte nel vault valgono per tutti i progetti.
+
+Motivazione. Una biblioteca per progetto duplica il lavoro di censimento e di classificazione, e le copie divergono. Una sola biblioteca, rigenerata da uno strumento, resta coerente.
+
+Conseguenze. Questo progetto resta il proprietario dello strumento, delle regole e del registro. Gli altri progetti leggono il vault e non lo rigenerano. La propagazione dell'istruzione nei progetti candidati si fa in una sessione aperta in ciascuno di essi, perché l'agente resta sul perimetro di questo progetto, ed è PA-029. Se il disco `J:` non è collegato, il vault non è raggiungibile: un progetto che ne dipende lo dichiara invece di supporre le fonti.
+
+## ADR-040 - Niente di ciò che viene dall'SSD privato entra in un file tracciato
+
+Data: 2026-10-05. Stato: accettata, istruzione dell'utente; rafforza ADR-028.
+
+Contesto. Il repository è pubblico, e il materiale di studio viene dall'SSD privato dell'utente. ADR-028 teneva fuori dai file tracciati i percorsi e il contenuto dei libri, ma non i titoli dei file. Così il commit `34ffd73` ha pubblicato in `fonti.json` i titoli di 3300 file, compresi documenti personali e nomi di persone. L'utente ha chiesto di stare molto attenti a che cosa finisce su GitHub.
+
+Decisione. Nessun file tracciato contiene titoli, nomi di file, percorsi di singoli file o nomi di persone che vengono dal disco privato, salvo le citazioni bibliografiche di opere pubblicate. I registri e le regole che descrivono il disco vivono in `_notes/`, che è ignorata. Ogni commit passa da `tools/check-privato.py`, che cerca i termini dell'elenco locale `_notes/privacy/termini.txt`, le tracce di provenienza non ufficiale dei libri e i percorsi di singoli file su `J:`. Le persone da cui veniva il materiale si anonimizzano anche sul disco, con il permesso dell'utente elenco alla mano, e gli autori dei testi restano.
+
+Motivazione. Un dato pubblicato non si ritira davvero, perché la storia e le copie restano. L'unico momento in cui la protezione costa poco è prima del commit, e un controllo meccanico non dipende dall'attenzione di chi scrive.
+
+Conseguenze. Il registro pubblico tiene libreria, tesi del 2020, proposte e scaricati, mentre il registro completo è locale. Le pagine di `docs/` descrivono il disco per categorie e non per file. L'elenco dei termini cresce con ogni nome o documento da proteggere. La regola e lo strumento vanno al template, come voce di PA-003.

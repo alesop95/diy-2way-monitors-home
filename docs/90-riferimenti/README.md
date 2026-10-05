@@ -20,4 +20,6 @@ La prova che il documento sorgente è stato convertito integralmente, sezione pe
 
 Le fonti citate nel documento sorgente, raccolte per argomento, stanno in [fonti.md](fonti.md).
 
+La sequenza replicabile della base bibliografica, cioè censimento delle cartelle di `J:`, indice, estrazione, conversione, OCR, registro e generazione della biblioteca JabRef e del vault delle fonti, con il suo troubleshooting, sta in [biblioteca-e-vault-fonti.md](biblioteca-e-vault-fonti.md).
+
 [tracciabilita-microstep.md](tracciabilita-microstep.md) lega il registro dei microstep alle fasi del progetto, per blocchi: dice a che cosa serva ciascun gruppo di interventi e che cosa sarebbe impossibile senza di esso, e dichiara apertamente il blocco che non serve alcuna fase. Esiste perché il registro racconta il come e la verifica, non il perché di progetto.

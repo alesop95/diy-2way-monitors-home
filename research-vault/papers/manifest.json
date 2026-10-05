@@ -1,0 +1,62 @@
+[
+ {
+  "file": "allen1979image.pdf",
+  "citekey": "allen1979image",
+  "sha256": "20f77543fb8b9bd0ba710cace4413b040417d7e3d80dbde66cad923429cc60eb",
+  "byte": 877068
+ },
+ {
+  "file": "bank2008parallel.pdf",
+  "citekey": "bank2008parallel",
+  "sha256": "ae4743295301f40ed8a95e4d7c101968def61d70974b3e491313237ba22d2a08",
+  "byte": 150232
+ },
+ {
+  "file": "blauert1978groupdelay.pdf",
+  "citekey": "blauert1978groupdelay",
+  "sha256": "bbf3f1069b0bc7b4d8224658fd8da21c04d94a821d54f58db1823b51a88c75f1",
+  "byte": 752378
+ },
+ {
+  "file": "cecchi2018review.pdf",
+  "citekey": "cecchi2018review",
+  "sha256": "34290f606cf2cc86819e553e602bea403f567631851749dbc1edf34c696d58a6",
+  "byte": 5845685
+ },
+ {
+  "file": "leach2002inductance.pdf",
+  "citekey": "leach2002inductance",
+  "sha256": "5b22ecca7b7d5ce669cb5afaffe1ca80ff569e51cc34b75b4edded9a41ff8e3c",
+  "byte": 650731
+ },
+ {
+  "file": "radlovic2000robustness.pdf",
+  "citekey": "radlovic2000robustness",
+  "sha256": "7471ff38148087d8dee85d1e7244f688e3e7c43dd6bd468a4da0f3ded0c67606",
+  "byte": 214525
+ },
+ {
+  "file": "regalia1987tunable.pdf",
+  "citekey": "regalia1987tunable",
+  "sha256": "da4a6e96ae1c489a1722c6e1539025e65bb10cfbf4152911d5333009fe63b85e",
+  "byte": 299836
+ },
+ {
+  "file": "thiele1971vented1.pdf",
+  "citekey": "thiele1971vented1",
+  "sha256": "8b0fca1677686ef65c7603b73f1b7ab302166cd0c914593380055dba08a5ed8c",
+  "byte": 873795
+ },
+ {
+  "file": "thiele1971vented2.pdf",
+  "citekey": "thiele1971vented2",
+  "sha256": "08f4d80fe20b7f134703d5e797f0ece5fe31508f5d4facf1a31e20f6c2434507",
+  "byte": 1136782
+ },
+ {
+  "file": "w3c2021eqcookbook.pdf",
+  "citekey": "w3c2021eqcookbook",
+  "sha256": "0beb9dc4ed4e296c37ab764d0987f5c83e8bf92d38754fef8aa0c456a1f15b74",
+  "byte": 704963
+ }
+]
