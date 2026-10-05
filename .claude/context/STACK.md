@@ -5,7 +5,7 @@ generated-date: 2026-09-04
 covers-paths:
   - tools/**
   - docs/**
-last-verified-commit: 0685cfc
+last-verified-commit: fe303ef
 ---
 
 # Stack del progetto
