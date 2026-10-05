@@ -2,6 +2,102 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-05 - Anonimizzazione, contenuto letto davvero, presidio su GitHub
+
+Commit di partenza: 34ffd73. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-202; `.claude/memory/decisions.md` con ADR-039 e ADR-040; `docs/PENDING-ACTIONS.md` con PA-028 e PA-029; `CLAUDE.md` con il controllo nuovo nella sequenza; `tools/check-privato.py`, nuovo; `tools/biblioteca.py`, `tools/registro-fonti.py` e `tools/check-pending-actions.py`; `research-vault/biblioteca-regole.yml`, `fonti.json`, `06-Registro-fonti.md` e `07-Analisi-corpus.md`; `.claude/context/STACK.md`; `.claude/memory/index.md`; questo file. Fuori da git: 19 rinomine su `J:`, l'indice, la cache, il vault rigenerato, `_notes/biblioteca/` e `_notes/privacy/`.
+
+L'utente ha chiesto tre cose. La prima: che il vault su `J:` sia la fonte di tutti i progetti di acustica, ed è ADR-039. La seconda: che le cartelle dell'elettronica, del segnale e dell'università siano lette davvero. Non lo erano, perché la classificazione guardava solo cartella e titolo; ora conta anche le parole chiave nel testo convertito. La terza: che le persone da cui veniva il materiale spariscano. Sono state fatte 19 rinomine su `J:`, autorizzate elenco alla mano, e il vault ha zero occorrenze di quei nomi. Poi l'utente ha avvertito di stare molto attenti a che cosa va su GitHub. Il registro pubblico non contiene più le copie locali, le regole che descrivono il disco sono locali, e `check-privato.py` è nella sequenza prima di ogni commit: è ADR-040. Il commit pubblicato `34ffd73` contiene ancora i titoli, e il rimedio, cioè repository privato, commit sostituito e push forzato, spetta all'utente.
+
+## 2026-10-05 - Tassonomia della biblioteca confermata, lotto 10 convertito, un nome tolto
+
+Commit di partenza: 34ffd73, il commit dell'utente con i microstep da MS-184 a MS-199. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-200; `research-vault/09-Biblioteca-tassonomia.md`, nuovo; le frasi con un nome di persona in `decisions.md`, `progress.md`, `OPERATIONS-LOG.md`, `PENDING-ACTIONS.md` e `05-Basi-esistenti.md`; `docs/TIMELINE.html`; `.claude/memory/index.md`; questo file. Rimosse due schede orfane in `research-vault/paper/`. Con MS-201: `tools/biblioteca.py`, `tools/censisci-cartelle.py`, `research-vault/biblioteca-regole.yml`, `docs/90-riferimenti/biblioteca-e-vault-fonti.md` e il suo indice, `STACK.md`, `PENDING-ACTIONS.md` con PA-027 e PA-028.
+
+L'utente ha confermato la tassonomia in quattro alberi, la cartella `_VAULT FONTI` su `J:` e una nota per ogni voce. Ha chiesto di togliere ogni riferimento alla persona che aveva costruito l'albero JabRef: tolto dai file tracciati, salvo due titoli di documento in `fonti.json` e la storia di git, su cui decide lui. Il lotto 10 è convertito per intero, e la conversione del lotto 11 è avviata. Con MS-201 `tools/biblioteca.py` ha generato su `J:` la biblioteca JabRef e il vault con 8194 note di fonte e 148 di gruppo; quattro agenti economici hanno classificato i residui, controllati prima dell'uso, e ne restano 208. È emerso che `fonti.json`, tracciato e pubblico, contiene titoli di documenti personali: PA-028, decisione dell'utente.
+
+## 2026-10-05 - Ripresa dopo lo spegnimento, sette paper registrati, formato AES ritirato di nuovo
+
+Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-193 non ancora committati. Commit prodotto: nessuno ancora, il messaggio in `_notes/COMMIT-MSG.txt` copre ora da MS-184 a MS-199.
+
+File toccati: `docs/OPERATIONS-LOG.md` da MS-194 a MS-197; `tools/check-pending-actions.py` con PA-027; `docs/90-riferimenti/pulizia-ssd-esterno.md` per un accento; `research-vault/fonti-proposte.json` e `tracked-sources.md` con i collegamenti AES; `docs/PENDING-ACTIONS.md` per PA-025; `.claude/memory/index.md`; `.claude/memory/decisions.md` con ADR-038; questo file. Fuori da git: i sette PDF rinominati in `research-vault/papers/`, il registro rigenerato, `_notes/RESUME-PROMPT.md`.
+
+La sessione è ripartita con la skill `riprendi`. L'utente ha confermato che l'albero non committato è tutto da tenere e senza decisioni perse. Sette PDF sono stati riconosciuti e registrati, e quello del cookbook W3C è stato generato dall'agente perché il file salvato era una pagina di DuckDuckGo. Il formato `www.aes.org/e-lib/browse.cfm` di MS-193 dà 404 nel browser dell'utente ed è ritirato. Il candidato `aes.org/publications/elibrary-page/?id=N` attende la sua prova. L'OCR in background si è interrotto con lo spegnimento e va rilanciato. Poi, con MS-195, il formato AES è stato provato dall'utente e i 21 collegamenti riscritti, e Leach e le due parti di Thiele sono stati scaricati. Con MS-196 la cartella `LOUDSPEAKERS & ELECTROACOUSTIC` è entrata per intero come lotto 10, per istruzione dell'utente, con 499 documenti nuovi. Con MS-197 `chiudi` si è fermato su `fix-accents.py`, per tre forme corrette subito. Sono stati estratti 18 archivi su `J:` con il permesso dell'utente ed è stato cancellato il file DuckDuckGo. Le tre richieste nuove dell'utente sono aperte in PA-027, con il censimento per cartella di `J:\MAIN`: biblioteca alla maniera di JabRef, analisi di tutte le cartelle pertinenti, vault su `J:`. Con MS-198 l'utente ha scelto le cartelle, il vault su `J:` per le fonti, la biblioteca più completa possibile e la pulizia degli estratti: è ADR-038. Il lotto 11 conta 2812 documenti, di cui 2650 indicizzati e 162 doppioni. Con MS-199 il secondo `chiudi` si è fermato su `check-eol.py`, caduto su un residuo di estrazione e ora reso robusto, ed è emerso che `sed -i` aveva portato cinque file da `CRLF` a `LF`, riportati a `CRLF`.
+
+## 2026-10-05 - Filoni della ricerca confermati, collegamenti univoci e DOI dei paper
+
+Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-192 non ancora committati. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-193; `research-vault/fonti-proposte.json`, `tracked-sources.md`, `04-Paper-da-scaricare.md`, `fonti.json`; `.claude/memory/index.md`; questo file. Fuori da git: i resoconti di verifica in `research-vault/basi/verifiche-paper/`.
+
+L'utente ha confermato i dodici filoni della ricerca online e ha chiesto un collegamento univoco e i DOI dei 28 paper. I DOI esistono solo per sei; i 21 lavori AES non ne hanno, e il loro identificativo è il numero della E-Library. Il formato `aes2.org` consegnato in MS-186 risponde 404 ed è ritirato.
+
+## 2026-10-05 - Formule degli appunti recuperate, OCR in italiano, taglio della tesi
+
+Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-190 non ancora committati. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-191 sotto un'intestazione di sessione nuova; `.claude/memory/decisions.md` con ADR-037; `tools/converti-fonti.py`; `.claude/context/STACK.md`; `docs/PENDING-ACTIONS.md` con la voce nuova di PA-003; `.claude/memory/index.md`; questo file. Fuori da git: pandoc 3.12 installato nel profilo utente, `python-pptx` nel Python di sistema, `_notes/tessdata/` con il modello italiano, la cache convertita in `_notes/.tmp-doc-cache/fonti/`.
+
+L'utente ha chiesto l'analisi di ciò che ha e il suo completamento prima della ricerca online, e ha dichiarato il taglio della tesi: i suoi appunti delle lezioni del Politecnico con le formule (ADR-037). markitdown perdeva quelle formule; pandoc ne ha recuperate 24 414 dai 146 `.docx`. L'OCR in italiano delle scansioni e l'analisi di copertura girano in background.
+
+## 2026-10-02 - Il materiale di studio torna su J:, il progetto lo indicizza
+
+Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-189 non ancora committati. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-190; `.claude/memory/decisions.md` con ADR-036; `docs/PENDING-ACTIONS.md` con PA-026 riformulata; `tools/indicizza-lotti.py` e `tools/converti-fonti.py`, nuovi; `tools/estrai-archivi.py` riscritto; `tools/copia-lotti.py` tolto; `tools/registro-fonti.py` e `tools/check-pending-actions.py`; `tools/roadmap-items.yml`; `.claude/context/STACK.md`; `.gitignore`; `research-vault/00-START.md`, `03-Protocollo-bibliografico.md`, `05-Basi-esistenti.md`, `fonti.json` e le note generate; `.claude/memory/index.md`; questo file. Su `J:`: la cartella nuova `J:\MAIN\_ESTRATTI ARCHIVI TESI` con 3112 file, con il permesso dell'utente. Fuori da git: i registri d'origine migrati, le copie tolte, la cache `_notes/.tmp-doc-cache/fonti/`.
+
+L'utente ha chiesto di togliere il materiale dal progetto, che ha due copie di sicurezza al giorno, e di indicizzarlo da qui. Scelta la via senza doppioni: su `J:` sono andati solo i file estratti dagli archivi, gli originali sono stati riverificati tutti per impronta prima di togliere le copie, e gli strumenti ora indicizzano e convertono leggendo da `J:`.
+
+## 2026-10-02 - Lotti dal 02 al 09 e archivi copiati nel vault, conversione avviata
+
+Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-188 non ancora committati. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-189; `tools/estrai-archivi.py`, nuovo; `tools/registro-fonti.py` con il filtro sui documenti e le chiavi alternative; `tools/check-pending-actions.py`; `.claude/context/STACK.md`; `research-vault/00-START.md`, `fonti.json`, `04-Paper-da-scaricare.md`, `06-Registro-fonti.md`; `.claude/memory/index.md`; questo file. Fuori da git: 4039 file copiati in `research-vault/fonti-locali/` con i loro registri d'origine, i due manifesti, e la cache `_notes/.tmp-doc-cache/lotto-NN/` in costruzione.
+
+I nove lotti e i dieci archivi sono nel vault, letti da `J:` senza scriverci. Dentro l'archivio della tesi del 2020 c'erano i PDF del suo studio bibliografico, nominati con le chiavi della libreria. Il registro conta 6145 voci, 1135 con un documento locale. La conversione dei lotti gira in background.
+
+## 2026-10-02 - Vault Obsidian di ricerca, registro unico delle fonti, lezioni al template
+
+Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-187 non ancora committati. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-188; `.claude/memory/decisions.md` con ADR-035; `research-vault/` con `00-START.md`, `03-Protocollo-bibliografico.md`, `05-Basi-esistenti.md`, le note generate `04-Paper-da-scaricare.md` e `06-Registro-fonti.md`, 29 schede in `paper/`, `fonti.json`, `fonti-proposte.json`, `papers/manifest.json` e la configurazione `.obsidian/`; `tools/registro-fonti.py` e `tools/copia-lotti.py`, nuovi; `tools/check-pending-actions.py` e `docs/PENDING-ACTIONS.md` con PA-025 e PA-026; `tools/roadmap-items.yml`; `.claude/context/STACK.md`; `.gitignore`; `.claude/skills/senior-researcher/SKILL.md`, `.claude/skills/literature-search/SKILL.md` e le loro copie in `.claude/templates/academic-researcher/`; nel template `E:/template-claude-developing` le stesse due skill del pacchetto, non committate; `docs/TIMELINE.html`; `.claude/memory/index.md`; questo file. Fuori da git: le copie spostate da `_notes/fonti-studio/` a `research-vault/fonti-locali/` e `research-vault/basi/`.
+
+L'utente ha chiesto il vault come in intralino, una copia di tutto il materiale dentro di esso, le lezioni al template, e di essere aggiornato sempre su roadmap e pendenze. I PDF della libreria JabRef non esistono: si scaricano quelli che servono. Il registro unico conta 5100 voci; le correzioni a MS-187 sono 119 voci nella tesi e 17 proposte già in libreria. I manifesti dei lotti dal 02 al 09 sono in preparazione da due agenti.
+
+## 2026-10-02 - Correzione sulla provenienza dei candidati, libreria JabRef e tesi del 2020
+
+Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-186 non ancora committati. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-187; `.claude/memory/index.md`; questo file; fuori da git `_notes/fonti-studio/basi-bibliografiche/` con la libreria JabRef copiata e la bibliografia della tesi estratta.
+
+L'utente ha chiesto se i 24 candidati venissero da un controllo completo di `J:`: no, erano proposti a memoria, ed è scritto in MS-187. Su disco non ci sono. Sono emerse due basi già esistenti, cioè la libreria JabRef `ELE_Technical_Library.bib`, con 5676 voci e dieci dei 24, ma solo 137 PDF trovati, e la tesi magistrale con 115 voci. L'utente vuole un registro completo e tracciato di ciò che c'è, di ciò che scarica e di ciò che l'agente propone.
+
+## 2026-10-02 - Piano dei lotti confermato, 24 paper riscontrati con i collegamenti
+
+Commit di partenza: 0685cfc, con MS-184 e MS-185 non ancora committati. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-186 e la conferma del piano in MS-185; `research-vault/tracked-sources.md` riscritto con 29 righe riscontrate; `tools/roadmap-items.yml`; `docs/TIMELINE.html`; questo file; fuori da git `_notes/fonti-studio/verifiche-paper/` e `_notes/RESUME-PROMPT.md`.
+
+L'utente ha confermato il piano dei nove lotti e ha chiesto i collegamenti dei paper. Sono stati cercati prima di essere consegnati: 29 file, perché alcuni lavori sono in più parti, con due collegamenti incompleti. Nessuna fonte è verificata finché i PDF non sono scaricati e riletti.
+
+## 2026-10-02 - Il progetto diventa una tesi: censimento completo, scope di ricerca, candidati
+
+Commit di partenza: 0685cfc, con MS-184 non ancora committato. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-185; `.claude/memory/decisions.md` con ADR-034; `research-vault/scope.md` e `research-vault/tracked-sources.md`, nuovi; `.gitignore` con `/research-vault/papers/`; `tools/roadmap-items.yml` con la voce 19 estesa e la voce 20 nuova; `.claude/memory/index.md`; `docs/TIMELINE.html`; questo file; fuori da git `_notes/fonti-studio/piano-lotti.md` con i lotti dal 06 al 09 e i tre file `censimento-A.md`, `censimento-B.md`, `censimento-C.md`.
+
+L'utente vuole fare del progetto una tesi con la matematica dimostrata da zero e le appendici, con i resoconti Markdown sempre aggiornati anche sui passi operativi: è ADR-034. Il censimento di `J:\MAIN` è completo, i lotti sono nove, e la ricerca bibliografica ha lo scope e un primo lotto di 24 candidati da verificare. Tutto attende la sua conferma, perché ha scelto la forma propongo e conferma.
+
+## 2026-10-02 - Ripresa, lotti del materiale di studio fissati, schede rilette
+
+Commit di partenza: 0685cfc, cioè il commit dell'utente fatto con `chiudi` che porta MS-183. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-184 sotto una intestazione di sessione nuova; `tools/roadmap-items.yml` con la voce 19 riscritta; `.claude/context/STACK.md`, `roadmap.md`, `current-work.md` e `deployment.md` rilette, con le firme portate a `0685cfc`; `.claude/memory/index.md` con il commit di riferimento portato da `24efd0c` a `0685cfc`, come il file di ripresa prevedeva, e le righe delle quattro schede; `docs/TIMELINE.html`; questo file; fuori da git `_notes/fonti-studio/piano-lotti.md`.
+
+Alla ripresa la verifica ha trovato soltanto lo snapshot fermo al commit precedente a quello di `chiudi`, divergenza attesa e corretta. L'utente ha chiesto di cercare altro materiale pertinente su `J:\MAIN`, soprattutto fra i propri appunti, e di fissare tutti i lotti prima di assorbirli: la cartella `LOUDSPEAKERS & ELECTROACOUSTIC`, mai aperta, contiene il nucleo di progettazione dei diffusori che MS-179 dichiarava mancante. I lotti dal 02 al 05 sono in MS-184 e nel piano locale; la copia attende la conferma. Le quattro schede sono state rilette su richiesta dell'utente.
+
 ## 2026-10-02 - Monitor attivi, e la chiusura di sessione con wipe
 
 Commit di partenza: 24efd0c, cioè il commit dell'utente del 2026-10-02 che porta da MS-180 a MS-182. Commit prodotto: quello di `chiudi` con il messaggio di `_notes/COMMIT-MSG.txt`.

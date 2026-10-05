@@ -89,6 +89,19 @@ _notes/
 # giornaliera di sync-dev; quando sara' completo si toglie questa riga e si versiona.
 /report/
 
+# Paper scaricati dall'utente con i suoi accessi istituzionali (AES, IEEE, ASA) o open access
+# (ADR-034, 2026-10-02): i PDF restano locali, perche' molti sono sotto diritti dell'editore e il
+# repository e' pubblico. Restano tracciati scope.md, tracked-sources.md e bibliography.bib.
+/research-vault/papers/*.pdf
+# Vault Obsidian della ricerca (ADR-035, ADR-036, 2026-10-02): restano locali l'indice del materiale di
+# studio (fonti-locali, ADR-028), le basi di terzi come la libreria JabRef (basi), lo stato
+# dell'interfaccia e i plugin comunitari, che si reinstallano con BRAT. Si versionano le note,
+# la configurazione di .obsidian, il registro fonti.json, manifest.json e bibliografia.bib.
+/research-vault/fonti-locali/
+/research-vault/basi/
+/research-vault/.obsidian/workspace*.json
+/research-vault/.obsidian/plugins/
+
 # Ambiente di sviluppo
 node_modules/
 .venv/

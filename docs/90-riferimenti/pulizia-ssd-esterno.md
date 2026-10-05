@@ -49,7 +49,7 @@ La prima versione dello strumento iterava le sole cartelle della radice e ignora
 
 Sui due archivi la domanda era se il più vecchio fosse superato dal più recente, e quindi cancellabile per recuperare 25,8 GiB. *La risposta, misurata il 2026-09-07, è no: nessuno dei due è ridondante.*
 
-Il confronto degli indici dei due archivi, ottenuti con `7z l`, da' questo esito.
+Il confronto degli indici dei due archivi, ottenuti con `7z l`, dà questo esito.
 
 | | 28/08/2026 | 04/09/2026 |
 |---|---|---|

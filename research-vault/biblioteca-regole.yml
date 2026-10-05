@@ -1,0 +1,299 @@
+# Regole della biblioteca completa delle fonti (PA-027, ADR-038).
+# Specifica in research-vault/09-Biblioteca-tassonomia.md; le legge tools/biblioteca.py.
+# Si modificano qui e si rigenera: la biblioteca e il vault su J: non si correggono a mano,
+# tranne la sezione "Note di lettura" di ogni nota, che lo strumento non tocca mai.
+# Le espressioni regolari si confrontano in minuscolo: quelle delle cartelle con il percorso
+# relativo sotto J:/MAIN, quelle per parole chiave con titolo e sede della voce.
+
+# I quattro alberi. Ogni nome di gruppo deve essere unico in tutta la biblioteca,
+# perche' il campo groups di JabRef rimanda ai gruppi per nome.
+alberi:
+  Disciplina:
+    Mathematics:
+      Analysis: {}
+      Algebra: {}
+      Geometry: {}
+      Probability and statistics: {}
+      Numerical mathematics: {}
+      Optimization: {}
+      Mathematical physics:
+        Integral asymptotics: {}
+        Math tables and functions: {}
+        Frames: {}
+    Signal processing:
+      Foundations: {}
+      Signals and systems: {}
+      Digital Signal Processing:
+        Filter design and quantization: {}
+        Multirate and filter banks: {}
+        Adaptive filtering: {}
+        Room response equalization: {}
+      Nonlinear Signal Processing: {}
+      Statistical Signal Processing: {}
+      Audio and acoustics signal processing: {}
+      Systems and control: {}
+      Telecommunications: {}
+    Electronics and circuit theory:
+      Circuit theory: {}
+      Analog electronics: {}
+      Digital electronics: {}
+      Microelectronics: {}
+      Audio electronics:
+        Amplifiers 2.0: {}
+        Guitar electronics: {}
+      Electronic measurements: {}
+      PCB design and simulation: {}
+      EMC: {}
+    Physics:
+      General physics: {}
+      Mechanics:
+        Vibration and structural dynamics: {}
+      Thermodynamics: {}
+      Electromagnetism:
+        RF and antennas: {}
+      Optics:
+        Gaussian beams: {}
+        Optical fibers: {}
+      Acoustics:
+        Acustica classica: {}
+        Room acoustics: {}
+        Psychoacoustics and spatial perception: {}
+        Speech and hearing: {}
+        Sound field analysis:
+          Plane wave representations: {}
+          Wave Field Synthesis: {}
+          Ambisonics: {}
+          Multizone: {}
+        Acustica e psicoacustica automotive: {}
+        Acoustic simulation: {}
+        Musical acoustics: {}
+    Loudspeakers:
+      Transducer modelling: {}
+      Loudspeaker motor: {}
+      Nonlinearities and large signal: {}
+      Thermal behaviour: {}
+      Diaphragm and materials: {}
+      Enclosures and cabinet: {}
+      Horns and waveguides:
+        Plane wave tube: {}
+        Compression drivers: {}
+      Directivity and baffle diffraction: {}
+      Crossover: {}
+      Active loudspeakers and DSP: {}
+      Loudspeaker measurement: {}
+      Studio monitors: {}
+      Line arrays and sound reinforcement: {}
+      Microspeakers and MEMS: {}
+      Car audio: {}
+      Manufacturer papers: {}
+    Microphones: {}
+    Music:
+      Music production: {}
+      Computer music: {}
+    Musical Instruments: {}
+    Mechanical design and CAD: {}
+    Computer science:
+      Information theory: {}
+      Data structures and algorithms: {}
+      Programming languages: {}
+      Artificial intelligence:
+        Machine learning: {}
+      Computer architecture: {}
+      Computer networks: {}
+      Databases: {}
+      Computer graphics: {}
+    Scientific writing and typesetting: {}
+    Da classificare: {}
+  Progetto monitor:
+    Capitoli:
+      "00 Introduzione": {}
+      "01 Misura della stanza": {}
+      "02 Modello della stanza": {}
+      "03 Simulazione acustica": {}
+      "04 Crossover": {}
+      "05 Progetto acustico": {}
+      "06 Progetto meccanico": {}
+      "07 Simulazione finale": {}
+      "08 Costruzione e verifica": {}
+    Appendici:
+      "A1 Notazione": {}
+      "A2 Matematica": {}
+      "A3 Elettrotecnica ed elettronica": {}
+      "A4 Fisica ed elettromagnetismo": {}
+      "A5 Acustica": {}
+      "A6 Elettroacustica": {}
+      "A7 Elaborazione numerica del segnale": {}
+    Filoni di ricerca:
+      "R1 Correzione su piu punti": {}
+      "R2 Misura in stanza": {}
+      "R3 Interferenza con i confini": {}
+      "R4 Bassi in stanza piccola": {}
+      "R5 Simulazione di stanze piccole": {}
+      "R6 Crossover misti FIR e IIR": {}
+      "R7 Quantizzazione dei biquad": {}
+      "R8 Ritardi e centro acustico": {}
+      "R9 Guida d'onda e direttivita": {}
+      "R10 Diffrazione del pannello": {}
+      "R11 Cabinet": {}
+      "R12 Monitor attivi oggi": {}
+    Decisioni:
+      "ADR-033 Attivo con processore digitale": {}
+  Provenienza:
+    Libreria JabRef ELE: {}
+    Bibliografia della tesi 2020: {}
+    Appunti propri: {}
+    Materiale dei corsi universitari: {}
+    Tesi magistrale dell'utente: {}
+    "Materiale di studio su J:": {}
+    Proposte dell'agente: {}
+    Scaricati per la tesi: {}
+  Stato:
+    "PDF su J:": {}
+    PDF scaricato: {}
+    Senza PDF: {}
+    Testo convertito: {}
+    Scansione da OCR: {}
+    Da verificare: {}
+    Verificato: {}
+    Non pertinente: {}
+
+# I gruppi della libreria JabRef che non hanno lo stesso nome nell'albero. I gruppi generici
+# della libreria, come Physics o Signal processing, coincidono con un ramo e vi restano.
+mappa_libreria:
+  "(senza gruppo)": null
+  "(Polimi) To read": null
+  "Da_Catalogare": null
+  "Analog": "Analog electronics"
+  "Elettromedia": "Manufacturer papers"
+  "Spatial perception": "Psychoacoustics and spatial perception"
+
+# Parole chiave per la disciplina. Si confrontano con il titolo e la sede della voce, e per
+# le sole copie sotto z_____universita anche con il percorso, dove i nomi dei corsi informano.
+disciplina:
+  "Acoustics": ['acoustic', 'acustic']
+  "Thermal behaviour": ['thermal', 'termic', 'temperature rise']
+  "Diaphragm and materials": ['diaphragm', 'membran', 'cone material', 'honeycomb', 'suspension', 'surround']
+  "Horns and waveguides": ['\bhorns?\b', 'waveguide', 'guida d.onda', '\btromb[ae]\b']
+  "Plane wave tube": ['plane wave tube']
+  "Compression drivers": ['compression driver']
+  "Transducer modelling": ['thiele', 'small.signal', 'lumped', 'equivalent circuit', 'voice.coil', 'bobina mobile', 'closed.box', 'vented.box', 'vented box', 'bass.reflex', 'electrodynamic loudspeaker', 'loudspeaker model', 'driver parameter', 'electroacoustic transducer']
+  "Loudspeaker motor": ['loudspeaker magnet', 'magnet structure', 'motor structure', 'transducer motor', 'force factor', '\bbl\(x\)', 'loudspeaker motor']
+  "Nonlinearities and large signal": ['nonlinear.*loudspeaker', 'loudspeaker.*nonlinear', 'large.signal', 'excursion', 'distortion in loudspeaker', 'harmonic distortion']
+  "Enclosures and cabinet": ['enclosure', 'cabinet', 'bracing', 'panel vibration', 'port design', 'reflex port']
+  "Directivity and baffle diffraction": ['diffraction', 'diffrazion', '\bbaffle', 'directivity', 'direttivit', 'polar response']
+  "Crossover": ['crossover', 'xover', 'linkwitz']
+  "Active loudspeakers and DSP": ['active loudspeaker', 'active monitor', 'dsp loudspeaker', 'digital crossover', 'active control room', 'loudspeaker precompensation', 'loudspeaker protection']
+  "Loudspeaker measurement": ['klippel', 'loudspeaker measurement', 'testing loudspeakers', 'measuring loudspeaker', 'maximum.length sequence', '\bmls\b', 'swept.sine', 'impulse response measurement', 'end.of.line testing', 'transfer.function measurement']
+  "Studio monitors": ['studio monitor', 'monitor loudspeaker', 'monitoring loudspeaker', 'genelec', 'control room']
+  "Line arrays and sound reinforcement": ['line array', 'k-array', 'sound reinforcement', 'pa bible', 'live sound', 'installed sound']
+  "Microspeakers and MEMS": ['\bmems\b', 'micro.?speaker', 'microspeaker']
+  "Car audio": ['car audio', 'automotive', 'vehicle']
+  "Manufacturer papers": ['b&w', '\bkef\b', 'genelec academic', 'white.paper', 'b&c speakers']
+  "Microphones": ['microphone', 'microfon', 'condenser mic']
+  "Room acoustics": ['room acoustic', 'acustica in ambiente', 'small.room', 'room mode', 'reverberat', 'riverber', 'absorber', 'diffuser', 'assorbiment']
+  "Room response equalization": ['room.*equaliz', 'room correction', 'room response', 'inverse filter', 'inversion problem', 'equalization in an acoustic']
+  "Psychoacoustics and spatial perception": ['psychoacoust', 'psicoacust', 'auditory', 'perception', 'percezion', 'listening test', 'test d.ascolto', 'audibility', 'preference', 'binaural', 'hrtf', 'localization']
+  "Speech and hearing": ['\bspeech\b', '\bhearing\b', 'udito', 'cochlea']
+  "Sound field analysis": ['sound field', 'spatial sound', 'campo acustico', 'beamforming', 'holography', 'microphone array']
+  "Plane wave representations": ['plane wave (expansion|decomposition|representation)']
+  "Wave Field Synthesis": ['wave field synthesis', '\bwfs\b']
+  "Ambisonics": ['ambisonic']
+  "Multizone": ['multizone', 'multi.zone', 'sound zone']
+  "Acoustic simulation": ['comsol', '\bfem\b', '\bbem\b', 'finite element', 'boundary element', 'ray.tracing', 'image method', 'image source', 'fdtd', 'acoustic simulation', 'ease focus', 'akabak', 'virtual prototyping']
+  "Musical acoustics": ['musical acoustic', 'acustica musicale', 'violin', 'piano', 'guitar body', 'musical instrument']
+  "Acustica classica": ['fundamentals of acoustic', 'acustica applicata', 'acustica generale', 'kinsler', 'theoretical acoustics', 'fondamenti di acustica']
+  "Vibration and structural dynamics": ['vibrat', 'vibroacoust', 'modal analysis', 'eigenfrequency', 'structural dynamic']
+  "Mechanical design and CAD": ['solidworks', '\bcad\b', 'disegno tecnico', 'mechanical design']
+  "Circuit theory": ['elettrotecnica', 'circuit theory', 'teoria dei circuiti', 'ingegneria elettrica', 'electric circuit', 'circuiti elettrici', 'reti elettriche']
+  "Analog electronics": ['analog electronic', 'elettronica analogica', 'transistor', 'op.?amp', 'operational amplifier', 'razavi', 'sedra', 'microelectronic circuit', 'elettronica (1|i|applicata)\b', 'fondamenti di elettronica']
+  "Digital electronics": ['digital electronic', 'elettronica digitale', 'fpga', 'microcontroll', 'arduino', 'logic design', 'embedded system', 'sistemi embedded']
+  "Microelectronics": ['microelectronic', 'microelettronic', '\bvlsi\b', '\bcmos\b']
+  "Amplifiers 2.0": ['power amplifier', 'amplificator', 'class.d', 'classe d', 'audio amplifier']
+  "Guitar electronics": ['guitar', 'chitarra', 'pedal', 'valve', 'valvol', 'tube amp']
+  "Electronic measurements": ['misure elettroniche', 'electronic measurement', 'misure elettriche', 'strumentazione', 'oscilloscop']
+  "PCB design and simulation": ['\bpcb\b', 'orcad', '\bspice\b', 'ltspice', 'allegro']
+  "EMC": ['\bemc\b', 'compatibilit. elettromagnetic', 'electromagnetic compatib']
+  "Digital Signal Processing": ['digital signal processing', 'elaborazione numerica', 'discrete.time', '\bdsp\b', 'digital filter', 'filtri numerici', 'proakis', 'oppenheim']
+  "Filter design and quantization": ['filter design', 'quantiz', 'fixed.point', 'biquad', 'coefficient sensitivity', '\biir\b', '\bfir\b', 'progetto di filtri', 'roundoff']
+  "Multirate and filter banks": ['multirate', 'filter bank', 'banchi di filtri', 'wavelet', 'sample rate conversion']
+  "Adaptive filtering": ['adaptive filter', 'filtri adattativ', 'adaptive algorithm', '\blms\b', 'kalman']
+  "Signals and systems": ['signals and systems', 'segnali e sistemi', 'teoria dei segnali', 'signal theory', 'laplace', 'fourier', 'lathi', 'cariolaro']
+  "Statistical Signal Processing": ['statistical signal', '\barma\b', 'yule', 'spectral estimation', 'stima spettrale', 'random process', 'processi aleatori', 'estimation theory']
+  "Audio and acoustics signal processing": ['audio signal processing', 'audio dsp', 'sound synthesis', 'music processing', 'audio processing', 'digital audio effect', 'dafx', 'source separation', 'audio coding']
+  "Nonlinear Signal Processing": ['nonlinear system identification', 'volterra', 'hammerstein', 'wiener model']
+  "Systems and control": ['controlli automatici', 'control system', 'controllo', 'nichols', 'luogo delle radici', 'simulink', 'automatic control', 'fondamenti di automatica', 'servo control']
+  "Telecommunications": ['telecomunicazion', 'telecommunication', '\btlc\b', 'comunicazioni elettriche', 'modulation', 'modulazion', 'transmission system']
+  "RF and antennas": ['rf system', '\brf\b', 'antenn', 'microwave', 'microonde', 'campi elettromagnetici']
+  "Optical fibers": ['optical fiber', 'fibra ottica', 'fibre ottiche']
+  "Electromagnetism": ['electromagnet', 'elettromagnet', 'maxwell', 'griffiths', 'faraday', 'legge di gauss', 'magnetic circuit', 'circuiti magnetici', 'b-h curve']
+  "General physics": ['fisica', 'physics', 'bellesi', 'three.body', 'moto parabolico']
+  "Mechanics": ['meccanica', 'mechanics']
+  "Thermodynamics": ['termodinamica', 'thermodynamic']
+  "Analysis": ['analisi matematica', 'analisi (1|2|i|ii)\b', 'calculus', 'esercizi_analisi', 'metodi matematici', '\bcalcolo\b', 'equazioni differenziali', 'differential equation']
+  "Algebra": ['\balgebra', 'linear algebra', 'algebra lineare', 'matrices', 'least squares']
+  "Geometry": ['geometria', 'geometry']
+  "Probability and statistics": ['statistic', 'probabilit', 'statistica']
+  "Numerical mathematics": ['numerical method', 'calcolo numerico', 'numerical analysis', 'numerical math']
+  "Optimization": ['optimization', 'ottimizzazion', 'operation research', 'ricerca operativa', 'genetic algorithm']
+  "Machine learning": ['machine learning', 'deep learning', 'neural network', 'reti neurali', 'apprendimento automatico']
+  "Programming languages": ['programmazione', 'programming', 'c\+\+', 'python', '\bjava\b', 'matlab', 'fondamenti di informatica', '\buml\b']
+  "Computer architecture": ['calcolatori', 'computer architecture', 'architettura dei']
+  "Computer networks": ['reti di calcolatori', 'computer network', 'networking']
+  "Databases": ['database', 'basi di dati']
+  "Music production": ['music production', 'mixing', 'mastering', 'produzione musicale', 'reaper', 'designing sound']
+  "Computer music": ['computer music', 'music representation', 'sound synthesis', 'music information']
+  "Scientific writing and typesetting": ['latex', 'typesetting', 'wordtex', 'scientific writing']
+
+# Parole chiave per i capitoli, i filoni e le decisioni del progetto, sul titolo e la sede.
+progetto:
+  "01 Misura della stanza": ['room measurement', 'in.room', 'room response', 'misura della stanza', 'spatial averaging', 'cta-2034', 'room impulse response']
+  "02 Modello della stanza": ['room mode', 'small.room', 'room acoustic', 'image method', 'low.frequency room', 'modal room', 'listening room']
+  "03 Simulazione acustica": ['comsol', '\bfem\b', '\bbem\b', 'ray.tracing', 'image source', 'fdtd', 'ease focus', 'acoustic simulation', 'simulazione acustica', 'finite element', 'boundary element']
+  "04 Crossover": ['crossover', 'xover', 'linkwitz', 'phase lineariz', 'all.pass', 'time alignment', 'biquad']
+  "05 Progetto acustico": ['thiele', 'vented.box', 'vented box', 'closed.box', 'bass.reflex', 'baffle', 'diffraction', 'waveguide', 'directivity', 'lobing', 'tweeter', 'woofer', 'two.way']
+  "06 Progetto meccanico": ['cabinet', 'enclosure', 'bracing', 'panel vibration', 'constrained layer', '\bmdf\b', 'solidworks']
+  "07 Simulazione finale": ['vituixcad', 'akabak', 'system simulation', 'loudspeaker system design']
+  "08 Costruzione e verifica": ['klippel', 'loudspeaker measurement', 'testing loudspeakers', 'near.field', 'gating', '\barta\b', '\bmls\b', 'swept.sine', 'transfer.function measurement']
+  "A1 Notazione": ['notation', 'notazione', 'math tables']
+  "R1 Correzione su piu punti": ['multi.?point', 'room.*equaliz', 'room correction', 'equalization in an acoustic', 'room response equalization']
+  "R2 Misura in stanza": ['in.room', 'spatial averaging', 'cta-2034', 'estimated in.room']
+  "R3 Interferenza con i confini": ['boundary interference', '\bsbir\b', 'loudspeaker placement', 'speaker placement']
+  "R4 Bassi in stanza piccola": ['low.frequency room', 'room mode', 'modal room', 'low.frequency.*small room', 'bass.*room']
+  "R5 Simulazione di stanze piccole": ['image method', 'image source', 'fdtd', 'room simulation', 'small.room acoustic']
+  "R6 Crossover misti FIR e IIR": ['\bfir\b.*crossover', 'mixed.phase', 'excess phase', 'linear.phase crossover', 'phase lineariz']
+  "R7 Quantizzazione dei biquad": ['quantiz', 'fixed.point', 'biquad', 'coefficient sensitivity', 'roundoff', 'round.off']
+  "R8 Ritardi e centro acustico": ['acoustic cent', 'time align', 'fractional delay', 'time offset', 'group delay']
+  "R9 Guida d'onda e direttivita": ['waveguide', 'directivity', 'oblate']
+  "R10 Diffrazione del pannello": ['diffraction', 'baffle step', 'baffle edge']
+  "R11 Cabinet": ['cabinet', 'enclosure', 'bracing', 'panel vibration', 'constrained layer']
+  "R12 Monitor attivi oggi": ['active loudspeaker', 'active monitor', 'active studio', 'class.d', 'dsp loudspeaker', 'excursion', 'loudspeaker protection', 'loudspeaker precompensation']
+  "ADR-033 Attivo con processore digitale": ['active loudspeaker', 'active monitor', 'digital crossover', 'class.d', 'dsp loudspeaker']
+
+# Le appendici seguono la disciplina: una voce in uno di questi gruppi, o in un loro
+# discendente, entra nell'appendice indicata.
+appendici:
+  "A2 Matematica": ['Mathematics']
+  "A3 Elettrotecnica ed elettronica": ['Electronics and circuit theory']
+  "A4 Fisica ed elettromagnetismo": ['General physics', 'Mechanics', 'Thermodynamics', 'Electromagnetism', 'Optics']
+  "A5 Acustica": ['Acoustics']
+  "A6 Elettroacustica": ['Loudspeakers', 'Microphones']
+  "A7 Elaborazione numerica del segnale": ['Signal processing']
+
+# Il filone delle proposte dell'agente, con la vecchia numerazione di scope.md.
+filoni_proposte:
+  "1 modello": ["05 Progetto acustico", "Transducer modelling"]
+  "2 crossover": ["04 Crossover", "Crossover"]
+  "3 correzione": ["R1 Correzione su piu punti", "Room response equalization"]
+  "3 stanza": ["02 Modello della stanza", "Room acoustics"]
+  "4 percezione": ["Psychoacoustics and spatial perception"]
+  "5 misura": ["08 Costruzione e verifica", "Loudspeaker measurement"]
+  "6 amplificazione": ["Amplifiers 2.0", "R12 Monitor attivi oggi"]
+  "7 implementazione": ["Filter design and quantization", "R7 Quantizzazione dei biquad"]
+
+# Gruppi che il passo sul contenuto non assegna: le loro parole chiave ricorrono in testi di
+# ogni argomento, per esempio notation o matlab, e contate sul testo producono rumore.
+solo_titolo: ["A1 Notazione", "Programming languages", "Probability and statistics"]
+
+# La tabella delle cartelle di J:, le provenienze dal percorso e i documenti non pertinenti descrivono il
+# contenuto dell'SSD privato dell'utente, quindi non stanno qui: vivono nel file locale
+# _notes/biblioteca/regole-locali.yml, che tools/biblioteca.py unisce a queste regole (MS-202).

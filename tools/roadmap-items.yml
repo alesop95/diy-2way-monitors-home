@@ -128,7 +128,14 @@ voci:
   - id: 19
     livello: 1
     dove: questo repository
-    titolo: Lotto 02 del materiale di studio, e prima compilazione della wiki
-    stato: "Pertinenti dopo ADR-033: il libro di Self sugli amplificatori di potenza (2013), self2010audio.pdf, e Izadian da rifare con OCR o Docling; la wiki e le skill dei libri non sono ancora state compilate."
-    passo: "Copia locale e doc-ingest del lotto 02, poi wiki-digest e book-digest sui libri principali, tutto locale per ADR-028."
-    fonte: "docs/OPERATIONS-LOG.md"
+    titolo: Conversione del materiale di studio indicizzato su J:, OCR delle scansioni e prima compilazione della wiki
+    stato: "Nove lotti e dieci archivi indicizzati dove stanno su J: (MS-189, MS-190, ADR-036): 4039 file, 1889 doppioni scartati; conversione da J: in corso con tools/converti-fonti.py. E PA-026."
+    passo: "Finire la conversione, poi --ocr o --engine docling sui documenti sotto le 50 parole (Hill, D Appolito, Izadian e altri), poi tools/registro-fonti.py; infine wiki-digest e book-digest, tutto locale per ADR-028."
+    fonte: "docs/PENDING-ACTIONS.md"
+  - id: 20
+    livello: 2
+    dove: questo repository
+    titolo: Bibliografia della tesi, registro unico delle fonti e PDF da scaricare
+    stato: "Vault Obsidian in research-vault/ (ADR-035); registro tools/registro-fonti.py con 5100 voci da cinque provenienze; 29 fonti selezionate, 17 gia nella libreria JabRef, nessun PDF scaricato. E PA-025."
+    passo: "L utente scarica i PDF elencati in research-vault/04-Paper-da-scaricare.md; poi verifica sul PDF, promozione a verificata e bibliography.bib; selezione dalla libreria JabRef e dalla tesi 2020 delle voci che servono ai capitoli."
+    fonte: "research-vault/06-Registro-fonti.md"
