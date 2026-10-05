@@ -2,17 +2,25 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-05 - GitHub da ripulire: storia riscritta su una copia, roadmap aggiornata
+
+Commit di partenza: `2a5ba41`. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-203 e MS-204; `docs/PENDING-ACTIONS.md` con PA-026 e PA-028; `tools/check-privato.py`; `tools/check-pending-actions.py`; `tools/roadmap-items.yml`; `docs/TIMELINE.html`; `.claude/memory/index.md`; questo file. Fuori da git: `_notes/privacy/`, con eccezioni, scansione, sostituzioni e la copia di prova riscritta.
+
+L'utente ha reso privato il repository e ha sostituito il commit della mattina con `2a5ba41`. GitHub però serve ancora il commit sostituito per hash, quindi l'utente ha scelto di ricreare il repository. La scansione di tutta la storia ha trovato tre frasi sulla provenienza dei libri e due nomi di archivi di backup. `filter-repo` le toglie su una copia, con zero occorrenze in 84 commit. La sequenza per il repository vero è consegnata all'utente. Roadmap e pendenze sono aggiornate, con la pulizia di GitHub al livello 0.
+
 ## 2026-10-05 - Anonimizzazione, contenuto letto davvero, presidio su GitHub
 
-Commit di partenza: 34ffd73. Commit prodotto: nessuno ancora.
+Commit di partenza: il commit della mattina, poi sostituito. Commit prodotto: `2a5ba41`, dell'utente, che porta da MS-184 a MS-202.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-202; `.claude/memory/decisions.md` con ADR-039 e ADR-040; `docs/PENDING-ACTIONS.md` con PA-028 e PA-029; `CLAUDE.md` con il controllo nuovo nella sequenza; `tools/check-privato.py`, nuovo; `tools/biblioteca.py`, `tools/registro-fonti.py` e `tools/check-pending-actions.py`; `research-vault/biblioteca-regole.yml`, `fonti.json`, `06-Registro-fonti.md` e `07-Analisi-corpus.md`; `.claude/context/STACK.md`; `.claude/memory/index.md`; questo file. Fuori da git: 19 rinomine su `J:`, l'indice, la cache, il vault rigenerato, `_notes/biblioteca/` e `_notes/privacy/`.
 
-L'utente ha chiesto tre cose. La prima: che il vault su `J:` sia la fonte di tutti i progetti di acustica, ed è ADR-039. La seconda: che le cartelle dell'elettronica, del segnale e dell'università siano lette davvero. Non lo erano, perché la classificazione guardava solo cartella e titolo; ora conta anche le parole chiave nel testo convertito. La terza: che le persone da cui veniva il materiale spariscano. Sono state fatte 19 rinomine su `J:`, autorizzate elenco alla mano, e il vault ha zero occorrenze di quei nomi. Poi l'utente ha avvertito di stare molto attenti a che cosa va su GitHub. Il registro pubblico non contiene più le copie locali, le regole che descrivono il disco sono locali, e `check-privato.py` è nella sequenza prima di ogni commit: è ADR-040. Il commit pubblicato `34ffd73` contiene ancora i titoli, e il rimedio, cioè repository privato, commit sostituito e push forzato, spetta all'utente.
+L'utente ha chiesto tre cose. La prima: che il vault su `J:` sia la fonte di tutti i progetti di acustica, ed è ADR-039. La seconda: che le cartelle dell'elettronica, del segnale e dell'università siano lette davvero. Non lo erano, perché la classificazione guardava solo cartella e titolo; ora conta anche le parole chiave nel testo convertito. La terza: che le persone da cui veniva il materiale spariscano. Sono state fatte 19 rinomine su `J:`, autorizzate elenco alla mano, e il vault ha zero occorrenze di quei nomi. Poi l'utente ha avvertito di stare molto attenti a che cosa va su GitHub. Il registro pubblico non contiene più le copie locali, le regole che descrivono il disco sono locali, e `check-privato.py` è nella sequenza prima di ogni commit: è ADR-040. L'utente ha poi reso privato il repository e ha sostituito il commit della mattina con `2a5ba41`, con un push forzato.
 
 ## 2026-10-05 - Tassonomia della biblioteca confermata, lotto 10 convertito, un nome tolto
 
-Commit di partenza: 34ffd73, il commit dell'utente con i microstep da MS-184 a MS-199. Commit prodotto: nessuno ancora.
+Commit di partenza: il commit della mattina, poi sostituito da `2a5ba41`, il commit dell'utente con i microstep da MS-184 a MS-199. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-200; `research-vault/09-Biblioteca-tassonomia.md`, nuovo; le frasi con un nome di persona in `decisions.md`, `progress.md`, `OPERATIONS-LOG.md`, `PENDING-ACTIONS.md` e `05-Basi-esistenti.md`; `docs/TIMELINE.html`; `.claude/memory/index.md`; questo file. Rimosse due schede orfane in `research-vault/paper/`. Con MS-201: `tools/biblioteca.py`, `tools/censisci-cartelle.py`, `research-vault/biblioteca-regole.yml`, `docs/90-riferimenti/biblioteca-e-vault-fonti.md` e il suo indice, `STACK.md`, `PENDING-ACTIONS.md` con PA-027 e PA-028.
 

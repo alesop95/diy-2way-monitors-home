@@ -4480,7 +4480,7 @@ Legame con il progetto: serve PA-027, cioè la biblioteca e il vault su `J:`, e 
 
 *La tassonomia.* La pagina `09-Biblioteca-tassonomia.md` specifica quattro alberi di gruppi. Il primo è la disciplina, cioè l'albero della libreria JabRef `ELE_Technical_Library.bib` esteso per collocare i 52 nomi di gruppo che le sue voci usano, più i rami nuovi. Il secondo è il progetto: capitoli, appendici, filoni R1-R12 e decisioni. Gli altri due sono la provenienza e lo stato di lettura. La pagina dice anche come si assegna una fonte ai gruppi, cioè con regole deterministiche e poi un agente sui soli residui, e che cosa si genera su `J:`. L'utente ha confermato la tassonomia, la cartella `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI\` e una nota per ogni voce, comprese le 4761 voci della libreria senza PDF.
 
-*Un nome tolto.* L'utente ha chiesto di togliere ogni riferimento a una persona che compariva come autrice dell'albero dei gruppi della libreria JabRef. Il repository è pubblico, quindi la correzione è estesa a tutti i file tracciati. Erano dodici frasi in sei file. Ora la libreria si nomina per il suo file, e i proprietari dichiarati nelle voci si contano senza nominarli. Fra i file tracciati il nome resta solo in `research-vault/fonti.json`, nei titoli di due documenti della tesi dell'utente ricavati dal nome del file, e la decisione su di essi spetta all'utente. Il nome resta anche nella storia di git, cioè nei commit già pubblicati fino a `34ffd73`. Toglierlo da lì richiederebbe di riscrivere la storia e forzare il push, che è un gesto dell'utente. La biblioteca generata non riporterà i campi `owner` delle voci.
+*Un nome tolto.* L'utente ha chiesto di togliere ogni riferimento a una persona che compariva come autrice dell'albero dei gruppi della libreria JabRef. Il repository è pubblico, quindi la correzione è estesa a tutti i file tracciati. Erano dodici frasi in sei file. Ora la libreria si nomina per il suo file, e i proprietari dichiarati nelle voci si contano senza nominarli. Fra i file tracciati il nome resta solo in `research-vault/fonti.json`, nei titoli di due documenti della tesi dell'utente ricavati dal nome del file, e la decisione su di essi spetta all'utente. Il nome resta anche nella storia di git, cioè nei commit già pubblicati fino al commit della mattina del 2026-10-05. Toglierlo da lì richiederebbe di riscrivere la storia e forzare il push, che è un gesto dell'utente. La biblioteca generata non riporterà i campi `owner` delle voci.
 
 Verificato con: `git grep -i` sul nome, con zero risultati fuori da `fonti.json`; `md-unwrap --check`, `fix-accents --check` e `lint-prosa` sulla pagina nuova; l'uscita di `converti-fonti.py --lotto 10`.
 
@@ -4511,7 +4511,7 @@ Legame con il progetto: serve PA-027 e tutti i capitoli della tesi, perché ogni
 
 *Lo strumento del censimento.* I manifesti dei lotti 10 e 11 erano stati generati con script temporanei, e una sequenza replicabile non può citare uno script che non esiste. `censisci-cartelle.py` ne prende il posto. Con `--prova` dà zero documenti su `LOUDSPEAKERS & ELECTROACOUSTIC` e `z_____UNIVERSITA`, già censite, e 10 documenti con 7 archivi su `ENGLISH`, che non lo è.
 
-*I titoli personali nel registro pubblico.* Il campione dei residui ha mostrato fra le copie locali titoli di documenti personali e amministrativi dell'utente e della sua famiglia. Quei titoli entrano in `research-vault/fonti.json`, che è tracciato, e il repository è pubblico. Sono quindi già nella storia pubblicata, almeno dal commit `34ffd73`. ADR-028 teneva fuori dai file tracciati i percorsi su `J:` e il contenuto dei libri, ma non i titoli dei file. Lo stato intermedio di `biblioteca.py` e la classificazione degli agenti sono stati spostati subito in `_notes/biblioteca/`, che è ignorata. La decisione su `fonti.json` e sulla storia spetta all'utente, ed è PA-028.
+*I titoli personali nel registro pubblico.* Il campione dei residui ha mostrato fra le copie locali titoli di documenti personali e amministrativi dell'utente e della sua famiglia. Quei titoli entrano in `research-vault/fonti.json`, che è tracciato, e il repository è pubblico. Sono quindi già nella storia pubblicata, almeno dal commit della mattina del 2026-10-05. ADR-028 teneva fuori dai file tracciati i percorsi su `J:` e il contenuto dei libri, ma non i titoli dei file. Lo stato intermedio di `biblioteca.py` e la classificazione degli agenti sono stati spostati subito in `_notes/biblioteca/`, che è ignorata. La decisione su `fonti.json` e sulla storia spetta all'utente, ed è PA-028.
 
 *Un errore ripetuto.* Aggiornando lo stato di PA-027 in `tools/check-pending-actions.py` ho usato di nuovo `sed -i` su un file `CRLF`, poche ore dopo averlo vietato in MS-199, e il file è passato a `LF`. Il confronto con `HEAD` lo ha colto subito, e il file è tornato a `CRLF`. Nello stesso passo un heredoc di Bash ha dimezzato la barra rovesciata di un `\n` dentro uno script Python. Ne è uscita una stringa spezzata su due righe, che il controllo ha rifiutato con un errore di sintassi. Sono le due trappole di questa postazione già scritte nel file di ripresa. Il fatto che io le abbia ripetute mostra che una regola scritta non basta, se il gesto sbagliato resta il più comodo. La correzione è di procedura: le modifiche ai file del repository passano dallo strumento di modifica, e Bash resta per leggere e lanciare.
 
@@ -4545,7 +4545,7 @@ Legame con il progetto: serve PA-027 e PA-028, e la tutela dei dati dell'utente,
 
 *I documenti personali.* Per scelta dell'utente le voci non pertinenti non entrano né nella biblioteca né nel vault. Sono documenti personali, amministrativi o estranei allo studio, riconosciuti dall'elenco locale e dalla classificazione degli agenti. Ne sono escluse 371, più l'elaborato di uno studente con la matricola nel titolo. Le 379 note superate sono state cancellate dal vault una per una, dopo aver verificato che nessuna contenesse note di lettura scritte a mano. Il vault conta ora 7822 note di fonte.
 
-*Il registro pubblico.* `research-vault/fonti.json` è tracciato e il repository è pubblico. Il commit `34ffd73` vi aveva portato i titoli di 3300 file dell'SSD. `registro-fonti.py` scrive ora il registro completo nel file locale `_notes/biblioteca/fonti-completo.json`, e nel tracciato tiene soltanto libreria JabRef, bibliografia della tesi del 2020, proposte e scaricati, senza i campi delle copie locali: 5085 voci invece di 8194. Per la stessa ragione la tabella delle cartelle, le provenienze ricavate dal percorso e l'elenco dei documenti non pertinenti sono usciti da `biblioteca-regole.yml` e stanno in `_notes/biblioteca/regole-locali.yml`.
+*Il registro pubblico.* `research-vault/fonti.json` è tracciato e il repository è pubblico. Il commit della mattina del 2026-10-05 vi aveva portato i titoli di 3300 file dell'SSD. `registro-fonti.py` scrive ora il registro completo nel file locale `_notes/biblioteca/fonti-completo.json`, e nel tracciato tiene soltanto libreria JabRef, bibliografia della tesi del 2020, proposte e scaricati, senza i campi delle copie locali: 5085 voci invece di 8194. Per la stessa ragione la tabella delle cartelle, le provenienze ricavate dal percorso e l'elenco dei documenti non pertinenti sono usciti da `biblioteca-regole.yml` e stanno in `_notes/biblioteca/regole-locali.yml`.
 
 *Il presidio.* `check-privato.py` esamina tutto ciò che un `git add -A` porterebbe nel commit. Cerca i termini dell'elenco locale `_notes/privacy/termini.txt`, che è locale di proposito, perché scriverlo in un file tracciato pubblicherebbe ciò che protegge. Cerca anche le tracce di provenienza non ufficiale dei libri e i percorsi di singoli file su `J:`. La prima corsa ha trovato 16 occorrenze in 7 file:
 - la menzione della provenienza di alcuni PDF in `decisions.md` e `progress.md`;
@@ -4557,13 +4557,71 @@ Legame con il progetto: serve PA-027 e PA-028, e la tutela dei dati dell'utente,
 
 Tutte sono state riscritte in forma generica. Resta un'eccezione dichiarata, l'espressione con cui `registro-fonti.py` toglie quel suffisso dai titoli. La seconda corsa dà zero occorrenze. Il controllo è ora l'ultimo della sequenza di `CLAUDE.md`.
 
-*La storia pubblicata.* Il repository risulta pubblico, letto con `gh repo view`. Contato con lo stesso elenco di termini, il commit `34ffd73` ha 51 occorrenze. I commit da `dc5c111` a `0685cfc` hanno soltanto le due righe sulla provenienza dei PDF e la timeline. I commit più vecchi hanno solo un falso positivo nella regola generica di anonimizzazione del template. Il primo commit con i nomi delle persone è `34ffd73`. I rimedi spettano all'utente: rendere privato il repository, sostituire `34ffd73` con un commit ripulito e forzare il push, ed eventualmente riscrivere i commit precedenti. I comandi sono consegnati nella risposta di sessione e sono la voce aperta di PA-028.
+*La storia pubblicata.* Il repository risulta pubblico, letto con `gh repo view`. Contato con lo stesso elenco di termini, il commit della mattina ha 51 occorrenze. I commit da `dc5c111` a `0685cfc` hanno soltanto le due righe sulla provenienza dei PDF e la timeline. I commit più vecchi hanno solo un falso positivo nella regola generica di anonimizzazione del template. Il primo commit con i nomi delle persone è quello della mattina. I rimedi spettano all'utente: rendere privato il repository, sostituire quel commit con uno ripulito e forzare il push, ed eventualmente riscrivere i commit precedenti. I comandi sono consegnati nella risposta di sessione e sono la voce aperta di PA-028.
 
 *Un errore ripetuto per la terza volta.* Un heredoc di Bash ha dimezzato le barre rovesciate di un'espressione regolare, e lo script si è fermato a metà dopo avere già scritto due file. Gli script con barre rovesciate vivono ora in file scritti con lo strumento di scrittura.
 
 Verificato con: il conteggio per cartella di indicizzati, convertiti e base della classificazione; `biblioteca.py --prova` con il campione delle assegnazioni dal contenuto; l'esistenza di ogni origine e la libertà di ogni destinazione prima di ciascuna rinomina; `indicizza-lotti.py --verifica`; la ricerca dei nomi nel vault, a zero; la verifica delle note di lettura prima della cancellazione; `registro-fonti.py --check`; `check-privato.py` prima e dopo; `git grep` del medesimo elenco su ciascuno dei dodici commit più recenti; `gh repo view`.
 
 Esito: fatto per il disco, il vault e i file di lavoro. La storia pubblicata attende l'utente.
+
+### MS-203 - Il commit sostituito, e perché il repository non torna ancora pubblico
+
+Data: 2026-10-05
+
+Perimetro: il repository su GitHub, reso privato dall'utente; il commit `2a5ba41`, fatto dall'utente al posto di quello della mattina; i riferimenti a quel commit nei file tracciati.
+
+Legame con il progetto: serve PA-028 e ADR-040, cioè la tutela dei dati dell'utente. Da questo microstep dipende la decisione di rendere di nuovo pubblico il repository.
+
+*Che cosa ha fatto l'utente.* Ha reso privato il repository con `gh repo edit`, e `gh api` lo conferma, `private`. Poi ha eseguito i comandi consegnati in MS-202: `git reset --soft HEAD~1`, `check-privato.py` con zero occorrenze, il commit `2a5ba41` e `git push --force-with-lease`, che ha sostituito sul ramo il commit della mattina.
+
+*Il nuovo commit è pulito.* La ricerca dell'elenco locale dei termini e dei segni di provenienza dei libri sull'albero di `2a5ba41` trova soltanto le espressioni dentro `check-privato.py` e `registro-fonti.py`, cioè il codice che cerca e toglie quei segni.
+
+*I riferimenti al commit sostituito.* L'hash del commit della mattina compariva in 7 file tracciati. Un hash scritto in un documento pubblico è un indirizzo per raggiungere quel commit, quindi è stato tolto da tutti: le frasi lo descrivono ora come il commit della mattina, poi sostituito. Lo snapshot dichiara `2a5ba41`.
+
+*Perché non si torna pubblici adesso.* Un push forzato toglie un commit dal ramo, ma non da GitHub. Interrogata con `gh api repos/.../commits/<hash>`, la piattaforma restituisce ancora il commit della mattina con il suo messaggio, quindi con tutto il suo contenuto. Se il repository tornasse pubblico, quel commit sarebbe raggiungibile da chiunque ne conosca l'hash o lo trovi in una cache. Le vie per eliminarlo sono due. La prima è la richiesta al supporto di GitHub per la rimozione dei dati sensibili, che pulisce i commit non più raggiungibili e le viste in cache. La seconda è cancellare il repository su GitHub e ricrearlo con lo stesso nome, poi spingere la storia pulita dal repository locale, che resta intatto. Si perde solo ciò che vive su GitHub, cioè la configurazione del repository, eventuali issue e stelle. Restano in ogni caso, nei commit da `dc5c111` a `0685cfc`, le due righe che menzionavano la provenienza di alcuni PDF. Toglierle richiede la riscrittura di quei commit, che cambia gli hash citati nella documentazione.
+
+Verificato con: `gh api` sulla visibilità e sul commit della mattina; `git grep` dell'elenco dei termini sull'albero di `HEAD`; la ricerca dell'hash nei file tracciati, a zero dopo la correzione.
+
+Esito: fatto per il commit e per i riferimenti. Il ritorno al pubblico attende la scelta dell'utente fra le due vie.
+
+### MS-204 - La storia ripulita su una copia, il controllo esteso, e la roadmap aggiornata
+
+Data: 2026-10-05
+
+Perimetro:
+- `tools/check-privato.py`, con i segni estesi;
+- la frase di MS-179 sulla provenienza dei libri;
+- `_notes/privacy/`, con l'elenco delle eccezioni, lo script di scansione della storia, il file delle sostituzioni e la copia di prova riscritta;
+- `tools/roadmap-items.yml`, con le voci 19 e 20 aggiornate, le voci 21, 22 e 23 nuove e il controllo di privacy fra quelli misurati;
+- PA-026 e PA-028.
+
+Legame con il progetto: serve PA-028 e ADR-040. Da questo microstep dipende il ritorno al pubblico del repository.
+
+*Le richieste dell'utente.* L'utente ha scelto di ricreare il repository su GitHub. Ha chiesto di segnare tutte le pendenze e la roadmap e di ripulire GitHub, raccontando ogni micropasso mentre il lavoro procede.
+
+*Un segno che il controllo non vedeva.* La scansione della storia per la riscrittura ha trovato una menzione della provenienza dei libri anche nel commit `2a5ba41`, che `check-privato.py` aveva dato pulito. Il controllo cercava la forma abbreviata e non quella estesa, che stava in MS-179. Sono state aggiunte la forma estesa e altre due sorgenti non ufficiali note. La seconda di queste compare in quattro file delle skill di ricerca, dove è un divieto, cioè la regola che scarta una fonte di quella provenienza. Quei quattro file sono dichiarati come eccezioni. La frase di MS-179 è riscritta in forma generica, e il controllo torna a zero con 21 eccezioni dichiarate.
+
+*La storia, misurata.* Applicati i segni del controllo a ogni file di ogni commit raggiungibile, esclusi i modelli e il codice dei due strumenti, i testi distinti trovati sono otto in cinque file. Sono le tre frasi sulla provenienza dei libri, in `decisions.md`, `progress.md`, `OPERATIONS-LOG.md` e nella timeline, nei commit da `dc5c111` a `0685cfc`. Ci sono poi i nomi di due archivi di backup su `J:`, in `pulizia-ssd-esterno.md`, in un solo commit, `ba69e0c`. Il commit della mattina non compare, perché il clone non porta i commit non più raggiungibili. Riscrivere da `ba69e0c` cambia l'hash di 67 commit, e i documenti correnti contengono 119 citazioni di hash: `filter-repo` produce la tabella dei vecchi hash e dei nuovi, e con quella le citazioni dei file correnti si aggiornano in un passo meccanico.
+
+*La prova su una copia.* Le cinque sostituzioni letterali stanno in `_notes/privacy/sostituzioni-storia.txt`. Non si usa un'espressione generica, perché toccherebbe anche il codice di `registro-fonti.py`, che usa quel suffisso per toglierlo dai titoli. `git filter-repo`, disponibile come modulo Python, è stato eseguito su un clone in `_notes/privacy/prova-riscrittura/`. Ha riscritto 84 commit in meno di due secondi, e la nuova testa è `57ae7f8`. La stessa scansione rifatta sul clone dà zero occorrenze. Il repository vero non è stato toccato.
+
+*Un attrito nuovo.* Un'altra sessione di Claude Code aperta sulla postazione, nella sua pulizia d'avvio, ha cancellato la cartella temporanea di questa sessione. Con essa sono spariti uno script e i file in cui gli strumenti di sessione depositano l'uscita dei comandi. Gli script di lavoro di questo fronte vivono quindi in `_notes/privacy/`, che è nel progetto e ignorata. Il promemoria di chiusura dell'account è stato corretto lo stesso giorno per la stessa ragione.
+
+*La sequenza consegnata all'utente.* Le operazioni che riscrivono la storia, cancellano il repository remoto o pubblicano sono gesti dell'utente. La sequenza, nell'ordine, è questa:
+- commit del lavoro in corso, senza push;
+- copia di sicurezza dell'intera storia in un bundle locale;
+- `filter-repo` con il file delle sostituzioni;
+- di nuovo il remoto, che `filter-repo` toglie per prudenza;
+- riallineamento degli hash nei documenti, fatto dall'agente con la tabella di `filter-repo`, e un commit;
+- autorizzazione della GitHub CLI alla cancellazione;
+- cancellazione e ricreazione del repository, poi push;
+- verifica che il commit della mattina non risponda più;
+- ritorno al pubblico.
+
+Verificato con: `check-privato.py --tutti` prima e dopo l'estensione; la scansione della storia su tutti i commit raggiungibili; `filter-repo` sul clone e la scansione rifatta, a zero; `tools/roadmap.py`, con tutti i controlli misurati verdi.
+
+Esito: fatto per la prova, il controllo e la roadmap. La riscrittura del repository vero e la ricreazione su GitHub attendono l'utente.
 
 
 ## Che cosa resta da fare, e da che cosa dipende

@@ -32,7 +32,8 @@ from pathlib import Path
 RADICE = Path(__file__).resolve().parent.parent
 LOCALE = RADICE / "_notes" / "privacy"
 FISSI = [
-    (r"(?i)libgen\.(lc|is|rs|li|st)|\blibgen\b", "provenienza non ufficiale di un libro"),
+    (r"(?i)libgen\.(lc|is|rs|li|st)|\blibgen\b|library\s+genesis", "provenienza non ufficiale di un libro"),
+    (r"(?i)sci-?hub|anna.?s archive", "provenienza non ufficiale di un libro"),
     (r"(?i)epdf\.pub|\bz-lib|\b1lib\b|pdfdrive|b-ok\.(cc|org)", "provenienza non ufficiale di un libro"),
     (r"(?i)(canale|libri) telegram", "provenienza non ufficiale di un libro"),
     (r"(?i)J:[\\/]+[^`\"\n|]*?\.(pdf|docx?|pptx?|xlsx|djvu|epub|zip|rar|7z)\b", "percorso di un singolo file su J:"),
