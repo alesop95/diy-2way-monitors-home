@@ -8,7 +8,7 @@
 # docs/PENDING-ACTIONS.md, dalla sezione "Lavoro noto e non fatto" di current-work.md e dal
 # runbook di inizializzazione dello stesso giorno. Le voci 1, 2, 3, 4 e 11 sono state tolte il
 # 2026-09-30 perché compiute (MS-167, MS-168, MS-169, MS-170), le voci 10 e 12 il 2026-10-01
-# (MS-173, MS-174) la 5 lo stesso giorno (MS-176) la 6 (MS-178) e la 17 il 2026-10-02 (MS-183): i loro id non si riusano. Il dettaglio del perché di ciascuna resta nel
+# (MS-173, MS-174) la 5 lo stesso giorno (MS-176) la 6 (MS-178) la 17 il 2026-10-02 (MS-183) e la 21 il 2026-10-05 (MS-205): i loro id non si riusano. Il dettaglio del perché di ciascuna resta nel
 # documento indicato in `fonte`: qui sta il costo e il passo che la chiude.
 
 titolo: Roadmap operativa di diy-2way-monitors-home
@@ -142,13 +142,6 @@ voci:
     stato: "10 paper scaricati e registrati, 18 lavori AES ancora da scaricare con i collegamenti verificati (MS-195); nessun paper ancora letto e promosso. E PA-025."
     passo: "L'utente scarica i PDF di research-vault/04-Paper-da-scaricare.md; l'agente estrae il testo (OCR per i due Thiele), scrive la scheda di lettura, verifica e porta in bibliography.bib."
     fonte: "research-vault/06-Registro-fonti.md"
-  - id: 21
-    livello: 0
-    dove: GitHub
-    titolo: PA-028, ripulire GitHub e tornare pubblici
-    stato: "Repository privato; il commit della mattina del 2026-10-05 e' sostituito ma GitHub lo serve ancora per hash; la riscrittura della storia e' provata su una copia, con zero occorrenze in 84 commit (MS-204)."
-    passo: "L'utente esegue la sequenza consegnata: commit, backup in bundle, filter-repo, riallineamento degli hash nei documenti, ricreazione del repository, push, verifica e ritorno al pubblico."
-    fonte: "docs/PENDING-ACTIONS.md"
   - id: 22
     livello: 1
     dove: "questo repository e J:"

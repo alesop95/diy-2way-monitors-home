@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-05 - GitHub ripulito e di nuovo pubblico
+
+Commit di partenza: `57ae7f8`, dopo la riscrittura. Commit prodotti dall'utente: `69e002d` con MS-203 e MS-204 e `d6546e7` con gli hash riallineati, poi il push sul repository ricreato.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-205; `docs/PENDING-ACTIONS.md` con PA-028 spostata fra le compiute; `tools/roadmap-items.yml` senza la voce 21; `tools/check-pending-actions.py`; `.claude/memory/index.md`; questo file.
+
+L'utente ha riscritto la storia con `filter-repo`, ha cancellato e ricreato il repository su GitHub e lo ha reso di nuovo pubblico. La verifica a posteriori lo conferma: i commit vecchi rispondono 422, la storia nuova ha zero occorrenze dei segni di privacy e gli hash citati nei documenti esistono tutti. Le 14 citazioni che non corrispondono a commit di qui appartengono al template, al gemello e a `sync-dev`. In locale restano il bundle con la storia vecchia e la copia di prova, da cancellare quando l'utente lo decide.
+
 ## 2026-10-05 - GitHub da ripulire: storia riscritta su una copia, roadmap aggiornata
 
 Commit di partenza: `57ae7f8`. Commit prodotto: nessuno ancora.

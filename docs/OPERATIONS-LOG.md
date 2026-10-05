@@ -4623,6 +4623,28 @@ Verificato con: `check-privato.py --tutti` prima e dopo l'estensione; la scansio
 
 Esito: fatto per la prova, il controllo e la roadmap. La riscrittura del repository vero e la ricreazione su GitHub attendono l'utente.
 
+### MS-205 - Storia riscritta, repository ricreato e di nuovo pubblico, verificato
+
+Data: 2026-10-05
+
+Perimetro: il repository locale, riscritto dall'utente con `git filter-repo`; il repository su GitHub, cancellato, ricreato e reso pubblico dall'utente; la verifica dell'agente; lo snapshot, PA-028 e la voce 21 della roadmap.
+
+Legame con il progetto: chiude PA-028 e attua ADR-040. Non serve alcuna fase elettroacustica.
+
+*Che cosa ha eseguito l'utente.* La sequenza di MS-204 in un'unica riga di PowerShell. Ha fatto il commit `3029ec1` e la copia della storia in `_notes/privacy/backup-storia-2026-10-05.bundle`. Poi `filter-repo` ha riscritto 85 commit in 0,9 secondi e ha tolto il remoto, come previsto. Il remoto è stato aggiunto di nuovo, e `riallinea-hash.py` ha riallineato 229 citazioni di hash in 11 file. Il commit `d6546e7` porta il riallineamento. Poi l'utente ha autorizzato la GitHub CLI alla cancellazione e ha cancellato il repository. Lo ha ricreato privato, ha spinto `main` e lo ha reso pubblico prima della verifica dell'agente. La verifica che segue è stata quindi fatta a repository già pubblico.
+
+*La verifica.*
+- GitHub risponde 422, nessun commit trovato, per il commit della mattina, per `2a5ba41` e per il vecchio `0685cfc`: la storia vecchia non è più raggiungibile per hash.
+- Il repository è pubblico, e il remoto e il locale coincidono su `d6546e7`.
+- La scansione della storia nuova con tutti i segni del controllo dà zero testi trovati, e `check-privato.py` dà zero occorrenze.
+- Delle 74 citazioni di hash fra apici inversi nei documenti, 60 corrispondono a commit di questo repository. Le altre 14 non sono hash rimasti indietro: tredici sono commit del template o del progetto gemello, verificati con `git cat-file` nei rispettivi repository, e uno è un commit di `sync-dev`, come dichiara la frase che lo cita.
+
+*Che cosa resta in locale.* Il bundle conserva la storia vecchia, compresi i dati tolti, e la copia di prova sta in `_notes/privacy/prova-riscrittura/`. Entrambi stanno in `_notes/`, ignorata, e la loro cancellazione spetta all'utente, che ha il comando nella risposta di sessione.
+
+Verificato con: `gh api` sui tre commit vecchi e sulla visibilità; `git fetch` con il confronto fra `HEAD` e `origin/main`; `scan-storia.py` e `check-privato.py`; il controllo di ogni hash citato con `git rev-list --all` e con `git cat-file` nel template e nel gemello.
+
+Esito: fatto. PA-028 è compiuta.
+
 
 ## Che cosa resta da fare, e da che cosa dipende
 

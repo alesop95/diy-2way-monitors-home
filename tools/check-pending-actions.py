@@ -540,8 +540,8 @@ def controlla_voci_recenti() -> None:
         riga("ok" if locali == 0 else "!!", f"voci locali nel registro tracciato fonti.json: {locali}")
     except (OSError, ValueError) as exc:
         riga("!!", f"fonti.json non leggibile: {exc}")
-    riga("? ", "storia pubblicata: commit della mattina sostituito da 57ae7f8; restano le righe sulla provenienza dei PDF in commit precedenti (MS-202, MS-203)")
-    print("  APERTA per la sola storia pubblicata.")
+    riga("ok", "storia riscritta e repository ricreato il 2026-10-05; i commit vecchi non rispondono su GitHub (MS-205)")
+    print("  COMPIUTA il 2026-10-05; il presidio che resta e' tools/check-privato.py prima di ogni commit.")
 
     print("\nPA-029  Portare nei progetti di acustica il rimando al vault delle fonti")
     vault_j = Path("J:/MAIN/LOUDSPEAKERS & ELECTROACOUSTIC/_VAULT FONTI/Biblioteca.bib")
