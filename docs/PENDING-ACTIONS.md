@@ -625,18 +625,6 @@ Condizione di sblocco. Il disco `J:` collegato, la conferma dell'utente su quali
 
 Criterio di completamento. Ogni cartella pertinente indicizzata e convertita. La biblioteca generata da uno strumento, con ogni fonte in almeno un gruppo. Il vault su `J:` aperto in Obsidian, con le note delle fonti e i collegamenti ai capitoli della tesi.
 
-## PA-028 - Titoli di documenti personali nel registro pubblico delle fonti
-
-Data di apertura: 2026-10-05, da MS-201. Stato: aperta per la sola storia pubblicata. Il 2026-10-05, con MS-202 e ADR-040, il registro tracciato non contiene più le copie locali e ogni commit passa da `tools/check-privato.py`; il repository è privato e il commit della mattina è sostituito da `57ae7f8` (MS-203), ma GitHub lo conserva raggiungibile per hash, quindi prima di tornare pubblici serve la richiesta al supporto di GitHub oppure la ricreazione del repository; restano inoltre le frasi sulla provenienza dei libri nei commit da `1d7c7f9` a `fe303ef` e due nomi di archivi di backup in `9022f68`. La riscrittura è provata su una copia con zero occorrenze in 84 commit (MS-204), e la sequenza per il repository vero, con la ricreazione su GitHub, è consegnata all'utente.
-
-Che cosa va fatto. `research-vault/fonti.json` è tracciato, e il repository è pubblico. Il file contiene i titoli di tutte le copie locali indicizzate su `J:`, compresi documenti personali e amministrativi. Le vie sono due, e si possono combinare.
-- Togliere dal registro tracciato le voci locali, o i loro titoli, e tenerle in un registro locale ignorato.
-- Ripulire la storia pubblicata con una riscrittura e un push forzato, che sono gesti dell'utente.
-
-Condizione di sblocco. La scelta dell'utente.
-
-Criterio di completamento. Nessun titolo di documento personale in un file tracciato, e la decisione sulla storia registrata come ADR.
-
 ## PA-029 - Portare nei progetti di acustica il rimando al vault delle fonti
 
 Data di apertura: 2026-10-05, da ADR-039. Stato: aperta.
@@ -649,4 +637,15 @@ Criterio di completamento. Ogni progetto confermato porta il rimando, e il templ
 
 ## Azioni compiute
 
-Nessuna, per ora. Le voci compiute si spostano qui con la data e l'esito, e non si cancellano.
+## PA-028 - Titoli di documenti personali nel registro pubblico delle fonti
+
+Data di apertura: 2026-10-05, da MS-201. Stato: compiuta il 2026-10-05, con MS-205: storia riscritta, repository ricreato e di nuovo pubblico, verificato. In precedenza aperta per la sola storia pubblicata. Il 2026-10-05, con MS-202 e ADR-040, il registro tracciato non contiene più le copie locali e ogni commit passa da `tools/check-privato.py`; il repository è privato e il commit della mattina è sostituito da `57ae7f8` (MS-203), ma GitHub lo conserva raggiungibile per hash, quindi prima di tornare pubblici serve la richiesta al supporto di GitHub oppure la ricreazione del repository; restano inoltre le frasi sulla provenienza dei libri nei commit da `1d7c7f9` a `fe303ef` e due nomi di archivi di backup in `9022f68`. La riscrittura è provata su una copia con zero occorrenze in 84 commit (MS-204), e la sequenza per il repository vero, con la ricreazione su GitHub, è consegnata all'utente.
+
+Che cosa va fatto. `research-vault/fonti.json` è tracciato, e il repository è pubblico. Il file contiene i titoli di tutte le copie locali indicizzate su `J:`, compresi documenti personali e amministrativi. Le vie sono due, e si possono combinare.
+- Togliere dal registro tracciato le voci locali, o i loro titoli, e tenerle in un registro locale ignorato.
+- Ripulire la storia pubblicata con una riscrittura e un push forzato, che sono gesti dell'utente.
+
+Condizione di sblocco. La scelta dell'utente.
+
+Criterio di completamento. Nessun titolo di documento personale in un file tracciato, e la decisione sulla storia registrata come ADR.
+
