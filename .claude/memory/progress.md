@@ -4,23 +4,23 @@
 
 ## 2026-10-05 - GitHub da ripulire: storia riscritta su una copia, roadmap aggiornata
 
-Commit di partenza: `2a5ba41`. Commit prodotto: nessuno ancora.
+Commit di partenza: `57ae7f8`. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-203 e MS-204; `docs/PENDING-ACTIONS.md` con PA-026 e PA-028; `tools/check-privato.py`; `tools/check-pending-actions.py`; `tools/roadmap-items.yml`; `docs/TIMELINE.html`; `.claude/memory/index.md`; questo file. Fuori da git: `_notes/privacy/`, con eccezioni, scansione, sostituzioni e la copia di prova riscritta.
 
-L'utente ha reso privato il repository e ha sostituito il commit della mattina con `2a5ba41`. GitHub però serve ancora il commit sostituito per hash, quindi l'utente ha scelto di ricreare il repository. La scansione di tutta la storia ha trovato tre frasi sulla provenienza dei libri e due nomi di archivi di backup. `filter-repo` le toglie su una copia, con zero occorrenze in 84 commit. La sequenza per il repository vero è consegnata all'utente. Roadmap e pendenze sono aggiornate, con la pulizia di GitHub al livello 0.
+L'utente ha reso privato il repository e ha sostituito il commit della mattina con `57ae7f8`. GitHub però serve ancora il commit sostituito per hash, quindi l'utente ha scelto di ricreare il repository. La scansione di tutta la storia ha trovato tre frasi sulla provenienza dei libri e due nomi di archivi di backup. `filter-repo` le toglie su una copia, con zero occorrenze in 84 commit. La sequenza per il repository vero è consegnata all'utente. Roadmap e pendenze sono aggiornate, con la pulizia di GitHub al livello 0.
 
 ## 2026-10-05 - Anonimizzazione, contenuto letto davvero, presidio su GitHub
 
-Commit di partenza: il commit della mattina, poi sostituito. Commit prodotto: `2a5ba41`, dell'utente, che porta da MS-184 a MS-202.
+Commit di partenza: il commit della mattina, poi sostituito. Commit prodotto: `57ae7f8`, dell'utente, che porta da MS-184 a MS-202.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-202; `.claude/memory/decisions.md` con ADR-039 e ADR-040; `docs/PENDING-ACTIONS.md` con PA-028 e PA-029; `CLAUDE.md` con il controllo nuovo nella sequenza; `tools/check-privato.py`, nuovo; `tools/biblioteca.py`, `tools/registro-fonti.py` e `tools/check-pending-actions.py`; `research-vault/biblioteca-regole.yml`, `fonti.json`, `06-Registro-fonti.md` e `07-Analisi-corpus.md`; `.claude/context/STACK.md`; `.claude/memory/index.md`; questo file. Fuori da git: 19 rinomine su `J:`, l'indice, la cache, il vault rigenerato, `_notes/biblioteca/` e `_notes/privacy/`.
 
-L'utente ha chiesto tre cose. La prima: che il vault su `J:` sia la fonte di tutti i progetti di acustica, ed è ADR-039. La seconda: che le cartelle dell'elettronica, del segnale e dell'università siano lette davvero. Non lo erano, perché la classificazione guardava solo cartella e titolo; ora conta anche le parole chiave nel testo convertito. La terza: che le persone da cui veniva il materiale spariscano. Sono state fatte 19 rinomine su `J:`, autorizzate elenco alla mano, e il vault ha zero occorrenze di quei nomi. Poi l'utente ha avvertito di stare molto attenti a che cosa va su GitHub. Il registro pubblico non contiene più le copie locali, le regole che descrivono il disco sono locali, e `check-privato.py` è nella sequenza prima di ogni commit: è ADR-040. L'utente ha poi reso privato il repository e ha sostituito il commit della mattina con `2a5ba41`, con un push forzato.
+L'utente ha chiesto tre cose. La prima: che il vault su `J:` sia la fonte di tutti i progetti di acustica, ed è ADR-039. La seconda: che le cartelle dell'elettronica, del segnale e dell'università siano lette davvero. Non lo erano, perché la classificazione guardava solo cartella e titolo; ora conta anche le parole chiave nel testo convertito. La terza: che le persone da cui veniva il materiale spariscano. Sono state fatte 19 rinomine su `J:`, autorizzate elenco alla mano, e il vault ha zero occorrenze di quei nomi. Poi l'utente ha avvertito di stare molto attenti a che cosa va su GitHub. Il registro pubblico non contiene più le copie locali, le regole che descrivono il disco sono locali, e `check-privato.py` è nella sequenza prima di ogni commit: è ADR-040. L'utente ha poi reso privato il repository e ha sostituito il commit della mattina con `57ae7f8`, con un push forzato.
 
 ## 2026-10-05 - Tassonomia della biblioteca confermata, lotto 10 convertito, un nome tolto
 
-Commit di partenza: il commit della mattina, poi sostituito da `2a5ba41`, il commit dell'utente con i microstep da MS-184 a MS-199. Commit prodotto: nessuno ancora.
+Commit di partenza: il commit della mattina, poi sostituito da `57ae7f8`, il commit dell'utente con i microstep da MS-184 a MS-199. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-200; `research-vault/09-Biblioteca-tassonomia.md`, nuovo; le frasi con un nome di persona in `decisions.md`, `progress.md`, `OPERATIONS-LOG.md`, `PENDING-ACTIONS.md` e `05-Basi-esistenti.md`; `docs/TIMELINE.html`; `.claude/memory/index.md`; questo file. Rimosse due schede orfane in `research-vault/paper/`. Con MS-201: `tools/biblioteca.py`, `tools/censisci-cartelle.py`, `research-vault/biblioteca-regole.yml`, `docs/90-riferimenti/biblioteca-e-vault-fonti.md` e il suo indice, `STACK.md`, `PENDING-ACTIONS.md` con PA-027 e PA-028.
 
@@ -28,7 +28,7 @@ L'utente ha confermato la tassonomia in quattro alberi, la cartella `_VAULT FONT
 
 ## 2026-10-05 - Ripresa dopo lo spegnimento, sette paper registrati, formato AES ritirato di nuovo
 
-Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-193 non ancora committati. Commit prodotto: nessuno ancora, il messaggio in `_notes/COMMIT-MSG.txt` copre ora da MS-184 a MS-199.
+Commit di partenza: fe303ef, con i microstep da MS-184 a MS-193 non ancora committati. Commit prodotto: nessuno ancora, il messaggio in `_notes/COMMIT-MSG.txt` copre ora da MS-184 a MS-199.
 
 File toccati: `docs/OPERATIONS-LOG.md` da MS-194 a MS-197; `tools/check-pending-actions.py` con PA-027; `docs/90-riferimenti/pulizia-ssd-esterno.md` per un accento; `research-vault/fonti-proposte.json` e `tracked-sources.md` con i collegamenti AES; `docs/PENDING-ACTIONS.md` per PA-025; `.claude/memory/index.md`; `.claude/memory/decisions.md` con ADR-038; questo file. Fuori da git: i sette PDF rinominati in `research-vault/papers/`, il registro rigenerato, `_notes/RESUME-PROMPT.md`.
 
@@ -36,7 +36,7 @@ La sessione è ripartita con la skill `riprendi`. L'utente ha confermato che l'a
 
 ## 2026-10-05 - Filoni della ricerca confermati, collegamenti univoci e DOI dei paper
 
-Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-192 non ancora committati. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con i microstep da MS-184 a MS-192 non ancora committati. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-193; `research-vault/fonti-proposte.json`, `tracked-sources.md`, `04-Paper-da-scaricare.md`, `fonti.json`; `.claude/memory/index.md`; questo file. Fuori da git: i resoconti di verifica in `research-vault/basi/verifiche-paper/`.
 
@@ -44,7 +44,7 @@ L'utente ha confermato i dodici filoni della ricerca online e ha chiesto un coll
 
 ## 2026-10-05 - Formule degli appunti recuperate, OCR in italiano, taglio della tesi
 
-Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-190 non ancora committati. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con i microstep da MS-184 a MS-190 non ancora committati. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-191 sotto un'intestazione di sessione nuova; `.claude/memory/decisions.md` con ADR-037; `tools/converti-fonti.py`; `.claude/context/STACK.md`; `docs/PENDING-ACTIONS.md` con la voce nuova di PA-003; `.claude/memory/index.md`; questo file. Fuori da git: pandoc 3.12 installato nel profilo utente, `python-pptx` nel Python di sistema, `_notes/tessdata/` con il modello italiano, la cache convertita in `_notes/.tmp-doc-cache/fonti/`.
 
@@ -52,7 +52,7 @@ L'utente ha chiesto l'analisi di ciò che ha e il suo completamento prima della 
 
 ## 2026-10-02 - Il materiale di studio torna su J:, il progetto lo indicizza
 
-Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-189 non ancora committati. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con i microstep da MS-184 a MS-189 non ancora committati. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-190; `.claude/memory/decisions.md` con ADR-036; `docs/PENDING-ACTIONS.md` con PA-026 riformulata; `tools/indicizza-lotti.py` e `tools/converti-fonti.py`, nuovi; `tools/estrai-archivi.py` riscritto; `tools/copia-lotti.py` tolto; `tools/registro-fonti.py` e `tools/check-pending-actions.py`; `tools/roadmap-items.yml`; `.claude/context/STACK.md`; `.gitignore`; `research-vault/00-START.md`, `03-Protocollo-bibliografico.md`, `05-Basi-esistenti.md`, `fonti.json` e le note generate; `.claude/memory/index.md`; questo file. Su `J:`: la cartella nuova `J:\MAIN\_ESTRATTI ARCHIVI TESI` con 3112 file, con il permesso dell'utente. Fuori da git: i registri d'origine migrati, le copie tolte, la cache `_notes/.tmp-doc-cache/fonti/`.
 
@@ -60,7 +60,7 @@ L'utente ha chiesto di togliere il materiale dal progetto, che ha due copie di s
 
 ## 2026-10-02 - Lotti dal 02 al 09 e archivi copiati nel vault, conversione avviata
 
-Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-188 non ancora committati. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con i microstep da MS-184 a MS-188 non ancora committati. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-189; `tools/estrai-archivi.py`, nuovo; `tools/registro-fonti.py` con il filtro sui documenti e le chiavi alternative; `tools/check-pending-actions.py`; `.claude/context/STACK.md`; `research-vault/00-START.md`, `fonti.json`, `04-Paper-da-scaricare.md`, `06-Registro-fonti.md`; `.claude/memory/index.md`; questo file. Fuori da git: 4039 file copiati in `research-vault/fonti-locali/` con i loro registri d'origine, i due manifesti, e la cache `_notes/.tmp-doc-cache/lotto-NN/` in costruzione.
 
@@ -68,7 +68,7 @@ I nove lotti e i dieci archivi sono nel vault, letti da `J:` senza scriverci. De
 
 ## 2026-10-02 - Vault Obsidian di ricerca, registro unico delle fonti, lezioni al template
 
-Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-187 non ancora committati. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con i microstep da MS-184 a MS-187 non ancora committati. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-188; `.claude/memory/decisions.md` con ADR-035; `research-vault/` con `00-START.md`, `03-Protocollo-bibliografico.md`, `05-Basi-esistenti.md`, le note generate `04-Paper-da-scaricare.md` e `06-Registro-fonti.md`, 29 schede in `paper/`, `fonti.json`, `fonti-proposte.json`, `papers/manifest.json` e la configurazione `.obsidian/`; `tools/registro-fonti.py` e `tools/copia-lotti.py`, nuovi; `tools/check-pending-actions.py` e `docs/PENDING-ACTIONS.md` con PA-025 e PA-026; `tools/roadmap-items.yml`; `.claude/context/STACK.md`; `.gitignore`; `.claude/skills/senior-researcher/SKILL.md`, `.claude/skills/literature-search/SKILL.md` e le loro copie in `.claude/templates/academic-researcher/`; nel template `E:/template-claude-developing` le stesse due skill del pacchetto, non committate; `docs/TIMELINE.html`; `.claude/memory/index.md`; questo file. Fuori da git: le copie spostate da `_notes/fonti-studio/` a `research-vault/fonti-locali/` e `research-vault/basi/`.
 
@@ -76,7 +76,7 @@ L'utente ha chiesto il vault come in intralino, una copia di tutto il materiale 
 
 ## 2026-10-02 - Correzione sulla provenienza dei candidati, libreria JabRef e tesi del 2020
 
-Commit di partenza: 0685cfc, con i microstep da MS-184 a MS-186 non ancora committati. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con i microstep da MS-184 a MS-186 non ancora committati. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-187; `.claude/memory/index.md`; questo file; fuori da git `_notes/fonti-studio/basi-bibliografiche/` con la libreria JabRef copiata e la bibliografia della tesi estratta.
 
@@ -84,7 +84,7 @@ L'utente ha chiesto se i 24 candidati venissero da un controllo completo di `J:`
 
 ## 2026-10-02 - Piano dei lotti confermato, 24 paper riscontrati con i collegamenti
 
-Commit di partenza: 0685cfc, con MS-184 e MS-185 non ancora committati. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con MS-184 e MS-185 non ancora committati. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-186 e la conferma del piano in MS-185; `research-vault/tracked-sources.md` riscritto con 29 righe riscontrate; `tools/roadmap-items.yml`; `docs/TIMELINE.html`; questo file; fuori da git `_notes/fonti-studio/verifiche-paper/` e `_notes/RESUME-PROMPT.md`.
 
@@ -92,7 +92,7 @@ L'utente ha confermato il piano dei nove lotti e ha chiesto i collegamenti dei p
 
 ## 2026-10-02 - Il progetto diventa una tesi: censimento completo, scope di ricerca, candidati
 
-Commit di partenza: 0685cfc, con MS-184 non ancora committato. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, con MS-184 non ancora committato. Commit prodotto: nessuno ancora.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-185; `.claude/memory/decisions.md` con ADR-034; `research-vault/scope.md` e `research-vault/tracked-sources.md`, nuovi; `.gitignore` con `/research-vault/papers/`; `tools/roadmap-items.yml` con la voce 19 estesa e la voce 20 nuova; `.claude/memory/index.md`; `docs/TIMELINE.html`; questo file; fuori da git `_notes/fonti-studio/piano-lotti.md` con i lotti dal 06 al 09 e i tre file `censimento-A.md`, `censimento-B.md`, `censimento-C.md`.
 
@@ -100,15 +100,15 @@ L'utente vuole fare del progetto una tesi con la matematica dimostrata da zero e
 
 ## 2026-10-02 - Ripresa, lotti del materiale di studio fissati, schede rilette
 
-Commit di partenza: 0685cfc, cioè il commit dell'utente fatto con `chiudi` che porta MS-183. Commit prodotto: nessuno ancora.
+Commit di partenza: fe303ef, cioè il commit dell'utente fatto con `chiudi` che porta MS-183. Commit prodotto: nessuno ancora.
 
-File toccati: `docs/OPERATIONS-LOG.md` con MS-184 sotto una intestazione di sessione nuova; `tools/roadmap-items.yml` con la voce 19 riscritta; `.claude/context/STACK.md`, `roadmap.md`, `current-work.md` e `deployment.md` rilette, con le firme portate a `0685cfc`; `.claude/memory/index.md` con il commit di riferimento portato da `24efd0c` a `0685cfc`, come il file di ripresa prevedeva, e le righe delle quattro schede; `docs/TIMELINE.html`; questo file; fuori da git `_notes/fonti-studio/piano-lotti.md`.
+File toccati: `docs/OPERATIONS-LOG.md` con MS-184 sotto una intestazione di sessione nuova; `tools/roadmap-items.yml` con la voce 19 riscritta; `.claude/context/STACK.md`, `roadmap.md`, `current-work.md` e `deployment.md` rilette, con le firme portate a `fe303ef`; `.claude/memory/index.md` con il commit di riferimento portato da `b90d821` a `fe303ef`, come il file di ripresa prevedeva, e le righe delle quattro schede; `docs/TIMELINE.html`; questo file; fuori da git `_notes/fonti-studio/piano-lotti.md`.
 
 Alla ripresa la verifica ha trovato soltanto lo snapshot fermo al commit precedente a quello di `chiudi`, divergenza attesa e corretta. L'utente ha chiesto di cercare altro materiale pertinente su `J:\MAIN`, soprattutto fra i propri appunti, e di fissare tutti i lotti prima di assorbirli: la cartella `LOUDSPEAKERS & ELECTROACOUSTIC`, mai aperta, contiene il nucleo di progettazione dei diffusori che MS-179 dichiarava mancante. I lotti dal 02 al 05 sono in MS-184 e nel piano locale; la copia attende la conferma. Le quattro schede sono state rilette su richiesta dell'utente.
 
 ## 2026-10-02 - Monitor attivi, e la chiusura di sessione con wipe
 
-Commit di partenza: 24efd0c, cioè il commit dell'utente del 2026-10-02 che porta da MS-180 a MS-182. Commit prodotto: quello di `chiudi` con il messaggio di `_notes/COMMIT-MSG.txt`.
+Commit di partenza: b90d821, cioè il commit dell'utente del 2026-10-02 che porta da MS-180 a MS-182. Commit prodotto: quello di `chiudi` con il messaggio di `_notes/COMMIT-MSG.txt`.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-183 sotto una intestazione di sessione nuova; `docs/PENDING-ACTIONS.md` con PA-024; `docs/52-crossover-passivo-o-attivo.md` con la decisione in testa; `.claude/memory/decisions.md` con ADR-033; `tools/roadmap-items.yml`; `tools/check-pending-actions.py` con PA-024; `docs/TIMELINE.html`; `.claude/memory/index.md`, `.claude/context/current-work.md` e questo file; fuori da git `report/capitoli/04-crossover.tex`, `_notes/RESUME-PROMPT.md` e `_notes/COMMIT-MSG.txt`.
 
@@ -116,7 +116,7 @@ L'utente ha scelto l'attivo con processore digitale, ADR-033, e ha chiesto quali
 
 ## 2026-10-01 - Ramsete accertato ed escluso, la voce sulle triadi chiusa senza riscritture
 
-Commit di partenza: 3780920, cioè il commit dell'utente del 2026-10-01 alle 11:11 che porta MS-171 e MS-172; nel progetto gemello il commit dell'utente `98e6e04` porta la valutazione della catena di ingresso e il blocco ambiente riallineato. Commit prodotto: da fare con `chiudi` e il messaggio di `_notes/COMMIT-MSG.txt`.
+Commit di partenza: d5d7ea4, cioè il commit dell'utente del 2026-10-01 alle 11:11 che porta MS-171 e MS-172; nel progetto gemello il commit dell'utente `98e6e04` porta la valutazione della catena di ingresso e il blocco ambiente riallineato. Commit prodotto: da fare con `chiudi` e il messaggio di `_notes/COMMIT-MSG.txt`.
 
 File toccati: `docs/OPERATIONS-LOG.md` con i microstep da MS-173 a MS-178 sotto una intestazione di sessione nuova, più il riepilogo finale; `CLAUDE.md` con il vincolo sui dati personali; `docs/10-ambiente/installazione-pulita-26-04.md` e `docs/10-ambiente/wine-corredo-progetto-stanza.md`, propagati al gemello; PA-022 nuova; `tools/check-pending-actions.py` e `tools/analisi-ssd-esterno.py`; `docs/PENDING-ACTIONS.md` con PA-002 compiuta e una voce nuova in PA-003; `docs/10-ambiente/wine-corredo-progetto-stanza.md` con l'accertamento e il percorso corretto, propagato al gemello; `docs/90-riferimenti/fonti.md` con la sezione sull'acustica della stanza; `.claude/memory/decisions.md` con ADR-026; `tools/roadmap-items.yml` senza le voci 10 e 12; `docs/TIMELINE.html`; `.claude/memory/index.md` e questo file; fuori dal repository `_notes/RESUME-PROMPT.md` e `_notes/COMMIT-MSG.txt`.
 
@@ -128,7 +128,7 @@ Poi, con `J:` collegato dall'utente, MS-176: PA-008 compiuta, ma su un disco div
 
 Fase 10, primo tentativo dell'utente dalla postazione con ssh -t studio: fallito su sed con «unterminated s command», perché PowerShell 5.1 toglie le virgolette doppie interne passando la stringa a ssh; per via dei && non è partito altro. Letto dopo sulla macchina: sshd_config identico al backup creato alle 14:59, riga 78 ancora commentata. Seconda forma consegnata senza virgolette interne, con un file in sshd_config.d. Il secondo tentativo, con `tee` su un file di `sshd_config.d`, è riuscito, verificato dalla postazione nei due versi: è MS-178. La prenotazione DHCP della sottofase 10.4 non si fa: l'utente ha precisato che la rete attuale è quella dell'azienda e che la macchina andrà a casa, quindi è rinviata con PA-022, che ricorda anche l'alias studio da rifare.
 
-Dopo il commit 93bb1e1, alla proposta di confrontare monitor attivi e passivi, l'utente ha dichiarato di aver dato per scontato il passivo e ha chiesto come si progetti un attivo; ha poi chiesto di usare le skill del template per costruire una base di conoscenza sui propri appunti e libri, e di scrivere un report LaTeX dettagliato anche matematicamente, da ingegnere elettroacustico, di ciò che il progetto fa. Le scelte che ne discendono, cioè passivo come decisione, pacchetti di conoscenza, posizione dei materiali e superamento dell'innesco di ADR-022 sul report, sono state poste all'utente nello stesso giro. Risposte: prima il confronto scritto fra attivo e passivo, poi la decisione; materiali in `J:\_____da sistemare ancora\analog_ele utili` e in `J:\MAIN\ANALOG (AUDIO) ELECTRONICS`; pacchetti doc-ingest, knowledge-wiki e book-to-skill, con tutto ciò che deriva dai libri fuori dal versionamento perché il repository è pubblico; report LaTeX che cresce da adesso, superando l'innesco di ADR-022. Inventario in sola lettura delle due cartelle, solo nomi, estensioni e pesi: la prima ha 11 file, di cui 8 PDF per 155,6 MiB; la seconda 563 file, di cui 264 PDF per 2.934,7 MiB, 52 video per 7.896,3 MiB e 14 DOCX, con molta elettronica per chitarra e progettazione di PCB estranee ai diffusori. Pertinenti ai monitor: teoria dei filtri e delle funzioni di trasferimento, elettronica audio e gli appunti del corso EEASE; nessun testo specifico sui diffusori. Per una parte dei PDF la provenienza non è documentata, e la questione è stata posta all'utente per coerenza con ADR-010.
+Dopo il commit b959a3c, alla proposta di confrontare monitor attivi e passivi, l'utente ha dichiarato di aver dato per scontato il passivo e ha chiesto come si progetti un attivo; ha poi chiesto di usare le skill del template per costruire una base di conoscenza sui propri appunti e libri, e di scrivere un report LaTeX dettagliato anche matematicamente, da ingegnere elettroacustico, di ciò che il progetto fa. Le scelte che ne discendono, cioè passivo come decisione, pacchetti di conoscenza, posizione dei materiali e superamento dell'innesco di ADR-022 sul report, sono state poste all'utente nello stesso giro. Risposte: prima il confronto scritto fra attivo e passivo, poi la decisione; materiali in `J:\_____da sistemare ancora\analog_ele utili` e in `J:\MAIN\ANALOG (AUDIO) ELECTRONICS`; pacchetti doc-ingest, knowledge-wiki e book-to-skill, con tutto ciò che deriva dai libri fuori dal versionamento perché il repository è pubblico; report LaTeX che cresce da adesso, superando l'innesco di ADR-022. Inventario in sola lettura delle due cartelle, solo nomi, estensioni e pesi: la prima ha 11 file, di cui 8 PDF per 155,6 MiB; la seconda 563 file, di cui 264 PDF per 2.934,7 MiB, 52 video per 7.896,3 MiB e 14 DOCX, con molta elettronica per chitarra e progettazione di PCB estranee ai diffusori. Pertinenti ai monitor: teoria dei filtri e delle funzioni di trasferimento, elettronica audio e gli appunti del corso EEASE; nessun testo specifico sui diffusori. Per una parte dei PDF la provenienza non è documentata, e la questione è stata posta all'utente per coerenza con ADR-010.
 
 Poi MS-180, MS-181 e MS-182: tolti i tre strumenti a consumo per ADR-031, con Feynman disinstallato su permesso esplicito; report escluso da git fino al completamento per ADR-032; confronto fra crossover passivo e attivo scritto in `docs/52-crossover-passivo-o-attivo.md`; scheletro del report con il capitolo sul crossover verificato e compilato, 16 pagine. La decisione fra passivo e attivo attende l'utente.
 
@@ -142,15 +142,15 @@ Un limite del presidio sulla memoria, osservato oggi: `lint-memoria.py` confront
 
 ## 2026-09-30 - Il runbook di inizializzazione ripercorso in modalità allineamento
 
-Commit di partenza: 0189667. Commit prodotti dall'utente con `chiudi`: `da8c4f2` (MS-165..167), `1b222d5` (MS-168) e `55666b7` (MS-169..170), tutti su origin; nel repository `sync-dev` il commit `172270b` per PA-013, anch'esso su origin. L'impronta di ripresa è registrata da `chiudi` alle 17:58.
+Commit di partenza: 266cd3c. Commit prodotti dall'utente con `chiudi`: `032c10d` (MS-165..167), `72e10aa` (MS-168) e `c6dbeb5` (MS-169..170), tutti su origin; nel repository `sync-dev` il commit `172270b` per PA-013, anch'esso su origin. L'impronta di ripresa è registrata da `chiudi` alle 17:58.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-165, MS-166, MS-167 e la sezione della convenzione sul campo `Data:`; `docs/PENDING-ACTIONS.md` con sette voci nuove in PA-003, la riga di stato di PA-016 riallineata e un riferimento vivo corretto; `CLAUDE.md`; `README.md` con la sezione Stato; `.gitignore`; `.claude/settings.json` con l'hook di `alignment`; `.claude/rules/git-identity-and-repo.md` e la regola nuova `.claude/rules/affermazioni-verificabili.md`; `.claude/memory/decisions.md` con ADR-023 e ADR-024; le schede `STACK.md`, `roadmap.md`, `current-work.md` e la nuova `deployment.md`; `.claude/allineamento-template.json` rinormalizzato; `.claude/skills/roadmap/`; `.claude/templates/tools/check-copie-modelli.py` e la sua copia in `tools/`; `tools/dashes-exclude.txt`; i nuovi `AGENTS.md`, `.agents/skills/`, `.githooks/`, `data/scadenze.json`, `docs/TIMELINE.html`, `docs/anti-slop/`, `docs/separazione-ambienti/`, `tools/roadmap-items.yml` e dieci strumenti sotto `tools/`; tolti `.claude/PROMPT-nuovo-progetto.md` e `.claude/PROMPT-allinea-progetto-esistente.md`; `.claude/memory/index.md` e questo file. Fuori dal repository, ignorati: `CLAUDE.local.md` e `_notes/DIARIO.md`, `RESOCONTO.md`, `TEST-CHECKLIST.md`, `RESUME-PROMPT.md`, `COMMIT-MSG.txt`.
 
-L'apertura ha trovato lo snapshot fermo a `0edd529` mentre `HEAD` era `0189667`, e nessuna impronta registrata. Fra i due stanno i due commit di memoria del 2026-09-22 e tre tornate di allineamento al template prodotte da `allinea-tutti.ps1` il 2026-09-29 e il 2026-09-30, che nessun documento raccontava. Alla domanda se ci fossero decisioni prese a voce l'utente ha risposto di no: i tre commit sono il solo prodotto dello strumento. Il racconto misurato è MS-165.
+L'apertura ha trovato lo snapshot fermo a `efcd05a` mentre `HEAD` era `266cd3c`, e nessuna impronta registrata. Fra i due stanno i due commit di memoria del 2026-09-22 e tre tornate di allineamento al template prodotte da `allinea-tutti.ps1` il 2026-09-29 e il 2026-09-30, che nessun documento raccontava. Alla domanda se ci fossero decisioni prese a voce l'utente ha risposto di no: i tre commit sono il solo prodotto dello strumento. Il racconto misurato è MS-165.
 
 L'utente ha chiesto di percorrere tutte le fasi iniziali di setup del sistema su questo progetto, e alla domanda sul perimetro ha scelto il runbook intero di `init-project-system`, cioè i Passi da 0 a 8 della sezione 10 di `PROJECT-SYSTEM.md` in modalità allineamento, con il gate dei pacchetti, quello della separazione fra test e produzione, il gate MCP, quello del README, `AGENTS.md`, lo strumento `chiudi` e la misura del budget delle istruzioni. La piattaforma di sviluppo dichiarata al Passo 0 è Windows, cioè la postazione: si usano le varianti `.ps1` degli strumenti e `core.sshCommand` resta forzato, mentre la macchina Ubuntu resta il bersaglio operativo raggiunto con `ssh studio`. Il piano approvato procede per fasi, dalla A alla H, con una conferma a ogni gate.
 
-La Fase A, cioè la riconciliazione della memoria con `HEAD`, ha prodotto due correzioni. `CLAUDE.md` elencava ancora otto regole, fra cui due che il `7eebe82` aveva trasformato in norme caricate su richiesta, mentre lo stesso commit gli aveva aggiunto in coda l'indice degli inneschi di quelle norme: il file si contraddiceva, ed è corretto. Il marcatore di allineamento aveva le fini riga miste per un difetto dello strumento del template, rinormalizzato qui e registrato in PA-003 perché si ripresenterà.
+La Fase A, cioè la riconciliazione della memoria con `HEAD`, ha prodotto due correzioni. `CLAUDE.md` elencava ancora otto regole, fra cui due che il `d364d3f` aveva trasformato in norme caricate su richiesta, mentre lo stesso commit gli aveva aggiunto in coda l'indice degli inneschi di quelle norme: il file si contraddiceva, ed è corretto. Il marcatore di allineamento aveva le fini riga miste per un difetto dello strumento del template, rinormalizzato qui e registrato in PA-003 perché si ripresenterà.
 
 I Passi da 0 a 6 sono MS-166. Account e identità risultano coerenti, con il legame di `.claude-account2` letto per la prima volta, segreti assenti dai file tracciati e dalla storia, `.gitignore` completato del blocco dei segreti, budget delle istruzioni misurato. Sono arrivati `AGENTS.md`, i wrapper per Codex, `chiudi-sessione.ps1` e l'hook dei messaggi di commit. Il primo `chiudi -SoloControlli` si è creduto nel bundle del template per due copie vecchie dei PROMPT importate con l'impianto, e l'utente le ha fatte togliere. Il promemoria di chiusura del `CLAUDE.md` utente dice che il wipe preserva i progetti `D--*` ed `E--*`, mentre lo script installato non preserva nulla per scelta dichiarata: è un difetto del testo del promemoria, fuori dal repository, segnalato all'utente.
 
@@ -172,7 +172,7 @@ Il commit proposto è in `_notes/COMMIT-MSG.txt`. Prima di `chiudi` vanno regist
 
 ## 2026-09-22 - La via della scansione cade, PA-016 si chiude, e il progetto prende i suoi hook
 
-Commit di partenza: eee2e3d. Commit prodotto: 0edd529, che porta da MS-159 a MS-164.
+Commit di partenza: 3d4c435. Commit prodotto: efcd05a, che porta da MS-159 a MS-164.
 
 File toccati: `docs/OPERATIONS-LOG.md` con sei microstep nuovi; `docs/PENDING-ACTIONS.md` con PA-016 chiusa, PA-020 cambiata di natura e due voci nuove in PA-003; `docs/35-rilievo-geometrico.md` con la sezione di troubleshooting e la prescrizione sulla modalità di elaborazione; `docs/90-riferimenti/fonti.md` e `docs/90-riferimenti/licenze-e-registrazioni.md`; `.claude/rules/git-identity-and-repo.md` con il quarto asse re-istanziato; `.claude/settings.json`, `.claude/hooks/` e `.claude/templates/hooks-starter/` per l'istanziazione degli hook; `CLAUDE.md`; `tools/obj-bbox.py` nuovo e `tools/check-pending-actions.py` aggiornato.
 
@@ -198,7 +198,7 @@ Il fronte resta PA-020 e attende il metro laser. Il lavoro eseguibile senza acqu
 
 ## 2026-09-21, terza sessione - Il riavvio chiude PA-019, la catena audio prende la sua pagina, e un controllo di completezza trova due omissioni
 
-Commit di partenza: a076366. Commit prodotto: 0112973, più il lavoro di MS-157 in attesa di commit.
+Commit di partenza: 0a24b3a. Commit prodotto: 9de99c1, più il lavoro di MS-157 in attesa di commit.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-156 e MS-157 e due righe nell'indice delle voci superate; `docs/PENDING-ACTIONS.md` con la chiusura del quarto criterio di PA-019 e una voce nuova in PA-003; `docs/10-ambiente/catena-audio-pipewire.md`, nuova; `docs/10-ambiente/README.md` con la voce di indice; `tools/check-pending-actions.py` con i criteri di PA-019 aggiornati; i due file del blocco dell'ambiente propagati al gemello; questo work-log e `.claude/memory/index.md`.
 
@@ -214,7 +214,7 @@ Il fronte non cambia e resta PA-020, cioè il rilievo geometrico della stanza, u
 
 ## 2026-09-21, coda - Tre direzioni nuove dall'utente, e una lacuna della fase 2 colmata
 
-Commit di partenza: 2b27e61.
+Commit di partenza: f3ce521.
 
 File toccati: `docs/30-modellazione-e-simulazione.md` con la sezione nuova su come si ottiene la geometria; `docs/PENDING-ACTIONS.md` con PA-020 e PA-021 aperte e PA-012 rifondata sui requisiti nuovi; `tools/check-pending-actions.py` esteso alle due voci nuove; `.claude/context/roadmap.md` con il rilievo geometrico accanto alla quarta priorità e la distinzione fra i due report LaTeX.
 
@@ -248,7 +248,7 @@ Il criterio sui gruppi del processo audio è stato riformulato invece che spunta
 
 ## 2026-09-21 - La fase 11 chiude la procedura, e il confronto trova tre cose che nessuno stava cercando
 
-Commit di partenza: d4d8cda.
+Commit di partenza: 7f71c20.
 
 File toccati: `docs/OPERATIONS-LOG.md` con i microstep da MS-144 a MS-147 e due righe nuove nell'indice delle voci superate; `docs/10-ambiente/fotografia-macchina-post-reinstall.md`, nuovo, prescrittivo con la propria sezione di troubleshooting; `docs/10-ambiente/installazione-pulita-26-04.md` con la fase 11 dichiarata eseguita, il comando di censimento dei prefix corretto e una previsione ritirata; `docs/PENDING-ACTIONS.md` con PA-018 e PA-019; `tools/check-pending-actions.py` esteso a sei voci che taceva; i due indici `docs/README.md` e `docs/10-ambiente/README.md`; `.claude/memory/decisions.md` con ADR-021; le schede di stato. Fuori dal versionamento, `_notes/fotografia-post-reinstall-2026-09-21/` con i ventinove file della raccolta.
 
@@ -262,11 +262,11 @@ Un difetto trovato mentre si scriveva, e corretto. Lo strumento delle azioni dif
 
 Un attrito di sessione che vale registrare perché si ripeterà su questa postazione. I documenti lunghi in italiano non si possono scrivere con un heredoc passato alla shell, perché ogni apostrofo interrompe la citazione del wrapper e il comando termina con `unexpected EOF`. Costa due tentativi prima di capirlo. La forma che funziona è scrivere il contenuto con lo strumento di scrittura dei file, oppure passarlo a uno script Python scritto a parte, che è la via usata per tutte le modifiche a file con fini riga CRLF di questa giornata.
 
-Seconda parte della giornata, dopo il commit `c2c26f2`. PA-017 è stata eseguita e chiusa, ed è MS-148 per il prerequisito, MS-149 per la corsa e MS-150 per la correzione della pagina che ne è uscita. I due residui sotto `/home` sono stati cancellati dopo avere verificato per conteggio che i prefix fossero integri e che la loro ridondanza vivesse anche nel punto di ripristino del 17 settembre, liberando trentacinque gigabyte. L'utente ha scelto la copia piena indipendente invece dell'incrementale, con il criterio che il punto precedente fotografa uno stato intermedio che nessuno vorrebbe ripristinare. Il secondo punto pesa 18 214 821 888 byte, dichiara `Success`, è stato riletto montandolo con tredici impronte e quattro conteggi coincidenti, e sta su `J:` con le impronte verificate alle due estremità.
+Seconda parte della giornata, dopo il commit `43747fc`. PA-017 è stata eseguita e chiusa, ed è MS-148 per il prerequisito, MS-149 per la corsa e MS-150 per la correzione della pagina che ne è uscita. I due residui sotto `/home` sono stati cancellati dopo avere verificato per conteggio che i prefix fossero integri e che la loro ridondanza vivesse anche nel punto di ripristino del 17 settembre, liberando trentacinque gigabyte. L'utente ha scelto la copia piena indipendente invece dell'incrementale, con il criterio che il punto precedente fotografa uno stato intermedio che nessuno vorrebbe ripristinare. Il secondo punto pesa 18 214 821 888 byte, dichiara `Success`, è stato riletto montandolo con tredici impronte e quattro conteggi coincidenti, e sta su `J:` con le impronte verificate alle due estremità.
 
 La correzione che ne è nata vale più della corsa. L'intera procedura Veeam è stata eseguita da una sessione SSH ordinaria senza `sudo`, compresi l'avvio del lavoro e il montaggio del punto, perché l'utente appartiene al gruppo `veeam`. La pagina prescrittiva affermava il contrario, cioè che rimedio non ce ne fosse e che ogni passo fosse privilegiato, e quella affermazione è stata ritirata: era vera nella sessione in cui fu scritta, che era nata prima dell'installazione del pacchetto e quindi non portava il gruppo appena creato. È la terza occorrenza in dodici giorni della stessa forma, dopo la quarta causa della regola sul contesto di shell e la prima causa di MS-146, e la regola generale è stata scritta là dove la si rileggerà: dopo una installazione che tocca utenti, gruppi o variabili d'ambiente, la prima verifica si fa da una sessione aperta dopo.
 
-Terza parte della giornata, dopo il commit `8603207`. PA-018 è compiuta: il file di sorgenti di WineHQ e la sua chiave sono stati rimossi dalla macchina dall'utente, dopo avere accertato che la chiave fosse referenziata dal solo file che spariva con essa e che nessun pacchetto di quella provenienza fosse installato. Lo stato dopo è verificato: tre sorgenti, cartella delle chiavi vuota, nessun riferimento a `winehq` sotto `/etc/apt/`, `winehq-stable` non più conosciuto da apt, e i sette pacchetti Wine della distribuzione intatti alla `10.0~repack-12ubuntu1` con il prefix a 32 bit che esegue a stato zero. È MS-151.
+Terza parte della giornata, dopo il commit `f2405fc`. PA-018 è compiuta: il file di sorgenti di WineHQ e la sua chiave sono stati rimossi dalla macchina dall'utente, dopo avere accertato che la chiave fosse referenziata dal solo file che spariva con essa e che nessun pacchetto di quella provenienza fosse installato. Lo stato dopo è verificato: tre sorgenti, cartella delle chiavi vuota, nessun riferimento a `winehq` sotto `/etc/apt/`, `winehq-stable` non più conosciuto da apt, e i sette pacchetti Wine della distribuzione intatti alla `10.0~repack-12ubuntu1` con il prefix a 32 bit che esegue a stato zero. È MS-151.
 
 La consegna di quei comandi ha però prodotto un errore mio che vale più della voce che chiudeva, ed è MS-152. Il blocco era per la postazione Windows e si apriva con `ssh -t studio`, con una riga di prosa che lo dichiarava; l'utente lo ha incollato in un terminale già aperto sulla macchina di destinazione, dove quell'alias non esiste, e `ssh` ha risposto tre volte che non risolveva il nome. Nessun danno, perché nulla è stato eseguito. Il punto è che la prescrizione della regola era stata rispettata: la quinta causa della sezione sul contesto di shell chiede che un blocco con `ssh` dichiari di essere per la macchina di partenza, e lo dichiarava. Il pezzo mancante è che una dichiarazione scritta accanto al blocco non viaggia con il blocco, perché chi copia copia il riquadro e non il paragrafo, che è la stessa ragione per cui la terza causa vuole il `cd` dentro il blocco. La correzione va al template ed è una voce nuova di PA-003: la forma predefinita per il lavoro su una macchina remota è quella che si esegue su quella macchina, senza `ssh`, e la forma con `ssh` si consegna solo a chi ha dichiarato di trovarsi sulla macchina di partenza, con la dichiarazione dentro il blocco come commento.
 
@@ -274,7 +274,7 @@ Stato dei fronti a fine giornata. La procedura di installazione pulita è chiusa
 
 ## 2026-09-17, sera - La fase 8 si chiude: WineHQ provato, fallito, annullato e documentato
 
-Commit di partenza: 44811c3.
+Commit di partenza: 0824a4c.
 
 File toccati: `docs/OPERATIONS-LOG.md` con i microstep da MS-136 a MS-143; `docs/10-ambiente/architettura-ambiente-wine.md`, nuovo, con i diagrammi; `docs/10-ambiente/README.md`; `docs/PENDING-ACTIONS.md` con PA-017; le schede di stato; le copie di entrambe le pagine nel progetto gemello.
 
@@ -290,7 +290,7 @@ Che cosa resta. La fase 11, cioè la fotografia finale della macchina, ora sbloc
 
 ## 2026-09-17, chiusura - Backup di macchina chiuso, procedura resa portabile, riallineamento al template
 
-Commit di partenza: d2efb3d.
+Commit di partenza: aaf74ea.
 
 File toccati in questa seconda metà della giornata: `docs/OPERATIONS-LOG.md` con i microstep da MS-128 a MS-135; `docs/10-ambiente/veeam-agent-linux.md`, riscritto in forma parametrica e portato da 152 a oltre 430 righe, più la sua copia nel progetto gemello; `docs/PENDING-ACTIONS.md` con PA-011 chiusa, PA-015 chiusa, PA-003 riscritta e PA-016 aperta e in gran parte compiuta; `tools/check-pending-actions.py`; `CLAUDE.md`; e nel template `.gitignore` e `.claude/rules/git-commands-format.md`.
 
@@ -306,7 +306,7 @@ Il fronte torna alla sottofase 8.6, cioè all'import GLL di EASE Focus, che è l
 
 ## 2026-09-17 - Ricognizione prima del backup, un comando senza punto di esecuzione, e lo scarto dal template riaperto
 
-Commit di partenza: d2efb3d.
+Commit di partenza: aaf74ea.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-126, MS-127, MS-128 e MS-129; `docs/PENDING-ACTIONS.md` con PA-016 aperta e in gran parte chiusa lo stesso giorno, PA-015 chiusa e PA-003 riscritta; `CLAUDE.md`; `.claude/PROJECT-SYSTEM.md`; quattro regole sotto `.claude/rules/`, di cui una nuova; la skill `studio-didattico`; l'agente `security-auditor`; i quattro strumenti tipografici sotto `tools/` e i loro modelli; i due controlli nuovi `check-copie-modelli.py` e `check-catalogo.py`; sei pacchetti di modelli sotto `.claude/templates/`; questo file.
 
@@ -322,11 +322,11 @@ Lo scarto dal template è stato misurato su domanda dell'utente e non chiuso: se
 
 ## 2026-09-16, chiusura - Allineamento al template per la ripresa di sessione
 
-Commit di partenza: a7dea2b.
+Commit di partenza: 9f716f8.
 
-File toccati: `tools/verifica-ripresa.py` e `.claude/skills/riprendi/`, nuovi e istanziati dal template; `.claude/PROJECT-SYSTEM.md`, riportato identico a quello del template; `CLAUDE.md`, con la procedura di ripresa nella forma nuova; `_notes/RESUME-PROMPT.md`, rinominato dal minuscolo e riscritto; schede di stato riallineate ad `a7dea2b`.
+File toccati: `tools/verifica-ripresa.py` e `.claude/skills/riprendi/`, nuovi e istanziati dal template; `.claude/PROJECT-SYSTEM.md`, riportato identico a quello del template; `CLAUDE.md`, con la procedura di ripresa nella forma nuova; `_notes/RESUME-PROMPT.md`, rinominato dal minuscolo e riscritto; schede di stato riallineate ad `9f716f8`.
 
-Motivo. Il template ha introdotto un presidio che questo progetto non aveva: una impronta dello stato di git registrata come ultimo atto della sessione e verificata come primo atto della successiva. Serve a distinguere un file di ripresa aggiornato da uno che non lo è, che dall'esterno hanno lo stesso aspetto, e a dire che cosa una sessione caduta a metà non ha scritto. La prima corsa dello strumento, ancora senza impronta, ha comunque trovato subito uno scarto reale, cioè lo snapshot fermo a `dd3d630` mentre HEAD era già ad `a7dea2b`.
+Motivo. Il template ha introdotto un presidio che questo progetto non aveva: una impronta dello stato di git registrata come ultimo atto della sessione e verificata come primo atto della successiva. Serve a distinguere un file di ripresa aggiornato da uno che non lo è, che dall'esterno hanno lo stesso aspetto, e a dire che cosa una sessione caduta a metà non ha scritto. La prima corsa dello strumento, ancora senza impronta, ha comunque trovato subito uno scarto reale, cioè lo snapshot fermo a `ab8e506` mentre HEAD era già ad `9f716f8`.
 
 Che cosa resta divergente dal template e non è stato portato qui: la skill `gate-pacchetti`, che riguarda l'adozione dei pacchetti opzionali e non il tracciamento, e che verrà istanziata se e quando servirà.
 
@@ -374,7 +374,7 @@ Una modifica di convenzione, chiesta dall'utente il 2026-09-15 e resa vincolante
 
 ## 2026-09-15, prima parte - EASE Focus si apre: GDI+ era la causa, e i 451 MB non vanno copiati
 
-Commit di partenza: dd3d630.
+Commit di partenza: ab8e506.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-110; `docs/10-ambiente/wine-corredo-progetto-stanza.md`, `docs/10-ambiente/installazione-pulita-26-04.md` e `docs/10-ambiente/wine-troubleshooting.md`, che porta una scheda nuova sul fallimento dentro `System.Drawing`; `.claude/memory/index.md`, `.claude/context/current-work.md` e `.claude/context/roadmap.md`, riallineate al commit corrente; `_notes/resume-prompt.md`.
 
@@ -388,7 +388,7 @@ La sottofase 8.6 non si chiude qui. Restano due verifiche che richiedono la pres
 
 ## 2026-09-14, ottava parte - EASE Focus installato e bloccato su GDI+, sessione chiusa
 
-Commit di partenza: 84525ce.
+Commit di partenza: 62d5e43.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-108 e MS-109; `_notes/resume-prompt.md`, nuovo; schede di stato.
 
@@ -402,7 +402,7 @@ La sessione si chiude qui e la ripresa è preparata in `_notes/resume-prompt.md`
 
 ## 2026-09-14, settima parte - Sottofase 8.5 chiusa: VituixCAD funziona
 
-Commit di partenza: 407ac4f.
+Commit di partenza: 594e55c.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-106; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.5, propagato al gemello; schede di stato.
 
@@ -412,7 +412,7 @@ La sottofase 8.5 è quindi chiusa in tutti i suoi pezzi: prefix a 64 bit creato,
 
 ## 2026-09-14, sesta parte - Il prefix di VituixCAD, e la voce 2 del racconto didattico
 
-Commit di partenza: f9a829c.
+Commit di partenza: c0262d1.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-100; `.claude/context/studio-didattico-master.md` con la voce 2; `.claude/context/refactor-02-il-prefix-non-e-una-cartella.md`, nuovo. Sulla macchina: creato il prefix `~/wineprefixes/vituixcad64`.
 
@@ -426,7 +426,7 @@ Un guadagno di metodo registrato nella stessa voce: una inferenza marcata come t
 
 ## 2026-09-14, quinta parte - Il primo comando della 8.5 fallisce, e la fase 7 aveva lo stesso difetto
 
-Commit di partenza: e45752e.
+Commit di partenza: bcb5e86.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-099; `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 7, propagato al gemello; `docs/PENDING-ACTIONS.md` con PA-003 precisata. Sulla macchina: creata `~/wineprefixes`.
 
@@ -436,7 +436,7 @@ Corretta anche una affermazione di MS-098, scritta ieri su una lettura parziale:
 
 ## 2026-09-14, quarta parte - Il registro non diceva a che cosa servisse, e il pattern entra nel template
 
-Commit di partenza: fe64db6, con MS-095 e MS-096 non ancora committati.
+Commit di partenza: 5cc1dd9, con MS-095 e MS-096 non ancora committati.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-097 e MS-098 e con la sezione `Convenzione` estesa; nuova pagina `docs/90-riferimenti/tracciabilita-microstep.md`; `docs/README.md` e `docs/90-riferimenti/README.md` per i rimandi; `docs/PENDING-ACTIONS.md` con PA-003 aggiornata due volte; `CLAUDE.md`. Nel template, cioè in un altro repository: il pacchetto nuovo `.claude/templates/operations-log/` con tre file e la riga nel catalogo `PACKAGES.md`.
 
@@ -450,7 +450,7 @@ Motivo: l'utente ha rilevato che il registro racconta il come e la verifica ma n
 
 ## 2026-09-14, terza parte - La sottofase 8.4 non si esegue, e la cartella di lavoro prende posto
 
-Commit di partenza: fe64db6.
+Commit di partenza: 5cc1dd9.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-095 e MS-096; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.4, riscritta e propagata al gemello; `docs/60-simulazione-finale-akabak.md` per la radice di lavoro; schede di stato. Sulla macchina: creata `~/Documents/AkabakProjects` e corretta la chiave `InitialDir` nel prefix.
 
@@ -464,7 +464,7 @@ La verifica è passata per tre gradini, e i primi due non bastavano. Il conteggi
 
 ## 2026-09-14, seconda parte - La sottofase 8.3 è chiusa, e il confronto ha dato la chiave
 
-Commit di partenza: b02a547, con MS-093 non ancora committato.
+Commit di partenza: 6988cc0, con MS-093 non ancora committato.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-094; `.claude/memory/decisions.md`, dove ADR-020 passa ad accettata; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.3, propagato al gemello; `docs/90-riferimenti/timeline-akabak-vacs.md`; schede di stato.
 
@@ -478,7 +478,7 @@ Confermata anche la forma remota di MS-093 sul programma vero e non solo sulla p
 
 ## 2026-09-14 - AKABAK non parte da SSH, e una mia spiegazione cade alla prima prova
 
-Commit di partenza: b02a547.
+Commit di partenza: 6988cc0.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-093; `docs/10-ambiente/wine-troubleshooting.md` con la scheda sull'errore `no driver could be loaded`; `docs/10-ambiente/installazione-pulita-26-04.md` con il rimando nella sottofase 8.3, entrambi propagati al gemello; schede di stato riallineate.
 
@@ -492,7 +492,7 @@ La sottofase 8.3 resta da eseguire ed è ora sbloccata.
 
 ## 2026-09-12 - La pipeline COM letta dalla fonte, il riallineamento al template e l'inventario di `_notes`
 
-Commit di partenza: 633c513.
+Commit di partenza: 75239ac.
 
 File toccati: `docs/OPERATIONS-LOG.md` con MS-090, MS-091 e MS-092; `.claude/memory/decisions.md` con ADR-020; `docs/90-riferimenti/timeline-akabak-vacs.md` nella sezione concettuale su COM; `docs/10-ambiente/installazione-pulita-26-04.md` alla sottofase 8.3, poi propagato al gemello; `.claude/context/roadmap.md` con la direzione del report LaTeX; `.claude/PROJECT-SYSTEM.md`, `CLAUDE.md`, `docs/PENDING-ACTIONS.md` con PA-003 riscritta; ventinove file allineati dal template fra `.claude/` e `tools/`; `_notes` ripulita di due voci.
 
@@ -508,13 +508,13 @@ La lezione di metodo vale oltre il caso, e l'ho scritta nel microstep. Una diver
 
 ## 2026-09-10 - Ripresa dopo il riavvio, licenza verificata, e il censimento del comando sbagliato
 
-Commit di partenza: b514c33, con il lavoro non committato del 2026-09-09 ancora sul disco; quel lavoro è stato committato durante la sessione come `d8ebf45`, che è quindi il commit di riferimento di questa voce.
+Commit di partenza: ad826a3, con il lavoro non committato del 2026-09-09 ancora sul disco; quel lavoro è stato committato durante la sessione come `bd9102a`, che è quindi il commit di riferimento di questa voce.
 
-File toccati: `docs/OPERATIONS-LOG.md` con MS-085, MS-086, MS-087 e MS-088; `docs/10-ambiente/` in sette pagine per il censimento dei comandi di Wine, più `setup-macchina-2026-09.md` con il delta del 10 settembre e l'inventario dei dispositivi; `docs/PENDING-ACTIONS.md` con la discrepanza su Veeam in PA-011; `.claude/context/roadmap.md` con le priorità riscritte, due ipotesi risolte e la sezione delle direzioni future; `.claude/context/current-work.md` e `.claude/memory/index.md` riallineati a `b514c33`; `_notes/licenze-akabak-riservato.md` con lo stato verificato e il comando corretto.
+File toccati: `docs/OPERATIONS-LOG.md` con MS-085, MS-086, MS-087 e MS-088; `docs/10-ambiente/` in sette pagine per il censimento dei comandi di Wine, più `setup-macchina-2026-09.md` con il delta del 10 settembre e l'inventario dei dispositivi; `docs/PENDING-ACTIONS.md` con la discrepanza su Veeam in PA-011; `.claude/context/roadmap.md` con le priorità riscritte, due ipotesi risolte e la sezione delle direzioni future; `.claude/context/current-work.md` e `.claude/memory/index.md` riallineati a `ad826a3`; `_notes/licenze-akabak-riservato.md` con lo stato verificato e il comando corretto.
 
 Motivo: la postazione si è riavviata da sé la notte fra il 9 e il 10 settembre per un aggiornamento pianificato di Windows, quindi la sessione precedente si è chiusa senza commit e senza riallineare le schede di stato. La richiesta era recuperare il contesto e riprendere un microstep alla volta.
 
-*Che cosa ha insegnato la ripresa, e riguarda il sistema di memoria e non il progetto.* Lo snapshot `index.md` dichiarava `d9912b1` mentre HEAD era `b514c33`, quindi non copriva quattro commit, e la scheda del lavoro corrente indicava come passo successivo il collegamento della Focusrite Scarlett 2i2, che è una prescrizione ritirata in MS-079 il giorno prima. Una sessione che avesse creduto alle schede invece che a `git log` avrebbe rifatto lavoro fatto e cercato un'interfaccia che non appartiene al progetto. La regola operativa aggiunta allo snapshot è che a inizio sessione lo si confronta con `git log --oneline -8` prima di crederlo, e la ragione strutturale è che lo snapshot si aggiorna a mano mentre `git log` si aggiorna da sé.
+*Che cosa ha insegnato la ripresa, e riguarda il sistema di memoria e non il progetto.* Lo snapshot `index.md` dichiarava `ecbe51e` mentre HEAD era `ad826a3`, quindi non copriva quattro commit, e la scheda del lavoro corrente indicava come passo successivo il collegamento della Focusrite Scarlett 2i2, che è una prescrizione ritirata in MS-079 il giorno prima. Una sessione che avesse creduto alle schede invece che a `git log` avrebbe rifatto lavoro fatto e cercato un'interfaccia che non appartiene al progetto. La regola operativa aggiunta allo snapshot è che a inizio sessione lo si confronta con `git log --oneline -8` prima di crederlo, e la ragione strutturale è che lo snapshot si aggiorna a mano mentre `git log` si aggiorna da sé.
 
 Esito tecnico in sintesi. La licenza di AKABAK è viva nel prefix sopravvissuto e la sottofase 8.2 si chiude senza reinserire nulla, verificata per due vie indipendenti in MS-085: il file di configurazione a livello di macchina, dove l'attivazione stava e non nel registro come avevo assunto, e la finestra `Release code` del menu di aiuto, che dichiara `Release Code valid` con il Machine Identifier invariato. La fase 8 comincia quindi dalla sottofase 8.3, ed è lavoro eseguibile subito senza acquisti.
 
@@ -528,7 +528,7 @@ L'ultimo accertamento aperto è stato chiuso nel corso della stessa sessione ed 
 
 ## 2026-09-09, sera - AKABAK riparte nel prefix sopravvissuto, e nasce il livello didattico
 
-Commit di partenza: ce42d7a.
+Commit di partenza: cdb37ce.
 
 File toccati: `.claude/context/studio-didattico-master.md` e `.claude/context/refactor-01-wine-32-bit-su-ubuntu.md` nuovi, `.claude/memory/decisions.md` con ADR-019, `docs/OPERATIONS-LOG.md` con MS-084, `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 7, `docs/10-ambiente/scheda-reinstallazione.md`, `docs/10-ambiente/setup-macchina-2026-09.md` con il ritiro dichiarato, `CLAUDE.md` con l'adozione del livello didattico. Sulla macchina: `wine32:i386` installato, scrivania separata dal magazzino, due lanciatori corretti.
 
@@ -548,7 +548,7 @@ Resta una discrepanza aperta e dichiarata: la finestra riporta l'edizione `32 Pr
 
 ## 2026-09-09 - Installazione eseguita, verificata da remoto e documentata
 
-Commit di partenza: d9912b1.
+Commit di partenza: ecbe51e.
 
 File toccati: `docs/10-ambiente/setup-macchina-2026-09.md` nuovo, `docs/OPERATIONS-LOG.md` con MS-076 e MS-077, `docs/PENDING-ACTIONS.md` con PA-010 e PA-011, `tools/check-pending-actions.py` esteso alle due voci nuove, `docs/10-ambiente/installazione-pulita-26-04.md` alla fase 6, `docs/10-ambiente/scheda-reinstallazione.md` su quattro punti, `tools/make-scheda-docx.py` allineato, `docs/10-ambiente/README.md` con l'indice e una affermazione obsoleta corretta, `.claude/memory/index.md` e `.claude/context/current-work.md`.
 
@@ -572,7 +572,7 @@ Due errori miei, entrambi visti subito e nessuno arrivato su disco. Un pattern d
 
 ## 2026-09-08, ripresa da crash - La carta della reinstallazione, e uno strumento che la rende riproducibile
 
-Commit di partenza: cadf335.
+Commit di partenza: ea4ec3c.
 
 File toccati: `tools/make-scheda-docx.py` nuovo, `docs/10-ambiente/scheda-reinstallazione.md` corretto nella nota di apertura e nella tipografia, `docs/10-ambiente/README.md` con l'indicizzazione della scheda, `.claude/context/STACK.md` con lo strumento nuovo e la correzione dello scopo di `verify-usb-dd.ps1`, `docs/OPERATIONS-LOG.md` con MS-070 e MS-071, `.claude/memory/decisions.md` con ADR-017, `.claude/context/current-work.md` con il fronte nuovo, e `CLAUDE.md` per tre accenti. Fuori dal versionamento: il `.docx` rigenerato in `Downloads` e la copia precedente conservata sotto `_notes/`.
 
@@ -594,7 +594,7 @@ Due errori miei, entrambi a verbale in MS-071. Una sequenza di sostituzioni con 
 
 ## 2026-09-08 - Sequenza operativa avviata: PA-009 chiusa, immagine 26.04.1 verificata
 
-Commit di partenza: d2905ba.
+Commit di partenza: d954dbd.
 
 Avviata l'esecuzione della sequenza operativa passo per passo, su richiesta dell'utente di farli insieme. Passo 1 risultava già fatto, entrambi i repository committati e in pari con origin.
 
@@ -632,7 +632,7 @@ Ripulite dalle informazioni superate quattro sezioni che dichiaravano pendente l
 
 ## 2026-09-07, quinta parte - Backup di /home fatto, e Akabak si rivela a 32 bit
 
-Commit di partenza: ba69e0c.
+Commit di partenza: 9022f68.
 
 Esito in sintesi, tre cose di peso molto diverso.
 
@@ -648,7 +648,7 @@ Constatato anche che il corredo era già sulla macchina, sulla scrivania, il che
 
 ## 2026-09-07, quarta parte - SSD esterno misurato, archivi confrontati, Desktop rinviato
 
-Commit di partenza: ba69e0c.
+Commit di partenza: 9022f68.
 
 File toccati: `docs/PENDING-ACTIONS.md` con PA-007, PA-008 e PA-009 nuove, `docs/90-riferimenti/pulizia-ssd-esterno.md` riscritta nella sezione sugli archivi, `docs/OPERATIONS-LOG.md` con MS-040 a MS-045, `tools/check-pending-actions.py` con tre difetti corretti e tre voci nuove, `tools/analisi-ssd-esterno.py` nuovo, `.claude/memory/decisions.md` con ADR-014, `_notes/` con i due indici degli archivi.
 

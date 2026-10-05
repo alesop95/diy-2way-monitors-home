@@ -6,7 +6,7 @@ covers-paths:
   - docs/**
   - tools/**
   - .claude/**
-last-verified-commit: 0685cfc
+last-verified-commit: fe303ef
 ---
 
 # Lavoro corrente
@@ -57,7 +57,7 @@ PA-017 è stata eseguita e chiusa nella stessa giornata, ed è MS-148 per il pre
 
 La correzione nata dalla corsa riguarda la pagina `docs/10-ambiente/veeam-agent-linux.md` e vale oltre Veeam. L'intera procedura è eseguibile senza `sudo` da una sessione che porti il gruppo `veeam`, compresi l'avvio del lavoro e il montaggio del punto, mentre la pagina affermava che rimedio non ce ne fosse: l'affermazione era vera nella sessione in cui fu scritta, nata prima dell'installazione del pacchetto, ed è la terza occorrenza in dodici giorni della stessa forma dopo la quarta causa della regola sul contesto di shell e la prima causa di MS-146. La pagina porta ora anche una fase 8 per la corsa successiva, con la decisione fra incrementale e pieno indipendente e il criterio per prenderla.
 
-Terza parte della giornata, dopo il commit `8603207`. PA-018 è compiuta: il file di sorgenti di WineHQ e la sua chiave sono stati rimossi dalla macchina dall'utente, dopo avere accertato che la chiave fosse referenziata dal solo file che spariva con essa e che nessun pacchetto di quella provenienza fosse installato. Lo stato dopo è verificato: tre sorgenti, cartella delle chiavi vuota, nessun riferimento a `winehq` sotto `/etc/apt/`, `winehq-stable` non più conosciuto da apt, e i sette pacchetti Wine della distribuzione intatti alla `10.0~repack-12ubuntu1` con il prefix a 32 bit che esegue a stato zero. È MS-151.
+Terza parte della giornata, dopo il commit `f2405fc`. PA-018 è compiuta: il file di sorgenti di WineHQ e la sua chiave sono stati rimossi dalla macchina dall'utente, dopo avere accertato che la chiave fosse referenziata dal solo file che spariva con essa e che nessun pacchetto di quella provenienza fosse installato. Lo stato dopo è verificato: tre sorgenti, cartella delle chiavi vuota, nessun riferimento a `winehq` sotto `/etc/apt/`, `winehq-stable` non più conosciuto da apt, e i sette pacchetti Wine della distribuzione intatti alla `10.0~repack-12ubuntu1` con il prefix a 32 bit che esegue a stato zero. È MS-151.
 
 La consegna di quei comandi ha però prodotto un errore mio che vale più della voce che chiudeva, ed è MS-152. Il blocco era per la postazione Windows e si apriva con `ssh -t studio`, con una riga di prosa che lo dichiarava; l'utente lo ha incollato in un terminale già aperto sulla macchina di destinazione, dove quell'alias non esiste, e `ssh` ha risposto tre volte che non risolveva il nome. Nessun danno, perché nulla è stato eseguito. Il punto è che la prescrizione della regola era stata rispettata: la quinta causa della sezione sul contesto di shell chiede che un blocco con `ssh` dichiari di essere per la macchina di partenza, e lo dichiarava. Il pezzo mancante è che una dichiarazione scritta accanto al blocco non viaggia con il blocco, perché chi copia copia il riquadro e non il paragrafo, che è la stessa ragione per cui la terza causa vuole il `cd` dentro il blocco. La correzione va al template ed è una voce nuova di PA-003: la forma predefinita per il lavoro su una macchina remota è quella che si esegue su quella macchina, senza `ssh`, e la forma con `ssh` si consegna solo a chi ha dichiarato di trovarsi sulla macchina di partenza, con la dichiarazione dentro il blocco come commento.
 
