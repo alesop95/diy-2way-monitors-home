@@ -27,6 +27,14 @@ La ricerca non cerca da zero: cerca dove il corpus locale è assente o debole, e
 | R11 cabinet | 06 | loudspeaker cabinet panel vibration; enclosure bracing damping; constrained layer damping loudspeaker |
 | R12 monitor attivi oggi | 00, 05 | active studio monitor DSP design; loudspeaker nonlinear compensation DSP; excursion protection active loudspeaker; class D audio amplifier review |
 
+## Il criterio di scelta dei paper: l'analisi stadio per stadio
+
+Aggiunto il 2026-10-06 su indicazione dell'utente. Il modello di lavoro che l'utente vuole ritrovare nei paper è quello dell'analisi del Tube Screamer TS808 negli esercizi del corso EEASE: un circuito reale, scomposto stadio per stadio, con il modello a piccolo segnale di ciascuno, le formule di guadagno, poli e zeri, e i valori numerici ricavati dai componenti veri. A parità di pertinenza, il vaglio di ogni giro preferisce quindi i paper e le tesi che analizzano un circuito o un sistema esistente con questa scomposizione, rispetto alle rassegne qualitative e ai lavori che danno solo il risultato. Nella query si aggiungono termini come "stage-by-stage analysis", "circuit analysis", "small-signal model" e "case study". Il criterio vale per tutti i filoni, e in particolare per R9, R10, R12 e per l'accoppiamento fra amplificatore e altoparlante.
+
+## Filoni per altri progetti: l'ingegnerizzazione dei pedali per chitarra
+
+Il ramo Guitar and effects engineering della biblioteca, nato in MS-208, è un filone di ricerca a sé e non appartiene alla tesi sui monitor. L'utente vuole progettare una pedaliera analogica per chitarra, dal circuito al PCB fino all'ordine dei componenti. La ricerca bibliografica di quel filone si svolgerà nel progetto dedicato, quando l'utente lo crea, con lo stesso metodo e lo stesso criterio dello stadio per stadio. Il punto di partenza sono le circa 130 voci del ramo nella biblioteca su `J:` e la pagina della wiki sul TS808.
+
 ## Il metodo, sul modello di intralino
 
 Per ogni filone si cerca in tre canali:

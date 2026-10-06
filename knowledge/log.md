@@ -16,3 +16,5 @@
 - fonte: sources/notes/eease-exercises.md
 - pagine: wiki/sources/eease-exercises.md (nuova) e 14 pagine di concetti o entità nuove
 - nota: prima compilazione, fatta da tre agenti in parallelo (uno per fonte) con concetti assegnati a ciascuno; 39 pagine, 353 collegamenti verificati, nessuno rotto; ogni pagina ha una sezione "Da verificare" sugli errori della fonte (MS-208)
+- fonte: sources/notes/eease-1.md, eease-2.md, eease-exercises.md (verifica dei punti sospetti)
+- pagine: wiki/errata-eease.md (nuova, 101 punti: 82 errori confermati, 12 non errori, 7 non decidibili) e correzioni o chiusure di sezione in 24 pagine di concetti, entità e fonti

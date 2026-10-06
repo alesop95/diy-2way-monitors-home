@@ -156,3 +156,17 @@ voci:
     stato: "Decisa con ADR-039; cinque progetti candidati da confermare."
     passo: "Una sessione in ciascun progetto confermato per aggiungere il rimando al vault; la regola generale al template con PA-003."
     fonte: "docs/PENDING-ACTIONS.md"
+  - id: 24
+    livello: 3
+    dove: "nuovo repository su E:"
+    titolo: PA-030, creare il progetto della pedaliera analogica per chitarra
+    stato: "Voluto dall'utente il 2026-10-06; la base bibliografica e' il ramo Guitar and effects engineering del vault, con il criterio dello stadio per stadio."
+    passo: "Quando l'utente lo indica: creare il repository dal template, poi la prima ricerca bibliografica sul filone dei pedali."
+    fonte: "docs/PENDING-ACTIONS.md"
+  - id: 25
+    livello: 2
+    dove: "questo repository e J:"
+    titolo: Digestione nella wiki di tutto il materiale utile di J:/MAIN, a tre livelli
+    stato: "In testo 3958 documenti, 399 scansioni in OCR, 95 file in formati non convertiti; nella wiki solo i tre appunti EEASE (MS-208), costati circa 5 token di agente per parola di fonte."
+    passo: "Rispondere alle sette domande di research-vault/10-Piano-digestione-MAIN.md (MS-210) sul piano a tre livelli proposto in MS-209: lettura profonda per il nucleo della tesi e dei pedali, scheda di fonte con il modello economico per il resto pertinente, solo voce di biblioteca per tutto il resto."
+    fonte: "docs/OPERATIONS-LOG.md"

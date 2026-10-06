@@ -549,6 +549,10 @@ def controlla_voci_recenti() -> None:
     riga("? ", "rimando da portare nei progetti candidati, in una sessione aperta in ciascuno (ADR-039)")
     print("  APERTA: elenco dei progetti da confermare con l'utente.")
 
+    print("\nPA-030  Creare il progetto della pedaliera analogica per chitarra")
+    riga("? ", "il momento e il nome li decide l'utente; base: ramo Guitar and effects engineering del vault (MS-208, MS-209)")
+    print("  APERTA: in attesa dell'indicazione dell'utente.")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,

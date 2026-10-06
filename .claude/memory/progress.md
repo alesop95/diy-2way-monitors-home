@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Ripresa dopo lo spegnimento del PC, errori degli appunti completati
+
+Commit di partenza: `15cf840`. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt` e copre MS-209 e MS-210.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-210; `docs/PENDING-ACTIONS.md` con la voce su `chiudi` in PA-003; `research-vault/10-Piano-digestione-MAIN.md`, nuovo, con le sette domande; `tools/roadmap-items.yml`, voce 25; `.claude/memory/index.md`; questo file. Fuori da git: `knowledge/wiki/errata-eease.md` e le pagine corrette, il registro dell'OCR in `_notes/ocr-log/`.
+
+La verifica di ripresa ha trovato MS-209 non committato, che l'utente ha confermato, e due lavori a metà. Gli errori degli appunti sono completati, con 101 voci. L'OCR è stato rilanciato a disco collegato ed è in corso. Il primo `chiudi` si è fermato su `fix-accents.py` a causa delle citazioni fra apici singoli nella wiki ignorata, ora corrette. Due `sed -i` dell'agente hanno convertito file `CRLF` in `LF`, e sono stati ripristinati.
+
+## 2026-10-06 - Criterio stadio per stadio, pedaliera, piano per ingerire MAIN
+
+Commit di partenza: `15cf840`, dell'utente, con i microstep da MS-205 a MS-208. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-209; `docs/PENDING-ACTIONS.md` con PA-029 e PA-030; `tools/check-pending-actions.py`; `tools/roadmap-items.yml` con le voci 24 e 25; `research-vault/08-Piano-ricerca-online.md`; `.claude/memory/index.md`; questo file. Fuori da git: l'elenco locale dei termini e la wiki, dove un agente corregge gli errori degli appunti.
+
+L'utente vuole che i paper si scelgano con l'approccio dell'analisi stadio per stadio del TS808, che gli errori degli appunti si correggano, che si crei più avanti un progetto per una pedaliera analogica completa e che tutto ciò che è utile in `MAIN` entri nella wiki. La misura mostra 3958 documenti in testo e 91,2 milioni di parole, quindi la digestione completa richiede il piano a tre livelli proposto in MS-209.
+
 ## 2026-10-06 - Prima wiki dagli appunti EEASE, ramo dei pedali, chiusura di ogni risposta
 
 Commit di partenza: `d6546e7`. Commit prodotto: nessuno ancora.
