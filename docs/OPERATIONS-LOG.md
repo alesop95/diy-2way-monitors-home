@@ -5012,6 +5012,27 @@ Verificato con: `sha256sum` sulle copie e sugli originali; i metadati `docProps/
 
 Esito: fatto. La copia vecchia degli esercizi sotto LOUDSPEAKERS & ELECTROACOUSTIC resta in attesa della decisione dell'utente.
 
+### MS-218 - Il quinto lotto, e i lotti che si sovrapponevano mentre l'OCR cresceva la cache
+
+Data: 2026-10-06
+
+Perimetro:
+- `tools/estratti-lotto.py`, con l'opzione `--nuovi`;
+- dieci schede del primo lotto, con l'impronta troncata;
+- il quinto lotto di 50 schede.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, e rende affidabile la scelta dei documenti nei lotti della voce 25. Ne dipende che nessun documento venga schedato due volte o saltato.
+
+*La sovrapposizione.* Preparando il quinto lotto con `--salta 200`, 25 dei 50 documenti risultavano già nel quarto. La causa è l'OCR in corso sul perimetro: i documenti appena riconosciuti superano la soglia di 300 parole ed entrano nell'elenco ordinato della cartella, quindi le posizioni si spostano fra un lotto e l'altro, e saltare i primi N non garantisce più di prendere documenti nuovi. Lo strumento ha preso l'opzione `--nuovi`, che esclude i documenti che hanno già una scheda, riconosciuti dall'impronta scritta nella scheda. Con quel criterio il quinto lotto ha un solo documento in comune con i lotti precedenti, un documento che una scheda non l'aveva.
+
+*Le impronte troncate.* Il controllo delle impronte ha trovato 190 impronte distinte su 200 schede. Le altre dieci, tutte del primo lotto, portavano un'impronta di sei cifre, scritta dall'agente, e non le dodici dell'elenco. Sono state corrette da codice dall'elenco del lotto, e le 200 schede hanno ora 200 impronte distinte.
+
+*Il quinto lotto.* Due agenti del modello economico, 25 estratti ciascuno, hanno usato 13 turni, 194 521 token di cache scritta, 847 136 di cache letta e 26 767 di uscita, per un costo equivalente di circa 462 000, cioè circa 9 200 per scheda. Il numero della notifica è 212 899. Il costo è più alto del quarto lotto perché la lettura del pacchetto è stata spezzata in più parti, e ogni parte in più rimanda il contesto. Le utilità sono 12 alta, 13 media, 21 bassa e 4 nessuna. Questo conferma la conclusione di MS-217: con pacchetti da 25 il giudizio non si allarga, e l'assenza di schede "nessuna" nel quarto lotto dipendeva dai documenti. Le schede sono ora 250. Nella cartella LOUDSPEAKERS & ELECTROACOUSTIC i documenti sopra la soglia erano 596 al momento della preparazione, e crescono finché l'OCR lavora.
+
+Verificato con: il confronto delle impronte fra gli elenchi dei lotti; il conteggio delle impronte distinte nelle schede; `scrivi-schede.py`, 50 schede con 0 problemi; le trascrizioni degli agenti.
+
+Esito: fatto. Il criterio `--nuovi` va portato anche allo strumento generico del template, come voce di PA-003.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

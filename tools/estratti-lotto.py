@@ -31,6 +31,8 @@ def main():
     ap.add_argument("--minimo", type=int, default=300, help="parole minime del documento")
     ap.add_argument("--salta", type=int, default=0, help="documenti da saltare, per i lotti successivi")
     ap.add_argument("--dest", required=True)
+    ap.add_argument("--nuovi", action="store_true",
+                    help="esclude i documenti che hanno gia' una scheda in knowledge/wiki/schede, riconosciuti dall'impronta")
     ap.add_argument("--pacchetti", type=int, default=0,
                     help="se maggiore di zero, riunisce gli estratti in file pacchetto-NN.md da tanti estratti ciascuno, "
                          "con l'elenco delle pagine di concetto esistenti, cosi' che un agente legga un solo file (MS-214)")
@@ -52,6 +54,15 @@ def main():
             continue
         scelti.append((pos.lower(), h, m))
     scelti.sort()
+    if a.nuovi:
+        # I documenti gia' schedati si riconoscono dall'impronta scritta nella scheda. Contare le
+        # posizioni con --salta non basta quando la cache cresce, per esempio durante un OCR (MS-218).
+        fatti = set()
+        for s in (RADICE / "knowledge" / "wiki" / "schede").glob("*.md"):
+            m = re.search(r"Impronta: ([0-9a-f]{8,})", s.read_text(encoding="utf-8", errors="replace"))
+            if m:
+                fatti.add(m.group(1)[:8])
+        scelti = [x for x in scelti if x[1][:8] not in fatti]
     scelti = scelti[a.salta:a.salta + a.quanti]
     dest = Path(a.dest)
     dest.mkdir(parents=True, exist_ok=True)

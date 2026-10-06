@@ -176,6 +176,10 @@ Nota di priorità. Bassa. Il ruolo di Ramsete nel workflow sarebbe l'acustica ar
 
 ## PA-003 - Propagare al template le correzioni trovate qui
 
+Voce aggiunta il 2026-10-06 con MS-218. Lo strumento generico `lavoro-a-lotti/tools/estratti-lotto.py` del template sceglie i documenti con `--salta`, che non basta quando la cache cresce durante il lavoro. Va aggiunta, solo in aggiunta, un'opzione che escluda i documenti già lavorati riconoscendoli da un'impronta del contenuto, come fa `--nuovi` qui.
+
+Voce aggiunta il 2026-10-06. Il commit nel template della sola misura del lotto 4 è stato fermato due volte dal controllo `sync-readme` prima del commit. La causa non era quel file: una sessione precedente, ormai chiusa, aveva lasciato non committato il pacchetto nuovo `verifica-link`, insieme al `README.md` aggiornato, a `PACKAGES.md` e a `chiudi-sessione`. Il controllo vedeva quindi l'indice del `README.md` in stage diverso da quello sul disco. Il lavoro lasciato è additivo e completo, e la soluzione proposta all'utente è un commit unico di tutto con `git add -A`. Il controllo non rallenta i progetti istanziati: gira solo nel template, e ferma un commit quando l'indice dei pacchetti è incoerente.
+
 Voce aggiunta il 2026-10-06 con MS-216. `check-eol.py` conta le fini riga `CRLF` e `LF` ma non segnala le sequenze di due ritorni a capo seguiti da un a capo, né i ritorni a capo isolati, che uno script di sostituzione può produrre senza che nessun altro controllo se ne accorga. Nel template lo strumento va esteso con questi due casi, solo in aggiunta.
 
 Voce aggiunta il 2026-10-06 con MS-213. La lezione sul modello adattivo al compito è stata scritta nel template, in `token-economy.md`, nel `README.md` di `lavoro-a-lotti` e nel nuovo `lavoro-a-lotti/tools/estratti-lotto.py`, insieme alla lezione sulla passata di stile nei registri nel `README.md` di `operations-log`. Il commit del template lo fa l'utente. La propagazione ai progetti, a partire da `E:/lettore-doc`, la decide l'utente.
