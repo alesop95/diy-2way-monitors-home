@@ -94,6 +94,8 @@ Chiusura del 2026-09-16, per lettura e non per domanda. La discrepanza si risolv
 
 Data di apertura: 2026-09-09. Stato: aperta.
 
+Voce aggiunta il 2026-10-06 con MS-223. Con ADR-045 l'interfaccia può fare anche da convertitore dei monitor attivi, se ha quattro uscite analogiche indipendenti: la ricerca è in `docs/54-amplificazione-e-dsp.md`, e consiglia il Behringer UMC404HD con la misura del fruscio al tweeter prima di confermare. La scelta chiude insieme questa voce e PA-024.
+
 Che cosa va fatto. Scegliere e acquisire una interfaccia audio per la macchina Ubuntu Studio. La valutazione appartiene al progetto gemello `home-recording-training-mixing-setup`, perché l'esigenza primaria è la registrazione multitraccia con Ardour, ma la scelta vincola anche questo progetto, quindi la voce esiste in entrambi.
 
 Perché conta qui. La fase 8 di questo progetto misura i diffusori costruiti, e una misura acustica richiede un ingresso microfonico con alimentazione phantom per un microfono XLR calibrato, che la scheda integrata `ALC887-VD` non ha. Senza interfaccia la fase 8 non è eseguibile in quella forma, e la scelta del microfono resta bloccata a monte: `docs/20-misura-stanza.md` conclude a favore di un XLR calibrato individualmente soltanto sotto la condizione che l'interfaccia esista, e dichiara che in sua assenza l'UMIK-1 USB sarebbe la scelta giusta senza discussione. Le due decisioni sono quindi in sequenza e non in parallelo.

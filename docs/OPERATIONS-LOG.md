@@ -5119,6 +5119,26 @@ Verificato con: `md-unwrap.py`, `lint-md-tables.py`, `fix-accents.py`, `fix-dash
 
 Esito: fatto per la ricerca. La scelta dell'interfaccia e dell'elettronica spetta all'utente, e con essa l'ADR e la voce negli acquisti finali.
 
+### MS-223 - L'interfaccia USB come convertitore dei monitor e come interfaccia di misura
+
+Data: 2026-10-06
+
+Perimetro:
+- la sezione nuova di `docs/54-amplificazione-e-dsp.md` sull'interfaccia USB;
+- PA-012 e PA-024 in `docs/PENDING-ACTIONS.md`.
+
+Legame con il progetto: serve PA-024 e PA-012 insieme, cioè la catena dei monitor attivi di ADR-033 e ADR-045 e la catena di misura della fase 8. Ne dipendono la scelta dell'interfaccia e la verifica del rumore al tweeter.
+
+*La ricerca.* Con il permesso dell'utente, un agente con il modello intermedio ha cercato interfacce USB con almeno quattro uscite analogiche indipendenti e un ingresso microfonico con alimentazione phantom, utilizzabili da Linux. Ha usato circa 174 000 token e ha riusato la valutazione del progetto gemello `home-recording-training-mixing-setup`. L'utente accetta il costo tecnico di un driver proprietario se abbassa il prezzo. I candidati letti sono Behringer UMC404HD e UMC204HD, Focusrite Scarlett 4i4 di quarta generazione, MOTU M4, Arturia MiniFuse 4 e Audient EVO 8; lo Steinberg UR44C non è stato letto. Nessuna pagina di produttore letta dichiara la conformità alla classe USB Audio, quindi i giudizi su Linux sono deduzioni o segnalazioni di utenti. Fa eccezione il Scarlett 4i4, che ha un driver dedicato nel kernel dalla versione 6.8, scritto da terzi. I prezzi sono di un rivenditore, letti il 2026-10-06.
+
+*Il consiglio della ricerca.* Il consiglio, dichiarato come tale, è il UMC404HD a 98 euro, con quattro uscite bilanciate e quattro ingressi con phantom, senza strumenti proprietari nelle fonti lette. Il suo rischio è la dinamica dichiarata più bassa, 100 dB pesati A con il riferimento non dichiarato, quindi il fruscio al tweeter va misurato con REW prima di dichiarare la catena adatta. Le vie di salita sono il Scarlett 4i4, con la dinamica più alta e il supporto nel kernel, e il MOTU M4 a 289 euro. Il MiniFuse 4 richiede un programma proprietario solo per Windows e macOS per le impostazioni persistenti, e costa di più. Il UMC204HD è il ripiego economico, ma la sua seconda coppia di uscite è soltanto su RCA sbilanciato.
+
+*La rilettura.* Due delle cinque domande della ricerca hanno già una risposta nei documenti del progetto. I monitor servono anche mentre si registra nel progetto gemello, quindi la latenza del percorso USB si somma a quella di CamillaDSP, ed è la nota di MS-222. Per le misure basta un ingresso con phantom, ma il gemello registra più sorgenti, quindi il numero degli ingressi si decide con PA-012. Le altre tre restano all'utente: comprare il UMC404HD e misurare prima di confermare, oppure salire subito; sensibilità del tweeter e guadagno degli amplificatori, che dipendono dagli altoparlanti della fase 4a; uscite sbilanciate accettabili o no per i tweeter.
+
+Verificato con: `md-unwrap.py`, `lint-md-tables.py`, `fix-accents.py`, `fix-dashes.py`, `fix-missing-accents.py`, `lint-prosa.py` e `check-privato.py` sulla pagina; `git diff --stat`, che mostra solo aggiunte.
+
+Esito: fatto per la ricerca. La scelta dell'interfaccia spetta all'utente e chiude insieme PA-012 e PA-024.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
