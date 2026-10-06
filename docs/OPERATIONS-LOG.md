@@ -5157,6 +5157,24 @@ Verificato con: `sync-ambiente.py --check`; `git status` nel gemello; `git log -
 
 Esito: fatto.
 
+### MS-225 - La catena bilanciata, e il piano della fase 4a fino al primo acquisto
+
+Data: 2026-10-06
+
+Perimetro:
+- ADR-047;
+- la sezione nuova "Il piano operativo della 4a" in `docs/50-progettazione-monitor.md`.
+
+Legame con il progetto: serve la fase 4a, cioè il nucleo del progetto, ed è il primo passo di progettazione dopo ADR-043. Ne dipendono la scelta degli altoparlanti, la potenza degli amplificatori e i capitoli della tesi sulla cassa e sul crossover.
+
+*La catena bilanciata.* L'utente ha confermato che la catena resta bilanciata. È ADR-047, che porta il requisito anche sull'ingresso degli amplificatori.
+
+*Il piano della 4a.* L'utente ha chiesto di procedere con la fase 4a e di sapere fin dove si arriva senza fermarsi, dato che la base bibliografica non è ingerita per intero. Il piano scritto nella pagina della fase ha quattro passi: i requisiti calcolati, cioè distanza, pressione massima e frequenza più bassa, da cui seguono superficie ed escursione del woofer; la curva target, motivata dal capitolo pertinente di Toole letto a fondo; la rosa degli altoparlanti con i dati dei costruttori; la simulazione di cassa e crossover attivo in VituixCAD. Ci si ferma solo alla misura, che richiede microfono e interfaccia, al rilievo geometrico della stanza e agli acquisti. Le letture profonde seguono i passi, come vuole ADR-043.
+
+Verificato con: i controlli della sequenza prima del commit.
+
+Esito: fatto per il piano. Il primo passo, i requisiti, attende tre numeri dall'utente.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

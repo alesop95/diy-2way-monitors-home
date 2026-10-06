@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Si torna al nucleo: il piano della fase 4a
+
+Commit di partenza: 7ffe5fd, dell'utente, con MS-224. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/50-progettazione-monitor.md`; `docs/OPERATIONS-LOG.md` con MS-225; `.claude/memory/decisions.md` con ADR-047; `.claude/memory/index.md`; questo file.
+
+Il fronte attivo diventa la fase 4a. Il primo passo sono i requisiti.
+
 ## 2026-10-06 - Interfaccia candidata scelta
 
 Commit di partenza: 7d15afe, dell'utente, con MS-223. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
