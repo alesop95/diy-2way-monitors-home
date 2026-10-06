@@ -587,3 +587,15 @@ Decisione. Ogni intervento su `J:\MAIN` si giudica per l'archivio nel suo insiem
 Motivazione. L'archivio esisteva prima del progetto e servirà ad altri, come la pedaliera di PA-030 e i progetti di acustica di PA-029. Una modifica pensata solo per questo progetto può peggiorarlo per gli altri usi.
 
 Conseguenze. Prima di proporre una scrittura su `J:\MAIN` l'agente dichiara che effetto ha sull'archivio e non solo sul progetto. Il vault delle fonti su `J:` è una vista dell'archivio, e la sua tassonomia resta generale.
+
+## ADR-045 - Il convertitore della catena di ascolto si sceglie con l'elettronica dei monitor, e il Rod Rain non è un vincolo
+
+Data: 2026-10-06. Stato: accettata, precisazione dell'utente; rivede ADR-012.
+
+Contesto. ADR-012 aveva fissato il Rod Rain audio come sorgente della catena di ascolto, con l'uscita analogica su RCA, perché era già in casa. Nella ricerca di PA-024 l'agente ha trattato quella decisione come un vincolo, e ne ha dedotto un problema d'ingresso per le soluzioni con il processore in un calcolatore. L'utente ha chiarito che il Rod Rain non va usato per forza, e che si può comprare un altro convertitore.
+
+Decisione. Il convertitore della catena di ascolto dei monitor non è fissato. Si sceglie insieme al processore digitale e agli amplificatori di PA-024, con il criterio del costo minimo e della soluzione aperta più completa. Il Rod Rain resta disponibile per le cuffie e per l'altro computer, ed è una delle opzioni, non la premessa.
+
+Motivazione. In una catena attiva con processore digitale il segnale nasce in digitale nel computer, e un convertitore scelto prima del processore impone una conversione in più senza beneficio. La scelta va fatta sull'architettura intera.
+
+Conseguenze. ADR-012 resta valida come descrizione del dispositivo e del suo uso con le cuffie, ma non vincola i monitor. `docs/54-amplificazione-e-dsp.md` ragiona sulla catena da zero, e la candidata più forte diventa CamillaDSP sulla macchina di progetto con un'interfaccia USB a quattro uscite, che può coincidere con l'interfaccia di misura di PA-012. `docs/75-catena-di-riproduzione.md` va riletta alla scelta di PA-024.

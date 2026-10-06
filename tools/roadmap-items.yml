@@ -125,7 +125,7 @@ voci:
     dove: questo repository
     titolo: PA-024, scegliere il modulo di amplificazione e processore per i cabinet attivi
     stato: "Decisa l'architettura attiva con processore digitale, ADR-033; il modulo e la configurazione da Linux sono da accertare."
-    passo: "Confronto dei candidati con fonti lette e verifica del caricamento dei biquad da Linux; acquisto alla fine, ADR-027."
+    passo: "Ricerca fatta (MS-222, docs/54-amplificazione-e-dsp.md), criterio open source a costo minimo; l'utente sceglie a partire dalla via d'ingresso del segnale, poi ADR e lista acquisti; acquisto alla fine, ADR-027."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 19

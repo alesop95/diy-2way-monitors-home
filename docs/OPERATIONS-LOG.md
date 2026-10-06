@@ -5099,6 +5099,26 @@ Verificato con: le due conversioni con pandoc e il confronto paragrafo per parag
 
 Esito: fatto.
 
+### MS-222 - PA-024: il confronto dei moduli di amplificazione e dei processori, con il criterio open source
+
+Data: 2026-10-06
+
+Perimetro:
+- `docs/54-amplificazione-e-dsp.md`, nuova;
+- `docs/README.md` e PA-024 in `docs/PENDING-ACTIONS.md`.
+
+Legame con il progetto: serve la fase 4 della progettazione del monitor e ADR-033, ed è il primo passo sul nucleo dopo il richiamo di ADR-043. Ne dipendono la scelta dell'elettronica dei cabinet, la voce degli acquisti finali di ADR-027 e il capitolo del report sulla realizzazione digitale del crossover.
+
+*La ricerca.* Un agente con il modello intermedio ha letto le fonti dei produttori e dei repository su sei famiglie di candidati, per circa 442 000 token in due passate. Le famiglie sono Hypex FusionAmp, i moduli con ADAU1701 o ADAU1452, HiFiBerry, miniDSP 2x4 HD con minidsp-rs, CamillaDSP su un calcolatore Linux e il Dayton DSP-408 come termine di confronto. Durante la ricerca l'utente ha fissato il criterio: minimizzare il costo con la soluzione più completa open source, perché sa capire e fare tutto e considera parte del valore la documentazione. La seconda passata ha aggiunto la distinta di una soluzione con CamillaDSP per quattro canali, con i prezzi letti e datati, il confronto di costo con i candidati chiusi e una soluzione consigliata con quattro rischi dichiarati. Le quattro voci in euro lette sommano 261,70 euro, un ordine di grandezza e non un preventivo. Il verdetto sulla configurazione da Linux è verificato su fonte primaria per CamillaDSP, per miniDSP con minidsp-rs e per il caricamento dei biquad su HiFiBerry; plausibile ma non verificato per Hypex e per i moduli ADAU con SigmaStudio; escluso per il Dayton. Una fonte del manuale di VituixCAD dice che VituixCAD stesso gira su Linux solo sotto Wine, il che attenua la differenza fra candidati nativi e no. Le fonti non lette sono elencate in fondo alla pagina, fra cui le pagine di miniDSP, che hanno risposto con una verifica anti-bot, e quelle di Analog Devices, che non hanno risposto.
+
+*La rilettura.* L'agente principale ha riletto la pagina e ha aggiunto quattro note, dichiarate come deduzioni. La più importante riguarda l'ingresso del segnale, che la ricerca non aveva trattato. La catena di ascolto di ADR-012 esce in analogico dal Rod Rain, e un Raspberry Pi con il DAC8x non ha un ingresso analogico. Le vie sono tre: un convertitore analogico-digitale davanti, oppure l'audio digitale dal computer al Pi, oppure CamillaDSP sulla macchina di progetto stessa verso un'interfaccia USB con quattro uscite. La terza toglie il calcolatore e il DAC dalla distinta, e potrebbe coincidere con l'interfaccia di misura di PA-012. Le altre tre note riguardano la latenza, che va ridotta quando i monitor servono alla registrazione nel progetto gemello, il prezzo letto del Raspberry Pi, che va riletto perché sembra molto più alto del prezzo di lancio, e un condensatore di protezione in serie al tweeter in ogni caso.
+
+Verificato con: `md-unwrap.py`, `lint-md-tables.py`, `fix-accents.py`, `fix-dashes.py`, `fix-missing-accents.py`, `lint-prosa.py` e `check-privato.py` sulla pagina.
+
+*La correzione dell'utente.* L'utente ha chiarito che il Rod Rain non è un vincolo e ha chiesto di ragionare da zero. La nota sull'ingresso è stata riscritta: con il segnale che nasce in digitale nel computer, la forma più forte è CamillaDSP sulla macchina di progetto verso un'interfaccia USB a quattro uscite, che può servire anche alle misure di PA-012, mentre la scatola dedicata con il Raspberry Pi resta l'alternativa per avere monitor indipendenti dal computer. La decisione dell'utente è ADR-045, che rivede ADR-012. L'errore dell'agente è stato trattare come vincolo una decisione presa per comodità, perché il dispositivo era già in casa, senza chiedere se valesse ancora dopo la scelta dell'attivo.
+
+Esito: fatto per la ricerca. La scelta dell'interfaccia e dell'elettronica spetta all'utente, e con essa l'ADR e la voce negli acquisti finali.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
