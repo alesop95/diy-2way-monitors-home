@@ -5057,6 +5057,30 @@ Verificato con: le trascrizioni degli agenti dei lotti; `scrivi-schede.py`; i co
 
 Esito: fatto. I quattro non decidibili di Musical Acoustics attendono l'utente.
 
+### MS-220 - I lotti 8 e 9, i quattro dubbi di Musical Acoustics chiusi con la fisica, l'appunto originale annotato, e il richiamo allo scopo del progetto
+
+Data: 2026-10-06
+
+Perimetro:
+- i lotti 8 e 9 di schede di livello 2;
+- le quattro voci non decidibili di `errata-ma.md` e le pagine della wiki che le riportano;
+- l'appunto originale `ESE - MA (PART I).docx` su `J:`;
+- ADR-043.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, e con ADR-043 riporta il lavoro sul nucleo del progetto. Ne dipende la scelta dei prossimi passi.
+
+*I lotti 8 e 9.* Altri 100 documenti di LOUDSPEAKERS & ELECTROACOUSTIC non ancora schedati, in 4 pacchetti da 25. Il lavoro ha usato 21 turni, 356 172 token di cache scritta, 1 316 478 di cache letta e 47 854 di uscita, per un costo equivalente di circa 816 000, cioè circa 8 200 per scheda. `scrivi-schede.py` ha scritto 100 schede con 0 problemi, e le schede sono ora 450. Le utilità sono 42 alta, 36 media, 21 bassa e 1 nessuna.
+
+*I quattro dubbi di Musical Acoustics.* L'utente non ricorda i modelli usati a lezione e ha chiesto di correggere le fonti perché siano corrette sul piano teorico e fisico. Le quattro voci sono state chiuse con la fisica, dichiarando che i valori numerici restano quelli di un modello non scritto. Il trombone con il primo modo a circa 40 Hz è un non errore. In un ottone la prima risonanza della colonna d'aria cade sotto la nota pedale, circa 58 Hz per B♭1, e fuori dalla serie quasi armonica, mentre un cilindro chiuso-aperto a 40 Hz sarebbe lungo circa 2,14 m. Il violino con il primo modo sul manico è un errore di formulazione: il modo del manico è plausibile come primo, ma irradia molto poco, non nulla. Il timpano a circa 150 Hz è plausibile secondo $f_{mn} = j_{mn}\sqrt{T/\sigma}/(2\pi a)$. Il cambio con l'aria è un errore di formulazione, perché va dichiarato il verso: la massa d'aria abbassa tutti i modi, e l'aria chiusa nella caldaia alza soprattutto il modo $(0,1)$. L'oscillatore a circa 16 Hz è un non errore, coerente con la forma corretta della frequenza, per esempio con $k = 10^{4}\,N/m$ e $m = 1\,kg$. Le affermazioni sul trombone e sul timpano sono fisica nota scritta dall'agente, non verificata in questo giro su una fonte primaria, e vanno citate da un manuale prima di entrare nella tesi.
+
+*L'appunto originale annotato.* Con lo stesso metodo di MS-215, e su indicazione dell'utente di correggere le fonti, l'appunto originale di Musical Acoustics su `J:` ha ricevuto 19 commenti di Word ancorati. Sono i 17 errori confermati della prima errata più i due errori di formulazione chiusi qui. Lo script è stato limitato a quel solo file con una variabile d'ambiente, perché rilanciarlo sugli altri quattro avrebbe duplicato i loro commenti. Due voci, cioè la meccanica dei solidi e le risposte complete, sono state ancorate a mano al primo paragrafo della loro sezione. La conversione con pandoc, con le stesse opzioni della cache, è identica byte per byte alla fonte convertita di prima, e nell'XML commenti, ancoraggi e riferimenti sono 19 ciascuno.
+
+*Il richiamo allo scopo.* L'utente ha ricordato che lo scopo principale del progetto non va mai perso di vista. Il richiamo è diventato ADR-043: la base di conoscenza serve i monitor, e ogni proposta di passi successivi dopo un lavoro su di essa nomina anche il passo successivo sul nucleo del progetto.
+
+Verificato con: le trascrizioni degli agenti; `scrivi-schede.py`; `lint-md-tables.py`, `md-unwrap.py`, `fix-accents.py` e `cerca-escape.py` sulla wiki; il confronto con pandoc e il conteggio nell'XML dell'appunto annotato.
+
+Esito: fatto.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
