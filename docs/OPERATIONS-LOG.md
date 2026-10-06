@@ -4846,6 +4846,37 @@ Verificato con: `py_compile` sui tre strumenti; `Test-Allineamento.py`, che segn
 
 Esito: fatto per le decisioni, la regola e gli strumenti. Restano tre cose: il lotto di prova della voce 25, che attende il permesso; PA-031, che attende l'utente; e la ripresa dell'OCR sul solo perimetro di ADR-041, che attende anch'essa il permesso.
 
+### MS-212 - Il lotto di prova dei due livelli misurato, le copie personali cancellate, gli avvisi di stile
+
+Data: 2026-10-06
+
+Perimetro:
+- il lotto di prova di ADR-041: la fonte di livello 1 `knowledge/sources/notes/ese-foa.md`, con la wiki e `errata-foa.md`, e 50 schede di livello 2 in `knowledge/wiki/schede/`, tutto locale;
+- `tools/estratti-lotto.py`, nuovo, e il tipo di pagina "scheda di fonte" in `knowledge/WIKI-SCHEMA.md`;
+- PA-031 compiuta;
+- gli avvisi di `lint-prosa.py` nei documenti vivi;
+- le fini riga di `tools/converti-fonti.py`.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, e misura i costi su cui l'utente decide i lotti della voce 25 della roadmap. Ne dipende il ritmo di tutta la digestione di `J:\MAIN`.
+
+*Il permesso.* L'utente ha precisato che il permesso per il lotto di prova era già dato con la risposta alla domanda 6. L'agente lo aveva chiesto di nuovo, e il lotto è partito subito dopo.
+
+*Livello 1, misurato.* La fonte è `ESE -FOA.docx`, le esercitazioni dell'utente di Fundamentals of Acoustics, circa 25 000 parole. Un agente con il modello intermedio l'ha letta per intero in circa 12 minuti, con 283 497 token. Fanno circa 11 token per parola, più del doppio dei circa 5 misurati in MS-209 sugli appunti EEASE. Il motivo probabile è la verifica di ogni conto, che su un testo fatto solo di esercizi è quasi tutto il lavoro. Il risultato: 14 pagine create, cioè la pagina della fonte, `errata-foa.md` e 11 pagine di concetto, e 7 pagine aggiornate. L'errata ha 87 voci: 57 errori confermati, 25 non errori e 5 non decidibili, ciascuno con la sua domanda. Un errore è stato rifatto qui a campione. La velocità del suono a 50 °C, partendo da 320 m/s a 20 °C come chiede l'esercizio, è $320\sqrt{323.15/293.15} = 335.98\,m/s$, e gli appunti scrivono $355.37$.
+
+*Livello 2, misurato.* Gli estratti dei 50 documenti, cioè scheletro delle intestazioni e prime 1500 parole, sono stati preparati da codice con `tools/estratti-lotto.py`. Lo strumento sceglie i documenti in ordine di percorso dentro la cartella, esclude quelli personali e quelli sotto le 300 parole, e in tutto ha estratto circa 69 935 parole. Cinque agenti del modello economico, 10 estratti ciascuno, hanno scritto le 50 schede in circa 2 minuti e mezzo, con 491 484 token in tutto. Fanno circa 9 800 token per scheda, oltre tre volte la stima di 3000 di MS-209. Le utilità assegnate sono 21 alta, 2 media-alta, 12 media, 4 bassa e 10 nessuna, più una scheda con una dicitura fuori formato. A campione, alcune utilità sono larghe: un paper sulla simulazione di un driver a compressione è dato "alta", mentre il monitor a due vie non usa driver a compressione. Dieci schede, tutte dello stesso agente, mancavano del campo "Cache", aggiunto poi da codice dall'elenco.
+
+*La proiezione, da sostituire con i lotti veri.* Con questi numeri il livello 2 sui circa 2500 documenti del perimetro costerebbe circa 25 milioni di token del modello economico, non 7,5. Il nucleo del livello 1, circa un milione di parole, ne costerebbe circa 11 milioni del modello intermedio, non 5. Per il livello 2 ci sono due leve. La prima: restare a 10 estratti per agente, perché lotti più grandi costano di più per elemento, come dice `token-economy.md`. La seconda: estratti più corti, per esempio 800 parole invece di 1500, che vanno provati su un lotto prima di essere adottati.
+
+*PA-031.* L'utente ha permesso di cancellare le copie, se non servono ad altri progetti di ricerca. Per ADR-042 nessun progetto può leggerle, quindi non servono a nessuno. Lo script `_notes/privacy/cancella-copie-personali.py` ha tolto 69 voci dal manifesto e cancellato 68 file di cache, perché due voci condividevano lo stesso file. L'indice `_INDEX.md` della cache è stato rigenerato senza conversioni, con 4251 voci. Nessun file è stato aperto, e gli originali su `J:` non sono stati toccati.
+
+*Gli avvisi di stile.* Il commit di MS-211 ha mostrato 49 segnalazioni di `lint-prosa.py`. Nei documenti vivi, cioè le pendenze e lo snapshot, sono state riscritte le frasi segnalate. Erano tre parallelismi negativi e due "attribuzioni senza fonte", che erano falsi allarmi ma sono state riformulate comunque. Nel registro degli interventi e nel registro delle decisioni restano circa 40 parallelismi negativi. Quei registri non riscrivono le voci passate, e una passata di stile su di essi è chiesta all'utente come eccezione.
+
+*Lo stesso errore, la terza e la quarta volta.* Il commit di MS-211 ha portato `tools/converti-fonti.py` da `LF` a `CRLF`, con 388 righe cambiate. Python su Windows, aprendo un file in modo testo senza `newline`, scrive le fini riga di Windows. `check-eol.py` non poteva vederlo, perché il file era coerente con sé stesso, e la fine riga è stata riportata a `LF`. Anche l'agente del livello 1 ha prodotto con i suoi script caratteri di controllo da `\beta` e `\rho` e conversioni di fine riga, e li ha riparati. La regola di MS-210 va quindi estesa. Dopo ogni scrittura con uno script si guarda `git diff --stat` del file, e un numero di righe cambiate molto maggiore di quelle toccate è il segno di una fine riga cambiata. Gli script che scrivono file del repository usano la modalità binaria, oppure `newline` esplicito.
+
+Verificato con: le misure dei token dalle notifiche degli agenti; il conteggio delle schede e dei campi; il conto della velocità del suono; `git diff --stat`; `md-unwrap.py`, `fix-accents.py` e `fix-dashes.py` su `knowledge/`.
+
+Esito: fatto. Il lotto di prova è misurato, e il lotto successivo attende la decisione dell'utente sulla base di queste misure.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

@@ -14,6 +14,8 @@ La wiki non è un archivio di documenti da cercare, ma una knowledge base già s
 
 `wiki/concepts/<concetto>.md` per i concetti e i modelli mentali. `wiki/entities/<entita>.md` per persone, prodotti, aziende, tecnologie. `wiki/sources/<fonte>.md` per il riassunto di una singola fonte ingerita. Ogni pagina ha un titolo, un sommario denso, i collegamenti alle pagine correlate e i riferimenti alle fonti da cui deriva.
 
+`wiki/schede/<fonte>.md` è la scheda di fonte del livello 2 di ADR-041: scritta dal modello economico sul solo scheletro e sulle prime pagine del testo convertito, dice che cosa contiene il documento, a che cosa serve per la tesi e quali capitoli contano, e dichiara in testa di non essere una lettura completa e di non avere verifiche sui conti. Una scheda non fonda un'affermazione della tesi: segnala dove leggere. Quando un capitolo ne ha bisogno, la fonte si promuove al livello 1 e diventa una pagina in `wiki/sources/`.
+
 ## Collegamenti
 
 Le pagine si collegano tra loro con link markdown relativi, per esempio `[replication](../concepts/replication.md)`. Ogni concetto cita le fonti che lo trattano e le altre pagine con cui è in relazione. Il valore della wiki sta nella densità dei collegamenti: una pagina isolata vale poco.
