@@ -4964,6 +4964,36 @@ Verificato con: il rapporto di ancoraggio in `_notes/privacy/annota-rapporto.jso
 
 Esito: fatto. Restano la decisione sulla seconda versione di `EEASE II.docx` e, se l'utente lo vuole, la rilettura dei 50 commenti ancorati al titolo della sezione.
 
+### MS-216 - Il quarto lotto con due agenti, e le due versioni di EEASE II
+
+Data: 2026-10-06
+
+Perimetro:
+- il quarto lotto di 50 schede, con 2 agenti da 25 estratti;
+- le due copie di `EEASE II.docx` su `J:`;
+- la sezione delle misure nel template, solo in aggiunta.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, e fissa la forma dei lotti successivi della voce 25. Ne dipende il costo del livello 2.
+
+*Il quarto lotto.* Con `estratti-lotto.py --pacchetti 25` i successivi 50 documenti di LOUDSPEAKERS & ELECTROACOUSTIC sono stati riuniti in due pacchetti, di circa 21 005 e 20 127 parole. Due agenti del modello economico ne hanno letto uno ciascuno, in 10 turni in tutto, e `scrivi-schede.py` ha scritto le 50 schede con 0 problemi. Le schede sono ora 200. Dalle trascrizioni degli agenti la ripartizione è questa, a confronto con il terzo lotto.
+
+| Lotto | Agenti | Turni | Cache scritta | Cache letta | Uscita | Costo equivalente |
+|---|---|---|---|---|---|---|
+| 3 | 5 | 19 | 336 792 | 1 031 208 | 29 421 | circa 671 000 |
+| 4 | 2 | 10 | 181 144 | 599 298 | 18 760 | circa 380 000 |
+
+Il costo equivalente usa gli stessi pesi di MS-214, cioè 1,25, 0,1 e 5, ed è un'inferenza su quei pesi. Due agenti al posto di cinque hanno ridotto il costo del 43 per cento rispetto al terzo lotto, e del 68 per cento circa rispetto al primo. Ogni scheda costa ora circa 7 600 token equivalenti. Il numero della notifica è 199 521. A campione le schede sono di qualità comparabile. Le utilità sono però 26 alta, 19 media, 5 bassa e nessuna "nessuna", mentre nei lotti precedenti fra 9 e 10 schede su 50 erano "nessuna". Con 25 estratti per agente il giudizio potrebbe diventare più largo. È un segnale da verificare con una rilettura a campione delle "alta" prima di adottare pacchetti più grandi come forma stabile.
+
+*Le due versioni di EEASE II.* L'utente ha chiesto di tenere la più completa, annotata e al suo posto, e di cancellare l'altra. Le due conversioni con pandoc hanno lo stesso numero di parole, 60 784, e differiscono in una sola riga, il testo calcolato di un rimando a una figura. I metadati del documento dicono quale è la più recente. La copia di `From EEASE` è la revisione 108, salvata il 2019-11-28. La copia sotto LOUDSPEAKERS & ELECTROACOUSTIC è la revisione 107, salvata il 2019-07-28. La prima è quindi la più recente, è quella da cui deriva la wiki e quella già annotata, e sta con gli altri due appunti EEASE in `From EEASE`, dove resta. La cancellazione della seconda è fallita due volte con "Device or resource busy": l'utente l'aveva aperta in Word. Lo screenshot in cui l'utente segnalava che "EEASE II non ha commenti" mostrava proprio quella copia. La copia annotata ha 24 commenti registrati, cioè le 23 voci di MS-215 più la voce 61 aggiunta a mano. La cancellazione si ripete quando il file è chiuso.
+
+*Il template.* La misura del quarto lotto è stata aggiunta in coda alla sezione delle misure di `lavoro-a-lotti/README.md`, senza toccare il testo esistente, come ha chiesto l'utente.
+
+Una scheda conteneva un trattino lungo, e tre parole mancavano dell'accento, cioè qualità, proprietà e affidabilità. La catena tipografica le ha corrette, e `scrivi-schede.py` ora la lancia da sé sulle schede dopo averle scritte. Scrivendo questa voce lo script dell'agente ha prodotto due sequenze di due ritorni a capo seguiti da un a capo, perché il testo aggiunto conteneva già la fine riga di Windows e la funzione di sostituzione la convertiva di nuovo. `check-eol.py` non le segnala, perché conta solo `CRLF` e `LF`. Sono state tolte in byte, e il buco del controllo va portato al template come voce di PA-003.
+
+Verificato con: le trascrizioni degli agenti; `scrivi-schede.py`; il conteggio dei commenti nell'XML; i metadati `docProps/core.xml` delle due copie; il confronto delle due conversioni con pandoc.
+
+Esito: fatto per il lotto e per la scelta della versione. La cancellazione della copia vecchia attende che l'utente chiuda Word.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

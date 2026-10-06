@@ -176,6 +176,8 @@ Nota di priorità. Bassa. Il ruolo di Ramsete nel workflow sarebbe l'acustica ar
 
 ## PA-003 - Propagare al template le correzioni trovate qui
 
+Voce aggiunta il 2026-10-06 con MS-216. `check-eol.py` conta le fini riga `CRLF` e `LF` ma non segnala le sequenze di due ritorni a capo seguiti da un a capo, né i ritorni a capo isolati, che uno script di sostituzione può produrre senza che nessun altro controllo se ne accorga. Nel template lo strumento va esteso con questi due casi, solo in aggiunta.
+
 Voce aggiunta il 2026-10-06 con MS-213. La lezione sul modello adattivo al compito è stata scritta nel template, in `token-economy.md`, nel `README.md` di `lavoro-a-lotti` e nel nuovo `lavoro-a-lotti/tools/estratti-lotto.py`, insieme alla lezione sulla passata di stile nei registri nel `README.md` di `operations-log`. Il commit del template lo fa l'utente. La propagazione ai progetti, a partire da `E:/lettore-doc`, la decide l'utente.
 
 Voce aggiunta il 2026-10-06 con MS-211. La regola `documenti-personali.md` di ADR-042 è stata scritta nel template, in `E:/template-claude-developing/.claude/rules/`, insieme alla sua riga nell'albero del `README.md`. Non è ancora committata: il commit del template lo fa l'utente. Restano da portare nel template anche l'esclusione negli strumenti, cioè un modulo come `tools/privato_esclusi.py` letto da `doc-ingest.py`, e il caso nella procedura di inizializzazione che crea il file locale degli schemi.
