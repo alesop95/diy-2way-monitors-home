@@ -14,5 +14,9 @@
  "sources/notes/ese-foa.md": {
   "sha256": "f20fcf450027c64ca3a05b7d7e700d7ec36bcfad2361e36091054127a055de7d",
   "ingerita": "2026-10-06"
+ },
+ "sources/notes/ese-ma-1.md": {
+  "sha256": "0e64462ccee4f9455012862ebe6c22fb01cd79fb9a39972b99b0495a6a3ab3f9",
+  "ingerita": "2026-10-06"
  }
 }

@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Lotti 6 e 7, Musical Acoustics nella wiki
+
+Commit di partenza: 7ce6cbe, dell'utente, con MS-218. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-219; `tools/roadmap-items.yml`; `knowledge/log.md` e `knowledge/.ingest-state.json`; `.claude/memory/index.md`; questo file. Fuori da git: 100 schede, 9 pagine nuove e 9 aggiornate della wiki, 10 formule corrette.
+
+Restano all'utente i quattro non decidibili di Musical Acoustics.
+
 ## 2026-10-06 - Quinto lotto, lotti senza sovrapposizioni
 
 Commit di partenza: a71b20b. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
