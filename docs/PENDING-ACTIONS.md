@@ -597,7 +597,7 @@ Criterio di completamento. Le tre verifiche riuscite, con versione, provider e m
 
 ## PA-024 - Scegliere il modulo di amplificazione e processore per i cabinet attivi, verificandone il software su Linux
 
-Data di apertura: 2026-10-02, da ADR-033. Stato: aperta, eseguibile come ricerca; l'acquisto si fa alla fine con gli altri, per ADR-027.
+Data di apertura: 2026-10-02, da ADR-033. Stato: aperta. La ricerca è fatta il 2026-10-06 con MS-222 ed è in `docs/54-amplificazione-e-dsp.md`, con il criterio dell'utente di costo minimo e soluzione open source; resta la scelta dell'utente, a partire dalla via d'ingresso del segnale. L'acquisto si fa alla fine con gli altri, per ADR-027.
 
 Che cosa va fatto. Scegliere, per ciascun cabinet, due canali di amplificazione e un processore digitale per il crossover, separati oppure integrati in un modulo da montare sul retro. Dimensionare la potenza sugli altoparlanti che la fase 4a sceglierà.
 

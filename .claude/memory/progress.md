@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - PA-024, la ricerca sull'elettronica dei cabinet
+
+Commit di partenza: 3d6fcd5, dell'utente, con MS-221. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/54-amplificazione-e-dsp.md`, nuova; `docs/README.md`; `docs/PENDING-ACTIONS.md` con PA-024; `docs/OPERATIONS-LOG.md` con MS-222; `tools/roadmap-items.yml`; `.claude/memory/index.md`; questo file.
+
+Il criterio dell'utente è costo minimo e soluzione open source. La domanda da cui parte la scelta è la via d'ingresso del segnale.
+
 ## 2026-10-06 - MAIN come archivio principale
 
 Commit di partenza: d0ae978, dell'utente, con MS-220. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.

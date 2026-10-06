@@ -16,7 +16,7 @@ Le fasi operative sono documentate una per pagina: [misura reale della stanza](2
 
 Il rilievo geometrico della stanza, cioè quali quote si prendono, in quale ordine e su quali tabelle si scrivono, sta in [35-rilievo-geometrico.md](35-rilievo-geometrico.md). È un allegato operativo alla fase 2 e i suoi campi sono ricavati dall'unione di ciò che le fasi 1, 2 e 3 pretendono, perché il rilievo si fa una volta sola: è il posto dove vive anche il verbale, dato che le tabelle si riempiono lì. Il fronte è PA-020.
 
-La catena di riproduzione, cioè che cosa sta fra il computer e i monitor e come questo vincola l'architettura del diffusore, sta in [75-catena-di-riproduzione.md](75-catena-di-riproduzione.md).
+La catena di riproduzione, cioè che cosa sta fra il computer e i monitor e come questo vincola l'architettura del diffusore, sta in [75-catena-di-riproduzione.md](75-catena-di-riproduzione.md). Il confronto dei moduli di amplificazione e dei processori digitali per i cabinet attivi, con la configurazione da Linux e la distinta di una soluzione aperta, sta in [54-amplificazione-e-dsp.md](54-amplificazione-e-dsp.md).
 
 I riferimenti stanno nella cartella [90-riferimenti/](90-riferimenti/README.md), e comprendono l'inventario del software disponibile, lo stato delle licenze, lo storico verificato di Akabak e VACS, le cinque incoerenze del documento sorgente spiegate una per una, la prova di copertura della conversione e le fonti citate.
 
