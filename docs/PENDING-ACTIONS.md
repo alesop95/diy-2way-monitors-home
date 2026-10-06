@@ -617,7 +617,7 @@ Criterio di completamento. Ogni voce dei manifesti registrata, ogni documento co
 
 ## PA-027 - Censimento completo di `J:`, biblioteca delle fonti alla maniera di JabRef, vault su `J:`
 
-Data di apertura: 2026-10-05, da MS-197. Stato: aperta. Forma decisa in ADR-038; il 2026-10-05, con MS-201, biblioteca e vault sono generati su `J:` da `tools/biblioteca.py`, con 8194 fonti e 208 ancora da classificare. Il 2026-10-05 sera, con MS-206, le voci da classificare sono zero e le fonti 7755, con 439 non pertinenti escluse; la rigenerazione del vault attende il disco `J:`. Restano la classificazione dei residui, l'OCR delle scansioni e la decisione dell'utente sui nomi di persona nei file di `J:`.
+Data di apertura: 2026-10-05, da MS-197. Stato: aperta. Forma decisa in ADR-038; il 2026-10-05, con MS-201, biblioteca e vault sono generati su `J:` da `tools/biblioteca.py`, con 8194 fonti e 208 ancora da classificare. Il 2026-10-05 sera, con MS-206, le voci da classificare sono zero e le fonti 7755, con 439 non pertinenti escluse; il 2026-10-06, con MS-208, il materiale sui pedali per chitarra ha un ramo proprio di nove sottogruppi; la rigenerazione del vault attende il disco `J:`. Restano la classificazione dei residui, l'OCR delle scansioni e la decisione dell'utente sui nomi di persona nei file di `J:`.
 
 Che cosa va fatto. Le richieste dell'utente sono tre.
 - Analizzare le fonti, oltre a quelle web, controllando tutte le sottocartelle pertinenti di `J:\MAIN` e di `J:\_____da sistemare ancora`. Il conteggio di partenza per cartella è in MS-197.

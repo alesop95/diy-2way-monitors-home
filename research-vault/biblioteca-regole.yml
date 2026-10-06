@@ -40,7 +40,6 @@ alberi:
       Microelectronics: {}
       Audio electronics:
         Amplifiers 2.0: {}
-        Guitar electronics: {}
       Electronic measurements: {}
       PCB design and simulation: {}
       EMC: {}
@@ -91,6 +90,18 @@ alberi:
       Music production: {}
       Computer music: {}
     Musical Instruments: {}
+    # Ramo chiesto dall'utente il 2026-10-06: l'ingegnerizzazione dei pedali e della chitarra
+    # elettrica e' un'area di ricerca a se', non un dettaglio dell'elettronica audio.
+    Guitar and effects engineering:
+      Guitar electronics: {}
+      Distortion, overdrive and fuzz: {}
+      Modulation and time-based effects: {}
+      Guitar amplifiers and cabinets: {}
+      Virtual analog modeling: {}
+      Guitar pickups: {}
+      Guitar body acoustics: {}
+      Pedal design and construction: {}
+      Schematics and datasheets: {}
     Mechanical design and CAD: {}
     Computer science:
       Information theory: {}
@@ -208,8 +219,16 @@ disciplina:
   "Analog electronics": ['analog electronic', 'elettronica analogica', 'transistor', 'op.?amp', 'operational amplifier', 'razavi', 'sedra', 'microelectronic circuit', 'elettronica (1|i|applicata)\b', 'fondamenti di elettronica']
   "Digital electronics": ['digital electronic', 'elettronica digitale', 'fpga', 'microcontroll', 'arduino', 'logic design', 'embedded system', 'sistemi embedded']
   "Microelectronics": ['microelectronic', 'microelettronic', '\bvlsi\b', '\bcmos\b']
-  "Amplifiers 2.0": ['power amplifier', 'amplificator', 'class.d', 'classe d', 'audio amplifier']
-  "Guitar electronics": ['guitar', 'chitarra', 'pedal', 'valve', 'valvol', 'tube amp']
+  "Amplifiers 2.0": ['power amplifier', 'amplificator', 'class.d', 'classe d', 'audio amplifier', '\bvalves?\b', 'valvol', 'vacuum.tube']
+  "Guitar electronics": ['guitar', 'chitarra', 'electric guitar']
+  "Distortion, overdrive and fuzz": ['distortion (pedal|circuit|guitar|effect)', 'guitar distortion', 'overdrive', '\bfuzz\b', 'tube screamer', 'ts808', '\bklon\b', 'king ?of ?tone', 'big muff', 'clipping', 'diode limiter', 'stomp ?box', 'distortion circuitry', 'distortion stomp']
+  "Modulation and time-based effects": ['phaser', 'phase 90', 'flanger', '\bchorus\b', 'tremolo', 'vibrato', '\bwah\b', 'univibe', 'bucket.brigade', '\bbbd\b', 'delay pedal', 'tape echo']
+  "Guitar amplifiers and cabinets": ['guitar amp', 'guitar.amplifier', 'tube guitar', 'vacuum.tube guitar', 'guitar loudspeaker', 'guitar cabinet', 'boss katana', '\bfender\b', '\bmarshall\b', 'vox ac']
+  "Virtual analog modeling": ['virtual analog', 'wave digital', '\bwdf\b', 'gray.?box', 'black.?box', 'nodal analysis', 'state.space formulation', 'digital modell?ing of guitar', 'amplifier emulation', 'neural network modell?ing of distortion', 'physical modell?ing of the']
+  "Guitar pickups": ['pickup']
+  "Guitar body acoustics": ['acoustic guitar', 'guitar body', 'resonance box of the guita', 'guitar top plate', 'soundboard']
+  "Pedal design and construction": ['pedal design', 'guitar pedal', 'effects? pedal', 'pedalboard', 'four.preset', 'true bypass', 'pedal design project']
+  "Schematics and datasheets": ['_sch\b', 'schematic', 'datasheet']
   "Electronic measurements": ['misure elettroniche', 'electronic measurement', 'misure elettriche', 'strumentazione', 'oscilloscop']
   "PCB design and simulation": ['\bpcb\b', 'orcad', '\bspice\b', 'ltspice', 'allegro']
   "EMC": ['\bemc\b', 'compatibilit. elettromagnetic', 'electromagnetic compatib']

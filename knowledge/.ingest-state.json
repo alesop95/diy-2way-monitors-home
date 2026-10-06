@@ -1,0 +1,14 @@
+{
+ "sources/notes/eease-1.md": {
+  "sha256": "e35ac60b5b973afc0bc63ef3bbf1ddcfb475334cd7eecf48e6ae8a90242e32e6",
+  "ingerita": "2026-10-06"
+ },
+ "sources/notes/eease-2.md": {
+  "sha256": "4dd486fda404e80c9c822258ef1ba2310090205ba1d8fbdb7cdf04d79567faff",
+  "ingerita": "2026-10-06"
+ },
+ "sources/notes/eease-exercises.md": {
+  "sha256": "f5f5f13dfb09a3650f5b86d0c438878d43b181b30785471d813c2d33ea3e2cdd",
+  "ingerita": "2026-10-06"
+ }
+}

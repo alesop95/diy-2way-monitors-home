@@ -4715,6 +4715,37 @@ Verificato con: i controlli del template, cioè md-unwrap con l'oracolo, sync-re
 
 Esito: fatto nel template, da committare lì. La passata `allinea-tutti` che lo porterà ai progetti resta sospesa per scelta dell'utente.
 
+### MS-208 - La prima compilazione della wiki dagli appunti EEASE, il ramo dei pedali per chitarra, e la chiusura di ogni risposta
+
+Data: 2026-10-06
+
+Perimetro:
+- `knowledge/sources/notes/` e `knowledge/wiki/`, locali per ADR-028;
+- `knowledge/log.md` e `knowledge/.ingest-state.json`, tracciati, che portano solo i nomi delle pagine e le impronte delle fonti;
+- `research-vault/biblioteca-regole.yml`, `research-vault/09-Biblioteca-tassonomia.md` e il file locale delle regole;
+- `CLAUDE.md`, con la sezione nuova sulla chiusura di ogni risposta.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, perché gli appunti EEASE sono il taglio della tesi. In particolare il modello elettrico dell'altoparlante, le analogie elettro-meccano-acustiche e l'accoppiamento fra amplificatore e altoparlante servono al capitolo 05 e all'appendice A6. Da questo microstep dipende la stesura dei capitoli, che parte ora da pagine compilate e non dai documenti grezzi.
+
+*Le richieste dell'utente.* Tre. Partire dagli appunti EEASE I, EEASE II ed EEASE Exercises per la wiki. Tenere conto che nella biblioteca c'è un'area intera dedicata ai paper e all'ingegnerizzazione dei pedali per chitarra elettrica. E chiudere ogni risposta con la roadmap aggiornata, le pendenze e il momento in cui lanciare `chiudi`. Quest'ultima è ora una sezione di `CLAUDE.md`. Il budget delle istruzioni sale a 97 214 caratteri su 100 000, e ne resta poco.
+
+*La lettura progressiva.* I tre documenti hanno 75 767, 60 849 e 60 710 parole, con circa 6100 formule. Leggerli per intero nella conversazione principale avrebbe riempito il contesto. Prima è stato estratto lo scheletro dei titoli, con parole e formule per sezione. Poi la digestione è stata affidata a tre agenti con il modello intermedio, uno per documento. Ciascuno leggeva la propria fonte a fette, una sezione alla volta, e aveva un elenco di concetti assegnati: nessun agente poteva creare una pagina di competenza di un altro, ma poteva collegarla per nome. Gli agenti hanno consumato 377 641, 320 237 e 321 317 token, cioè circa 1,02 milioni per circa 197 000 parole di fonte, e hanno lavorato in parallelo per circa nove minuti.
+
+*La verifica.* Il resoconto degli agenti non è stato preso per buono.
+- Le pagine sono 39: 34 concetti, 2 entità e 3 sintesi di fonte, per 40 653 parole.
+- I collegamenti relativi fra le pagine sono 353, e nessuno è rotto.
+- Ogni pagina tiene la notazione degli appunti e ha una sezione "Da verificare" sugli errori della fonte.
+
+Tre di questi errori sono stati riscontrati sulla fonte e sono veri. In EEASE I, 1,23 V rms è detto 44 dBu, mentre è +4 dBu. Negli esercizi la transconduttanza 331 µA / 25 mV è scritta 132 mS, mentre fa 13,2 mS. In EEASE II la costante dielettrica del vuoto è data in F/cm invece che in F/m, e per questo l'esempio della capsula del microfono non torna. Gli agenti hanno segnalato anche altri punti, per esempio il Q del filtro Sallen-Key, il fattore 2π mancante nella frequenza del filtro LC delle valvole e il rendimento della classe AB scritto in modo errato. Questi non sono stati riscontrati uno per uno: restano da verificare quando il capitolo che li usa li riprende. Dove un agente ha aggiunto una derivazione o un numero che la fonte non dà, la pagina lo marca come suo. L'appendice A di EEASE I contiene solo scansioni, e la pagina sull'amplificatore retroazionato ideale lo dichiara.
+
+*Il ramo dei pedali.* Il materiale sull'ingegnerizzazione della chitarra elettrica, che finiva in un solo gruppo da 116 voci sotto Audio electronics, ha ora un ramo di disciplina proprio: Guitar and effects engineering. I sottogruppi sono nove, ricavati dalle cartelle e dai titoli presenti: Guitar electronics, Distortion, overdrive and fuzz, Modulation and time-based effects, Guitar amplifiers and cabinets, Virtual analog modeling, Guitar pickups, Guitar body acoustics, Pedal design and construction, Schematics and datasheets. Nella prova contano 95, 22, 19, 22, 54, 11, 32, 7 e 25 voci. Le parole chiave di Guitar electronics sono state strette: "valve" vi faceva finire ogni libro sulle valvole, e quelle parole vanno ora agli amplificatori audio. Nel file locale delle regole una voce puntava ancora al nome della cartella prima della rinomina di MS-202, e non scattava più; è stata corretta. Le voci da classificare restano zero. La pagina della wiki sul Tube Screamer TS808 appartiene allo stesso ramo.
+
+*L'OCR.* Il libro di Izadian, che falliva per il percorso troppo lungo, è stato letto alle 09:11 dalla copia a percorso corto: 521 pagine, 103 964 parole. La corsa dell'utente prosegue sulle altre scansioni.
+
+Verificato con: lo scheletro dei titoli; il conteggio delle pagine e il controllo di ogni collegamento relativo; la ricerca dei tre errori nella fonte; `biblioteca.py --prova`, con zero voci da classificare; `md-unwrap --check` e `check-privato.py`; il conteggio di pagine e parole del testo di Izadian.
+
+Esito: fatto. La wiki è compilata per i tre appunti EEASE, e la rigenerazione del vault con il ramo nuovo si fa a fine OCR.
+
 
 ## Che cosa resta da fare, e da che cosa dipende
 

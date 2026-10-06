@@ -133,7 +133,7 @@ voci:
     dove: questo repository
     titolo: OCR delle scansioni del materiale di studio e prima compilazione della wiki
     stato: "Undici lotti indicizzati e convertiti (MS-196, MS-198, MS-201): 4357 documenti nel manifesto, 431 sotto le 50 parole. OCR prioritario fatto su 12 documenti (Dickason, Colloms, Griffiths, Proakis, Small, Kinsler); restano 424 scansioni minori, da rifare con J: collegato (MS-206); Izadian falliva per percorso oltre i 260 caratteri. E PA-026."
-    passo: "OCR delle scansioni restanti con tools/converti-fonti.py --ocr, Izadian da una copia a percorso corto; poi wiki-digest e book-digest, tutto locale per ADR-028."
+    passo: "OCR in corso (Izadian letto, 521 pagine); wiki compilata per EEASE I, II ed Exercises (MS-208, 39 pagine); prossime fonti per la wiki: Fundamentals of Acoustics e Musical Acoustics, poi book-digest sui libri principali; tutto locale per ADR-028."
     fonte: "docs/PENDING-ACTIONS.md"
   - id: 20
     livello: 2
