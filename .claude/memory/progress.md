@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - La lezione sulle etichette chiuse al template, OCR in corso
+
+Commit di partenza: `d6546e7`. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-207; `docs/PENDING-ACTIONS.md` con PA-003; `.claude/memory/index.md`; questo file. Nel template, non committati: `lavoro-a-lotti/tools/valida-etichette.py`, il README e la regola del pacchetto, `.claude/rules/token-economy.md`, `_notes/RESUME-PROMPT.md` e `_notes/COMMIT-MSG.txt`.
+
+L'utente ha chiesto di portare al template la lezione della classificazione a lotti con un agente economico. Le misure dei cinque lotti hanno mostrato che tre lotti accettati in MS-201 andavano bocciati: due per un tasso di vuote del 27% e del 23%, uno per voci mancanti ed etichette inventate. Il validatore nuovo li boccia. Nel template ora ci sono il validatore, il caso misurato con il mandato da copiare, e i principi sul lavoro locale a costo zero e sulle uscite da tenere nel progetto. L'OCR avviato dall'utente sta leggendo Izadian dalla copia a percorso corto.
+
+## 2026-10-05 - Livello 1: biblioteca senza residui, OCR in attesa del disco
+
+Commit di partenza: `d6546e7`. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-206; `docs/PENDING-ACTIONS.md` con PA-026 e PA-027; `tools/converti-fonti.py`; `tools/roadmap-items.yml`; `.claude/memory/index.md`; questo file. Fuori da git: `_notes/biblioteca/` con la classificazione delle 173 voci residue, e `_notes/ocr/`.
+
+L'utente ha chiesto se l'OCR consuma token: no, gira in locale. La corsa su tutte le scansioni non ha letto nulla, perché `J:` era scollegato, e si rifà a disco collegato. Lo strumento ora legge i percorsi oltre i 240 caratteri da una copia a percorso corto, per Izadian. Le 173 voci residue sono classificate da un agente con un estratto del testo, e il risultato è stato controllato prima dell'uso: la biblioteca non ha più voci da classificare.
+
 ## 2026-10-05 - GitHub ripulito e di nuovo pubblico
 
 Commit di partenza: `57ae7f8`, dopo la riscrittura. Commit prodotti dall'utente: `69e002d` con MS-203 e MS-204 e `d6546e7` con gli hash riallineati, poi il push sul repository ricreato.

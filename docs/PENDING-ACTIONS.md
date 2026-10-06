@@ -223,6 +223,9 @@ Aperta il 2026-10-05, MS-191. `doc-ingest.py` del template converte i `.docx` co
 Criterio di completamento. Le voci aperte risultano presenti nel template, verificate con un confronto e non con un ricordo, e questa voce si chiude dichiarando la data. La verifica non decisa produce invece un microstep con il suo esito.
 
 Perché non si fa da qui e subito. È una modifica a un altro repository, quindi è una decisione dell'utente su quel progetto, e va fatta aprendo una sessione là invece di scrivere da qui: la direzione di propagazione del blocco dell'ambiente è unidirezionale per scelta, e lo stesso principio vale a maggior ragione fra un progetto e il template da cui discende.
+
+Voce del 2026-10-06, da MS-207: la lezione sulla classificazione a etichette chiuse con un modello economico è scritta nel template, con il validatore `lavoro-a-lotti/tools/valida-etichette.py`, ed è da committare là; ai progetti arriva con la passata `allinea-tutti`, sospesa per scelta dell'utente. Da MS-191 resta da portare al template anche la conversione dei `.docx` con pandoc, che conserva le formule.
+
 ## PA-004 - Ispezionare il disco G: e il materiale EASE Focus 3.1.10 del workshop K-array
 
 Data di apertura: 2026-09-07. Stato: *aperta, bloccata*.
@@ -604,7 +607,7 @@ Criterio di completamento. Nessuna voce in `04-Paper-da-scaricare.md`, e ogni fo
 
 ## PA-026 - Indicizzare e convertire i lotti dal 02 al 09 del materiale di studio
 
-Data di apertura: 2026-10-02, da MS-188; riformulata lo stesso giorno da ADR-036. Stato: indicizzazione compiuta il 2026-10-02 (MS-189, MS-190), conversione in corso. Al 2026-10-05 sera sono indicizzati e convertiti undici lotti, con 4357 documenti nel manifesto, di cui 431 sotto le 50 parole; l'OCR prioritario ha reso leggibili 12 documenti, cioè Dickason, le due copie scansionate di Colloms, i due Griffiths, Proakis, le due parti di Small sulla cassa chiusa e Kinsler, mentre Izadian fallisce perché il suo percorso supera i 260 caratteri e va letto da una copia a percorso corto. Il 2026-10-05, con MS-196, è stato aggiunto il lotto 10: tutte le sottocartelle di `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC`, con 499 documenti nuovi per impronta e 21 archivi da aprire, per i quali serve il permesso di scrittura su `J:`.
+Data di apertura: 2026-10-02, da MS-188; riformulata lo stesso giorno da ADR-036. Stato: indicizzazione compiuta il 2026-10-02 (MS-189, MS-190), conversione in corso. Al 2026-10-05 sera sono indicizzati e convertiti undici lotti, con 4357 documenti nel manifesto, di cui 431 sotto le 50 parole; l'OCR prioritario ha reso leggibili 12 documenti, cioè Dickason, le due copie scansionate di Colloms, i due Griffiths, Proakis, le due parti di Small sulla cassa chiusa e Kinsler, mentre Izadian falliva perché il suo percorso supera i 260 caratteri, e dal 2026-10-05 sera, con MS-206, lo strumento legge i percorsi lunghi da una copia a percorso corto. L'OCR delle 424 scansioni restanti gira in locale e senza token, e attende il disco `J:` collegato. Il 2026-10-05, con MS-196, è stato aggiunto il lotto 10: tutte le sottocartelle di `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC`, con 499 documenti nuovi per impronta e 21 archivi da aprire, per i quali serve il permesso di scrittura su `J:`.
 
 Che cosa va fatto. Il materiale resta su `J:` e il progetto ne tiene l'indice. Indicizzare con `python tools/indicizza-lotti.py` le voci dei manifesti `research-vault/fonti-locali/lotti-manifest*.json`; estrarre gli archivi da aprire con `python tools/estrai-archivi.py --dest "J:/MAIN/_ESTRATTI ARCHIVI TESI"`, solo con il permesso dell'utente per la scrittura su `J:`; convertire con `python tools/converti-fonti.py`, poi con `--ocr` o `--engine docling` i documenti sotto le 50 parole; rigenerare il registro con `python tools/registro-fonti.py`. Prima di fidarsi di un indice vecchio, `python tools/indicizza-lotti.py --verifica`.
 
@@ -614,7 +617,7 @@ Criterio di completamento. Ogni voce dei manifesti registrata, ogni documento co
 
 ## PA-027 - Censimento completo di `J:`, biblioteca delle fonti alla maniera di JabRef, vault su `J:`
 
-Data di apertura: 2026-10-05, da MS-197. Stato: aperta. Forma decisa in ADR-038; il 2026-10-05, con MS-201, biblioteca e vault sono generati su `J:` da `tools/biblioteca.py`, con 8194 fonti e 208 ancora da classificare. Restano la classificazione dei residui, l'OCR delle scansioni e la decisione dell'utente sui nomi di persona nei file di `J:`.
+Data di apertura: 2026-10-05, da MS-197. Stato: aperta. Forma decisa in ADR-038; il 2026-10-05, con MS-201, biblioteca e vault sono generati su `J:` da `tools/biblioteca.py`, con 8194 fonti e 208 ancora da classificare. Il 2026-10-05 sera, con MS-206, le voci da classificare sono zero e le fonti 7755, con 439 non pertinenti escluse; la rigenerazione del vault attende il disco `J:`. Restano la classificazione dei residui, l'OCR delle scansioni e la decisione dell'utente sui nomi di persona nei file di `J:`.
 
 Che cosa va fatto. Le richieste dell'utente sono tre.
 - Analizzare le fonti, oltre a quelle web, controllando tutte le sottocartelle pertinenti di `J:\MAIN` e di `J:\_____da sistemare ancora`. Il conteggio di partenza per cartella è in MS-197.

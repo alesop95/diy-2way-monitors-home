@@ -76,13 +76,27 @@ def ocr_pdf(percorso, lingue):
     import os
     import pytesseract
     from pdf2image import convert_from_path, pdfinfo_from_path
+    import shutil
     os.environ["TESSDATA_PREFIX"] = str(TESSDATA)
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    pagine = pdfinfo_from_path(str(percorso))["Pages"]
-    parti = []
-    for i in range(1, pagine + 1):
-        immagine = convert_from_path(str(percorso), dpi=200, first_page=i, last_page=i)[0]
-        parti.append(f"<!-- pagina {i} -->\n" + pytesseract.image_to_string(immagine, lang=lingue))
+    # Poppler non apre un percorso oltre i 260 caratteri di Windows e risponde "Unable to get
+    # page count" (Izadian, MS-206): il PDF si legge da una copia a percorso corto nella
+    # cartella locale _notes/ocr/, che si toglie a lavoro finito.
+    copia = None
+    if len(str(percorso)) > 240:
+        copia = RADICE / "_notes" / "ocr" / "percorso-lungo.pdf"
+        copia.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(percorso, copia)
+        percorso = copia
+    try:
+        pagine = pdfinfo_from_path(str(percorso))["Pages"]
+        parti = []
+        for i in range(1, pagine + 1):
+            immagine = convert_from_path(str(percorso), dpi=200, first_page=i, last_page=i)[0]
+            parti.append(f"<!-- pagina {i} -->\n" + pytesseract.image_to_string(immagine, lang=lingue))
+    finally:
+        if copia is not None:
+            copia.unlink(missing_ok=True)
     return "\n\n".join(parti), f"estratto via OCR Tesseract ({lingue}, {pagine} pagine, 200 dpi)"
 
 
