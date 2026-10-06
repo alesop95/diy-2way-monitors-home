@@ -67,6 +67,11 @@ def main():
                      f"Collegamenti: {collegamenti}.\n")
             (SCHEDE / f"{s}.md").write_bytes(testo.replace("\r\n", "\n").encode("utf-8"))
             scritte += 1
+    # Gli agenti economici scrivono a volte trattini lunghi o accenti mancanti: la catena
+    # tipografica del progetto li sistema sulle sole schede, che sono Markdown (MS-216).
+    import subprocess
+    for strumento in ("fix-dashes.py", "fix-accents.py", "fix-missing-accents.py"):
+        subprocess.run([sys.executable, str(RADICE / "tools" / strumento), str(SCHEDE)], capture_output=True)
     print(f"schede scritte {scritte}; personali saltati {len(personali)} {personali}; problemi {len(problemi)}")
     for p in problemi:
         print("  " + p)
