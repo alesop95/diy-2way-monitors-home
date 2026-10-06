@@ -611,3 +611,15 @@ Decisione. La candidata è il Behringer UMC404HD, con quattro uscite bilanciate,
 Motivazione. È l'interfaccia meno cara che soddisfa tutti i requisiti letti, e il suo solo rischio, la dinamica dichiarata più bassa, si chiude con una misura che il progetto deve fare comunque. Comprare subito un'interfaccia più costosa pagherebbe in anticipo un rischio non ancora accertato.
 
 Conseguenze. L'acquisto resta alla fine con gli altri, per ADR-027, e la misura del fruscio entra nella verifica della fase 8. La scelta vale anche per il progetto gemello, dove PA-012 va aggiornata in una sessione aperta lì.
+
+## ADR-047 - La catena dei monitor è bilanciata fino all'ingresso degli amplificatori
+
+Data: 2026-10-06. Stato: accettata, scelta dell'utente.
+
+Contesto. Con ADR-046 l'interfaccia candidata ha quattro uscite bilanciate. Molte schede di amplificazione economiche hanno però ingressi sbilanciati, e in quel caso il vantaggio del collegamento bilanciato si perde in parte, proprio sul tweeter, che è la via che rende udibili fruscio e ronzio.
+
+Decisione. Il collegamento fra l'interfaccia e gli amplificatori resta bilanciato su tutte e quattro le vie. Gli amplificatori si scelgono con ingresso bilanciato oppure, se il modulo migliore per costo ha ingresso sbilanciato, con un ricevitore differenziale vicino all'ingresso e un collegamento sbilanciato più corto possibile.
+
+Motivazione. I cavi corrono vicino all'alimentazione e al calcolatore, e il collegamento bilanciato cancella il disturbo raccolto lungo il cavo ed evita gli anelli di massa. È anche la soluzione standard di uno studio, che il progetto vuole documentare.
+
+Conseguenze. Il requisito entra nella scelta degli amplificatori di PA-024, insieme alla potenza, che dipende dagli altoparlanti della fase 4a.
