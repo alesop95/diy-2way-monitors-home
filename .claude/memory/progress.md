@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Quinto lotto, lotti senza sovrapposizioni
+
+Commit di partenza: a71b20b. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-218; `docs/PENDING-ACTIONS.md` con PA-003; `tools/estratti-lotto.py`; `tools/roadmap-items.yml`; `.claude/memory/index.md`; questo file. Fuori da git: 50 schede nuove e 10 corrette, 250 in tutto.
+
+I lotti si preparano con `--nuovi`, perché l'OCR fa crescere la cache e le posizioni si spostano.
+
 ## 2026-10-06 - Copie parallele degli appunti EEASE, rilettura dei giudizi
 
 Commit di partenza: 81f1552, dell'utente, con MS-216. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
