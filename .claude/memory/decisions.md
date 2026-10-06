@@ -575,3 +575,15 @@ Decisione. La base di conoscenza è uno strumento della tesi e del progetto, e n
 Motivazione. Un lavoro di raccolta ha sempre un lotto successivo, e senza un richiamo esplicito tende a occupare tutte le sessioni. Il progetto si misura sui monitor costruiti e sulla tesi scritta, non sulle pagine della wiki.
 
 Conseguenze. La chiusura di ogni risposta, che già riporta la roadmap, nomina anche il primo passo del nucleo. La voce 25 della roadmap passa a una cadenza decisa dai capitoli in stesura.
+
+## ADR-044 - J:\MAIN è l'archivio principale dell'utente, non un'appendice del progetto
+
+Data: 2026-10-06. Stato: accettata, precisazione dell'utente.
+
+Contesto. Il progetto ha indicizzato, convertito e in qualche punto modificato file di `J:\MAIN`: la biblioteca e il vault delle fonti, le copie parallele degli appunti EEASE e i commenti negli appunti originali. L'utente ha ricordato che `MAIN` è il suo archivio principale di tutto, a prescindere da questo progetto.
+
+Decisione. Ogni intervento su `J:\MAIN` si giudica per l'archivio nel suo insieme e non per la comodità del progetto. Non si riorganizzano cartelle per farle combaciare con la struttura della tesi. Una copia parallela di un file in più cartelle è ammessa quando l'utente la vuole, perché ciascuna cartella è un punto in cui la cerca. Restano valide le regole già in vigore: nessuna scrittura senza il permesso esplicito per i file nominati, dalla sezione sui dati personali di `CLAUDE.md`, e nessuna lettura dei documenti personali, da ADR-042.
+
+Motivazione. L'archivio esisteva prima del progetto e servirà ad altri, come la pedaliera di PA-030 e i progetti di acustica di PA-029. Una modifica pensata solo per questo progetto può peggiorarlo per gli altri usi.
+
+Conseguenze. Prima di proporre una scrittura su `J:\MAIN` l'agente dichiara che effetto ha sull'archivio e non solo sul progetto. Il vault delle fonti su `J:` è una vista dell'archivio, e la sua tassonomia resta generale.

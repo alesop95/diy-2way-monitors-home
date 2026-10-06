@@ -2,6 +2,12 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - MAIN come archivio principale
+
+Commit di partenza: d0ae978, dell'utente, con MS-220. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-221; `.claude/memory/decisions.md` con ADR-044; `.claude/memory/index.md`; questo file. Su `J:`, con il permesso dell'utente: cancellata la copia vecchia degli esercizi EEASE.
+
 ## 2026-10-06 - Lotti 8 e 9, ritorno allo scopo del progetto
 
 Commit di partenza: fd70a72, dell'utente, con MS-219. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
