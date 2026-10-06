@@ -39,4 +39,18 @@ D7. La forma del livello 1 per i manuali. Per gli appunti la forma è quella di 
 
 ## Le risposte
 
-Da scrivere qui, una per domanda, con la data, quando l'utente risponde. La decisione diventa un ADR in `.claude/memory/decisions.md`.
+Date dall'utente il 2026-10-06, registrate come ADR-041 e ADR-042.
+
+D1. Struttura a tre livelli accettata.
+
+D2. I tre gruppi del nucleo sono confermati. Ogni lancio di lettura chiede prima il permesso dell'utente. Le fonti non lette restano note all'agente: a ogni domanda l'agente sa che oltre alla wiki esistono la biblioteca, il vault su `J:`, le schede del livello 2 e la cache convertita, e può leggerle.
+
+D3. Il materiale sui pedali va al progetto della pedaliera, con la sua wiki. Gli strumenti del template per convertire i libri in skill restano tutti disponibili.
+
+D4. Il perimetro proposto è accettato per ogni riga, compreso l'elenco di partenza dei corsi di z_____UNIVERSITA.
+
+D5. I documenti personali non si leggono mai, a nessun livello, se non su richiesta espressa dell'utente, e la regola diventa generale nel template. È ADR-042 con `.claude/rules/documenti-personali.md`.
+
+D6. Il lotto di prova è approvato, e il ritmo si decide lotto per lotto.
+
+D7. Proposta approvata: wiki per gli appunti, `book-digest` per i manuali cardine.

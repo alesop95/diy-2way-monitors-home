@@ -553,6 +553,10 @@ def controlla_voci_recenti() -> None:
     riga("? ", "il momento e il nome li decide l'utente; base: ramo Guitar and effects engineering del vault (MS-208, MS-209)")
     print("  APERTA: in attesa dell'indicazione dell'utente.")
 
+    print("\nPA-031  Copie in testo dei documenti personali gia' nella cache")
+    riga("? ", "69 copie riconosciute dal percorso; elenco in _notes/privacy/esclusi-elenco.txt (ADR-042, MS-211)")
+    print("  APERTA: l'utente rilegge l'elenco e decide se cancellarle o tenerle.")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,

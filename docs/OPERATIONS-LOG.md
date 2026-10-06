@@ -4821,6 +4821,31 @@ Verificato con: `tools/verifica-ripresa.py`; `git diff --stat` prima e dopo il r
 
 Esito: fatto per la ripresa e per gli errori degli appunti. MS-209 è confermato dall'utente, e anche l'impostazione di PA-030. L'OCR è ancora in corso, e il suo esito si aggiunge qui alla fine della corsa.
 
+### MS-211 - Le risposte sul piano per MAIN, l'OCR fermato, i documenti personali esclusi negli strumenti
+
+Data: 2026-10-06
+
+Perimetro:
+- le risposte alle sette domande in `research-vault/10-Piano-digestione-MAIN.md`, ADR-041 e ADR-042;
+- la regola `documenti-personali.md`, nel template e qui;
+- `tools/privato_esclusi.py`, nuovo, e il suo uso in `tools/converti-fonti.py` e `tools/biblioteca.py`;
+- il file locale degli schemi `_notes/privacy/esclusi-personali.txt` e l'elenco `_notes/privacy/esclusi-elenco.txt`;
+- PA-031, PA-003, la voce 25 della roadmap e `CLAUDE.md`.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, perché fissa come si costruisce la wiki da `J:\MAIN`, e protegge i dati personali dell'utente come ADR-040. Ne dipendono il lotto di prova della voce 25 e ogni nuova corsa di `converti-fonti.py`.
+
+*Le risposte dell'utente.* Tutte e sette sono scritte nel piano e riassunte in ADR-041. Due aggiunte dell'utente vanno oltre le domande. La prima: ogni lancio di lettura chiede prima il permesso, e le fonti non lette restano note all'agente come fonti da cui si può leggere. La seconda: l'impianto del template per convertire i libri in skill resta intero.
+
+*L'OCR fermato.* Dopo la risposta alla domanda 5 l'agente ha fermato la conversione rilanciata in MS-210, perché lavorava su tutto ciò che era indicizzato, comprese le cartelle dei documenti personali. In questa corsa ha prodotto 7 documenti, tutte dispense di corsi, al ritmo di uno ogni 6-8 minuti, e non era ancora arrivata a quelle cartelle. Restavano circa 370 documenti da riconoscere, fra cui libri di centinaia di pagine: a quel ritmo sarebbero serviti giorni di calcolo.
+
+*I documenti personali.* Gli schemi sul solo percorso riconoscono 69 documenti personali indicizzati. Tutti e 69 hanno già una copia in testo nella cache, prodotta dalle conversioni dei giorni precedenti, quando la regola non esisteva. Le copie non sono state aperte, e il conteggio è stato fatto sui nomi. `biblioteca.py --prova` conferma che la biblioteca li escludeva già come non pertinenti, insieme ad altre voci, per 439 esclusioni in totale, e ne leggeva però il contenuto per classificarli: adesso non lo legge più. `converti-fonti.py` li salta prima di aprirli e li conta come "personale escluso". Che cosa fare delle 69 copie lo decide l'utente, in PA-031.
+
+*La regola nel template.* `documenti-personali.md` è stata scritta in `E:/template-claude-developing/.claude/rules/`, con la sua riga nell'albero del `README.md` del template, e copiata qui identica. Pesa 2315 caratteri. Il budget delle istruzioni del progetto, misurato con `misura-istruzioni.py`, è salito da 97 214 a 100 081 caratteri, oltre la soglia di guardia di 100 000. Il paragrafo aggiunto a `CLAUDE.md` è stato quindi accorciato, e la misura finale è 99 839. Restano 161 caratteri: la prossima regola sempre caricata richiede di toglierne altrove, oppure di spostarla fra le norme su richiesta. Il commit del template spetta all'utente, e l'esclusione negli strumenti del template è una voce di PA-003.
+
+Verificato con: `py_compile` sui tre strumenti; `Test-Allineamento.py`, che segnalava il modulo nuovo non citato in `STACK.md`, ora citato; il conteggio dei 69 esclusi con `_notes/privacy/conta-esclusi.py`; `biblioteca.py --prova`, che non scrive su `J:`; i controlli della sequenza prima del commit.
+
+Esito: fatto per le decisioni, la regola e gli strumenti. Restano tre cose: il lotto di prova della voce 25, che attende il permesso; PA-031, che attende l'utente; e la ripresa dell'OCR sul solo perimetro di ADR-041, che attende anch'essa il permesso.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

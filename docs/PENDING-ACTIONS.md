@@ -176,6 +176,8 @@ Nota di priorità. Bassa. Il ruolo di Ramsete nel workflow sarebbe l'acustica ar
 
 ## PA-003 - Propagare al template le correzioni trovate qui
 
+Voce aggiunta il 2026-10-06 con MS-211. La regola `documenti-personali.md` di ADR-042 è stata scritta nel template, in `E:/template-claude-developing/.claude/rules/`, insieme alla sua riga nell'albero del `README.md`. Non è ancora committata: il commit del template lo fa l'utente. Restano da portare nel template anche l'esclusione negli strumenti, cioè un modulo come `tools/privato_esclusi.py` letto da `doc-ingest.py`, e il caso nella procedura di inizializzazione che crea il file locale degli schemi.
+
 Data di apertura: 2026-09-04. Stato: aperta su due voci su cinque, riscritta sui fatti il 2026-09-12.
 
 Che cosa va fatto. Portare al progetto `template-claude-developing` le correzioni nate qui, così che non vadano perdute alla prossima istanziazione. La voce è stata riscritta il 2026-09-12 perché tre delle quattro correzioni originali erano già state fatte nel template da una sessione che ha lavorato là, e continuare a elencarle come aperte avrebbe fatto rifare lavoro fatto.
@@ -649,6 +651,16 @@ Che cosa va fatto. L'utente vuole progettare una pedaliera analogica per chitarr
 Condizione di sblocco. L'indicazione dell'utente di creare il progetto, e il nome che vuole dargli.
 
 Criterio di completamento. Il repository esiste, istanziato dal template, con il rimando al vault delle fonti di ADR-039 e la prima ricerca bibliografica sul filone dei pedali.
+
+## PA-031 - Le copie in testo dei documenti personali già nella cache
+
+Data di apertura: 2026-10-06, da ADR-042 e MS-211. Stato: aperta, decide l'utente.
+
+Che cosa va fatto. Gli schemi di `_notes/privacy/esclusi-personali.txt` riconoscono dal solo percorso 69 documenti personali indicizzati su `J:`, e tutti e 69 hanno già una copia in testo nella cache `_notes/.tmp-doc-cache/fonti/`, prodotta dalle conversioni dei giorni precedenti. L'elenco dei soli percorsi è nel file locale `_notes/privacy/esclusi-elenco.txt`. Le copie non sono state aperte, e la biblioteca già escludeva quei documenti come non pertinenti. L'utente sceglie fra due strade. La prima è cancellare le 69 copie, che stanno dentro il repository ma in una cartella ignorata, e togliere le loro voci dal manifesto. La seconda è tenerle, sapendo che nessuno strumento le legge più. Prima di qualunque scelta l'utente rilegge l'elenco, per segnalare un documento non personale finito negli schemi o uno personale sfuggito.
+
+Condizione di sblocco. La decisione dell'utente dopo aver riletto l'elenco.
+
+Criterio di completamento. Le copie sono cancellate o tenute per scelta registrata, e gli schemi sono corretti secondo la rilettura.
 
 ## Azioni compiute
 

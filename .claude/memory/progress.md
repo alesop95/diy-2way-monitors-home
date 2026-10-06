@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Piano per MAIN deciso, documenti personali esclusi
+
+Commit di partenza: `87170e0`, dell'utente, con MS-209 e MS-210. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-211; `.claude/memory/decisions.md` con ADR-041 e ADR-042; `.claude/rules/documenti-personali.md`, nuova; `CLAUDE.md`; `tools/privato_esclusi.py`, nuovo; `tools/converti-fonti.py`; `tools/biblioteca.py`; `docs/PENDING-ACTIONS.md` con PA-031 e PA-003; `tools/check-pending-actions.py`; `tools/roadmap-items.yml`; `research-vault/10-Piano-digestione-MAIN.md`; `.claude/memory/index.md`; questo file. Nel template, da committare: `.claude/rules/documenti-personali.md` e `README.md`.
+
+L'utente ha risposto alle sette domande. L'OCR è stato fermato perché lavorava anche sulle cartelle dei documenti personali, e gli strumenti ora li escludono dal percorso.
+
 ## 2026-10-06 - Ripresa dopo lo spegnimento del PC, errori degli appunti completati
 
 Commit di partenza: `15cf840`. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt` e copre MS-209 e MS-210.
