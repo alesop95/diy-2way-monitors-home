@@ -4994,6 +4994,24 @@ Verificato con: le trascrizioni degli agenti; `scrivi-schede.py`; il conteggio d
 
 Esito: fatto per il lotto e per la scelta della versione. La cancellazione della copia vecchia attende che l'utente chiuda Word.
 
+### MS-217 - Le copie parallele degli appunti EEASE, e la rilettura dei giudizi alti del quarto lotto
+
+Data: 2026-10-06
+
+Perimetro:
+- quattro file EEASE sotto `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC`;
+- le 26 schede di utilità alta del quarto lotto.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, perché gli appunti annotati devono essere quelli che si trovano in entrambe le cartelle in cui l'utente li cerca, e perché la rilettura decide la forma stabile dei lotti della voce 25.
+
+*Le copie parallele.* L'utente ha chiarito che la versione nuova di `EEASE II.docx` deve stare anche sotto LOUDSPEAKERS & ELECTROACOUSTIC, e che i tre appunti EEASE possono vivere lì come copia parallela di quelli di `From EEASE`. Chiuso Word, la copia vecchia di `EEASE II.docx`, revisione 107, è stata cancellata. Poi sono stati copiati sotto LOUDSPEAKERS & ELECTROACOUSTIC i tre file annotati di `From EEASE`: `EEASE I.docx`, `EEASE II.docx` ed `EEASE_Exercises.docx`. Le impronte delle copie coincidono con quelle degli originali. Il vecchio `EEASE I.docx` di quella cartella era identico all'originale di `From EEASE` prima dell'annotazione, cioè aveva l'impronta registrata nell'indice del lotto 01, ed è stato sostituito dalla copia annotata. Nella cartella resta anche `EEASE_Exercises (prendi ultima parte sul fattore Q et cetera).docx`. È una versione più vecchia degli esercizi, revisione 91 del 2019-07-01, contro la 92 del 2021-03-24 di `From EEASE`, e porta un'indicazione nel nome. Non è stata toccata, perché l'utente non l'ha nominata.
+
+*La rilettura delle schede alte.* Il quarto lotto non aveva schede di utilità nulla, e MS-216 lo segnalava come possibile effetto dei pacchetti grandi. Le 26 schede alte sono state rilette sul titolo e sul motivo. Il lotto è caduto quasi tutto sugli articoli tecnici di Genelec e su due manuali di progetto, cioè High Performance Loudspeakers di Colloms e il Loudspeaker Design Cookbook di Dickason. Sono documenti su posizionamento in stanza, calibrazione e progetto di monitor attivi, pertinenti alla tesi, e l'utilità alta è giustificata per circa 21 schede su 26. Le altre 5 sono generose e varrebbero media: un articolo di rivista su un sistema di calibrazione, una guida al multicanale, due documenti su driver coassiali e un monitor a tre vie. L'assenza di schede di utilità nulla dipende quindi dal contenuto del lotto e non dalla dimensione dei pacchetti, e i pacchetti da 25 possono diventare la forma stabile. Il lotto contiene anche due schede dello stesso libro di Colloms, perché nella cache ci sono due conversioni con impronte diverse, e una delle due lo dichiara come duplicato.
+
+Verificato con: `sha256sum` sulle copie e sugli originali; i metadati `docProps/core.xml`; la rilettura delle 26 schede.
+
+Esito: fatto. La copia vecchia degli esercizi sotto LOUDSPEAKERS & ELECTROACOUSTIC resta in attesa della decisione dell'utente.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
