@@ -109,6 +109,8 @@ def main():
     ap.add_argument("--ocr", action="store_true", help="OCR sui PDF con testo nativo insufficiente")
     ap.add_argument("--lingue", default="ita+eng", help="lingue di Tesseract per l'OCR (default ita+eng)")
     ap.add_argument("--nomi", nargs="*", help="solo i documenti il cui nome contiene uno di questi testi")
+    ap.add_argument("--cartelle", nargs="*", help="solo i documenti il cui percorso su J: contiene uno di questi testi, "
+                    "per esempio il nome di una cartella di MAIN o di un corso (perimetro di ADR-041)")
     ap.add_argument("--engine", choices=["markitdown", "docling"], default="markitdown")
     a = ap.parse_args()
     di = carica_doc_ingest()
@@ -128,6 +130,8 @@ def main():
             if Path(nome).suffix.lower() not in di.SUPPORTED_EXTENSIONS:
                 continue
             if a.nomi and not any(t.lower() in nome.lower() for t in a.nomi):
+                continue
+            if a.cartelle and not any(t.lower() in v.get("posizione", "").lower() for t in a.cartelle):
                 continue
             # I documenti personali non si convertono ne' si passano all'OCR (ADR-042).
             if e_personale(v.get("posizione", ""), schemi):

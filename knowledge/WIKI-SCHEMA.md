@@ -16,6 +16,8 @@ La wiki non è un archivio di documenti da cercare, ma una knowledge base già s
 
 `wiki/schede/<fonte>.md` è la scheda di fonte del livello 2 di ADR-041: scritta dal modello economico sul solo scheletro e sulle prime pagine del testo convertito, dice che cosa contiene il documento, a che cosa serve per la tesi e quali capitoli contano, e dichiara in testa di non essere una lettura completa e di non avere verifiche sui conti. Una scheda non fonda un'affermazione della tesi: segnala dove leggere. Quando un capitolo ne ha bisogno, la fonte si promuove al livello 1 e diventa una pagina in `wiki/sources/`.
 
+Convenzione delle altezze musicali, fissata il 2026-10-06 su indicazione dell'utente: la wiki usa la notazione scientifica, con il Do centrale C4 e il La di $440\,Hz$ A4, e una fonte che usa un'altra numerazione si riporta a questa con una nota.
+
 ## Collegamenti
 
 Le pagine si collegano tra loro con link markdown relativi, per esempio `[replication](../concepts/replication.md)`. Ogni concetto cita le fonti che lo trattano e le altre pagine con cui è in relazione. Il valore della wiki sta nella densità dei collegamenti: una pagina isolata vale poco.

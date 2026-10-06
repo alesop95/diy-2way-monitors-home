@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Quincke e banda chiariti, terzo lotto a pochi turni
+
+Commit di partenza: `8c79383`, dell'utente. Commit prodotto: nessuno ancora, il messaggio in `_notes/COMMIT-MSG.txt` copre MS-213 e MS-214.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-214; `tools/estratti-lotto.py`; `tools/scrivi-schede.py`, nuovo; `tools/roadmap-items.yml`; `.claude/memory/index.md`; questo file. Nel template: `lavoro-a-lotti/README.md`, la sezione sulle misure. Fuori da git: la wiki e le 150 schede.
+
+Il numero di token delle notifiche non conta la cache letta, e la riduzione dei turni l'ha tagliata di quasi cinque volte. Il prossimo lotto proverebbe meno agenti con pacchetti più grandi.
+
+## 2026-10-06 - Risposte sugli appunti, secondo lotto, passata di stile, modello adattivo
+
+Commit di partenza: `8c79383`, dell'utente, con MS-212. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-213 e la passata di stile; `.claude/memory/decisions.md`, solo stile; `docs/PENDING-ACTIONS.md` con PA-003; `tools/converti-fonti.py` con `--cartelle`; `tools/roadmap-items.yml`; `knowledge/WIKI-SCHEMA.md`; `.claude/memory/index.md`; questo file. Nel template, da committare: `token-economy.md`, `lavoro-a-lotti/README.md`, `lavoro-a-lotti/tools/estratti-lotto.py`, `operations-log/README.md`. Fuori da git: la wiki, le 100 schede, l'OCR in corso.
+
+Le domande aperte all'utente sono due, sul tubo di Quincke e sulla banda in marcia. Il terzo lotto serve a provare la riduzione dei turni.
+
 ## 2026-10-06 - Lotto di prova misurato, copie personali cancellate
 
 Commit di partenza: `ad690b6`, dell'utente, con MS-211. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.

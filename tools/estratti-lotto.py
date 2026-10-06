@@ -31,6 +31,9 @@ def main():
     ap.add_argument("--minimo", type=int, default=300, help="parole minime del documento")
     ap.add_argument("--salta", type=int, default=0, help="documenti da saltare, per i lotti successivi")
     ap.add_argument("--dest", required=True)
+    ap.add_argument("--pacchetti", type=int, default=0,
+                    help="se maggiore di zero, riunisce gli estratti in file pacchetto-NN.md da tanti estratti ciascuno, "
+                         "con l'elenco delle pagine di concetto esistenti, cosi' che un agente legga un solo file (MS-214)")
     a = ap.parse_args()
     schemi = carica_schemi()
     posizioni = {}
@@ -65,6 +68,13 @@ def main():
             f"\n\n## Prime {min(a.parole, len(parole))} parole\n\n{corpo}\n", encoding="utf-8")
         elenco.append({"estratto": nome, "nome": m["nome"], "cache": m["cache"], "parole": m["parole"], "impronta": h})
     (dest / "elenco.json").write_text(json.dumps(elenco, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    if a.pacchetti:
+        concetti = sorted(p.stem for p in (RADICE / "knowledge" / "wiki" / "concepts").glob("*.md"))
+        for k in range(0, len(elenco), a.pacchetti):
+            parti = [(dest / e["estratto"]).read_text(encoding="utf-8") for e in elenco[k:k + a.pacchetti]]
+            testa = ("# Pacchetto di estratti\n\nPagine di concetto esistenti in knowledge/wiki/concepts/, "
+                     "le sole da usare nei collegamenti:\n\n" + ", ".join(concetti) + "\n\n")
+            (dest / f"pacchetto-{k // a.pacchetti + 1:02d}.md").write_text(testa + "\n\n".join(parti), encoding="utf-8")
     print(f"estratti {len(elenco)} in {dest}; parole negli estratti circa {sum(min(a.parole, e['parole']) for e in elenco)}")
 
 
