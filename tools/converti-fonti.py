@@ -29,6 +29,9 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from privato_esclusi import carica_schemi, e_personale  # noqa: E402
+
 RADICE = Path(__file__).resolve().parent.parent
 LOCALI = RADICE / "research-vault" / "fonti-locali"
 CACHE = RADICE / "_notes" / ".tmp-doc-cache"
@@ -112,7 +115,8 @@ def main():
     USCITA.mkdir(parents=True, exist_ok=True)
     manifest_p = USCITA / "manifest.json"
     manifest = json.loads(manifest_p.read_text(encoding="utf-8")) if manifest_p.exists() else {}
-    conta = {"nuovo": 0, "riusato": 0, "invariato": 0, "errore": 0, "assente": 0}
+    schemi = carica_schemi()
+    conta = {"nuovo": 0, "riusato": 0, "invariato": 0, "errore": 0, "assente": 0, "personale escluso": 0}
     for r in sorted(LOCALI.glob("lotto-*-origine.json")):
         lotto = r.name.split("-origine")[0]
         if a.lotto and lotto != f"lotto-{a.lotto}":
@@ -124,6 +128,10 @@ def main():
             if Path(nome).suffix.lower() not in di.SUPPORTED_EXTENSIONS:
                 continue
             if a.nomi and not any(t.lower() in nome.lower() for t in a.nomi):
+                continue
+            # I documenti personali non si convertono ne' si passano all'OCR (ADR-042).
+            if e_personale(v.get("posizione", ""), schemi):
+                conta["personale escluso"] += 1
                 continue
             impronta = v["sha256"]
             cache_rel = f"{lotto}/{nome}.md"

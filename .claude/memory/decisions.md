@@ -539,3 +539,27 @@ Decisione. Nessun file tracciato contiene titoli, nomi di file, percorsi di sing
 Motivazione. Un dato pubblicato non si ritira davvero, perché la storia e le copie restano. L'unico momento in cui la protezione costa poco è prima del commit, e un controllo meccanico non dipende dall'attenzione di chi scrive.
 
 Conseguenze. Il registro pubblico tiene libreria, tesi del 2020, proposte e scaricati, mentre il registro completo è locale. Le pagine di `docs/` descrivono il disco per categorie e non per file. L'elenco dei termini cresce con ogni nome o documento da proteggere. La regola e lo strumento vanno al template, come voce di PA-003.
+
+## ADR-041 - La wiki da J:/MAIN si costruisce a tre livelli, un lotto alla volta su permesso
+
+Data: 2026-10-06. Stato: accettata, risposte dell'utente alle sette domande di `research-vault/10-Piano-digestione-MAIN.md`.
+
+Contesto. L'utente vuole nella wiki tutto ciò che di utile c'è in `J:\MAIN`. Alla profondità degli appunti EEASE, circa 5 token per parola, i 91,2 milioni di parole in testo costerebbero oltre 450 milioni di token (MS-209).
+
+Decisione. Tre livelli. Il livello 1 è la lettura profonda del nucleo, cioè gli appunti dei corsi pertinenti, i manuali cardine della tesi e i paper centrali scelti con il criterio dello stadio per stadio. Il livello 2 è una scheda di fonte del modello economico per ogni documento pertinente, sul perimetro di cartelle e corsi proposto nella domanda 4 e accettato per intero. Il livello 3 è la sola voce di biblioteca. Il materiale sui pedali va al progetto della pedaliera di PA-030, con la sua wiki. Gli appunti diventano pagine della wiki, i manuali skill `libro-` con `book-digest`, e l'impianto di conversione del template resta intero. Si misura prima un lotto di prova per livello, poi l'utente decide lotto per lotto, e ogni lotto parte solo dopo il suo permesso.
+
+Motivazione. La lettura profonda di tutto non è sostenibile, e le schede fanno sapere alla wiki che cosa esiste senza leggerlo per intero. Il permesso per lotto tiene la spesa sotto il controllo dell'utente, che è la sola persona a conoscere la quota e le priorità del momento.
+
+Conseguenze. Le fonti non lette non escono dall'orizzonte dell'agente: chi risponde dalla wiki sa che esistono la biblioteca e il vault su `J:`, le schede del livello 2 e la cache convertita, e li consulta o lo dichiara prima di concludere che una fonte manca. La voce 25 della roadmap diventa il lotto di prova, in attesa del permesso.
+
+## ADR-042 - I documenti personali non si leggono mai senza richiesta espressa
+
+Data: 2026-10-06. Stato: accettata, istruzione vincolante dell'utente, da portare anche nel template come regola generale.
+
+Contesto. La conversione con OCR rilanciata il 2026-10-06 lavorava su tutto ciò che era indicizzato in `J:\MAIN`, comprese le cartelle con contratti, pratiche di borsa di studio, documenti d'identità, certificati e ricevute. Gli schemi sui soli percorsi ne riconoscono 54 indicizzati, già convertiti in testo nella cache locale dalle corse precedenti.
+
+Decisione. I documenti personali non si leggono, non si convertono, non si passano all'OCR e non si sintetizzano, a nessun livello, se non su richiesta espressa dell'utente per quei documenti. La regola è `.claude/rules/documenti-personali.md`, scritta nel template e istanziata qui. Gli strumenti `converti-fonti.py` e `biblioteca.py` li escludono dal percorso prima di aprirli, con `tools/privato_esclusi.py` e gli schemi nel file locale `_notes/privacy/esclusi-personali.txt`, e senza quel file si fermano.
+
+Motivazione. Un'esclusione affidata a chi lancia lo strumento si perde alla prima corsa di massa, che è esattamente quella che stava succedendo. Un filtro nello strumento non dipende dal ricordarsene.
+
+Conseguenze. L'OCR in corso è stato fermato prima di arrivare a quei documenti. Le copie in testo già nella cache si trattano secondo PA-031, su decisione dell'utente.

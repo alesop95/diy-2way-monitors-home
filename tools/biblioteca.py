@@ -41,6 +41,11 @@ from pathlib import Path
 
 import yaml
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from privato_esclusi import carica_schemi, e_personale  # noqa: E402
+
+SCHEMI_PERSONALI = carica_schemi()
+
 RADICE = Path(__file__).resolve().parent.parent
 VAULT = RADICE / "research-vault"
 LOCALI = VAULT / "fonti-locali"
@@ -172,7 +177,8 @@ def assegna(regole, fonti, posizioni, conv):
         # solo se ricorre spesso, in assoluto e rispetto al gruppo piu' frequente del documento,
         # cosi' che una citazione di passaggio non basti.
         cv = conv.get(loc.get("sha256", ""))
-        if cv and (CACHE / cv["cache"]).exists():
+        # Il contenuto di un documento personale non si legge nemmeno per classificarlo (ADR-042).
+        if cv and (CACHE / cv["cache"]).exists() and not e_personale(posizione, SCHEMI_PERSONALI):
             corpo = (CACHE / cv["cache"]).read_text(encoding="utf-8", errors="replace")[:LETTURA].lower()
             for regole_g, soglia, quanti in ((r_disc, SOGLIA_DISC, 4), (r_prog, SOGLIA_PROG, 3)):
                 punti = {g: sum(len(x.findall(corpo)) for x in pp) for g, pp in regole_g.items() if g not in solo_titolo}
