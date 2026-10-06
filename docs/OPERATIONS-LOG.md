@@ -4939,6 +4939,31 @@ Verificato con: `scrivi-schede.py`, 50 schede scritte con 0 problemi; il contegg
 
 Esito: fatto. La leva dei pacchetti più grandi attende il permesso dell'utente per il quarto lotto.
 
+### MS-215 - Le correzioni confermate riportate negli appunti originali come commenti di Word
+
+Data: 2026-10-06
+
+Perimetro:
+- quattro `.docx` dell'utente su `J:`, cioè `EEASE I.docx`, `EEASE II.docx` ed `EEASE_Exercises.docx` della cartella `From EEASE` di ANALOG (AUDIO) ELECTRONICS, e `ESE -FOA.docx` del corso di Fundamentals of Acoustics;
+- lo script locale `_notes/privacy/annota-originali.py`;
+- le introduzioni di `errata-eease.md` ed `errata-foa.md` nella wiki locale.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, perché gli appunti originali sono il taglio della tesi e da ora portano le correzioni verificate nel punto in cui servono. Non ne dipende alcuna fase.
+
+*Il permesso.* L'utente ha chiesto di riportare negli originali tutte le correzioni confermate, compresa la nota sull'appendice A, come commenti di Word ancorati al punto e senza copia di sicurezza su `J:`. È una scrittura su file dell'utente fuori dal repository, fatta con il permesso esplicito per quei file, come vuole la sezione sui dati personali di `CLAUDE.md`.
+
+*Come si trova il punto.* La tabella degli errori riporta le formule nel LaTeX della conversione, mentre il `.docx` le contiene come equazioni di Word, quindi il confronto diretto falliva: al primo tentativo solo 73 voci su 167 trovavano il paragrafo. Lo script usa allora un ponte. Cerca la formula o la citazione esatta nel testo convertito in `knowledge/sources/notes/`, prende la prosa che la circonda e trova nel `.docx` il paragrafo con la sottosequenza comune più lunga, escludendo l'indice. Se il ponte non basta, cerca le parole e le formule appiattite nella sezione nominata dalla tabella, e in ultima istanza ancora il commento al titolo della sezione. Il commento riporta sempre che cosa scrivono gli appunti e la forma corretta. Su 143 voci, cioè 82 errori confermati di EEASE, 60 di FoA e la nota sull'appendice A, la ripartizione finale è questa: 43 paragrafi trovati con il ponte, 37 nella sezione, 11 fuori dalla sezione nominata, 50 al titolo della sezione, 1 all'appendice e 1 ancorata a mano al titolo della sua sezione, la voce 61 di EEASE, che lo script non aveva trovato. Dodici ancoraggi a campione sono stati riletti e sono tutti al punto giusto.
+
+*La verifica.* Prima di scrivere su `J:` lo script ha girato su copie nella cartella temporanea della sessione. In ogni file i commenti, gli inizi di ancoraggio e i riferimenti sono in numero uguale: 31, 23, 28 e 60. La conversione con pandoc, che non riporta i commenti, è identica byte per byte prima e dopo, quindi il testo degli appunti non è cambiato. La stessa verifica, ripetuta sugli originali dopo la scrittura, ha dato lo stesso esito. Le copie di verifica dovevano poi essere cancellate, ma la rimozione ricorsiva è vietata dalle regole di permesso del progetto, e l'agente non l'ha aggirata. Restano nella cartella temporanea della sessione, fuori dal repository e fuori da `J:`.
+
+*Le due versioni di EEASE II.* Le due copie di `EEASE II.docx`, in `From EEASE` e sotto LOUDSPEAKERS & ELECTROACOUSTIC, hanno impronte diverse, quindi sono due versioni del documento. È stata annotata solo la prima, da cui deriva la wiki. Annotare la seconda con ancoraggi calcolati sull'altra versione rischiava commenti fuori posto. Che cosa farne lo decide l'utente.
+
+*Le conseguenze sull'indice.* I quattro file ora hanno un'impronta diversa da quella registrata nell'indice dei lotti. `indicizza-lotti.py --verifica` li segnalerà come cambiati, e `converti-fonti.py` li riconvertirebbe, con lo stesso testo. È la conseguenza attesa di una modifica voluta, e non un difetto.
+
+Verificato con: il rapporto di ancoraggio in `_notes/privacy/annota-rapporto.json`; il conteggio di commenti, ancoraggi e riferimenti nell'XML dei `.docx`; il confronto byte per byte della conversione con pandoc prima e dopo.
+
+Esito: fatto. Restano la decisione sulla seconda versione di `EEASE II.docx` e, se l'utente lo vuole, la rilettura dei 50 commenti ancorati al titolo della sezione.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

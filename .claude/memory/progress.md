@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Correzioni riportate negli appunti originali
+
+Commit di partenza: quello dell'utente con MS-213 e MS-214. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-215; `.claude/memory/index.md`; questo file. Fuori da git: quattro `.docx` su `J:` con 143 commenti, le introduzioni delle due errata nella wiki, gli script in `_notes/privacy/`.
+
+Il testo degli appunti è identico prima e dopo. La seconda versione di `EEASE II.docx` non è annotata e attende l'utente.
+
 ## 2026-10-06 - Quincke e banda chiariti, terzo lotto a pochi turni
 
 Commit di partenza: `8c79383`, dell'utente. Commit prodotto: nessuno ancora, il messaggio in `_notes/COMMIT-MSG.txt` copre MS-213 e MS-214.
