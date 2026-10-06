@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - L'interfaccia USB per monitor e misura
+
+Commit di partenza: f1cc9fc, dell'utente, con MS-222. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/54-amplificazione-e-dsp.md`, la sezione nuova sull'interfaccia; `docs/OPERATIONS-LOG.md` con MS-223; `docs/PENDING-ACTIONS.md` con PA-012; `tools/roadmap-items.yml`; `.claude/memory/index.md`; questo file.
+
+Il consiglio della ricerca è il UMC404HD, da misurare prima di confermare.
+
 ## 2026-10-06 - PA-024, la ricerca sull'elettronica dei cabinet
 
 Commit di partenza: 3d6fcd5, dell'utente, con MS-221. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.

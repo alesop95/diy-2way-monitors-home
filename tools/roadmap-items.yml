@@ -125,7 +125,7 @@ voci:
     dove: questo repository
     titolo: PA-024, scegliere il modulo di amplificazione e processore per i cabinet attivi
     stato: "Decisa l'architettura attiva con processore digitale, ADR-033; il modulo e la configurazione da Linux sono da accertare."
-    passo: "Ricerca fatta (MS-222, docs/54-amplificazione-e-dsp.md), criterio open source a costo minimo; l'utente sceglie a partire dalla via d'ingresso del segnale, poi ADR e lista acquisti; acquisto alla fine, ADR-027."
+    passo: "Ricerca fatta (MS-222, docs/54-amplificazione-e-dsp.md), criterio open source a costo minimo; interfaccia USB a 4 uscite con phantom ricercata (MS-223), consiglio UMC404HD da misurare; l'utente sceglie, poi ADR e lista acquisti, e la scelta chiude anche PA-012; acquisto alla fine, ADR-027."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 19
