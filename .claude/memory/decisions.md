@@ -563,3 +563,15 @@ Decisione. I documenti personali non si leggono, non si convertono, non si passa
 Motivazione. Un'esclusione affidata a chi lancia lo strumento si perde alla prima corsa di massa, che è esattamente quella che stava succedendo. Un filtro nello strumento non dipende dal ricordarsene.
 
 Conseguenze. L'OCR in corso è stato fermato prima di arrivare a quei documenti. Le copie in testo già nella cache si trattano secondo PA-031, su decisione dell'utente.
+
+## ADR-043 - La base di conoscenza serve i monitor, e non sostituisce il loro progetto
+
+Data: 2026-10-06. Stato: accettata, richiamo dell'utente.
+
+Contesto. Nella giornata del 2026-10-06 il lavoro è andato quasi tutto alla base di conoscenza: OCR, 450 schede di fonte, tre fonti di livello 1, le correzioni degli appunti originali, le lezioni per il template. L'utente ha riconosciuto il valore di quel lavoro e ha ricordato che lo scopo del progetto resta progettare e costruire la coppia di monitor a due vie, con la tesi che li sostiene.
+
+Decisione. La base di conoscenza è uno strumento della tesi e del progetto, e non un fine. Ogni volta che l'agente propone i passi successivi dopo un lavoro sulla base di conoscenza, propone anche il passo concreto successivo sul nucleo del progetto, cioè la stanza, i driver, la cassa, il crossover, il processore e le misure, preso dalla roadmap. La digestione di `J:\MAIN` procede per lotti finché serve ai capitoli della tesi che si stanno scrivendo, e non per completezza.
+
+Motivazione. Un lavoro di raccolta ha sempre un lotto successivo, e senza un richiamo esplicito tende a occupare tutte le sessioni. Il progetto si misura sui monitor costruiti e sulla tesi scritta, non sulle pagine della wiki.
+
+Conseguenze. La chiusura di ogni risposta, che già riporta la roadmap, nomina anche il primo passo del nucleo. La voce 25 della roadmap passa a una cadenza decisa dai capitoli in stesura.
