@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Interfaccia candidata scelta
+
+Commit di partenza: 7d15afe, dell'utente, con MS-223. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-224; `.claude/memory/decisions.md` con ADR-046; `docs/PENDING-ACTIONS.md` con PA-012; `tools/roadmap-items.yml`; `.claude/memory/index.md`; questo file.
+
+Il prossimo passo sul nucleo è la fase 4a, la scelta degli altoparlanti.
+
 ## 2026-10-06 - L'interfaccia USB per monitor e misura
 
 Commit di partenza: f1cc9fc, dell'utente, con MS-222. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.

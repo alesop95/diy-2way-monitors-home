@@ -599,3 +599,15 @@ Decisione. Il convertitore della catena di ascolto dei monitor non è fissato. S
 Motivazione. In una catena attiva con processore digitale il segnale nasce in digitale nel computer, e un convertitore scelto prima del processore impone una conversione in più senza beneficio. La scelta va fatta sull'architettura intera.
 
 Conseguenze. ADR-012 resta valida come descrizione del dispositivo e del suo uso con le cuffie, ma non vincola i monitor. `docs/54-amplificazione-e-dsp.md` ragiona sulla catena da zero, e la candidata più forte diventa CamillaDSP sulla macchina di progetto con un'interfaccia USB a quattro uscite, che può coincidere con l'interfaccia di misura di PA-012. `docs/75-catena-di-riproduzione.md` va riletta alla scelta di PA-024.
+
+## ADR-046 - L'interfaccia candidata per monitor e misura è il Behringer UMC404HD, confermata solo da una misura del fruscio
+
+Data: 2026-10-06. Stato: accettata come candidata, su scelta dell'utente; la conferma dipende da una misura.
+
+Contesto. Con ADR-033 e ADR-045 i monitor sono attivi, con il crossover in CamillaDSP sulla macchina di progetto, e l'interfaccia USB fa da convertitore a quattro canali verso gli amplificatori e da ingresso per il microfono di misura. La ricerca di MS-223 ha confrontato sei interfacce con il criterio dell'utente, cioè costo minimo e soluzione aperta più completa.
+
+Decisione. La candidata è il Behringer UMC404HD, con quattro uscite bilanciate, quattro ingressi con alimentazione phantom e nessuno strumento proprietario nelle fonti lette. Diventa definitiva solo se il fruscio misurato al tweeter, con l'ingresso in silenzio e REW al punto d'ascolto, risulta inudibile con la sensibilità del tweeter e il guadagno degli amplificatori scelti nella fase 4a. Se non lo è, si sale al Focusrite Scarlett 4i4 di quarta generazione o al MOTU M4. L'utente concorda che sensibilità e guadagno si fissano con gli altoparlanti.
+
+Motivazione. È l'interfaccia meno cara che soddisfa tutti i requisiti letti, e il suo solo rischio, la dinamica dichiarata più bassa, si chiude con una misura che il progetto deve fare comunque. Comprare subito un'interfaccia più costosa pagherebbe in anticipo un rischio non ancora accertato.
+
+Conseguenze. L'acquisto resta alla fine con gli altri, per ADR-027, e la misura del fruscio entra nella verifica della fase 8. La scelta vale anche per il progetto gemello, dove PA-012 va aggiornata in una sessione aperta lì.
