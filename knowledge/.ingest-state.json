@@ -10,5 +10,9 @@
  "sources/notes/eease-exercises.md": {
   "sha256": "f5f5f13dfb09a3650f5b86d0c438878d43b181b30785471d813c2d33ea3e2cdd",
   "ingerita": "2026-10-06"
+ },
+ "sources/notes/ese-foa.md": {
+  "sha256": "f20fcf450027c64ca3a05b7d7e700d7ec36bcfad2361e36091054127a055de7d",
+  "ingerita": "2026-10-06"
  }
 }

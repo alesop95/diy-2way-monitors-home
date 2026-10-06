@@ -555,7 +555,7 @@ def controlla_voci_recenti() -> None:
 
     print("\nPA-031  Copie in testo dei documenti personali gia' nella cache")
     riga("? ", "69 copie riconosciute dal percorso; elenco in _notes/privacy/esclusi-elenco.txt (ADR-042, MS-211)")
-    print("  APERTA: l'utente rilegge l'elenco e decide se cancellarle o tenerle.")
+    print("  COMPIUTA il 2026-10-06 (MS-212): 69 voci tolte dal manifesto, 68 file di cache cancellati.")
 
 
 def main() -> int:
