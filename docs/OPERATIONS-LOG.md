@@ -4746,6 +4746,80 @@ Verificato con: lo scheletro dei titoli; il conteggio delle pagine e il controll
 
 Esito: fatto. La wiki è compilata per i tre appunti EEASE, e la rigenerazione del vault con il ramo nuovo si fa a fine OCR.
 
+### MS-209 - Gli errori degli appunti da correggere, l'analisi stadio per stadio come criterio, la pedaliera, e il piano per ingerire tutto MAIN
+
+Data: 2026-10-06
+
+Perimetro:
+- `research-vault/08-Piano-ricerca-online.md`, con due sezioni nuove;
+- PA-029 e PA-030 in `docs/PENDING-ACTIONS.md` e in `tools/check-pending-actions.py`;
+- le voci 24 e 25 della roadmap;
+- l'elenco locale dei termini da non pubblicare;
+- la verifica e la correzione degli errori degli appunti nella wiki, affidata a un agente;
+- la misura della copertura di `J:/MAIN`.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, perché corregge gli appunti su cui la tesi si appoggia e fissa il criterio di scelta dei paper. Da questo microstep dipendono la ricerca bibliografica dei prossimi giri e il progetto della pedaliera.
+
+*Le indicazioni dell'utente.*
+- Il modello elettrico dell'altoparlante, le analogie elettro-meccano-acustiche e l'impedenza d'uscita degli stadi finali sono molto importanti per lui.
+- L'analisi del Tube Screamer stadio per stadio è l'approccio che vuole ritrovare nei paper.
+- Gli errori degli appunti si possono correggere.
+- Il ramo dei pedali è un filone di ricerca a sé, da estendere nei progetti che indicherà, e per primo nel progetto di una pedaliera analogica completa, dal PCB all'ordine dei componenti.
+- Vuole ingerito tutto ciò che di utile c'è in `MAIN`.
+- Ha fatto `chiudi`, che ha prodotto i commit `e3a7f5f` e `15cf840`, verificati su origin.
+
+*Gli errori degli appunti.* La correzione è affidata a un agente con il modello intermedio. Verifica sulla fonte e con i conti ogni punto "Da verificare" della wiki. Classifica ciascuno come errore confermato, non errore o non decidibile. Corregge le pagine sugli errori confermati, conservando che cosa dicevano gli appunti, e scrive la pagina locale `knowledge/wiki/errata-eease.md` con la tabella completa. I `.docx` originali su `J:` non sono toccati. Correggerli è una scrittura su file dell'utente, e conviene farla dalla tabella, una volta rilette le correzioni. L'esito della verifica è in MS-210.
+
+*Il criterio dello stadio per stadio.* Il piano della ricerca porta ora una sezione che lo rende criterio di scelta. A parità di pertinenza si preferiscono i paper e le tesi che analizzano un circuito o un sistema reale scomponendolo stadio per stadio, con il modello a piccolo segnale, poli e zeri e i valori dei componenti. Le query aggiungono termini come "stage-by-stage analysis", "small-signal model" e "case study".
+
+*La pedaliera.* Il ramo Guitar and effects engineering è un filone per altri progetti, e la sua ricerca bibliografica si svolgerà nel progetto della pedaliera, quando l'utente lo crea. È PA-030, e la pedaliera entra fra i progetti di PA-029. Il nome dell'amico con cui l'utente aveva avviato il lavoro è stato aggiunto all'elenco locale dei termini, così che `check-privato.py` lo fermi se finisse in un file tracciato.
+
+*Che cosa vuol dire ingerito, misurato.* Per ogni cartella di `MAIN` sono stati contati i documenti indicizzati, quelli in testo, le scansioni in attesa e i file in formati che lo strumento non converte.
+
+| Cartella | Indicizzati | In testo | Scansioni | Non convertiti |
+|---|---|---|---|---|
+| ANALOG (AUDIO) ELECTRONICS | 251 | 229 | 21 | 1 |
+| LOUDSPEAKERS & ELECTROACOUSTIC | 620 | 576 | 35 | 7 |
+| TLC, SIGNAL PROCESSING and DIGITAL FILTERS | 204 | 168 | 13 | 0 |
+| MATH and CALCULUS | 114 | 104 | 8 | 1 |
+| z_____UNIVERSITA | 2728 | 2415 | 261 | 50 |
+| _ESTRATTI ARCHIVI TESI | 3308 | 316 | 52 | 3 |
+| tutte | 7384 | 3958 | 399 | 95 |
+
+Gli indicizzati degli estratti comprendono file che non sono documenti, come immagini, codice e registrazioni della tesi, e per questo il testo è molto meno. Indicizzazione e conversione sono quindi quasi complete: le scansioni sono nell'OCR in corso, e restano 95 file `.doc`, `.ppt`, `.djvu` o `.epub` da convertire per altra via. La wiki invece contiene soltanto i tre appunti EEASE. Il testo convertito conta 91,2 milioni di parole. Gli appunti EEASE sono costati circa 1,02 milioni di token per circa 197 000 parole, cioè circa 5 token per parola. Alla stessa profondità tutto il corpus costerebbe oltre 450 milioni di token, quindi l'ingestione completa richiede un piano a livelli.
+
+*Il piano proposto, con stime dichiarate come tali.* Il primo livello è la lettura profonda, come per EEASE, riservata al nucleo: gli appunti dell'utente e i paper centrali della tesi e dei pedali, nell'ordine di un milione di parole e di alcuni milioni di token. Il secondo livello è una scheda di fonte per ogni documento pertinente, scritta dal modello economico dallo scheletro e dalle prime pagine. Con circa 2500 documenti e un costo dell'ordine di 3000 token ciascuno, fa alcuni milioni di token del modello economico. Il terzo livello è tutto il resto, che resta voce della biblioteca e del vault, come già è. Le stime vanno sostituite dalla misura del primo lotto di ciascun livello, come prescrive il pacchetto `lavoro-a-lotti`. È la voce 25 della roadmap, e attende la decisione dell'utente.
+
+Verificato con: `git fetch` e il confronto fra `HEAD` e `origin/main`; il conteggio per cartella dal manifesto e dall'indice; il conteggio delle parole del testo convertito; `check-privato.py`, con zero occorrenze e 23 termini locali; `check-pending-actions.py` con PA-030.
+
+Esito: fatto per il criterio, le pendenze, la roadmap e la misura. La verifica degli errori è in corso, e il piano di ingestione attende l'utente.
+
+
+### MS-210 - Ripresa dopo lo spegnimento del PC, OCR rilanciato, errori degli appunti completati
+
+Data: 2026-10-06
+
+Perimetro:
+- la verifica di ripresa e lo snapshot `.claude/memory/index.md`;
+- la conversione con OCR delle scansioni rimaste su `J:`;
+- la wiki locale in `knowledge/wiki/`, con la pagina `errata-eease.md`;
+- il blocco di `chiudi` su `fix-accents.py`.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037, perché completa la correzione degli appunti EEASE avviata in MS-209 e la conversione del materiale di studio della voce 19 della roadmap. Ne dipendono la rigenerazione del vault con `tools/biblioteca.py` e le prossime compilazioni della wiki.
+
+*La ripresa.* Il PC si è spento verso le 11, dopo i commit `e3a7f5f` e `15cf840` dell'utente e la registrazione dell'impronta delle 09:41. `tools/verifica-ripresa.py` ha trovato tre divergenze. La prima: otto file modificati non committati, cioè MS-209 completo, che l'utente ha confermato da tenere così com'è. La seconda: lo snapshot che dichiarava ancora `d6546e7`, ora portato a `15cf840`. La terza: il campo `generated-from-commit` di `context/deployment.md` che punta a un hash cancellato dalla riscrittura della storia di MS-205, senza effetti. Sono rimasti a metà due lavori. L'agente sugli errori degli appunti aveva corretto parte delle pagine con il rimando a `errata-eease.md`, ma quella pagina non esisteva, e restavano 25 righe "Da verificare" in 20 pagine. L'OCR si era fermato: l'ultima scrittura del manifesto è delle 10:56.
+
+*Un errore dell'agente, corretto.* Per aggiornare lo snapshot l'agente ha usato `sed -i` dalla shell POSIX. Lo strumento ha riscritto `index.md` con fine riga `LF` invece di `CRLF`, e `chiudi` ha mostrato 206 righe cambiate invece di 3. `check-eol.py` non poteva accorgersene, perché il file era coerente con sé stesso. La fine riga è stata ripristinata in byte, e il diff è tornato a 3 righe. La regola che ne discende: un file `CRLF` non si modifica con `sed -i`, ma con uno strumento che conserva la fine riga, e dopo la modifica si guarda `git diff --stat`. Lo stesso errore si è ripetuto dieci minuti dopo, nello scrivere questa voce, con un secondo `sed -i` su `OPERATIONS-LOG.md`, ed è stato corretto nello stesso modo: la regola scritta non era bastata a fermare il gesto, e la verifica con `check-eol.py` subito dopo la modifica lo ha fatto.
+
+*L'OCR con il disco assente.* Il primo rilancio dell'utente ha dato "assente" su tutti i 407 file restanti, con 3962 invariati e 0 nuovi: Windows non vedeva alcun volume `J:`. Ricollegato il disco, `Test-Path J:\MAIN` restituisce vero, e la conversione è stata rilanciata dall'agente in background, con il registro in `_notes/ocr-log/ocr-2026-10-06.log`. I primi errori sono PDF protetti da password, come le tre parti di `AAI_Illuminotecnica`, e PDF troncati, come Keele sulla polarità. Gli stessi file fallivano già prima, e non dipendono dall'OCR.
+
+*Il blocco di `chiudi`.* `fix-accents.py --check .` ha trovato 17 sostituzioni, ed erano tutte nelle pagine della wiki. Le pagine citano gli appunti fra apici singoli, per esempio "tre ordini di grandezza", e lo strumento legge "parola più apostrofo" come un accento scritto male. Sui file tracciati lo strumento passa: 141 file esaminati, 0 da modificare. Il difetto è doppio. Le citazioni nella wiki vanno fra virgolette doppie, e l'agente le corregge. Inoltre `chiudi` lancia `fix-accents.py` su `.` senza escludere i file ignorati da git, mentre `md-unwrap.py` riceve `--only-tracked`, quindi un file che non entrerà mai nel commit può bloccarlo. La seconda parte riguarda lo strumento del template, ed è una voce di PA-003.
+
+Verificato con: `tools/verifica-ripresa.py`; `git diff --stat` prima e dopo il ripristino della fine riga; `Test-Path J:\MAIN`; `fix-accents.py --check` sui soli percorsi tracciati.
+
+*Gli errori degli appunti, completati.* L'agente, con il modello intermedio, ha riverificato sui tre testi e con i conti le 76 correzioni della sessione caduta, tutte errori confermati, senza ribaltarne nessuna. Poi ha lavorato i 25 punti rimasti e ha scritto `knowledge/wiki/errata-eease.md`, locale per ADR-028, con 101 voci: 82 errori confermati, 12 non errori e 7 non decidibili. Due voci prima marcate come non decidibili sono diventate errori confermati: il $f_C$ al posto di $f_H$ nel passa-banda e la "plate voltage of 1 V" dell'EL34. Fra i nuovi errori c'è la capacità della capsula a condensatore, che gli appunti danno come $1.4\,pF$: con $ arepsilon_0 = 8.85 \cdot 10^{-12}\,F/m$, $R = 10\,mm$ e $x_0 = 20\,\mu m$ viene circa $139\,pF$, e il conto è stato rifatto qui a campione. I sette non decidibili restano marcati nelle pagine, ciascuno con la sua domanda. Tre sono per l'utente: che cosa mostrano le due pagine scansionate dell'appendice A di EEASE I, se la rete $R_2$ del buffer del TS808 è riferita a $4.5\,V$ o al ramo da $9\,V$, e quanto vale $R_{12}$ del TS808, che dal calcolo verrebbe circa $690\,\Omega$. Quattro sarebbero per il docente: la data del 1942 dell'analogia massa-induttanza, i $200\,V$ contro i $303\,V$ del controllo di tono a valvole, il $\gamma$ del rumore del MOSFET e la formula di $R_{IN}$ dell'emettitore comune. Nella stessa passata le citazioni fra apici singoli sono diventate virgolette doppie in tutta la wiki, e `fix-accents.py --check .` passa su 225 file. I `.docx` originali su `J:` non sono stati toccati: correggerli spetta all'utente, dalla tabella.
+
+Esito: fatto per la ripresa e per gli errori degli appunti. MS-209 è confermato dall'utente, e anche l'impostazione di PA-030. L'OCR è ancora in corso, e il suo esito si aggiunge qui alla fine della corsa.
 
 ## Che cosa resta da fare, e da che cosa dipende
 

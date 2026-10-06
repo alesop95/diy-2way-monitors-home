@@ -317,6 +317,8 @@ Che cosa va fatto. Decidere come si produrrà il file GLL del monitor autocostru
 
 Perché esiste. ARTA è shareware, e il limite della modalità dimostrativa è stato misurato il 2026-09-15 invece di essere rimandato: il programma è pienamente funzionante tranne che per il caricamento e il salvataggio dei file, come dichiarano concordi la finestra di avvio e il file `Readme.txt`. Produrre un GLL è esattamente un salvataggio, quindi il ruolo che la documentazione di questo progetto assegna ad ARTA non è esercitabile senza licenza. Non è una limitazione aggirabile con un accorgimento, perché non riguarda che cosa il programma sappia fare ma che cosa gli sia permesso conservare. Il racconto è in MS-116.
 
+Voce aggiunta il 2026-10-06 con MS-210. `chiudi-sessione.ps1` lancia `fix-accents.py`, `fix-dashes.py` e `fix-missing-accents.py` su `.` senza escludere i file ignorati da git, mentre `md-unwrap.py` riceve `--only-tracked`. Così una pagina della wiki locale, che non entrerà mai in un commit, ha fermato il commit di MS-209. Nel template lo strumento va corretto con un'opzione equivalente a `--only-tracked`, oppure con il passaggio dei soli file tracciati, e la correzione va riportata qui con `check-copie-modelli.py`.
+
 Condizione di sblocco. Nessuna condizione esterna la blocca in senso stretto, ma non ha senso deciderla adesso: la fase 8 richiede un diffusore costruito e misurato, che non esiste. La voce si sblocca quando il progetto arriva alla caratterizzazione del prototipo.
 
 Direttiva dell'utente del 2026-09-16, che restringe il campo e va rispettata invece di essere riaperta. La via da cercare è un sostituto gratuito e open source che copra quella funzione, non l'acquisto della licenza. L'acquisto resta l'ultima risorsa, da considerare soltanto se la ricerca dimostra che un sostituto non esiste, e quella dimostrazione va fatta e scritta, non assunta.
@@ -632,11 +634,21 @@ Criterio di completamento. Ogni cartella pertinente indicizzata e convertita. La
 
 Data di apertura: 2026-10-05, da ADR-039. Stato: aperta.
 
-Che cosa va fatto. In ciascun progetto attinente all'acustica si aggiunge al `CLAUDE.md`, o alla regola che governa le fonti, il rimando al vault `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI\` come base bibliografica comune, con la consegna di ADR-039. I candidati, riconosciuti dal nome della cartella su `E:` il 2026-10-05 e da confermare con l'utente, sono `home-recording-training-mixing-setup`, `feature-based_characterization_loudspeakers`, `rodrainaudio-reverse-eng`, `harmonic-tension-vst3` e `thesis`. La regola generale va anche al template, come voce di PA-003.
+Che cosa va fatto. In ciascun progetto attinente all'acustica si aggiunge al `CLAUDE.md`, o alla regola che governa le fonti, il rimando al vault `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI\` come base bibliografica comune, con la consegna di ADR-039. I candidati, riconosciuti dal nome della cartella su `E:` il 2026-10-05 e da confermare con l'utente, sono `home-recording-training-mixing-setup`, `feature-based_characterization_loudspeakers`, `rodrainaudio-reverse-eng`, `harmonic-tension-vst3` e `thesis`. Il 2026-10-06 l'utente ha aggiunto il progetto della pedaliera analogica per chitarra, ancora da creare, che è PA-030: userà il ramo Guitar and effects engineering. La regola generale va anche al template, come voce di PA-003.
 
 Condizione di sblocco. Una sessione aperta in ciascun progetto, e la conferma dell'utente sull'elenco.
 
 Criterio di completamento. Ogni progetto confermato porta il rimando, e il template porta la regola generale.
+
+## PA-030 - Creare il progetto della pedaliera analogica per chitarra
+
+Data di apertura: 2026-10-06, da MS-209. Stato: aperta, il momento lo decide l'utente.
+
+Che cosa va fatto. L'utente vuole progettare una pedaliera analogica per chitarra completa, dal circuito al PCB fino all'ordine dei componenti, riprendendo il lavoro avviato con un amico. Quel lavoro sta nella cartella `ragionamenti_MUSIC` di `ANALOG (AUDIO) ELECTRONICS`, con gli appunti sugli amplificatori, la pedaliera con un controller MIDI autocostruito e un documento sui pedali e sulle risposte all'impulso. Il progetto si crea dal template come repository a sé, con la sua ricerca bibliografica, che parte dal ramo Guitar and effects engineering del vault su `J:`, dalla pagina della wiki sul TS808 e dal criterio dello stadio per stadio scritto in `research-vault/08-Piano-ricerca-online.md`.
+
+Condizione di sblocco. L'indicazione dell'utente di creare il progetto, e il nome che vuole dargli.
+
+Criterio di completamento. Il repository esiste, istanziato dal template, con il rimando al vault delle fonti di ADR-039 e la prima ricerca bibliografica sul filone dei pedali.
 
 ## Azioni compiute
 
