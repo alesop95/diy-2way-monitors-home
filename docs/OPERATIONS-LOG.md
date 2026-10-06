@@ -5033,6 +5033,30 @@ Verificato con: il confronto delle impronte fra gli elenchi dei lotti; il conteg
 
 Esito: fatto. Il criterio `--nuovi` va portato anche allo strumento generico del template, come voce di PA-003.
 
+### MS-219 - I lotti 6 e 7 di schede, le esercitazioni di Musical Acoustics nella wiki, e le formule rovinate dalle sequenze di escape
+
+Data: 2026-10-06
+
+Perimetro:
+- i lotti 6 e 7 di schede di livello 2, preparati insieme;
+- la fonte di livello 1 `knowledge/sources/notes/ese-ma-1.md`, con la wiki e `errata-ma.md`, tutto locale;
+- dieci formule della wiki con un comando LaTeX rovinato;
+- gli errori nuovi dell'OCR sul perimetro.
+
+Legame con il progetto: serve la tesi di ADR-034 e ADR-037. Le schede proseguono la voce 25 della roadmap, la fonte di livello 1 appartiene al nucleo di ADR-041, cioè gli appunti dei corsi pertinenti.
+
+*I lotti 6 e 7.* Con l'utente in attesa dell'OCR, l'agente ha proposto tre lavori in parallelo, e l'utente ha approvato quelli consigliati. I successivi 100 documenti di LOUDSPEAKERS & ELECTROACOUSTIC non ancora schedati, scelti con `--nuovi`, sono stati riuniti in 4 pacchetti da 25, per circa 80 000 parole di estratti. Quattro agenti del modello economico hanno usato 25 turni, 381 690 token di cache scritta, 1 667 272 di cache letta e 47 191 di uscita. Il costo equivalente è di circa 880 000, cioè circa 8 800 per scheda, in linea con i lotti 4 e 5. `scrivi-schede.py` ha scritto 100 schede con 0 problemi, e le schede sono ora 350. Le utilità sono 48 alta, 40 media, 10 bassa e 2 nessuna.
+
+*Le esercitazioni di Musical Acoustics.* Un agente con il modello intermedio ha letto per intero `ESE - MA (PART I).docx`, circa 18 000 parole, in circa 7 minuti, con 204 827 token nella notifica. La fonte non è una raccolta di esercizi numerici come quella di FoA. È un quaderno sugli elementi finiti e su COMSOL, seguito da un'introduzione ai sistemi dinamici e vibranti, con pochi conti, molte figure che la conversione non conserva e alcuni paragrafi segnaposto. La pagina della fonte è quindi organizzata per sezioni. Sono state create 9 pagine: la pagina della fonte, `errata-ma.md`, sei concetti nuovi e l'entità COMSOL Multiphysics. Altre 9 pagine hanno ricevuto un paragrafo di collegamento in coda. L'errata ha 39 voci: 17 errori confermati, 18 non errori e 4 non decidibili. Gli errori sono quasi tutti di concetto. Il più rilevante per i conti è $f_{0} = 2\pi\sqrt{k/m}$ al posto di $\sqrt{k/m}/(2\pi)$. Gli altri riguardano l'appoggio semplice descritto come incastro, il primo modo di una piastra con un nodo al centro invece di un ventre, la deformazione permanente attribuita alla regione elastica e il transitorio non smorzato descritto come decadente. Le affermazioni su COMSOL poggiano sulla coerenza del testo e sulla documentazione nota, non su una prova con il programma, e la pagina lo dichiara. I quattro non decidibili chiedono i parametri dei modelli usati a lezione: il trombone a 40 Hz, il primo modo del violino sul manico, il timpano a circa 150 Hz e l'oscillatore a circa 16 Hz.
+
+*Le formule rovinate.* L'agente ha segnalato che in alcune pagine scritte nei giri precedenti `\beta` compariva come "beta" e `\rho` come "ho". Uno script Python con stringhe non raw trasforma `\b`, `\r` e `\t` in caratteri di controllo, e un passaggio successivo li toglie insieme alla barra. `_notes/privacy/cerca-escape.py` cerca dentro le formule le parole residue dei comandi più comuni non precedute da una barra, e i caratteri di controllo davanti a una lettera. Ha trovato 10 formule in 5 pagine. Nove erano `\beta` o `\rho`. La decima era `\tilde` di `eease-2.md`, rimasto come tabulazione seguita da "ilde". Le 10 formule sono state corrette, e una seconda corsa ne trova 0.
+
+*Gli errori nuovi dell'OCR.* L'OCR sul perimetro è salito da 12 a 18 errori. I 6 nuovi sono file `._2013...pdf` di una cartella `__MACOSX`, cioè i metadati che macOS aggiunge agli archivi, e non documenti. Lo strumento potrebbe escludere le cartelle `__MACOSX` già all'indicizzazione.
+
+Verificato con: le trascrizioni degli agenti dei lotti; `scrivi-schede.py`; i controlli dell'agente sulla wiki; due corse di `cerca-escape.py`, prima e dopo la correzione; `check-eol.py knowledge`.
+
+Esito: fatto. I quattro non decidibili di Musical Acoustics attendono l'utente.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
