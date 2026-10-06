@@ -5139,6 +5139,24 @@ Verificato con: `md-unwrap.py`, `lint-md-tables.py`, `fix-accents.py`, `fix-dash
 
 Esito: fatto per la ricerca. La scelta dell'interfaccia spetta all'utente e chiude insieme PA-012 e PA-024.
 
+### MS-224 - La candidata per l'interfaccia, e la differenza fra uscite bilanciate e sbilanciate
+
+Data: 2026-10-06
+
+Perimetro:
+- ADR-046;
+- PA-012 e PA-024 in `docs/PENDING-ACTIONS.md`.
+
+Legame con il progetto: serve PA-024 e PA-012, e la fase 8 per la misura del fruscio. Ne dipende la lista degli acquisti finali.
+
+*La scelta dell'utente.* L'utente segue il consiglio della ricerca: il Behringer UMC404HD, da confermare con la misura del fruscio al tweeter quando il tweeter esisterà, dopo il progetto della fase 4a. Concorda che sensibilità del tweeter e guadagno degli amplificatori si fissano con gli altoparlanti. È ADR-046. Sulla scelta fra uscite bilanciate e sbilanciate ha chiesto una spiegazione, che gli è stata data. L'agente ha consigliato le uscite bilanciate per tutte e quattro le vie, perché i cavi fra interfaccia e amplificatori corrono vicino all'alimentazione e al calcolatore, e il fruscio e il ronzio entrano più facilmente in un collegamento sbilanciato; il tweeter, con la sua sensibilità, li rende udibili per primo. Il UMC404HD ha quattro uscite bilanciate, quindi la domanda si chiude con la scelta.
+
+*Il gemello.* L'utente ha chiesto se il progetto gemello `home-recording-training-mixing-setup` sia versionato in parallelo per tutto ciò che riguarda il setup. `sync-ambiente.py --check` riporta 16 file del blocco `docs/10-ambiente/` allineati, 0 da propagare e 0 orfani, e il gemello ha l'albero di lavoro pulito, con l'ultimo commit del 2026-10-01. Il gemello può attingere alla biblioteca e al vault delle fonti su `J:` come ogni progetto di acustica, ed è PA-029, che resta da fare in una sessione aperta lì. Lì va aggiornata anche PA-012 con ADR-046.
+
+Verificato con: `sync-ambiente.py --check`; `git status` nel gemello; `git log -1` dopo il `chiudi` dell'utente, che ha portato MS-223 su `origin` con `7d15afe`.
+
+Esito: fatto.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
