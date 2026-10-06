@@ -20,6 +20,10 @@ Poi lanciare `python tools/check-pending-actions.py`, che dice quali azioni diff
 
 Il punto d'ingresso della documentazione tecnica è `docs/README.md`. Il registro cronologico degli interventi, con l'esito verificato di ciascuno, è `docs/OPERATIONS-LOG.md`, e ogni intervento nuovo vi aggiunge un microstep numerato con la propria verifica. Le azioni differite stanno in `docs/PENDING-ACTIONS.md`, e una voce compiuta non si cancella: si marca come compiuta con la data.
 
+## Chiusura di ogni risposta
+
+Istruzione vincolante dell'utente del 2026-10-06. Ogni risposta di sessione finisce con tre cose, in quest'ordine. La prima è la roadmap aggiornata, letta da `python tools/roadmap.py` e non ricordata. La seconda sono le pendenze aperte che toccano all'utente. La terza è il momento in cui lanciare `chiudi`: adesso, con il messaggio pronto in `_notes/COMMIT-MSG.txt`, oppure dopo un passo che va nominato.
+
 ## Tracciamento integrale: tutto quello che passa in sessione finisce in documentazione
 
 Istruzione vincolante dell'utente, non una preferenza. Tutto ciò che viene detto, deciso, scoperto, sbagliato o corretto durante una sessione va scritto nella documentazione di progetto, sempre e per intero, non riassunto nella risposta e lasciato lì. Una conversazione non è un supporto di memoria: si perde alla chiusura, non si versiona e non arriva a chi clona il repository.

@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Prima wiki dagli appunti EEASE, ramo dei pedali, chiusura di ogni risposta
+
+Commit di partenza: `d6546e7`. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-208; `CLAUDE.md` con la chiusura di ogni risposta; `research-vault/biblioteca-regole.yml` e `09-Biblioteca-tassonomia.md`; `tools/roadmap-items.yml`; `knowledge/log.md` e `knowledge/.ingest-state.json`; `docs/PENDING-ACTIONS.md`; `.claude/memory/index.md`; questo file. Fuori da git: la wiki in `knowledge/wiki/` e le fonti in `knowledge/sources/notes/`, le regole locali.
+
+La wiki ha le sue prime 39 pagine, compilate da tre agenti in parallelo dagli appunti EEASE e verificate: nessun collegamento rotto, tre errori degli appunti riscontrati sulla fonte. Il materiale sui pedali per chitarra ha un ramo proprio di nove sottogruppi. Ogni risposta finisce ora con roadmap, pendenze e momento di `chiudi`, per istruzione dell'utente scritta in `CLAUDE.md`. L'OCR dell'utente ha letto Izadian.
+
 ## 2026-10-06 - La lezione sulle etichette chiuse al template, OCR in corso
 
 Commit di partenza: `d6546e7`. Commit prodotto: nessuno ancora.

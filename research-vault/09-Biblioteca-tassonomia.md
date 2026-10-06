@@ -83,6 +83,16 @@ Disciplina
   Microphones
   Music
   Musical Instruments
+  Guitar and effects engineering
+    Guitar electronics
+    Distortion, overdrive and fuzz
+    Modulation and time-based effects
+    Guitar amplifiers and cabinets
+    Virtual analog modeling
+    Guitar pickups
+    Guitar body acoustics
+    Pedal design and construction
+    Schematics and datasheets
   Mechanical design and CAD
   Computer science
     Information theory
@@ -98,6 +108,8 @@ Disciplina
 ```
 
 I gruppi nuovi, cioè assenti dalla libreria JabRef, sono: Filter design and quantization, Room response equalization, Electronic measurements, Vibration and structural dynamics, Room acoustics, Psychoacoustics and spatial perception, Acoustic simulation, i sottogruppi di Loudspeakers tranne Loudspeaker motor e Plane wave tube, Microphones, Mechanical design and CAD, Machine learning e Scientific writing and typesetting. Gli altri esistono già come nomi nelle voci della libreria e vengono soltanto collocati.
+
+Il ramo Guitar and effects engineering è stato aggiunto il 2026-10-06, su richiesta dell'utente, perché il materiale sull'ingegnerizzazione dei pedali e della chitarra elettrica è un'area di ricerca a sé e non un dettaglio dell'elettronica audio. I sottogruppi sono ricavati dal materiale presente: paper e tesi su distorsori e fuzz, modulazioni, simulazione di amplificatori e casse, modellazione virtuale analogica, pickup, acustica del corpo della chitarra, progetto dei pedali e schemi. Guitar electronics, che prima stava sotto Audio electronics, ne è il sottogruppo generale.
 
 ### Asse 2, progetto: che cosa sostiene un punto della tesi
 
