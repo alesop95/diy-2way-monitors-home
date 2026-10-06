@@ -4645,6 +4645,76 @@ Verificato con: `gh api` sui tre commit vecchi e sulla visibilità; `git fetch` 
 
 Esito: fatto. PA-028 è compiuta.
 
+### MS-206 - L'OCR fermo per il disco scollegato, la biblioteca senza residui, e i percorsi troppo lunghi
+
+Data: 2026-10-05
+
+Perimetro:
+- `tools/converti-fonti.py`, nella funzione dell'OCR;
+- la classificazione delle voci residue in `_notes/biblioteca/`;
+- PA-026 e PA-027, e le voci 19 e 22 della roadmap.
+
+Legame con il progetto: serve la tesi di ADR-034 in tutti i capitoli, perché ogni scansione resa leggibile e ogni fonte classificata entra nella biblioteca e nel vault. Da questo microstep dipendono la wiki e la lettura dei libri principali.
+
+*La domanda dell'utente.* Se l'OCR delle scansioni restanti consumi token e possa girare in locale. Gira in locale: `converti-fonti.py --ocr` usa Tesseract sulla postazione, con i modelli di lingua in `_notes/tessdata/`, e all'agente costa solo il lancio e la lettura del riepilogo finale.
+
+*Un'OCR che non ha letto nulla.* La corsa su tutte le scansioni sotto le 50 parole è terminata subito con 3914 documenti invariati e 455 assenti, nessun errore e nessun documento nuovo. Il disco `J:` era stato scollegato, e lo strumento conta come assente un documento la cui posizione non risponde. Il riepilogo va quindi letto per intero e non solo nel codice di uscita, che era zero. La corsa si ripete con il disco collegato, e riprende da sola dalle scansioni ancora sotto la soglia.
+
+*Il percorso troppo lungo.* Izadian falliva con "Unable to get page count", perché Poppler non apre un percorso oltre i 260 caratteri di Windows. Ora `ocr_pdf` copia un PDF con percorso oltre i 240 caratteri in `_notes/ocr/percorso-lungo.pdf`, lo legge da lì e toglie la copia a lavoro finito, anche in caso di errore. La correzione è verificata per sintassi, e la prova sul file vero attende il disco.
+
+*I residui della biblioteca.* Le 173 voci rimaste in Da classificare sono state date a un agente con il modello economico, questa volta con le prime 500 lettere del testo convertito oltre a titolo, autori, sede e cartella. Il controllo prima dell'uso è stato fatto. L'uscita ha esattamente le 173 chiavi dell'ingresso, nessun nome di gruppo è estraneo all'albero, e tutte le voci hanno almeno un gruppo. Il campione di venticinque regge, con qualche errore riconoscibile dal motivo `agente`, per esempio un capitolo sullo stato dell'arte messo nella misura della stanza. Con la prova di `biblioteca.py` le voci da classificare sono zero, le escluse come non pertinenti salgono a 439 e le fonti a 7755. La rigenerazione del vault su `J:` attende il disco.
+
+Verificato con: il riepilogo di `converti-fonti.py --ocr`; `ls` sul disco, che non risponde; la sintassi di `converti-fonti.py`; il confronto delle chiavi e dei nomi di gruppo dell'agente con l'ingresso, e il campione; `biblioteca.py --prova`.
+
+Esito: fatto per la classificazione e per la correzione dei percorsi lunghi. L'OCR e la rigenerazione del vault attendono il disco `J:`.
+
+### MS-207 - La lezione sulle etichette chiuse portata al template, e tre lotti che andavano bocciati
+
+Data: 2026-10-06
+
+Perimetro: nel template `template-claude-developing`, non committati:
+- `lavoro-a-lotti/tools/valida-etichette.py`, nuovo;
+- il README e la regola del pacchetto `lavoro-a-lotti`;
+- `.claude/rules/token-economy.md`;
+- il file di ripresa e il messaggio di commit del template.
+
+In questo progetto: le misure delle due tornate in `_notes/biblioteca/`, PA-003, e la verifica dell'OCR avviato dall'utente.
+
+Legame con il progetto: non serve una fase elettroacustica, serve il metodo con cui il progetto e i suoi gemelli spendono token. Da questo microstep dipende ogni prossima classificazione a lotti, che passa ora dal validatore.
+
+*La richiesta dell'utente.* L'utente ha trovato molto utile la classificazione dei residui con un agente economico. Ha chiesto di ragionare sulla lezione e di portarla nel template, irrobustita e ottimizzata oltre ciò che il template già possiede.
+
+*Che cosa il template aveva già.* Il pacchetto `lavoro-a-lotti` copre il lavoro con un artefatto per elemento, cioè un registro e un presidio che verifica che l'artefatto esista ma non che sia buono. La regola `token-economy.md` porta le misure del parallelismo e del costo per elemento. Mancava il caso di molti elementi piccoli assegnati a un insieme chiuso di etichette. In quel caso un contratto chiuso rende verificabile meccanicamente anche una parte della qualità.
+
+*Le misure.* Dai file su disco e dai token delle notifiche di fine agente:
+
+| Lotto | Voci | Estratto del testo | Mancanti | Etichette inventate | Vuote | Token per voce |
+|---|---|---|---|---|---|---|
+| 1 | 379 | no | 0 | 0 | 104 | 285 |
+| 2 | 379 | no | 0 | 0 | 2 | 312 |
+| 3 | 379 | no | 5 | 24 | 9 | 281 |
+| 4 | 376 | no | 0 | 0 | 88 | 245 |
+| 5 | 173 | 500 caratteri | 0 | 0 | 0 | 630 |
+
+Le vuote del lotto 3 sono 9 e non le 7 contate in MS-201, perché il validatore conta anche le voci rimaste vuote dopo lo scarto delle etichette inventate.
+
+*Un errore mio.* In MS-201 i lotti 1, 3 e 4 erano stati accettati dopo un controllo delle chiavi e un campione. Un tasso di vuote del 27% e del 23% era però già il segno che due agenti avevano sostituito il giudizio con una scorciatoia: quello del lotto 1 dichiarava di aver classificato per corrispondenza di parole chiave. Il danno è stato evitato solo perché le voci rimaste vuote sono finite nel residuo della tornata successiva. La regola che ne discende sta nel template: l'esito si valida prima di unirlo, e oltre una soglia di vuote il lotto si rilancia.
+
+*Che cosa è andato al template.* Il validatore `valida-etichette.py` usa solo la libreria standard. Confronta le chiavi dell'uscita con quelle dell'ingresso, scarta le etichette fuori dall'elenco, conta le voci vuote, boccia il lotto oltre la soglia, stampa un campione da rileggere e unisce le voci valide in una mappa cumulativa. Provato sui lotti reali, boccia il lotto 1 per le vuote e il lotto 3 per mancanti e inventate, e promuove il lotto 5. Il README del pacchetto porta il caso misurato e cinque lezioni:
+- il resoconto dell'agente non è una misura;
+- lo stesso mandato dà esiti molto diversi, e il tasso di vuote ne è il segnale;
+- l'estratto del testo vale il suo prezzo solo sul residuo;
+- le regole deterministiche restano sovrane, e l'esito dell'agente porta il suo motivo;
+- il parallelismo ha compresso il tempo da circa dodici minuti a circa cinque, con lo stesso consumo.
+
+Il README riporta anche il mandato da copiare, che vieta di scrivere programmi al posto del giudizio. La regola del pacchetto ha una sezione breve che dice quando si applica. `token-economy.md`, che si carica sempre, ha solo i due principi generali: il lavoro locale non costa token e il suo riepilogo va letto per intero, e l'uscita di un lavoro lungo va in una cartella ignorata del progetto e non nella temporanea della sessione.
+
+*L'OCR.* L'utente ha avviato da sé `converti-fonti.py --ocr` con il disco collegato. Alle 09:01 lo strumento aveva creato `_notes/ocr/percorso-lungo.pdf`, cioè stava leggendo Izadian dalla copia a percorso corto introdotta in MS-206. Un secondo processo non è stato lanciato, perché due processi sullo stesso manifesto si scriverebbero sopra.
+
+Verificato con: i controlli del template, cioè md-unwrap con l'oracolo, sync-readme `--check --bundle`, check-catalogo, lint-md-commands e misura-istruzioni, con 88 246 caratteri su 100 000, più le fini riga e la sintassi; `valida-etichette.py` sui lotti 1, 3 e 5; l'elenco dei processi e la data della copia a percorso corto.
+
+Esito: fatto nel template, da committare lì. La passata `allinea-tutti` che lo porterà ai progetti resta sospesa per scelta dell'utente.
+
 
 ## Che cosa resta da fare, e da che cosa dipende
 
