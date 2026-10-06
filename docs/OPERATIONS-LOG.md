@@ -5081,6 +5081,24 @@ Verificato con: le trascrizioni degli agenti; `scrivi-schede.py`; `lint-md-table
 
 Esito: fatto.
 
+### MS-221 - La copia vecchia degli esercizi EEASE cancellata, e MAIN come archivio principale
+
+Data: 2026-10-06
+
+Perimetro:
+- la copia vecchia degli esercizi EEASE sotto LOUDSPEAKERS & ELECTROACOUSTIC, con un promemoria sul fattore Q nel nome, cancellata;
+- ADR-044.
+
+Legame con il progetto: nessuna fase in senso stretto. Riguarda l'ordine dell'archivio dell'utente, che il progetto usa, e fissa con ADR-044 come lo si tratta.
+
+*La copia vecchia.* L'utente ha permesso di cancellare la copia vecchia degli esercizi EEASE, purché le nuove stessero dove devono stare. Prima di cancellarla l'agente ha confrontato le due conversioni in testo semplice con pandoc. Hanno lo stesso numero di parole, 58 291, e su 1728 paragrafi lunghi della copia vecchia uno solo non compare identico nella nuova. La differenza è un articolo: "an npn device" nella vecchia, "a npn device" nella nuova. L'ultima parte sul fattore Q, che il nome del file ricordava, è presente in entrambe. La copia vecchia, revisione 91 del 2019-07-01, è stata cancellata. In `From EEASE` e sotto LOUDSPEAKERS & ELECTROACOUSTIC restano ora gli stessi tre appunti annotati, `EEASE I.docx`, `EEASE II.docx` ed `EEASE_Exercises.docx`.
+
+*MAIN come archivio principale.* L'utente ha ricordato che `J:\MAIN` è il suo archivio principale di tutto, a prescindere da questo progetto. È ADR-044.
+
+Verificato con: le due conversioni con pandoc e il confronto paragrafo per paragrafo; l'elenco dei file EEASE nelle due cartelle dopo la cancellazione.
+
+Esito: fatto.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.
