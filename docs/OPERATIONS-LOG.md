@@ -5175,6 +5175,48 @@ Verificato con: i controlli della sequenza prima del commit.
 
 Esito: fatto per il piano. Il primo passo, i requisiti, attende tre numeri dall'utente.
 
+### MS-226 - Il punto di ripartenza: la stanza sistemata, prima delle misure e della 4a
+
+Data: 2026-10-06
+
+Perimetro:
+- PA-032 in `docs/PENDING-ACTIONS.md` e in `tools/check-pending-actions.py`;
+- `.claude/context/current-work.md`, il fronte attivo.
+
+Legame con il progetto: serve la fase 1, la fase 2 e la fase 4a, cioè le misure della stanza, il modello e i requisiti dei monitor. Ne dipende la ripresa del nucleo del progetto.
+
+*La decisione dell'utente.* L'utente ha scelto di non rispondere ora ai tre numeri della fase 4a. Prima sistema fisicamente la stanza, così da poterla misurare e da sapere dove possono stare i monitor. Poi la sessione riparte esattamente da quelle domande, e dal modo preciso in cui consegnare le misure, con il lavoro su Ubuntu Studio via SSH per Blender e per gli altri strumenti configurabili sulla macchina. È PA-032. L'ultimo giro di questa sessione sarà la fine dell'OCR sul perimetro, con l'aggiornamento finale e il file di ripresa.
+
+*Il fronte attivo.* La scheda `current-work.md` porta in testa il nuovo stato: il fronte passa dalla base di conoscenza alla fase 4a, in attesa della stanza sistemata.
+
+Verificato con: `check-pending-actions.py`, che elenca PA-032.
+
+Esito: fatto.
+
+### MS-227 - L'OCR sul perimetro interrotto per la sera, e come riprende
+
+Data: 2026-10-06
+
+Perimetro:
+- la conversione con OCR sul perimetro di ADR-041, lanciata in MS-213;
+- il file di ripresa e la memoria.
+
+Legame con il progetto: serve la voce 19 della roadmap e, dopo di essa, la rigenerazione del vault della voce 22. Non blocca la fase 4a, che attende la stanza sistemata di PA-032.
+
+*L'interruzione.* L'utente stacca il disco `J:` per la sera, quindi l'OCR non può finire oggi. Prima del distacco l'agente ha fermato la conversione e il suo controllo, e ha verificato che nessun processo `converti-fonti` restasse attivo. Al momento dell'arresto la corsa aveva scritto 134 file nella cache, con 20 errori, tutti già spiegati: PDF protetti da password o troncati, e file `._` delle cartelle `__MACOSX`, che sono metadati di macOS. Il manifesto della cache era stato salvato l'ultima volta alle 16:53, perché lo strumento lo salva ogni 25 documenti nuovi e alla fine. I documenti convertiti dopo quel salvataggio sono sulla cache ma non nel manifesto, e alla ripresa verranno riconvertiti. È una perdita di tempo di calcolo, non di dati.
+
+*La ripresa.* Con `J:` collegato si rilancia lo stesso comando, che salta da sé i documenti già registrati nel manifesto:
+
+```bash
+python -u tools/converti-fonti.py --ocr --cartelle "LOUDSPEAKERS & ELECTROACOUSTIC" "ANALOG (AUDIO) ELECTRONICS" "TLC, SIGNAL PROCESSING" "ACUSTIC" "ELETTRONIC" "ELECTRONIC" "SEGNAL" "SIGNAL" "CONTROLLI" "MISURE" "SOUND"
+```
+
+A fine corsa si lancia `python tools/biblioteca.py`, che rigenera biblioteca e vault su `J:` senza costo in token, e se ne scrive l'esito. Per salvare il manifesto più spesso, e perdere meno lavoro a un'interruzione, basterebbe abbassare la soglia di salvataggio dello strumento: è un miglioramento possibile, non ancora fatto.
+
+Verificato con: il conteggio dei file scritti dalla corsa; il registro della corsa; il controllo dei processi attivi, con zero processi `converti-fonti`.
+
+Esito: interrotto per scelta dell'utente, da riprendere.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

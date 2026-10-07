@@ -672,6 +672,16 @@ Condizione di sblocco. La decisione dell'utente dopo aver riletto l'elenco.
 
 Criterio di completamento. Le copie sono cancellate o tenute per scelta registrata, e gli schemi sono corretti secondo la rilettura.
 
+## PA-032 - Ripartire dalla stanza sistemata: misure, modello in Blender e i tre numeri della fase 4a
+
+Data di apertura: 2026-10-06, da MS-226. Stato: aperta, in attesa che l'utente finisca di sistemare fisicamente la stanza.
+
+Che cosa va fatto. Quando i mobili sono al loro posto, la sessione riparte da qui, in quest'ordine. Primo, i tre numeri dei requisiti della fase 4a, cioè distanza d'ascolto, pressione sonora massima al punto d'ascolto e frequenza più bassa, con la posizione possibile dei monitor che la stanza sistemata consente. Secondo, il protocollo con cui l'utente consegna le misure della stanza: che cosa misurare, con quale strumento, in che unità, rispetto a quale origine e in quale formato di file, così che il rilievo geometrico di PA-020 e il modello della fase 2 partano da dati coerenti. Terzo, il lavoro sulla macchina Ubuntu Studio via SSH con l'alias `studio`: la verifica e il setup degli strumenti della catena che lì sono configurabili, a partire da Blender per il modello della stanza, poi Octave con MATAA, REW e gli strumenti sotto Wine già documentati in `docs/10-ambiente/`.
+
+Condizione di sblocco. L'utente comunica che la stanza è sistemata.
+
+Criterio di completamento. I tre numeri scritti nella pagina della fase 4a, il protocollo di consegna delle misure scritto come pagina prescrittiva sotto `docs/`, il modello della stanza avviato in Blender sulla macchina, e da lì il primo passo dei requisiti calcolati.
+
 ## Azioni compiute
 
 ## PA-028 - Titoli di documenti personali nel registro pubblico delle fonti

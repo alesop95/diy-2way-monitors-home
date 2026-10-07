@@ -170,3 +170,10 @@ voci:
     stato: "In testo 3958 documenti, 399 scansioni in OCR, 95 file in formati non convertiti; nella wiki solo i tre appunti EEASE (MS-208), costati circa 5 token di agente per parola di fonte."
     passo: "Due lotti da 50 schede fatti (MS-212, MS-213): circa 9 800 e 8 900 token per scheda, lotto 3 con un pacchetto per agente (MS-214): cache letta cinque volte minore, costo equivalente circa -44%; lotto 4 con 2 agenti da 25 (MS-216): circa 7 600 token equivalenti per scheda, -68% sul primo; giudizi riletti in MS-217, pacchetti da 25 come forma stabile; 450 schede dopo i lotti 8 e 9 (MS-220), i lotti si preparano con --nuovi e procedono al passo dei capitoli in stesura (ADR-043); livello 1 fatto per EEASE, FoA ed esercitazioni di Musical Acoustics. Piano originario di MS-209: lettura profonda per il nucleo della tesi e dei pedali, scheda di fonte con il modello economico per il resto pertinente, solo voce di biblioteca per tutto il resto."
     fonte: "docs/OPERATIONS-LOG.md"
+  - id: 26
+    livello: 2
+    dove: "stanza, questo repository e macchina Ubuntu"
+    titolo: PA-032, ripartire dalla stanza sistemata per la fase 4a
+    stato: "Fase 4a pianificata in docs/50-progettazione-monitor.md (MS-225); attende che l'utente sistemi fisicamente la stanza."
+    passo: "I tre numeri dei requisiti, il protocollo di consegna delle misure come pagina prescrittiva, poi Blender e gli strumenti su Ubuntu Studio via ssh studio."
+    fonte: "docs/PENDING-ACTIONS.md"

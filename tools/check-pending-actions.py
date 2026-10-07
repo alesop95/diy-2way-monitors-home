@@ -557,6 +557,10 @@ def controlla_voci_recenti() -> None:
     riga("? ", "69 copie riconosciute dal percorso; elenco in _notes/privacy/esclusi-elenco.txt (ADR-042, MS-211)")
     print("  COMPIUTA il 2026-10-06 (MS-212): 69 voci tolte dal manifesto, 68 file di cache cancellati.")
 
+    print("\nPA-032  Ripartire dalla stanza sistemata: misure, Blender, i tre numeri della 4a")
+    riga("? ", "si sblocca quando l'utente ha sistemato i mobili; poi protocollo misure, SSH su studio, Blender (MS-226)")
+    print("  APERTA: in attesa dell'utente.")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,

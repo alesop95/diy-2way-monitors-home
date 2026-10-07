@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-06 - Fine della giornata, OCR interrotto
+
+Commit di partenza: 80ae38e. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt` e copre MS-226 e MS-227.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-227; `.claude/memory/index.md`; questo file; `_notes/RESUME-PROMPT.md`, fuori da git.
+
+L'utente stacca `J:`. Domani: riprendere l'OCR, poi la biblioteca; la fase 4a riparte da PA-032 quando la stanza è sistemata.
+
+## 2026-10-06 - Punto di ripartenza: la stanza sistemata
+
+Commit di partenza: 80ae38e, dell'utente, con MS-225. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/PENDING-ACTIONS.md` con PA-032; `tools/check-pending-actions.py`; `docs/OPERATIONS-LOG.md` con MS-226; `.claude/context/current-work.md`; `.claude/memory/index.md`; questo file.
+
+La sessione si chiude con la fine dell'OCR e il file di ripresa.
+
 ## 2026-10-06 - Si torna al nucleo: il piano della fase 4a
 
 Commit di partenza: 7ffe5fd, dell'utente, con MS-224. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
