@@ -561,6 +561,10 @@ def controlla_voci_recenti() -> None:
     riga("? ", "si sblocca quando l'utente ha sistemato i mobili; poi protocollo misure, SSH su studio, Blender (MS-226)")
     print("  APERTA: in attesa dell'utente.")
 
+    print("\nPA-033  Fonti di produzione musicale per il progetto gemello")
+    riga("? ", "3074 file, 15,90 GB, documenti circa 400; da fare in una sessione del gemello; chiedere della cartella [ACQUISTI] (MS-228)")
+    print("  APERTA: in attesa di una sessione nel gemello.")
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
