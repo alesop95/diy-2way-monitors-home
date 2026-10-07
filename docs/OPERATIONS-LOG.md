@@ -5217,6 +5217,45 @@ Verificato con: il conteggio dei file scritti dalla corsa; il registro della cor
 
 Esito: interrotto per scelta dell'utente, da riprendere.
 
+### MS-228 - Il censimento delle fonti di produzione musicale per il gemello
+
+Data: 2026-10-07
+
+Perimetro:
+- un censimento a soli nomi e dimensioni di una cartella di `J:\MAIN`, senza aprire alcun file;
+- PA-033.
+
+Legame con il progetto: nessuna fase di questo progetto. Serve il progetto gemello, che può attingere alla biblioteca e al vault comuni per ADR-039, e rispetta ADR-044, perché la cartella appartiene all'archivio dell'utente.
+
+*Il censimento.* Mentre l'OCR del perimetro lavorava, l'utente ha indicato le fonti locali del gemello, cioè la cartella `PRODUCTION AND TECHNOLOGIES` sotto `MUSIC`. Lo script `_notes/privacy/censimento-music.py` ha contato i file per estensione e per sottocartella, escludendo i documenti personali secondo gli schemi di ADR-042, senza leggerne il contenuto. L'esito è in PA-033: 3074 file per 15,90 GB, quasi tutti audio, e circa 400 documenti fra PDF, XPS, Word e testo. Il lavoro vero si fa in una sessione aperta nel gemello, per la regola del perimetro di `CLAUDE.md`.
+
+Verificato con: l'uscita dello script di censimento.
+
+Esito: fatto per il censimento; il lavoro è PA-033.
+
+### MS-229 - I filtri sui documenti personali rafforzati, qui e nel template, e un difetto che li rendeva ciechi
+
+Data: 2026-10-07
+
+Perimetro:
+- il file locale degli schemi `_notes/privacy/esclusi-personali.txt`;
+- le copie personali rimaste nella cache;
+- nel template: `doc-ingest.py` con l'opzione `--esclusi`, il file d'esempio `esclusi-personali.esempio.txt`, il README di `doc-ingest`, la regola `documenti-personali.md` e `lavoro-a-lotti/tools/estratti-lotto.py`.
+
+Legame con il progetto: rafforza ADR-042 e serve PA-033, perché la cartella di produzione musicale del gemello contiene una cartella di acquisti. Non serve alcuna fase del progetto.
+
+*Gli schemi rafforzati.* L'utente ha chiesto di potenziare i filtri dopo che quelli di MS-211 non riconoscevano la cartella `[ACQUISTI]`. Il file locale porta ora schemi per le cartelle di acquisti, ordini, fatture, ricevute, bollette, banca, fisco, salute e materiale personale o privato, e per i nomi di file di pagamenti, bonifici, abbonamenti, dichiarazioni fiscali, IBAN, estratti conto, buste paga, documenti d'identità, pratiche universitarie, referti, certificati medici e chiavi di licenza. Lo script `_notes/privacy/prova-schemi.py` li ha provati sull'indice e sulla cartella di produzione musicale. Sull'indice, 7650 percorsi, le esclusioni passano da 69 a 71, e i due nuovi sono un'attestazione di pagamento e un bollettino di una tassa universitaria, entrambi personali. Nella cartella di produzione musicale sono esclusi i 4 file di `[ACQUISTI]`. Nessun falso positivo è emerso dalla rilettura dei nomi. Le due copie in testo dei documenti appena riconosciuti, che erano nella cache, sono state cancellate con lo script di PA-031, con il permesso già dato. L'OCR in corso tiene il manifesto in memoria e lo risalverà, quindi la pulizia va ripetuta a fine corsa.
+
+*Il template, solo in aggiunta.* `doc-ingest.py` ha preso l'opzione `--esclusi`, che salta i file corrispondenti prima di aprirli e ferma lo strumento se il file degli schemi manca. Senza l'opzione il comportamento resta quello di prima. Il file d'esempio porta gli stessi schemi, senza alcun dato personale, e il README e la regola descrivono come si usa.
+
+*Il difetto trovato.* La prima prova del template, su una cartella di prova con un file sotto `[ACQUISTI]`, ha convertito anche quel file. Gli schemi di cartella cercano un separatore prima del nome, e lo strumento li confrontava con il percorso relativo, che per una sottocartella di primo livello comincia con il nome stesso. L'esclusione falliva quindi in silenzio proprio sul caso più ovvio. Lo stesso difetto c'era in `estratti-lotto.py` del template, scritto il giorno prima. Entrambi ora confrontano il percorso completo, e la seconda prova esclude il file. Gli strumenti di questo progetto non avevano il difetto, perché confrontano già il percorso completo su `J:`. La regola del template porta ora la prescrizione che ne discende: un elenco di schemi si prova su una cartella con un caso da escludere prima di usarlo su un corpus.
+
+*La regola istanziata qui.* La regola di questo progetto non riceve la sezione nuova del template, perché il budget delle istruzioni è a 99 839 caratteri su 100 000. La divergenza è dichiarata e voluta, e si risolve al prossimo allineamento solo se il budget lo permette.
+
+Verificato con: `prova-schemi.py`; `cancella-copie-personali.py` e `conta-esclusi.py`, con 0 copie personali in cache al termine; due prove del `doc-ingest.py` del template, prima e dopo la correzione, e una con il file degli schemi mancante; `py_compile` sui due strumenti del template.
+
+Esito: fatto. Il commit del template spetta all'utente.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

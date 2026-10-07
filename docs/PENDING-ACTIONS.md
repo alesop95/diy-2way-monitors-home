@@ -682,6 +682,16 @@ Condizione di sblocco. L'utente comunica che la stanza è sistemata.
 
 Criterio di completamento. I tre numeri scritti nella pagina della fase 4a, il protocollo di consegna delle misure scritto come pagina prescrittiva sotto `docs/`, il modello della stanza avviato in Blender sulla macchina, e da lì il primo passo dei requisiti calcolati.
 
+## PA-033 - Le fonti di produzione musicale per il progetto gemello
+
+Data di apertura: 2026-10-07, da MS-228. Stato: aperta, da svolgere in una sessione aperta nel progetto gemello.
+
+Che cosa va fatto. L'utente ha indicato come fonti locali del progetto gemello `home-recording-training-mixing-setup` la cartella `PRODUCTION AND TECHNOLOGIES` sotto `MUSIC` in `J:\MAIN`. Un censimento a soli nomi e dimensioni, fatto il 2026-10-07 senza aprire alcun file, conta 3074 file per 15,90 GB. Sono in gran parte audio: 2174 `.mp3`, 209 `.wav`, 74 `.peak` e 21 sessioni `.ptx`. I documenti sono 133 `.pdf`, 232 `.xps`, 19 `.docx` e 19 `.txt`. Le sottocartelle principali sono MIXING con 2212 file, i tutorial pratici di produzione con 625, il corso Music Production technologies di Milano del 2019 con 146, poi DAWs, un corso Berklee sul music business, i libri utili, una masterclass e una cartella `[ACQUISTI]`. Gli schemi di ADR-042 non riconoscono documenti personali, ma la cartella degli acquisti potrebbe contenere ricevute, e prima di indicizzarla va chiesto all'utente. Il lavoro è indicizzare e convertire i soli documenti con gli strumenti dei lotti, cioè non l'audio, portare le fonti nella biblioteca e nel vault comuni di ADR-039, e poi schedarle con il metodo di ADR-041 al passo dei capitoli del gemello.
+
+Condizione di sblocco. Una sessione aperta nel gemello, e la risposta dell'utente sulla cartella degli acquisti.
+
+Criterio di completamento. I documenti della cartella indicizzati e convertiti, presenti nel vault comune, e le prime schede scritte per il gemello.
+
 ## Azioni compiute
 
 ## PA-028 - Titoli di documenti personali nel registro pubblico delle fonti

@@ -2,6 +2,14 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-07 - Filtri personali rafforzati, fonti per il gemello
+
+Commit di partenza: 65da0bc, dell'utente, con MS-226 e MS-227. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-228 e MS-229; `docs/PENDING-ACTIONS.md` con PA-033; `tools/check-pending-actions.py`; `.claude/memory/index.md`; questo file. Fuori da git: gli schemi locali, due copie personali tolte dalla cache. Nel template, da committare: `doc-ingest.py`, il suo README e il file d'esempio, la regola `documenti-personali.md`, `lavoro-a-lotti/tools/estratti-lotto.py`.
+
+OCR ripreso la mattina; a fine corsa ripetere la pulizia delle copie personali e rigenerare il vault.
+
 ## 2026-10-06 - Fine della giornata, OCR interrotto
 
 Commit di partenza: 80ae38e. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt` e copre MS-226 e MS-227.
