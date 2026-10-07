@@ -5256,6 +5256,63 @@ Verificato con: `prova-schemi.py`; `cancella-copie-personali.py` e `conta-esclus
 
 Esito: fatto. Il commit del template spetta all'utente.
 
+### MS-230 - L'impianto per il gemello vive nel gemello
+
+Data: 2026-10-07
+
+Perimetro:
+- PA-033 in `docs/PENDING-ACTIONS.md`.
+
+Legame con il progetto: nessuna fase di questo progetto. Serve il gemello e rispetta la regola del perimetro di `CLAUDE.md`.
+
+*Le scelte dell'utente.* L'utente ha deciso che l'impianto per le fonti di produzione musicale vive nel gemello, e che il lavoro si fa in una sessione aperta là. PA-033 porta ora le scelte e il prompt di avvio da incollare nella sessione del gemello, con i passi in ordine: allineamento al template, istanziazione di wiki, `doc-ingest` e lavoro a lotti, schemi locali dei documenti personali, conversione dei soli documenti con la verifica preliminare dei 232 file `.xps`, rimando al vault comune e primo lotto di schede.
+
+*Il commit del template.* Al controllo, il commit del template con le esclusioni di MS-229 non risultava fatto: i cinque file erano ancora modificati e niente era in stage. I controlli del template prima del commit, cioè `sync-readme` e il budget delle istruzioni a 92 035 caratteri, passano. I comandi sono stati riconsegnati all'utente.
+
+Verificato con: `git status` e `git log` nel template; i passi `sync-readme` e `instruction-budget` del pre-commit del template.
+
+Esito: fatto per la pendenza; il commit del template attende l'utente.
+
+### MS-231 - L'OCR sul perimetro finito, e il vault rigenerato
+
+Data: 2026-10-07
+
+Perimetro:
+- la conversione con OCR sul perimetro di ADR-041, ripresa la mattina dopo MS-227;
+- la cache convertita, con la pulizia delle copie personali;
+- la biblioteca e il vault delle fonti su `J:`.
+
+Legame con il progetto: chiude la voce 19 della roadmap sul perimetro e rigenera la vista della voce 22. Ne dipendono le schede e le letture dei capitoli della tesi, al passo di ADR-043.
+
+*La fine dell'OCR.* Ripresa con `J:` collegato, la corsa ha chiuso con questo riepilogo: 51 documenti nuovi, 1860 invariati, 20 errori, 0 assenti e 2 documenti personali esclusi dagli schemi rafforzati di MS-229. Il manifesto conta 4288 voci, di cui 208 sotto le 50 parole. I 20 errori sono i file noti, cioè PDF protetti da password o troncati e file `._` delle cartelle `__MACOSX`. Nel perimetro restano 6 scansioni da cui l'OCR non ha ricavato testo sufficiente, presumibilmente pagine di sole figure, e il conteggio di `_notes/privacy/conta-ocr-restanti.py` le dà per nome. La pulizia delle copie personali, ripetuta perché la corsa risalva il proprio manifesto, ha tolto due voci rientrate nel manifesto, senza file di cache da cancellare, e le copie personali in cache sono 0.
+
+*Il vault.* `tools/biblioteca.py` ha rigenerato su `J:\MAIN\LOUDSPEAKERS & ELECTROACOUSTIC\_VAULT FONTI` la biblioteca e il vault: 7755 fonti e 157 gruppi, nessuna voce da classificare, 439 voci escluse come non pertinenti.
+
+Verificato con: il riepilogo di `converti-fonti.py` nel registro della corsa; `conta-esclusi.py` prima e dopo la pulizia; `conta-ocr-restanti.py`; l'uscita di `biblioteca.py`, prima in prova e poi in scrittura.
+
+Esito: fatto. L'OCR fuori dal perimetro, circa 200 scansioni, resta da fare solo se servirà a un capitolo.
+
+### MS-232 - Gli allineamenti di fine sessione e il recupero del contesto
+
+Data: 2026-10-07
+
+Perimetro:
+- le schede `.claude/context/STACK.md`, `roadmap.md`, `deployment.md` e `current-work.md`;
+- il file di ripresa `_notes/RESUME-PROMPT.md`, fuori da git;
+- lo stato del template e del gemello.
+
+Legame con il progetto: nessuna fase in senso stretto. Rende affidabile la ripresa della prossima sessione, che riparte dalla fase 4a.
+
+*Le schede.* La skill `sync-context` ha misurato il drift dal commit di firma `fe303ef`. Il confronto sulle aree coperte è rumoroso per costruzione, perché tre schede coprono `docs/**`, `tools/**` o `.claude/**`, quindi le schede sono state rilette sulle parti che descrivono ciò che è cambiato. In `deployment.md` era cambiata solo la firma, e il campo `generated-from-commit` puntava a un hash cancellato dalla riscrittura della storia di MS-205: ora punta a `032c10d`, cioè al commit che ha creato la scheda, con il suo hash attuale. La verifica di ripresa non lo segnala più. `STACK.md` citava già tutti gli strumenti nuovi, e `Test-Allineamento.py` lo conferma; ha ricevuto una frase sulle opzioni `--nuovi` e `--cartelle` e sugli schemi rafforzati. `roadmap.md` aveva le priorità ferme al 2026-10-02, e ha ricevuto in testa una nota datata 2026-10-07, che porta la fase 4a al primo posto e dà l'interfaccia per risolta come candidata. `current-work.md` aveva già lo stato del 2026-10-06 in testa, scritto con MS-226. Il campo `last-verified-commit` delle quattro schede resta `fe303ef` in questo commit, perché il valore corretto è il commit che porta queste modifiche di contenuto, e quel commit non esiste ancora. Il passo è nel file di ripresa: dopo il commit si porta la firma a quell'hash, in un commit di sola firma.
+
+*Il recupero del contesto.* Il file di ripresa aveva accumulato in due giorni decine di righe di stato. Le sezioni "Stato raggiunto" e "Il prossimo passo" sono state sostituite da una versione consolidata. Le altre sezioni sono state conservate. Agli attriti della postazione sono stati aggiunti tre punti: Python che scrive `CRLF` in modo testo, le sequenze di escape che rovinano le formule, e il divieto di `rm -rf`. Il blocco dell'impronta in fondo, che lo strumento di ripresa legge, non è stato toccato.
+
+*Il template e il gemello.* Il template porta il commit `4f4f9d0` dell'utente con le esclusioni dei documenti personali, e non ha modifiche in sospeso. Il gemello ha l'albero di lavoro pulito e il blocco `docs/10-ambiente/` allineato.
+
+Verificato con: `git diff --name-only fe303ef..HEAD` sulle aree coperte da ciascuna scheda; `Test-Allineamento.py`; `verifica-ripresa.py`, prima e dopo; `git status` nel template e nel gemello.
+
+Esito: fatto. Resta il commit di sola firma delle schede dopo questo commit.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Questa sezione ha cambiato natura quattro volte, e la successione è un progresso e non uno stallo, quindi vale dirla. All'inizio elencava microstep bloccati da una macchina di stato ignoto. Poi il blocco si è ristretto all'installazione della chiave SSH, che era una azione dell'utente non delegabile. Poi, con la chiave installata e le fasi 0 e 1 chiuse, non esisteva più alcun microstep bloccato da una condizione esterna e restava soltanto lavoro da eseguire in ordine. Oggi, al 2026-09-10, la natura è cambiata ancora: il lavoro rimanente è quasi tutto eseguibile subito, e l'unico blocco vero non è tecnico ma un acquisto.

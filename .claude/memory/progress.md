@@ -2,6 +2,22 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-07 - Allineamenti di fine sessione
+
+Commit di partenza: c81758f. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt` e copre da MS-230 a MS-232.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-232; `.claude/context/STACK.md`, `roadmap.md` e `deployment.md`; `.claude/memory/index.md`; questo file; `_notes/RESUME-PROMPT.md`, consolidato.
+
+Dopo il commit, la firma delle quattro schede va portata all'hash di quel commit.
+
+## 2026-10-07 - OCR finito, vault rigenerato, fine sessione
+
+Commit di partenza: c81758f, dell'utente, con MS-228 e MS-229. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt` e copre MS-230 e MS-231.
+
+File toccati: `docs/OPERATIONS-LOG.md` con MS-230 e MS-231; `docs/PENDING-ACTIONS.md` con PA-033; `tools/roadmap-items.yml`, voce 19; `.claude/memory/index.md`; questo file; `_notes/RESUME-PROMPT.md`, fuori da git. Su `J:`: biblioteca e vault rigenerati.
+
+La sessione si chiude qui. Si riparte da PA-032 quando la stanza è sistemata, e da PA-033 in una sessione nel gemello.
+
 ## 2026-10-07 - Filtri personali rafforzati, fonti per il gemello
 
 Commit di partenza: 65da0bc, dell'utente, con MS-226 e MS-227. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt`.
