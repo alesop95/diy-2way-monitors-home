@@ -2,5 +2,9 @@
   ".claude/rules/git-identity-and-repo.md": {
     "testa": "32a736499a91d3c38c960ace63031981c83b2a53",
     "il": "2026-09-29"
+  },
+  "tools/estratti-lotto.py": {
+    "testa": "a7f61f16e6220630f7336aceda43b023814870e0",
+    "il": "2026-10-19"
   }
 }

@@ -1,92 +1,79 @@
-"""Prepara gli estratti per le schede di fonte del livello 2 (ADR-041), senza modello.
+"""Prepara da codice gli estratti di un lotto di documenti, perche' un modello economico li schedi.
 
-Sceglie in modo deterministico i documenti di una cartella di J:/MAIN gia' convertiti in
-_notes/.tmp-doc-cache/fonti/, esclude i documenti personali (ADR-042) e quelli sotto la soglia
-di parole, e per ciascuno scrive un estratto con lo scheletro delle intestazioni e le prime
-parole del testo. Il modello economico legge soltanto gli estratti: il lavoro meccanico resta
-nel codice, per token-economy.md.
+Nato in un progetto istanziato il 2026-10-06 (diy-2way-monitors-home, MS-212 e MS-213), dove
+le schede di fonte di un corpus di migliaia di documenti convertiti si scrivono con il modello
+economico. Il lavoro meccanico, cioe' scegliere i documenti, escludere quelli personali e tagliare
+lo scheletro e le prime parole, resta nel codice; il modello legge soltanto gli estratti.
 
-Uso: python tools/estratti-lotto.py --cartella "LOUDSPEAKERS & ELECTROACOUSTIC" --quanti 50 --dest _notes/lotti/prova-L2
+Lavora su una cache di doc-ingest, o su qualunque cartella di file Markdown convertiti: percorre
+i file .md, salta _INDEX.md, filtra per sottostringa del percorso relativo, esclude i documenti
+personali secondo un file di schemi (regola documenti-personali.md) e scrive un estratto per
+documento piu' un elenco.json. La scelta e' deterministica, in ordine di percorso, e --salta
+permette i lotti successivi.
+
+Uso:
+    python estratti-lotto.py CACHE --filtro "cartella" --quanti 50 --parole 800 --dest _notes/lotti/L2-01
+    python estratti-lotto.py CACHE --filtro "cartella" --quanti 50 --salta 50 --dest _notes/lotti/L2-02
+
+Il file di schemi, --esclusi, contiene un'espressione regolare per riga confrontata con il
+percorso relativo; senza quel file lo strumento si ferma, perche' un lotto di massa senza
+esclusione dei documenti personali e' esattamente il caso che la regola esiste per impedire.
 """
 import argparse
-import glob
 import json
 import re
 import sys
 from pathlib import Path
 
-RADICE = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RADICE / "tools"))
-from privato_esclusi import carica_schemi, e_personale  # noqa: E402
 
-CACHE = RADICE / "_notes" / ".tmp-doc-cache" / "fonti"
-LOCALI = RADICE / "research-vault" / "fonti-locali"
+def carica_schemi(p):
+    if not p.exists():
+        sys.exit(f"manca {p}: senza schemi di esclusione dei documenti personali non si procede")
+    righe = (r.strip() for r in p.read_text(encoding="utf-8").splitlines())
+    return [re.compile(r, re.IGNORECASE) for r in righe if r and not r.startswith("#")]
 
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--cartella", required=True)
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("cache", help="cartella con i file .md convertiti")
+    ap.add_argument("--filtro", default="", help="sottostringa del percorso relativo, per esempio una cartella")
     ap.add_argument("--quanti", type=int, default=50)
-    ap.add_argument("--parole", type=int, default=1500, help="parole iniziali dell'estratto")
+    ap.add_argument("--salta", type=int, default=0)
+    ap.add_argument("--parole", type=int, default=800, help="parole iniziali dell'estratto")
     ap.add_argument("--minimo", type=int, default=300, help="parole minime del documento")
-    ap.add_argument("--salta", type=int, default=0, help="documenti da saltare, per i lotti successivi")
+    ap.add_argument("--esclusi", default="_notes/privacy/esclusi-personali.txt")
     ap.add_argument("--dest", required=True)
-    ap.add_argument("--nuovi", action="store_true",
-                    help="esclude i documenti che hanno gia' una scheda in knowledge/wiki/schede, riconosciuti dall'impronta")
-    ap.add_argument("--pacchetti", type=int, default=0,
-                    help="se maggiore di zero, riunisce gli estratti in file pacchetto-NN.md da tanti estratti ciascuno, "
-                         "con l'elenco delle pagine di concetto esistenti, cosi' che un agente legga un solo file (MS-214)")
     a = ap.parse_args()
-    schemi = carica_schemi()
-    posizioni = {}
-    for f in sorted(LOCALI.glob("lotto-*-origine.json")):
-        for v in json.loads(f.read_text(encoding="utf-8")):
-            if v.get("esito") == "indicizzato" and v.get("sha256"):
-                posizioni.setdefault(v["sha256"], v["posizione"])
-    manifest = json.loads((CACHE / "manifest.json").read_text(encoding="utf-8"))
-    marcatore = "\\MAIN\\" + a.cartella + "\\"
+    cache = Path(a.cache)
+    schemi = carica_schemi(Path(a.esclusi))
     scelti = []
-    for h, m in manifest.items():
-        pos = posizioni.get(h, "")
-        if marcatore.lower() not in pos.lower() or e_personale(pos, schemi):
+    for f in sorted(cache.rglob("*.md")):
+        rel = f.relative_to(cache).as_posix()
+        if f.name == "_INDEX.md" or a.filtro.lower() not in rel.lower():
             continue
-        if m.get("parole", 0) < a.minimo or not (CACHE / m["cache"]).exists():
+        # Il percorso completo, perché gli schemi delle cartelle cercano un separatore
+        # prima del nome, che il percorso relativo di primo livello non ha.
+        if any(s.search(str(f.resolve())) for s in schemi):
             continue
-        scelti.append((pos.lower(), h, m))
-    scelti.sort()
-    if a.nuovi:
-        # I documenti gia' schedati si riconoscono dall'impronta scritta nella scheda. Contare le
-        # posizioni con --salta non basta quando la cache cresce, per esempio durante un OCR (MS-218).
-        fatti = set()
-        for s in (RADICE / "knowledge" / "wiki" / "schede").glob("*.md"):
-            m = re.search(r"Impronta: ([0-9a-f]{8,})", s.read_text(encoding="utf-8", errors="replace"))
-            if m:
-                fatti.add(m.group(1)[:8])
-        scelti = [x for x in scelti if x[1][:8] not in fatti]
+        testo = f.read_text(encoding="utf-8", errors="replace")
+        if len(testo.split()) >= a.minimo:
+            scelti.append((rel, testo))
     scelti = scelti[a.salta:a.salta + a.quanti]
     dest = Path(a.dest)
     dest.mkdir(parents=True, exist_ok=True)
     elenco = []
-    for i, (_, h, m) in enumerate(scelti, 1):
-        testo = (CACHE / m["cache"]).read_text(encoding="utf-8", errors="replace")
+    for i, (rel, testo) in enumerate(scelti, 1):
         titoli = [r for r in testo.splitlines() if re.match(r"#{1,3} ", r)][:60]
         parole = testo.split()
-        corpo = " ".join(parole[:a.parole])
         nome = f"{i:03d}.md"
-        (dest / nome).write_text(
-            f"# Estratto {i:03d}\n\nnome: {m['nome']}\nparole totali: {m['parole']}\nimpronta: {h[:12]}\n\n"
-            f"## Scheletro\n\n" + ("\n".join(titoli) or "(nessuna intestazione)") +
-            f"\n\n## Prime {min(a.parole, len(parole))} parole\n\n{corpo}\n", encoding="utf-8")
-        elenco.append({"estratto": nome, "nome": m["nome"], "cache": m["cache"], "parole": m["parole"], "impronta": h})
-    (dest / "elenco.json").write_text(json.dumps(elenco, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    if a.pacchetti:
-        concetti = sorted(p.stem for p in (RADICE / "knowledge" / "wiki" / "concepts").glob("*.md"))
-        for k in range(0, len(elenco), a.pacchetti):
-            parti = [(dest / e["estratto"]).read_text(encoding="utf-8") for e in elenco[k:k + a.pacchetti]]
-            testa = ("# Pacchetto di estratti\n\nPagine di concetto esistenti in knowledge/wiki/concepts/, "
-                     "le sole da usare nei collegamenti:\n\n" + ", ".join(concetti) + "\n\n")
-            (dest / f"pacchetto-{k // a.pacchetti + 1:02d}.md").write_text(testa + "\n\n".join(parti), encoding="utf-8")
-    print(f"estratti {len(elenco)} in {dest}; parole negli estratti circa {sum(min(a.parole, e['parole']) for e in elenco)}")
+        (dest / nome).write_bytes((
+            f"# Estratto {i:03d}\n\nfile: {rel}\nparole totali: {len(parole)}\n\n## Scheletro\n\n"
+            + ("\n".join(titoli) or "(nessuna intestazione)")
+            + f"\n\n## Prime {min(a.parole, len(parole))} parole\n\n" + " ".join(parole[:a.parole]) + "\n"
+        ).encode("utf-8"))
+        elenco.append({"estratto": nome, "file": rel, "parole": len(parole)})
+    (dest / "elenco.json").write_bytes((json.dumps(elenco, ensure_ascii=False, indent=1) + "\n").encode("utf-8"))
+    print(f"estratti {len(elenco)} in {dest}; parole negli estratti {sum(min(a.parole, e['parole']) for e in elenco)}")
 
 
 if __name__ == "__main__":
