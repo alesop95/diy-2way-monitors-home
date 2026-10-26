@@ -2,6 +2,16 @@
 
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
+## 2026-10-26 - SoundCraft per Ubuntu Studio, voce aperta da un'altra sessione
+
+Commit di partenza: 4ce481e. Commit prodotto: nessuno ancora.
+
+File toccati: `docs/PENDING-ACTIONS.md` con PA-034 e PA-035, `.claude/allineamento-template.json` normalizzato, `tools/doc-ingest.py` sostituito, `tools/cache-storage.py` e `tools/esclusi-personali.esempio.txt` nuovi, `docs/90-riferimenti/fonti.md` con la sezione sulla DAW pilotabile dall'agente, questo file e `_notes/RESUME-PROMPT.md`.
+
+Scritto da una sessione aperta in `home-lab-cybersec-networking`, su richiesta dell'utente di registrare la voce in tutti e tre i progetti, così che `/riprendi` la mostri dovunque. Nessun intervento sulla macchina, quindi nessun microstep. Il contenuto sta in PA-034, che tiene la valutazione di SoundCraft, cioè il fork non necessario per l'uso, le lacune JACK e LV2 di upstream e il valore basso per questo progetto. Le fonti, tutte lette il 2026-10-26, sono nella pagina delle fonti. Nella stessa pagina c'è l'articolo sull'analizzatore di spettro con Raspberry Pi Pico, valutato come sottoprogetto in PA-004 del gemello.
+
+Nello stesso giro `chiudi -SoloControlli` ha dato due KO preesistenti. Il primo è `check-eol` su `.claude/allineamento-template.json`, che ha sei CRLF e un LF finale per lo stesso difetto di `allinea-tutti.ps1` registrato come L-006 nel progetto della rete: il file è stato normalizzato a CRLF. Il secondo è `doc-ingest.py`, la cui copia in `tools/` non ha `--autotest` né `--esclusi`: aperta PA-035. Su richiesta dell'utente PA-035 è stata chiusa nello stesso giorno: copia intatta sostituita con quella del pacchetto, insieme a `cache-storage.py` e al file di esempio degli schemi, con autotest verde e `chiudi -SoloControlli` verde. La causa è nel template ed è la lezione L-007 del progetto della rete.
+
 ## 2026-10-07 - Allineamenti di fine sessione
 
 Commit di partenza: c81758f. Commit prodotto: nessuno ancora, il messaggio è in `_notes/COMMIT-MSG.txt` e copre da MS-230 a MS-232.

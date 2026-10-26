@@ -694,6 +694,32 @@ Condizione di sblocco. Una sessione aperta nel gemello.
 
 Criterio di completamento. I documenti della cartella indicizzati e convertiti, presenti nel vault comune, e le prime schede scritte per il gemello.
 
+## PA-034 - SoundCraft sulla macchina Ubuntu Studio: valutare, poi decidere se serve un fork
+
+Data di apertura: 2026-10-26, da una sessione aperta nel progetto `home-lab-cybersec-networking`, dove la macchina compare nel censimento come `linux-desktop-C`. Stato: aperta, in attesa di riallineamento con l'utente. La stessa voce è PA-003 nel progetto gemello `home-recording-training-mixing-setup` e una pendenza di `docs/pendenze-aperte.md` nel progetto della rete.
+
+Che cosa va fatto. L'utente ha chiesto di fare un fork di SoundCraft, la DAW della suite ArtCraft installata sulla postazione Windows, e di personalizzarlo per Ubuntu Studio. Poi ha precisato che i progetti interessati sono questo e quello di home recording, e ha chiesto prima una spiegazione e solo dopo il dettaglio della personalizzazione. Se il lavoro procede, la pagina della valutazione nasce in `docs/10-ambiente/`, che `tools/sync-ambiente.py` propaga al gemello.
+
+Che cosa si sa, letto il 2026-10-26 e con le fonti in `docs/90-riferimenti/fonti.md`, sezione sulla DAW pilotabile dall'agente. Per usare il programma non serve un fork: upstream pubblica per Linux deb, rpm, tarball, AppImage e Flatpak, e sulla macchina girerebbe passando da ALSA, quindi dal plugin ALSA di PipeWire. Il fork serve solo a cambiare il codice. Upstream dichiara come blocco dell'alpha la mancanza di JACK e della verifica su Linux, il crate `playback` attiva soltanto la feature `asio` di cpal, il mix gira a blocchi fissi di 512 campioni e non c'è hosting LV2, che è il formato dei plugin di Ubuntu Studio. La CLI 0.10.0 installata su Windows espone 480 comandi e 27 plugin interni, contati come righe di uscita di `soundcraft-cli commands` e `soundcraft-cli plugins` dopo averne controllato la prima e l'ultima riga. La licenza è MIT o Apache-2.0, ma nome e loghi ArtCraft vanno tolti in un fork. L'utente ha scelto un nome neutro, anche perché Soundcraft è il marchio dei mixer Harman.
+
+Valore atteso per questo progetto: basso. Misura, crossover e DSP restano a REW, Octave, VituixCAD e CamillaDSP (`docs/54-amplificazione-e-dsp.md`). Restano due usi: preparare i file di prova con `convert` e con il generatore di segnale, e i bounce scriptati per gli ascolti comparati. Il programma non importa coefficienti biquad e non misura. Il valore è più alto nel gemello, dove serve come DAW pilotabile dall'agente accanto ad Ardour.
+
+Condizione di sblocco. Il riallineamento con l'utente su che cosa debba ottenere da SoundCraft l'home recording.
+
+Criterio di completamento. Una decisione documentata fra rilascio ufficiale e fork. Nel caso del fork servono anche il nome, la sede del repository e la prima milestone, con la verifica sulla macchina secondo `docs/10-ambiente/catena-audio-pipewire.md`.
+
+## PA-035 - Riallineare `tools/doc-ingest.py` alla versione del pacchetto
+
+Data di apertura: 2026-10-26, rilevata da `chiudi -SoloControlli` lanciato da una sessione nel progetto della rete. Stato: compiuta il 2026-10-26, su richiesta dell'utente nello stesso giorno.
+
+Che cosa va fatto. La copia istanziata `tools/doc-ingest.py`, 272 righe, ultima modifica nel commit `1d7c7f9`, è più vecchia di quella del pacchetto `.claude/templates/doc-ingest/doc-ingest.py`, 386 righe. Le mancano `--autotest`, che `chiudi` richiama, ed è per questo che il controllo fallisce con «the following arguments are required: source». Le manca anche `--esclusi`, l'esclusione dei documenti personali prima dell'apertura, e `tools/converti-fonti.py` importa proprio questa copia. Chiunque converta da quella via non ha il presidio di ADR-042. Va verificato se la copia porta adattamenti locali; se non ne porta, si sostituisce con quella del pacchetto e si rilancia `chiudi -SoloControlli`.
+
+Condizione di sblocco. Una sessione aperta in questo progetto, con l'utente.
+
+Criterio di completamento. `doc-ingest.py --autotest` verde dentro `chiudi`, e `converti-fonti.py` che rifiuta di partire senza il file degli schemi di esclusione, oppure una motivazione scritta per tenerla così.
+
+Esito del 2026-10-26. La copia locale coincideva con una versione storica del pacchetto, quindi non portava adattamenti, ed è stata sostituita con quella del pacchetto, uguale alla testa del template. Insieme sono arrivati `tools/cache-storage.py`, che la versione nuova carica dalla propria cartella, e `tools/esclusi-personali.esempio.txt`, che serve al suo autotest. `doc-ingest.py --autotest` dà 21 file e 0 errori, `converti-fonti.py` carica il modulo nuovo con le quattro funzioni che usa, e `chiudi -SoloControlli` è verde. Gravità valutata sulle date e sul codice, senza aprire documenti. La via ordinaria di conversione, `converti-fonti.py`, applicava già l'esclusione per conto proprio prima di convertire (ADR-042). Le cache di `_notes/.tmp-doc-cache/` hanno l'ultima scrittura il 2026-10-07 alle 13:45, e i lotti risalgono a prima della regola, il che è materia di PA-031. Non risulta quindi nessuna conversione senza esclusione dopo l'introduzione della regola, e la falla era latente sulla sola chiamata diretta dello strumento. La causa è nel template: l'allineamento aggiorna soltanto gli strumenti che nel pacchetto stanno in una cartella `tools/`, mentre `doc-ingest.py` sta nella radice del pacchetto. È registrata come lezione L-007 nel progetto della rete.
+
 ## Azioni compiute
 
 ## PA-028 - Titoli di documenti personali nel registro pubblico delle fonti

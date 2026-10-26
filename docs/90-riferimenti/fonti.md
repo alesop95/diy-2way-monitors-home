@@ -120,6 +120,20 @@ L'interfaccia dell'applicazione sul dispositivo, osservata il 2026-09-21 su Gala
 
 Sulla natura di queste fonti va detto che cosa sono e che cosa non sono, perché la gerarchia conta. La documentazione del produttore di Scaniverse è la fonte autorevole sui requisiti e sui formati, e da essa vengono tutti i dati tecnici usati per la scelta. Le altre sono articoli di confronto di terze parti, cioè fonti di livello basso: servono a sapere che un limite esiste e vanno riverificate sul piano tariffario del produttore prima di farne discendere una spesa. Il dato sull'assenza del sensore sul Galaxy S25 Ultra è coerente fra le fonti consultate e con la storia dei modelli precedenti, e resta comunque verificabile in trenta secondi sul dispositivo guardando se una applicazione di scansione offra o no una modalità basata su sensore.
 
+## DAW pilotabile dall'agente: SoundCraft
+
+Voci aggiunte il 2026-10-26 per PA-034, tutte lette quel giorno, per intero o per estratti come indicato.
+
+README del repository ufficiale, letto per intero insieme ai metadati dell'API GitHub dello stesso giorno: licenza rilevata Apache-2.0, ultimo push il 2026-10-26, 2351 fork. È la fonte dei formati di rilascio per Linux, dei dispositivi audio supportati, cioè CoreAudio, WASAPI, ALSA e WebAudio senza nessuna menzione di JACK o PipeWire, dei plugin CLAP, VST3 e AU senza LV2, dell'obbligo di togliere nome e loghi ArtCraft in un fork e della stima di circa il 40% di un sostituto reale di Pro Tools: `https://github.com/storytold/soundcraft`
+
+Manifesto del crate di riproduzione, letto per intero: cpal con la sola feature opzionale `asio`, nessuna feature `jack`. `https://github.com/storytold/soundcraft/blob/main/crates/playback/Cargo.toml`
+
+Sorgente della scelta del dispositivo, letto per estratti: scelta per macchina di host, dispositivo, frequenza e buffer da 32 a 8192 campioni. Il commento nomina JACK fra gli host possibili, ma la presenza di JACK dipende dalle feature di compilazione. `https://github.com/storytold/soundcraft/blob/main/crates/playback/src/devices.rs`
+
+Registro delle lacune dichiarate da upstream, letto per estratti. È la fonte di G-01, che come blocco dell'alpha elenca la mancanza di JACK e della verifica su macOS e Linux, con il mix a blocchi fissi di 512 campioni, e di G-14, secondo cui Linux è esercitato poco a runtime. `https://github.com/storytold/soundcraft/blob/main/docs/gaps.md`
+
+Analizzatore di spettro con Raspberry Pi Pico, articolo di Martin Ossmann pubblicato da Futuranet il 2026-10-15, letto per intero il 2026-10-26 con `curl` e uno user agent da browser, dopo che il recupero ordinario aveva restituito 403. Usa l'ADC interno dell'RP2040 a 12 bit e 500 kS/s, la finestra di Blackman e la FFT con N da 1024 a 16384, e trasmette i dati al PC in seriale a 115200 baud. Il software si scarica dalla pagina Elektor dell'articolo, non letta. È valutato come sottoprogetto in PA-004 del gemello. `https://futuranet.it/progetti/2026/10/15/raspberry-pi-pico-come-analizzatore-di-spettro/`, software alla pagina `https://www.elektormagazine.com/magazine/elektor-312/62150`
+
 ## Materiale non pubblico
 
 Gli appunti di una conversazione del luglio 2024 con un collega esperto di acustica degli ambienti, da cui provengono le osservazioni sulla forma della stanza, sul soffitto spiovente e sulla parete alle spalle del punto di ascolto, restano nei materiali locali del progetto e non sono versionati.
