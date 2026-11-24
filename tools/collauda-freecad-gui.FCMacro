@@ -1,0 +1,65 @@
+"""Apre il campione FCStd su un display di prova e registra la finestra FreeCAD."""
+import json
+import os
+from pathlib import Path
+
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore, QtWidgets
+
+destination = Path(os.environ["DIY_CAD_TEST_GUI_DIR"])
+destination.mkdir(parents=True, exist_ok=False)
+doc = App.openDocument(os.environ["DIY_CAD_TEST_NATIVE"])
+for obj in doc.Objects:
+    if hasattr(obj, "ViewObject"):
+        obj.ViewObject.Visibility = obj.Name == "WoodPanel"
+Gui.activateWorkbench("PartWorkbench")
+Gui.activeDocument().activeView().viewAxonometric()
+Gui.activeDocument().activeView().fitAll()
+window = Gui.getMainWindow()
+window.show()
+
+
+def record_and_exit():
+    report = {"status": "failed", "version": App.Version()[:3]}
+    exit_code = 1
+    try:
+        panel = doc.getObject("WoodPanel")
+        if not window.isVisible() or not panel.Shape.isValid() or not panel.ViewObject.Visibility:
+            raise RuntimeError("Finestra o pannello non disponibili")
+        mdi = window.findChild(QtWidgets.QMdiArea)
+        if mdi is None or mdi.activeSubWindow() is None or doc.Label not in mdi.activeSubWindow().windowTitle():
+            raise RuntimeError("La vista attiva non e il modello del pannello")
+        shot = destination / "freecad-finestra.png"
+        if not window.grab().save(str(shot)):
+            raise RuntimeError("Acquisizione della finestra non riuscita")
+        report.update({"status": "window_captured", "document": doc.Name,
+                       "visible": True, "active_view_title": mdi.activeSubWindow().windowTitle(),
+                       "volume_mm3": panel.Shape.Volume,
+                       "screenshot": shot.name})
+        exit_code = 0
+    except Exception as error:
+        report["error"] = str(error)
+    finally:
+        (destination / "esito-gui.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        App.closeDocument(doc.Name)
+        if exit_code == 0:
+            window.close()
+        else:
+            QtWidgets.QApplication.instance().exit(exit_code)
+
+
+def activate_model_view():
+    mdi = window.findChild(QtWidgets.QMdiArea)
+    if mdi is not None:
+        for subwindow in mdi.subWindowList():
+            if doc.Label in subwindow.windowTitle():
+                mdi.setActiveSubWindow(subwindow)
+                subwindow.showMaximized()
+                Gui.activeDocument().activeView().fitAll()
+                Gui.updateGui()
+                break
+    QtCore.QTimer.singleShot(750, record_and_exit)
+
+
+QtCore.QTimer.singleShot(2500, activate_model_view)

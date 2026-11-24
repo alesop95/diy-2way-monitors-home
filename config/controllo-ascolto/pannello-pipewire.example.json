@@ -1,0 +1,5 @@
+{
+  "mode": "pipewire",
+  "dsp_port": 12341,
+  "profiles": {"mix": "mix-pipewire.json", "ascolto": "ascolto-pipewire.json"}
+}

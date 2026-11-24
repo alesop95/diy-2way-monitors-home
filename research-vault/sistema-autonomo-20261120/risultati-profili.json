@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "hardware_test": false,
+  "binary_sha256": "cfd8d7ae8318d9a8cd3b64850fe3114ea348e766eb14d241fae7d54ffa0c65f9",
+  "runner_sha256": "fa27f7c2707eb4531f23261c6bcb9170b2debe5a27cbbe7683f27eff56664135",
+  "negative_source_selection_max_difference": 0.02485412172973156,
+  "results": [
+    {
+      "kind": "pc",
+      "rate": 44100,
+      "mode": "mix",
+      "frames": 88200,
+      "max_difference_from_pc": 0,
+      "max_abs": 0.0191115103662014
+    },
+    {
+      "kind": "pi-digitale",
+      "rate": 44100,
+      "mode": "mix",
+      "frames": 88200,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.0191115103662014
+    },
+    {
+      "kind": "pi-analogico",
+      "rate": 44100,
+      "mode": "mix",
+      "frames": 88200,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.0191115103662014
+    },
+    {
+      "kind": "pc",
+      "rate": 44100,
+      "mode": "ascolto",
+      "frames": 88200,
+      "max_difference_from_pc": 0,
+      "max_abs": 0.021563807502388954
+    },
+    {
+      "kind": "pi-digitale",
+      "rate": 44100,
+      "mode": "ascolto",
+      "frames": 88200,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.021563807502388954
+    },
+    {
+      "kind": "pi-analogico",
+      "rate": 44100,
+      "mode": "ascolto",
+      "frames": 88200,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.021563807502388954
+    },
+    {
+      "kind": "pc",
+      "rate": 48000,
+      "mode": "mix",
+      "frames": 96000,
+      "max_difference_from_pc": 0,
+      "max_abs": 0.019110018387436867
+    },
+    {
+      "kind": "pi-digitale",
+      "rate": 48000,
+      "mode": "mix",
+      "frames": 96000,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.019110018387436867
+    },
+    {
+      "kind": "pi-analogico",
+      "rate": 48000,
+      "mode": "mix",
+      "frames": 96000,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.019110018387436867
+    },
+    {
+      "kind": "pc",
+      "rate": 48000,
+      "mode": "ascolto",
+      "frames": 96000,
+      "max_difference_from_pc": 0,
+      "max_abs": 0.02156190201640129
+    },
+    {
+      "kind": "pi-digitale",
+      "rate": 48000,
+      "mode": "ascolto",
+      "frames": 96000,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.02156190201640129
+    },
+    {
+      "kind": "pi-analogico",
+      "rate": 48000,
+      "mode": "ascolto",
+      "frames": 96000,
+      "max_difference_from_pc": 0.0,
+      "max_abs": 0.02156190201640129
+    }
+  ],
+  "limitations": "Solo RawFile/File su Windows; nessun ALSA/ARM/USB o trasduttore qualificato"
+}

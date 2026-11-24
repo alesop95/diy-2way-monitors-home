@@ -1,0 +1,45 @@
+{
+  "schema": "strumenti-posseduti-1",
+  "aggiornato_il": "2026-11-20",
+  "origine_possesso": "dichiarazione utente",
+  "strumenti": [
+    {
+      "id": "AMP-001",
+      "marca": "Marshall",
+      "modello_dichiarato": "MG15",
+      "uso": "amplificatore per chitarra",
+      "revisione_fisica_verificata": false,
+      "documentazione": "manuale MG10 e MG15 fornito, OCR e verifica visiva",
+      "misure_eseguite": false,
+      "scheda": "docs/80-strumenti-posseduti/marshall-mg15.md"
+    },
+    {
+      "id": "AMP-002",
+      "marca": "Fender",
+      "modello_dichiarato": "Frontman 65R",
+      "uso": "amplificatore per chitarra",
+      "revisione_fisica_verificata": false,
+      "documentazione": "studio precedente acquisito e corretto, manuale ufficiale consultato",
+      "misure_eseguite": false,
+      "scheda": "docs/80-strumenti-posseduti/fender-frontman-65r.md"
+    },
+    {
+      "id": "AMP-003",
+      "marca": "EKO",
+      "modello_dichiarato": "versione basso da 30 W",
+      "modello_corrispondente_nel_manuale": "XB30",
+      "uso": "amplificatore per basso",
+      "revisione_fisica_verificata": false,
+      "documentazione": "manuale XL/XB di 11 pagine acquisito, OCR letto e pagine 1/10/11 verificate visivamente",
+      "fonte_id": "SRC-EKO-XL-XB-USER-PDF",
+      "potenza_dichiarata_w": 30,
+      "condizioni_potenza_manuale": "8 ohm, 1 kHz, 1% THD",
+      "speaker_da_manuale": {"quantita": 1, "diametro_pollici": 10, "impedenza_nominale_ohm": 8},
+      "speaker_montato_verificato": false,
+      "sintomo_dichiarato": "suono percepito come rotto; guasto dello speaker sospettato, non diagnosticato",
+      "intervento_richiesto": "diagnosi e possibile sostituzione altoparlante con supporto già individuato",
+      "misure_eseguite": false,
+      "scheda": "docs/80-strumenti-posseduti/eko-basso.md"
+    }
+  ]
+}

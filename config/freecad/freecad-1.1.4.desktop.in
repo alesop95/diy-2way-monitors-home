@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FreeCAD 1.1.4
+Comment=Parametric 3D CAD
+Exec="@FREECAD_APPIMAGE@" %F
+TryExec=@FREECAD_APPIMAGE@
+Icon=applications-engineering
+Terminal=false
+StartupNotify=true
+Categories=Science;Engineering;Graphics;

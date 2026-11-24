@@ -1,0 +1,30 @@
+# Controlli locali chiamati da chiudi oltre alla suite generica del template.
+# Non aprono periferiche audio; il motore reale su file ha il suo collaudo esplicito.
+md-unwrap.py --check .
+sync-ambiente.py --check
+check-copie-modelli.py
+Test-Allineamento.py
+check-privato.py
+lint-md-tables.py .
+test_monitor_dsp.py
+test_dsp_pipewire.py
+test_installa_dsp.py
+test_studia_ingombri.py
+test_studio_sistema.py
+mappa_fonti_progetto.py --check
+test_mappa_fonti.py
+catalogo_documentazione.py --check
+test_fattibilita_basso.py
+fattibilita_basso.py --check
+test_controllo_ascolto.py
+test_verifica_documenti.py
+verifica_documenti.py
+test_ascolto_alsa.py
+test_ascolto_pipewire.py
+test_pannello_ascolto.py
+test_collaudo_controllo.py
+collauda-controllo-ascolto.py --check
+collauda-pannello-browser.py --check
+visualizza_simulazioni.py --check
+consegna_controllo.py --check
+consegna_documenti.py --check

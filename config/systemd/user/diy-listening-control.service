@@ -1,0 +1,15 @@
+[Unit]
+Description=Controllo locale di ascolto DIY
+After=diy-monitor-dsp.service pipewire.service
+Wants=diy-monitor-dsp.service pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.local/opt/diy-listening-control/tools/pannello_ascolto.py --config %h/.local/opt/diy-listening-control/config/controllo-ascolto/pannello-pipewire.example.json --fonts %h/.local/opt/diy-listening-control/assets
+NoNewPrivileges=true
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=15
+
+[Install]
+WantedBy=default.target

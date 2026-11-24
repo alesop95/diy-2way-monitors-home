@@ -1,0 +1,6 @@
+{
+  "mode": "pipewire-qualified",
+  "dsp_port": 12341,
+  "manifest": "mappa-pc.example.json",
+  "profiles": {"mix": "mix-pc-qualificato.json", "ascolto": "ascolto-pc-qualificato.json"}
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "documenti-consegna-1",
+  "data": "2026-11-23",
+  "documenti": [
+    {
+      "pdf": "docs/pdf/recap-progetto.pdf",
+      "sha256": "ed169cbff67cd7f2eee9770e77ad0ef441f2c43175b46538207e92b3159a2ae8",
+      "bytes": 137088,
+      "pagine": 7,
+      "sorgenti": {
+        "docs/STATO-PROGETTO.md": "484b283593ffa7d205deca7e58872d18bbf2268b20f80b495a1d1188e5c4b6a8",
+        "config/documenti/intrawelt-tecnico.json": "f1221bad44cfa2957b3e18191414025b3eb920a2c30297f2e47b67c6c71d149c",
+        "tools/consegna_documenti.py": "0ac1338644a191b6671ad04b175a26420881df8fb0f7363250926eeab0186f46"
+      },
+      "controllo_testo": {
+        "strumento": "PdfCraft 0.22.0",
+        "termini_ritrovati": [
+          "PENDING-ACTIONS.md",
+          "sospese",
+          "manifest.json",
+          "volume"
+        ]
+      },
+      "ispezione_visiva": {
+        "pagine_correnti": [
+          2,
+          7
+        ],
+        "esito": "Testo, formule e tabelle leggibili nelle pagine ispezionate; nessun taglio rilevato.",
+        "png_conservate": false,
+        "data": "2026-11-23"
+      },
+      "collegamenti_pdf": 0,
+      "limiti": "Il recap è copia di lettura senza link; la navigazione completa resta nel Markdown.",
+      "rigenerazione": "2026-11-23"
+    },
+    {
+      "pdf": "docs/pdf/crossover-pc-pi-analogico.pdf",
+      "sha256": "69b580cd3b028d9dd1d6144b82e41b1d4b4e046b95c613689cbc8c4192cf1b88",
+      "bytes": 143264,
+      "pagine": 6,
+      "sorgenti": {
+        "docs/62-confronto-crossover-e-verifica-matematica.md": "f30bb1ea05659f3cc414fd6acef1ced4eaaacc513e054fcf64ae14a653d00363",
+        "docs/latex/crossover-pc-pi-analogico.tex": "c5f11a92bc42e15f568d62babd6ee8014578eba54baf9528947a7bcc90b78d92",
+        "docs/latex/converti.py": "6a93e634bd722ff167327b61ef0dd43452d357e4387b629d9e182081de1e2300",
+        "docs/latex/intrawelt-header.tex": "ce6d6482081359ae7d0ba9f930a0efc4ad5c1d3e03a66c046934171ecdf8ad4e",
+        "docs/figure/crossover-20261120/lr4-modulo-fase.svg": "7759c1a2f7b90d17fd8b9d04f8cc0eb4d097ae521e1f6fc61f14e8d849bd7eb4",
+        "docs/figure/crossover-20261120/cammino-e-somma.svg": "7d929ddbf8a9fa14aa4056f77e5393edbc4260506ad4b737ea966f7915435232",
+        "research-vault/crossover-pc-pi-analogico/risultati-modello.json": "fe916f07d573a76fa1a1aac3dddf4822d6e0c9a125ceac24392db54dfab8d972",
+        "build/studio-crossover-20261120-v2/lr4-modulo-fase.pdf": "bcd679e62dac471476b7a3d8b3b3373a23f35627c7a7c57a6c5bf5842d4212dd",
+        "build/studio-crossover-20261120-v2/cammino-e-somma.pdf": "a3b2748b9fc9d6e95bd8812869a664b4268a2e4a8cfae21191f748eaa235da58",
+        "tools/verifica-matematica-crossover.py": "78076b7dd79856abd220d5696e3768fbd4e788ff796fb2d8420468babd05621a"
+      },
+      "controllo_testo": {
+        "strumento": "PdfCraft 0.21.1",
+        "termini_ritrovati": [
+          "LR4",
+          "Raspberry",
+          "allpass"
+        ]
+      },
+      "ispezione_visiva": {
+        "pagine_correnti": [
+          2
+        ],
+        "esito": "Formule e tabelle leggibili, nessun taglio rilevato nelle pagine ispezionate.",
+        "png_conservate": false
+      },
+      "collegamenti_pdf": 15,
+      "limiti": "Non certifica diffusori o hardware."
+    },
+    {
+      "pdf": "docs/pdf/sistema-autonomo-driver-e-collaudo.pdf",
+      "sha256": "62422dd189cc8b513a081aa1b3addb6377a4fa861030843ac54af31694a72680",
+      "bytes": 140095,
+      "pagine": 9,
+      "sorgenti": {
+        "docs/63-sistema-autonomo-driver-e-collaudo.md": "9edf4287b72c02c49ffb26405f72932a0ab0c9c9004b15f5f01810bbadb1e714",
+        "docs/latex/sistema-autonomo-driver-e-collaudo.tex": "18afd7d6a11bc208143a5478cab07cabfeef57536ff006e887d5e56c028d6acc",
+        "docs/latex/converti.py": "6a93e634bd722ff167327b61ef0dd43452d357e4387b629d9e182081de1e2300",
+        "docs/latex/intrawelt-header.tex": "ce6d6482081359ae7d0ba9f930a0efc4ad5c1d3e03a66c046934171ecdf8ad4e",
+        "research-vault/sistema-autonomo-20261120/fattibilita-basso.json": "c5cc32b75d683b0c412c2adb66ec767d2cb672a5820823236e172fe12c05f8ec",
+        "research-vault/sistema-autonomo-20261120/risultati-driver.json": "7994531600ca6884e851df7efd4399ecf9dacb97937d004962da724c147ffa81",
+        "research-vault/sistema-autonomo-20261120/risultati-profili.json": "2864ded67016d02642b938262f563820ef6f538cf1f89c580b54e4d156ac72ca",
+        "build/sistema-autonomo-20261120-v5/confronto-driver.pdf": "b0c39743f40d113bdf83d2d61e79bf973f955db2e58ef81babd48fd2f35bea12",
+        "tools/studio_sistema_audio.py": "b63330880406ace311ce7b156347f85f8363e52e68f744159c5b0694ad70d04d",
+        "tools/fattibilita_basso.py": "a7b1d920a9ec0a47652ab5e51fd4d6677fed4a34e2389bf032b0bfeeebdfe453",
+        "data/driver-candidati.json": "9eb2d3b543e05afb79ee7c83d69df4bf8bf07e2d1468616b454b7f0ffad61588",
+        "config/cabinet/studio-st120.json": "f1b2af052d5c80692eb569e7f88ba97978045f0c4593722ebe85c66eb6c64b5a",
+        "tools/consegna_documenti.py": "0ac1338644a191b6671ad04b175a26420881df8fb0f7363250926eeab0186f46",
+        "research-vault/sistema-autonomo-20261120/risultati-controllo.json": "fcb59043bd4877ea78d86261db66d7dfbc6c48d09eeb8355ddba95d2f0818141"
+      },
+      "controllo_testo": {
+        "strumento": "PdfCraft 0.22.0",
+        "termini_ritrovati": [
+          "43,371",
+          "486",
+          "-5,391",
+          "868,80",
+          "WebSocket",
+          "SIGTERM",
+          "WebSocket",
+          "SIGTERM",
+          "WebSocket",
+          "SIGTERM"
+        ]
+      },
+      "ispezione_visiva": {
+        "pagine_correnti": [
+          6
+        ],
+        "esito": "Testo, formule e tabelle leggibili nelle pagine ispezionate; nessun taglio rilevato.",
+        "png_conservate": false,
+        "data": "2026-11-23"
+      },
+      "collegamenti_pdf": 30,
+      "limiti": "Non certifica diffusori o hardware.",
+      "rigenerazione": "2026-11-23"
+    }
+  ],
+  "politica": "Sorgenti in docs, tre PDF correnti in docs/pdf, intermedi in build, PNG QA eliminate dopo ispezione."
+}

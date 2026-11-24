@@ -1,0 +1,55 @@
+{
+  "stato": "quote nominali del tavolo verificate su fonte pubblica; disposizione da definire",
+  "verificato_il": "2026-11-17",
+  "unita": "mm",
+  "tavolo": {
+    "modello": "Stagecaptain ST-120",
+    "ripiano_superiore": {
+      "pezzo_manuale": 2,
+      "larghezza": 1180,
+      "profondita": 300,
+      "quota_superficie_da_pavimento": 930,
+      "geometria": "inviluppo rettangolare nominale; rientranze posteriori visibili nel manuale non quotate"
+    },
+    "piano_principale": {
+      "larghezza": 1180,
+      "profondita": 600
+    }
+  },
+  "schermo": {
+    "modello": null,
+    "larghezza": null,
+    "profondita_base": null,
+    "posizione": null,
+    "stato": "da acquistare; costo minimo, consumi e comodità prioritari; nessun gaming",
+    "risoluzione_minima_proposta": [
+      1920,
+      1080
+    ],
+    "diagonali_da_quotare_pollici": [
+      23.8,
+      24,
+      27
+    ],
+    "raccomandazione_in_revisione": "23,8-24 Full HD; 27 Full HD come confronto; QHD opzionale",
+    "frequenza_minima_proposta_hz": 60,
+    "prezzo": null,
+    "listino_distributore_verificato": false
+  },
+  "ascoltatore": {
+    "quota_orecchie": null,
+    "posizione_rispetto_al_tavolo": null
+  },
+  "stanza": {
+    "posizione_tavolo": null,
+    "geometria": null
+  },
+  "fonti": {
+    "manuale": "https://www.kirstein.de/docs/manuals/00106799/manual_EN.pdf?h=1ecf4368fd8ab20c3c92818e95c8e66c",
+    "manuale_versione": "01.2025",
+    "manuale_pagina_pezzo_2": 7,
+    "immagine_quotata": "https://img.kirstein.de/out/pictures/generated/product/9/2000_2000_75/6570c468a762c122194f883e11b84239_9.jpg",
+    "pagina_prodotto": "https://www.kirstein.de/Studiomoebel/Stagecaptain-ST-120-Studiotisch.html",
+    "distinzione": "Il manuale identifica il pezzo 2; le dimensioni sono lette nell'immagine quotata ufficiale. La quota 930 mm va alla superficie superiore."
+  }
+}

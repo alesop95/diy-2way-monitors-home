@@ -1,0 +1,90 @@
+"""Cattura e salva una vista del modello, con impostazioni GUI isolate."""
+import json
+import os
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore,QtWidgets
+from pivy import coin  # Registra i wrapper SWIG prima di getCameraNode().
+
+out=Path(os.environ['DIY_CABINET_GUI_OUT'])
+out.mkdir(parents=True,exist_ok=False)
+view_settings=App.ParamGet('User parameter:BaseApp/Preferences/View')
+view_settings.SetBool('Simple',True)
+view_settings.SetBool('Gradient',False)
+view_settings.SetUnsigned('BackgroundColor',0xFFFFFFFF)
+doc=App.openDocument(os.environ['DIY_CABINET_NATIVE'])
+Gui.activateWorkbench('PartWorkbench')
+purple=(77/255,17/255,167/255)
+cyan=(87/255,204/255,246/255)
+neutral=(208/255,212/255,227/255)
+for obj in doc.Objects:
+    if not hasattr(obj,'ViewObject'):continue
+    obj.ViewObject.Visibility=obj.Name in {'Sinistra','Destra','RipianoProxy','LarghezzaSchermo'} or obj.Name.startswith(('S_','D_'))
+    if obj.TypeId=='Part::Box':
+        obj.ViewObject.ShapeColor=neutral if obj.Name=='RipianoProxy' else (purple if 'Frontale' in obj.Name else cyan)
+        obj.ViewObject.LineColor=(0,0,0)
+        if 'Frontale' in obj.Name:obj.ViewObject.Transparency=65
+    elif obj.Name=='LarghezzaSchermo':obj.ViewObject.LineColor=purple;obj.ViewObject.LineWidth=5
+Gui.activeDocument().activeView().viewAxonometric()
+Gui.activeDocument().activeView().fitAll()
+window=Gui.getMainWindow();window.show()
+report={'status':'running'}
+
+
+def finish(error=None):
+    if error:report.update(status='failed',error=str(error))
+    (out/'esito.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    App.closeDocument(doc.Name);window.close()
+
+
+def capture_top():
+    try:
+        view=Gui.activeDocument().activeView()
+        direction=view.getViewDirection()
+        if abs(direction.x)>1e-6 or abs(direction.y)>1e-6 or abs(direction.z+1)>1e-6:
+            raise RuntimeError('La vista in pianta non guarda lungo -Z')
+        view.getCameraNode().height.setValue(550)
+        Gui.updateGui()
+        view.saveImage(str(out/'pianta.png'),1800,700,'White')
+        report.update(status='captured',top_direction=[direction.x,direction.y,direction.z])
+        finish()
+    except Exception as exc:finish(exc)
+
+
+def capture():
+    try:
+        mdi=window.findChild(QtWidgets.QMdiArea)
+        if mdi is None or mdi.activeSubWindow() is None or doc.Label not in mdi.activeSubWindow().windowTitle():
+            raise RuntimeError('Vista attiva diversa dal modello')
+        Gui.activeDocument().activeView().saveImage(str(out/'modello.png'),1800,1100,'White')
+        if not window.grab().save(str(out/'finestra.png')):raise RuntimeError('Cattura finestra fallita')
+        doc.saveAs(str(out/'studio-con-vista.FCStd'))
+        Gui.activeDocument().activeView().viewTop()
+        Gui.activeDocument().activeView().fitAll()
+        report.update(status='iso_captured',document=doc.Name,active_view=mdi.activeSubWindow().windowTitle(),
+                      panels_visible=sum(1 for o in doc.Objects if o.TypeId=='Part::Box' and o.Name!='RipianoProxy' and o.ViewObject.Visibility))
+        if report['panels_visible']!=12:raise RuntimeError('Non sono visibili i dodici pannelli')
+        QtCore.QTimer.singleShot(700,capture_top)
+    except Exception as exc:
+        finish(exc)
+
+
+def activate():
+    try:
+        mdi=window.findChild(QtWidgets.QMdiArea)
+        if mdi:
+            for child in mdi.subWindowList():
+                if doc.Label in child.windowTitle():mdi.setActiveSubWindow(child);child.showMaximized();break
+        view=Gui.activeDocument().activeView()
+        view.setCameraType('Orthographic')
+        view.viewAxonometric();view.fitAll()
+        camera=view.getCameraNode();camera.height.setValue(camera.height.getValue()*0.7)
+        Gui.updateGui()
+        QtCore.QTimer.singleShot(500,capture)
+    except Exception as exc:
+        (out/'esito.json').write_text(json.dumps({'status':'failed','error':str(exc)}),encoding='utf-8')
+        App.closeDocument(doc.Name);window.close()
+
+
+QtCore.QTimer.singleShot(2000,activate)

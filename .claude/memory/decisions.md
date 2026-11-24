@@ -468,7 +468,7 @@ Conseguenze. Il capitolo sul crossover, già scritto, va ripreso con le derivazi
 
 Data: 2026-10-02. Stato: accettata, su richiesta esplicita dell'utente.
 
-Contesto. La ricerca bibliografica della tesi di ADR-034 aveva il materiale sparso: le copie dei lotti e la libreria JabRef sotto `_notes/fonti-studio/`, lo scope e il registro in `research-vault/`. L'utente ha chiesto di portare nel vault di ricerca una copia di tutto ciò che serve e di inizializzarlo come vault Obsidian con le stesse caratteristiche di quello del progetto `D:\intralino-benchmark`.
+Contesto. La ricerca bibliografica della tesi di ADR-034 aveva il materiale sparso: le copie dei lotti e la libreria JabRef sotto `_notes/fonti-studio/`, lo scope e il registro in `research-vault/`. L'utente ha chiesto di portare nel vault di ricerca una copia di tutto ciò che serve e di inizializzarlo come vault Obsidian secondo un esempio esterno autorizzato. Il riferimento identificante è stato anonimizzato il 2026-11-20; il principio metodologico resta invariato.
 
 Decisione. `research-vault/` è un vault Obsidian con la configurazione e i tre plugin comunitari di intralino, una nota d'ingresso `00-START`, note numerate, una scheda per fonte selezionata in `paper/`, il registro unico `fonti.json` generato da `tools/registro-fonti.py` e i PDF in `papers/` con il manifesto delle impronte. Le copie del materiale di studio stanno in `research-vault/fonti-locali/lotto-NN/`, copiate da `tools/copia-lotti.py`, e le basi di terzi in `research-vault/basi/`. Questo supera la posizione `_notes/fonti-studio/` di MS-179 e del piano di MS-184.
 
@@ -623,3 +623,83 @@ Decisione. Il collegamento fra l'interfaccia e gli amplificatori resta bilanciat
 Motivazione. I cavi corrono vicino all'alimentazione e al calcolatore, e il collegamento bilanciato cancella il disturbo raccolto lungo il cavo ed evita gli anelli di massa. È anche la soluzione standard di uno studio, che il progetto vuole documentare.
 
 Conseguenze. Il requisito entra nella scelta degli amplificatori di PA-024, insieme alla potenza, che dipende dagli altoparlanti della fase 4a.
+
+## ADR-048 - Amplificatori posseduti come risorse da caratterizzare nel progetto
+
+Data: 2026-11-18/19. Scelta esplicita dell'utente: includere Marshall MG15, Fender Frontman 65R e un amplificatore EKO per basso, studiandone struttura, comportamento e integrazione nell'home recording. Per l'EKO è richiesta la sostituzione dello speaker con il supporto già individuato.
+
+Motivo: usare e comprendere quanto è già disponibile, collegando studio analogico, misure e catena reale prima di aggiungere acquisti. I manuali e i modelli illustrativi non sono misure degli esemplari: si conservano distinti dati dichiarati, fonti primarie e acquisizioni reali.
+
+Conseguenze: inventario e schede sotto docs/80-strumenti-posseduti, sorgenti personali soltanto private, PA-038 per caratterizzazione e PA-039 per l'EKO. Il lavoro sui combo non cambia automaticamente risposta target, driver o elettronica dei monitor. Sviluppo sulla postazione e collaudo Linux via SSH; nessuna misura o modifica degli amplificatori compiuta in questo giro.
+
+## ADR-049 - DSP persistente in attesa e banco virtuale isolato
+
+Data: 2026-11-19. Stato: attuata e verificata nel perimetro virtuale, MS-246/256.
+
+Il servizio DSP deve rendere disponibile il motore senza riattivare automaticamente un vecchio routing o un livello precedente. Si sceglie CamillaDSP PipeWire 4.1.3 come servizio utente su localhost, senza statefile o configurazione all'avvio, mute true e -60 dB. Il laboratorio ha nodi dedicati 2/4 senza autoconnect e link creati soltanto dopo verifica dei proprietari e delle porte. La ripartenza dopo guasto ripristina l'attesa, non il profilo.
+
+Il comando corrente e i sorgenti sono isolati per versione; l'installatore rifiuta destinazioni esistenti e non avvia servizi. Il software non sostituisce protezioni fisiche dei driver. La rampa del mute e il quantum reale vengono misurati e dichiarati; il collaudo virtuale non certifica jack, rumore, latenza o risposta acustica. Il costo è caricare e verificare esplicitamente la configurazione d'uso quando esisteranno driver, finali e interfaccia definiti.
+
+## ADR-050 - Linkwitz Lab è una fonte tecnica prioritaria del progetto
+
+Data: 2026-11-20. Stato: accettata per indicazione esplicita dell'utente durante la ricerca sul crossover.
+
+L'utente segnala https://www.linkwitzlab.com/filters.htm come sito importante da conservare fra le fonti. Si registra Active Filters di Siegfried Linkwitz come riferimento prioritario per collegare circuiti, filtri e risposta dei driver montati. La scheda research-vault/web/linkwitzlab-active-filters.md dichiara passaggi letti, usi nel progetto e parti ancora da studiare.
+
+La priorità non certifica tutta la raccolta o ogni circuito per il nostro hardware. Le equazioni e i dati vengono controllati nel relativo contesto, con ipotesi e prove tracciate. Il confronto PC/Raspberry/analogico rimane uno studio delle alternative; questa decisione sulle fonti non sostituisce ADR-033 o impone acquisti.
+
+## ADR-051 - Ascolto autonomo obbligatorio e due modalità da sviluppare
+
+Data: 2026-11-20. Stato: requisito esplicito dell'utente, successivo al confronto iniziale.
+
+I monitor devono funzionare anche con il PC Ubuntu spento e ricevere CD o riproduttori esterni. La formulazione precedente che lasciava questa autonomia opzionale è superata. Si sviluppano percorso DAW su PC e percorso autonomo su Raspberry Pi, cercando di riusare interfaccia e quattro canali di potenza. Un'interfaccia USB può appartenere a un solo host alla volta: commutazione fisica o switch qualificato, non collegamento simultaneo con cavo sdoppiato. Se occorre registrazione e ascolto autonomo simultanei serve un'architettura diversa, da motivare sul costo complessivo.
+
+L'integrità bit per bit riguarda il trasporto fino all'ingresso del DSP e si verifica con confronto dei campioni. Crossover, equalizzazione e volume modificano intenzionalmente il segnale. La modalità autonoma richiede ingressi, clock, riavvio e livello coordinato delle quattro vie, non soltanto un Raspberry con un DAC stereo. L'assenza attuale dell'hardware limita il collaudo fisico, non lo sviluppo del progetto e delle procedure.
+
+## ADR-052 - Relazioni matematiche consegnate in LaTeX e PDF
+
+Data: 2026-11-20. Stato: richiesta esplicita dell'utente.
+
+La matematica dei documenti tecnici deve essere leggibile nel PDF compilato. Si riusano ambiente e strumenti LaTeX già adottati dal template, font e colori del design di account, sorgenti ispezionabili e output riproducibili. I Markdown restano indice e sorgente testuale dove utile; la relazione con formule è consegnata anche in LaTeX/PDF. Non si promuove il PDF di una pagina Markdown a prova di rendering delle equazioni senza ispezione delle formule effettive.
+
+## ADR-053 - Base di studio condivisa e componenti da qualificare
+
+Data: 2026-11-20. Stato: base di sviluppo teorico, nessun acquisto o taratura definitiva.
+
+Si sviluppano UMC1820 condivisa fra PC e Pi alternativi, due finali stereo V3 e coppia SB16PFCR25-8/SB26STCN-C000-4 in A24 chiuso. L'interfaccia soddisfa il conteggio degli otto ingressi e delle uscite e offre ingressi esterni; il riuso evita un secondo DAC. Il mobile chiuso contiene la complessità del primo prototipo poco profondo. SB15/B27 rimane l'alternativa se lo schermo richiede un frontale più stretto. Modello e budget sono in docs/63 e nel vault sistema-autonomo-20261120.
+
+Il modello non raggiunge da solo il target storico a 60 Hz; il vantaggio di costo non dimostra la prestazione sonora. Si verificano dati nella stanza, emissione, crossover acustico e rumore prima di congelare altoparlanti, tagli o spesa. ADR-046 resta storia della precedente candidata UMC404HD: non governa il conteggio attuale degli otto ingressi. La selezione degli host è alternativa; simultaneità richiederebbe una diversa architettura e distinta.
+
+## ADR-054 - Pedigree delle fonti e riordino senza perdita delle prove
+
+Data: 2026-11-20. Stato: adottata su richiesta dell'utente, MS-292/294.
+
+Si mantiene il registro bibliografico canonico e si aggiunge la mappa degli usi con ID stabile, versione, alias, copertura della lettura e coordinate nei documenti. La registrazione non certifica la lettura, i riferimenti storici rimangono da riconciliare e le citekey esistenti vengono riusate. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Il manuale privato Marshall è identificato dall'impronta, senza pubblicare la posizione originale sul disco.
+
+Le prove precedenti vengono compresse integralmente e rilette per elenco, dimensioni e SHA-256 prima di rimuovere le copie espanse. Si conservano anche le prove fallite e la mappa dei percorsi originali; i microstep storici non vengono riscritti. Catalogo documentale, mappa degli artefatti e indice ragionato hanno ruoli distinti e rimandano alle stesse autorità. Il confronto dei metodi esterni importa soltanto principi generici: nessun contenuto aziendale nel progetto privato, nemmeno negli ignorati. Il registro lezioni locale conserva evidenze del progetto audio e non dichiara una propagazione al template ancora da effettuare.
+
+## ADR-055 - Verifiche fisiche sospese e sviluppo autonomo attivo
+
+Data: 2026-11-20. Stato: disposizione esplicita dell'utente, MS-298/299.
+
+Tutte le verifiche che l'utente deve svolgere fisicamente rimangono in sospeso e non vengono riproposte come azioni immediate. La riapertura richiede una sua iniziativa o richiesta esplicita, senza scadenza automatica. La sospensione riguarda foto, misure, targhette, ascolto, collegamenti, interventi col tecnico e trasferimento della macchina; non sospende il progetto, la ricerca, il software o le simulazioni.
+
+Il registro delle pendenze conserva una tabella unica delle verifiche differite; la roadmap raccoglie le voci interamente fisiche nel gruppo 4 già gestibile dal motore e mantiene autonoma la parte delle voci miste. Il recap docs/STATO-PROGETTO.md offre al proprietario un percorso leggibile attraverso le fonti canoniche, senza sostituire cronologia o stato tecnico. In assenza di riscontri si sviluppano modelli parametrici e ipotesi esplicite; non si approvano tagli, tarature o prestazioni fisiche per il solo fatto che una prova è sospesa.
+
+## ADR-056 - Consegne in docs, QA temporaneo e autorità documentali uniche
+
+Data: 2026-11-20. Stato: adottata su richiesta esplicita dell'utente, MS-300/305.
+
+I tre PDF di lettura e delle relazioni vivono in docs/pdf; il manifesto lega ciascuno ai sorgenti effettivi con SHA-256. Il controllo ordinario rileva sorgenti cambiate senza rigenerazione, PDF alterati e copie QA rimaste. build conserva intermedi rigenerabili, simulazioni e kit CAD locale. Le anteprime di pagina servono alla verifica visiva e si eliminano subito; i PNG che descrivono geometrie CAD rimangono figure utili al progetto. I manuali originali e le prove uniche non si eliminano come duplicati; le prove storiche si comprimono, verificano e mappano prima di rimuovere gli espansi.
+
+docs/STATO-PROGETTO.md è l'ingresso unico di lettura, docs/PENDING-ACTIONS.md il registro unico dei residui, OPS la cronologia, ADR le decisioni, il vault la provenienza. Gli snapshot di ripresa si consolidano senza copiare l'intera cronologia; le copie precedenti rimangono nell'archivio privato. Il vecchio indice è un rimando, il catalogo un inventario generato. La pulizia è limitata al progetto e non tocca dischi esterni, biblioteca o altri repository. Il costo è rigenerare gli intermedi quando servono e mantenere aggiornate le impronte ad ogni consegna effettiva; non si risolve un controllo rosso cambiando solo l'hash senza ricompilare.
+
+## ADR-057 - Controllo comune con profili e percorsi attestati
+
+Data: 2026-11-23. Stato: adottata nel mandato esplicito di completare il controllo DSP, MS-308 e successivi.
+
+Un solo nucleo Python gestisce prepare/enable/mute, normalizzazione API 4.1.3, rilettura e revoca della preparazione. Il pannello locale riusa RpcPeer/websockets già disponibile; nessuna nuova piattaforma o libreria è necessaria. Il banco file è il default verificabile senza hardware. Il laboratorio PipeWire ammette solo il sottografo virtuale dichiarato; il percorso PC qualificato richiede sei link esatti e il sink legato alla card ALSA osservata. Il Pi usa ALSA diretto con entrambi i PCM qualificati. Le cuffie restano fuori dalle quattro vie.
+
+Una policy hardware richiede manifest privato e prova coerente, identità, parametri PCM, clock, routing fisico e volume attestati, con hash dei profili canonici. Gli esempi restano non abilitanti; i generatori producono candidati con ReadConfigJson senza caricarli. Il ritorno del clock o della connessione non ripristina il livello. Un errore di mute non è silenzio confermato e viene ritentato; le protezioni elettriche restano separate.
+
+Il software si qualifica su motore reale separato, browser e prove negative; hardware/ARM/DAW non si deducono da questi risultati. Il kit e l'unità sono preparati, installazione e attivazione persistente restano manuali per AGENTS.md. La rinuncia all'automatismo del volume costa una nuova preparazione dopo il guasto; rende esplicita la condizione che autorizza l'ascolto e impedisce una ripartenza inattesa.

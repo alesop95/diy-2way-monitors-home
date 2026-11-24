@@ -1,0 +1,11 @@
+{
+  "status": "DATI DI DATASHEET, simulazione preliminare a piccoli segnali; nessun esemplare misurato",
+  "verified_date": "2026-11-20",
+  "assumed_displacement_l": 1.5,
+  "woofers": [
+    {"id": "SB16PFCR25-8", "fs_hz": 38, "qts": 0.40, "vas_l": 27, "sd_cm2": 124, "xmax_oneway_mm": 4.5, "re_ohm": 5.6, "sensitivity_2v83_db": 87, "outer_diameter_mm": 176, "source": "https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf"},
+    {"id": "SB15NRX2C30-8", "fs_hz": 36.5, "qts": 0.34, "vas_l": 20, "sd_cm2": 82, "xmax_oneway_mm": 5, "re_ohm": 5.9, "sensitivity_2v83_db": 86.5, "outer_diameter_mm": 150, "source": "https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf"}
+  ],
+  "tweeter": {"id": "SB26STCN-C000-4", "fs_hz": 960, "re_ohm": 3.2, "sensitivity_2v83_db": 92.5, "outer_diameter_mm": 72, "source": "https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf"},
+  "design_assumptions": {"crossover_electrical_hz": 2600, "highpass_hz": 35, "calibrated": false, "profile_listening_low_shelf_db": 2, "profile_listening_low_shelf_hz": 120, "pre_gain_db": -12, "tweeter_trim_db": -5.5}
+}

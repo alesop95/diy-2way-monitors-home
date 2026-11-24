@@ -1,0 +1,18 @@
+# Modello da qualificare sul Pi: non installato, nessun profilo o unmute automatico.
+[Unit]
+Description=Monitor DIY autonomi - motore in attesa silenziata
+After=sound.target
+Wants=sound.target
+
+[Service]
+Type=simple
+User=<UTENTE_AUDIO>
+SupplementaryGroups=audio
+ExecStart=/usr/local/bin/camilladsp --address 127.0.0.1 --port 12341 --wait --mute --gain=-60
+Restart=on-failure
+RestartSec=2
+LimitRTPRIO=95
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

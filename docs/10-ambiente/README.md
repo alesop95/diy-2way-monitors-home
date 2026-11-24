@@ -51,3 +51,21 @@ La verifica della catena audio, cioè come si stabilisce che la macchina sia cap
 [^1]: *SSD*, Solid State Drive - unità di memorizzazione a stato solido, senza parti in movimento, con tempi di accesso molto inferiori a quelli di un disco meccanico.
 
 [^2]: *LTS*, Long Term Support - designazione delle versioni di Ubuntu con supporto esteso, rilasciate ogni due anni ad aprile, contrapposte alle versioni intermedie a supporto breve.
+
+La [verifica prima del trasferimento](verifica-prima-del-trasferimento.md) registra la ricognizione SSH del 2026-11-17 e distingue la preparazione software dai collaudi che richiedono interfaccia, diffusori e stanza.
+
+Il [collaudo CamillaDSP su file](camilladsp-collaudo-offline.md) è riuscito sulla macchina il 2026-11-18; descrive il risultato elettrico e i limiti rispetto al futuro percorso hardware.
+
+Il [backup prima dell'ottimizzazione di novembre](backup-ottimizzazione-2026-11.md) registra il nuovo pieno, la conservazione dei punti e la verifica necessaria prima dei cambiamenti alla macchina.
+
+Il [backup finale del setup](backup-finale-setup-2026-11.md) segue CPU, CAD, DSP e MIDI: il quarto pieno viene preparato preservando i tre precedenti e distinguendo rilettura, nuova copia esterna e autorizzazione alla sostituzione.
+
+Il [lavoro remoto e la tracciabilità](lavoro-remoto-e-tracciabilita.md) fissano lo sviluppo dalla postazione, l'esecuzione via SSH e la registrazione del motivo, della modifica e della prova per ogni intervento.
+
+Il [collaudo FreeCAD](freecad-collaudo-native.md) verifica la copia utente 1.1.4, geometria parametrica, salvataggio e riapertura FCStd, STEP e DXF reimportati e apertura grafica sotto Xvfb. Include controllo negativo della scala e limiti rispetto al progetto costruttivo finale.
+
+Il [servizio CamillaDSP e banco PipeWire](camilladsp-servizio-utente.md) è verificato il 19 novembre: avvio silenziato in attesa, quattro vie virtuali misurate, volume, mute a regime e ripartenza dopo guasto. Comprende installatore senza sovrascrittura e troubleshooting osservato; il percorso hardware resta da provare. La disponibilità dopo riavvio e accesso utente è stata verificata nel collaudo successivo.
+
+Per capire dove entra il processore e come si userà nella DAW e nell'ascolto, partire da [CamillaDSP nella catena dei due monitor](camilladsp-uso-quotidiano.md): stereo verso quattro vie, ruoli di interfaccia e finali, profili mix/ascolto, stato già verificato e parti ancora da realizzare.
+
+Il [collaudo dopo riavvio](collaudo-dopo-riavvio-2026-11.md) chiude la verifica del nuovo avvio per CPU, disponibilità dei tre modelli CAD e banco DSP. Precisa l'avvio con la sessione utente e conserva prove e limiti. Il problema MIDI allora rilevato è stato successivamente [diagnosticato, corretto e collaudato](fluidsynth-diagnosi-e-collaudo.md), chiudendo PA-040.

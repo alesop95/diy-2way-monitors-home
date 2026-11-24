@@ -4,9 +4,17 @@
 
 ## Come è organizzata
 
+Per capire dove siamo aprire prima [STATO-PROGETTO.md](STATO-PROGETTO.md), oppure il suo [PDF di riepilogo](pdf/recap-progetto.pdf). Riunisce stato della macchina e del progetto, scelte candidate, risultati, documenti disponibili e percorso di lettura. Le verifiche fisiche sono sospese su richiesta dell'utente; il lavoro teorico/software continua e non richiede adesso foto, misure o prove sull'hardware.
+
 La documentazione segue la struttura del progetto reale invece della struttura del documento sorgente. Il workflow complessivo sta in una pagina sola, perché il suo valore è vedere le otto fasi insieme; l'ambiente Linux ha una cartella propria, perché è la parte che serve anche al progetto gemello di home recording e viene mantenuta in due copie sincronizzate; ogni fase del workflow ha poi la sua pagina, con gli strumenti che le appartengono.
 
 ## Indice
+
+Relazioni con formule leggibili, aggiornamento 2026-11-20: [crossover in PDF LaTeX](pdf/crossover-pc-pi-analogico.pdf), [sistema PC e autonomo, componenti e collaudo in PDF](pdf/sistema-autonomo-driver-e-collaudo.pdf). Il [progetto 63](63-sistema-autonomo-driver-e-collaudo.md) recepisce l'ascolto senza PC come requisito obbligatorio e sviluppa driver, finali, interfaccia e profili; [sorgenti e compilazione](latex/README.md) rendono ripetibili gli impaginati.
+
+L'ingresso unico è [STATO-PROGETTO.md](STATO-PROGETTO.md), con fonti di verità e documenti da aprire. Il [catalogo con percorsi esatti](90-riferimenti/catalogo-documentazione.md) è l'elenco generato, non un altro stato del progetto; il [pedigree delle fonti](90-riferimenti/fonti-progetto.md) esplicita identità, letture e punti d'uso. L'indice ragionato è ritirato e rimanda all'ingresso unico. Per il DSP valgono il [manuale tecnico](61-camilladsp-manuale-tecnico.md) e il [confronto ingegneristico](62-confronto-crossover-e-verifica-matematica.md).
+
+Gli amplificatori già posseduti, il loro studio circuitale e l'integrazione nell'home recording sono raccolti in [strumenti posseduti](80-strumenti-posseduti/README.md): Marshall MG15, Fender Frontman 65R e recupero dell'amplificatore EKO per basso. Il fronte è aggiunto il 2026-11-18 e comprende inventario, caratterizzazione e interventi, con dati dichiarati e misurati distinti.
 
 Il workflow in otto fasi, dalla misura della stanza alla verifica finale, sta in [00-workflow.md](00-workflow.md).
 
@@ -29,3 +37,9 @@ Le azioni che non si possono compiere adesso, con la condizione che sblocca cias
 ## Rapporto con il documento sorgente
 
 Il `.docx` di partenza conteneva 507 paragrafi, quattro tabelle e una immagine, per circa diecimila parole, e mescolava in un unico flusso la teoria del workflow, la cronaca dell'installazione della macchina, le schede dei singoli programmi e appunti ancora in forma di segnaposto. La conversione ha separato questi piani, ha promosso a prosa le sequenze che nel sorgente erano elenchi, e ha scartato soltanto i paragrafi segnaposto privi di contenuto, cioè le sequenze di lettere ripetute che l'autore aveva lasciato come promemoria di sezioni da scrivere. Le sezioni che nel sorgente erano marcate come da verificare restano marcate come tali qui, e non sono state promosse a fatto.
+
+Proposta di sistema del 2026-11-17: [monitor, cabinet MDF, catena condivisa e spesa](55-proposta-sistema-home-recording.md), da rivedere prima della simulazione e del taglio.
+
+Verifica del motore DSP prima dell'hardware: [collaudo offline su Windows e Ubuntu](56-collaudo-dsp-offline.md).
+
+Il [DSP persistente](57-dsp-persistente.md) e il [piano eseguito](58-piano-dsp-persistente.md) collegano il collaudo offline al servizio utente e al banco PipeWire. La [procedura Ubuntu](10-ambiente/camilladsp-servizio-utente.md) conserva i comandi e i limiti della verifica virtuale.

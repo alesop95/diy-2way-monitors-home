@@ -20,6 +20,8 @@ Un vincolo di reperibilità è già noto e va tenuto presente perché può cambi
 
 ## Fase 7: montaggio
 
+Aggiornamento del 2026-11-18, MS-236. L'utente dispone di un contatto che lo aiuterà sia con il progetto dei due vie sia con un falegname per la realizzazione, una volta completato il progetto teorico. Il passaggio pratico ha quindi un supporto già individuato. Nomi e recapiti restano nel livello privato del progetto. Per il confronto si preparano disegni del cabinet, distinta dei pannelli, fresature, materiali, tolleranze, assemblaggio e collegamenti, dopo la verifica teorica.
+
 Che cosa dovrà produrre: i due cabinet costruiti secondo i disegni della fase 4b.
 
 L'ipotesi di realizzazione registrata negli appunti è il taglio dei pannelli di legno da parte di un artigiano, non una fresatura a controllo numerico. È la ragione per cui il formato `.dxf` è, fra le esportazioni di FreeCAD, quella che conta davvero: sono i pannelli da tagliare a misura.
@@ -41,3 +43,7 @@ Un passaggio ulteriore, non presente nel sorgente ma coerente con gli strumenti 
 Gli appunti registrano una domanda mai risolta, e vale lasciarla come domanda invece di risolverla d'ufficio: se dopo la verifica finale resta uno scostamento, lo si corregge intervenendo sul crossover, oppure con una equalizzazione digitale nella catena di ascolto, oppure accettandolo.
 
 Il progetto ha una posizione implicita, perché la sua premessa è progettare il diffusore in funzione della stanza invece di correggere a posteriori, e questo spinge verso l'intervento sul crossover. La decisione però dipende da quanto grande sia lo scarto e da dove cada in frequenza, quindi non si può prendere prima di avere la misura.
+
+## Intervento sull'amplificatore EKO già posseduto
+
+L'utente dichiara nel giro del 18/19 novembre che lo stesso contatto lo aiuterà anche con la sostituzione dello speaker del suo amplificatore EKO per basso. È PA-039: prima del ricambio servono identificazione del modello, carico, quote e cabinet. Il supporto è disponibile per dichiarazione dell'utente; nessun ricambio o incarico è stato deciso dall'agente. La scheda è [EKO per basso](80-strumenti-posseduti/eko-basso.md).

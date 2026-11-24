@@ -345,9 +345,15 @@ def controlla_pa010_pa011() -> None:
         print("  IN ATTESA DEL DISCO: J: non e' collegato, quindi il backup non si")
         print("  puo' scrivere dove e' stato deciso. Ricollegarlo e rilanciare.")
     archivio = Path("J:/backup-macchine/alessio-ubuntustudio/"
-                    "backup-file-sistema_2026-09-17T154511.vbk")
-    riga("ok" if (dest_presente and archivio.exists()) else "  ",
-         "archivio del 2026-09-17 presente su J:, 17627570176 byte, MS-135")
+                    "2026-11-18/backup-file-sistema_2026-11-18T121315.vbk")
+    descrittore = archivio.with_name("backup-file-sistema.vbm")
+    copia_presente = (dest_presente and archivio.is_file() and descrittore.is_file()
+                     and archivio.stat().st_size == 19909320704
+                     and descrittore.stat().st_size == 27362)
+    riga("ok" if copia_presente else "  ",
+         "copia esterna corrente del 2026-11-18 presente con descrittore e dimensioni attese")
+    print("  Vecchie copie esterne sostituite dopo verifica SHA-256, MS-241.")
+    print("  Questo controllo misura la presenza, non ricalcola le impronte.")
     print("  COMPIUTA il 2026-09-17. Prodotto scelto: Veeam Agent for Linux,")
     print("  variante senza modulo del kernel, a livello di file, perche' su")
     print("  partizioni semplici il livello di volume non e' disponibile:")
@@ -411,9 +417,13 @@ def controlla_voci_recenti() -> None:
     riga("ok" if dest_presente else "  ",
          "destinazione J: collegata, necessaria per rileggere la copia esterna")
     archivio2 = Path("J:/backup-macchine/alessio-ubuntustudio/"
-                     "backup-file-sistema_2026-09-21T130457.vbk")
-    riga("ok" if (dest_presente and archivio2.exists()) else "  ",
-         "archivio del 2026-09-21 presente su J:, impronte verificate, MS-149")
+                     "2026-11-18/backup-file-sistema_2026-11-18T121315.vbk")
+    descrittore2 = archivio2.with_name("backup-file-sistema.vbm")
+    copia2_presente = (dest_presente and archivio2.is_file() and descrittore2.is_file()
+                      and archivio2.stat().st_size == 19909320704
+                      and descrittore2.stat().st_size == 27362)
+    riga("ok" if copia2_presente else "  ",
+         "copia esterna corrente presente; punti di settembre conservati nel deposito Ubuntu")
     print("  COMPIUTA il 2026-09-21. Restano dichiarate le tre cose gia' rinviate da")
     print("  PA-011: la destinazione J: e' provvisoria in attesa del NAS, la cifratura")
     print("  va ripresa quando la destinazione sara' definitiva, e un backup a livello")

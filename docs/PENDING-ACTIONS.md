@@ -4,6 +4,37 @@
 >
 > Lo strumento `tools/check-pending-actions.py` legge le condizioni verificabili in automatico e dice quali azioni sono diventate eseguibili. Conviene lanciarlo a inizio sessione.
 
+## Verifiche fisiche sospese su richiesta dell'utente
+
+Direttiva del 2026-11-20, MS-298: tutte le verifiche che richiedono presenza, foto, misure, ascolto, collegamenti o interventi fisici dell'utente sono sospese. Nessuna richiesta operativa di questo tipo è da eseguire adesso e non va riproposta come prossimo passo a ogni recap. Si riaprono soltanto su iniziativa o esplicita richiesta dell'utente, senza scadenza automatica. Questa sezione prevale sulle istruzioni operative storiche sotto e sui messaggi del vecchio controllo delle condizioni.
+
+| Verifica differita | Riferimenti | Che cosa continua da qui |
+|---|---|---|
+| Foto e quote di stanza, seduta, orecchie, pareti e appoggi | PA-020, PA-032; roadmap 13, 26, 30 | Modelli nominali, confronti parametrici e analisi delle ipotesi. Quote pubbliche del tavolo già disponibili. |
+| Targhette, pannelli e identificazione degli esemplari | PA-038; roadmap 35, 36 | Schede Marshall/Fender/EKO, manuali acquisiti, studio documentale e protocollo di caratterizzazione. |
+| Diagnosi EKO, sigla dello speaker e misure del cabinet | PA-039; roadmap 37 | Compatibilità teorica dal manuale e piano diagnostico; nessun ricambio da ordinare sulla sola ipotesi. |
+| Interfaccia e Pi reali, cablaggi, clock, volume e ascolto | PA-012, PA-024, PA-036, PA-041; roadmap 29, 39 | Architettura, configurazioni dimostrative, nucleo del controllo comune sviluppato, integrazione e prove su file. |
+| Carico reale DAW, latenza, rumore e collaudo acustico | PA-036, PA-041; roadmap 29, 33 | Protocolli, segnali di prova, limiti attesi e criteri di accettazione. |
+| Appoggi, tagli, montaggio, confronto fisico col supporto e prototipo | PA-037; roadmap 32, 33 | CAD parametrico, distinta preliminare, materiali, preventivo e controlli di fabbricabilità nominali. |
+| Trasferimento a casa e nuova rete | PA-022; roadmap 34 | Documentazione del setup già collaudato, senza ripetere reboot o backup. |
+| Collegamento o ispezione fisica di supporti esterni | PA-004 e richieste analoghe; roadmap 15 | Uso dei documenti e delle prove già acquisiti, senza chiedere di collegare dischi. |
+
+La sospensione non dichiara compiute le prove e non ferma il progetto. Confronti, simulazioni, software e documentazione proseguono con le ipotesi esplicite. Il CAD esecutivo approvato, gli acquisti definitivi e la taratura restano subordinati ai riscontri differiti. La roadmap usa il gruppo 4 per le voci interamente fisiche; le voci miste mantengono attiva soltanto la parte eseguibile dal repository. Le pendenze non fisiche restano aperte, ma non diventano per questo richieste immediate all'utente.
+
+## Pendenze correnti dopo lo sviluppo autonomo
+
+Questo è il riepilogo operativo unico; le voci storiche sotto conservano apertura, dipendenze ed esiti. Le verifiche fisiche restano sospese e non costituiscono richieste immediate all'utente.
+
+| Fronte | Sviluppato e verificato | Residuo reale |
+|---|---|---|
+| Basso e driver | Modello HP35/LT, 486 scenari e dodici casi nel motore, più cinque test delle equazioni. | Modelli reflex/direttività e scelta esecutiva; taratura sui driver montati e nella stanza sospesa. |
+| DSP e autonomia, PA-041 | API WebSocket reale, observer ALSA/clock, grafo PC attestato, pannello e watchdog; 46 test e banco reale. Pannello installato manualmente e verificato in esercizio il 23 novembre. | Abilitazione manuale dell'avvio al login, ancora disabled alla prova; qualifica fisica di identità, jack, clock e volume PC/Pi sospesa. Nessuna reinstallazione richiesta. |
+| CAD e costruzione, PA-037 | Tre cabinet esplorativi, STEP/DXF e distinta geometrica preliminare. | Assieme con fori, giunzioni, tolleranze, cablaggi e distinta finale dopo i componenti definitivi; tagli e appoggi reali sospesi. |
+| Spesa, PA-012/024 | Catena candidata e budget datato con quantità, ipotesi ed esclusioni. | Stock/preventivi aggiornati, ottimizzazione finale e scelta d'acquisto; nessun ordine adesso. |
+| Combo, PA-038/039 | Manuali acquisiti, schede e protocolli, EKO 30 W identificato documentalmente come XB30. | Schemi delle revisioni; diagnosi, speaker montato e misure sospesi. |
+| Fonti, PA-025/027 | Pedigree di 203 risorse, 36 schede curate; bibliografia e archivio esistenti preservati. | Riconciliare 167 riferimenti storici e proseguire le letture per i temi utili, senza chiamare letta l'intera biblioteca. |
+| Versionamento, PA-003/042 | Documenti correnti anonimizzati e sette lezioni locali disponibili. | Valutazione manuale della storia Git e ricezione delle lezioni/consegne nel template; nessuna riscrittura automatica. |
+
 ## Come si legge una voce
 
 Ogni azione ha un identificativo nella forma `PA-NNN`, una data di apertura, la descrizione di che cosa va fatto, la condizione che ne blocca l'esecuzione, il criterio di completamento e lo stato. Una voce non si cancella quando è compiuta: si marca come compiuta con la data, così che il registro resti la storia di ciò che è stato deciso e non solo di ciò che resta da fare.
@@ -47,6 +78,8 @@ Criterio di completamento. Esiste un confronto documentato fra il contenuto pers
 Nota sul software. La richiesta dell'utente comprende anche l'utilizzo del software, cioè non soltanto i file di dato ma la loro apribilità: un progetto Ardour o un modello Akabak conservato senza il programma che lo apre è un archivio e non un materiale di lavoro. La verifica va quindi estesa a quali formati restano leggibili sulla macchina dopo la ricostruzione dell'ambiente delle fasi da 6 a 9.
 
 ## PA-011 - Backup Veeam della macchina, a ricostruzione finita
+
+Aggiornamento 2026-11-18, MS-241: la copia esterna corrente è il pieno del 18 novembre, con archivio e descrittore verificati per SHA-256. I due vecchi archivi esterni e il vecchio descrittore sono stati sostituiti dopo autorizzazione sui nomi esatti; i punti di settembre restano nel deposito Ubuntu. Il controllo meccanico ora verifica la presenza e le dimensioni della coppia corrente, senza ricalcolare le impronte a ogni apertura. Il dettaglio storico sotto resta riferito alla prima chiusura.
 
 Data di apertura: 2026-09-09. Stato: compiuta il 2026-09-17, sette giorni dopo l'apertura. Il racconto sta nei microstep da MS-117 a MS-135, e la procedura replicabile che ne è stata estratta in `docs/10-ambiente/veeam-agent-linux.md`.
 
@@ -451,6 +484,8 @@ COMPIUTA il 2026-09-22, ed è MS-164. Il quinto criterio è soddisfatto: l'utent
 
 ## PA-017 - Secondo backup a setup finito, e la decisione se renderlo incrementale
 
+Aggiornamento 2026-11-18, MS-241: il pieno di settembre resta nel deposito Ubuntu; la sua copia esterna è stata sostituita, insieme alla precedente, dal pieno del 18 novembre verificato. Su disco esterno si conserva un pieno corrente e si sostituisce dopo la verifica del successivo; prima di nuovi backup locali va rivalutato il limite di tre punti. La chiusura storica del secondo punto non richiede di conservarne indefinitamente la vecchia copia esterna.
+
 Data di apertura: 2026-09-17. Stato: COMPIUTA il 2026-09-21. L'esecuzione è in MS-148 per il prerequisito e in MS-149 per la corsa, la rilettura e il trasferimento.
 
 Che cosa va fatto. Prendere un secondo backup della macchina quando la ricostruzione sarà davvero finita, cioè a sottofase 8.6 chiusa e fase 8 superata in tutti e cinque i criteri di uscita, e decidere in quella occasione se il secondo punto debba essere una copia completa nuova oppure un incrementale sul primo.
@@ -674,6 +709,8 @@ Criterio di completamento. Le copie sono cancellate o tenute per scelta registra
 
 ## PA-032 - Ripartire dalla stanza sistemata: misure, modello in Blender e i tre numeri della fase 4a
 
+Aggiornamento 2026-11-17, MS-233 e MS-234: tavolo ST-120 acquistato e montato; proposta in `docs/55-proposta-sistema-home-recording.md`. Ripiano superiore nominale 118 × 30 cm e quota 93 cm verificati sulle fonti ufficiali: chiedere soltanto disposizione, schermo e seduta. Il cabinet esplorativo da 23 × 30 cm di base supera la profondità del ripiano se ruotato di 30°; forma e posizione restano da rivedere. PA-036 conserva il seguito operativo.
+
 Data di apertura: 2026-10-06, da MS-226. Stato: aperta, in attesa che l'utente finisca di sistemare fisicamente la stanza.
 
 Che cosa va fatto. Quando i mobili sono al loro posto, la sessione riparte da qui, in quest'ordine. Primo, i tre numeri dei requisiti della fase 4a, cioè distanza d'ascolto, pressione sonora massima al punto d'ascolto e frequenza più bassa, con la posizione possibile dei monitor che la stanza sistemata consente. Secondo, il protocollo con cui l'utente consegna le misure della stanza: che cosa misurare, con quale strumento, in che unità, rispetto a quale origine e in quale formato di file, così che il rilievo geometrico di PA-020 e il modello della fase 2 partano da dati coerenti. Terzo, il lavoro sulla macchina Ubuntu Studio via SSH con l'alias `studio`: la verifica e il setup degli strumenti della catena che lì sono configurabili, a partire da Blender per il modello della stanza, poi Octave con MATAA, REW e gli strumenti sotto Wine già documentati in `docs/10-ambiente/`.
@@ -719,6 +756,76 @@ Condizione di sblocco. Una sessione aperta in questo progetto, con l'utente.
 Criterio di completamento. `doc-ingest.py --autotest` verde dentro `chiudi`, e `converti-fonti.py` che rifiuta di partire senza il file degli schemi di esclusione, oppure una motivazione scritta per tenerla così.
 
 Esito del 2026-10-26. La copia locale coincideva con una versione storica del pacchetto, quindi non portava adattamenti, ed è stata sostituita con quella del pacchetto, uguale alla testa del template. Insieme sono arrivati `tools/cache-storage.py`, che la versione nuova carica dalla propria cartella, e `tools/esclusi-personali.esempio.txt`, che serve al suo autotest. `doc-ingest.py --autotest` dà 21 file e 0 errori, `converti-fonti.py` carica il modulo nuovo con le quattro funzioni che usa, e `chiudi -SoloControlli` è verde. Gravità valutata sulle date e sul codice, senza aprire documenti. La via ordinaria di conversione, `converti-fonti.py`, applicava già l'esclusione per conto proprio prima di convertire (ADR-042). Le cache di `_notes/.tmp-doc-cache/` hanno l'ultima scrittura il 2026-10-07 alle 13:45, e i lotti risalgono a prima della regola, il che è materia di PA-031. Non risulta quindi nessuna conversione senza esclusione dopo l'introduzione della regola, e la falla era latente sulla sola chiamata diretta dello strumento. La causa è nel template: l'allineamento aggiorna soltanto gli strumenti che nel pacchetto stanno in una cartella `tools/`, mentre `doc-ingest.py` sta nella radice del pacchetto. È registrata come lezione L-007 nel progetto della rete.
+
+## PA-036 - Chiudere macchina e progetto costruttivo della catena condivisa
+
+Aggiornamento 2026-11-19 dopo il riavvio dell'utente: CPU e disponibilità CAD/DSP dopo nuovo boot e accesso utente verificate, compresi tre modelli riaperti, GUI e intero banco virtuale. Non chiedere di ripetere il riavvio o le installazioni già riuscite. PA-036 resta aperta per hardware, target/stanza, progetto esecutivo e backup finale; il servizio MIDI fallito è PA-040. Procedura e limiti in `docs/10-ambiente/collaudo-dopo-riavvio-2026-11.md`.
+
+Aggiornamento MS-273/274 dello stesso giorno: PA-040 compiuta, MIDI corretto e verificato con nuovo manager della sessione utente; zero unità fallite. Nuovo Full finale avviato alle 17:41:11 con limite quattro per preservare i tre precedenti: attendere e rileggere questa corsa, poi copia nuova e verifica su J. La sostituzione dei due file esterni del 18 novembre richiede autorizzazione nominativa dopo la verifica; niente è stato eliminato. Procedura in `docs/10-ambiente/backup-finale-setup-2026-11.md`.
+
+Aggiornamento MS-275/276: backup finale Success, quattro Full locali conservati; otto file del setup e 82 voci CAD riletti, mount chiuso. Copia esterna del 19 novembre verificata alle 17:59:32. L'utente risponde sì alla sostituzione dei due file del 18 ma deve staccare subito J: nessuna cancellazione e pulizia rinviata al prossimo collegamento. Non avviare altre operazioni sul supporto; indicata espulsione sicura Windows, non eseguita dall'agente. PA-036 resta aperta per hardware, carico DAW, stanza/target e progetto esecutivo, senza chiedere di rifare backup, riavvio o installazioni riusciti.
+
+Aggiornamento 2026-11-20, MS-277/278: supporto ricollegato e pulizia esatta già autorizzata conclusa dopo nuovo controllo SHA-256; un solo pieno esterno completo corrente e ricevuta precedente conservata, 18,54 GiB recuperati. CamillaDSP interrogato via SSH: 4.1.3, Inactive, mute true, -60 dB. Guida d'uso nella catena condivisa in `docs/10-ambiente/camilladsp-uso-quotidiano.md`. Il motore e il banco sono collaudati, mentre profili mix/ascolto, routing fisico, hardware e taratura acustica restano da realizzare; non scambiare il filtro di laboratorio per il crossover dei monitor.
+
+Aggiornamento MS-244, giro 18/19 novembre: FreeCAD 1.1.4 preparato e collaudato su file e GUI, con comando e menu utente; campione persistente. Non richiedere di ripetere l'installazione CAD o il comando CPU già riusciti. Restano installazione persistente DSP, prova dopo riavvio, catena hardware e progetto dei monitor; gli strumenti posseduti aggiunti sono PA-038 e PA-039.
+
+Aggiornamento MS-241 e MS-242, 2026-11-18: copia esterna del nuovo backup verificata per entrambe le impronte; rimossi solo i tre vecchi file esterni autorizzati, punti locali preservati. Aggiornamento del solo cpupower-gui eseguito dall'utente e verificato via SSH: versione corretta, unità config -a, servizio abilitato e riuscito. Restano CAD, prova dopo riavvio e preparazione persistente DSP; il comando APT non va richiesto di nuovo.
+
+Direttiva 2026-11-18, MS-240: sviluppo dalla postazione e interventi sulla macchina via SSH; ogni modifica conserva motivo, stato precedente, comandi, prova e ripristino. Preparata la procedura `docs/10-ambiente/lavoro-remoto-e-tracciabilita.md`. Il nuovo backup è nel deposito locale `/home/veeam-repo`, circa 18,54 GiB più descrittore; copia esterna non ancora eseguita. Comandi compilati conservati nel livello privato e da eseguire dall'utente dalla postazione.
+
+Aggiornamento 2026-11-18: nuovo backup pieno concluso Success e riletto, con cinque impronte e due conteggi coincidenti; punti di settembre preservati e montaggio chiuso. Resta la copia del nuovo punto fuori macchina. La correzione CPU richiede ancora sudo manuale. Le firme storiche sono state ricollegate tramite la mappa della riscrittura, senza falsa nuova verifica del contenuto.
+
+Aggiornamento 2026-11-18, MS-237: lo schermo è differito. Collaudo elettrico DSP su file riuscito su Windows e Ubuntu, con prove negative non vacue; nessun servizio o percorso hardware installato. Prima dell'aggiornamento CPU occorre un backup nuovo riletto: gli ultimi archivi visibili risalgono a settembre. FreeCAD portabile ufficiale individuato, ancora da collaudare. Il confronto teorico ed esecutivo avrà il supporto già indicato in PA-037.
+
+Data di apertura: 2026-11-17, MS-233. Stato: aperta. Schermo da acquistare, MS-235: l'utente richiede il minimo sufficiente, con costo, energia e comodità prioritari e nessun gaming. Full HD proposto come minimo; confrontare 23,8-24 Full HD e 27 Full HD. QHD rimane opzionale, non un vincolo. Preparata richiesta di preventivo per il fornitore; prezzi e disponibilità Esprinet non verificati. Aggiornamento dello stesso giro: l'utente chiede di rivedere tutto prima dell'approvazione e precisa che le casse saranno sul ripiano superiore dello ST-120. Le quote pubbliche del ripiano sono state verificate: pezzo 2, 118 × 30 cm, superficie a 93 cm da terra (MS-234); non vanno richieste di nuovo all'utente. Restano ingombro e posizione dello schermo, altezza delle orecchie e disposizione nella stanza. Cabinet, driver e spesa restano esplorativi. Nessun progetto costruttivo da congelare prima di questi dati. Proposta completa in `docs/55-proposta-sistema-home-recording.md`; la ricognizione macchina è nel blocco ambiente condiviso. L'utente ha già montato ST-120 e delegato una proposta per home recording e ascolto personale.
+
+Che cosa serve dall'utente: rivedere i requisiti proposti, consegnare distanza e geometria effettive quando disponibili, confermare il perimetro delle registrazioni simultanee prima dell'acquisto e lanciare manualmente le modifiche privilegiate preparate dopo backup. La proposta mantiene otto ingressi e propone UMC1820; non modifica automaticamente ADR-046. Per contenere il costo propone inizialmente un'unica coppia con due profili.
+
+Lavoro ancora dell'agente: simulare driver e volume, congelare il progetto, produrre CAD nativo/STEP/DXF e distinta verificata, qualificare l'amplificazione nel prezzo completo, preparare il singolo aggiornamento CPU e il collaudo dei profili audio. FreeCAD non ha candidato negli indici APT locali: scegliere un canale ufficiale dopo verifica, senza presentare un comando d'installazione non provato come riuscito.
+
+Criterio di completamento: per la macchina apertura e salvataggio dei progetti, servizio CPU corretto, backup riletto e routing DSP controllato; con l'interfaccia, loopback e stabilità sul carico di registrazione. Per i monitor, simulazione e modello fabbricabile, poi misure del prototipo. Una pagina di proposta non chiude nessuno dei due traguardi.
+
+## PA-037 - Confrontare il progetto teorico con il supporto alla realizzazione
+
+Data di apertura: 2026-11-18, MS-236. Stato: supporto disponibile, dichiarato dall'utente; confronto esecutivo da fare al completamento teorico. Il contatto aiuterà con il progetto dei monitor due vie e con un falegname. Nomi e recapiti sono conservati solo nel livello privato.
+
+Condizione di sblocco: requisiti e progetto teorico dei monitor verificati. Preparare assieme CAD, tavole quotate, distinta pannelli, fresature, materiali, tolleranze e collegamenti da discutere con questo supporto prima di ordinare i tagli. Il contatto è già individuato: non riproporne la ricerca come lavoro ancora mancante. Le comunicazioni restano dell'utente.
+
+## PA-038 - Amplificatori posseduti e caratterizzazione per home recording
+
+Data di apertura: 2026-11-18. Stato: aperta. L'utente include nel progetto Marshall MG15 e Fender Frontman 65R, con studio circuitale, modelli lineari e non lineari e integrazione nella catena audio. Inventario e schede in `docs/80-strumenti-posseduti/`, dati in `data/strumenti-posseduti.json`. Manuale Marshall acquisito e controllato sulle immagini; esportazione dello studio Fender assorbita con correzioni, manuale ufficiale consultato. Revisioni fisiche e schemi restano da identificare; nessuna misura compiuta. L'utente annuncia ulteriori scansioni.
+
+Condizione di avanzamento: collegare manuali, schemi e targhette all'esemplare, definire i punti di accesso e il protocollo dei livelli, poi simulare e misurare. Il modello teorico non va presentato come risposta misurata del prodotto. La preparazione Ubuntu e il progetto dei monitor proseguono; i combo sono risorse per suonare e registrare da caratterizzare.
+
+## PA-039 - Sostituire lo speaker dell'amplificatore EKO per basso
+
+Data di apertura: 2026-11-18. L'utente dichiara necessario il cambio altoparlante e lo farà seguire dal contatto già individuato per i due vie. Modello dell'amplificatore, impedenza, sigla del cono, quote, cabinet e documentazione sono in attesa. Prima dell'ordine vanno verificati compatibilità elettrica, meccanica e acustica e preventivo; la scheda `docs/80-strumenti-posseduti/eko-basso.md` conserva i dati richiesti e il perché. Nessun ricambio scelto.
+
+Aggiornamento 2026-11-20: manuale XL/XB di undici pagine fornito, versione basso da 30 W dichiarata. Corrispondenza documentale XB30, speaker 10″ 8 Ω, 30 W nelle condizioni 8 Ω/1 kHz/1% THD; valori riscontrati sulla tabella, non dal suo OCR inaffidabile. Lo speaker è sospettato guasto perché il suono è percepito come rotto; diagnosi ancora da eseguire. Restano riscontro di targhetta e trasduttore montato, prova del guasto col tecnico, quote interne/fissaggi e confronto del preventivo. Non chiedere nuovamente il manuale o quale versione in watt l'utente abbia dichiarato.
+
+## PA-040 - Correggere l'avvio del servizio MIDI FluidSynth
+
+Data di apertura: 2026-11-19. Compiuta il 2026-11-19, MS-270/273. Causa riprodotta e isolata: ProtectKernelModules e ProtectKernelLogs con PrivateUsers provocano rifiuto setpcap nel profilo AppArmor unprivileged_userns. Nuovo drop-in dell'utente con quelle sole opzioni disattivate, unità distribuita identica e policy globale invariata. Prova MIDI con nota e controllo silenzioso riuscita su istanza isolata; servizio originale attivo e abilitato anche con nuovo manager della sessione utente. Zero unità fallite nella lettura finale.
+
+Sono rinunciate due restrizioni supplementari della sola unità, senza attribuire al workaround equivalenza con tutte le protezioni originali. Restano avviso UTS e avvisi GLib non bloccanti, prestazioni sotto DAW e periferiche fisiche da qualificare nei relativi collaudi. Non è necessario un altro riavvio per chiudere questa azione.
+
+Criterio di completamento soddisfatto: avvio corretto con motivo documentato, prova funzionale MIDI pertinente e verifica alla nuova sessione utente. Dettaglio, comandi, limiti e ripristino in `docs/10-ambiente/fluidsynth-diagnosi-e-collaudo.md`; evidenze private e copia persistente sulla macchina. La diagnosi iniziale rimane nel collaudo dopo riavvio, come stato precedente alla correzione.
+
+## PA-041 - Qualificare le due modalità PC e Raspberry Pi sull'hardware
+
+Il controllo dei riferimenti identificanti nelle revisioni precedenti è una pendenza distinta, PA-042 sotto; non riguarda il collaudo audio.
+
+Data di apertura: 2026-11-20, ADR-051. L'ascolto a PC spento è requisito esplicito: sviluppati architettura, componenti, modello dei driver, dodici profili dimostrativi su file e protocollo nel documento 63. Restano acquisto/disponibilità di interfaccia e Pi, identificazione ALSA, mappa delle quattro uscite, clock da CD, volume comune, installazione e avvio autonomi, hotplug e carico DAW. Aggiornamento 2026-11-23: controllo e pannello implementati, 46 metodi di test e banco motore reale file 44,1/48 kHz. MS-317: installazione manuale e servizio in esercizio verificati; rimangono abilitazione al login e qualifica fisica PC/Pi sospesa. L'API e le fixture non attestano i jack o le protezioni.
+
+## PA-042 - Valutare i riferimenti identificanti nelle revisioni Git precedenti
+
+Data di apertura: 2026-11-20, MS-297. Il controllo mirato ha rilevato tre riferimenti storici a un percorso esterno nei documenti correnti: ADR, microstep e timeline. Sono stati anonimizzati senza importare documenti o dati aziendali e senza alterare la motivazione tecnica. L'eccezione alla cronologia append-only è limitata alla rimozione dell'identificatore e viene registrata apertamente. I tre riferimenti sono presenti anche in HEAD: le revisioni precedenti non sono state riscritte.
+
+Resta da valutare con l'utente la bonifica delle revisioni precedenti e dell'eventuale remoto, identificando ambito, cloni e copie prima di proporre una riscrittura. Commit, push e modifiche della storia restano manuali. L'anonimizzazione dell'albero corrente non certifica l'assenza degli stessi riferimenti nella storia; nessuna cancellazione di repository o pubblicazione forzata eseguita.
+
+Condizione di sblocco. Disponibilità dell'hardware scelto e dei dati di driver/collocazione per la taratura, procedendo intanto con simulazioni e documentazione. La foto richiesta dall'utente può fornire stime, con distinzione fra piano del tavolo e punti fuori piano; non è una misura già ricevuta.
+
+Criterio di completamento. Prove del documento 63 osservate con acquisizioni e rapporti: avvio e CD con PC spento, clock agganciato, mapping e volume delle quattro vie, prestazioni DAW/cuffie e comportamento in perdita sorgente o host. Ogni limite residuo dichiarato. Hardware e profili finali non sono compiuti per il solo esito del banco su file.
 
 ## Azioni compiute
 

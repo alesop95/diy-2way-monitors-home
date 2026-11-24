@@ -62,14 +62,15 @@ livelli:
   1: "Mezz'ora, ancora nessuna decisione di contenuto"
   2: "Sessione dedicata, decisione di contenuto dell'utente"
   3: "Fuori da questo repository, ma è da qui che dipende il resto"
+  4: "Sospese su richiesta: verifiche fisiche da riaprire solo con l’utente"
 
 voci:
   - id: 7
     livello: 2
     dove: questo repository e il gemello
     titolo: PA-012, scegliere la catena di ingresso audio
-    stato: Blocca la fase 6 e la scelta del microfono di misura, in quest'ordine; serve anche al progetto gemello.
-    passo: "Scegliere sul confronto di docs/20-catena-di-ingresso.md del gemello; l'acquisto si fa alla fine con gli altri, per ADR-027."
+    stato: "Scelta condivisa ancora aperta: UMC1820 proposta per gli otto ingressi del gemello e le uscite dei monitor; ADR-046 conserva la UMC404HD come candidata precedente finché non si decide."
+    passo: "Proseguire il confronto documentale della catena condivisa. Scelta finale, acquisto e verifiche sull’esemplare restano differiti."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 8
@@ -89,11 +90,11 @@ voci:
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 13
-    livello: 3
+    livello: 4
     dove: acquisto
     titolo: PA-020, rilievo geometrico della stanza
     stato: Il protocollo è scritto e la via è il rilievo a metro laser con ricalco in Blender; attende l'acquisto del metro laser.
-    passo: "Subito, con un metro a nastro: tabelle B, C, D ed E di docs/35-rilievo-geometrico.md. Alla fine, con gli altri acquisti per ADR-027: metro laser e tabella A."
+    passo: "Rilievo stanza, arredi, quote e punto di ascolto: riaprire solo quando l’utente lo richiederà."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 14
@@ -105,11 +106,11 @@ voci:
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 15
-    livello: 3
+    livello: 4
     dove: "disco G:"
     titolo: "PA-004, ispezionare il disco G: e il materiale EASE Focus del workshop"
     stato: Bloccata dalla disponibilità del disco.
-    passo: Ispezione quando il disco è raggiungibile.
+    passo: "Accesso fisico al disco esterno: non chiedere di collegarlo; riaprire su iniziativa dell’utente."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 16
@@ -124,8 +125,8 @@ voci:
     livello: 2
     dove: questo repository
     titolo: PA-024, scegliere il modulo di amplificazione e processore per i cabinet attivi
-    stato: "Decisa l'architettura attiva con processore digitale, ADR-033; il modulo e la configurazione da Linux sono da accertare."
-    passo: "Ricerca fatta (MS-222, docs/54-amplificazione-e-dsp.md), criterio open source a costo minimo; interfaccia USB a 4 uscite con phantom ricercata (MS-223), UMC404HD scelto come candidato (ADR-046), da confermare con la misura del fruscio al tweeter; resta la scelta di amplificatori e alimentazione con gli altoparlanti della fase 4a; acquisto alla fine, ADR-027."
+    stato: "Base attiva PC/Pi proposta in ADR-053: UMC1820 condivisa fra host alternativi e due finali V3; driver SB16/SB26 in A24 come studio, alternativa SB15/B27. Nessun acquisto o guadagno hardware definitivo."
+    passo: "Continuare distinta, guadagni e protezioni teoriche sulla base candidata; rumore, potenza reale e compatibilità misurata sono sospesi."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 19
@@ -171,9 +172,87 @@ voci:
     passo: "Due lotti da 50 schede fatti (MS-212, MS-213): circa 9 800 e 8 900 token per scheda, lotto 3 con un pacchetto per agente (MS-214): cache letta cinque volte minore, costo equivalente circa -44%; lotto 4 con 2 agenti da 25 (MS-216): circa 7 600 token equivalenti per scheda, -68% sul primo; giudizi riletti in MS-217, pacchetti da 25 come forma stabile; 450 schede dopo i lotti 8 e 9 (MS-220), i lotti si preparano con --nuovi e procedono al passo dei capitoli in stesura (ADR-043); livello 1 fatto per EEASE, FoA ed esercitazioni di Musical Acoustics. Piano originario di MS-209: lettura profonda per il nucleo della tesi e dei pedali, scheda di fonte con il modello economico per il resto pertinente, solo voce di biblioteca per tutto il resto."
     fonte: "docs/OPERATIONS-LOG.md"
   - id: 26
-    livello: 2
+    livello: 4
     dove: "stanza, questo repository e macchina Ubuntu"
     titolo: PA-032, ripartire dalla stanza sistemata per la fase 4a
-    stato: "Fase 4a pianificata in docs/50-progettazione-monitor.md (MS-225); attende che l'utente sistemi fisicamente la stanza."
-    passo: "I tre numeri dei requisiti, il protocollo di consegna delle misure come pagina prescrittiva, poi Blender e gli strumenti su Ubuntu Studio via ssh studio."
+    stato: "SOSPESA su richiesta dell’utente il 2026-11-20. ST-120 montato; proposta dei requisiti e della catena condivisa preparata il 2026-11-17 in docs/55-proposta-sistema-home-recording.md, MS-233 e PA-036."
+    passo: "Dati fisici della stanza e della seduta: sospesi. Le quote pubbliche ST-120 già verificate non si richiedono nuovamente."
+    fonte: "docs/PENDING-ACTIONS.md"
+
+  - id: 29
+    livello: 2
+    dove: "macchina Ubuntu e catena audio"
+    titolo: "03. Preparazione stabile di CamillaDSP e profili audio"
+    stato: "Ascolto autonomo obbligatorio ADR-051: sviluppati percorsi PC/Pi con interfaccia condivisa fra host, manuale e relazione LaTeX. Dodici profili su file verificati a 44,1/48 kHz, non calibrazione acustica o prova ARM/ALSA. Base driver SB16/SB26 in A24, finali due V3 proposti e alternativa SB15/B27 simulata; hardware e carico DAW da qualificare."
+    passo: "Controllo API/ALSA/PipeWire e pannello completati, 46 test e banco file reale 44,1/48 kHz; pannello installato e verificato in MS-317, avvio al login da abilitare. Carico DAW e qualifica del routing fisico sospesi."
+    fonte: "docs/63-sistema-autonomo-driver-e-collaudo.md"
+  - id: 30
+    livello: 4
+    dove: "stanza e progetto teorico"
+    titolo: "04. Posizionamento e requisiti acustici prima dei driver"
+    stato: "SOSPESA su richiesta dell’utente il 2026-11-20. Tre inviluppi e modelli FreeCAD esplorativi verificati sul rettangolo nominale; kit copiato su Ubuntu con 82 impronte coincidenti, MS-259/264. Stanza, seduta e appoggio sulle rientranze reali non verificati."
+    passo: "Foto, appoggi reali e posizione: sospesi. Continuare i confronti nominali senza presentarli come rilievi."
+    fonte: "docs/55-proposta-sistema-home-recording.md"
+  - id: 31
+    livello: 2
+    dove: "progetto dei monitor"
+    titolo: "05. Simulazione driver, cabinet e crossover"
+    stato: "Modelli a piccoli segnali SB16/A24 e alternativa SB15/B27 sviluppati in docs/63, con risposte ed escursione ideali. Dodici profili elettrici su file verificati; aggiunti 486 scenari HP35/LT e dodici casi nel motore. Target nominale corretto via EQ, risposta acustica non dimostrata. Nessuna scelta esecutiva congelata."
+    passo: "HP35/LT, sensibilità a volume e parametri e margine di equalizzazione sviluppati in MS-300/305. Proseguire confronti reflex/direttività con ipotesi esplicite, senza chiedere misure adesso."
+    fonte: "docs/50-progettazione-monitor.md"
+  - id: 32
+    livello: 2
+    dove: "CAD e confronto con il supporto artigiano"
+    titolo: "06. Progetto 3D esecutivo e distinta per il legno"
+    stato: "Tre modelli parametrici esplorativi, STEP e DXF verificati e kit portatile pronti, MS-259/264; mancano driver, fori, giunzioni esecutive e verifica reale. Supporto artigiano già individuato, PA-037."
+    passo: "Proseguire il CAD parametrico e la distinta preliminare dai datasheet; fori, quote definitive, appoggi e ordine di taglio rimangono subordinati alle verifiche sospese."
+    fonte: "docs/70-realizzazione-e-verifica.md"
+  - id: 33
+    livello: 3
+    dove: "acquisti e realizzazione"
+    titolo: "07. Acquisti mirati, prototipo e misure finali"
+    stato: "Tavolo comprato; interfaccia, microfono, driver e amplificazione ancora da scegliere definitivamente e acquistare. Schermo differito."
+    passo: "Consolidare la lista della spesa e distinguere necessario/opzionale/già posseduto; ordini, costruzione e collaudo fisico restano differiti."
+    fonte: "docs/70-realizzazione-e-verifica.md"
+  - id: 34
+    livello: 4
+    dove: "macchina Ubuntu e rete di casa"
+    titolo: "Traguardo intermedio: macchina pronta da portare a casa"
+    stato: "SOSPESA su richiesta dell’utente il 2026-11-20. CPU, CAD e DSP collaudati dopo riavvio, MIDI corretto. Backup finale riletto e copia J del 19 novembre verificata; pulizia dei due file esterni del 18 conclusa il 20 novembre, MS-277. Quattro punti locali conservati. CamillaDSP interrogabile, in attesa silenziata; hardware e carico reale non qualificati."
+    passo: "Trasferimento e verifica della rete a casa: sospesi. Setup software e backup già collaudati non si ripetono."
+    fonte: "docs/10-ambiente/verifica-prima-del-trasferimento.md"
+  - id: 35
+    livello: 4
+    dove: "inventario e fonti degli strumenti posseduti"
+    titolo: "Amplificatori posseduti: documentazione e identificazione"
+    stato: "SOSPESA su richiesta dell’utente il 2026-11-20. Registrati Marshall MG15, Fender Frontman 65R ed EKO basso da 30 W. Manuali Marshall ed EKO acquisiti e verificati sulle pagine pertinenti, studio Fender assorbito con correzioni; revisioni fisiche ancora da riscontrare."
+    passo: "Targhette, revisioni e foto degli amplificatori: sospese. Manuali e studio documentale restano disponibili."
+    fonte: "docs/80-strumenti-posseduti/README.md"
+  - id: 36
+    livello: 2
+    dove: "studio dei combo e catena home recording"
+    titolo: "Reverse engineering e caratterizzazione dei combo"
+    stato: "Definito il percorso da schema e blocchi a misure elettriche e acustiche; corrette le ipotesi LTI e fase minima dello studio Fender. Nessuna misura degli esemplari eseguita."
+    passo: "Proseguire studio dei manuali, blocchi funzionali e protocolli. Targhette, schemi legati all’esemplare e misure fisiche sono sospesi."
+    fonte: "docs/80-strumenti-posseduti/fender-frontman-65r.md"
+  - id: 37
+    livello: 4
+    dove: "amplificatore EKO e supporto tecnico già disponibile"
+    titolo: "EKO per basso: identificazione e sostituzione speaker"
+    stato: "SOSPESA su richiesta dell’utente il 2026-11-20. Versione basso 30 W dichiarata; manuale XL/XB letto, corrispondenza XB30 e speaker 10 pollici 8 ohm da tabella verificata. Suono distorto segnalato, guasto allo speaker non ancora diagnosticato."
+    passo: "Diagnosi EKO, sigla dello speaker, quote e prove col tecnico: sospese; nessun ricambio da acquistare adesso."
+    fonte: "docs/80-strumenti-posseduti/eko-basso.md"
+  - id: 39
+    livello: 4
+    dove: "PC, Raspberry Pi e interfaccia condivisa"
+    titolo: "PA-041, qualificare autonomia, clock e quattro vie fisiche"
+    stato: "SOSPESA su richiesta dell’utente il 2026-11-20. Ascolto con PC spento obbligatorio. Progetto, candidati, unità/mappa example e profili su file preparati; due PDF LaTeX leggibili. Controller API/ALSA/PipeWire e pannello completati sul banco file e verificati nel browser; pannello installato e attivo, avvio al login da abilitare, hardware non qualificato."
+    passo: "Interfaccia/Pi fisici, jack, clock, volume, guasti e DAW reale: sospesi. Software e protocollo su file completati; installazione persistente manuale conclusa, resta enable per l’avvio al login."
+    fonte: "docs/63-sistema-autonomo-driver-e-collaudo.md"
+  - id: 40
+    livello: 2
+    dove: "revisioni Git e pubblicazione del progetto"
+    titolo: "PA-042, riferimenti identificanti nella storia precedente"
+    stato: "Tre vecchi riferimenti a un percorso esterno anonimizzati nei documenti correnti. Riferimenti ancora presenti in HEAD, storia Git non riscritta; nessun documento aziendale importato."
+    passo: "Con l'utente definire ambito e copie prima di preparare l'eventuale bonifica delle revisioni e del remoto; operazioni Git manuali."
     fonte: "docs/PENDING-ACTIONS.md"

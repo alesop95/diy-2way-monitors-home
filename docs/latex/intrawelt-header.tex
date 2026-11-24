@@ -1,0 +1,70 @@
+% Stili A4 per i capitoli tecnici. Il kit Altro si legge dalla macchina.
+% Sovrascrivere \AltroFontPath prima di caricare questo file per un altro catalogo.
+\providecommand{\AltroFontPath}{D:/design-systems/intrawelt-design/assets/fonts/}
+\setmainfont{Altro-Grotesk-Book.ttf}[
+  Path=\AltroFontPath,
+  BoldFont=Altro-Grotesk-Medium.ttf,
+  ItalicFont=Altro-Grotesk-Book.ttf,
+  ItalicFeatures={FakeSlant=0.16},
+  BoldItalicFont=Altro-Grotesk-Medium.ttf,
+  BoldItalicFeatures={FakeSlant=0.16}
+]
+\newfontfamily\intraweltDisplay{Altro-Serif-Light.ttf}[Path=\AltroFontPath,Scale=1]
+\setmonofont{Consolas}[Scale=MatchLowercase]
+
+\definecolor{intraweltViolet}{HTML}{4D11A7}
+\definecolor{intraweltInk}{HTML}{0A0A0A}
+\definecolor{intraweltRule}{HTML}{D0D4E3}
+\AtBeginDocument{\color{intraweltInk}}
+
+\usepackage{titlesec}
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false
+}
+\titleformat{\section}
+  {\intraweltDisplay\Large\color{intraweltViolet}}{\thesection}{0.7em}{}
+\titleformat{\subsection}
+  {\intraweltDisplay\large\color{intraweltViolet}}{\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}
+  {\intraweltDisplay\normalsize\color{intraweltViolet}}{\thesubsubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{2.1ex plus 0.4ex}{0.75ex}
+\titlespacing*{\subsection}{0pt}{1.6ex plus 0.3ex}{0.55ex}
+\titlespacing*{\subsubsection}{0pt}{1.2ex plus 0.3ex}{0.4ex}
+
+\makeatletter
+\renewcommand{\@maketitle}{%
+  \begingroup
+    \raggedright
+    \color{intraweltViolet}\intraweltDisplay
+    \fontsize{29}{31}\selectfont \@title\par
+  \endgroup
+  \vspace{0.65em}%
+  {\color{intraweltRule}\hrule height 0.5pt}%
+  \vspace{0.75em}%
+}
+% Booktabs usa già questo hook per il colore dei filetti.
+\newcommand*{\CT@arc@}{\color{intraweltRule}}
+\makeatother
+\AtBeginDocument{%
+  \ifdefined\heavyrulewidth
+    \setlength{\heavyrulewidth}{0.55pt}%
+    \setlength{\lightrulewidth}{0.45pt}%
+    \setlength{\cmidrulewidth}{0.45pt}%
+  \fi
+  \ifdefined\captionsetup
+    \captionsetup[figure]{font=small,labelfont=bf}%
+  \fi
+}
+
+\setlength{\parskip}{0.34\baselineskip plus 1pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
+\raggedbottom
+\widowpenalty=5000
+\clubpenalty=5000

@@ -48,7 +48,11 @@ Collegamenti riscritti il 2026-10-05 (MS-193): un solo collegamento canonico per
 
 ## Verificate
 
-Nessuna, al 2026-10-02.
+Sviluppo del sistema autonomo, 2026-11-20: [registro fonti dedicato](sistema-autonomo-20261120/sources.md) per manuale UMC1820, datasheet dei due woofer/tweeter, amplificazione, piattaforma e stima da foto; [protocollo e limiti](sistema-autonomo-20261120/scope.md). Dati dei produttori, prezzi dei venditori e risultati del nostro modello rimangono distinti. Le prove su file e il PDF leggibile non certificano il percorso hardware assente.
+
+Aggiornamento tematico 2026-11-20: [Linkwitz Lab, Active Filters](web/linkwitzlab-active-filters.md) è fonte primaria prioritaria per scelta esplicita dell'utente, ADR-050. Sono documentati i passaggi letti delle sezioni 2-4; il resto del sito resta da studiare. Il [registro del confronto crossover](crossover-pc-pi-analogico/sources.md) conserva letture parziali, versioni e supporto ai singoli claim, inclusa la review AES 2023 identificata dal DOI verificato nel PDF. Queste verifiche circoscritte non promuovono in blocco le voci bibliografiche storiche né dichiarano letti integralmente i documenti.
+
+Alla rilevazione precedente del 2026-10-02 non risultavano voci verificate in questo registro.
 
 ## Scartate
 

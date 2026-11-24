@@ -1,0 +1,98 @@
+{
+  "schema": "installazione-controllo-ascolto-1",
+  "tested_at_utc": "2026-11-23T13:24:39Z",
+  "origin": "Installazione eseguita manualmente dal proprietario; verifica SSH successiva in sola lettura.",
+  "read_only_probe": true,
+  "installed_manifest_sha256": "c502495d97d6b3b482f516e3529003a6b8196edd0835533189454bb372f177d1",
+  "installed_files_sha256": {
+    "assets/Altro-Grotesk-Book.ttf": "be5074b2b8d3db4fb14a03b1eb8cc0ae357677ef5ca8f7fe2a046af585d8aa29",
+    "assets/Altro-Serif-Light.ttf": "5284d919f645fa5bd8dedccf49e102666a3a02c23d1ffb2fc002632dd45592b2",
+    "config/controllo-ascolto/README.md": "8f3b6e3981d0f66c78ab79a84e05befaa761e9b2997f7f6765423158be24621f",
+    "config/controllo-ascolto/ascolto-file.json": "b8d7bfddf4cdc66244ee0d4cfa58ddbd6a2b781a0d3fc628551b3f2e633953eb",
+    "config/controllo-ascolto/ascolto-pipewire.json": "5fb8e4863609dd8ae5b5b1db9785a7e4f3f4aa77e56c2d102ed9608f4a657da8",
+    "config/controllo-ascolto/index.html": "dd1c88d611c05283d399da229d984c0bf8e26a3d0f8e8c9797e25c3c34ebe3f0",
+    "config/controllo-ascolto/mappa-alsa.example.json": "fe39aad5e7c627e3d7860a6b21bda91e2cc96bffd8c4245838db4dfaaad32527",
+    "config/controllo-ascolto/mappa-pc.example.json": "4034230127b89d821da0302b39e3ded8a2650f6e2e85e7d59ff26f70abc9905d",
+    "config/controllo-ascolto/mix-file.json": "e6328a785e88dab5b8deff23d6887ffbca80a68a333b010ea373d7ce87a5a0e0",
+    "config/controllo-ascolto/mix-pipewire.json": "81e241997b32c7e17be5065e7d137dac75e9ba9d85dbb2160337af359004a6e5",
+    "config/controllo-ascolto/pannello-alsa.example.json": "8013f2a306cdbcffc82e462c1cf92c810910f4bd7ee6f70c818825c938b2b036",
+    "config/controllo-ascolto/pannello-file.example.json": "a2b25c441a0e517f75755e45257248d658ca020c2d1087e93d8981b9959cd527",
+    "config/controllo-ascolto/pannello-pc.example.json": "1f5aa3a083a7fa3c0e26198dfaea22c5b0467bf52d54ba5160c5ee1f19645794",
+    "config/controllo-ascolto/pannello-pipewire.example.json": "360791e69dc809aa50b8dc732db605ebae22357ba19c1cfc54e4b6fd0fcec455",
+    "config/controllo-ascolto/requirements.txt": "9ec828179a682425537349fb41440b48a47b1ef006b7b3e1d1542566d3ec6943",
+    "config/systemd/user/diy-listening-control.service": "d90d78399663fbf8e198c7ba393c63cf021d7a98328311476516ea21f430c3ef",
+    "docs/61-camilladsp-manuale-tecnico.md": "373fd389c0121d1be47aaea3ddac165b597289672ca9a8e788e742771cdabb94",
+    "tools/ascolto_alsa.py": "499610b25ebf472b8beaa8a58a6902501562dd4436d63be43799acce08c1edee",
+    "tools/ascolto_pipewire.py": "fb5daf4050177087f8731f704a96527a85ef27e61a2d4b6481bf060a500dbe3a",
+    "tools/consegna_controllo.py": "2b232e4c0c9110a1b1c129ca8596d5132a1475c0c912c03e7d5990a137a331a7",
+    "tools/controllo_ascolto.py": "b0bfbe7642c752b7b30a7ce248459402086c62d517d810a89a9383c31e1a4fc3",
+    "tools/dsp_pipewire.py": "ee89fc0c8a087934682e3618ef611af1f19bc722699a9c7c2efed9b5f00af52f",
+    "tools/monitor_dsp.py": "165712fc0d2338d125d330bc4c615fae022849bd630290e547c8749cd8047ff1",
+    "tools/pannello_ascolto.py": "4c8a9a34d9c3a38f5dfbeea02f38e0661f17cc3b6eefa8c9d23c207dd4e7d39e"
+  },
+  "files_verified": 24,
+  "files_total": 24,
+  "mismatched": [],
+  "unit_copy_matches": true,
+  "service": {
+    "ActiveState": "active",
+    "SubState": "running",
+    "UnitFileState": "disabled",
+    "ExecMainStatus": "0",
+    "NRestarts": "0",
+    "active_seconds": 103.4
+  },
+  "http": {
+    "status": 200,
+    "content_type": "text/html",
+    "session_token_embedded": true
+  },
+  "panel_status": {
+    "state": "Inactive",
+    "ready": false,
+    "mute": true,
+    "volume": -60.0,
+    "error": null,
+    "profile": null,
+    "profiles": [
+      "mix",
+      "ascolto"
+    ],
+    "hardware": false
+  },
+  "font_http_status": {
+    "Altro-Grotesk-Book.ttf": 200,
+    "Altro-Serif-Light.ttf": 200
+  },
+  "dsp_read_only_status": {
+    "GetVersion": "4.1.3",
+    "GetState": "Inactive",
+    "GetMute": true,
+    "GetVolume": -60.0
+  },
+  "spice_warning_origin": {
+    "file": "/usr/lib/systemd/user/spice-vdagent.service",
+    "line": 23,
+    "section": "[Install]",
+    "key": "StandardError",
+    "panel_failure_observed": false
+  },
+  "visual_review": {
+    "source": "Schermata fornita dal proprietario, letta nella cartella di cattura.",
+    "observed": "Pannello Laboratorio, Mix, silenziato o da preparare, richiesto -24 dB, effettivo -60 dB, Avvia disabilitato.",
+    "image_copied_to_project": false
+  },
+  "limits": [
+    "Non verificato riavvio/login dopo questa installazione; UnitFileState disabled alla prova.",
+    "Nessuna operazione prepare/enable o misura hardware eseguita."
+  ],
+  "subsequent_local_changes": {
+    "files": [
+      "config/controllo-ascolto/README.md",
+      "docs/61-camilladsp-manuale-tecnico.md"
+    ],
+    "documentation_only": true,
+    "unchanged_payload_files": 22,
+    "runtime_redeploy_required": false
+  }
+}

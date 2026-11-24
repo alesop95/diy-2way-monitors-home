@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "hardware_test": false,
+  "transport": "websockets 15.0.1",
+  "tested_at_utc": "2026-11-23T11:44:47.456971+00:00",
+  "python": "3.14.4",
+  "kernel": "7.0.0-43-generic",
+  "binary_sha256": "933502e484f4696a218a0a935d8fa240ba0045e2a4af929fc920d54195180081",
+  "cases": [
+    {
+      "rate_hz": 44100,
+      "rms_initial_mute_max": 0.0,
+      "rms_after_injected_clock_loss_max": 1.2753643892545124e-22,
+      "rms_manual_mute_max": 2.491933786151465e-24,
+      "listening_profile_change_100hz_db": 1.0307461891753085,
+      "rms_minus24_per_channel": [
+        0.0010782405727901108,
+        0.00014323936539883058,
+        0.0002733403029209193,
+        0.00028648375503215965
+      ],
+      "http_actions_verified": true,
+      "watchdog_reaction_seconds": 0.19256868201773614,
+      "alsa_candidate_canonical_checked_without_loading": true,
+      "pipewire_candidate_canonical_checked_without_loading": true,
+      "cli_sigterm_mute_verified": true,
+      "rms_after_cli_shutdown_max": 1.059910560660713e-27,
+      "volume_step_measured_db": [
+        6.00000001863652,
+        5.999999996223395,
+        6.000000021486754,
+        6.000000020670038
+      ],
+      "expected_step_db": 6,
+      "measurement_windows": "Output PCM frame positions; 600-850 ms after action",
+      "normalized_config_has_defaults": true,
+      "pcm_frames": 438354,
+      "output_peak": 0.003053191816434264,
+      "automatic_restore_rejected": true
+    },
+    {
+      "rate_hz": 48000,
+      "rms_initial_mute_max": 0.0,
+      "rms_after_injected_clock_loss_max": 8.966130925030446e-23,
+      "rms_manual_mute_max": 1.946008265396995e-24,
+      "listening_profile_change_100hz_db": 0.9931574351677598,
+      "rms_minus24_per_channel": [
+        0.0010782482102187595,
+        0.00014314728581002996,
+        0.0002733574943441371,
+        0.00028628736686648145
+      ],
+      "http_actions_verified": true,
+      "watchdog_reaction_seconds": 0.18306196096818894,
+      "alsa_candidate_canonical_checked_without_loading": true,
+      "pipewire_candidate_canonical_checked_without_loading": true,
+      "cli_sigterm_mute_verified": true,
+      "rms_after_cli_shutdown_max": 1.76872164134272e-28,
+      "volume_step_measured_db": [
+        5.9549880578159495,
+        5.998918903722733,
+        5.9982458725298535,
+        5.998933655606946
+      ],
+      "expected_step_db": 6,
+      "measurement_windows": "Output PCM frame positions; 600-850 ms after action",
+      "normalized_config_has_defaults": true,
+      "pcm_frames": 440640,
+      "output_peak": 0.0033426270820200443,
+      "automatic_restore_rejected": true
+    }
+  ],
+  "linux_procfs_read_only_probe": {
+    "files_read": 7,
+    "active_streams_parsed": 1,
+    "read_only": true
+  },
+  "linux_pipewire_read_only_probe": {
+    "nodes_read": 7,
+    "links_read": 2,
+    "read_only": true
+  },
+  "main_service_state_unchanged": true,
+  "temporary_files_retained": false,
+  "main_service_snapshot_before": {
+    "GetVersion": "4.1.3",
+    "GetState": "Inactive",
+    "GetMute": true,
+    "GetVolume": -60.0
+  },
+  "main_service_snapshot_after": {
+    "GetVersion": "4.1.3",
+    "GetState": "Inactive",
+    "GetMute": true,
+    "GetVolume": -60.0
+  },
+  "limits": [
+    "Clock mancante iniettato come condizione software sul banco file; non guasto fisico ALSA.",
+    "Nessuna misura di jack, DAC, latenza DAW o diffusori."
+  ],
+  "source_sha256": {
+    "tools/collauda-controllo-ascolto.py": "9a7d49e08ab79ba90054c0592c81e54db490e0e7cffe8d9468c5ebbd22b2aa95",
+    "tools/controllo_ascolto.py": "b0bfbe7642c752b7b30a7ce248459402086c62d517d810a89a9383c31e1a4fc3",
+    "tools/monitor_dsp.py": "165712fc0d2338d125d330bc4c615fae022849bd630290e547c8749cd8047ff1",
+    "tools/pannello_ascolto.py": "4c8a9a34d9c3a38f5dfbeea02f38e0661f17cc3b6eefa8c9d23c207dd4e7d39e",
+    "tools/ascolto_alsa.py": "499610b25ebf472b8beaa8a58a6902501562dd4436d63be43799acce08c1edee",
+    "tools/ascolto_pipewire.py": "fb5daf4050177087f8731f704a96527a85ef27e61a2d4b6481bf060a500dbe3a",
+    "tools/dsp_pipewire.py": "ee89fc0c8a087934682e3618ef611af1f19bc722699a9c7c2efed9b5f00af52f",
+    "config/controllo-ascolto/index.html": "dd1c88d611c05283d399da229d984c0bf8e26a3d0f8e8c9797e25c3c34ebe3f0",
+    "config/controllo-ascolto/mix-file.json": "e6328a785e88dab5b8deff23d6887ffbca80a68a333b010ea373d7ce87a5a0e0",
+    "config/controllo-ascolto/ascolto-file.json": "b8d7bfddf4cdc66244ee0d4cfa58ddbd6a2b781a0d3fc628551b3f2e633953eb",
+    "build/consegna-cabinet-20261119/assets/Altro-Grotesk-Book.ttf": "be5074b2b8d3db4fb14a03b1eb8cc0ae357677ef5ca8f7fe2a046af585d8aa29",
+    "build/consegna-cabinet-20261119/assets/Altro-Serif-Light.ttf": "5284d919f645fa5bd8dedccf49e102666a3a02c23d1ffb2fc002632dd45592b2"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "mode": "alsa",
+  "dsp_port": 12341,
+  "manifest": "mappa-alsa.example.json",
+  "profiles": {"mix": "<PROFILO_CANONICO_MIX.json>", "ascolto": "<PROFILO_CANONICO_ASCOLTO.json>"}
+}

@@ -1,0 +1,11 @@
+# Preparazione del percorso autonomo
+
+Questa cartella è la specifica d'installazione futura del Pi, ADR-051. L'hardware non è presente: nessun servizio ARM/ALSA o clock USB è stato collaudato. Il [progetto tecnico](../../docs/63-sistema-autonomo-driver-e-collaudo.md) descrive sorgenti, profili, volume e protocollo di accettazione.
+
+La mappa example conserva ipotesi esplicite, verified false e nomi di dispositivo da compilare. La UMC1820 può esporre anche canali digitali: quattro uscite logiche del modello non significano un dispositivo ALSA a soli quattro canali. Il profilo hardware dovrà usare il numero di canali realmente ammesso e lasciare a zero le destinazioni inutilizzate, instradando le quattro vie sui jack misurati. Prima di trasformare un profilo si censiscono formati/rate/controlli e si verifica il clock della sorgente.
+
+Il modello systemd avvia il solo motore 4.1.3 ALSA su localhost in attesa silenziata, a -60 dB, con utente audio dedicato e senza dipendenza da login desktop. Non carica un profilo e non abilita l'ascolto: quei passi richiedono controller e mappa qualificati, identità della periferica, lock e percorso di volume verificati. Il client laboratorio attuale del PC rifiuta intenzionalmente profili ALSA: non va aggirata la guardia per provare una configurazione reale.
+
+L'immagine del Pi sarà preparata con sistema Lite 64 bit e pacchetti/versioni registrati. I prerequisiti del protocollo sono acquisizione della release ufficiale 4.1.3 con hash, avvio del binario ARM, verifica dei controlli ALSA, clock e ritorno dopo hotplug; solo dopo si installano unità e controller. Il controllo da telefono/encoder e il caricamento dei profili hardware restano da implementare e provare con questa mappa, non si dichiarano già forniti dalla presenza dell'API.
+
+Per contenere i costi si parte dal cavo USB trasferito tra i due host, con i finali disinseriti. L'eventuale switch deve superare il confronto col collegamento diretto; non si promettono transizioni senza interruzioni. Durante il trasferimento l'host precedente deve rilasciare la periferica e la nuova istanza deve tornare in attesa silenziata prima dell'abilitazione. Il collaudo della sola selezione logica 2/18 ingressi su file è riproducibile da tools/collauda-profili-autonomi.py e non convalida queste operazioni fisiche.

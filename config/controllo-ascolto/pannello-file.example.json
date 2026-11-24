@@ -1,0 +1,5 @@
+{
+  "mode": "file",
+  "dsp_port": 12341,
+  "profiles": {"mix": "mix-file.json", "ascolto": "ascolto-file.json"}
+}

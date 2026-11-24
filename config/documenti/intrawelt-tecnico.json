@@ -1,0 +1,11 @@
+{
+  "nome": "intrawelt-tecnico",
+  "descrizione": "Adattamento per documento tecnico dei font e colori del design system di account",
+  "font_titoli": "Altro Serif Light",
+  "font_testo": "Altro Grotesk Book",
+  "font_codice": "Consolas",
+  "colore_titoli": "4D11A7",
+  "colore_testo": "0A0A0A",
+  "dimensioni": {"Title": 28, "Heading 1": 22, "Heading 2": 17, "Heading 3": 14, "Normal": 11, "Code": 9},
+  "colori_slide": {"dk1": "#0A0A0A", "lt1": "#FFFFFF", "accent1": "#4D11A7", "accent2": "#57CCF6", "accent3": "#AFD100", "hlink": "#4D11A7"}
+}

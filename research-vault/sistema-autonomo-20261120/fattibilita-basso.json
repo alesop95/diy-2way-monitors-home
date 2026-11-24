@@ -1,0 +1,277 @@
+{
+  "status": "MODELLO IDEALE, non taratura o prestazione misurata",
+  "target_edge_hz": 60,
+  "target_edge_db": -2,
+  "target_fc_hz": 43.37111845169172,
+  "target_q": 0.7071067811865475,
+  "protection_hz": 35,
+  "rows": [
+    {
+      "driver": "SB16PFCR25-8",
+      "box": "A24",
+      "net_l": 9.664384,
+      "fc_hz": 74.01482287715214,
+      "qtc": 0.7791033987068646,
+      "raw_60_db": -4.439099225004916,
+      "hp35_60_db": -0.9516412478221865,
+      "protected_60_db": -5.390740472827102,
+      "boost_60_for_minus2_db": 3.390740472827102,
+      "eq_dc_db": 9.284723293043099,
+      "eq_peak_db": 9.284442703177424,
+      "eq_plus_hp_peak_db": 3.281180066133879,
+      "relative_power_multiplier_60": 2.183102099390724,
+      "fixed_eq_scenario_60_db_range": [
+        -4.498472592957526,
+        0.17126876429538146
+      ],
+      "scenarios": 81,
+      "ideal_fullspace_sine_rms_60hz_1m_db": 88.58336131649666,
+      "x_peak_mm_for_85db_at_60hz_1m": 2.978821281853717,
+      "xmax_oneway_mm": 4.5
+    },
+    {
+      "driver": "SB16PFCR25-8",
+      "box": "B27",
+      "net_l": 7.237344,
+      "fc_hz": 82.6502215364894,
+      "qtc": 0.8700023319630463,
+      "raw_60_db": -5.201532874133306,
+      "hp35_60_db": -0.9516412478221865,
+      "protected_60_db": -6.153174121955492,
+      "boost_60_for_minus2_db": 4.153174121955492,
+      "eq_dc_db": 11.201736005768858,
+      "eq_peak_db": 11.201303274901708,
+      "eq_plus_hp_peak_db": 4.629051164618117,
+      "relative_power_multiplier_60": 2.6020606327498723,
+      "fixed_eq_scenario_60_db_range": [
+        -4.995319246316762,
+        0.6965276644240965
+      ],
+      "scenarios": 81,
+      "ideal_fullspace_sine_rms_60hz_1m_db": 88.58336131649666,
+      "x_peak_mm_for_85db_at_60hz_1m": 2.978821281853717,
+      "xmax_oneway_mm": 4.5
+    },
+    {
+      "driver": "SB16PFCR25-8",
+      "box": "C24",
+      "net_l": 12.016224,
+      "fc_hz": 68.47344947380407,
+      "qtc": 0.7207731523558323,
+      "raw_60_db": -4.147036201410973,
+      "hp35_60_db": -0.9516412478221865,
+      "protected_60_db": -5.0986774492331595,
+      "boost_60_for_minus2_db": 3.0986774492331595,
+      "eq_dc_db": 7.932863397437613,
+      "eq_peak_db": 7.932792781739826,
+      "eq_plus_hp_peak_db": 2.602382688454389,
+      "relative_power_multiplier_60": 2.0411162718002935,
+      "fixed_eq_scenario_60_db_range": [
+        -4.209066375291966,
+        -0.10197044332422336
+      ],
+      "scenarios": 81,
+      "ideal_fullspace_sine_rms_60hz_1m_db": 88.58336131649666,
+      "x_peak_mm_for_85db_at_60hz_1m": 2.978821281853717,
+      "xmax_oneway_mm": 4.5
+    },
+    {
+      "driver": "SB15NRX2C30-8",
+      "box": "A24",
+      "net_l": 9.664384,
+      "fc_hz": 63.94748118407343,
+      "qtc": 0.5956751671941087,
+      "raw_60_db": -5.0782412503119385,
+      "hp35_60_db": -0.9516412478221865,
+      "protected_60_db": -6.029882498134125,
+      "boost_60_for_minus2_db": 4.029882498134125,
+      "eq_dc_db": 6.744912838063177,
+      "eq_peak_db": 6.926174985044051,
+      "eq_plus_hp_peak_db": 3.224017595538613,
+      "relative_power_multiplier_60": 2.529229565179826,
+      "fixed_eq_scenario_60_db_range": [
+        -3.9813161097317233,
+        -0.23265691578051723
+      ],
+      "scenarios": 81,
+      "ideal_fullspace_sine_rms_60hz_1m_db": 85.90635447213981,
+      "x_peak_mm_for_85db_at_60hz_1m": 4.504559011583663,
+      "xmax_oneway_mm": 5
+    },
+    {
+      "driver": "SB15NRX2C30-8",
+      "box": "B27",
+      "net_l": 7.237344,
+      "fc_hz": 70.80853914965451,
+      "qtc": 0.6595863920789735,
+      "raw_60_db": -5.257616765488256,
+      "hp35_60_db": -0.9516412478221865,
+      "protected_60_db": -6.209258013310443,
+      "boost_60_for_minus2_db": 4.209258013310443,
+      "eq_dc_db": 8.515400508055285,
+      "eq_peak_db": 8.531159202844961,
+      "eq_plus_hp_peak_db": 3.6828893527221256,
+      "relative_power_multiplier_60": 2.635881010380147,
+      "fixed_eq_scenario_60_db_range": [
+        -4.296280356357314,
+        -0.05348259781943783
+      ],
+      "scenarios": 81,
+      "ideal_fullspace_sine_rms_60hz_1m_db": 85.90635447213981,
+      "x_peak_mm_for_85db_at_60hz_1m": 4.504559011583663,
+      "xmax_oneway_mm": 5
+    },
+    {
+      "driver": "SB15NRX2C30-8",
+      "box": "C24",
+      "net_l": 12.016224,
+      "fc_hz": 59.57909630534753,
+      "qtc": 0.5549833628443331,
+      "raw_60_db": -5.053519105897106,
+      "hp35_60_db": -0.9516412478221865,
+      "protected_60_db": -6.005160353719292,
+      "boost_60_for_minus2_db": 4.005160353719292,
+      "eq_dc_db": 5.515731588241244,
+      "eq_peak_db": 6.041483701387385,
+      "eq_plus_hp_peak_db": 3.1054305912294184,
+      "relative_power_multiplier_60": 2.5148728674503213,
+      "fixed_eq_scenario_60_db_range": [
+        -3.8338013257669834,
+        -0.2846132881497581
+      ],
+      "scenarios": 81,
+      "ideal_fullspace_sine_rms_60hz_1m_db": 85.90635447213981,
+      "x_peak_mm_for_85db_at_60hz_1m": 4.504559011583663,
+      "xmax_oneway_mm": 5
+    }
+  ],
+  "assumptions": [
+    "Singolo woofer in 4pi, sinusoide RMS a 1 m; nessun guadagno della stanza o somma stereo.",
+    "Scenari Fs/Qts/Vas +/-10% e occupazione 0,8/1,5/2,2 L: ipotesi di sensibilità, non tolleranze del produttore.",
+    "EQ nominale invariata nei 81 scenari per combinazione: non è robustezza provata su esemplari.",
+    "Nessuna stima di rumore, tenuta termica, potenza reale del finale o direttività."
+  ],
+  "source_sha256": "a7b1d920a9ec0a47652ab5e51fd4d6677fed4a34e2389bf032b0bfeeebdfe453",
+  "input_sha256": {
+    "data/driver-candidati.json": "9eb2d3b543e05afb79ee7c83d69df4bf8bf07e2d1468616b454b7f0ffad61588",
+    "config/cabinet/studio-st120.json": "f1b2af052d5c80692eb569e7f88ba97978045f0c4593722ebe85c66eb6c64b5a",
+    "tools/studio_sistema_audio.py": "b63330880406ace311ce7b156347f85f8363e52e68f744159c5b0694ad70d04d"
+  },
+  "engine": {
+    "passed": true,
+    "hardware_test": false,
+    "binary_sha256": "cfd8d7ae8318d9a8cd3b64850fe3114ea348e766eb14d241fae7d54ffa0c65f9",
+    "cases": [
+      {
+        "driver": "SB16PFCR25-8",
+        "box": "A24",
+        "rate": 44100,
+        "measured_gain_60_db": -9.560891025915803,
+        "expected_gain_60_db": -9.560903238343569,
+        "error_db": 1.2212427765945222e-05,
+        "peak": 0.010924323461949825
+      },
+      {
+        "driver": "SB16PFCR25-8",
+        "box": "A24",
+        "rate": 48000,
+        "measured_gain_60_db": -9.560892916305184,
+        "expected_gain_60_db": -9.560903238343569,
+        "error_db": 1.0322038384913412e-05,
+        "peak": 0.010923775844275951
+      },
+      {
+        "driver": "SB16PFCR25-8",
+        "box": "B27",
+        "rate": 44100,
+        "measured_gain_60_db": -8.798447613996386,
+        "expected_gain_60_db": -8.798469589215175,
+        "error_db": 2.1975218789549444e-05,
+        "peak": 0.012063560076057911
+      },
+      {
+        "driver": "SB16PFCR25-8",
+        "box": "B27",
+        "rate": 48000,
+        "measured_gain_60_db": -8.79845104336859,
+        "expected_gain_60_db": -8.798469589215175,
+        "error_db": 1.8545846584672177e-05,
+        "peak": 0.012063711881637573
+      },
+      {
+        "driver": "SB16PFCR25-8",
+        "box": "C24",
+        "rate": 44100,
+        "measured_gain_60_db": -9.85295747175199,
+        "expected_gain_60_db": -9.852966261937512,
+        "error_db": 8.790185521689864e-06,
+        "peak": 0.010472629219293594
+      },
+      {
+        "driver": "SB16PFCR25-8",
+        "box": "C24",
+        "rate": 48000,
+        "measured_gain_60_db": -9.852958896830504,
+        "expected_gain_60_db": -9.852966261937512,
+        "error_db": 7.365107007828442e-06,
+        "peak": 0.010471561923623085
+      },
+      {
+        "driver": "SB15NRX2C30-8",
+        "box": "A24",
+        "rate": 44100,
+        "measured_gain_60_db": -8.921753613289727,
+        "expected_gain_60_db": -8.921761213036545,
+        "error_db": 7.5997468176325356e-06,
+        "peak": 0.011535868048667908
+      },
+      {
+        "driver": "SB15NRX2C30-8",
+        "box": "A24",
+        "rate": 48000,
+        "measured_gain_60_db": -8.921754816987498,
+        "expected_gain_60_db": -8.921761213036545,
+        "error_db": 6.3960490468417674e-06,
+        "peak": 0.011533647775650024
+      },
+      {
+        "driver": "SB15NRX2C30-8",
+        "box": "B27",
+        "rate": 44100,
+        "measured_gain_60_db": -8.742375353749752,
+        "expected_gain_60_db": -8.74238569786023,
+        "error_db": 1.034411047839967e-05,
+        "peak": 0.01188561599701643
+      },
+      {
+        "driver": "SB15NRX2C30-8",
+        "box": "B27",
+        "rate": 48000,
+        "measured_gain_60_db": -8.742376976448293,
+        "expected_gain_60_db": -8.74238569786023,
+        "error_db": 8.721411937528956e-06,
+        "peak": 0.011884871870279312
+      },
+      {
+        "driver": "SB15NRX2C30-8",
+        "box": "C24",
+        "rate": 44100,
+        "measured_gain_60_db": -8.946476605424861,
+        "expected_gain_60_db": -8.94648335745138,
+        "error_db": 6.752026518341836e-06,
+        "peak": 0.011439239606261253
+      },
+      {
+        "driver": "SB15NRX2C30-8",
+        "box": "C24",
+        "rate": 48000,
+        "measured_gain_60_db": -8.946477662792402,
+        "expected_gain_60_db": -8.94648335745138,
+        "error_db": 5.694658977262179e-06,
+        "peak": 0.011438470333814621
+      }
+    ],
+    "negative_target_difference_db": -0.89993662564512,
+    "temporary_pcm_retained": false
+  }
+}

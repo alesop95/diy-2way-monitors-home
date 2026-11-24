@@ -1,0 +1,84 @@
+{
+  "schema": "ascolto-alsa-1",
+  "verified": false,
+  "card_id": "<CARD_ID_VERIFICATO>",
+  "usb": {
+    "vendor": "<VID>",
+    "product": "<PID>",
+    "serial_sha256": "<SHA256_SERIALE>"
+  },
+  "pcm": {
+    "capture_device": 0,
+    "playback_device": 0,
+    "capture_channels": 18,
+    "playback_channels": 20,
+    "format": "S32_LE",
+    "verify_capture": false
+  },
+  "routing": {
+    "sources": [
+      8,
+      9
+    ],
+    "outputs": [
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "clock": {
+    "mode": "external",
+    "source_numid": null,
+    "source_expected": null,
+    "lock_numid": null,
+    "lock_expected": null,
+    "rate_numid": null,
+    "rate_values_hz": {}
+  },
+  "profiles_sha256": {
+    "mix": "<HASH_PROFILO_CANONICO>",
+    "ascolto": "<HASH_PROFILO_CANONICO>"
+  },
+  "proof_file": "<PROVA_QUALIFICA_PRIVATA.json>",
+  "proof_sha256": "<SHA256_PROVA_QUALIFICA>",
+  "pipewire": {
+    "capture_node": "diy-qualified-capture",
+    "playback_node": "diy-qualified-playback",
+    "group": "diy-qualified",
+    "inputs": [
+      [
+        "<nodo-DAW>",
+        "<porta-L>",
+        "<porta-ingresso-0>"
+      ],
+      [
+        "<nodo-DAW>",
+        "<porta-R>",
+        "<porta-ingresso-1>"
+      ]
+    ],
+    "outputs": [
+      [
+        "<porta-uscita-0>",
+        "<sink-ALSA-qualificato>",
+        "<porta-fisica-0>"
+      ],
+      [
+        "<porta-uscita-1>",
+        "<sink-ALSA-qualificato>",
+        "<porta-fisica-1>"
+      ],
+      [
+        "<porta-uscita-2>",
+        "<sink-ALSA-qualificato>",
+        "<porta-fisica-2>"
+      ],
+      [
+        "<porta-uscita-3>",
+        "<sink-ALSA-qualificato>",
+        "<porta-fisica-3>"
+      ]
+    ]
+  }
+}

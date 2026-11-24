@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="it">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="session-token" content="__TOKEN__">
+<title>Controllo di ascolto</title>
+<style>
+@font-face{font-family:Altro Grotesk;src:url('/fonts/Altro-Grotesk-Book.ttf')}@font-face{font-family:Altro Serif;src:url('/fonts/Altro-Serif-Light.ttf');font-weight:300}
+:root{--purple:#4D11A7;--ink:#0A0A0A;--line:#D0D4E3;--ground:#F4F5F9;--green:#AFD100;--error:#E7000B}
+*{box-sizing:border-box}body{margin:0;background:white;color:var(--ink);font:20px/1.5 'Altro Grotesk',sans-serif}main{max-width:1080px;margin:auto;padding:64px 40px}header{border-top:8px solid var(--purple);padding-top:28px}.eyebrow,button,label{font-size:14px;letter-spacing:.2em;text-transform:uppercase}h1{font:300 clamp(40px,6vw,64px)/1.1 'Altro Serif',serif;margin:24px 0}p{max-width:832px}.state{display:flex;justify-content:space-between;gap:24px;border-block:1px solid var(--line);padding:24px 0;margin:40px 0}.badge{background:var(--ground);padding:8px 16px;align-self:center}.playing{background:var(--green)}section{background:var(--ground);padding:32px}.controls{display:grid;grid-template-columns:1fr 1fr;gap:28px}label{display:block;margin-bottom:12px}select,button{font:inherit;border:1px solid var(--line);border-radius:0;background:white;min-height:64px;padding:16px 24px;width:100%}button{cursor:pointer;font-size:14px;letter-spacing:.2em;text-transform:uppercase}button.primary{color:white;background:var(--purple);border-color:var(--purple)}button:disabled{opacity:.45;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--purple);outline-offset:4px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}input[type=range]{width:100%;accent-color:var(--purple);height:48px}output{font-size:32px}.level{display:flex;align-items:center;justify-content:space-between}.error{color:var(--error);min-height:30px;font-size:16px}.note{font-size:16px;color:var(--ink)}footer{margin-top:40px;border-top:1px solid var(--line);padding-top:24px;font-size:16px}@media(max-width:650px){main{padding:32px 20px}section{padding:24px 20px}.controls,.actions{grid-template-columns:1fr}.state{display:block}.badge{display:inline-block;margin-top:16px}}
+</style>
+<main>
+<header><div class="eyebrow">Progetto audio domestico</div><h1>Controllo di ascolto</h1><p>Scegli il profilo, prepara il percorso e abilita l’ascolto al livello desiderato.</p></header>
+<div class="state" aria-live="polite"><div><label>Stato del percorso</label><strong id="state">Connessione in corso</strong></div><span id="mode" class="badge">In attesa</span></div>
+<section aria-label="Controlli di ascolto">
+<div class="controls"><div><label for="profile">Profilo</label><select id="profile"></select><button id="prepare" disabled style="margin-top:16px">Prepara il profilo</button></div>
+<div><div class="level"><label for="volume">Livello richiesto</label><output id="level" for="volume">-24 dB</output></div><input id="volume" type="range" min="-60" max="-6" step="1" value="-24"><p class="note" id="actual">Livello effettivo da leggere</p></div></div>
+<div class="actions"><button id="enable" class="primary" disabled>Avvia ascolto</button><button id="mute" disabled>Silenzia</button></div>
+<p class="error" id="error" role="alert"></p><p class="note" id="help">La preparazione torna sempre in silenzio. Dopo un’interruzione occorre preparare nuovamente il profilo.</p>
+</section>
+<footer id="context">Controllo locale. Il pannello non modifica le impostazioni del sistema.</footer>
+</main>
+<script>
+const token=document.querySelector('meta[name="session-token"]').content;
+const $=id=>document.getElementById(id);let current={};let pending=false;
+function render(s){current=s;if(!$('profile').options.length){for(const name of s.profiles){let o=document.createElement('option');o.value=name;o.textContent=name==='mix'?'Mix':name==='ascolto'?'Ascolto':name;$('profile').append(o)}}
+ const playing=s.mute===false&&s.ready;const ready=s.ready&&s.state==='Running';
+ $('state').textContent=s.error?'Percorso da verificare':playing?'Ascolto in corso':ready?'Profilo pronto, silenziato':s.state==='Starting'?'In attesa del segnale':'Silenziato o da preparare';
+ $('mode').textContent=s.hardware?'Interfaccia audio':'Laboratorio';$('mode').classList.toggle('playing',playing);
+ $('error').textContent=s.error||'';$('enable').disabled=!ready||pending||playing;$('prepare').disabled=pending;$('mute').disabled=pending;
+ $('actual').textContent=typeof s.volume==='number'?`Livello effettivo: ${s.volume} dB${s.mute?' · silenziato':''}`:'Livello effettivo non disponibile';
+ $('context').textContent=s.hardware?'Controllo del percorso attestato. Il livello in dB non equivale a una calibrazione acustica.':'Modalità laboratorio: le uscite sono virtuali o salvate su file, senza qualifica dei diffusori.';
+}
+async function refresh(){try{const r=await fetch('/api/status',{cache:'no-store'});if(!r.ok)throw Error('Stato non disponibile');render(await r.json())}catch(e){$('error').textContent=e.message;$('enable').disabled=true}}
+async function action(name,body){pending=true;if(current.profiles)render(current);try{const r=await fetch('/api/'+name,{method:'POST',headers:{'Content-Type':'application/json','X-Session-Token':token},body:JSON.stringify(body)});const s=await r.json();if(!r.ok)throw Error(s.error||'Operazione non riuscita');render(s)}catch(e){$('error').textContent=e.message}finally{pending=false;await refresh()}}
+$('prepare').onclick=()=>action('prepare',{profile:$('profile').value});$('enable').onclick=()=>action('enable',{volume:Number($('volume').value)});$('mute').onclick=()=>action('mute',{});
+$('volume').oninput=()=>{$('level').textContent=$('volume').value+' dB'};$('volume').onchange=()=>{if(current.ready&&current.mute===false)action('volume',{volume:Number($('volume').value)})};
+refresh();setInterval(refresh,1000);
+</script>
+</html>

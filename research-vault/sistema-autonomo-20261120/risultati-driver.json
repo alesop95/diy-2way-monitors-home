@@ -1,0 +1,134 @@
+{
+  "status": "MODELLO IDEALE, non misure o cabinet esecutivi",
+  "source_sha256": "b63330880406ace311ce7b156347f85f8363e52e68f744159c5b0694ad70d04d",
+  "assumptions": {
+    "status": "DATI DI DATASHEET, simulazione preliminare a piccoli segnali; nessun esemplare misurato",
+    "verified_date": "2026-11-20",
+    "assumed_displacement_l": 1.5,
+    "woofers": [
+      {
+        "id": "SB16PFCR25-8",
+        "fs_hz": 38,
+        "qts": 0.4,
+        "vas_l": 27,
+        "sd_cm2": 124,
+        "xmax_oneway_mm": 4.5,
+        "re_ohm": 5.6,
+        "sensitivity_2v83_db": 87,
+        "outer_diameter_mm": 176,
+        "source": "https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf"
+      },
+      {
+        "id": "SB15NRX2C30-8",
+        "fs_hz": 36.5,
+        "qts": 0.34,
+        "vas_l": 20,
+        "sd_cm2": 82,
+        "xmax_oneway_mm": 5,
+        "re_ohm": 5.9,
+        "sensitivity_2v83_db": 86.5,
+        "outer_diameter_mm": 150,
+        "source": "https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf"
+      }
+    ],
+    "tweeter": {
+      "id": "SB26STCN-C000-4",
+      "fs_hz": 960,
+      "re_ohm": 3.2,
+      "sensitivity_2v83_db": 92.5,
+      "outer_diameter_mm": 72,
+      "source": "https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf"
+    },
+    "design_assumptions": {
+      "crossover_electrical_hz": 2600,
+      "highpass_hz": 35,
+      "calibrated": false,
+      "profile_listening_low_shelf_db": 2,
+      "profile_listening_low_shelf_hz": 120,
+      "pre_gain_db": -12,
+      "tweeter_trim_db": -5.5
+    }
+  },
+  "results": [
+    {
+      "driver": "SB16PFCR25-8",
+      "box": "A24",
+      "gross_l": 11.164384,
+      "net_assumed_l": 9.664384,
+      "fc_hz": 74.01482287715214,
+      "qtc": 0.7791033987068646,
+      "f3_hz": 67.80092133394709,
+      "relative_db_at_60hz": -4.439099225004916,
+      "excursion_ceiling_60hz_1m_fullspace_sine_rms_db": 88.58336131649666
+    },
+    {
+      "driver": "SB16PFCR25-8",
+      "box": "B27",
+      "gross_l": 8.737344,
+      "net_assumed_l": 7.237344,
+      "fc_hz": 82.6502215364894,
+      "qtc": 0.8700023319630463,
+      "f3_hz": 69.96608453770166,
+      "relative_db_at_60hz": -5.201532874133306,
+      "excursion_ceiling_60hz_1m_fullspace_sine_rms_db": 88.58336131649666
+    },
+    {
+      "driver": "SB16PFCR25-8",
+      "box": "C24",
+      "gross_l": 13.516224,
+      "net_assumed_l": 12.016224,
+      "fc_hz": 68.47344947380407,
+      "qtc": 0.7207731523558323,
+      "f3_hz": 67.19975007422318,
+      "relative_db_at_60hz": -4.147036201410973,
+      "excursion_ceiling_60hz_1m_fullspace_sine_rms_db": 88.58336131649666
+    },
+    {
+      "driver": "SB15NRX2C30-8",
+      "box": "A24",
+      "gross_l": 11.164384,
+      "net_assumed_l": 9.664384,
+      "fc_hz": 63.94748118407343,
+      "qtc": 0.5956751671941087,
+      "f3_hz": 78.04702450042404,
+      "relative_db_at_60hz": -5.0782412503119385,
+      "excursion_ceiling_60hz_1m_fullspace_sine_rms_db": 85.90635447213981
+    },
+    {
+      "driver": "SB15NRX2C30-8",
+      "box": "B27",
+      "gross_l": 8.737344,
+      "net_assumed_l": 7.237344,
+      "fc_hz": 70.80853914965451,
+      "qtc": 0.6595863920789735,
+      "f3_hz": 76.27507006122333,
+      "relative_db_at_60hz": -5.257616765488256,
+      "excursion_ceiling_60hz_1m_fullspace_sine_rms_db": 85.90635447213981
+    },
+    {
+      "driver": "SB15NRX2C30-8",
+      "box": "C24",
+      "gross_l": 13.516224,
+      "net_assumed_l": 12.016224,
+      "fc_hz": 59.57909630534753,
+      "qtc": 0.5549833628443331,
+      "f3_hz": 79.97175026529936,
+      "relative_db_at_60hz": -5.053519105897106,
+      "excursion_ceiling_60hz_1m_fullspace_sine_rms_db": 85.90635447213981
+    }
+  ],
+  "offline_configs": [
+    "pc-44100-mix.json",
+    "pi-digitale-44100-mix.json",
+    "pi-analogico-44100-mix.json",
+    "pc-44100-ascolto.json",
+    "pi-digitale-44100-ascolto.json",
+    "pi-analogico-44100-ascolto.json",
+    "pc-48000-mix.json",
+    "pi-digitale-48000-mix.json",
+    "pi-analogico-48000-mix.json",
+    "pc-48000-ascolto.json",
+    "pi-digitale-48000-ascolto.json",
+    "pi-analogico-48000-ascolto.json"
+  ]
+}

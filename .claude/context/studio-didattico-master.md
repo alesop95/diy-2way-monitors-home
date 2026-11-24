@@ -47,3 +47,53 @@ Il salto senior e perché è meglio. La verifica interroga ora la condizione ver
 Il principio generale, che vale oltre Wine e oltre .NET, è che un controllo di uscita deve o eseguire l'operazione che deve funzionare, e allora la sua riuscita è la prova, oppure interrogare la condizione che quella operazione abilita, e allora va verificato che sia la condizione vera e non una che le somiglia. Ne discende una domanda da porsi ogni volta che un controllo passa, e che questo progetto adotta come regola: quel controllo potrebbe passare anche nel caso che deve escludere?
 
 Dove leggere il dettaglio: [refactor-03-file-non-basta-per-dotnet.md](refactor-03-file-non-basta-per-dotnet.md).
+
+## 4. Provare il DSP e rispettare la proprietà della pipeline
+
+Contesto. Il passaggio dal collaudo su file al servizio PipeWire richiede di distinguere disponibilità del motore, proprietà della pipeline e comportamento misurato del segnale. Il banco condivide la sessione audio dell'utente.
+
+Com'era e perché era fragile. Un ACK e un servizio attivo potevano sembrare sufficienti, il finally fermava anche una pipeline rifiutata all'ingresso e il controllo negativo accettava un errore di acquisizione come mutazione rilevata. Anche la shell nascondeva un errore attraverso tee. Le prove iniziali non esercitavano questi percorsi.
+
+Il salto senior e perché è meglio. Profilo, grafo e PCM sono verificati distintamente; il ripristino segue la proprietà acquisita dal banco e il controllo negativo riconosce il difetto specifico. Durata e transitorio sono misurati, i comandi conservano sorgente ed esito, la revisione separata aggiunge casi prima rossi e poi verdi. Il costo è mantenere alcuni controlli di orchestrazione oltre alle misure del filtro.
+
+Dove leggere il dettaglio: [refactor-04-dsp-prove-e-proprieta.md](refactor-04-dsp-prove-e-proprieta.md).
+
+## 5. Separare il filtro dal calcolatore e dal diffusore reale
+
+Contesto. L'utente chiede se CamillaDSP escluda Raspberry Pi e analogico e garantisca il doppio uso mix/ascolto. La risposta richiede un confronto dimostrato, non soltanto una descrizione del software.
+
+Com'era e perché era fragile. Il collaudo virtuale era valido nel suo perimetro, ma poteva essere letto come garanzia della somma acustica o della convenienza del PC per ogni impiego. Una funzione matematica, il calcolatore che la esegue e il diffusore montato non sono lo stesso oggetto.
+
+Il salto senior e perché è meglio. Un modello riproducibile verifica LR4 analogico e digitale, ruolo del Q, ritardo e profilo comune, con controesempi che producono la cancellazione prevista. Le conclusioni distinguono prova teorica, banco già misurato e misure hardware ancora necessarie. Raspberry Pi rimane possibile host dello stesso DSP; il doppio uso resta subordinato alle prestazioni fisiche e non esclusivo del digitale. Protocollo, fonti e risultato sono conservati separatamente.
+
+Dove leggere il dettaglio: [refactor-05-crossover-modello-e-misure.md](refactor-05-crossover-modello-e-misure.md).
+
+## 6. Autonomia, clock e prova leggibile
+
+Contesto. L'ascolto a PC spento diventa obbligatorio e l'utente richiede LaTeX per leggere la matematica, oltre allo sviluppo dei componenti e alla riparazione dei controlli.
+
+Com'era e perché era fragile. Il solo riuso del PC non copriva le sorgenti esterne; il numero di porte non spiegava clock e volume. Il confronto RMS del ramo attenuato confondeva armoniche e fondamentale; l'interpretazione del KO accenti guardava la coda del rapporto invece della causa. Una vecchia preview poteva essere scambiata per il PDF corrente.
+
+Il salto di qualità. Due percorsi espliciti condividono l'interfaccia in alternativa; il modello confronta ingombri e limiti fisici, dodici configurazioni passano nel motore con controllo negativo, la misura coerente isola la frequenza richiesta. La correzione minima della docstring mantiene il controllo intatto. Le formule sono consegnate in PDF compilati, con anteprime aggiornate e identificazione dell'artefatto.
+
+Dove leggere il dettaglio: [refactor-06-autonomia-clock-e-prove-leggibili.md](refactor-06-autonomia-clock-e-prove-leggibili.md).
+
+## 7. Fonti identificabili e prove conservate nel riordino
+
+Contesto. L'utente richiede pedigree univoco per tutte le fonti, punti d'uso, lezioni riunite ed elenco completo dei percorsi, con pulizia delle copie e conservazione di ogni microstep.
+
+Com'era e perché era fragile. Una raccolta di link non distingueva registrazione, lettura e uso. Le copie identiche di risultati potevano essere interpretate come spazzatura anche quando attestavano due corse differenti. Una collisione di ID in un dizionario avrebbe nascosto una fonte prima del controllo finale.
+
+Il salto di qualità. La mappa riusa la bibliografia e collega identità/versione ai documenti; i test esercitano collisioni, alias e stati. Catalogo e mappa degli artefatti rendono espliciti i percorsi, mentre un archivio verificato conserva i run superati e riduce le copie espanse. Le lezioni restano legate a evidenze audio e il confronto dei metodi rispetta il confine sui dati esterni.
+
+Dove leggere il dettaglio: [refactor-07-fonti-lezioni-e-prove-conservate.md](refactor-07-fonti-lezioni-e-prove-conservate.md).
+
+## 8. Controllare il motore reale, il grafo e il silenzio osservabile
+
+Contesto. Completare il selettore e controllo comune PC/Pi e rendere consultabili report e simulazioni, senza richiedere hardware.
+
+Com'era e perché era fragile. Il peer di prova non aggiungeva default né caricava in ritardo; autoconnect nullo non impediva link manuali. Finestre riferite ai campioni inviati in FIFO potevano precedere il PCM prodotto. Un ACK o una pagina visibile non dimostrano il livello effettivo delle quattro vie.
+
+Il salto di qualità. Configurazione canonica riletta, identità/clock/grafo osservati, profili attestati e preparazione revocabile. Banco audio reale e browser sono prove distinte. Il rapporto conserva valori e hash; errori e tentativi di mute non confermati restano visibili. Kit e avvio manuale sono pronti, mentre la qualifica fisica rimane esplicitamente sospesa.
+
+Dove leggere il dettaglio: [refactor-08-controllo-ascolto.md](refactor-08-controllo-ascolto.md).

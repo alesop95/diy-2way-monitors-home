@@ -1,0 +1,100 @@
+{
+  "kind": "deterministic_ideal_model",
+  "passed": true,
+  "hardware_benchmark": false,
+  "inputs": {
+    "fc_hz": 2000.0,
+    "fs_hz": 48000.0,
+    "c_m_s_assumed": 343.0,
+    "frequency_points": 8194,
+    "range_hz": [
+      20,
+      20000
+    ]
+  },
+  "environment": {
+    "python": "3.13.14",
+    "numpy": "2.2.2",
+    "matplotlib": "3.11.0"
+  },
+  "script_sha256": "78076b7dd79856abd220d5696e3768fbd4e788ff796fb2d8420468babd05621a",
+  "checks": {
+    "analog_magnitude_error": 5.551115123125783e-16,
+    "allpass_complex_error": 6.753223014464258e-16,
+    "digital_magnitude_error": 9.103828801926284e-15,
+    "bilinear_mapped_error": 9.051041714325233e-15,
+    "common_profile_ratio_relative_error": 6.06904780938344e-16,
+    "phase_delay_formula_error": 2.220446049250313e-16
+  },
+  "cutoff": {
+    "each_branch_db": -6.020599913279626,
+    "sum_magnitude": 0.9999999999999998,
+    "analog_group_delay_ms": 0.22507907903927654
+  },
+  "digital": {
+    "lp_b": [
+      0.01440144034651121,
+      0.02880288069302242,
+      0.01440144034651121
+    ],
+    "hp_b": [
+      0.8308980212742373,
+      -1.6617960425484746,
+      0.8308980212742373
+    ],
+    "a": [
+      1.0,
+      -1.6329931618554523,
+      0.6905989232414971
+    ],
+    "pole_radius": 0.8310228175215751
+  },
+  "path": {
+    "difference_m": 0.02,
+    "delay_us": 58.309037900874635,
+    "delay_samples": 2.798833819241983,
+    "phase_at_fc_deg": 41.98250728862974,
+    "sum_at_fc_db": -0.5964563875899045
+  },
+  "negative_controls": {
+    "inverted_magnitude_at_fc": 0.0,
+    "null_distance_m": 0.08575,
+    "null_magnitude_at_fc": 1.6081226496766364e-16
+  },
+  "analog_equal_component_example": {
+    "Q": 0.7071067811865475,
+    "K_each": 1.5857864376269049,
+    "K_cascade": 2.5147186257614296,
+    "cascade_gain_db_before_normalization": 8.009787969823797,
+    "C_farad_example": 1e-08,
+    "R_ohm_example": 7957.747154594768,
+    "fc_min_R1percent_C5percent_hz": 1885.902876001886,
+    "fc_max_R1percent_C5percent_hz": 2126.528442317916
+  },
+  "latency_examples": {
+    "one_1024_frame_interval_ms": 21.333333333333332,
+    "fir_1025_tap_linear_phase_delay_ms": 10.666666666666666
+  },
+  "headroom_sinusoid_example": {
+    "input_peak": 0.8,
+    "boost_db": 6,
+    "output_peak_without_preamp": 1.5962098519751038
+  },
+  "excursion_ratio_60_to_40_hz_equal_pressure_ideal": 2.25,
+  "energy_examples_not_measured": {
+    "delta_W": [
+      5,
+      15
+    ],
+    "hours_per_year": 2920,
+    "delta_kWh_per_year": [
+      14.6,
+      43.8
+    ]
+  },
+  "limits": [
+    "No real driver, enclosure, room, ADC/DAC, CPU load or power measurement.",
+    "fc is illustrative and is not the crossover design for the monitors.",
+    "An ideal common profile preserves the branch ratio only under the stated linear assumptions."
+  ]
+}

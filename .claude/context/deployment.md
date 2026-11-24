@@ -1,14 +1,18 @@
 ---
-generated-from-commit: 032c10d
+generated-from-commit: 3e04096547340c6a19eea6767b8ef57b009b15f7
 generated-from-branch: main
 generated-date: 2026-09-30
 covers-paths:
   - .claude/context/deployment.md
   - docs/10-ambiente/veeam-agent-linux.md
-last-verified-commit: 49266d4
+last-verified-commit: 0d95d2efec703c8605e398eca9de6403b941f441
 ---
 
 # Deployment
+
+Aggiornamento corrente 2026-11-23, ADR-057 e MS-317: il proprietario ha installato e avviato il pannello. Verifica SSH successiva in sola lettura: 24 file integri, unità coincidente, servizio active/running da 103,4 s senza riavvii, pagina/API/font HTTP 200. DSP principale Inactive/mute/-60, nessun profilo preparato. Avvio al login ancora disabled alla prova; enable resta manuale. Rapporto pubblico anonimizzato nel vault del sistema; nessuna modifica a runtime, impostazioni SPICE o dipendenze eseguita dall’agente. Le due correzioni documentali del kit successive all’installazione non richiedono un nuovo deploy. Le descrizioni R0 sotto conservano la scelta storica del settembre 2026; il perimetro corrente comprende runtime e pannello. CPU/CAD/DSP/MIDI e backup restano i collaudi delle procedure di novembre.
+
+Aggiornamento 2026-11-18, MS-241 e MS-242: il pieno precedente all'ottimizzazione CPU è copiato e verificato anche sul disco esterno, in una cartella datata nuova. Dopo autorizzazione sui tre nomi esatti sono stati rimossi soltanto i vecchi file esterni di settembre; i tre punti locali restano su Ubuntu. La correzione CPU è riuscita nella sessione corrente; la persistenza dopo riavvio e il ripristino completo restano non provati. Dettagli e limiti nelle procedure del backup e del lavoro remoto del blocco ambiente.
 
 > Questo progetto non ha codice applicativo né un rilascio: la scheda esiste dal 2026-09-30 per la sola sezione del modello di separazione, chiesta dal gate dell'inizializzazione. Fino a quella data era dichiarata non creata per scelta, e il suo equivalente per il trasferimento dei materiali resta `docs/TRANSFER-MANIFEST.md`. Commit e push restano operazioni manuali dell'utente.
 

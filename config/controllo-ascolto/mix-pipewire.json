@@ -1,0 +1,163 @@
+{
+  "title": "LABORATORIO PIPEWIRE - progetto 2600 Hz NON CALIBRATO",
+  "description": "Profilo elettrico dimostrativo: parametri dal file driver-candidati, nessuna taratura acustica.",
+  "devices": {
+    "samplerate": 48000,
+    "chunksize": 256,
+    "capture": {
+      "type": "PipeWire",
+      "channels": 2,
+      "node_name": "diy-monitor-lab-capture",
+      "node_description": "DIY LAB ingresso stereo",
+      "node_group_name": "diy-monitor-lab",
+      "autoconnect_to": null
+    },
+    "playback": {
+      "type": "PipeWire",
+      "channels": 4,
+      "node_name": "diy-monitor-lab-playback",
+      "node_description": "DIY LAB quattro vie",
+      "node_group_name": "diy-monitor-lab",
+      "autoconnect_to": null
+    }
+  },
+  "mixers": {
+    "stereo_quattro_vie": {
+      "channels": {
+        "in": 2,
+        "out": 4
+      },
+      "mapping": [
+        {
+          "dest": 0,
+          "sources": [
+            {
+              "channel": 0,
+              "gain": 0,
+              "inverted": false
+            }
+          ]
+        },
+        {
+          "dest": 1,
+          "sources": [
+            {
+              "channel": 0,
+              "gain": 0,
+              "inverted": false
+            }
+          ]
+        },
+        {
+          "dest": 2,
+          "sources": [
+            {
+              "channel": 1,
+              "gain": 0,
+              "inverted": false
+            }
+          ]
+        },
+        {
+          "dest": 3,
+          "sources": [
+            {
+              "channel": 1,
+              "gain": 0,
+              "inverted": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "filters": {
+    "basso": {
+      "type": "BiquadCombo",
+      "parameters": {
+        "type": "LinkwitzRileyLowpass",
+        "freq": 2600,
+        "order": 4
+      }
+    },
+    "alto": {
+      "type": "BiquadCombo",
+      "parameters": {
+        "type": "LinkwitzRileyHighpass",
+        "freq": 2600,
+        "order": 4
+      }
+    },
+    "margine": {
+      "type": "Gain",
+      "parameters": {
+        "gain": -12,
+        "inverted": false
+      }
+    },
+    "subsonico": {
+      "type": "BiquadCombo",
+      "parameters": {
+        "type": "LinkwitzRileyHighpass",
+        "freq": 35,
+        "order": 4
+      }
+    },
+    "trim_tweeter": {
+      "type": "Gain",
+      "parameters": {
+        "gain": -5.5,
+        "inverted": false
+      }
+    }
+  },
+  "pipeline": [
+    {
+      "type": "Mixer",
+      "name": "stereo_quattro_vie"
+    },
+    {
+      "type": "Filter",
+      "channels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "names": [
+        "margine",
+        "subsonico"
+      ]
+    },
+    {
+      "type": "Filter",
+      "channels": [
+        0,
+        2
+      ],
+      "names": [
+        "basso"
+      ]
+    },
+    {
+      "type": "Filter",
+      "channels": [
+        1,
+        3
+      ],
+      "names": [
+        "alto"
+      ]
+    },
+    {
+      "type": "Filter",
+      "channels": [
+        1,
+        3
+      ],
+      "names": [
+        "trim_tweeter"
+      ]
+    }
+  ]
+}

@@ -1,5 +1,242 @@
 # Work-log
 
+## 2026-11-23 - Pannello installato dal proprietario e verificato, MS-317
+
+**Template:** nessuna; applicazione del contratto di deploy manuale e verifica in esercizio.
+
+Il proprietario ha trasferito il kit, verificato 24 file e websockets 15.0.1 e installato/avviato l'unità utente. Verifica SSH successiva solo in lettura alle 13:24:39 UTC: 24 hash corretti e manifesto coincidente con il kit trasferito, unità identica, active/running da 103,4 s, zero riavvii e codice processo 0. Pagina, API e due font HTTP 200. Motore principale Inactive, mute true, -60 dB, nessun profilo preparato. Schermata volontaria letta e coerente, non copiata nel progetto. Avvio automatico al login ancora disabled: solo enable/is-enabled manuali rimangono per questa installazione, senza rifare estrazione, copia, backup o reboot.
+
+Warning della verifica unità identificato in StandardError sotto [Install] di spice-vdagent distribuito, non nel servizio del pannello: nessun intervento di sistema eseguito. Rapporto pubblico anonimizzato nel vault con manifesto effettivo, senza nomi/IP o log personali. Manuale61 e README ora descrivono l'installazione reale; l'aggiornamento di soli due documenti nel kit locale non richiede nuovo deploy. Runtime remoto già verificato resta invariato; PDF recap, catalogo, fonti e kit riallineati come derivati documentali.
+
+File toccati: risultati-installazione-controllo.json, STATO, manuale61, README kit, PENDING/roadmap, deployment e snapshot/current-work, OPS, catalogo/fonti e relativi derivati, ripresa/COMMIT-MSG. Le verifiche fisiche restano sospese, nessun subagent avviato, nessun commit/push/deploy automatico.
+
+## 2026-11-23 - Guardare anche le destinazioni dei driver, MS-316
+
+**Template:** L-003 già presente, estensione concreta del contratto di guardia.
+
+Una prova aggiunta in revisione ha riprodotto il bypass da un altro player alle porte fisiche riservate, fuori dai nodi DSP. Prima rossa, poi verde con la guardia estesa alle destinazioni; cuffie separate ammesse e nessun unlink. Nove test PipeWire, 46 metodi complessivi del controllo. Prova reale aggiornata ore 11:44 UTC, passo 6 dB entro 0,0451 dB e mute/SIGTERM verificati, principale invariato. Rapporto/source hash e kit aggiornati, pagina 6 della relazione re-ispezionata e PNG eliminato. I verdi MS-315 restano riferiti al codice di allora: controllo completo ripetuto per questo nuovo caso.
+
+File toccati: ascolto_pipewire.py e test, manuale61, didattica8, piano, conteggi correnti di PENDING/roadmap/snapshot, rapporto motore, kit, PDF/manifesto, OPS e ripresa. Nessun dato hardware nuovo o dipendenza installata, zero subagent. Attivazione e versionamento manuali, fisica ancora sospesa.
+
+Esito conclusivo MS-316: gate completo codice 0, 28 controlli locali verdi; hash delle sorgenti audio riletti coerenti, temporanei assenti e stato/ripresa allineati. Nessuna modifica successiva al runtime.
+
+## 2026-11-23 - Consegna del controllo e verifica completa, MS-313/315
+
+**Template:** L-003/004/005/006 riapplicate, nessuna nuova lezione o ricezione a monte.
+
+Sviluppo richiesto concluso nel perimetro software: 45 metodi di test, banco reale Ubuntu 44,1/48 kHz con quattro PCM e browser desktop/mobile. Una corsa ha rilevato 6,1137 dB sul passo richiesto di 6: finestre spostate dal produttore FIFO ai frame effettivamente scritti, senza cambiare la tolleranza. Prova conclusiva con errore massimo 0,0381 dB, mute e SIGTERM verificati; nessun hardware qualificato implicitamente. API, ALSA/clock, grafo PC, pannello e sorveglianza completati; kit per avvio manuale. Nessuna dipendenza aggiunta, modifica del servizio principale o nuova prova fisica richiesta.
+
+Report tematici e simulazioni collegati da STATO-PROGETTO, manuale61 e relazione63 aggiornati, ADR-057 e deep dive8. Pedigree 203 fonti/36 curate, ID storico pw-dump preservato dopo intervento della guardia; catalogo168. PDF7/6/9 pagine con input, copia e QA verificati; cinque PNG di pagine e due UI rimossi. Kit estratto: 24 file verificati, mutazione rifiutata, temporaneo eliminato. Completo chiudi in sola verifica: codice 0 e 28 controlli locali verdi. Ultimo allineamento della guida avvio aggiunge stop su errore/versione e spiega il percorso qualificato PC/Pi; kit rigenerato e controllo conclusivo dopo le scritture di memoria.
+
+File toccati: codice e suite del controllo, config/controllo-ascolto e unità, consegna_controllo.py e consegna_documenti.py, catalogo_documentazione.py, figura basso, piano, STATO, manuale61/relazione63/LaTeX/PDF, artefatti/tracciabilità/fonti, PENDING/roadmap, CLAUDE/STACK/deployment, ADR/master/deep dive8, OPS e snapshot/ripresa. Memoria precedente archiviata, ricevuta privata MS-307 preservata. Nessun subagent avviato, nessun add/commit/push/deploy; chiusura e attivazione manuali, hardware sospeso.
+
+## 2026-11-23 - Controllo DSP operativo su banco, MS-308/312
+
+**Template:** L-003/004/005/006 pertinenti, nessuna ricezione a monte dichiarata.
+
+Completati software WebSocket, normalizzazione e caricamento asincrono, policy/observer ALSA, percorso PC PipeWire con grafo e card verificati, pannello HTTP e sorveglianza. Prove negative scritte prima delle correzioni; dodici core, undici ALSA, otto PipeWire e tredici sessione/HTTP verdi. Motore Ubuntu reale verificato a 44,1/48 kHz, quattro canali, volume/mute/profilo/guasto e SIGTERM; servizio principale invariato. Browser desktop/mobile ispezionato e PNG rimossi. Nuova CLI candidato PC successiva al rapporto richiede una corsa finale. Figura basso vettoriale generata e controllata contro il report canonico, QA temporaneo eliminato.
+
+File toccati: tools/controllo_ascolto.py, ascolto_alsa.py, ascolto_pipewire.py, pannello_ascolto.py e suite/collaudi; config/controllo-ascolto e unita' utente, tools/consegna_controllo.py, tools/visualizza_simulazioni.py, figura basso, piano, rapporto DSP, OPS, snapshot/current-work e ripresa. Kit e documentazione ancora da consolidare; gate completo non ancora ripetuto. Hardware e deploy persistente non eseguiti, nessun subagent avviato.
+
+## 2026-11-23 - Consegna di contesto al progetto corretto, MS-307
+
+**Template:** nessuna; ordinario coordinamento autorizzato dal proprietario.
+
+Segnalazione ricevuta per errore nel progetto audio e destinata esplicitamente al progetto personale di home lab. Nessuna voce aggiunta all'inventario audio. Non essendoci un partecipante destinatario registrato, inserita la consegna nel suo file privato di ripresa, dopo lettura delle istruzioni e del punto corrente; precedente corpo preservato integralmente e verifica SHA-256. Nessun file versionato o commit del destinatario modificato. Le immagini non sono state ispezionate, nessuna caratteristica o compatibilità dedotta. Ricevuta e riferimento del destinatario restano nel livello privato.
+
+File toccati: docs/OPERATIONS-LOG.md, .claude/memory/index.md, .claude/context/current-work.md, questo registro e _notes/RESUME-PROMPT.md; nel destinatario soltanto la ripresa privata richiesta. Progetto tecnico audio e PDF invariati, manifesti documenti e basso riletti coerenti. Recap del setup, sviluppo, pulizia e residui preparato dal medesimo stato; verifiche fisiche sospese. Controlli mirati documentali dopo la scrittura, nessuna nuova corsa del motore o prova hardware necessaria. Messaggio di commit del blocco tecnico già pronto, commit/push restano manuali.
+
+## 2026-11-23 - Consolidamento finale e controllo delle prove, MS-304/305
+
+**Template:** L-004 e L-006 già registrate, nessuna nuova lezione o ricezione a monte dichiarata.
+
+Riletti branch/HEAD invariati e cassetta propria vuota. Consegna di tre PDF coerente con sorgenti e grafici effettivi; nessun nuovo dato hardware o prezzo aggiornato. Pulizia finale: 335 derivati rimossi, 1011 prove nel medesimo ZIP interamente verificato, cinque ricollocazioni private e circa 433 MiB recuperati. Sette file rimangono nella radice degli appunti. Rimossi anche sei vecchi rapporti QA e relative cartelle di build; originali, biblioteca, cache di studio e kit CAD preservati. Due invocazioni della pulizia senza lavoro lasciano invariato l'hash della ricevuta.
+
+Primo chiudi generale: diciannove controlli locali verdi e uscita 1 sul solo fix-dashes, un trattino en nella roadmap introdotto nel consolidamento. Corretto con strumento esistente senza modificare esclusioni. Rapporto fallito conservato nel ZIP; il rapporto attivo viene riscritto dalla ripetizione completa dopo queste ultime scritture. Esito effettivo da leggere, nessun commit/push o impronta di ripresa anticipati. Verifiche fisiche ancora sospese, nessuna nuova richiesta all'utente.
+
+File toccati: docs/OPERATIONS-LOG.md, docs/90-riferimenti/artefatti-e-prove.md e metodo-fonti-lezioni-riordino.md, docs/pdf/manifest.json, docs/55 e 58 marcati storici, tools/Pulisci-Artefatti.ps1, snapshot/index/current-work/roadmap, questo registro, mappa fonti e ripresa privata. Controlli, archivio e ricevuta aggiornati; messaggio proposto già in COMMIT-MSG.txt. Template avanti di dieci commit alla lettura iniziale, due consegne da chiudere e rapporto vulnerabilità assente restano distinti dalla qualità di questo blocco.
+
+Chiusura osservata MS-306: ripetizione completa conclusa con RETURN_CODE 0 e diciannove controlli locali verdi. Roadmap JSON riletta il 23 novembre: dodici controlli dichiarati verdi, 26 voci aperte, otto fisiche sospese, nessuna chiusura inventata. Ultima scrittura di stato e ripresa prima della verifica conclusiva; chiudi manuale pronto dopo revisione, impronta non anticipata. Nessuna nuova opera fisica, acquisto o installazione.
+
+## 2026-11-20 - Sviluppo del basso, controllo comune e pulizia, MS-300/305
+
+**Template:** L-004 estesa con QA effimero e verifica della sorgente anche a PDF integro; sette lezioni locali, nessuna ricezione a monte dichiarata.
+
+Proseguito senza nuove richieste fisiche. HP35/LT, 486 scenari e dodici casi sul motore con negativo rilevato; cinque test indipendenti delle equazioni. Nucleo volume/mute/qualificazione con dieci regressioni; API reale, adapter e interfaccia restano aperti, modulo WebSocket non installato nel Python Windows. Due regressioni documenti rilevano sorgente cambiata e PDF alterato. Tutti e cinque i nuovi comandi sono in chiudi, diciannove in totale.
+
+Tre PDF consegnati in docs/pdf, con manifesto di sorgenti e impronte; recap sei pagine, crossover sei, sistema otto. Ispezionate pagine correnti delle formule/tabella e del recap, PNG eliminate subito. 81 derivati iniziali rimossi per 239238929 byte, temporanei vuoti controllati e rimossi; sessioni storiche e vecchi script compressi con verifica completa prima della rimozione. Conteggi finali in MS-304/ricevuta, senza riscrivere vecchi microstep. Snapshot di 56/45 KB consolidati dopo copia integrale; vecchio indice ridotto a rimando, PENDING unico registro corrente. Nessun originale dei manuali, biblioteca o file esterno rimosso.
+
+File toccati: tools/fattibilita_basso.py, controllo_ascolto.py, verifica_documenti.py, relative suite e Pulisci-Artefatti.ps1; aggiornati 61/63, stato, pendenze, metodi/artefatti, ADR-056, approfondimento 07, memoria/contesto, roadmap e pedigree/catalogo. Copia della ripresa precedente preservata prima della nuova. Nessun agente nuovo, installazione, SSH/J o operazione Git di scrittura. Due consegne template e rapporto sicurezza assente distinti dalla qualità. Controlli finali da leggere nel rapporto chiudi-autonomia-20261120.txt, eseguiti dopo l'ultimo consolidamento. Impronta non registrata prima dei commit manuali.
+
+## 2026-11-20 - Verifiche fisiche sospese e recap completo richiesto
+
+L'utente chiede di mettere in sospeso tutte le verifiche da svolgere fisicamente e di continuare, perché stato e disponibilità documentale non erano chiari dal precedente recap. Otto voci interamente fisiche passano al gruppo 4 già supportato dal motore roadmap, senza cambiare codice condiviso; sette passi misti sono riscritti per il lavoro autonomo. Regola di riapertura esplicita e nessuna richiesta ripetuta di foto, quote, targhette, ascolto o tecnico. Nessuna pendenza chiusa per effetto della sospensione. **Template:** nessuna.
+
+Creato docs/STATO-PROGETTO.md come vista per il proprietario, collegata alle autorità canoniche: workstation, backup, monitor e CAD, due modalità PC/Pi, budget datato, combo posseduti, documenti e posizione dei file, limiti e roadmap autonoma. Esportazione WordCraft locale prevista con lo stile di account già adottato. Ripresa coerente, stesso HEAD e lavoro precedente conservato; consegna del template con due file da chiudere a monte distinta da questo contenuto. Rapporto sicurezza assente dichiarato, nessuna nuova attestazione o intervento remoto.
+
+File toccati: docs/PENDING-ACTIONS.md, tools/roadmap-items.yml, nuovo recap, snapshot, current-work, roadmap e questo registro; script locale di sospensione. Nessun subagente avviato, nessun accesso SSH o intervento su dischi esterni, nessun add/commit/push. Indici, PDF e controlli finali ancora da completare nel giro.
+
+Consolidamento MS-299: recap PDF WordCraft di cinque pagine, dieci titoli e dati chiave verificati nel testo, anteprime attuali ispezionate con rapporto SHA-256. La prima esportazione è stata bloccata sui temporanei dalla sandbox e la ripetizione autorizzata è riuscita. Unità ohm scritta per esteso dopo riscontro del rendering del simbolo. I form feed dell'estrattore sono conservati in JSON escaped, copia TXT leggibile senza controlli; check-eol tornato verde senza esclusioni. README corretto perché dichiarava ancora nessun cabinet disegnato: sono presenti tre esplorativi, manca l'esecutivo. Catalogo ora 163 file, indice 78/78 pagine docs, verifica di 733 collegamenti locali su 24 documenti senza assenti. La vista nativa della roadmap contiene otto voci nel gruppo sospeso e prosegue autonomamente su DSP, simulazioni, CAD e distinta. Controllo completo finale dopo il tracciamento e la ripresa privata; nessuna verifica fisica richiesta.
+
+## 2026-11-20 - Riferimenti storici anonimizzati, storia Git distinta
+
+MS-297: tre vecchi riferimenti a un percorso esterno individuati dal controllo mirato, anonimizzati nei documenti correnti e verificati ancora presenti nei tre contenuti HEAD. Nessun contenuto aziendale letto/importato e nessuna nuova copia delle vecchie revisioni salvata. PA-042 apre la valutazione manuale dell'eventuale bonifica di storia/remoto. Un patch rifiutato aveva già corretto il primo file: ritirata l'inferenza di atomicità; conteggi e copie controllati prima di continuare. Scrittura diretta bloccata dalla sandbox, ripetizione autorizzata riuscita senza cambiare permessi. **Template:** nessuna.
+
+File toccati: ADR-035, vecchio riferimento nel registro e timeline, nuova voce MS-297, pending PA-042, roadmap, snapshot, current-work, questo work-log e ripresa privata. Motivazione tecnica e risultati storici preservati, anonimizzazione limitata agli identificatori. Rigenerazione e verifiche finali dopo questo tracciamento.
+
+## 2026-11-20 - Fonti, archivio verificato e manuale EKO da 30 W
+
+MS-292/294: registro degli usi con identità stabili e copertura esplicita, catalogo dei percorsi e CSV, mappa dei PDF/CAD/manuali/prove private. Conservati 340 file di quattordici cartelle in ZIP verificato membro per membro; poi rimossi gli espansi, risparmio lordo 199643239 byte. Le due relazioni correnti mantengono gli hash. Sette lezioni create con il tool esistente e settimo approfondimento didattico. Censimento meccanico delegato, decisioni e controlli in prima persona; nessun dato aziendale trasferito e nessuna scrittura fra repository.
+
+L'utente aggiunge il manuale EKO e precisa il basso da 30 W. Copia originale verificata per SHA-256, undici pagine, OCR e immagini 1/10/11 lette. Il manuale associa il 30 W a XB30 e specifica 10″ 8 Ω; tabella ruotata letta dall'immagine perché l'OCR è inaffidabile. Riscontro fisico e diagnosi del suono distorto da fare; nessun ricambio scelto. Il tentativo OCR con lingua it è stato rifiutato dal programma, che supporta en; manuale inglese elaborato con en. Sorgente esterna preservata. **Template:** L-001, L-002, L-005, L-006, L-007.
+
+File toccati: mappa e metadati fonti, due generatori e suite, controlli-progetto, catalogo/CSV, metodo e artefatti, sette lezioni e approfondimento, indici e tracciabilità, ADR-054, scheda/inventario EKO, pending/roadmap/STACK, memoria e prove private. Controlli mirati privacy e allineamento già riusciti; rigenerazione e chiudi completi finali ancora da eseguire dopo l'ultima scrittura.
+
+Consolidamento finale: 196 riferimenti identificati, 28 schede curate e 338 usi; i 168 riferimenti storici automatici restano da riconciliare. Catalogo di 162 file, 77 pagine docs coperte, sette approfondimenti e sette lezioni. Dieci regressioni fonti verdi; 703 collegamenti locali su 23 documenti presenti. Corretti tre link di contesto che mantenevano erroneamente la base del documento di origine, dopo regressione rossa. Chiudi completo riuscito con quattordici verifiche locali, uscita 0 e Controlli verdi; dodici segnalazioni euristiche di stile rilette, distinte da difetti. Il controllo viene ripetuto dopo questo tracciamento e la ripresa privata, senza commit o impronta anticipata.
+
+## 2026-11-20 - Fonti, metodo delle lezioni e pulizia conservativa avviati
+
+**Template:** nessuna. Campo aggiunto retrospettivamente il 2026-11-20 all'adozione del registro; le eventuali lezioni del giro sono riconciliate nella voce di consolidamento corrente.
+
+L'utente richiede pedigree univoco di tutte le fonti, spiegazione degli usi, confronto del metodo lezioni fra progetti autorizzati, elenco dei documenti con path e riordino senza perdere storia tecnica. Confine aziendale esplicito: nessun dato, esempio o contenuto operativo importato nel progetto, neppure ignorato. Letti soltanto nomi e istruzioni di metodo per tale ambiente, nessuna cache o copia. Per i progetti personali letti regola di integrazione e struttura della mappa fonti/registro lezioni; nessun manoscritto o contenuto personale acquisito. Nuovo censimento meccanico delegato su questo solo repository, nessuna cancellazione.
+
+File toccati: piano fonti/lezioni/riordino, snapshot, current-work e questo registro. Controllo audio precedente concluso verde con le undici verifiche locali registrate; l'aggiunta non annulla sviluppo autonomo e LaTeX già completati. Registri/fonti del template individuati prima di costruire strumenti; non eseguito il rigeneratore storico che legge materiale esterno o privato.
+
+## 2026-11-20 - Guardia del collaudo e controlli propri in chiudi, MS-291
+
+**Template:** nessuna. Campo aggiunto retrospettivamente il 2026-11-20 all'adozione del registro; le eventuali lezioni del giro sono riconciliate nella voce di consolidamento corrente.
+
+Revisione finale del runner: aggiunto rifiuto esplicito di backend/percorso/formati/canali/rate e filtri fuori perimetro prima del processo. Prova rossa con profilo hardware alterato e binario inesistente, poi verde per backend e percorso estraneo; regressione versionata nei quattro test studio, tutti riusciti dopo ripetizione autorizzata per i temporanei. Dodici elaborazioni ancora riuscite, rapporto finale-v5 con hash del runner. PDF63 rigenerato, preview attuali con hash, modello invariato v5. Registrati controlli locali e cinque suite in controlli-progetto.txt per rendere effettiva la chiusura completa del progetto.
+
+File toccati: runner, test studio, controlli-progetto.txt, doc63 e TeX, rapporto profili nel vault, STACK, memoria e ripresa; prove e PDF privati. Nessun nuovo hardware, installazione o scrittura Git. Restano PA-041 e foto; controlli finali dopo l'ultima scrittura.
+
+## 2026-11-20 - Consegna delle due modalità e controlli riparati, MS-283/290
+
+**Template:** nessuna. Campo aggiunto retrospettivamente il 2026-11-20 all'adozione del registro; le eventuali lezioni del giro sono riconciliate nella voce di consolidamento corrente.
+
+Due relazioni LaTeX compilate e verificate: 62 sei pagine, 63 sette. Nuove tredici anteprime correnti con hash e limiti del testo, prova principale su formule e tabella driver. Base di sviluppo ADR-053 documentata, costo sommato e limiti acustici espliciti; autonomia obbligatoria ADR-051. Modello e dodici profili verificati a due rate e tre selezioni, negativo di sorgente errata rilevato. Ultima versione v5/finale-v4 corregge titolo/descrizione ereditati senza cambiare i filtri; risultati copiati nel vault e confrontati byte per byte. Indice 72/72 pagine, sei approfondimenti; 191 collegamenti locali su 17 documenti presenti.
+
+Controlli generali riparati: docstring corretta, quattro hook riconciliati dopo diff, due tabelle sane. Chiudi completo riuscito fuori sandbox con ultima riga Controlli verdi e uscita 0; test isolati e rapporti privati conservati, ripetizione finale dopo il tracciamento. Il precedente KO non dipendeva dagli avvisi delle stringhe Python, diagnosi ritirata nei microstep. Un solo subagente per conversione, nessun commit/push/installazione; i controlli d'apertura leggono anche presenza di percorsi esterni, senza nuovi trasferimenti, cancellazioni o backup. Hardware/clock/controller/taratura restano PA-041, foto ancora da ricevere.
+
+File toccati: documenti 54/55/61/62/63 e indice/README, LaTeX/generatore/header/README, piano e fonti/tracciabilità, nuovo vault e rapporti, dati driver, tre strumenti di modello/collaudo/prova, installatore (solo docstring), config/pi, quattro hook, due righe GRC del template locale, master e approfondimento 6, ADR/pending/roadmap/STACK e memoria; ripresa/messaggio, output e rapporti privati. Le due correzioni GRC sono da recepire a monte deliberatamente, senza scritture nel template esterno.
+
+## 2026-11-20 - Due modalità obbligatorie, componenti e LaTeX
+
+**Template:** nessuna. Campo aggiunto retrospettivamente il 2026-11-20 all'adozione del registro; le eventuali lezioni del giro sono riconciliate nella voce di consolidamento corrente.
+
+L'utente chiarisce che deve ascoltare CD/sorgenti esterne con PC spento, chiede sviluppo di componenti e profili, stime da foto, riparazione chiudi e relazioni LaTeX. ADR-051/052 registrano requisiti e formato leggibile. Docs/63 sviluppa interfaccia condivisa fra host, clock e ingressi, base SB16/SB26+A24 chiuso, alternativa SB15/B27, finali e budget ricalcolato, dodici profili elettrici e protocollo DAW. Tre prove fisiche e motore su file riusciti; nessuna prestazione hardware dichiarata. Un subagente per la sola conversione: due PDF LaTeX compilati, controlli e preview correnti in consolidamento.
+
+Diagnosi chiudi corretta: il KO era un accento mancante nella docstring, le stringhe erano avvisi. Correzione minima e due prove dell'installatore riuscite dopo ripetizione autorizzata per la cartella temporanea. Quattro hook aggiornati dai modelli già presenti dopo lettura dei diff; due righe tabellari corrette. Test sintetico dello scan senza stage/commit e sintassi Bash riusciti. File toccati: piano, docs/61/62/63/54/55/README/indice, config/pi, dati driver, tre strumenti di modello/collaudo/prova, strumenti dell'installatore (solo docstring), quattro hook, due skill GRC vendorizzate, TeX/generatore/header/README, vault del nuovo topic, decisioni, pending, roadmap, STACK e memoria. Nessun accesso SSH/J o nuova installazione; Git manuale.
+
+## 2026-11-20 - Ricerca crossover, manuale e mappa documentale, MS-279/281
+
+**Template:** nessuna. Campo aggiunto retrospettivamente il 2026-11-20 all'adozione del registro; le eventuali lezioni del giro sono riconciliate nella voce di consolidamento corrente.
+
+Su richiesta dell'utente completati manuale CamillaDSP specifico del setup, confronto ingegneristico PC/Pi/analogico e mappa di tutte le 69 pagine Markdown di docs/, più memoria, cinque approfondimenti e fonti. Linkwitz Lab fonte prioritaria, ADR-050; letture parziali per sezione, versioni e query nel vault dedicato. Nuovo modello numerico riproducibile su 8194 frequenze con verifiche LR4 analogico/digitale e controlli negativi reali di polarità e ritardo. Sono risultati del modello, non risposta acustica, consumi o latenza hardware. PC corrente confermato per proseguire, Pi aperto all'autonomia futura, profili effettivi ancora da costruire sui driver.
+
+Un subagente economico per il solo censimento meccanico; ricerca, calcoli e revisione in prima persona. App Craft verificate in locale, figure con design Intrawelt e mappa PDF esportata da WordCraft 0.18.1 dopo ripetizione autorizzata per accesso alla cartella temporanea. Nessuna installazione, SSH, operazione su J o scrittura Git. File toccati: docs/61, docs/62, docs/INDICE-RAGIONATO.md, README documentale, tracciabilità, fonti, vault del topic e scheda Linkwitz, quinto approfondimento e master, nuovo strumento numerico e STACK, configurazione di stampa, decisioni, snapshot, current-work, roadmap e questo registro; output grafici/CSV/PDF e rapporti nel build privato.
+
+Consegna verificata MS-282: nove documenti controllati, 164 collegamenti locali esistenti e copertura 69/69 pagine docs; figure e rapporto identici alla corsa v2. Otto verifiche mirate riuscite, ambiente 26/26 allineato. PDF cinque pagine, ispezione a campione e metadati senza identificativi, link consultabili dal sorgente Markdown. Roadmap rigenerata e letta; chiudi -SoloControlli si arresta con uscita 1 sugli accenti mancanti in stringhe di codice già note. Nessun commit, nessuna impronta di chiusura e nessuna proposta di chiudi verde. Rapporti _notes/studio-crossover-20261120-*.txt e JSON, vecchia ripresa preservata prima dell'aggiornamento di RESUME-PROMPT e COMMIT-MSG. Tre avvisi euristici di stile riletti; nessun cambiamento funzionale della macchina.
+
+## 2026-11-19 - Amplificatori posseduti e collaudo CAD su Ubuntu
+
+Prossimo passo operativo, 2026-11-19: installazione persistente DSP e successiva prova dopo riavvio. FreeCAD 1.1.4 preparato e collaudato su Ubuntu: pannello parametrico, FCStd riaperto, STEP e DXF reimportati, controllo negativo di scala e GUI con vista del modello e uscita 0. Inventario aggiunto per Marshall MG15, Fender Frontman 65R ed EKO per basso, ADR-048 e PA-038/039. Studio Fender assorbito con correzioni, copia integrale privata verificata e originale indicato rimosso. Backup esterno ruotato e CPU corretta restano verificati; persistenza dopo riavvio ancora da provare. Schermo differito, progetto dei monitor non congelato.
+
+Acquisizione iniziata il 18 e proseguita dopo l'interruzione accidentale. Il percorso Marshall ricevuto ometteva il simbolo della casa: identificata soltanto la cartella corrispondente e acquisito il PDF nominato. Prima estrazione priva di testo; PdfCraft 0.21.1 ha eseguito OCR su dieci pagine. Copertina e specifiche controllate visivamente, senza adottare dati di altre generazioni MG15. Fonte originale conservata sul disco.
+
+Esportazione Fender copiata integralmente e verificata per impronta, poi assorbita nella scheda con ritiro dei dettagli circuitali non provati, correzioni su LTI, fase minima, riverbero, accoppiamento elettromeccanico e DI. Letto il manuale ufficiale. Dopo il controllo della copia e dei temi, rimosso soltanto il file originale nominato dall'utente, come autorizzato. EKO registrato per sostituzione speaker; modello e dati non inventati.
+
+FreeCAD AppImage ufficiale scaricata in una nuova cartella utente e verificata due volte. Console collaudata su geometria e file effettivamente riaperti; il controllo STEP a scala doppia fallisce sul volume. Avvio iniziale senza display fallito, poi percorso console scoperto dal launcher. La prima macro GUI terminava male dopo una cattura positiva; chiusura separata del documento e della finestra e verifica del codice 0 correggono il controllo. Prima schermata mostrava Start: selezionata la sottofinestra e ispezionata la nuova schermata del pannello. Comando e menu creati solo su percorsi nuovi da modelli versionati, campione persistente nella cartella dei collaudi. Nessuna dipendenza Wine aggiornata.
+
+File scritti: inventario JSON, quattro schede strumenti, ADR-048, roadmap, PA-038/039, procedure e indici ambiente, due collaudi CAD e modelli di avvio, fonti, registro operativo, snapshot, contesto, work-log, prove e ripresa privati. Nessun subagent avviato. **Template:** nessuna.
+
+File toccati: `docs/80-strumenti-posseduti/`, `data/strumenti-posseduti.json`, `docs/70-realizzazione-e-verifica.md`, `docs/PENDING-ACTIONS.md`, `docs/OPERATIONS-LOG.md`, `docs/90-riferimenti/fonti.md`, `docs/10-ambiente/freecad-collaudo-native.md`, indici docs, `config/freecad/`, `tools/collauda-freecad.py`, `tools/collauda-freecad-gui.FCMacro`, `tools/roadmap-items.yml`, snapshot, decisioni e schede di contesto; fonti, prove, ripresa e messaggio di commit privati.
+
+## 2026-11-18 - Backup esterno ruotato e servizio CPU corretto
+
+Prossimo passo operativo, 2026-11-18: strumenti CAD e successiva prova dopo riavvio. Backup del 18 novembre copiato fuori macchina e verificato per entrambe le SHA-256; rimossi soltanto i tre vecchi file autorizzati su J:, con 76.47 GiB liberi finali. I tre punti Full restano su Ubuntu. Aggiornato dall'utente il solo cpupower-gui alla 1.0.0-6ubuntu0.26.04.3: unità config -a, servizio abilitato, Result=success ed uscita 0. La persistenza dopo riavvio resta da provare. Sviluppo dalla postazione e collaudi Linux via SSH, con motivazione e prove per ogni intervento.
+
+L'utente ha autorizzato i tre file esterni nominati uno per uno. Copiati archivio e descrittore nella cartella datata del supporto, confrontate entrambe le impronte con Ubuntu, poi rimossi esclusivamente i tre file confermati. Recuperati circa 33,38 GiB lordi; spazio libero finale circa 76,47 GiB. L'errore iniziale nel conteggio dell'array JSON ha interrotto prima di qualunque rimozione: rapporto reale riletto, conteggio corretto e nuove impronte calcolate prima della ripresa. Prova dell'interruzione preservata. Nessun punto del deposito Ubuntu eliminato.
+
+L'utente ha aggiornato il solo pacchetto CPU da PowerShell via SSH. La verifica remota rileva il servizio oneshot abilitato e terminato con successo; il journal mostra l'applicazione agli otto processori logici. La nuova policy non costituisce una misura delle prestazioni audio o del consumo. Resta la prova dopo riavvio. Comandi semplificati e spiegati; lo stato non chiede più all'utente di ripetere l'installazione. **Template:** nessuna.
+
+Verifiche finali: il deposito esterno contiene soltanto la cartella nuova con archivio, descrittore e rapporto; i tre vecchi file sono assenti. `check-pending-actions.py` riconosce la coppia corrente con dimensioni attese, distinguendo disponibilità e precedente verifica delle impronte. Aggiornate anche PA-011 e PA-017 per descrivere la sostituzione delle copie storiche. Roadmap rigenerata, blocco ambiente 20 su 20 allineato, allineamento documentale senza scadenze, `chiudi-sessione.ps1 -SoloControlli` verde. I rilievi generali del template già noti restano separatamente aperti. Nessun commit eseguito.
+
+File scritti: procedure del backup, del trasferimento e del lavoro remoto, `tools/check-pending-actions.py`, roadmap, PA-011/017/036, snapshot, current-work, schede roadmap e deployment, questo work-log, registro operativo, rapporti e ripresa privati.
+
+File toccati: `docs/10-ambiente/backup-ottimizzazione-2026-11.md`, `docs/10-ambiente/lavoro-remoto-e-tracciabilita.md`, `docs/OPERATIONS-LOG.md`, `docs/PENDING-ACTIONS.md`, `tools/check-pending-actions.py`, `tools/roadmap-items.yml`, snapshot e contesto; autorizzazione, rapporti, script di copia, ripresa e messaggio di commit privati.
+
+## 2026-11-18 - Percorso effettivo del backup e lavoro remoto tracciato
+
+L'utente chiede dove sia il nuovo backup, comandi eseguibili via SSH dalla postazione e che sviluppo e ottimizzazioni avvengano da qui con spiegazione del perché. Chiarito e verificato dal vivo il deposito locale `/home/veeam-repo`: archivio nuovo da 19909320704 byte, circa 18,54 GiB, più descrittore; nessuna copia esterna ancora eseguita. La prima interrogazione find con printf è fallita per virgolette spezzate nel passaggio Windows/SSH; l'elenco successivo con `find -ls` è riuscito. Il fallimento non prova l'assenza dell'archivio. Confermati servizio CPU fallito e pacchetto 1.0.0-6; comandi APT preparati, non eseguiti.
+
+Formalizzata la modalità di lavoro in `docs/10-ambiente/lavoro-remoto-e-tracciabilita.md`: sorgenti sul repository della postazione, collaudo Linux via SSH e per ogni intervento motivo, stato precedente, modifica, prova e ripristino. Nessun nuovo strumento generico o pacchetto installato: ricerca nel catalogo e uso del registro operativo già presente. Verificata la presenza locale delle app Craft; si mantengono i documenti Markdown e i formati canonici del repository. Nessuna cancellazione, copia del backup o modifica privilegiata remota eseguita in questo giro. **Template:** nessuna.
+
+Verifiche di fine giro: impronte sorgenti dell'archivio e del descrittore acquisite; sintassi del comando PowerShell di copia valida, trasferimento non eseguito; Markdown, comandi e tabella della procedura senza difetti; diff senza errori; blocco ambiente 20 su 20 allineato; `chiudi-sessione.ps1 -SoloControlli` verde. Cassetta letta, nessun messaggio. I rilievi generali del template già registrati restano aperti.
+
+File scritti: nuova procedura, indice ambiente, pagina backup, PA-036, current-work, snapshot, work-log, registro operativo e ripresa privata; comandi compilati e prove nel livello privato.
+
+File toccati: `docs/10-ambiente/lavoro-remoto-e-tracciabilita.md`, `docs/10-ambiente/backup-ottimizzazione-2026-11.md`, indici del blocco ambiente, `docs/OPERATIONS-LOG.md`, snapshot e contesto; rapporti e comandi compilati privati.
+
+## 2026-11-18 - Roadmap aggiornata, backup riletto e riferimenti storici riparati
+
+Prossimo passo operativo, 2026-11-18: correzione del servizio CPU e collaudo CAD. Il nuovo backup pieno è terminato Success alle 12:21:26 ed è stato riletto: cinque impronte SHA-256 coincidenti, due conteggi coincidenti, deposito escluso, due punti precedenti ancora presenti e sessione di montaggio chiusa. La copia del nuovo punto fuori macchina resta da fare. Veeam funziona senza sudo nella sessione attuale; la conservazione è tre e va rivalutata prima di un quarto punto. L'aggiornamento APT resta manuale con sudo. Le firme storiche delle schede sono state ricollegate con commit-map (MS-239), senza dichiarare una nuova verifica integrale.
+
+Verifiche finali: roadmap rigenerata in `_notes/ROADMAP-OPERATIVA.md`; `chiudi-sessione.ps1 -SoloControlli` verde, `Test-Allineamento.py` allineato, `verifica-schede.py` senza difetti (quattro schede storiche superate), diff senza errori di spaziatura e blocco ambiente 19 su 19 allineato con il gemello. Il controllo completo della roadmap conserva separatamente quattro copie di hook divergenti, due tabelle errate nei modelli GRC e due corrispondenze generiche del filtro privacy nella skill Craft: non sono dichiarati risolti dai controlli generici di chiudi. La cassetta della sessione è stata letta, nessun messaggio. L'utente deve eseguire con sudo l'aggiornamento degli indici e la nuova simulazione del solo pacchetto CPU; acquisto dello schermo differito.
+
+File toccati: `tools/roadmap-items.yml`, nuova pagina del blocco ambiente sul backup, `docs/OPERATIONS-LOG.md` con MS-238 e MS-239, `docs/PENDING-ACTIONS.md`, le quattro schede di contesto per i riferimenti storici, `.claude/memory/index.md`, questo registro e ripresa privata. Per i riferimenti e stata usata la mappa della riscrittura presente in git, con verifica meccanica della discendenza; nessun contenuto copiato da un'altra branch. Backup concluso e riletto con conservazione tre, nessuna pianificazione nuova e vecchi punti preservati. Nessun subagent avviato. **Template:** nessuna.
+
+
+## 2026-11-18 - DSP offline collaudato anche sulla macchina Ubuntu
+
+Verifiche di fine giro: collaudi del segnale riusciti su Windows e Ubuntu; guardia dei due backend hardware verificata prima dell'avvio del motore; nessun recapito del contatto nei file pubblici modificati; blocco ambiente condiviso 18 su 18 allineato. `chiudi -SoloControlli` eseguito senza sandbox termina con il solo KO delle quattro firme storiche non risolvibili; gli altri controlli della sequenza sono verdi. Nel sandbox l'autotest documentale era fallito sui permessi della propria cartella temporanea prima della prova: fuori sandbox è riuscito. Le firme non sono state spostate senza rilettura integrale. Nessun commit eseguito.
+
+Stato al 2026-11-18, MS-237: schermo differito, preparazione Ubuntu e collaudo DSP in corso. CamillaDSP 4.1.3 ha superato su file le prove di quattro vie, filtri LR4, volume, mute e due mutazioni sia su Windows sia sulla macchina Ubuntu, in una cartella temporanea nuova. Nessuna periferica audio aperta, servizio installato o configurazione esistente modificata. Dettaglio in `docs/56-collaudo-dsp-offline.md`; non è una verifica acustica o di latenza. Il prossimo passo sulla macchina è un backup attuale riletto, poi il singolo aggiornamento CPU manuale e il collaudo del CAD. Il supporto a progetto e falegname è già disponibile per dichiarazione dell'utente, PA-037; recapiti soltanto privati.
+
+Versione verificata dal binario Linux: 4.1.3, commit 05e9cfc. Archivi Windows e Linux scaricati dai rilasci ufficiali e verificati per SHA-256. Provata prima l'assenza della configurazione, che produce errore; scritta poi la configurazione su file e verificato il segnale effettivamente elaborato. La prima corsa attenuata ha rifiutato il parametro CLI negativo separato; corretto il passaggio come singolo argomento --gain=-6 e ripetuta la prova. Su entrambi i sistemi sono riusciti normale, volume e mute; le due mutazioni falliscono per misura del segnale. I tre punti di somma sono 100, 2000 e 8000 Hz; coincidenza fra rapporti a cinque decimali, non confronto binario dei PCM. Non dedurre da questo latenza o affidabilità dell'interfaccia.
+
+Ricognizione SSH confermata oggi: servizio CPU ancora fallito, candidato correttivo disponibile, backup visibili del 17 e 21 settembre; nessun privilegio non interattivo disponibile. FreeCAD non trovato nei percorsi controllati o come candidato APT locale; rilascio ufficiale 1.1.4 individuato, senza installazione. L'operazione successiva privilegiata resta manuale e preceduta da un nuovo backup riletto.
+
+File toccati: `tools/collauda-camilladsp.py`, `config/camilladsp/offline-lr4.json`, `docs/56-collaudo-dsp-offline.md`, nuova pagina del blocco ambiente, `docs/10-ambiente/README.md`, `docs/10-ambiente/verifica-prima-del-trasferimento.md`, `docs/55-proposta-sistema-home-recording.md`, `docs/README.md`, `docs/90-riferimenti/fonti.md`, `docs/OPERATIONS-LOG.md`, `docs/PENDING-ACTIONS.md`, `tools/roadmap-items.yml`, snapshot, STACK, current-work, roadmap e questo work-log; archivi, rapporti, ripresa e messaggio di commit privati. Nessun subagent avviato. **Template:** nessuna.
+
+
+## 2026-11-18 - Supporto artigiano disponibile, schermo differito
+
+Supporto alla realizzazione disponibile, dichiarato dall'utente il 2026-11-18: un contatto lo aiuterà con il progetto dei monitor due vie e con un falegname dopo il completamento teorico. Recapiti e prova visiva soltanto nel livello privato. Lo schermo non è urgente: il lavoro attivo torna alla preparazione di Ubuntu Studio.
+
+Letta la sola fotografia nominata dall'utente e conservata nel livello privato con una nota locale. L'immagine contiene due recapiti differenti, registrati distintamente nel privato senza sceglierne uno per supposizione. Nessun dato identificante copiato nei file pubblici e nessuna comunicazione inviata. La disponibilità di aiuto sul progetto e sul falegname viene dalla dichiarazione dell'utente, non è dedotta dall'insegna.
+
+File toccati: `docs/70-realizzazione-e-verifica.md`, `docs/PENDING-ACTIONS.md`, `.claude/context/current-work.md`, `.claude/memory/index.md`, questo registro, `docs/OPERATIONS-LOG.md`, ripresa e messaggio di commit privati; nota e prova del contatto sotto `_notes/`. Nessun subagent avviato. **Template:** nessuna.
+
+
+## 2026-11-17 - Schermo essenziale da acquistare, QHD opzionale
+
+Schermo da acquistare, MS-235: l'utente richiede il minimo sufficiente, con costo, energia e comodità prioritari e nessun gaming. Full HD proposto come minimo; confrontare 23,8-24 Full HD e 27 Full HD. QHD rimane opzionale, non un vincolo. Preparata richiesta di preventivo per il fornitore; prezzi e disponibilità Esprinet non verificati.
+
+File toccati: `docs/55-proposta-sistema-home-recording.md`, `data/postazione-st120.json`, `docs/OPERATIONS-LOG.md`, `docs/PENDING-ACTIONS.md`, `docs/90-riferimenti/fonti.md`, `tools/roadmap-items.yml`, `.claude/context/current-work.md`, `.claude/memory/index.md`, questo registro, ripresa e messaggio di commit privati. Calcolate densità di pixel e limiti di ingombro; fonti ufficiali e EPREL per gli esempi, nessun ordine o contatto esterno. Nessun subagent avviato. **Template:** nessuna.
+
+## 2026-11-17 - Quote pubbliche del tavolo prima delle richieste all'utente
+
+Commit di riferimento `0fc4e99`. L'utente corregge la richiesta delle quote ST-120: manuale pubblico e immagine ufficiale consentono di identificare pezzo 2, 118 × 30 cm e quota superiore 93 cm. Recuperati PDF e prova visiva nel livello privato; creata la base dati `data/postazione-st120.json`. La base esplorativa 23 × 30 cm non entra completamente in profondità se ruotata di 30°: calcolati ingombri 34,92 × 37,48 cm. Nessun CAD o diffusore validato; restano da acquisire schermo, seduta e stanza. MS-234 conserva errore e correzione senza riscrivere MS-233.
+
+File toccati: `docs/55-proposta-sistema-home-recording.md`, `data/postazione-st120.json`, `docs/OPERATIONS-LOG.md`, `docs/PENDING-ACTIONS.md`, `docs/90-riferimenti/fonti.md`, `tools/roadmap-items.yml`, `.claude/context/current-work.md`, `.claude/context/roadmap.md`, `.claude/memory/index.md`, questo registro, ripresa e messaggio di commit privati. Nessun file nel blocco ambiente condiviso modificato in questo giro. Nessun subagent avviato. **Template:** nessuna.
+
+
+## 2026-11-17 - Ripresa, sistema condiviso e ricognizione Ubuntu
+
+Aggiornamento dello stesso giro: l'utente chiede di rivedere tutto prima dell'approvazione e precisa che le casse saranno sul ripiano superiore dello ST-120. Prima si misurano larghezza, profondità e altezza del ripiano, ingombro dello schermo e altezza delle orecchie; poi si colloca la postazione nella stanza. Cabinet, driver e spesa restano esplorativi. Nessun progetto costruttivo da congelare prima di questi dati.
+
+File toccati: `docs/55-proposta-sistema-home-recording.md`, blocco `docs/10-ambiente/`, `docs/OPERATIONS-LOG.md`, `docs/PENDING-ACTIONS.md`, `docs/README.md`, `docs/90-riferimenti/fonti.md`, `tools/roadmap-items.yml`, `.claude/memory/index.md`, questo registro e le tre schede `STACK.md`, `current-work.md`, `roadmap.md`; ripresa e messaggio di commit privati.
+
+Commit di apertura: `0fc4e99`, ramo `main`, unico worktree e albero pulito. Verifica ripresa divergente per storia precedente e quattro firme non risolvibili; wrapper Codex allineati, fonti a monte nessuna da guardare, sicurezza non verificata per rapporto assente. Allineamento segnala firme e otto strumenti non citati in STACK; non risolti mediante firme fittizie. Nessun subagent avviato. **Template:** nessuna.
+
+Preparata `docs/55-proposta-sistema-home-recording.md` con proposta di requisiti, opzioni per un'unica coppia mix/ascolto o due sistemi, inviluppo MDF e distinta preliminare, candidati driver, prezzi osservati e accantonamenti. ST-120 acquistato e montato, dichiarato dall'utente. Risposta dell'utente: delegare la proposta per home recording e valutare se gli stessi monitor possano svolgere entrambi i ruoli. Il requisito degli otto ingressi nel gemello rende incoerente la sola UMC404HD per la catena completa: proposta UMC1820 a 175 €, non decisione già approvata. Prezzi e disponibilità fotografati al giorno della ricerca; tweeter ed EMM-6 esauriti. Nessun acquisto né modello CAD esecutivo.
+
+Verificata la relazione fra i repository su richiesta dell'utente: `tools/sync-ambiente.py` propaga unidirezionalmente il blocco `docs/10-ambiente/` da qui al gemello, che conserva storia Git autonoma. Aggiunta al blocco la ricognizione prescrittiva `verifica-prima-del-trasferimento.md`. SSH funziona con destinazione nuova; valori reali solo privati. Osservati i7-6700, 16 GB, Blender 5.0.1, PipeWire a 48 kHz/1024 e servizio CPU fallito. Causa osservata nel comando del servizio e nel journal; correzione ufficiale disponibile, simulazione APT del solo pacchetto riuscita senza altri cambiamenti. FreeCAD non installato nel database APT e senza candidato negli indici locali; la ricerca nel PATH non esclude copie portabili. Nessuna installazione o modifica remota, prove finali ancora da fare. La cattura privata dello script completo è parziale e dichiarata tale.
+
+Aggiornati snapshot, current-work, roadmap, STACK, pendenze, fonti e roadmap operativa. Il prossimo passo è rivedere la proposta prima di congelare driver e tagli; software pronto al trasloco e prototipi validati sono due traguardi distinti.
+
+
 > Append-only, in ordine cronologico inverso: la voce più recente in alto. Ogni passo significativo lascia una voce con data, file toccati, motivo e commit di riferimento. Il dettaglio tecnico degli interventi, con l'esito verificato di ciascuno, sta in `docs/OPERATIONS-LOG.md`; qui sta il meta-stato.
 
 ## 2026-10-26 - SoundCraft per Ubuntu Studio, voce aperta da un'altra sessione
@@ -963,3 +1200,83 @@ Riconciliazione del documento sorgente: `full_electroacoustics.docx`, 507 paragr
 ## Precedente al 2026-09-04
 
 Il progetto esisteva come impalcatura standard con `CLAUDE.md`, `README.md` e il sistema `.claude/` istanziato, senza documentazione tecnica propria. Il remoto GitHub era già collegato tramite l'alias SSH personale e il repository era in pari. Il materiale di progetto viveva alla radice come file di testo e un documento `.docx`, tutto ignorato da git.
+
+## 2026-11-19 - DSP persistente e ripristino del bus, MS-246/250
+
+Variante PipeWire 4.1.3 verificata e collaudata su file, unità utente abilitata in attesa, mute true e -60 dB senza configurazione. Individuato errore precedente di quoting che aveva avviato un secondo WirePlumber: processi diagnostici rimossi con guardie; i timeout persistono fino al riavvio del solo servizio WirePlumber, dopo snapshot dello stato e verifica dei nodi chiusi. Dump e pactl ora rispondono; causa interna dello stallo non dimostrata. Primo laboratorio crea nodi isolati ma client scade in Starting: corretto contratto con sette prove e controllo della configurazione letta, ancora da provare sul servizio. Individuata anche mancata propagazione dei codici attraverso tee; usare pipefail. Stato finale attuale DSP nuovamente inattivo e silenziato. Nessuna sovrascrittura di dati personali o configurazioni precedenti.
+
+File toccati: `docs/57-dsp-persistente.md`, `docs/58-piano-dsp-persistente.md`, `tools/monitor_dsp.py`, `tools/test_monitor_dsp.py`, `config/camilladsp/`, `config/systemd/user/diy-monitor-dsp.service`, `docs/OPERATIONS-LOG.md`, STACK, snapshot, current-work e questo registro; script, rapporti e ripresa privati.
+
+## 2026-11-19 - Banco DSP e installazione corrente verificati, MS-251/256
+
+Client corretto provato, banco virtuale normale/volume/mute e mutazione reale dei lati riusciti. Rampa iniziale e zero a regime separati; uscita 1 del registratore delimitata con riscontro del sorgente e cinque casi negativi. Comando corrente diy-monitor-dsp e release 1.0.0 creati su percorsi nuovi; primo prototipo preservato. Guasto SIGKILL del solo motore porta a ripartenza automatica in attesa silenziata senza configurazione. Default, nodi hardware e quantum preservati. Installatore provato nella home isolata, reinstallazione rifiutata e sette file operativi verificati. Prove persistenti nella home e copiate in privato. Revisione finale separata in corso; prossimo fronte ingombri/CAD, riavvio sistema ancora da provare. Procedura pubblica nuova nel blocco ambiente da propagare dopo verifica.
+
+File toccati: `tools/dsp_pipewire.py`, `tools/collauda-dsp-pipewire.py`, `tools/test_dsp_pipewire.py`, `tools/installa-dsp-utente.py`, `tools/test_installa_dsp.py`, `config/camilladsp/monitor-dsp.sh`, `docs/10-ambiente/camilladsp-servizio-utente.md`, indici docs, verifica trasferimento, fonti, `docs/58-piano-dsp-persistente.md`, `docs/OPERATIONS-LOG.md`, `tools/roadmap-items.yml`, snapshot, decisioni e contesto; prove, comandi e ripresa privati.
+
+## 2026-11-19 - Revisione DSP e nuova prova reale, MS-257
+
+Tre rilievi della revisione riprodotti con prove rosse e corretti: rifiuto di pipeline occupata senza Stop, durata esatta anche con codice0, mutazione accettata solo per RoutingMismatch. Undici prove banco e sette client verdi; delta riletto dal revisore senza residui. Copia nuova pipewire-bench-1.0.1 collaudata realmente su tutti i casi e mutazione; servizio riportato Inactive/mute/-60/null. Installatore verifica otto file correnti. Applicata documentazione didattica, voce4 e approfondimento sul legame fra prova e proprietà della pipeline. Il prossimo passo è il consolidamento dei controlli documentali e gli ingombri CAD.
+
+File toccati: `tools/dsp_pipewire.py`, `tools/collauda-dsp-pipewire.py`, `tools/test_dsp_pipewire.py`, `tools/installa-dsp-utente.py`, runbook DSP, piano58, registro operativo, STACK, `studio-didattico-master.md`, `refactor-04-dsp-prove-e-proprieta.md` e questo registro; nuova prova reale e ripresa private.
+
+## 2026-11-19 - Controlli DSP e modelli esplorativi del ripiano, MS-258/261
+
+Controlli documentali mirati verdi dopo conservazione delle fonti originali, stato PA-038 esplicito ed elenchi dei file. Persistono rilievi generali di modello e accenti del controllo di chiusura, senza dichiarazione di via libera generale. Tre scatole parametrizzate confrontate: 8,737, 11,164 e 13,516 L lordi, schermi massimi 55,2-63,1 cm con margini ipotizzati. Sei test geometrici verdi; tre modelli FreeCAD e STEP collaudati, posizione alterata rilevata. Corretto il criterio di contatto per solidi tangenti dopo diagnostica; DXF CADCraft verificati anche con scala errata rifiutata. Corrette etichette e risoluzione del font dopo ispezione delle immagini. In corso viste 3D e pianta, pagina di confronto, revisione e consolidamento. Nessun driver, volume netto o ordine costruttivo approvato.
+
+File toccati: `docs/59-studio-ingombri-cabinet.md`, `docs/piani/2026-11-19-cabinet-parametrici.md`, `config/cabinet/studio-st120.json`, `tools/studia_ingombri.py`, `tools/test_studia_ingombri.py`, `tools/genera-cabinet-freecad.py`, `tools/cabinet-cadcraft.py`, `tools/cabinet-vista.FCMacro`, `docs/OPERATIONS-LOG.md`, STACK e questo registro; fonti, eccezioni privacy, prove e immagini private, output in build. Gli originali esterni restano preservati.
+
+## 2026-11-19 - Kit portatile verificato e ripresa per quota, MS-262/264
+
+Viste finali verificate, indice locale HTML ispezionato, kit ZIP da 1138018 byte con 82 impronte verificato ed estratto in una cartella nuova della home Ubuntu. Tre nativi con vista riaperti, dodici pannelli e volumi corretti. Verifica incrociata fra FreeCAD e CADCraft e mille casi dei vertici trasformati; seconda revisione CAD bloccata dalla quota e sostituita da verifica dichiarata in prima persona. Stato CPU riuscito, DSP inattivo/silenziato; riavvio richiede autenticazione e non è eseguito. Sessione usageLimited, nessun lavoro nuovo avviato oltre il salvataggio dello stato. Controlli generali con rilievi già registrati; Git e chiudi restano manuali. Progetto esecutivo e ricerca driver ancora aperti.
+
+File toccati: pagina59, piano CAD, `tools/rendi-studio-cabinet.py`, macro vista, `docs/OPERATIONS-LOG.md`, snapshot, current-work, roadmap e questo registro; sorgenti e modelli nel kit, prove, ripresa e messaggio di commit privati. Nessuna cancellazione esterna o nuovo backup con rotazione.
+
+## 2026-11-19 - Riavvio verificato e servizio MIDI da correggere, MS-266/269
+
+L'utente ha eseguito il riavvio interattivo richiesto. Nuovo boot alle 14:21:33 CET, otto policy CPU corrette e servizio riuscito; 82 impronte del kit coincidenti, tre modelli FreeCAD e GUI A24 riaperti. Intero banco DSP ripetuto e riuscito, compreso lo scambio reale dei canali; nessun nodo residuo e motore riportato Inactive, mute true, -60 dB, configurazione null. La disponibilità è verificata dopo accesso utente, con Linger=no. Prove e immagini conservate in una nuova cartella Ubuntu e scaricate nel livello privato. Non richiedere un altro riavvio per ripetere la stessa verifica.
+
+La lettura delle unità fallite rileva FluidSynth: 218/CAPABILITIES nei processi ausiliari, programma principale mai avviato. Letti unità, journal e versione senza modificare protezioni o impostazioni; la causa precisa resta da dimostrare. Aperta PA-040 con riproduzione isolata e prova funzionale MIDI come prossima attività. Nessun backup avviato: conservazione dei tre Full da rivedere prima del punto finale. Il goal esteso resta usageLimited e il progetto complessivo aperto; questo giro conclude la verifica richiesta dopo il riavvio. Nessun agente parallelo avviato e nessuna operazione Git di scrittura.
+
+File toccati: `docs/10-ambiente/collaudo-dopo-riavvio-2026-11.md`, README ambiente, runbook CamillaDSP e FreeCAD, `verifica-prima-del-trasferimento.md`, `docs/OPERATIONS-LOG.md`, `docs/PENDING-ACTIONS.md`, `tools/roadmap-items.yml`, `.claude/memory/index.md`, `.claude/context/current-work.md`, `.claude/context/roadmap.md` e questo registro; script, log, acquisizioni, copia dell'output utente, file di ripresa e messaggio proposto nel livello privato. La voce 28 della roadmap è rimossa perché la sua verifica dopo riavvio è conclusa; l'errore MIDI ha una nuova voce distinta.
+
+Consolidamento MS-269: cinque pagine ambiente propagate, 23 allineate al gemello; 70 impronte della copia locale delle prove coincidenti. Otto verifiche documentali mirate riuscite dopo normalizzazione di un precedente report privato. Roadmap rigenerata e riletta, con i rilievi generali ancora dichiarati. Non proporre chiudi finché il suo controllo generale non termina verde.
+
+## 2026-11-19 - Ripresa dello sviluppo e causa MIDI isolata, MS-270/271
+
+L'utente autorizza a continuare. Ripresa coerente, template avanti di quattro commit senza allineamento automatico, rapporto sicurezza assente dichiarato. Diagnosi con undici casi transitori: errore 218 riprodotto da ciascuna delle opzioni ProtectKernelModules e ProtectKernelLogs con PrivateUsers; gruppo originale senza entrambe riuscito. Journal kernel con rifiuto setpcap nel profilo unprivileged_userns. Nessuna modifica persistente alla macchina; restano istanza MIDI funzionale, correzione locale e nuova sessione. Nessun subagente avviato.
+
+File toccati: `docs/10-ambiente/fluidsynth-diagnosi-e-collaudo.md`, `docs/OPERATIONS-LOG.md`, `.claude/context/current-work.md` e questo registro; script e acquisizioni diagnostiche nel livello privato. Prima sonda corretta da systemd --version a systemctl --version dopo errore PATH conservato.
+
+## 2026-11-19 - MIDI corretto e backup finale avviato, MS-272/274
+
+MIDI su istanza isolata produce segnale e controllo silenzioso; primo banco fallito su baseline provvisoria auto_null, corretto con attesa osservata prima del laboratorio. Nuovo drop-in esclusivo con due sole opzioni incompatibili disattivate; unità distribuita identica, policy globale a 1, avvio anche con nuovo manager alle 17:36:55. Zero unità fallite, PA-040 compiuta. Avvisi UTS e GLib dichiarati, nessun hardware o carico DAW qualificato. Prove persistenti e copia locale, 91 impronte coincidenti.
+
+Ricognizione backup e spazio: nuovo Full avviato alle 17:41:11 dopo aumento e rilettura della conservazione da tre a quattro per non eliminare punti precedenti. Attendere Success e rilettura; poi copia in nuova cartella J, lasciando quella del 18 novembre fino alla verifica e autorizzazione dei suoi due file. Nessuna cancellazione esterna eseguita, nessun subagente o scrittura Git.
+
+File toccati: runbook FluidSynth, README ambiente, collaudo dopo riavvio, verifica trasferimento, `config/systemd/fluidsynth.service.d/20-userns-compat.conf`, `docs/PENDING-ACTIONS.md`, `docs/OPERATIONS-LOG.md`, `tools/roadmap-items.yml`, snapshot, current-work, roadmap e questo registro; prove, script e dati compilati privati. La voce 38 MIDI è rimossa dalla roadmap dopo verifica del completamento.
+
+## 2026-11-19 - Backup finale riletto e copia esterna in corso, MS-275
+
+Full terminato Success alle 17:49:25, quattro punti non corrotti e tre precedenti conservati. Rilettura di otto file pertinenti e delle 82 voci del kit CAD riuscita; percorsi del mount controllati per non seguire link verso i dati vivi, deposito escluso, sessione di mount chiusa. Archivio 20995842048 byte e descrittore 35790 byte, hash a flusso. Trasferimento in nuova cartella J avviato, verifica e autorizzazione dei due file esterni precedenti ancora da concludere. Nessuna cancellazione o sovrascrittura della copia del 18.
+
+File toccati: nuovo runbook `docs/10-ambiente/backup-finale-setup-2026-11.md`, README ambiente, registro operativo, current-work e questo registro; script di copia e controlli, rapporti delle due letture, ripresa privata. Blocco ambiente di 25 pagine sincronizzato; undici controlli documentali riusciti su tredici, residui i quattro hook e le due tabelle di template già noti. Nessun subagente avviato, nessuna operazione Git di scrittura.
+
+## 2026-11-19 - Copia J verificata e pulizia rinviata per scollegamento, MS-276
+
+Copia del nuovo VBK e VBM conclusa alle 17:59:32, dimensioni e SHA-256 coincidenti, ricevuta locale e sul disco. Dopo la domanda sui due file esatti del 18 novembre, l'utente risponde sì ma deve staccare J subito: nessuna cancellazione, nessun nuovo accesso al supporto e pulizia rinviata. Espulsione sicura demandata a Windows, non dichiarata eseguita dall'agente. Nessun trasferimento dell'agente rimane attivo; questo non prova l'assenza di altri programmi che tengano file aperti. Quattro punti locali preservati; continuare solo su Ubuntu e repository.
+
+File toccati: `docs/10-ambiente/backup-finale-setup-2026-11.md`, `docs/OPERATIONS-LOG.md`, `docs/PENDING-ACTIONS.md`, `tools/roadmap-items.yml`, `.claude/memory/index.md`, `.claude/context/current-work.md`, `.claude/context/roadmap.md` e questo registro; ricevute, script preparato di sostituzione non eseguito, ripresa e messaggio proposto privati. Nessun subagente e nessuna scrittura Git. I controlli generali di chiusura restano distinti dal collaudo MIDI e backup, entrambi riusciti.
+
+Controlli finali sul solo repository e gemello: otto verifiche mirate riuscite, 25 pagine ambiente allineate, diff pulito; roadmap ricalcolata e riletta in roadmap-midi-finale-20261119.txt privato. Non è stato riaperto J dopo la richiesta di scollegamento. Restano i rilievi generali sui quattro hook e sulle due tabelle, con la precedente segnalazione degli accenti nel controllo di chiusura: chiudi non viene dichiarato verde. Ripresa precedente copiata prima della riscrittura finale, messaggio proposto aggiornato, nessuna impronta di chiusura registrata.
+
+## 2026-11-20 - Ricollegamento, pulizia autorizzata e uso CamillaDSP, MS-277/278
+
+**Template:** nessuna. Campo aggiunto retrospettivamente il 2026-11-20 all'adozione del registro; le eventuali lezioni del giro sono riconciliate nella voce di consolidamento corrente.
+
+Ripresa coerente, stesso HEAD e lavoro precedente conservato; template avanti di cinque commit, nessun allineamento generale. Dopo il ricollegamento richiesto dall'utente completata la sostituzione già autorizzata dei due file esterni del 18 novembre. Script esaminato, nuovo backup ricontrollato per dimensioni e SHA-256 prima della rimozione; vecchi nomi assenti e ricevuta precedente presente. Recuperati 19909348066 byte, spazio libero finale 84938194944 byte. Nessun altro file rimosso e nessun nuovo backup avviato.
+
+CamillaDSP risponde via SSH con versione4.1.3, Inactive, mute true, -60dB. Spiegata la funzione nella coppia attiva a due vie, quattro canali complessivi; nuovo documento pratico distingue software, interfaccia, amplificazione, profili e latenza di registrazione. Fonti ufficiali4.1.3 rilette per motore e backend; nessuna GUI installata o profilo finale caricato. Nessun subagente avviato, nessun add/commit/push.
+
+File toccati: `docs/10-ambiente/camilladsp-uso-quotidiano.md`, README ambiente, runbook backup finale, `docs/57-dsp-persistente.md`, `docs/PENDING-ACTIONS.md`, `docs/OPERATIONS-LOG.md`, `tools/roadmap-items.yml`, snapshot, current-work, roadmap e questo registro; rapporto di pulizia, lettura DSP, ripresa e messaggio proposto privati. La guida e il chiarimento terminologico descrivono lo stato attuale e il progetto, non una nuova funzione implementata.
+
+Consolidamento: 26 pagine ambiente allineate al gemello; Markdown, comandi, EOL, memoria, affermazioni, privacy e diff verificati senza errori pertinenti. Roadmap rigenerata e riletta dal rapporto privato roadmap-stato-20261120.txt: tre geometrie esplorative, poi dati stanza/target, driver e CAD esecutivo. Restano i quattro hook e le due tabelle già segnalati; nessuna proposta di chiudi tutto verde. File di ripresa precedente conservato prima dell'aggiornamento e messaggio proposto pronto, senza registrazione dell'impronta di chiusura.

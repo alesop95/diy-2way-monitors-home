@@ -1,0 +1,834 @@
+{
+  "schema": "anagrafiche-web-audio-1",
+  "regola": "Dati autorati: una identità per fonte/versione, alias espliciti, lettura distinta dalla verifica. I riferimenti storici non ancora riconciliati restano tali.",
+  "fonti": [
+    {
+      "id": "SRC-EKO-XL-XB-USER-PDF",
+      "url": null,
+      "aliases": [],
+      "titolo": "XL, XB-Series Amplifications Operating Instructions",
+      "ente": "EKO; copyright 2001 Philipson Research Co., Ltd.; copia fornita dall'utente",
+      "tipo": "manuale_locale_fornito",
+      "versione": "scansione acquisita il 2026-11-20, undici pagine PDF",
+      "sha256": "deb488a55acd73426ec69a89eb802312ed4ad6640dfc3831e4fdda01dd7e5a21",
+      "spiegazione": "Documenta la famiglia XB e associa la versione basso da 30 W a XB30, speaker 10 pollici 8 ohm e controlli. Serve a preparare diagnosi e compatibilità del ricambio; non prova la revisione o il guasto dell'esemplare.",
+      "usi_progettuali": "AMP-003, PA-039, scheda EKO, diagnosi prima dell'acquisto e futura integrazione Line Out/microfono.",
+      "usi_dichiarati": [
+        {
+          "file": "docs/80-strumenti-posseduti/eko-basso.md",
+          "riga": 1,
+          "sezione": "EKO basso, versione da 30 W"
+        },
+        {
+          "file": "data/strumenti-posseduti.json",
+          "riga": 1,
+          "sezione": "AMP-003"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "SHA-256 originale/copia coincidenti. Valori della tabella controllati sull'immagine; modello fisico ancora da riscontrare."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "OCR di tutte le undici pagine letto; immagini di copertina, comandi XB30/XB50 e specifiche controllate, pagine PDF 1/10/11. OCR della tabella ruotata inaffidabile; numeri letti sull'immagine. Manuale d'uso, non schema."
+      }
+    },
+    {
+      "id": "SRC-LINKWITZ-ACTIVE-FILTERS",
+      "prioritaria": true,
+      "url": "https://www.linkwitzlab.com/filters.htm",
+      "aliases": [],
+      "titolo": "Active Filters",
+      "ente": "Siegfried Linkwitz, Linkwitz Lab",
+      "tipo": "fonte_tecnica_primaria",
+      "versione": "pagina consultata il 2026-11-20, data editoriale non univoca",
+      "spiegazione": "Collega circuiti a livello di linea, filtri LR e risposta dei driver; impedisce di identificare filtro elettrico e diffusore reale. Priorità esplicita dell'utente, ADR-050.",
+      "usi_progettuali": "Fase 4a, confronto analogico/digitale, somma complessa e fase; fasi 4b/8 per limiti e misure dei trasduttori.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Pagina primaria aperta e contenuti pertinenti letti, senza promozione dell'intero sito."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Introduzione e sezioni 2-4; testo della quarta letto, circuiti nelle immagini non analizzati componente per componente. Sezioni successive da studiare. Lettura aggiuntiva della sezione 9, trasformazione del passa alto del sistema chiuso, per lo studio di fattibilità."
+      }
+    },
+    {
+      "id": "SRC-OPENCV-HOMOGRAPHY-4-13",
+      "prioritaria": true,
+      "url": "https://docs.opencv.org/4.13.0/d9/dab/tutorial_homography.html",
+      "aliases": [
+        "https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html"
+      ],
+      "titolo": "Basic concepts of the homography explained with code",
+      "ente": "OpenCV",
+      "tipo": "documentazione_primaria",
+      "versione": "4.13.0; alias 4.x risolto a questa versione nella lettura del 2026-11-20",
+      "spiegazione": "Spiega rettifica prospettica e vincolo di coplanarità. Serve a stimare il ripiano noto da foto e a dichiarare perché orecchie e pareti fuori piano non sono determinate dalla sola omografia.",
+      "usi_progettuali": "Rilievo geometrico, modello della postazione e collocazione; doc63 e protocollo della futura foto.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Documentazione ufficiale aperta; versione del rinvio registrata."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Teoria iniziale, omografia 3x3, punti coplanari e rettifica; libri e tutte le dimostrazioni collegate non letti."
+      }
+    },
+    {
+      "id": "SRC-CAMILLADSP-README-4-1-3",
+      "url": "https://github.com/HEnquist/camilladsp/blob/v4.1.3/README.md",
+      "aliases": [
+        "https://raw.githubusercontent.com/HEnquist/camilladsp/v4.1.3/README.md"
+      ],
+      "titolo": "CamillaDSP README",
+      "ente": "Henrik Enquist e contributori CamillaDSP",
+      "tipo": "documentazione_software",
+      "versione": "v4.1.3",
+      "spiegazione": "Definisce dispositivi, mixer, pipeline, filtri, rate e controllo Main. È il contratto del motore usato nei due host e nelle prove, distinto dalle prestazioni degli altoparlanti.",
+      "usi_progettuali": "Setup DSP, client, profili, Main implicito, Lowshelf e collaudo su file; docs56-63 e strumenti relativi.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Tag fissato e passi confrontati col parser/motore 4.1.3; copia tecnica privata già conservata."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "CLI, backends, rate, mixer, filtri IIR, delay, Main/Aux e Lowshelf; nessuna prova di tutti i backend. Lettura aggiuntiva IIR/LinkwitzTransform: quattro parametri e verifica nel motore su file."
+      }
+    },
+    {
+      "id": "SRC-CAMILLADSP-PIPEWIRE-4-1-3",
+      "url": "https://github.com/HEnquist/camilladsp/blob/v4.1.3/backend_pipewire.md",
+      "aliases": [],
+      "titolo": "CamillaDSP PipeWire backend",
+      "ente": "Progetto CamillaDSP",
+      "tipo": "documentazione_software",
+      "versione": "v4.1.3",
+      "spiegazione": "Specifica nodi, gruppi e autoconnect del backend del banco PC. Motiva i link espliciti e la distinzione fra configurazione accettata e primi campioni elaborati.",
+      "usi_progettuali": "Fase 4a, servizio e banco persistente; docs57/58/61, tools/dsp_pipewire.py e controlli del grafo.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Documento fissato alla versione e riscontri del banco conservati."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Configurazione capture/playback, node_name, node_group e autoconnect; non validazione di jack fisici."
+      }
+    },
+    {
+      "id": "SRC-CAMILLADSP-WEBSOCKET-4-1-3",
+      "url": "https://github.com/HEnquist/camilladsp/blob/v4.1.3/websocket.md",
+      "aliases": [
+        "https://raw.githubusercontent.com/HEnquist/camilladsp/v4.1.3/websocket.md"
+      ],
+      "titolo": "CamillaDSP WebSocket protocol",
+      "ente": "Progetto CamillaDSP",
+      "tipo": "documentazione_software",
+      "versione": "v4.1.3",
+      "spiegazione": "Contratto delle richieste di stato, volume/mute e configurazione; la nuova implementazione usa normalizzazione e rilettura, senza dedurre prestazioni hardware.",
+      "usi_progettuali": "RpcPeer e controllo comune, manuale61, caricamento canonico e Main.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Comandi usati riletti e confrontati con il client."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "GetVersion/GetState/GetMute/GetVolume/GetConfigJson, SetConfigJson/SetMute/SetVolume e Stop. Lettura aggiuntiva ReadConfigJson e ValidateConfigJson; confronto mirato con il sorgente del tag."
+      }
+    },
+    {
+      "id": "SRC-W3C-EQ-2021",
+      "url": "https://www.w3.org/TR/2021/NOTE-audio-eq-cookbook-20210608/",
+      "aliases": [
+        "https://www.w3.org/TR/audio-eq-cookbook/"
+      ],
+      "titolo": "Audio EQ Cookbook",
+      "ente": "Robert Bristow-Johnson; adattamento Raymond Toy, W3C",
+      "tipo": "nota_tecnica",
+      "versione": "Working Group Note 2021-06-08",
+      "citekey_esistente": "w3c2021eqcookbook",
+      "spiegazione": "Formule normalizzate dei biquad LPF/HPF e relazione con la trasformazione bilineare; base del controllo numerico del LR4 digitale.",
+      "usi_progettuali": "Doc62, coefficienti di tools/verifica-matematica-crossover.py e spiegazione didattica5.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Versione ufficiale e passi letti; la scheda bibliografica storica conserva il suo perimetro integrale distinto."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Sezione2, forma generale e coefficienti LPF/HPF; non ogni famiglia del cookbook."
+      }
+    },
+    {
+      "id": "SRC-TI-SLOA049D",
+      "url": "https://www.ti.com/lit/an/sloa049d/sloa049d.pdf",
+      "aliases": [],
+      "titolo": "Active Low-Pass Filter Design, SLOA049D",
+      "ente": "Jim Karki, Texas Instruments",
+      "tipo": "nota_applicativa",
+      "versione": "revisione febbraio 2023",
+      "spiegazione": "Fornisce la relazione fra frequenza, Q e guadagno delle sezioni attive. Motiva il calcolo Sallen-Key e il bilancio dei livelli nell'alternativa analogica.",
+      "usi_progettuali": "Doc62, dimostrazione3: componenti uguali, Q=1/(3-K), tolleranze RC come modello deterministico.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "PDF del produttore letto nei passaggi dichiarati."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Secondo ordine, cascate e appendice A.1.4, pagina stampata19; nessun PCB esecutivo progettato."
+      }
+    },
+    {
+      "id": "SRC-AES-CROSSOVER-REVIEW-2023",
+      "url": "https://www.aes.org/publications/elibrary-page/22230.pdf",
+      "aliases": [
+        "https://doi.org/10.17743/jaes.2022.0100",
+        "https://www.aes.org/e-lib/browse.cfm?elib=22230"
+      ],
+      "titolo": "Crossover Networks: A Review",
+      "ente": "S. Cecchi, V. Bruschi, S. Nobili, A. Terenzi, V. Välimäki; Audio Engineering Society",
+      "tipo": "articolo_review",
+      "versione": "JAES71(9), 526-551, settembre2023",
+      "doi": "10.17743/jaes.2022.0100",
+      "spiegazione": "Contesto scientifico per distinguere modulo, fase, direttività, latenza e famiglie IIR/FIR. Non è un benchmark dei nostri driver o un'approvazione automatica di tutti i riferimenti citati.",
+      "usi_progettuali": "Confronto62 e review del topic crossover; requisiti della fase4a e limiti del collaudo.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Titolo/autori/anno/volume/pagine/DOI riscontrati nel PDF editore e nel record Crossref recuperato; nessun aggiornamento di ritiro nel record consultato, non ricerca globale su tutti gli archivi."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Abstract e paginePDF1,4-7,11-12; non lettura integrale delle26 pagine o delle opere citate."
+      }
+    },
+    {
+      "id": "SRC-UMC1820-PRODUCT",
+      "url": "https://behringer.com/en/products/0805-AAN",
+      "aliases": [
+        "https://www.behringer.com/en/products/0805-AAN"
+      ],
+      "titolo": "UMC1820, pagina e specifiche del produttore",
+      "ente": "Behringer",
+      "tipo": "scheda_prodotto",
+      "versione": "consultata 2026-11-20",
+      "spiegazione": "Identifica connettività e capacità nominali della candidata condivisa; il conteggio dei canali non certifica Linux, rumore, mapping o clock dell'esemplare.",
+      "usi_progettuali": "Interfaccia proposta in55/63, otto ingressi e quattro vie, ADR-051/053.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Pagina primaria aperta, specifiche e manuale distinti dal prezzo del venditore."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Connettività, frequenze/formati, uscite e controlli; nessun collaudo hardware dedotto."
+      }
+    },
+    {
+      "id": "SRC-UMC1820-QSG",
+      "url": "https://cdn-media.empowertribe.com/2b9a46d7e1104b78b8881f726c18a4d0/QSG_BE_0805-AAN_UMC1820_WW.pdf",
+      "aliases": [
+        "https://mediadl.musictribe.com/media/PLM/data/docs/0805-AAN/QSG_BE_0805-AAN_UMC1820_WW.pdf"
+      ],
+      "titolo": "UMC1820 Quick Start Guide multilingue",
+      "ente": "Behringer",
+      "tipo": "manuale_produttore",
+      "versione": "PDF ufficiale consultato 2026-11-20",
+      "spiegazione": "Distingue routing ottico/coassiale e controlli di volume: le uscite Line non seguono Main. Impone il progetto del livello comune e del cambio modalità prima del cablaggio.",
+      "usi_progettuali": "Doc63, ingresso CD, selezione OPT I/O, mappa dei jack e percorso cuffie.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Controlli e tabella Digital I/O Routing letti sul manuale ufficiale."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Controlli e specifiche/routing; il protocollo ALSA deve ancora essere osservato sulla scheda."
+      }
+    },
+    {
+      "id": "SRC-SB16PFCR25-8",
+      "url": "https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf",
+      "aliases": [],
+      "titolo": "SB16PFCR25-8 datasheet",
+      "ente": "SB Acoustics",
+      "tipo": "datasheet_trasduttore",
+      "versione": "Rev.2 2021-12-15, URL produttore2024",
+      "spiegazione": "Parametri T/S, ingombri e corsa picco-picco del woofer economico; Xmax in una direzione ricavato dividendo per due la corsa totale.",
+      "usi_progettuali": "data/driver-candidati.json, modello cassa chiusa e limiti di emissione, frontale A24 e doc55/63.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Pagina del produttore e parametri controllati; valori non misurati sul nostro esemplare."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Tabella parametri e disegno quotato; grafici visivi non trasformati in un dataset FRD misurato."
+      }
+    },
+    {
+      "id": "SRC-SB15NRX2C30-8",
+      "url": "https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf",
+      "aliases": [],
+      "titolo": "SB15NRX2C30-8 datasheet",
+      "ente": "SB Acoustics",
+      "tipo": "datasheet_trasduttore",
+      "versione": "Rev.2 2019-02-26",
+      "spiegazione": "Alternativa di diametro minore per il frontale B27; il modello confronta risposta, Q e spostamento, senza dedurre qualità sonora dal solo materiale.",
+      "usi_progettuali": "data/driver-candidati.json, sei combinazioni del modello, confronto geometrico/economico nel63.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "PDF del produttore, parametri e diametri letti."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Tabella T/S e disegno; non misura di distorsione sul cabinet del progetto."
+      }
+    },
+    {
+      "id": "SRC-SB26STCN-C000-4",
+      "url": "https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf",
+      "aliases": [],
+      "titolo": "SB26STCN-C000-4 datasheet",
+      "ente": "SB Acoustics",
+      "tipo": "datasheet_trasduttore",
+      "versione": "PDF produttore consultato2026-11-20",
+      "spiegazione": "Identifica tweeter, ingombro e dati nominali utili al primo trim e alla protezione parziale. La potenza IEC non autorizza un segnale a banda intera.",
+      "usi_progettuali": "Coppia proposta in55/63, centro acustico da misurare e condensatore da includere nel crossover reale.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Parametri e disegno del PDF primario letti."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Fs, sensibilità, Re, diametri; nessun modello completo di distorsione o potenza reale."
+      }
+    },
+    {
+      "id": "SRC-FOSI-V3-MANUAL",
+      "url": "https://fosiaudio.com/pages/user-instruction-v3",
+      "aliases": [],
+      "titolo": "Fosi Audio V3 Product User Instruction",
+      "ente": "Fosi Audio",
+      "tipo": "manuale_produttore",
+      "versione": "consultato2026-11-20",
+      "spiegazione": "Descrive il finale stereo, ingressi RCA e alimentazione. Serve a dimensionare l'oggetto finito invece di confrontare il solo chip con un amplificatore completo.",
+      "usi_progettuali": "Due finali stereo proposti nel63, cablaggio e taratura da provare, confronto con A800.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Manuale primario letto nei punti pertinenti; marketing di potenza distinto dalle misure."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Ingressi, alimentazione, carichi e collegamento; nessuna misura indipendente di fruscio o distorsione."
+      }
+    },
+    {
+      "id": "SRC-TI-TPA3255",
+      "url": "https://www.ti.com/lit/ds/symlink/tpa3255.pdf",
+      "aliases": [],
+      "titolo": "TPA3255 datasheet",
+      "ente": "Texas Instruments",
+      "tipo": "datasheet_componente",
+      "versione": "SLASEA8A, Rev.A",
+      "spiegazione": "Le condizioni di tensione, carico e distorsione spiegano perché il nome del chip non garantisca la prestazione di qualunque scheda o della versione con un certo alimentatore.",
+      "usi_progettuali": "Doc63, amplificazione, bilancio dei livelli e natura BTL; non analisi del PCB Fosi.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Datasheet primario consultato per condizioni operative e topologia."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Condizioni di potenza/carico e topologia; non verifica di ogni funzione del circuito integrato."
+      }
+    },
+    {
+      "id": "SRC-PI4-PRODUCT",
+      "url": "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/",
+      "aliases": [],
+      "titolo": "Raspberry Pi 4 Model B",
+      "ente": "Raspberry Pi",
+      "tipo": "scheda_prodotto",
+      "versione": "consultata2026-11-20",
+      "spiegazione": "Specifica la piattaforma candidata per il DSP autonomo. La scelta di memoria e contenitore è un'ipotesi di risorse, non una misura di carico o consumo.",
+      "usi_progettuali": "Host autonomo del63, distinto da interfaccia e filtri, ADR-051/053.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Scheda ufficiale letta; prezzo del kit nel budget resta stimato."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Specifiche della piattaforma e collegamenti; nessun Pi fisico collaudato."
+      }
+    },
+    {
+      "id": "SRC-PI-CONFIGURATION",
+      "url": "https://www.raspberrypi.com/documentation/computers/configuration.html",
+      "aliases": [],
+      "titolo": "Raspberry Pi Configuration documentation",
+      "ente": "Raspberry Pi",
+      "tipo": "documentazione_primaria",
+      "versione": "consultata2026-11-20",
+      "spiegazione": "Descrive modalità audio e configurazione del sistema autonomo, comprese opzioni del filesystem da valutare dopo il collaudo.",
+      "usi_progettuali": "Pi Lite, avvio senza desktop e disegno dell'installazione futura nel63/config/pi.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Punti pertinenti della documentazione primaria letti."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Configurazione, audio e sistema headless; nessuna lettura integrale di tutta la documentazione."
+      }
+    },
+    {
+      "id": "SRC-DELOCK-87482",
+      "url": "https://www.delock.com/produkt/87482/pdf.html?sprache=en",
+      "aliases": [],
+      "titolo": "Delock USB2.0 Sharing Switch 2-1, 87482",
+      "ente": "Delock",
+      "tipo": "datasheet_accessorio",
+      "versione": "datasheet consultato2026-11-20",
+      "spiegazione": "Documenta la topologia di due host che condividono una periferica. Non dimostra trasferimento isocrono o affidabilità con la UMC1820.",
+      "usi_progettuali": "Commutazione del63, confronto con cavo diretto e costo opzionale.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "HTML rifiutato, PDF ufficiale diretto accessibile e letto."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Topologia, connettori e alimentazione; nessuna prova della catena proposta."
+      }
+    },
+    {
+      "id": "SRC-HIFIBERRY-DAC8X",
+      "url": "https://www.hifiberry.com/docs/data-sheets/datasheet-dac8x/",
+      "aliases": [],
+      "titolo": "HiFiBerry DAC8x datasheet",
+      "ente": "HiFiBerry",
+      "tipo": "datasheet_convertitore",
+      "versione": "consultato2026-11-20",
+      "spiegazione": "Riferimento per il DAC multicanale dedicato nella variante con processore separato; nella base condivisa non si somma come acquisto ridondante.",
+      "usi_progettuali": "Confronto54/63, confine fra piattaforma e convertitore.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Scheda primaria consultata per il ruolo del convertitore."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Canali/collegamento e ruolo del dispositivo; non un ingresso S/PDIF già qualificato."
+      }
+    },
+    {
+      "id": "SRC-PRICE-UMC1820-THOMANN",
+      "url": "https://www.thomann.it/behringer_umc1820.htm",
+      "aliases": [],
+      "titolo": "UMC1820, prezzo Thomann Italia",
+      "ente": "Thomann",
+      "tipo": "prezzo_venditore",
+      "versione": "rilevazione2026-11-20",
+      "spiegazione": "Fonte del riferimento economico 175 euro IVA inclusa e della disponibilità letta; non prova della qualità sonora o del supporto Linux.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Prezzo e disponibilità letti, da ricontrollare prima dell'acquisto."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Prezzo, IVA e disponibilità della pagina italiana."
+      }
+    },
+    {
+      "id": "SRC-PRICE-SB16-SOUNDIMPORTS",
+      "url": "https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html",
+      "aliases": [],
+      "titolo": "SB16PFCR25-8, prezzo SoundImports",
+      "ente": "SoundImports",
+      "tipo": "prezzo_venditore",
+      "versione": "rilevazione2026-11-20",
+      "spiegazione": "31,45 euro visualizzati per il confronto economico; imponibile, IVA di destinazione e spedizione distinti dal datasheet tecnico.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Prezzo visualizzato e stock letti; non preventivo finale italiano."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Sezione prezzo/stock, non recensioni dei clienti."
+      }
+    },
+    {
+      "id": "SRC-PRICE-SB15-SOUNDIMPORTS",
+      "url": "https://www.soundimports.eu/en/sb-acoustics-sb15nrx2c30-8.html",
+      "aliases": [],
+      "titolo": "SB15NRX2C30-8, prezzo SoundImports",
+      "ente": "SoundImports",
+      "tipo": "prezzo_venditore",
+      "versione": "rilevazione2026-11-20",
+      "spiegazione": "63,95 euro visualizzati, usati per calcolare il sovrapprezzo dell'alternativa stretta senza comprare due coppie di woofer.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Pagina venditore letta per costo e stock, IVA/trasporto da confermare."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Prezzo e disponibilità, non prove tecniche."
+      }
+    },
+    {
+      "id": "SRC-PRICE-SB26-SOUNDIMPORTS",
+      "url": "https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html",
+      "aliases": [],
+      "titolo": "SB26STCN-C000-4, prezzo SoundImports",
+      "ente": "SoundImports",
+      "tipo": "prezzo_venditore",
+      "versione": "rilevazione2026-11-20",
+      "spiegazione": "36,45 euro visualizzati e backorder: il costo è distinto dalla possibilità di ricevere subito il tweeter.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Prezzo e indisponibilità letti; ricontrollare al preventivo."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Prezzo lordo visualizzato, stato esaurito/backorder."
+      }
+    },
+    {
+      "id": "SRC-PRICE-FOSI-V3-AUDIOPHONICS",
+      "url": "https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html",
+      "aliases": [],
+      "titolo": "Fosi V3 32V, riferimento Audiophonics",
+      "ente": "Audiophonics",
+      "tipo": "prezzo_venditore",
+      "versione": "rilevazione2026-11-20",
+      "spiegazione": "99 euro visualizzati con IVA francese e alimentatore: base di confronto dell'oggetto completo, non costo finale italiano o potenza misurata.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Prezzo della pagina letto; disponibilità e consegna da confermare."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Prezzo e dotazione dichiarata; nessuna prova del prodotto."
+      }
+    },
+    {
+      "id": "SRC-ST120-MANUAL-2025",
+      "url": "https://www.kirstein.de/docs/manuals/00106799/manual_EN.pdf?h=1ecf4368fd8ab20c3c92818e95c8e66c",
+      "aliases": [
+        "https://www.kirstein.de/docs/manuals/00106799/manual_EN.pdf"
+      ],
+      "titolo": "Stagecaptain ST-120 manuale inglese",
+      "ente": "Kirstein / Stagecaptain",
+      "tipo": "manuale_produttore",
+      "versione": "01.2025",
+      "spiegazione": "Identifica il pezzo2 e il montaggio; le dimensioni del ripiano sono riscontrate anche nell'immagine quotata ufficiale, senza attribuirle a una misura della stanza.",
+      "usi_progettuali": "Postazione-ST120.json, pianta dei cabinet, modelloCAD e futura rettifica da foto.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-17",
+        "nota": "Riscontro storico MS-234, preservato senza dichiarare una nuova lettura integrale."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Pezzo2 e schema montaggio; i contorni delle rientranze non sono tutti quotati."
+      }
+    },
+    {
+      "id": "SRC-ST120-DIMENSION-IMAGE",
+      "url": "https://img.kirstein.de/out/pictures/generated/product/9/2000_2000_75/6570c468a762c122194f883e11b84239_9.jpg",
+      "aliases": [],
+      "titolo": "Stagecaptain ST-120, immagine quotata ufficiale",
+      "ente": "Kirstein / Stagecaptain",
+      "tipo": "disegno_quotato_produttore",
+      "versione": "riscontro2026-11-17",
+      "spiegazione": "Fonte delle quote nominali 1180x300mm e quota superiore930mm; calibrazione geometrica nominale distinta da posizione di mobili e persona.",
+      "usi_progettuali": "data/postazione-st120.json e dipendenze CAD, studio degli ingombri e stima prospettica.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-17",
+        "nota": "Immagine ufficiale letta in MS-234."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Quote esplicite del ripiano; nessuna geometria completa della stanza dedotta."
+      }
+    },
+    {
+      "id": "SRC-MARSHALL-MG10MG15-USER-PDF",
+      "url": null,
+      "aliases": [],
+      "titolo": "MG10 & MG15 Owners Manual",
+      "ente": "Marshall, manuale fornito dall'utente",
+      "tipo": "manuale_locale_fornito",
+      "versione": "copia acquisita il 2026-11-18/19, dieci pagine",
+      "sha256": "0f47f41c4e77203e33701457153a9ebc80c75ca7d78291136f954a316a82f678",
+      "spiegazione": "Identifica famiglia MG10/MG15 e dati nominali del combo posseduto. Originale e OCR restano privati; il manuale non fornisce schema né parametri del trasduttore.",
+      "usi_progettuali": "MS-243, docs/80-strumenti-posseduti/marshall-mg15.md, AMP-001 in data/strumenti-posseduti.json e futuro protocollo di caratterizzazione.",
+      "usi_dichiarati": [
+        {
+          "file": "docs/80-strumenti-posseduti/marshall-mg15.md",
+          "riga": 1,
+          "sezione": "Marshall MG15"
+        },
+        {
+          "file": "data/strumenti-posseduti.json",
+          "riga": 1,
+          "sezione": "AMP-001"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-20",
+        "nota": "Copia riletta per SHA-256; lettura originaria e verifica visiva registrate in MS-243."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "OCR del manuale completo, verifica visiva di copertina/pagina specifiche1/7. Non equivale a verifica dello schema o della revisione fisica dell'esemplare."
+      }
+    },
+    {
+      "id": "SRC-CAMILLADSP-SOCKETSERVER-4-1-3",
+      "url": "https://github.com/HEnquist/camilladsp/blob/v4.1.3/src/socketserver.rs",
+      "aliases": [
+        "https://raw.githubusercontent.com/HEnquist/camilladsp/v4.1.3/src/socketserver.rs"
+      ],
+      "titolo": "CamillaDSP socketserver.rs",
+      "ente": "Progetto CamillaDSP",
+      "tipo": "documentazione_software_primaria",
+      "versione": "v4.1.3",
+      "spiegazione": "Canonicalizzazione del profilo e attesa di GetConfigJson; ReadConfigJson per candidati non caricati.",
+      "usi_progettuali": "Canonicalizzazione del profilo e attesa di GetConfigJson; ReadConfigJson per candidati non caricati.",
+      "usi_dichiarati": [
+        {
+          "file": "tools/controllo_ascolto.py",
+          "riga": 83,
+          "sezione": "canonical"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Branche ReadConfigJson, ValidateConfigJson e SetConfigJson; parsing/default e invio asincrono al controller."
+      }
+    },
+    {
+      "id": "SRC-CAMILLADSP-ALSA-4-1-3",
+      "url": "https://github.com/HEnquist/camilladsp/blob/v4.1.3/backend_alsa.md",
+      "aliases": [
+        "https://raw.githubusercontent.com/HEnquist/camilladsp/v4.1.3/backend_alsa.md"
+      ],
+      "titolo": "CamillaDSP ALSA backend",
+      "ente": "Progetto CamillaDSP",
+      "tipo": "documentazione_software_primaria",
+      "versione": "v4.1.3",
+      "spiegazione": "Policy e osservatore distinguono card ID, PCM e parametri correnti; nessuna prova dei jack.",
+      "usi_progettuali": "Policy e osservatore distinguono card ID, PCM e parametri correnti; nessuna prova dei jack.",
+      "usi_dichiarati": [
+        {
+          "file": "tools/ascolto_alsa.py",
+          "riga": 144,
+          "sezione": "def linux_snapshot"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Hardware/PCM devices, scelta del nome, parametri e formati campione."
+      }
+    },
+    {
+      "id": "SRC-KERNEL-ALSA-PROC",
+      "url": "https://docs.kernel.org/sound/designs/procfile.html",
+      "aliases": [],
+      "titolo": "Proc Files of ALSA Drivers",
+      "ente": "Progetto Linux",
+      "tipo": "documentazione_software_primaria",
+      "versione": "documentazione online letta il 2026-11-23",
+      "spiegazione": "Lettura dei parametri effettivi da procfs senza aprire flussi.",
+      "usi_progettuali": "Lettura dei parametri effettivi da procfs senza aprire flussi.",
+      "usi_dichiarati": [
+        {
+          "file": "tools/ascolto_alsa.py",
+          "riga": 19,
+          "sezione": "def parse_hw_params"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "General, card specific e PCM proc files; id, hw_params e significato di capture/playback."
+      }
+    },
+    {
+      "id": "SRC-ALSAUTILS-AMIXER-1-2-14",
+      "url": "https://github.com/alsa-project/alsa-utils/blob/v1.2.14/amixer/amixer.1",
+      "aliases": [
+        "https://raw.githubusercontent.com/alsa-project/alsa-utils/v1.2.14/amixer/amixer.1"
+      ],
+      "titolo": "amixer manual",
+      "ente": "Progetto ALSA",
+      "tipo": "documentazione_software_primaria",
+      "versione": "alsa-utils v1.2.14",
+      "spiegazione": "Controlli del clock letti con numid qualificati, nessun cset.",
+      "usi_progettuali": "Controlli del clock letti con numid qualificati, nessun cset.",
+      "usi_dichiarati": [
+        {
+          "file": "tools/ascolto_alsa.py",
+          "riga": 167,
+          "sezione": "def read_control"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Comandi cget/controls e opzione -c. La copia raw è stata recuperata dopo cache miss della pagina GitHub."
+      }
+    },
+    {
+      "id": "SRC-2AFD8DC105BFCA8A",
+      "url": "https://docs.pipewire.org/page_man_pw-dump_1.html",
+      "aliases": [],
+      "titolo": "pw-dump",
+      "ente": "Progetto PipeWire",
+      "tipo": "documentazione_software_primaria",
+      "versione": "manuale online 1.6.11; runtime osservato 1.6.2",
+      "spiegazione": "Riutilizzo dump_graph per guardia del grafo effettivo; non equiparazione delle versioni.",
+      "usi_progettuali": "Riutilizzo dump_graph per guardia del grafo effettivo; non equiparazione delle versioni.",
+      "usi_dichiarati": [
+        {
+          "file": "tools/ascolto_pipewire.py",
+          "riga": 78,
+          "sezione": "def resolve"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Descrizione JSON del grafo e opzione -N."
+      }
+    },
+    {
+      "id": "SRC-PIPEWIRE-PW-LINK",
+      "url": "https://docs.pipewire.org/page_man_pw-link_1.html",
+      "aliases": [],
+      "titolo": "pw-link",
+      "ente": "Progetto PipeWire",
+      "tipo": "documentazione_software_primaria",
+      "versione": "manuale online 1.6.11; runtime osservato 1.6.2",
+      "spiegazione": "Binder PC aggiunge solo collegamenti attesi tramite ID, senza unlink.",
+      "usi_progettuali": "Binder PC aggiunge solo collegamenti attesi tramite ID, senza unlink.",
+      "usi_dichiarati": [
+        {
+          "file": "tools/ascolto_pipewire.py",
+          "riga": 68,
+          "sezione": "def link_ports"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Creazione dei link, identificatori delle porte e comportamento linger."
+      }
+    },
+    {
+      "id": "SRC-KERNEL-USB-SYSFS-7",
+      "url": "https://github.com/torvalds/linux/blob/v7.0/drivers/usb/core/sysfs.c",
+      "aliases": [
+        "https://raw.githubusercontent.com/torvalds/linux/v7.0/drivers/usb/core/sysfs.c"
+      ],
+      "titolo": "USB sysfs attributes",
+      "ente": "Progetto Linux",
+      "tipo": "documentazione_software_primaria",
+      "versione": "v7.0",
+      "spiegazione": "Identità USB in sola lettura e limite dei dispositivi privi di seriale.",
+      "usi_progettuali": "Identità USB in sola lettura e limite dei dispositivi privi di seriale.",
+      "usi_dichiarati": [
+        {
+          "file": "tools/ascolto_alsa.py",
+          "riga": 144,
+          "sezione": "def linux_snapshot"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Righe dei campi stringa, seriale condizionale e attributi idVendor/idProduct; non lettura integrale del driver."
+      }
+    },
+    {
+      "id": "SRC-KERNEL-USB-ABI-7",
+      "url": "https://github.com/torvalds/linux/blob/v7.0/Documentation/ABI/stable/sysfs-bus-usb",
+      "aliases": [
+        "https://raw.githubusercontent.com/torvalds/linux/v7.0/Documentation/ABI/stable/sysfs-bus-usb"
+      ],
+      "titolo": "USB stable sysfs ABI",
+      "ente": "Progetto Linux",
+      "tipo": "documentazione_software_primaria",
+      "versione": "v7.0",
+      "spiegazione": "Ricerca preliminare scartata come supporto ai tre attributi; manuale spiega la distinzione.",
+      "usi_progettuali": "Ricerca preliminare scartata come supporto ai tre attributi; manuale spiega la distinzione.",
+      "usi_dichiarati": [
+        {
+          "file": "docs/61-camilladsp-manuale-tecnico.md",
+          "riga": 163,
+          "sezione": "SRC-KERNEL-USB-ABI-7"
+        }
+      ],
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-23",
+        "nota": "Lettura primaria mirata e confronto con implementazione; non attestazione hardware."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Pagina letta nella ricerca degli attributi: contiene power, indirizzo, descrittori e speed; non gli attributi VID/PID/seriale cercati."
+      }
+    }
+  ]
+}

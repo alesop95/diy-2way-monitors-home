@@ -1,0 +1,14 @@
+{
+  "status": "STUDIO ESPLORATIVO, non usare per ordinare pannelli",
+  "units": "mm",
+  "shelf_source": "data/postazione-st120.json",
+  "shelf": {"width": 1180, "depth": 300, "height": 930, "outer_margin": 10, "depth_margin": 10, "screen_gap": 10},
+  "assumed_screen_widths": [540, 620],
+  "assumed_displacements_l": [0, 1, 1.5, 2],
+  "variants": [
+    {"id": "A24", "width": 220, "depth": 190, "height": 430, "thickness": 18, "yaw_deg": 30},
+    {"id": "B27", "width": 190, "depth": 180, "height": 430, "thickness": 18, "yaw_deg": 30},
+    {"id": "C24", "width": 240, "depth": 200, "height": 440, "thickness": 18, "yaw_deg": 20}
+  ],
+  "reference_rejected": {"id": "PRIMA-IPOTESI", "width": 230, "depth": 300, "height": 360, "thickness": 18, "yaw_deg": 30}
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=DSP monitor DIY - attesa silenziata, controllo locale
+After=pipewire.service
+Wants=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/opt/camilladsp-4.1.3-pipewire/camilladsp --address 127.0.0.1 --port 12341 --wait --mute --gain=-60
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

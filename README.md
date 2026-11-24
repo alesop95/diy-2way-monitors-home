@@ -1,6 +1,8 @@
 # diy-2way-monitors-home
 
-Progettazione e costruzione di una coppia di monitor da studio a due vie per un punto di ascolto domestico, con l'intero flusso di lavoro su Linux. Il progetto è nella fase in cui la parte simulativa è documentata in profondità e la parte fisica non è ancora iniziata: nessuna misura eseguita, nessun driver acquistato, nessun cabinet disegnato. Va letto come un percorso di progettazione documentato con cura, non come una realizzazione finita.
+Progettazione di una coppia di monitor attivi a due vie e della catena home recording, con Ubuntu Studio per sviluppo e registrazione e un percorso Raspberry Pi per l'ascolto a PC spento. Setup software collaudato, modelli numerici e tre cabinet CAD esplorativi disponibili; driver definitivi, progetto esecutivo, costruzione e taratura ancora da completare. Le verifiche fisiche dell'utente sono sospese dal 2026-11-20; simulazioni, software, CAD parametrico e documentazione proseguono.
+
+Il punto da cui ripartire è [Stato del progetto e guida ai documenti](docs/STATO-PROGETTO.md), disponibile anche come [recap PDF](docs/pdf/recap-progetto.pdf). Riunisce risultati, limiti, componenti candidati, documenti da aprire e lavoro autonomo corrente. Il [catalogo completo](docs/90-riferimenti/catalogo-documentazione.md) elenca i percorsi, mentre il [registro delle sospensioni](docs/PENDING-ACTIONS.md#verifiche-fisiche-sospese-su-richiesta-dellutente) conserva le verifiche da riaprire soltanto su richiesta.
 
 ## L'impostazione, che è la cosa che distingue questo progetto
 

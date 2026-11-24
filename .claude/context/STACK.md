@@ -1,14 +1,22 @@
 ---
-generated-from-commit: 0df04bb7019814cf69b8458e4eaad8eaf71be818
+generated-from-commit: 17a70affed584c1b7443d0f250e5cbd552b980f8
 generated-from-branch: main
 generated-date: 2026-09-04
 covers-paths:
   - tools/**
   - docs/**
-last-verified-commit: 49266d4
+last-verified-commit: 0d95d2efec703c8605e398eca9de6403b941f441
 ---
 
 # Stack del progetto
+
+Sviluppo MS-300 e successivi: `tools/fattibilita_basso.py` riusa i dati esistenti e il modello di corsa per calcolare HP35, Linkwitz Transform e 486 scenari; collauda dodici casi nel motore 4.1.3 su PCM temporanei eliminati. `tools/test_fattibilita_basso.py` ha cinque test indipendenti delle equazioni. `tools/controllo_ascolto.py` implementa il nucleo di qualificazione/volume/mute su soli profili di laboratorio; `tools/test_controllo_ascolto.py` ha dieci regressioni, comprese riletture e istanza estranea. Adapter ALSA e interfaccia quotidiana restano da integrare, non hardware collaudato. `tools/Pulisci-Artefatti.ps1` elimina derivati consentiti e archivia sessioni con verifica SHA-256; ricevuta unica sotto _notes/archivio-prove. I tre PDF consegnati sono in docs/pdf; PNG QA eliminati dopo il controllo. `tools/verifica_documenti.py` controlla le impronte di PDF e sorgenti e l’assenza di QA/copie PDF/temporanei rimasti; `tools/test_verifica_documenti.py` dimostra il rifiuto di sorgenti cambiate anche quando il PDF è identico.
+
+Il recap per il proprietario è `docs/STATO-PROGETTO.md`, collegato dalle due README e dall'indice; la copia di lettura PDF vive in `docs/pdf/recap-progetto.pdf`. WordCraft 0.18.1 esporta il Markdown con lo stile Intrawelt già adottato e PdfCraft 0.21.1 verifica testo e anteprime; la procedura è in `docs/90-riferimenti/metodo-fonti-lezioni-riordino.md`. Il gruppo 4 nei dati della roadmap raccoglie otto verifiche fisiche sospese su richiesta; il motore esistente le rende senza modifiche. Non sono richieste nuove app o dipendenze e la parte autonoma di simulazioni, configurazioni e CAD prosegue.
+
+Dal 2026-11-20 `tools/mappa_fonti_progetto.py` genera pedigree e punti d'uso dai metadati `research-vault/anagrafiche-fonti-web.json` e dai documenti autorati, riusando normalizzatore URL e rigenerazione protetta del template. `tools/test_mappa_fonti.py` contiene dieci regressioni per identità, alias, collisioni, endpoint, stati e contesto dei collegamenti; il censimento reale verifica anche l'integrazione. `tools/catalogo_documentazione.py` produce catalogo dei percorsi e CSV senza copiarne i contenuti. Entrambi i controlli --check e la suite sono registrati in `tools/controlli-progetto.txt`, che contiene diciannove comandi dopo MS-300/305. Il registro `.claude/memory/lezioni-template.md` è creato con lo strumento già presente nel template; sette lezioni ancora da recepire a monte, nessuna scrittura fra repository. Metodo e riordino sono in `docs/90-riferimenti/metodo-fonti-lezioni-riordino.md`; gli output binari e gli archivi hanno la mappa `docs/90-riferimenti/artefatti-e-prove.md`.
+
+FreeCAD 1.1.4 è ora preparato sulla macchina Ubuntu come AppImage ufficiale verificata, con lanciatore utente e voce menu da `config/freecad/`. `tools/collauda-freecad.py` misura geometria parametrica e round trip FCStd/STEP/DXF su un pannello campione; `tools/collauda-freecad-gui.FCMacro` verifica apertura della vista e cattura grafica, con esito del processo separato. La procedura `docs/10-ambiente/freecad-collaudo-native.md` conserva comandi, risultati e troubleshooting. Non è il progetto del cabinet finale e non richiede nuove dipendenze Wine.
 
 > Documento di recupero: un collega che clona questo repository deve capire da qui con che cosa si lavora e perché. Questo progetto non ha codice applicativo, quindi lo stack non è un insieme di librerie ma la catena di strumenti di progettazione più gli script di manutenzione della documentazione.
 
@@ -19,6 +27,11 @@ last-verified-commit: 49266d4
 Ne segue una conseguenza sulla lettura del repository: il valore non sta nel codice ma nella catena di decisioni documentate, e il punto d'ingresso è `docs/README.md`.
 
 ## Catena di strumenti di progettazione
+
+Verifica del 2026-11-18: CamillaDSP 4.1.3 eseguito temporaneamente su Ubuntu e Windows con backend su file, non installato come servizio. `tools/collauda-camilladsp.py` misura separazione delle quattro vie, LR4 elettrico, volume e mute usando `config/camilladsp/offline-lr4.json`; con `--mutazioni` deve rilevare lati scambiati e passa alto errato. Configurazione soltanto di laboratorio, non collegabile ai tweeter. Procedura e risultati in `docs/56-collaudo-dsp-offline.md`. FreeCAD 1.1.4 individuato come rilascio ufficiale portabile ma non scaricato o collaudato.
+
+Ricognizione del 2026-11-17: stato reale e limiti in `docs/10-ambiente/verifica-prima-del-trasferimento.md`; sistema e spesa proposti in `docs/55-proposta-sistema-home-recording.md`. Il filone 3D è catalogato a monte, non installato qui; Blender osservato 5.0.1 e nessun candidato FreeCAD negli indici APT locali. Le versioni e le installazioni descritte sotto vanno lette con la propria data.
+
 
 La catena vive sulla macchina Ubuntu Studio descritta in `docs/10-ambiente/README.md`, non su questa postazione. La regola di composizione è nativo Linux dove possibile, Wine dove non esiste alternativa seria.
 
@@ -45,6 +58,8 @@ EASE Address 2.1. Escluso perché lavora in due dimensioni sulla vista laterale 
 WinISD. Non escluso in assoluto ma non installato, perché ridondante rispetto a VituixCAD e Akabak, e perché è il solo programma che richiederebbe un prefix Wine a 32 bit con la classe di problemi che ne deriva.
 
 ## Strumenti di manutenzione nel repository
+
+Inventario integrativo verificato il 2026-11-18 sui sorgenti locali: `tools/cache-storage.py` conserva le cache derivate senza ricomprimere i documenti originali; `tools/chiudi-sessione.sh` è la variante Bash della chiusura manuale. `tools/craft-apps.py` rileva e aggiorna le applicazioni Craft verificando le impronte; `tools/craft-mcp.py` prepara il collegamento confinato, `tools/craft_apps_comune.py` condivide il rilevamento delle installazioni e `tools/test-craft-apps.py` ne esercita le prove. `tools/verifica-milestone.py` controlla il perimetro della chiusura e lo stage; `tools/verifica-schede.py` controlla percorsi coperti e validità delle ancore, distinguendo schede superate da riferimenti difettosi.
 
 Gli script sotto `tools/` sono istanziati dai pacchetti del template e servono a far rispettare meccanicamente le convenzioni invece di affidarle alla memoria.
 
@@ -124,3 +139,27 @@ python tools/Test-Allineamento.py
 ```
 
 La sequenza è la stessa di `CLAUDE.md`, che ne è la fonte, e va eseguita per intero prima di proporre `chiudi`.
+
+Il file `tools/monitor_dsp.py` controlla il servizio locale CamillaDSP tramite websockets già presente: stato, mute, laboratorio senza autoconnect e ritorno in attesa. `tools/test_monitor_dsp.py` verifica i contratti di isolamento e la distinzione fra profilo accettato e audio in elaborazione. Unità e profilo di partenza stanno sotto `config/systemd/user/` e `config/camilladsp/`; specifica e piano nelle pagine 57 e 58. Il servizio utente è installato e collaudato in attesa; la versione corretta del client e il segnale nel grafo restano da provare, MS-246/250.
+
+`tools/dsp_pipewire.py` contiene guardie dei link e verifica delimitata dell'uscita pw-cat; `tools/collauda-dsp-pipewire.py` orchestra il banco isolato e misura segnale, volume e mute, con `tools/test_dsp_pipewire.py` per i contratti. `tools/installa-dsp-utente.py` prepara soltanto percorsi nuovi o verifica la copia già presente; `tools/test_installa_dsp.py` copre copia e rifiuto senza modifiche parziali. Il comando operativo corrente è diy-monitor-dsp nella home; il prototipo monitor-dsp è preservato e superato per il caricamento. MS-251/256, procedura condivisa e piano 58 aggiornano lo stato precedente del banco ancora da provare.
+
+MS-257: il banco corrente installato è pipewire-bench-1.0.1, separato dal client di controllo dsp-control-1.0.0. Revisione separata e nuova prova reale concluse. Undici test del banco, sette del client e due dell'installatore; otto file correnti verificati su Ubuntu. Le copie precedenti del banco sono preservate ma non sono il comando documentato per le nuove prove.
+
+`tools/studia_ingombri.py` e `tools/test_studia_ingombri.py` verificano pianta, pannelli, volumi e centri baffle dalle ipotesi `config/cabinet/studio-st120.json`. `tools/genera-cabinet-freecad.py` costruisce i solidi parametrici, verifica contatti, pose, ricomputazione e STEP, leggendo sempre un rapporto esplicito. `tools/cabinet-cadcraft.py` produce e rilegge i profili DXF con aree e perimetri controllati; `tools/cabinet-vista.FCMacro` prepara la vista grafica con impostazioni isolate. MS-259/261 e pagina 59 distinguono questi modelli dal cabinet acustico definitivo; output generati sotto build e prove private.
+
+`tools/rendi-studio-cabinet.py` crea l'indice HTML locale del pacchetto con immagini, misure e collegamenti ai file CAD già verificati. Non produce la geometria: consuma i risultati FreeCAD e CADCraft. Il pacchetto ha sorgenti, dati, font di consultazione locale e manifesto delle impronte; nessun servizio web o pubblicazione.
+
+`tools/verifica-matematica-crossover.py` riproduce i modelli ideali del confronto PC/Pi/analogico: LR4 continuo e biquad digitale, mappatura bilineare, profilo comune e controesempi con ritardo/polarità. Richiede NumPy e Matplotlib già disponibili, genera rapporto JSON, CSV e figure in una cartella nuova, senza installare pacchetti o toccare audio hardware. Protocollo e fonti in research-vault/crossover-pc-pi-analogico, spiegazione nella pagina 62 e nella voce didattica 5. Le figure usano i font e i colori del design di account.
+
+`tools/studio_sistema_audio.py` confronta i due woofer di data/driver-candidati.json nei volumi netti ipotizzati dei tre cabinet e genera dodici profili solo RawFile/File, a 44,1/48 kHz. `tools/test_studio_sistema.py` verifica casi fisici indipendenti del modello. `tools/collauda-profili-autonomi.py` esegue CamillaDSP su file, confronta selezioni di ingressi e profili e modifica davvero la selezione per il controllo negativo. Nessuna prova ALSA/ARM/USB è implicata. Fonti e limiti in docs/63; risultati sotto build. I parametri condivisi dei profili provengono dal file dati, senza modificare il servizio installato.
+
+`docs/latex/converti.py` usa Pandoc già installato per i due capitoli 62/63; header Intrawelt comune, sorgenti TeX versionabili e PDF LuaLaTeX sotto build/relazione-audio-20261120. README nella stessa cartella conserva comandi e ambiente; non modifica il motore pdflatex preesistente del report storico.
+
+`tools/controlli-progetto.txt` attiva nei due script chiudi i controlli locali prescritti (inclusi nuovi Markdown, gemello, copie, affermazioni, privacy e tabelle) e le cinque suite del progetto. I test di profilo rifiutano backend hardware e percorsi estranei prima del processo; i test non qualificano periferiche reali. Il collaudo con CamillaDSP su file si esegue esplicitamente con binario verificato, separato dalle suite senza hardware.
+
+Aggiornamento 2026-11-23: `tools/controllo_ascolto.py` è il nucleo canonico/asincrono con dodici prove in `tools/test_controllo_ascolto.py`. `tools/ascolto_alsa.py` e `tools/test_ascolto_alsa.py` gestiscono manifest/prova attestati, candidato non caricato, identità e clock in lettura. `tools/ascolto_pipewire.py` e `tools/test_ascolto_pipewire.py` sorvegliano il banco virtuale o il grafo PC qualificato, con sink legato alla card e binder di soli link dichiarati. `tools/pannello_ascolto.py` e `tools/test_pannello_ascolto.py` forniscono sessione, sorveglianza e API HTTP locale; interfaccia e configurazioni sono in config/controllo-ascolto. Runtime Python/websockets 15.0.1 già disponibile su Ubuntu; nessuna installazione aggiuntiva sul Python Windows.
+
+`tools/collauda-controllo-ascolto.py` esegue banco FIFO/file con motore reale separato via SSH oppure Linux locale, a 44,1/48 kHz; `tools/test_collaudo_controllo.py` muta il rapporto corrente per verificare falsi verdi. `tools/collauda-pannello-browser.py` usa Edge headless e Node/CDP già presenti: è QA della pagina con peer simulato, distinto dalla misura audio. I rapporti hanno hash delle sorgenti; PCM, FIFO, profilo browser e PNG QA sono eliminati. Il servizio principale non è riconfigurato. L'unità diy-listening-control è preparata per attivazione manuale, non installata automaticamente.
+
+`tools/visualizza_simulazioni.py` produce la figura SVG del basso dai dati canonici con NumPy/Matplotlib e font locali, verifica diciotto curve e conserva provenienza incorporata; --check confronta la figura deterministica. `tools/consegna_controllo.py` produce un kit ZIP con manifesti per installazione manuale e può verificare i file estratti, senza deploy. `tools/consegna_documenti.py` orchestra le tre consegne già previste con WordCraft/Pandoc/LuaLaTeX/PdfCraft installati: ricompila gli input cambiati, verifica copia e testo, registra le impronte e richiede QA visivo esplicito dopo il rebuild. Riusa craft_apps_comune e verifica_documenti, non introduce un nuovo motore documentale.

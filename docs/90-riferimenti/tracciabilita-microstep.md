@@ -22,6 +22,25 @@ Da qui la conseguenza che spiega la forma del registro. Ogni ora spesa a capire 
 
 ## La mappa per blocchi
 
+Aggiornamento del 2026-11-20. La mappa originaria sotto rimane una spiegazione dei blocchi storici; i passaggi recenti si collegano così al progetto. I numeri sono ricercabili nel [registro completo](../OPERATIONS-LOG.md), che conserva comandi, esiti e rettifiche.
+
+| Microstep | Fase e dipendenza costruttiva |
+|---|---|
+| MS-233-236 | Requisiti e postazione: proposta condivisa, quote ufficiali del ripiano, schermo economico e supporto del falegname. Alimentano gli ingombri della fase 4. |
+| MS-237-242 | Quattro vie software, backup e CPU: capacità e reversibilità dell'ambiente che esegue simulazioni e DSP. Nessuna prestazione acustica dimostrata. |
+| MS-243-245 | Strumenti posseduti, CAD e autonomia documentata: inventario della catena e strumenti della fase 4b. |
+| MS-246-258 | DSP persistente, guasti osservati, controlli negativi e ripristino: rendono ripetibile il banco della fase 4a e distinguono servizio disponibile da audio effettivo. |
+| MS-259-263 | Cabinet parametrici, viste, profili e trasferimento: confronto degli ingombri prima del CAD esecutivo e dei tagli. |
+| MS-264-269 | Consegna, riavvio e ripetizione dei collaudi: verifica di persistenza prima di portare a casa la macchina; guasto MIDI separato. |
+| MS-270-274 | Diagnosi e correzione FluidSynth con controllo senza note: recupero della funzione musicale condivisa con l'home recording e preparazione del backup. |
+| MS-275-277 | Backup riletto, copia esterna e pulizia autorizzata: conservazione del setup e dei modelli, con impronte e spazio recuperato. |
+| MS-278 | Uso quotidiano CamillaDSP: collega stereo, quattro uscite e quattro canali di potenza, lasciando esplicite le parti hardware mancanti. |
+| MS-279-281 | Fonti primarie, modello LR4 e manuale esteso: motivano la scelta PC/Pi/analogico, dimostrano le proprietà ideali e mostrano perché la fase 8 richiederà misure reali. La mappa documentale collega cronaca, procedure e didattica. |
+| MS-282 | Copertura dell'indice, link, PDF e controlli finali: conserva prove e limiti della consegna, distinguendo i rilievi generali di chiusura dalle misure acustiche ancora mancanti. |
+| MS-283-285 | Requisito di autonomia obbligatorio, ritiro della diagnosi errata del KO e progetto dei due host: collegano sorgenti esterne, clock, canali e volume alla catena condivisa. |
+| MS-286-287 | Modelli dei driver e dodici elaborazioni con controesempio: sviluppano la base di componenti e profili per la fase 4, mantenendo aperta la qualificazione fisica della fase 8. |
+| MS-288-289 | LaTeX/PDF leggibili, artefatti identificati e controlli di chiusura riparati: rendono riutilizzabile il progetto teorico e verificabile la sua consegna. |
+
 La mappa è per blocchi omogenei e non voce per voce, perché molti microstep servono lo stesso scopo e ripeterlo novantasei volte sarebbe rumore. Per ogni blocco si dichiara a quale fase del workflow serve e che cosa sarebbe impossibile senza di esso.
 
 *Impianto documentale, indicativamente da MS-001 a MS-014 e da MS-017 a MS-020.* Conversione del documento sorgente in un albero navigabile, verifica che la copertura sia integrale, impianto degli strumenti di verifica e delle regole. Serve tutte le fasi e, soprattutto, serve il secondo esito dichiarato del progetto, che non è l'oggetto ma la comprensione: un percorso documentato che spieghi perché ogni scelta è stata fatta, riutilizzabile su un progetto successivo. Senza questo blocco il progetto avrebbe un documento sorgente in formato binario, non diffabile e non verificabile, e la catena delle decisioni vivrebbe nella memoria di una persona sola.
@@ -45,3 +64,11 @@ La mappa è per blocchi omogenei e non voce per voce, perché molti microstep se
 Dal 2026-09-14 ogni microstep nuovo dichiara in apertura, subito dopo il perimetro, a quale fase del workflow serve e che cosa del progetto dipenda da esso. La forma è una frase, non una sezione, e quando l'intervento non serve alcuna fase lo dichiara, come fa il blocco dell'igiene documentale qui sopra: un legame inventato è peggio di un legame assente, perché fa credere che tutto sia giustificato.
 
 La convenzione è scritta anche nella sezione `Convenzione` del registro, così che chi scrive una voce nuova la trovi dove la cerca invece che in questa pagina.
+
+## Riordino con conservazione, MS-292/294
+
+Il nuovo blocco serve il secondo esito del progetto, cioè poter ricostruire e imparare ogni scelta, e trasversalmente le fasi che dipendono da manuali e dati. MS-292 collega identità delle fonti e usi senza sostituire la bibliografia; MS-293 comprime le prove superate mantenendo percorsi e impronte; MS-294 riunisce metodo, lezioni e catalogo. I percorsi storici `build/...` ricollocati si ritrovano nel manifesto `_notes/archivio-prove/20261120/manifest.json` e nel corrispondente ZIP. Nessuna voce cronologica precedente viene corretta per far sembrare che l'archivio esistesse già.
+
+## Controllo quotidiano e accesso ai report, MS-308 e successivi
+
+Serve le fasi DSP/integrazione PC e autonomia, con qualifica fisica sospesa. MS-308 definisce il piano e riusa le dipendenze disponibili; MS-309/311 documentano normalizzazione, FIFO, pannello, prove e figura del basso; MS-312 chiude la guardia del grafo e la perdita di identità. I passi successivi registrano la correzione delle finestre PCM, la consegna documentale e il gate. Il manuale 61 contiene procedure e limiti, il deep dive 8 le motivazioni e STATO-PROGETTO i collegamenti a tutti i report tematici e alle simulazioni. Non esiste un nuovo registro concorrente di pendenze.
