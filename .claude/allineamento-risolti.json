@@ -3,6 +3,11 @@
     "testa": "32a736499a91d3c38c960ace63031981c83b2a53",
     "il": "2026-09-29"
   },
+  "docs/latex/README.md": {
+    "testa": "46e25154e899c8e6ae9c5bcb63ea144ed1984bdb",
+    "il": "2026-11-24",
+    "locale_sha256_lf": "31872184e7f7d5d834c0246c20f60860a3fdabaa8ff08712c11466209e26ec8e"
+  },
   "tools/estratti-lotto.py": {
     "testa": "a7f61f16e6220630f7336aceda43b023814870e0",
     "il": "2026-10-19"

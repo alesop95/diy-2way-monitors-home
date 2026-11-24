@@ -1,5 +1,13 @@
 # Work-log
 
+## 2026-11-24 - Conflitto su docs/latex/README.md risolto, commit preparato, MS-318
+
+**Template:** nessuna; la collisione fra `docs/latex/` del progetto e la guida del pacchetto `latex` è il comportamento previsto dalla regola 5 dello strumento.
+
+Controlli di chiusura verdi; primo commit del lavoro in corso preparato in stage con 167 file e messaggio in `_notes/COMMIT-MSG.txt`, esclusi i due SKILL.md GRC riservati a `chiudi-allineamento`. Il `git commit` è stato negato all'agente e resta all'utente. README di `docs/latex/` ricostruito dalla testa del template più le righe del progetto, risoluzione registrata con `--risolto`, prova a vuoto `CONFLITTO=0` con uscita 0. MS-317 risulta senza voce nel registro.
+
+File toccati: docs/latex/README.md, .claude/allineamento-risolti.json, docs/OPERATIONS-LOG.md, .claude/memory/progress.md, .claude/memory/index.md, _notes/COMMIT-SCOPE.json, _notes/COMMIT-MSG.txt.
+
 ## 2026-11-23 - Pannello installato dal proprietario e verificato, MS-317
 
 **Template:** nessuna; applicazione del contratto di deploy manuale e verifica in esercizio.
