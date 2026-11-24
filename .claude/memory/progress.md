@@ -6,6 +6,8 @@
 
 Controlli di chiusura verdi; primo commit del lavoro in corso preparato in stage con 167 file e messaggio in `_notes/COMMIT-MSG.txt`, esclusi i due SKILL.md GRC riservati a `chiudi-allineamento`. Il `git commit` è stato negato all'agente e resta all'utente. README di `docs/latex/` ricostruito dalla testa del template più le righe del progetto, risoluzione registrata con `--risolto`, prova a vuoto `CONFLITTO=0` con uscita 0. MS-317 risulta senza voce nel registro.
 
+Poi il proprietario ha eseguito i due commit (`3ce3c93`, `a4dafd5`), il push e la registrazione dell'impronta; verificati albero, remoto allineato e prova a vuoto `CONFLITTO=0`.
+
 File toccati: docs/latex/README.md, .claude/allineamento-risolti.json, docs/OPERATIONS-LOG.md, .claude/memory/progress.md, .claude/memory/index.md, _notes/COMMIT-SCOPE.json, _notes/COMMIT-MSG.txt.
 
 ## 2026-11-23 - Pannello installato dal proprietario e verificato, MS-317
