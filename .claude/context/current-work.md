@@ -11,6 +11,14 @@ last-verified-commit: cf177180ef9f2a3ef325247dd07c973eb544d949
 
 # Lavoro corrente
 
+## Ripresa verificata del 2026-11-25
+
+HEAD main 1e6e44b, un solo albero. Dopo l'impronta 3edf3de sono arrivati due commit di allineamento, senza cambiamenti al codice DSP o ai documenti di prodotto. Due modifiche preesistenti alle skill GRC del modello restano riservate alla chiusura dal template. Nessuna verifica runtime nuova: il risultato del pannello resta quello osservato in MS-317.
+
+Sync-context: STACK, deployment e roadmap sono superate rispetto all'ancora 0d95d2e; current-work rispetto a cf17718. Verifica-schede non trova difetti strutturali; nessun bump generale delle firme. Rapporto vulnerabilità assente, sicurezza non verificata. Roadmap del 25 novembre con 26 voci aperte; prevale la sospensione delle verifiche fisiche in PENDING-ACTIONS.
+
+Il proprietario chiede prima comandi di versionamento completi di cd, poi completamento dello sviluppo. Commit limitato ai tre file di memoria/contesto, con le due skill GRC escluse. Prossimo fronte: confronto reflex/direttività, CAD con distinta e livelli/protezioni nel perimetro teorico; piano software del controllo già concluso. Per il pannello resta enable manuale al login, senza reinstallazione. Gate dovuto ancora senza risposta: nessuna adozione o installazione, ADR-031 valida. Nessuna verifica fisica riattivata.
+
 ## Mandato e risultato
 
 2026-11-23, MS-308 e successivi: controllo DSP software completato e report/simulazioni collegati nell'ingresso docs/STATO-PROGETTO.md. La specifica e le prove sono nel piano docs/piani/2026-11-23-controllo-ascolto.md e nel manuale 61, ADR-057. API reale canonica/asincrona, ALSA/clock, grafo PC qualificato e laboratorio isolato, pannello HTTP e watchdog implementati. Quarantasei metodi di test; banco motore reale 44,1/48 kHz a quattro canali e browser desktop/mobile verificati. Installazione e avvio manuali del pannello eseguiti dal proprietario, MS-317; 24 file e pagina/API/font verificati, zero riavvii. Avvio automatico al login ancora disabilitato alla prova. Nessun deploy automatico.

@@ -1,5 +1,29 @@
 # Work-log
 
+## 2026-11-25 - Versionamento manuale richiesto prima del completamento
+
+**Template:** nessuna; applicazione della consegna manuale per un commit limitato ai file propri.
+
+Il proprietario chiede i comandi completi di cd per versionare la ripresa, poi di completare tutto lo sviluppo necessario. Perimetro del commit: i tre file memory/index, memory/progress e context/current-work; le due modifiche GRC preesistenti restano escluse. Identità Git locale, remoto e unico URL di push verificati; valori personali soltanto nella configurazione locale, nessuna impostazione cambiata. Stage vuoto al controllo. Tredici verifiche prescritte eseguite con codice 0; restano l'avviso idiomatico sui comandi shell, le firme delle quattro schede e la domanda NAS storica. Il rapporto di sicurezza resta assente e non è qualificato dal codice 0 dei controlli documentali.
+
+Ricognizione dei residui dai piani e dalla roadmap: il piano del controllo del 23 novembre ha tutte le caselle concluse. Il lavoro successivo riguarda confronto reflex e direttività, CAD parametrico con distinta e analisi di livelli/protezioni, nel perimetro teorico già autorizzato. Non si dichiara riaperto il controllo sviluppato e non si riattivano acquisti, tagli o qualifiche fisiche sospese. Il gate dei pacchetti rimane senza risposta, senza installazioni o adozioni dedotte; il suo censimento non sostituisce la richiesta di sviluppo.
+
+Si consegnano comandi PowerShell con cd, tre add espliciti, commit e push su main. Nessuna operazione Git di scrittura eseguita dall'agente. Nessun nuovo codice di prodotto scritto prima del passaggio manuale richiesto; non cambiare i file dopo la consegna dei comandi. File toccati: memory/index.md, memory/progress.md e context/current-work.md; ripresa, messaggio e rapporto di verifica nel livello privato. Zero subagent.
+
+## 2026-11-25 - Ripresa verificata e avvio del gate dovuto
+
+**Template:** nessuna; applicazione delle procedure riprendi, sync-context, roadmap e gate-pacchetti, senza nuove regole.
+
+Verifica-ripresa uscita 1: dopo l'impronta del 24 novembre su 3edf3de sono comparsi gli allineamenti 622ac8e e 1e6e44b, non ancora descritti nel work-log. Git show --stat e confronto dei percorsi tools/config/docs confermano sole modifiche al sistema di progetto e alle istruzioni; nessun nuovo sviluppo DSP. Un solo albero, main a 1e6e44b. Le due modifiche GRC preesistenti correggono separatori di tabella e sono già consegnate a chiudi-allineamento; non vengono scartate o incluse nel lavoro corrente. La ripresa privata continuava a descrivere commit non eseguiti, benché MS-318 ne registrasse l'esito: aggiornata la testa, conservati corpo precedente, ricevuta privata e impronta originale.
+
+Wrapper Codex allineati; fonti a monte 0 da guardare su 0 sorvegliate. Verifica-schede: quattro schede con ancore arretrate, zero difetti; nessun bump collettivo o rilettura integrale del codice dichiarata. Test-Allineamento esce 0 ma segnala le quattro firme e la domanda storica sul NAS; non viene presentato come controllo senza avvisi. Stato-vulnerabilita esce 1 per rapporto assente, quindi sicurezza non verificata; nessun accesso SSH, scansione host o aggiornamento avviato. Cassetta propria vuota, nessun altro partecipante vivo al controllo. Nessun messaggio inviato.
+
+Roadmap rigenerata il 25 novembre: 26 voci aperte, zero chiuse dalla misura; le verifiche locali dichiarate escono 0, i link restano non verificati. Il vecchio check-pending-actions stampa ancora istruzioni storiche: per il residuo prevalgono il riepilogo corrente e la sospensione fisica di PENDING-ACTIONS. Controllo DSP e pannello risultano completati dalle prove del 23 novembre, senza nuova verifica in esercizio; rimane l'abilitazione manuale dell'avvio al login.
+
+Riepilogo pacchetti: riferimento template 99b13ff del 24 novembre; nessuna adozione nel registro, undici presenze non registrate e 107 voci mai viste dal gate. Gate avviato soltanto per il riconoscimento dei settori e la registrazione delle presenze; nessuna installazione o scelta dedotta. ADR-031 mantiene il rifiuto degli strumenti di ricerca a consumo e non viene superata dall'assenza del registro. Il passo successivo dipende dalla conferma dei settori del proprietario. Nessun lavoro operativo nuovo avviato dopo la ripresa; zero subagent.
+
+File toccati: memory/index.md, memory/progress.md, context/current-work.md; rapporto, ripresa con copia precedente e COMMIT-MSG nel livello privato. Chiusura ancora da verificare dopo le ultime scritture; nessuna proposta immediata di chiudi con la consegna GRC riservata a monte. Nessun add, commit, push o deploy eseguito.
+
 ## 2026-11-24 - Conflitto su docs/latex/README.md risolto, commit preparato, MS-318
 
 **Template:** nessuna; la collisione fra `docs/latex/` del progetto e la guida del pacchetto `latex` è il comportamento previsto dalla regola 5 dello strumento.
