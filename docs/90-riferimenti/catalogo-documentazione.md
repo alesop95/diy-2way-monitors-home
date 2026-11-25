@@ -4,7 +4,7 @@
 
 Radice di questa postazione: `E:\diy-2way-monitors-home`. Ogni percorso relativo delle tabelle va aggiunto a questa radice. Il [CSV completo](../../data/catalogo-documentazione.csv) include anche il percorso assoluto Windows. L’elenco censisce i file pubblicabili presenti, compresi quelli ancora da aggiungere manualmente a git; esclude template, binari, appunti privati e fonti della biblioteca esterna.
 
-169 file documentali, bibliografici e di ricerca. Il [percorso di lettura](../STATO-PROGETTO.md) spiega cosa leggere; questo catalogo risponde a dove si trova ogni file. Lo stato operativo resta nella memoria canonica.
+175 file documentali, bibliografici e di ricerca. Il [percorso di lettura](../STATO-PROGETTO.md) spiega cosa leggere; questo catalogo risponde a dove si trova ogni file. Lo stato operativo resta nella memoria canonica.
 
 Per le prove binarie correnti, i manuali privati, i modelli CAD e gli archivi dei tentativi precedenti consultare la [mappa degli artefatti](artefatti-e-prove.md). Per fonti e punti d’uso consultare la [mappa del pedigree](fonti-progetto.md).
 
@@ -57,6 +57,7 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [docs/61-camilladsp-manuale-tecnico.md](../../docs/61-camilladsp-manuale-tecnico.md) |
 | [docs/62-confronto-crossover-e-verifica-matematica.md](../../docs/62-confronto-crossover-e-verifica-matematica.md) |
 | [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md) |
+| [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md) |
 | [docs/70-realizzazione-e-verifica.md](../../docs/70-realizzazione-e-verifica.md) |
 | [docs/75-catena-di-riproduzione.md](../../docs/75-catena-di-riproduzione.md) |
 | [docs/80-strumenti-posseduti/README.md](../../docs/80-strumenti-posseduti/README.md) |
@@ -89,11 +90,13 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [docs/latex/README.md](../../docs/latex/README.md) |
 | [docs/latex/crossover-pc-pi-analogico.tex](../../docs/latex/crossover-pc-pi-analogico.tex) |
 | [docs/latex/intrawelt-header.tex](../../docs/latex/intrawelt-header.tex) |
+| [docs/latex/reflex-direttivita-cabinet.tex](../../docs/latex/reflex-direttivita-cabinet.tex) |
 | [docs/latex/sistema-autonomo-driver-e-collaudo.tex](../../docs/latex/sistema-autonomo-driver-e-collaudo.tex) |
 | [docs/piani/2026-11-19-cabinet-parametrici.md](../../docs/piani/2026-11-19-cabinet-parametrici.md) |
 | [docs/piani/2026-11-20-ascolto-autonomo-e-relazione.md](../../docs/piani/2026-11-20-ascolto-autonomo-e-relazione.md) |
 | [docs/piani/2026-11-20-fonti-lezioni-e-riordino.md](../../docs/piani/2026-11-20-fonti-lezioni-e-riordino.md) |
 | [docs/piani/2026-11-23-controllo-ascolto.md](../../docs/piani/2026-11-23-controllo-ascolto.md) |
+| [docs/piani/2026-11-25-reflex-direttivita-cad.md](../../docs/piani/2026-11-25-reflex-direttivita-cad.md) |
 | [docs/separazione-ambienti/FONTI.md](../../docs/separazione-ambienti/FONTI.md) |
 | [docs/separazione-ambienti/GUIDA.md](../../docs/separazione-ambienti/GUIDA.md) |
 
@@ -112,6 +115,7 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [.claude/context/refactor-06-autonomia-clock-e-prove-leggibili.md](../../.claude/context/refactor-06-autonomia-clock-e-prove-leggibili.md) |
 | [.claude/context/refactor-07-fonti-lezioni-e-prove-conservate.md](../../.claude/context/refactor-07-fonti-lezioni-e-prove-conservate.md) |
 | [.claude/context/refactor-08-controllo-ascolto.md](../../.claude/context/refactor-08-controllo-ascolto.md) |
+| [.claude/context/refactor-09-fase-volume-e-consegna.md](../../.claude/context/refactor-09-fase-volume-e-consegna.md) |
 | [.claude/context/roadmap.md](../../.claude/context/roadmap.md) |
 | [.claude/context/studio-didattico-master.md](../../.claude/context/studio-didattico-master.md) |
 
@@ -143,6 +147,8 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [research-vault/09-Biblioteca-tassonomia.md](../../research-vault/09-Biblioteca-tassonomia.md) |
 | [research-vault/10-Piano-digestione-MAIN.md](../../research-vault/10-Piano-digestione-MAIN.md) |
 | [research-vault/anagrafiche-fonti-web.json](../../research-vault/anagrafiche-fonti-web.json) |
+| [research-vault/completamento-20261125/consegna.json](../../research-vault/completamento-20261125/consegna.json) |
+| [research-vault/completamento-20261125/risultati.json](../../research-vault/completamento-20261125/risultati.json) |
 | [research-vault/crossover-pc-pi-analogico/brief.md](../../research-vault/crossover-pc-pi-analogico/brief.md) |
 | [research-vault/crossover-pc-pi-analogico/review.md](../../research-vault/crossover-pc-pi-analogico/review.md) |
 | [research-vault/crossover-pc-pi-analogico/risultati-modello.json](../../research-vault/crossover-pc-pi-analogico/risultati-modello.json) |

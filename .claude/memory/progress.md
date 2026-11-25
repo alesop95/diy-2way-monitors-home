@@ -1,5 +1,17 @@
 # Work-log
 
+## 2026-11-25 - Commit del proprietario e sviluppo dei modelli, in corso
+
+**Template:** nessuna; applicazione dei modelli di progetto, non capacità generiche da estrarre.
+
+Il proprietario ha eseguito add dei tre file previsti, commit 7c7c864 e push su main. Il suo output conserva tre avvisi anti-slop non bloccanti e nessuna corrispondenza del controllo identità; git locale conferma il commit e soltanto i due GRC preesistenti prima dello sviluppo. Il completamento prosegue inline nel medesimo albero su sua richiesta, senza nuove domande di avvio, commit o installazioni.
+
+Piano docs/piani/2026-11-25-reflex-direttivita-cad.md scritto. Riutilizzati dati e librerie locali; SciPy assente, nessuna installazione. CADCraft 0.20.1 e PdfCraft 0.22.0 rilevati. Tre datasheet ufficiali SB scaricati nel livello privato, impronte registrate nei dati geometrici e disegni ispezionati; diametri del cestello distinti dai cerchi di fissaggio. Fonti teoriche aperte: abstract/metadati Small presso AES e pagina didattica del pistone di Russell; non si dichiara letto l'intero articolo Small, il cui PDF reperito non esponeva testo. Un recupero del PDF Thiele è scaduto, quindi non è promosso a lettura compiuta.
+
+Dodici prove acustiche e sette geometriche verdi dopo rossi osservati. L'allineamento B4 è confrontato con valori analitici indipendenti; minimo del cono, segno della somma e nullo del pistone sono esercitati. Mutazione del segno del condotto rilevata dalla prova di fase, poi sorgente ripristinato con hash verificato. La geometria include gioco nominale, incassi e rinforzo; rifiuta uscite dal frontale e collisioni. Aggiunto il conto della sola porzione del condotto che occupa la cavità, escludendo il tratto nel pannello. Nessuna qualifica fisica dedotta.
+
+Restano da produrre rapporto dei confronti, tavole CAD, assieme nativo e consegna documentale. File toccati: piano, data/driver-geometria.json, config/cabinet/progetto-candidato.json, tools/acustica_cabinet.py e test, tools/progetto_cabinet.py e test, questo work-log, snapshot/current-work e ripresa privata. Zero subagent, nessun add/commit/push/deploy automatico.
+
 ## 2026-11-25 - Versionamento manuale richiesto prima del completamento
 
 **Template:** nessuna; applicazione della consegna manuale per un commit limitato ai file propri.
@@ -1314,3 +1326,21 @@ CamillaDSP risponde via SSH con versione4.1.3, Inactive, mute true, -60dB. Spieg
 File toccati: `docs/10-ambiente/camilladsp-uso-quotidiano.md`, README ambiente, runbook backup finale, `docs/57-dsp-persistente.md`, `docs/PENDING-ACTIONS.md`, `docs/OPERATIONS-LOG.md`, `tools/roadmap-items.yml`, snapshot, current-work, roadmap e questo registro; rapporto di pulizia, lettura DSP, ripresa e messaggio proposto privati. La guida e il chiarimento terminologico descrivono lo stato attuale e il progetto, non una nuova funzione implementata.
 
 Consolidamento: 26 pagine ambiente allineate al gemello; Markdown, comandi, EOL, memoria, affermazioni, privacy e diff verificati senza errori pertinenti. Roadmap rigenerata e riletta dal rapporto privato roadmap-stato-20261120.txt: tre geometrie esplorative, poi dati stanza/target, driver e CAD esecutivo. Restano i quattro hook e le due tabelle già segnalati; nessuna proposta di chiudi tutto verde. File di ripresa precedente conservato prima dell'aggiornamento e messaggio proposto pronto, senza registrazione dell'impronta di chiusura.
+## 2026-11-25 - Modelli e CAD nominali verificati, consolidamento in corso
+
+**Template:** nessuna nuova lezione; applicati i presidi già presenti su prove, provenienza e rigenerazione.
+
+Dopo il commit manuale 7c7c864, completati circuito reflex con fase e volume del tubo, pistone ideale e somma LR4 con offset/RC. Geometria nominale dei tre cabinet con incassi, centri di montaggio e rinforzo: sette solidi per variante, dodici profili DXF e distinta per coppia. Rapporto con 108 casi reflex, 27 angolari e 18 elettrici; nessun guadagno reale dell'amplificatore presunto. Suite nuova osservata: 31 test e nove subtest verdi; segno del condotto e raggio alterati rilevati. FreeCAD 1.1.4 reale ricomputa, riapre i nativi e reimporta gli STEP; GUI isolata ispezionata. CADCraft 0.20.1 rilegge quote, aree, perimetri e unità. Nessuna installazione, operazione Git di scrittura o qualifica fisica.
+
+Relazione docs/64 e quattro figure Intrawelt prodotte. Tutte le sei pagine viste; un ultimo ritocco alle tacche logaritmiche e alla rasterizzazione della mappa richiede rebuild e QA mirato prima della consegna. Kit locale di 52 file generato e verificato prima di quel ritocco, quindi da aggiornare. La prova di rigenerazione con SVG già esistenti e quella di stabilità della data del rapporto coprono due difetti realmente riprodotti. Restano aggiornamento degli indici operativi e controlli completi. File scritti: nuovi moduli acustica/progetto/studio, sei suite, generatori e banco CAD, figure, consegna, pagina64 e piano, input JSON, risultati, fonti e contesto; memoria e ripresa aggiornate nello stesso giro.
+
+
+## 2026-11-25 - Consegna nominale e controlli completati, MS-319
+
+**Template:** nessuna nuova lezione; usati i contratti esistenti su prove e provenienza. Sette lezioni precedenti ancora aperte.
+
+Completati tutti i task del piano reflex/direttività/CAD. Rapporto 108/27/18 casi e tre geometrie; 31 test e nove subtest verdi. Modelli FCStd, STEP e DXF verificati, kit da 52 file e 2.435.754 byte coerente con i collaudi. Relazione di sei pagine interamente ispezionata; quattro PDF correnti con QA registrato. Dopo la correzione degli accenti la nuova renderizzazione delle sei pagine è identica alle immagini già viste. Rimossi 34 PNG QA con ricevuta e due cache temporanee create dai test; fonti originali, archivi e viste CAD conservati.
+
+Il primo gate completo ha superato i 37 controlli locali ma rilevato accenti mancanti nei nuovi testi. Correzioni nel sorgente e nel README generato, poi rapporto/figure/PDF/kit ricostruiti: secondo gate completo con «Controlli verdi». Ultima ripetizione richiesta dopo questa persistenza, rapporto chiudi-controlli-finale.txt nel livello privato. Nessuna nuova esclusione per ottenere il verde. Le ancore di quattro schede e il rapporto sicurezza assente restano dichiarati; gate pacchetti senza risposta, nessuna installazione.
+
+Roadmap e PENDING aggiornati: nominale sviluppato, scelte esecutive e riscontri fisici differiti. La roadmap conserva 26 voci aperte. Preparato per chiudi un perimetro esatto che esclude i due GRC preesistenti, riservati al template; il commit resta manuale. Nessuna scrittura Git, deploy o nuova impronta di ripresa. File scritti e riletti: modelli/suite/generatori CAD e kit, dati/rapporti/figure, docs/64 e sorgenti PDF, STATO/PENDING/OPS e indici delle prove/fonti/catalogo, piano/roadmap/controlli, STACK/didattica, snapshot/current-work e questo registro; ripresa e messaggio proposto privati.

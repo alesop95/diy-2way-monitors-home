@@ -2,7 +2,7 @@
   "schema": "fonti-usi-audio-1",
   "data": "2026-11-20",
   "perimetro": {
-    "file": 120,
+    "file": 125,
     "radici": [
       "docs",
       ".claude/context",
@@ -5659,6 +5659,34 @@
       ]
     },
     {
+      "id": "SRC-RUSSELL-BAFFLED-PISTON",
+      "url": "https://www.acs.psu.edu/drussell/demos/baffledpiston/baffledpiston.html",
+      "aliases": [],
+      "titolo": "Radiation from a Circular Baffled Piston",
+      "ente": "Daniel A. Russell, Graduate Program in Acoustics, Pennsylvania State University",
+      "tipo": "pagina_didattica_autore",
+      "versione": "Aggiornamento dichiarato 2014-10-30; consultazione 2026-11-25",
+      "spiegazione": "Modello di apertura circolare come approssimazione iniziale della direttivita; nessuna immagine o animazione del sito riprodotta.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-25",
+        "nota": "Autore, titolo e affiliazione riscontrati sulla pagina primaria."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Pagina di spiegazione, dipendenza da ka e limiti dell'approssimazione; non lettura di tutti gli articoli citati."
+      },
+      "usi_progettuali": "Modello del pistone e limiti della direttivita ideale in tools/acustica_cabinet.py e docs/64.",
+      "usi": [
+        {
+          "file": "docs/64-reflex-direttivita-e-cabinet-nominale.md",
+          "riga": 58,
+          "sezione": "Direttività e centri acustici",
+          "contesto": "Per ciascun driver si considera un pistone di area equivalente alla $S_d$ pubblicata. Il modello di apertura circolare è il punto di partenza descritto da [Daniel A. Russell, Penn State](https://www.acs.psu.edu/drussell/demos/baffledpiston/baffledpiston.html); non ne vengono riprodotte immagini o animazioni. Il diagram"
+        }
+      ]
+    },
+    {
       "id": "SRC-SB15NRX2C30-8",
       "url": "https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf",
       "aliases": [],
@@ -5675,7 +5703,7 @@
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Tabella T/S e disegno; non misura di distorsione sul cabinet del progetto."
+        "copertura": "Tabella e disegno riletti il 2026-11-25: cestello 123,9 mm, telaio 150 mm e flangia 6,5 mm. Non misura di distorsione nel cabinet."
       },
       "usi": [
         {
@@ -5685,10 +5713,22 @@
           "contesto": "{\"id\": \"SB15NRX2C30-8\", \"fs_hz\": 36.5, \"qts\": 0.34, \"vas_l\": 20, \"sd_cm2\": 82, \"xmax_oneway_mm\": 5, \"re_ohm\": 5.9, \"sensitivity_2v83_db\": 86.5, \"outer_diameter_mm\": 150, \"source\": \"https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf\"}"
         },
         {
+          "file": "data/driver-geometria.json",
+          "riga": 27,
+          "sezione": "Documento",
+          "contesto": "\"source_url\": \"https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf\","
+        },
+        {
           "file": "docs/63-sistema-autonomo-driver-e-collaudo.md",
           "riga": 52,
           "sezione": "Driver e cabinet: una base concreta e un'alternativa",
           "contesto": "L'alternativa SB15NRX2C30-8 nel B27 permette un frontale più stretto: diametro esterno 150 mm, 190 mm di larghezza del cabinet e spazio maggiore per lo schermo. Costa di più e ha minore prodotto area/corsa. Le dichiarazioni del produttore su motore e bassa induttanza motivano un confronto in gamma media; la qualità son"
+        },
+        {
+          "file": "docs/64-reflex-direttivita-e-cabinet-nominale.md",
+          "riga": 92,
+          "sezione": "Cabinet, frontali e distinta",
+          "contesto": "I disegni ufficiali di [SB16](https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf), [SB15](https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf) e [SB26](https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf) sono stati riletti e ispezionati. Il diametro posterio"
         },
         {
           "file": "research-vault/sistema-autonomo-20261120/sources.md",
@@ -5715,7 +5755,7 @@
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Tabella parametri e disegno quotato; grafici visivi non trasformati in un dataset FRD misurato."
+        "copertura": "Tabella e disegno riletti il 2026-11-25: cestello 144,5 mm, telaio 176 mm, flangia 4,1 mm e fissaggi distinti. Grafici non trasformati in una risposta complessa misurata."
       },
       "usi": [
         {
@@ -5723,6 +5763,12 @@
           "riga": 6,
           "sezione": "Documento",
           "contesto": "{\"id\": \"SB16PFCR25-8\", \"fs_hz\": 38, \"qts\": 0.40, \"vas_l\": 27, \"sd_cm2\": 124, \"xmax_oneway_mm\": 4.5, \"re_ohm\": 5.6, \"sensitivity_2v83_db\": 87, \"outer_diameter_mm\": 176, \"source\": \"https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf\"},"
+        },
+        {
+          "file": "data/driver-geometria.json",
+          "riga": 15,
+          "sezione": "Documento",
+          "contesto": "\"source_url\": \"https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf\","
         },
         {
           "file": "docs/55-proposta-sistema-home-recording.md",
@@ -5735,6 +5781,12 @@
           "riga": 52,
           "sezione": "Driver e cabinet: una base concreta e un'alternativa",
           "contesto": "L'alternativa SB15NRX2C30-8 nel B27 permette un frontale più stretto: diametro esterno 150 mm, 190 mm di larghezza del cabinet e spazio maggiore per lo schermo. Costa di più e ha minore prodotto area/corsa. Le dichiarazioni del produttore su motore e bassa induttanza motivano un confronto in gamma media; la qualità son"
+        },
+        {
+          "file": "docs/64-reflex-direttivita-e-cabinet-nominale.md",
+          "riga": 92,
+          "sezione": "Cabinet, frontali e distinta",
+          "contesto": "I disegni ufficiali di [SB16](https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf), [SB15](https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf) e [SB26](https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf) sono stati riletti e ispezionati. Il diametro posterio"
         },
         {
           "file": "docs/90-riferimenti/fonti.md",
@@ -5767,7 +5819,7 @@
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Fs, sensibilità, Re, diametri; nessun modello completo di distorsione o potenza reale."
+        "copertura": "Tabella e disegno riletti il 2026-11-25, inclusi Sd 6,2 cm2, cestello 46,15 mm, flangia 3 mm e condizione della potenza IEC con passa-alto Butterworth 2600 Hz/12 dB per ottava. Nessuna potenza reale del sistema dedotta."
       },
       "usi": [
         {
@@ -5775,6 +5827,12 @@
           "riga": 9,
           "sezione": "Documento",
           "contesto": "\"tweeter\": {\"id\": \"SB26STCN-C000-4\", \"fs_hz\": 960, \"re_ohm\": 3.2, \"sensitivity_2v83_db\": 92.5, \"outer_diameter_mm\": 72, \"source\": \"https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf\"},"
+        },
+        {
+          "file": "data/driver-geometria.json",
+          "riga": 41,
+          "sezione": "Documento",
+          "contesto": "\"source_url\": \"https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf\","
         },
         {
           "file": "docs/55-proposta-sistema-home-recording.md",
@@ -5789,6 +5847,12 @@
           "contesto": "L'alternativa SB15NRX2C30-8 nel B27 permette un frontale più stretto: diametro esterno 150 mm, 190 mm di larghezza del cabinet e spazio maggiore per lo schermo. Costa di più e ha minore prodotto area/corsa. Le dichiarazioni del produttore su motore e bassa induttanza motivano un confronto in gamma media; la qualità son"
         },
         {
+          "file": "docs/64-reflex-direttivita-e-cabinet-nominale.md",
+          "riga": 92,
+          "sezione": "Cabinet, frontali e distinta",
+          "contesto": "I disegni ufficiali di [SB16](https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf), [SB15](https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf) e [SB26](https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf) sono stati riletti e ispezionati. Il diametro posterio"
+        },
+        {
           "file": "docs/90-riferimenti/fonti.md",
           "riga": 145,
           "sezione": "Ricognizione e proposta della catena condivisa, 2026-11-17",
@@ -5799,6 +5863,36 @@
           "riga": 10,
           "sezione": "Fonti dello sviluppo autonomo e dei componenti",
           "contesto": "| [SB26STCN-C000-4](https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf) | Una pagina: diametro, risonanza, Re e sensibilità. Nessuna autorizzazione al segnale a banda intera dedotta dalla potenza IEC. |"
+        }
+      ]
+    },
+    {
+      "id": "SRC-SMALL-VENTED-1973",
+      "url": "https://aes.org/publications/elibrary/elibrary-page/?id=1967",
+      "aliases": [
+        "https://aes.org/publications/elibrary-page/?id=1967"
+      ],
+      "titolo": "Vented-Box Loudspeaker Systems--Part 1: Small-Signal Analysis",
+      "ente": "Richard H. Small, Journal of the Audio Engineering Society 21(5), 363-372, June 1973",
+      "tipo": "articolo_metadati_e_abstract",
+      "versione": "Record AES 1967 consultato 2026-11-25",
+      "spiegazione": "Inquadramento del reflex come sistema del quarto ordine e rilevanza delle perdite; non usato come fulltext letto.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-25",
+        "nota": "Autore, titolo, anno, volume e pagine verificati sul record dell'editore AES."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Soli metadati e abstract. PDF integrale non consultato; circuito e casi B4 sono derivati esplicitamente nel progetto."
+      },
+      "usi_progettuali": "Contesto bibliografico del confronto reflex in docs/64, senza attribuire una lettura integrale.",
+      "usi": [
+        {
+          "file": "docs/64-reflex-direttivita-e-cabinet-nominale.md",
+          "riga": 23,
+          "sezione": "Il circuito reflex e la sua verifica",
+          "contesto": "Il contesto bibliografico è il lavoro di [Small, 1973, verificato presso AES](https://aes.org/publications/elibrary/elibrary-page/?id=1967). In questa sessione sono stati letti metadati e abstract; non si dichiara una lettura integrale dell'articolo. Il circuito qui è derivato esplicitamente e provato sui casi analitic"
         }
       ]
     },

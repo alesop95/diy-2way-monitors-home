@@ -3,6 +3,32 @@
   "regola": "Dati autorati: una identità per fonte/versione, alias espliciti, lettura distinta dalla verifica. I riferimenti storici non ancora riconciliati restano tali.",
   "fonti": [
     {
+      "id": "SRC-RUSSELL-BAFFLED-PISTON",
+      "url": "https://www.acs.psu.edu/drussell/demos/baffledpiston/baffledpiston.html",
+      "aliases": [],
+      "titolo": "Radiation from a Circular Baffled Piston",
+      "ente": "Daniel A. Russell, Graduate Program in Acoustics, Pennsylvania State University",
+      "tipo": "pagina_didattica_autore",
+      "versione": "Aggiornamento dichiarato 2014-10-30; consultazione 2026-11-25",
+      "spiegazione": "Modello di apertura circolare come approssimazione iniziale della direttivita; nessuna immagine o animazione del sito riprodotta.",
+      "verifica": {"stato": "verificata", "data": "2026-11-25", "nota": "Autore, titolo e affiliazione riscontrati sulla pagina primaria."},
+      "lettura": {"stato": "parziale", "copertura": "Pagina di spiegazione, dipendenza da ka e limiti dell'approssimazione; non lettura di tutti gli articoli citati."},
+      "usi_progettuali": "Modello del pistone e limiti della direttivita ideale in tools/acustica_cabinet.py e docs/64."
+    },
+    {
+      "id": "SRC-SMALL-VENTED-1973",
+      "url": "https://aes.org/publications/elibrary/elibrary-page/?id=1967",
+      "aliases": ["https://aes.org/publications/elibrary-page/?id=1967"],
+      "titolo": "Vented-Box Loudspeaker Systems--Part 1: Small-Signal Analysis",
+      "ente": "Richard H. Small, Journal of the Audio Engineering Society 21(5), 363-372, June 1973",
+      "tipo": "articolo_metadati_e_abstract",
+      "versione": "Record AES 1967 consultato 2026-11-25",
+      "spiegazione": "Inquadramento del reflex come sistema del quarto ordine e rilevanza delle perdite; non usato come fulltext letto.",
+      "verifica": {"stato": "verificata", "data": "2026-11-25", "nota": "Autore, titolo, anno, volume e pagine verificati sul record dell'editore AES."},
+      "lettura": {"stato": "parziale", "copertura": "Soli metadati e abstract. PDF integrale non consultato; circuito e casi B4 sono derivati esplicitamente nel progetto."},
+      "usi_progettuali": "Contesto bibliografico del confronto reflex in docs/64, senza attribuire una lettura integrale."
+    },
+    {
       "id": "SRC-EKO-XL-XB-USER-PDF",
       "url": null,
       "aliases": [],
@@ -271,7 +297,7 @@
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Tabella parametri e disegno quotato; grafici visivi non trasformati in un dataset FRD misurato."
+        "copertura": "Tabella e disegno riletti il 2026-11-25: cestello 144,5 mm, telaio 176 mm, flangia 4,1 mm e fissaggi distinti. Grafici non trasformati in una risposta complessa misurata."
       }
     },
     {
@@ -291,7 +317,7 @@
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Tabella T/S e disegno; non misura di distorsione sul cabinet del progetto."
+        "copertura": "Tabella e disegno riletti il 2026-11-25: cestello 123,9 mm, telaio 150 mm e flangia 6,5 mm. Non misura di distorsione nel cabinet."
       }
     },
     {
@@ -311,7 +337,7 @@
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Fs, sensibilità, Re, diametri; nessun modello completo di distorsione o potenza reale."
+        "copertura": "Tabella e disegno riletti il 2026-11-25, inclusi Sd 6,2 cm2, cestello 46,15 mm, flangia 3 mm e condizione della potenza IEC con passa-alto Butterworth 2600 Hz/12 dB per ottava. Nessuna potenza reale del sistema dedotta."
       }
     },
     {

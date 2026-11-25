@@ -11,22 +11,18 @@ last-verified-commit: cf177180ef9f2a3ef325247dd07c973eb544d949
 
 # Lavoro corrente
 
-## Ripresa verificata del 2026-11-25
+## Completamento nominale, MS-319
 
-HEAD main 1e6e44b, un solo albero. Dopo l'impronta 3edf3de sono arrivati due commit di allineamento, senza cambiamenti al codice DSP o ai documenti di prodotto. Due modifiche preesistenti alle skill GRC del modello restano riservate alla chiusura dal template. Nessuna verifica runtime nuova: il risultato del pannello resta quello osservato in MS-317.
+Base main 7c7c864, dopo commit e push manuali del proprietario. Piano docs/piani/2026-11-25-reflex-direttivita-cad.md: modelli reflex/direttività, protezioni elettriche e cabinet nominali sviluppati. Rapporto con 108 casi reflex, 27 angolari, 18 elettrici e tre geometrie; 31 test nuovi e nove subtest verdi, controlli negativi osservati. Tre assiemi da sette solidi, incassi e rinforzo, FCStd ricomputati/riaperti, STEP reimportati e DXF riletti con CADCraft. A24 chiusa rimane base; nessuna scelta esecutiva dedotta.
 
-Sync-context: STACK, deployment e roadmap sono superate rispetto all'ancora 0d95d2e; current-work rispetto a cf17718. Verifica-schede non trova difetti strutturali; nessun bump generale delle firme. Rapporto vulnerabilità assente, sicurezza non verificata. Roadmap del 25 novembre con 26 voci aperte; prevale la sospensione delle verifiche fisiche in PENDING-ACTIONS.
+## Consegna e verifiche
 
-Il proprietario chiede prima comandi di versionamento completi di cd, poi completamento dello sviluppo. Commit limitato ai tre file di memoria/contesto, con le due skill GRC escluse. Prossimo fronte: confronto reflex/direttività, CAD con distinta e livelli/protezioni nel perimetro teorico; piano software del controllo già concluso. Per il pannello resta enable manuale al login, senza reinstallazione. Gate dovuto ancora senza risposta: nessuna adozione o installazione, ADR-031 valida. Nessuna verifica fisica riattivata.
+docs/64 e PDF di sei pagine con quattro figure; tutte le pagine viste. Kit locale build/consegna-completamento-20261125.zip, 52 file verificati; provenienza in research-vault/completamento-20261125/consegna.json. Quattro PDF correnti con QA e sorgenti nel manifesto. Fonti 205/38 curate, catalogo 175 file e nove approfondimenti didattici. Primo gate generale fermato da accenti nei nuovi testi, corretti nel sorgente; secondo gate con «Controlli verdi», 37 controlli locali. Rapporto finale dopo l'ultima scrittura nel livello privato, richiamato da memory/index. Immagini QA rimosse con ricevuta; fonti originali e viste CAD conservate.
 
-## Mandato e risultato
+Il controllo DSP già consegnato non è riconfigurato: software sviluppato e pannello installato/verificato in MS-317. Resta l'abilitazione manuale al login; nessuna reinstallazione. Non ripetere banco DSP, backup o riavvio per chiudere il nuovo blocco teorico.
 
-2026-11-23, MS-308 e successivi: controllo DSP software completato e report/simulazioni collegati nell'ingresso docs/STATO-PROGETTO.md. La specifica e le prove sono nel piano docs/piani/2026-11-23-controllo-ascolto.md e nel manuale 61, ADR-057. API reale canonica/asincrona, ALSA/clock, grafo PC qualificato e laboratorio isolato, pannello HTTP e watchdog implementati. Quarantasei metodi di test; banco motore reale 44,1/48 kHz a quattro canali e browser desktop/mobile verificati. Installazione e avvio manuali del pannello eseguiti dal proprietario, MS-317; 24 file e pagina/API/font verificati, zero riavvii. Avvio automatico al login ancora disabilitato alla prova. Nessun deploy automatico.
+## Vincoli e prossimo gesto
 
-## Consegna e prossima azione
+Le pendenze correnti stanno in docs/PENDING-ACTIONS.md. Scelta esecutiva, spesa, fonti e attività del template restano aperte; qualifica fisica sospesa ADR-055, senza richieste all'utente. Fissaggi, cablaggio, lavorazione e risposta reale richiedono i riscontri differiti. Gate pacchetti ancora senza risposta e sicurezza senza rapporto; nessun verde implicito. Ancore delle quattro schede non avanzate senza verifica completa.
 
-PDF correnti in docs/pdf, formule leggibili in LaTeX, figure SVG e modelli FCStd accessibili dall'indice. docs/PENDING-ACTIONS.md è il solo registro del residuo: qualifica hardware sospesa, futuri affinamenti teorici/CAD e decisioni di spesa separati dal controllo già sviluppato. Master didattico con otto approfondimenti; fonti curate e punti d'uso nel pedigree. Gate completo del nuovo blocco riuscito con codice 0 e 28 controlli locali verdi, MS-316; rapporto corrente privato. Resta il comando manuale enable per l'avvio al login; chiudi e versionamento sono manuali, senza nuova richiesta fisica.
-
-## Limiti e vincoli
-
-Nessuna misura acustica, dei jack, di ARM/USB o della DAW reale dedotta dal banco file. Le verifiche fisiche restano sospese per ADR-055 senza richieste all'utente. Non ripetere backup, installazioni o riavvio; il servizio DSP principale è rimasto Inactive/mute/-60 durante il test. Niente add/commit/push/deploy automatico; impronta di ripresa dopo i commit dell'utente. Template e sicurezza restano separati dal gate documentale. Snapshot canonico in memory/index; cronologia in progress/OPS, prove storiche e precedenti snapshot negli archivi privati.
+Il proprietario può versionare la milestone dopo il gate finale: messaggio in COMMIT-MSG e perimetro esatto in COMMIT-SCOPE, con i due GRC preesistenti esclusi. Nessun add/commit/push/deploy eseguito dall'agente. Impronta soltanto dopo commit e push dell'utente. Memoria canonica in memory/index; cronologia in progress e OPS. Nessun subagent.

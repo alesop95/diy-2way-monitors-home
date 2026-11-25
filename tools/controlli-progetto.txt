@@ -28,3 +28,13 @@ collauda-pannello-browser.py --check
 visualizza_simulazioni.py --check
 consegna_controllo.py --check
 consegna_documenti.py --check
+
+test_acustica_cabinet.py
+test_progetto_cabinet.py
+test_studio_completamento.py
+test_consegna_cabinet.py
+test_figure_completamento.py
+test_consegna_completamento.py
+studio_completamento.py --check
+figure_completamento.py --check
+consegna_completamento.py --check

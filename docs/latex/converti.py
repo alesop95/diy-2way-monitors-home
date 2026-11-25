@@ -1,4 +1,4 @@
-"""Converte i capitoli 62 e 63 in documenti LaTeX autonomi."""
+"""Converte i capitoli tecnici 62, 63 e 64 in documenti LaTeX autonomi."""
 
 import argparse
 from pathlib import Path
@@ -14,6 +14,10 @@ CHAPTERS = {
     "63": (
         "63-sistema-autonomo-driver-e-collaudo.md",
         "sistema-autonomo-driver-e-collaudo.tex",
+    ),
+    "64": (
+        "64-reflex-direttivita-e-cabinet-nominale.md",
+        "reflex-direttivita-cabinet.tex",
     ),
 }
 
@@ -73,6 +77,10 @@ def normalize_prose(prose, chapter):
         return f"](../../docs/{target})"
 
     prose = re.sub(r"\]\(([^()\s]+)\)", relative_link, prose)
+    if chapter == "64":
+        for name in ("chiusa-reflex", "condotto-ingombro-velocita", "direttivita-ideale", "condensatore-e-livelli"):
+            prose = prose.replace("figure/completamento-20261125/" + name + ".svg",
+                                  "../../build/completamento-20261125-figure/" + name + ".pdf")
     if chapter == "62":
         for figure in FIGURES:
             prose = prose.replace(

@@ -47,3 +47,9 @@ Il progetto ha una posizione implicita, perché la sua premessa è progettare il
 ## Intervento sull'amplificatore EKO già posseduto
 
 L'utente dichiara nel giro del 18/19 novembre che lo stesso contatto lo aiuterà anche con la sostituzione dello speaker del suo amplificatore EKO per basso. È PA-039: prima del ricambio servono identificazione del modello, carico, quote e cabinet. Il supporto è disponibile per dichiarazione dell'utente; nessun ricambio o incarico è stato deciso dall'agente. La scheda è [EKO per basso](80-strumenti-posseduti/eko-basso.md).
+
+## Dettaglio nominale completato il 25 novembre
+
+Il [capitolo 64](64-reflex-direttivita-e-cabinet-nominale.md) completa frontali, incassi, rinforzo e distinta per A24/B27/C24, con nativi FreeCAD, STEP e DXF effettivamente riletti. Il modello mantiene le battute incollate dei sei pannelli e aggiunge un rinforzo a finestra. I cerchi di fissaggio sono centri nominali, senza inventare il diametro pilota di una vite ancora da scegliere.
+
+La [consegna locale](../build/consegna-completamento-20261125/README.md) permette di aprire l'assieme e discutere quote e lavorazioni col supporto già individuato. Non è un ordine di taglio: restano da confermare processo, giochi, fissaggi, sigillatura, assorbente, connettori e appoggi reali. Il confronto fisico e la costruzione rimangono sospesi. Le verifiche numeriche dei solidi non dichiarano una verifica strutturale della colla o del mobile.

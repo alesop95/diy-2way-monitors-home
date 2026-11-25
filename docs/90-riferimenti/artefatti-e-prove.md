@@ -9,6 +9,8 @@ Radice locale: `E:\diy-2way-monitors-home`. I percorsi sotto sono relativi alla 
 | Recap stampabile | `docs/pdf/recap-progetto.pdf` | `docs/STATO-PROGETTO.md`; copia di lettura WordCraft, navigazione nel Markdown. |
 | Relazione matematica | `docs/pdf/crossover-pc-pi-analogico.pdf` | `docs/62-confronto-crossover-e-verifica-matematica.md`, TeX in `docs/latex/`. |
 | Relazione tecnica corrente | `docs/pdf/sistema-autonomo-driver-e-collaudo.pdf` | `docs/63-sistema-autonomo-driver-e-collaudo.md`, TeX in `docs/latex/`. |
+| Relazione reflex e cabinet | `docs/pdf/reflex-direttivita-cabinet.pdf` | `docs/64-reflex-direttivita-e-cabinet-nominale.md`, quattro figure e TeX. |
+| Kit nominale dettagliato | `build/consegna-completamento-20261125.zip` | 52 file con manifesto; estratto nello stesso percorso senza estensione. Tre FCStd, STEP, DXF, tavole, distinte e viste; nessun ordine di taglio. |
 | Provenienza dei PDF | `docs/pdf/manifest.json` | SHA-256 dei PDF e degli input, controllati da `tools/verifica_documenti.py`. |
 | Compilazione | `docs/latex/README.md` | Intermedi in build, consegne in docs/pdf, QA temporaneo eliminato. |
 | Kit CAD esplorativo | `build/consegna-cabinet-20261119/confronto.html` | Tre cabinet parametrici, nativi, STEP, DXF, distinta e viste; non ordine di taglio. |
@@ -30,10 +32,12 @@ Radice locale: `E:\diy-2way-monitors-home`. I percorsi sotto sono relativi alla 
 | Installazione verificata | `research-vault/sistema-autonomo-20261120/risultati-installazione-controllo.json` | 24 file della copia trasferita, servizio e pagina verificati in esercizio il 23 novembre; avvio al login ancora disabled alla prova. |
 | Figura del basso | `tools/visualizza_simulazioni.py` | `docs/figure/sistema-autonomo/fattibilita-basso.svg`: sei pannelli, diciotto curve, provenienza incorporata e check deterministico. |
 | Servizio Ubuntu e banco virtuale | `tools/installa-dsp-utente.py`, `tools/dsp_pipewire.py`, `tools/monitor_dsp.py` | Procedure in `docs/57-dsp-persistente.md` e `docs/10-ambiente/camilladsp-servizio-utente.md`; prove storiche nello ZIP delle sessioni. |
+| Reflex, direttività e livelli | `tools/studio_completamento.py`, `tools/figure_completamento.py` | `research-vault/completamento-20261125/risultati.json`: 108 casi reflex, 27 angolari e 18 elettrici; figure in `docs/figure/completamento-20261125/`. |
+| CAD nominale e consegna | `tools/collauda-cabinet-dettagli.py`, `tools/consegna_completamento.py` | `research-vault/completamento-20261125/consegna.json`; prove native in `build/completamento-20261125-freecad-verificato/`, tavole in `build/completamento-20261125-cadcraft-verificato/`. |
 | Pedigree e punti d'uso | `tools/mappa_fonti_progetto.py` | `research-vault/usi-fonti-progetto.json`, vista `docs/90-riferimenti/fonti-progetto.md`. |
 | Catalogo dei percorsi | `tools/catalogo_documentazione.py` | `data/catalogo-documentazione.csv`, vista `docs/90-riferimenti/catalogo-documentazione.md`. |
 
-Il modello elettrico e il calcolo di escursione non sono misure della risposta acustica. Ogni rapporto conserva ipotesi e limiti. Il kit CAD è esplorativo: fori, giunzioni e quote esecutive dipendono dai componenti definitivi e dai riscontri sospesi.
+Il modello elettrico e il calcolo di escursione non sono misure della risposta acustica. Ogni rapporto conserva ipotesi e limiti. Il primo kit CAD è esplorativo; il nuovo aggiunge frontali e rinforzo nominali. Fissaggi, giunzioni e quote esecutive dipendono dai componenti definitivi e dai riscontri sospesi.
 
 ## Manuali originali privati
 

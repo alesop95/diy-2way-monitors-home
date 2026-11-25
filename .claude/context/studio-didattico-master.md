@@ -97,3 +97,13 @@ Com'era e perché era fragile. Il peer di prova non aggiungeva default né caric
 Il salto di qualità. Configurazione canonica riletta, identità/clock/grafo osservati, profili attestati e preparazione revocabile. Banco audio reale e browser sono prove distinte. Il rapporto conserva valori e hash; errori e tentativi di mute non confermati restano visibili. Kit e avvio manuale sono pronti, mentre la qualifica fisica rimane esplicitamente sospesa.
 
 Dove leggere il dettaglio: [refactor-08-controllo-ascolto.md](refactor-08-controllo-ascolto.md).
+
+## 9. Conservare fase, volume e provenienza fino alla consegna
+
+Contesto. Completare il confronto reflex, la direttività e i cabinet nominali, senza riaprire le qualifiche fisiche sospese.
+
+Com'era e perché era fragile. Il modello chiuso non conteneva un condotto e i sei pannelli esplorativi non dimostravano fori o rinforzo. Sommare moduli, dimenticare il volume del tubo o firmare un file cambiato dopo la prova avrebbe prodotto un risultato rassicurante e sbagliato.
+
+Il salto di qualità. Circuito complesso, volume e accordo risolti insieme, geometria analitica confrontata con solidi FreeCAD, formati riaperti e mutazioni rilevate. Il kit confronta gli artefatti con le impronte della prova e verifica anche le sorgenti del PDF prima della firma. I limiti fisici restano visibili nel rapporto.
+
+Dove leggere il dettaglio: [refactor-09-fase-volume-e-consegna.md](refactor-09-fase-volume-e-consegna.md).

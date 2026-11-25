@@ -126,7 +126,7 @@ voci:
     dove: questo repository
     titolo: PA-024, scegliere il modulo di amplificazione e processore per i cabinet attivi
     stato: "Base attiva PC/Pi proposta in ADR-053: UMC1820 condivisa fra host alternativi e due finali V3; driver SB16/SB26 in A24 come studio, alternativa SB15/B27. Nessun acquisto o guadagno hardware definitivo."
-    passo: "Continuare distinta, guadagni e protezioni teoriche sulla base candidata; rumore, potenza reale e compatibilità misurata sono sospesi."
+    passo: "Distinta nominale, guadagni ipotetici, condensatore e limite ideale di tensione sviluppati in docs/64. Scelta di spesa ancora aperta; rumore, potenza reale e compatibilità misurata sono sospesi."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 19
@@ -197,15 +197,15 @@ voci:
     livello: 2
     dove: "progetto dei monitor"
     titolo: "05. Simulazione driver, cabinet e crossover"
-    stato: "Modelli a piccoli segnali SB16/A24 e alternativa SB15/B27 sviluppati in docs/63, con risposte ed escursione ideali. Dodici profili elettrici su file verificati; aggiunti 486 scenari HP35/LT e dodici casi nel motore. Target nominale corretto via EQ, risposta acustica non dimostrata. Nessuna scelta esecutiva congelata."
-    passo: "HP35/LT, sensibilità a volume e parametri e margine di equalizzazione sviluppati in MS-300/305. Proseguire confronti reflex/direttività con ipotesi esplicite, senza chiedere misure adesso."
+    stato: "Modelli a piccoli segnali SB16/A24 e alternativa SB15/B27 sviluppati in docs/63, con risposte ed escursione ideali. Dodici profili elettrici su file verificati; aggiunti 486 scenari HP35/LT e dodici casi nel motore. Aggiunti 108 casi reflex con ingombro e velocità del condotto, 27 scenari angolari ideali e 18 elettrici, docs/64. Risposta acustica non dimostrata e scelta esecutiva non congelata."
+    passo: "Confronti teorici autorizzati sviluppati e riproducibili, MS-319. Mantenere A24 chiusa come base; scelta esecutiva e validazione acustica dipendono dalle verifiche sospese."
     fonte: "docs/50-progettazione-monitor.md"
   - id: 32
     livello: 2
     dove: "CAD e confronto con il supporto artigiano"
     titolo: "06. Progetto 3D esecutivo e distinta per il legno"
-    stato: "Tre modelli parametrici esplorativi, STEP e DXF verificati e kit portatile pronti, MS-259/264; mancano driver, fori, giunzioni esecutive e verifica reale. Supporto artigiano già individuato, PA-037."
-    passo: "Proseguire il CAD parametrico e la distinta preliminare dai datasheet; fori, quote definitive, appoggi e ordine di taglio rimangono subordinati alle verifiche sospese."
+    stato: "Tre assiemi nominali dettagliati con sette solidi, tagli/incassi, centri di montaggio e rinforzo; FCStd/STEP/DXF, tavole e distinte per coppia verificati, MS-319. Supporto artigiano individuato, PA-037."
+    passo: "CAD nominale sviluppato; fissaggi, tolleranze di lavorazione, cablaggio, giunzioni esecutive, appoggi e ordine di taglio dipendono dai componenti definitivi e dalle verifiche sospese."
     fonte: "docs/70-realizzazione-e-verifica.md"
   - id: 33
     livello: 3

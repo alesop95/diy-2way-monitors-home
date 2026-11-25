@@ -1,0 +1,69 @@
+"""Riapre i tre assiemi, applica i colori di account e salva copie con vista."""
+import json
+import hashlib
+import os
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore,QtWidgets
+
+base=Path(os.environ['DIY_DETAIL_GUI_BASE'])
+out=Path(os.environ['DIY_DETAIL_GUI_OUT']);out.mkdir(parents=True,exist_ok=False)
+settings=App.ParamGet('User parameter:BaseApp/Preferences/View')
+settings.SetBool('Simple',True);settings.SetBool('Gradient',False)
+settings.SetUnsigned('BackgroundColor',0xFFFFFFFF)
+window=Gui.getMainWindow();window.show()
+report={'status':'running','variants':[],
+        'source_sha256':hashlib.sha256((base.parent/'tools/cabinet-dettagli-vista.FCMacro').read_bytes()).hexdigest()}
+pending=iter(('A24','B27','C24'))
+wood={'Frontale_IncassoT','Posteriore','FiancoSinistro','FiancoDestro','Fondo','Cielo','Rinforzo'}
+
+
+def finish(error=None):
+    report['status']='failed' if error else 'captured'
+    if error:report['error']=str(error)
+    (out/'esito.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    for name in list(App.listDocuments()):App.closeDocument(name)
+    window.close()
+
+
+def next_document():
+    try:
+        label=next(pending,None)
+        if label is None:finish();return
+        doc=App.openDocument(str(base/label/'cabinet-nominale.FCStd'))
+        Gui.activateWorkbench('PartWorkbench')
+        for obj in doc.Objects:
+            if not obj.ViewObject:continue
+            obj.ViewObject.Visibility=obj.Name in wood
+            if obj.Name in wood:
+                obj.ViewObject.ShapeColor=(.8196,.8314,.8902)
+                obj.ViewObject.LineColor=(0.,0.,0.)
+                if obj.Name=='Frontale_IncassoT':
+                    obj.ViewObject.ShapeColor=(77/255,17/255,167/255);obj.ViewObject.Transparency=65
+                if obj.Name in ('FiancoDestro','Cielo'):obj.ViewObject.Transparency=65
+                if obj.Name=='Rinforzo':obj.ViewObject.ShapeColor=(87/255,204/255,246/255)
+        mdi=window.findChild(QtWidgets.QMdiArea)
+        if mdi:
+            for child in mdi.subWindowList():
+                if doc.Label in child.windowTitle():mdi.setActiveSubWindow(child);child.showMaximized();break
+        view=Gui.activeDocument().activeView();view.setCameraType('Orthographic')
+        view.viewAxonometric();view.fitAll();Gui.updateGui()
+        def capture():
+            try:
+                folder=out/label;folder.mkdir()
+                visible=[o for o in doc.Objects if o.ViewObject and o.ViewObject.Visibility and o.Name in wood]
+                if len(visible)!=7:raise RuntimeError('Attesi sette pannelli visibili')
+                view.saveImage(str(folder/'assieme.png'),1500,1100,'White')
+                doc.saveAs(str(folder/'cabinet-con-vista.FCStd'))
+                report['variants'].append({'id':label,'visible_wood_solids':7,
+                    'native_sha256':hashlib.sha256((folder/'cabinet-con-vista.FCStd').read_bytes()).hexdigest(),
+                    'preview_sha256':hashlib.sha256((folder/'assieme.png').read_bytes()).hexdigest()})
+                App.closeDocument(doc.Name)
+                QtCore.QTimer.singleShot(200,next_document)
+            except Exception as exc:finish(exc)
+        QtCore.QTimer.singleShot(700,capture)
+    except Exception as exc:finish(exc)
+
+
+QtCore.QTimer.singleShot(1200,next_document)

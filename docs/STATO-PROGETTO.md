@@ -1,6 +1,6 @@
 # Progetto audio domestico: stato e documenti
 
-Aggiornamento del 2026-11-23, MS-308 e successivi. Questo è il punto di lettura per il proprietario: riunisce stato, report e simulazioni dalle fonti canoniche. Il controllo DSP è stato sviluppato e provato sul motore Ubuntu in istanza separata; non certifica diffusori o interfaccia fisica. Le verifiche fisiche rimangono sospese, mentre il lavoro software e documentale prosegue dalla postazione.
+Aggiornamento del 2026-11-25. Questo è il punto di lettura per il proprietario: riunisce stato, report e simulazioni dalle fonti canoniche. Controllo DSP, confronto reflex/direttività e cabinet nominali dettagliati sono sviluppati e verificati nei rispettivi perimetri. Le verifiche fisiche rimangono sospese; nessun risultato software certifica diffusori o interfaccia fisica.
 
 ## Fonti di verità: una per funzione
 
@@ -15,7 +15,7 @@ Aggiornamento del 2026-11-23, MS-308 e successivi. Questo è il punto di lettura
 | Dati numerici e configurazioni | `data/`, `config/` e rapporti del [vault del sistema](../research-vault/sistema-autonomo-20261120/brief.md) |
 | Provenienza delle fonti | [Pedigree e punti d'uso](90-riferimenti/fonti-progetto.md); bibliografia canonica `research-vault/fonti.json` |
 | Lezioni tecnico-didattiche | [Master didattico](../.claude/context/studio-didattico-master.md) |
-| PDF correnti | `docs/pdf/`, tre documenti e manifesto di impronte; gli intermedi restano in `build/` |
+| PDF correnti | `docs/pdf/`, quattro documenti e manifesto di impronte; gli intermedi restano in `build/` |
 
 Il catalogo è un elenco generato, la roadmap è una vista dell'agenda e le pagine di memoria servono alla ripresa tecnica: non sono altre versioni del progetto da scegliere. `INDICE-RAGIONATO.md` è ritirato e conserva soltanto il rimando a questa pagina. I PNG di controllo e i PCM sintetici non sono documenti da conservare dopo la verifica. Le fonti originali, i risultati e le decisioni rimangono disponibili.
 
@@ -31,7 +31,7 @@ Lo stato complessivo è questo: la preparazione software ha superato i collaudi 
 |---|---|---|
 | Ubuntu Studio | Ambiente di lavoro ricostruito, programmi di progettazione e CAD collaudati, profilo CPU corretto, DSP e MIDI verificati anche dopo riavvio/accesso. | Prestazioni con la futura interfaccia e il carico reale di registrazione da qualificare. |
 | Protezione del setup | Backup finale riletto, copia esterna verificata e vecchie copie autorizzate ruotate; quattro punti locali conservati nell'ultima verifica. | È un backup a livello di file, non un'immagine avviabile. Qui si riporta la prova conservata, non una nuova verifica del disco. |
-| Monitor a due vie | Tre ingombri CAD, nativi/STEP/DXF e distinte esplorative; due woofer candidati modellati e tweeter individuato. | Fori, volume netto definitivo, giunzioni, appoggi e risposta acustica non sono approvati per la costruzione. |
+| Monitor a due vie | Confronto chiusa/reflex, direttività ideale e livelli; tre assiemi nominali con frontali, incassi e rinforzo, nativi/STEP/DXF e distinte. | Giochi di lavorazione, fissaggi, ingombri reali, giunzioni, appoggi e risposta acustica restano da approvare sul prototipo. |
 | DSP sul PC | CamillaDSP 4.1.3 persistente e banco virtuale verificati; filtri, volume, mute, separazione delle vie e ripartenza controllata. | Il servizio è intenzionalmente in attesa silenziata senza profilo finale; il banco non è il crossover calibrato dei diffusori. |
 | Ascolto autonomo e controllo comune | Pannello Mix/Ascolto, WebSocket reale, volume/mute, osservazione ALSA/clock, grafo PC PipeWire e sorveglianza sviluppati; prova audio su file a 44,1/48 kHz e browser desktop/mobile. | Pannello installato e attivo in laboratorio; avvio automatico ancora disabilitato. Identità, jack, clock e percorso fisico PC/Pi restano da qualificare. |
 | Amplificatori posseduti | Schede Marshall MG15, Fender Frontman 65R ed EKO basso da 30 W, manuali e studio precedente acquisiti. | Nessuna caratterizzazione completa degli esemplari o diagnosi del guasto EKO eseguita. |
@@ -53,6 +53,8 @@ La documentazione tecnica esiste per ciascun fronte: comandi, risultato atteso e
 | Tutti gli interventi e le motivazioni | [Cronologia dei microstep](OPERATIONS-LOG.md), [decisioni ADR](../.claude/memory/decisions.md), [lezioni didattiche](../.claude/context/studio-didattico-master.md) |
 
 ## Come vedere le simulazioni e il 3D
+
+Il [completamento nominale](64-reflex-direttivita-e-cabinet-nominale.md) collega i 108 scenari reflex, le mappe di direttività e il calcolo delle protezioni. La [nuova consegna CAD](../build/consegna-completamento-20261125/README.md) contiene frontali con tagli/incassi, rinforzo, FCStd modificabili, STEP, DXF e tavole. Il [PDF matematico e costruttivo](pdf/reflex-direttivita-cabinet.pdf) raccoglie metodo, risultati e limiti.
 
 - [Basso, protezione HP35 e trasformazione LT](figure/sistema-autonomo/fattibilita-basso.svg): sei combinazioni driver/cabinet, diciotto curve e intervalli dei 486 scenari. È un modello a piccoli segnali, non una misura dei diffusori.
 - [Modulo e fase LR4](figure/crossover-20261120/lr4-modulo-fase.svg) e [effetti di ritardo e polarità](figure/crossover-20261120/cammino-e-somma.svg): si aprono nel browser; formule leggibili nel [PDF LaTeX](pdf/crossover-pc-pi-analogico.pdf).
@@ -83,7 +85,7 @@ La proposta è una coppia con profili mix e ascolto. Cambiare profilo può cambi
 
 La base di sviluppo documentata è UMC1820 per gli otto ingressi condivisi con l'home recording, quattro uscite per le vie, due Fosi V3 stereo e Raspberry Pi 4 completo per l'autonomia. Sono candidati, non componenti dichiarati acquistati o già collaudati sull'intera catena.
 
-Il cabinet di riferimento A24 è largo 220 mm, profondo 190 mm e alto 430 mm, in MDF da 18 mm, chiuso. I driver candidati sono SB16PFCR25-8 e SB26STCN-C000-4. L'alternativa B27 è larga 190 mm, profonda 180 mm e alta 430 mm e usa il woofer SB15NRX2C30-8. C24 è il confronto di maggiore volume. I tre modelli disponibili sono scatole parametriche esplorative, con pannelli e controlli geometrici; non sono ancora il pacchetto da mandare al falegname.
+Il cabinet di riferimento A24 è largo 220 mm, profondo 190 mm e alto 430 mm, in MDF da 18 mm, chiuso. I driver candidati sono SB16PFCR25-8 e SB26STCN-C000-4. L'alternativa B27 è larga 190 mm, profonda 180 mm e alta 430 mm e usa il woofer SB15NRX2C30-8. C24 è il confronto di maggiore volume. I tre assiemi nominali dettagliati includono tagli, incassi e rinforzo; il kit conserva sette solidi modificabili per cassa e distinte per coppia. Fissaggi, lavorazione e tolleranze definitive dipendono dai riscontri sospesi.
 
 Il ripiano superiore Stagecaptain ST-120 è già documentato: 118 × 30 cm, quota 93 cm. Non viene richiesta una nuova misura di queste quote pubbliche. Nello scenario nominale studiato, A24 lascia circa 569 mm per la larghezza totale dello schermo; B27 circa 631 mm. Questo spiega perché un 27″ largo 61-62 cm e A24 non sono automaticamente compatibili. La scelta dello schermo resta differita: Full HD è il minimo proposto, QHD non è obbligatorio e il gaming non è un requisito.
 
@@ -117,7 +119,7 @@ Le scansioni e gli appunti originali acquisiti restano privati. Reverse engineer
 
 Tutti i percorsi seguenti partono dalla radice locale `E:\diy-2way-monitors-home`. I collegamenti del sorgente Markdown aprono i file nel repository; il catalogo conserva l'elenco completo con percorsi assoluti. Per riprendere non occorre leggere l'intera cronologia.
 
-I capitoli numerati e gli indici tecnici sono sotto `docs/`. Le due relazioni sono nella cartella `docs/pdf/`, file `crossover-pc-pi-analogico.pdf` e `sistema-autonomo-driver-e-collaudo.pdf`; il master didattico è `.claude/context/studio-didattico-master.md`. Il PDF di questo recap è una copia di lettura: per la navigazione cliccabile usare questo Markdown e il catalogo.
+I capitoli numerati e gli indici tecnici sono sotto `docs/`. Le tre relazioni sono nella cartella `docs/pdf/`, file `crossover-pc-pi-analogico.pdf`, `sistema-autonomo-driver-e-collaudo.pdf` e `reflex-direttivita-cabinet.pdf`; il master didattico è `.claude/context/studio-didattico-master.md`. Il PDF di questo recap è una copia di lettura: per la navigazione cliccabile usare questo Markdown e il catalogo.
 
 | Serve per | Documento da aprire |
 |---|---|
@@ -146,13 +148,13 @@ La documentazione e il codice canonici sono nel repository Windows. Ubuntu conti
 
 I risultati correnti sono in `build/studio-crossover-20261120-v2/`, `build/sistema-autonomo-20261120-v5/` e `build/collaudo-profili-autonomi-20261120-finale-v5/`. I rapporti leggibili sono copiati nei due topic del vault. I tentativi precedenti, anche falliti, sono nel ZIP `_notes/archivio-prove/20261120/prove-superate.zip`, con 340 file e manifesto dei percorsi originali. La rimozione dei soli espansi ha ridotto di circa 190 MiB lordi le copie, conservando la prova delle correzioni.
 
-La mappa registra 203 riferimenti, con 36 schede curate e 167 riferimenti storici ancora da riconciliare. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende otto approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
+La mappa registra 205 riferimenti, con 38 schede curate e 167 riferimenti storici ancora da riconciliare. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende nove approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
 
 ## Sviluppo e attività residue
 
 Il basso protetto e la trasformazione nominale sono calcolati e verificati nel motore su file. Il controllo comune comprende API reale, osservazione ALSA, percorso PC PipeWire, pannello e sorveglianza: il [manuale](61-camilladsp-manuale-tecnico.md) collega codice, prove e misure. Il pannello è installato e attivo; restano abilitazione al login e qualifica hardware. Il software non certifica diffusori, jack, clock o livelli acustici reali. Il modulo WebSocket già presente su Ubuntu viene riusato senza aggiungere dipendenze al Python Windows.
 
-Le attività residue hanno una sola lista operativa: [PENDING-ACTIONS.md, pendenze correnti](PENDING-ACTIONS.md#pendenze-correnti-dopo-lo-sviluppo-autonomo). Comprende sviluppo software, evoluzione del CAD, scelta esecutiva, spesa, fonti e versionamento, distinguendoli dalle verifiche fisiche sospese. La roadmap generata legge gli stessi fronti dai dati di pianificazione, senza diventare un secondo registro di pendenze.
+Le attività residue hanno una sola lista operativa: [PENDING-ACTIONS.md, pendenze correnti](PENDING-ACTIONS.md#pendenze-correnti-dopo-lo-sviluppo-autonomo). Il blocco teorico e software autorizzato è sviluppato: controllo DSP, reflex/direttività, livelli e cabinet nominali. Restano scelta esecutiva, spesa, fonti e versionamento, con lavorazione e qualifica fisica sospese. La roadmap generata legge gli stessi fronti dai dati di pianificazione, senza diventare un secondo registro di pendenze.
 
 I PDF finali sono in `docs/pdf/`, con provenienza e impronte in `docs/pdf/manifest.json`. Le anteprime PNG sono soltanto controlli visivi temporanei: si elimina ogni immagine dopo l'ispezione. `build/` conserva intermedi di compilazione e risultati simulativi rigenerabili, non una seconda consegna dei PDF. Le viste del CAD sono figure di progetto e conservano una funzione distinta dalle anteprime delle pagine.
 

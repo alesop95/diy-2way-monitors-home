@@ -1,4 +1,4 @@
-"""Controlla i tre PDF correnti, la provenienza e l'assenza di copie QA sparse."""
+"""Controlla i PDF correnti, la provenienza e l'assenza di copie QA sparse."""
 from pathlib import Path, PurePosixPath
 import hashlib
 import json
@@ -23,9 +23,9 @@ def inspect_document(record,reader):
 def main():
     manifest=json.loads((ROOT/'docs/pdf/manifest.json').read_text(encoding='utf-8'))
     errors=[]
-    expected={'recap-progetto.pdf','crossover-pc-pi-analogico.pdf','sistema-autonomo-driver-e-collaudo.pdf'}
+    expected={'recap-progetto.pdf','crossover-pc-pi-analogico.pdf','sistema-autonomo-driver-e-collaudo.pdf','reflex-direttivita-cabinet.pdf'}
     if {Path(r['pdf']).name for r in manifest['documenti']}!=expected:
-        errors.append('Elenco PDF diverso dai tre documenti correnti')
+        errors.append('Elenco PDF diverso dai documenti correnti')
     for record in manifest['documenti']:
         errors.extend(inspect_document(record,lambda p:(ROOT/p).read_bytes()))
     for folder in ('build/relazione-audio-20261120','build/recap-progetto-20261120'):

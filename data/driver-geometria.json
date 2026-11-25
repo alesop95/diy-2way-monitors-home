@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "verified_date": "2026-11-25",
+  "status": "Quote nominali dei disegni SB Acoustics; non misure degli esemplari",
+  "drivers": {
+    "SB16PFCR25-8": {
+      "outer_diameter_mm": 176,
+      "rear_diameter_mm": 144.5,
+      "flange_thickness_mm": 4.1,
+      "overall_depth_mm": 88.3,
+      "mount_pcd_mm": 165,
+      "mount_count": 4,
+      "mount_angle_deg": 45,
+      "driver_hole_diameter_mm": 4.3,
+      "source_url": "https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf",
+      "source_sha256": "d5412079ab171560692e2240e5ccea7aa2a9b368dec2030a60671f2bee2eda6f"
+    },
+    "SB15NRX2C30-8": {
+      "outer_diameter_mm": 150,
+      "rear_diameter_mm": 123.9,
+      "flange_thickness_mm": 6.5,
+      "overall_depth_mm": 78.9,
+      "mount_pcd_mm": 138,
+      "mount_count": 4,
+      "mount_angle_deg": 45,
+      "driver_hole_diameter_mm": 4.3,
+      "source_url": "https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf",
+      "source_sha256": "de16a8dddc1c34c68e5afe621888ab28608a75c876b36ba5a3921a66f68754eb"
+    },
+    "SB26STCN-C000-4": {
+      "outer_diameter_mm": 72,
+      "rear_diameter_mm": 46.15,
+      "flange_thickness_mm": 3,
+      "overall_depth_mm": 29.63,
+      "mount_pcd_mm": 63,
+      "mount_count": 4,
+      "mount_angle_deg": 45,
+      "driver_hole_diameter_mm": 4,
+      "outer_diameter_tolerance_mm": 0.3,
+      "sd_cm2": 6.2,
+      "source_url": "https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf",
+      "source_sha256": "43829b810211557dd4a4bcda36581b5868415cbe1c4846a248c00be20591c2be",
+      "rated_power_test_condition": "IEC 268-5, Butterworth high-pass 2600 Hz, 12 dB/oct; non potenza ammissibile a banda intera"
+    }
+  }
+}

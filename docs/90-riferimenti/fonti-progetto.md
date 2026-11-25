@@ -2,7 +2,7 @@
 
 <!-- Generato da tools/mappa_fonti_progetto.py; dati autorati in research-vault/anagrafiche-fonti-web.json. -->
 
-Ricognizione del 2026-11-20: 203 identità nei 120 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
+Ricognizione del 2026-11-20: 205 identità nei 125 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
 
 Le chiavi bibliografiche preesistenti restano nel registro canonico del vault. Questa mappa descrive gli usi, non sostituisce la biblioteca. Registrata, letta e verificata sono proprietà distinte: le fonti storiche da riconciliare non diventano lette perché censite. Le letture parziali restano parziali.
 
@@ -203,9 +203,11 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-PRICE-SB16-SOUNDIMPORTS](#src-price-sb16-soundimports) | SB16PFCR25-8, prezzo SoundImports | prezzo_venditore | verificata | 3 |
 | [SRC-PRICE-SB26-SOUNDIMPORTS](#src-price-sb26-soundimports) | SB26STCN-C000-4, prezzo SoundImports | prezzo_venditore | verificata | 3 |
 | [SRC-PRICE-UMC1820-THOMANN](#src-price-umc1820-thomann) | UMC1820, prezzo Thomann Italia | prezzo_venditore | verificata | 3 |
-| [SRC-SB15NRX2C30-8](#src-sb15nrx2c30-8) | SB15NRX2C30-8 datasheet | datasheet_trasduttore | verificata | 3 |
-| [SRC-SB16PFCR25-8](#src-sb16pfcr25-8) | SB16PFCR25-8 datasheet | datasheet_trasduttore | verificata | 5 |
-| [SRC-SB26STCN-C000-4](#src-sb26stcn-c000-4) | SB26STCN-C000-4 datasheet | datasheet_trasduttore | verificata | 5 |
+| [SRC-RUSSELL-BAFFLED-PISTON](#src-russell-baffled-piston) | Radiation from a Circular Baffled Piston | pagina_didattica_autore | verificata | 1 |
+| [SRC-SB15NRX2C30-8](#src-sb15nrx2c30-8) | SB15NRX2C30-8 datasheet | datasheet_trasduttore | verificata | 5 |
+| [SRC-SB16PFCR25-8](#src-sb16pfcr25-8) | SB16PFCR25-8 datasheet | datasheet_trasduttore | verificata | 7 |
+| [SRC-SB26STCN-C000-4](#src-sb26stcn-c000-4) | SB26STCN-C000-4 datasheet | datasheet_trasduttore | verificata | 7 |
+| [SRC-SMALL-VENTED-1973](#src-small-vented-1973) | Vented-Box Loudspeaker Systems--Part 1: Small-Signal Analysis | articolo_metadati_e_abstract | verificata | 1 |
 | [SRC-ST120-DIMENSION-IMAGE](#src-st120-dimension-image) | Stagecaptain ST-120, immagine quotata ufficiale | disegno_quotato_produttore | verificata | 3 |
 | [SRC-ST120-MANUAL-2025](#src-st120-manual-2025) | Stagecaptain ST-120 manuale inglese | manuale_produttore | verificata | 3 |
 | [SRC-TI-SLOA049D](#src-ti-sloa049d) | Active Low-Pass Filter Design, SLOA049D | nota_applicativa | verificata | 1 |
@@ -4177,6 +4179,29 @@ Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vaul
 Contesto locale: / UMC1820 Thomann / Prezzo 175 € IVA inclusa e disponibilità della pagina italiana. /
 
 
+## SRC-RUSSELL-BAFFLED-PISTON
+
+Radiation from a Circular Baffled Piston
+
+Modello di apertura circolare come approssimazione iniziale della direttivita; nessuna immagine o animazione del sito riprodotta.
+
+Fonte canonica: [https://www.acs.psu.edu/drussell/demos/baffledpiston/baffledpiston.html](https://www.acs.psu.edu/drussell/demos/baffledpiston/baffledpiston.html).
+
+Responsabile: Daniel A. Russell, Graduate Program in Acoustics, Pennsylvania State University.
+
+Versione: Aggiornamento dichiarato 2014-10-30; consultazione 2026-11-25.
+
+Verifica: verificata, data 2026-11-25. Autore, titolo e affiliazione riscontrati sulla pagina primaria.
+
+Lettura: parziale. Pagina di spiegazione, dipendenza da ka e limiti dell'approssimazione; non lettura di tutti gli articoli citati.
+
+Usi progettuali dichiarati: Modello del pistone e limiti della direttivita ideale in tools/acustica_cabinet.py e docs/64.
+
+Uso in [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md), sezione «Direttività e centri acustici», riga 58.
+
+Contesto locale: Per ciascun driver si considera un pistone di area equivalente alla $S_d$ pubblicata. Il modello di apertura circolare è il punto di partenza descritto da Daniel A. Russell, Penn State; non ne vengono riprodotte immagini o animazioni. Il diagram
+
+
 ## SRC-SB15NRX2C30-8
 
 SB15NRX2C30-8 datasheet
@@ -4191,7 +4216,7 @@ Versione: Rev.2 2019-02-26.
 
 Verifica: verificata, data 2026-11-20. PDF del produttore, parametri e diametri letti.
 
-Lettura: parziale. Tabella T/S e disegno; non misura di distorsione sul cabinet del progetto.
+Lettura: parziale. Tabella e disegno riletti il 2026-11-25: cestello 123,9 mm, telaio 150 mm e flangia 6,5 mm. Non misura di distorsione nel cabinet.
 
 Usi progettuali dichiarati: data/driver-candidati.json, sei combinazioni del modello, confronto geometrico/economico nel63.
 
@@ -4199,9 +4224,17 @@ Uso in [data/driver-candidati.json](../../data/driver-candidati.json), sezione �
 
 Contesto locale: {"id": "SB15NRX2C30-8", "fs_hz": 36.5, "qts": 0.34, "vas_l": 20, "sd_cm2": 82, "xmax_oneway_mm": 5, "re_ohm": 5.9, "sensitivity_2v83_db": 86.5, "outer_diameter_mm": 150, "source": "https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf"}
 
+Uso in [data/driver-geometria.json](../../data/driver-geometria.json), sezione «Documento», riga 27.
+
+Contesto locale: "source_url": "https://sbacoustics.com/wp-content/uploads/2020/02/5in-SB15NRX2C30-8.pdf",
+
 Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Driver e cabinet: una base concreta e un'alternativa», riga 52.
 
 Contesto locale: L'alternativa SB15NRX2C30-8 nel B27 permette un frontale più stretto: diametro esterno 150 mm, 190 mm di larghezza del cabinet e spazio maggiore per lo schermo. Costa di più e ha minore prodotto area/corsa. Le dichiarazioni del produttore su motore e bassa induttanza motivano un confronto in gamma media; la qualità son
+
+Uso in [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md), sezione «Cabinet, frontali e distinta», riga 92.
+
+Contesto locale: I disegni ufficiali di SB16, SB15 e SB26 sono stati riletti e ispezionati. Il diametro posterio
 
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 9.
 
@@ -4222,13 +4255,17 @@ Versione: Rev.2 2021-12-15, URL produttore2024.
 
 Verifica: verificata, data 2026-11-20. Pagina del produttore e parametri controllati; valori non misurati sul nostro esemplare.
 
-Lettura: parziale. Tabella parametri e disegno quotato; grafici visivi non trasformati in un dataset FRD misurato.
+Lettura: parziale. Tabella e disegno riletti il 2026-11-25: cestello 144,5 mm, telaio 176 mm, flangia 4,1 mm e fissaggi distinti. Grafici non trasformati in una risposta complessa misurata.
 
 Usi progettuali dichiarati: data/driver-candidati.json, modello cassa chiusa e limiti di emissione, frontale A24 e doc55/63.
 
 Uso in [data/driver-candidati.json](../../data/driver-candidati.json), sezione «Documento», riga 6.
 
 Contesto locale: {"id": "SB16PFCR25-8", "fs_hz": 38, "qts": 0.40, "vas_l": 27, "sd_cm2": 124, "xmax_oneway_mm": 4.5, "re_ohm": 5.6, "sensitivity_2v83_db": 87, "outer_diameter_mm": 176, "source": "https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf"},
+
+Uso in [data/driver-geometria.json](../../data/driver-geometria.json), sezione «Documento», riga 15.
+
+Contesto locale: "source_url": "https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf",
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Cabinet e legno: un ingombro calcolato da cui partire», riga 107.
 
@@ -4237,6 +4274,10 @@ Contesto locale: La rosa iniziale comprende il woofer SB16PFCR25-8 e il tweeter 
 Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Driver e cabinet: una base concreta e un'alternativa», riga 52.
 
 Contesto locale: L'alternativa SB15NRX2C30-8 nel B27 permette un frontale più stretto: diametro esterno 150 mm, 190 mm di larghezza del cabinet e spazio maggiore per lo schermo. Costa di più e ha minore prodotto area/corsa. Le dichiarazioni del produttore su motore e bassa induttanza motivano un confronto in gamma media; la qualità son
+
+Uso in [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md), sezione «Cabinet, frontali e distinta», riga 92.
+
+Contesto locale: I disegni ufficiali di SB16, SB15 e SB26 sono stati riletti e ispezionati. Il diametro posterio
 
 Uso in [docs/90-riferimenti/fonti.md](../../docs/90-riferimenti/fonti.md), sezione «Ricognizione e proposta della catena condivisa, 2026-11-17», riga 145.
 
@@ -4261,13 +4302,17 @@ Versione: PDF produttore consultato2026-11-20.
 
 Verifica: verificata, data 2026-11-20. Parametri e disegno del PDF primario letti.
 
-Lettura: parziale. Fs, sensibilità, Re, diametri; nessun modello completo di distorsione o potenza reale.
+Lettura: parziale. Tabella e disegno riletti il 2026-11-25, inclusi Sd 6,2 cm2, cestello 46,15 mm, flangia 3 mm e condizione della potenza IEC con passa-alto Butterworth 2600 Hz/12 dB per ottava. Nessuna potenza reale del sistema dedotta.
 
 Usi progettuali dichiarati: Coppia proposta in55/63, centro acustico da misurare e condensatore da includere nel crossover reale.
 
 Uso in [data/driver-candidati.json](../../data/driver-candidati.json), sezione «Documento», riga 9.
 
 Contesto locale: "tweeter": {"id": "SB26STCN-C000-4", "fs_hz": 960, "re_ohm": 3.2, "sensitivity_2v83_db": 92.5, "outer_diameter_mm": 72, "source": "https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf"},
+
+Uso in [data/driver-geometria.json](../../data/driver-geometria.json), sezione «Documento», riga 41.
+
+Contesto locale: "source_url": "https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf",
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Cabinet e legno: un ingombro calcolato da cui partire», riga 107.
 
@@ -4277,6 +4322,10 @@ Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-aut
 
 Contesto locale: L'alternativa SB15NRX2C30-8 nel B27 permette un frontale più stretto: diametro esterno 150 mm, 190 mm di larghezza del cabinet e spazio maggiore per lo schermo. Costa di più e ha minore prodotto area/corsa. Le dichiarazioni del produttore su motore e bassa induttanza motivano un confronto in gamma media; la qualità son
 
+Uso in [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md), sezione «Cabinet, frontali e distinta», riga 92.
+
+Contesto locale: I disegni ufficiali di SB16, SB15 e SB26 sono stati riletti e ispezionati. Il diametro posterio
+
 Uso in [docs/90-riferimenti/fonti.md](../../docs/90-riferimenti/fonti.md), sezione «Ricognizione e proposta della catena condivisa, 2026-11-17», riga 145.
 
 Contesto locale: Fonti primarie lette: Ubuntu Studio Audio Configuration (`https://ubuntustudio.org/audio-configuration/`) per la regolazione di PipeWire; documentazione kernel intel_pstate (`https://docs.kernel.org/admin-guide/pm/intel_pstate.html`) per la distinzione fra policy e frequenza fissa; changelog Ubuntu cpupower-gui (`https
@@ -4284,6 +4333,31 @@ Contesto locale: Fonti primarie lette: Ubuntu Studio Audio Configuration (`https
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 10.
 
 Contesto locale: / SB26STCN-C000-4 / Una pagina: diametro, risonanza, Re e sensibilità. Nessuna autorizzazione al segnale a banda intera dedotta dalla potenza IEC. /
+
+
+## SRC-SMALL-VENTED-1973
+
+Vented-Box Loudspeaker Systems--Part 1: Small-Signal Analysis
+
+Inquadramento del reflex come sistema del quarto ordine e rilevanza delle perdite; non usato come fulltext letto.
+
+Fonte canonica: [https://aes.org/publications/elibrary/elibrary-page/?id=1967](https://aes.org/publications/elibrary/elibrary-page/?id=1967).
+
+Alias dichiarati: [https://aes.org/publications/elibrary-page/?id=1967](https://aes.org/publications/elibrary-page/?id=1967).
+
+Responsabile: Richard H. Small, Journal of the Audio Engineering Society 21(5), 363-372, June 1973.
+
+Versione: Record AES 1967 consultato 2026-11-25.
+
+Verifica: verificata, data 2026-11-25. Autore, titolo, anno, volume e pagine verificati sul record dell'editore AES.
+
+Lettura: parziale. Soli metadati e abstract. PDF integrale non consultato; circuito e casi B4 sono derivati esplicitamente nel progetto.
+
+Usi progettuali dichiarati: Contesto bibliografico del confronto reflex in docs/64, senza attribuire una lettura integrale.
+
+Uso in [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md), sezione «Il circuito reflex e la sua verifica», riga 23.
+
+Contesto locale: Il contesto bibliografico è il lavoro di Small, 1973, verificato presso AES. In questa sessione sono stati letti metadati e abstract; non si dichiara una lettura integrale dell'articolo. Il circuito qui è derivato esplicitamente e provato sui casi analitic
 
 
 ## SRC-ST120-DIMENSION-IMAGE

@@ -1,4 +1,4 @@
-"""Rigenera le tre consegne con Craft/LaTeX, conserva input e QA dichiarato."""
+"""Rigenera le consegne con Craft/LaTeX, conserva input e QA dichiarato."""
 import argparse
 from datetime import date
 import hashlib
@@ -38,7 +38,8 @@ def rebuild(record,cli,version):
         run([sys.executable,ROOT/'.claude/templates/craft-apps/tools/craft-documento.py','documento',
              ROOT/'docs/STATO-PROGETTO.md','--out',staged,'--stile',ROOT/'config/documenti/intrawelt-tecnico.json'])
     else:
-        chapter='62' if name.startswith('crossover') else '63'
+        chapter={'crossover-pc-pi-analogico.pdf':'62','sistema-autonomo-driver-e-collaudo.pdf':'63',
+                 'reflex-direttivita-cabinet.pdf':'64'}[name]
         run([sys.executable,ROOT/'docs/latex/converti.py',chapter])
         env=dict(os.environ,TEXMFCACHE=str(BUILD))
         run(['latexmk','-lualatex','-interaction=nonstopmode','-halt-on-error','-file-line-error',
@@ -67,9 +68,12 @@ def rebuild(record,cli,version):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--check',action='store_true')
-    parser.add_argument('--conferma-qa',choices=['recap-progetto.pdf','crossover-pc-pi-analogico.pdf','sistema-autonomo-driver-e-collaudo.pdf'])
+    parser.add_argument('--conferma-qa',choices=['recap-progetto.pdf','crossover-pc-pi-analogico.pdf','sistema-autonomo-driver-e-collaudo.pdf','reflex-direttivita-cabinet.pdf'])
     parser.add_argument('--pagine',help='Numeri delle sole pagine effettivamente ispezionate, separati da virgole')
-    args=parser.parse_args(); manifest=json.loads(MANIFEST.read_text(encoding='utf-8'))
+    args=parser.parse_args()
+    manifest_bytes=MANIFEST.read_bytes()
+    manifest_eol='\r\n' if b'\r\n' in manifest_bytes else '\n'
+    manifest=json.loads(manifest_bytes.decode('utf-8'))
     if args.conferma_qa:
         record=next(r for r in manifest['documenti'] if Path(r['pdf']).name==args.conferma_qa)
         if inspect_document(record,lambda p:(ROOT/p).read_bytes()): raise ValueError('Consegna o input non correnti')
@@ -91,7 +95,8 @@ def main():
         if not changed: print('PDF correnti, nessuna rigenerazione'); return
         manifest['data']=str(date.today())
         print(json.dumps({'rigenerati':changed,'qa':'Ispezionare le pagine cambiate e confermare; nessun PNG generato automaticamente.'},ensure_ascii=False))
-    MANIFEST.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    content=(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n').replace('\n',manifest_eol)
+    MANIFEST.write_bytes(content.encode('utf-8'))
 
 
 if __name__=='__main__': main()

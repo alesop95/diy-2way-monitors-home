@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "status": "CANDIDATO NOMINALE, non approvato per tagli o acquisti",
+  "boxes_source": "config/cabinet/studio-st120.json",
+  "drivers_source": "data/driver-geometria.json",
+  "geometry_assumptions": {
+    "diameter_clearance_mm": 1,
+    "minimum_web_mm": 5,
+    "brace_z_mm": 201,
+    "brace_border_mm": 20,
+    "brace_front_gap_mm": 20
+  },
+  "acoustic_assumptions": {
+    "sound_speed_m_s": 343,
+    "air_density_kg_m3": 1.204,
+    "component_displacement_before_port_l": 1.5,
+    "component_displacement_includes_brace": true,
+    "tuning_hz": [
+      35,
+      40,
+      45,
+      50
+    ],
+    "port_diameter_mm": [
+      30,
+      40,
+      50
+    ],
+    "port_wall_mm": 2,
+    "port_end_factor": 1.46,
+    "port_q": [
+      5,
+      10,
+      20
+    ],
+    "rear_port_clearance_diameters": 1,
+    "reference_level_db_spl_1m_fullspace": 90,
+    "crossover_hz": [
+      2000,
+      2600,
+      3200
+    ],
+    "depth_offsets_mm": [
+      -20,
+      0,
+      20
+    ],
+    "series_capacitor_uf": 47,
+    "tweeter_resistance_ohm": 3.2,
+    "interface_fullscale_dbu": 16,
+    "hypothetical_amplifier_gain_db": [
+      20,
+      26,
+      32
+    ]
+  },
+  "variants": [
+    {
+      "id": "A24",
+      "woofer": "SB16PFCR25-8",
+      "tweeter": "SB26STCN-C000-4",
+      "woofer_z_mm": 115,
+      "tweeter_z_mm": 247
+    },
+    {
+      "id": "B27",
+      "woofer": "SB15NRX2C30-8",
+      "tweeter": "SB26STCN-C000-4",
+      "woofer_z_mm": 115,
+      "tweeter_z_mm": 234
+    },
+    {
+      "id": "C24",
+      "woofer": "SB16PFCR25-8",
+      "tweeter": "SB26STCN-C000-4",
+      "woofer_z_mm": 115,
+      "tweeter_z_mm": 247
+    }
+  ]
+}

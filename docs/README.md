@@ -43,3 +43,5 @@ Proposta di sistema del 2026-11-17: [monitor, cabinet MDF, catena condivisa e sp
 Verifica del motore DSP prima dell'hardware: [collaudo offline su Windows e Ubuntu](56-collaudo-dsp-offline.md).
 
 Il [DSP persistente](57-dsp-persistente.md) e il [piano eseguito](58-piano-dsp-persistente.md) collegano il collaudo offline al servizio utente e al banco PipeWire. La [procedura Ubuntu](10-ambiente/camilladsp-servizio-utente.md) conserva i comandi e i limiti della verifica virtuale.
+
+Il [completamento del progetto nominale](64-reflex-direttivita-e-cabinet-nominale.md), sviluppato il 25 novembre, aggiunge confronto reflex, direttività ideale, livelli e protezioni, frontali con incassi e rinforzo. Collega il nuovo PDF e il kit FCStd/STEP/DXF verificato; qualifica fisica e rilascio costruttivo restano distinti.

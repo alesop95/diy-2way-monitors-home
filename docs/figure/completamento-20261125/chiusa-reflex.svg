@@ -1,0 +1,2998 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="936pt" height="360pt" viewBox="0 0 936 360" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<metadata id="provenienza-diy">{&quot;report_sha256&quot;: &quot;2114c443680627c29e3537c8bc11f4eab354d4a5fb63be7a71521601764ebbd9&quot;, &quot;generator_sha256&quot;: &quot;2fdff8a58b7571b3caf9921c3d26e5cff27aa501ba1405627dd5920c0fcd33df&quot;, &quot;status&quot;: &quot;Modelli nominali, non misure&quot;}</metadata>
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>figure_completamento.py</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 360 
+L 936 360 
+L 936 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.284615 319.59976 
+L 299.181564 319.59976 
+L 299.181564 30.30024 
+L 44.284615 30.30024 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 44.284615 319.59976 
+L 44.284615 30.30024 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="m6e36f10fc9" d="M 0 0 
+L 0 3.5 
+" style="stroke: #0a0a0a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="44.284615" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <!-- 20 -->
+      <g style="fill: #0a0a0a" transform="translate(38.179615 337.04976) scale(0.11 -0.11)">
+       <defs>
+        <path id="AltroGrotesk-Book-4f" d="M 282 410 
+L 282 0 
+L 3123 0 
+L 3123 467 
+L 1050 467 
+C 2554 1773 3021 2470 3021 3277 
+C 3021 4083 2496 4576 1664 4576 
+C 851 4576 326 4134 262 3258 
+L 742 3258 
+C 806 3846 1120 4096 1632 4096 
+C 2157 4096 2470 3795 2470 3258 
+C 2470 2598 2112 2010 282 410 
+z
+" transform="scale(0.015625)"/>
+        <path id="AltroGrotesk-Book-4d" d="M 1958 -96 
+C 2957 -96 3558 755 3558 2240 
+C 3558 3725 2957 4576 1958 4576 
+C 960 4576 358 3725 358 2240 
+C 358 749 960 -96 1958 -96 
+z
+M 1965 384 
+C 1274 384 896 1037 896 2240 
+C 896 3443 1274 4096 1965 4096 
+C 2643 4096 3021 3443 3021 2240 
+C 3021 1037 2643 384 1965 384 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#AltroGrotesk-Book-4f"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(49.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 131.281733 319.59976 
+L 131.281733 30.30024 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="131.281733" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <!-- 60 -->
+      <g style="fill: #0a0a0a" transform="translate(124.929233 337.04976) scale(0.11 -0.11)">
+       <defs>
+        <path id="AltroGrotesk-Book-53" d="M 1869 -90 
+C 2733 -90 3315 538 3315 1466 
+C 3315 2342 2739 2970 1933 2970 
+C 1453 2970 1069 2752 864 2336 
+C 922 3642 1325 4109 1901 4109 
+C 2298 4109 2592 3891 2688 3398 
+L 3187 3398 
+C 3072 4173 2592 4557 1933 4557 
+C 934 4557 358 3808 358 1952 
+C 358 698 858 -90 1869 -90 
+z
+M 1862 339 
+C 1280 339 928 794 928 1453 
+C 928 2118 1299 2560 1862 2560 
+C 2432 2560 2803 2118 2803 1453 
+C 2803 781 2432 339 1862 339 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#AltroGrotesk-Book-53"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(54.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 226.62216 319.59976 
+L 226.62216 30.30024 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="226.62216" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <!-- 200 -->
+      <g style="fill: #0a0a0a" transform="translate(217.21716 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4f"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(49.796875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(109.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 299.181564 319.59976 
+L 299.181564 30.30024 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="299.181564" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <!-- 500 -->
+      <g style="fill: #0a0a0a" transform="translate(289.523049 337.04976) scale(0.11 -0.11)">
+       <defs>
+        <path id="AltroGrotesk-Book-52" d="M 1837 -96 
+C 2733 -96 3290 531 3290 1459 
+C 3290 2342 2778 2976 1997 2976 
+C 1581 2976 1248 2829 1018 2541 
+L 1165 4032 
+L 2957 4032 
+L 2957 4480 
+L 717 4480 
+L 493 2003 
+L 998 1958 
+C 1165 2362 1466 2566 1901 2566 
+C 2406 2566 2765 2138 2765 1459 
+C 2765 774 2413 346 1830 346 
+C 1280 346 947 653 896 1184 
+L 390 1184 
+C 448 365 998 -96 1837 -96 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#AltroGrotesk-Book-52"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(54.40625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(114.40625 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_5">
+     <!-- Frequenza [Hz] -->
+     <g style="fill: #0a0a0a" transform="translate(137.710433 354.24976) scale(0.11 -0.11)">
+      <defs>
+       <path id="AltroGrotesk-Book-8" d="M 416 0 
+L 941 0 
+L 941 13 
+L 941 333 
+L 941 2022 
+L 2893 2022 
+L 2893 2509 
+L 941 2509 
+L 941 3994 
+L 3040 3994 
+L 3040 4480 
+L 416 4480 
+L 416 4467 
+L 416 4147 
+L 416 333 
+L 416 13 
+L 416 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-3a" d="M 384 0 
+L 896 0 
+L 896 13 
+L 896 333 
+L 896 1574 
+C 896 2336 1267 2720 1805 2720 
+C 1888 2720 1971 2714 2067 2701 
+L 2067 3155 
+C 1997 3162 1933 3168 1862 3168 
+C 1491 3168 1088 2970 870 2630 
+L 870 3072 
+L 384 3072 
+L 384 333 
+L 384 13 
+L 384 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-2a" d="M 1741 -96 
+C 2483 -96 3002 326 3104 1005 
+L 2598 1005 
+C 2522 595 2189 346 1741 346 
+C 1152 346 781 762 742 1434 
+L 3104 1434 
+L 3104 1658 
+C 3104 2605 2579 3168 1741 3168 
+C 800 3168 224 2541 224 1536 
+C 224 531 800 -96 1741 -96 
+z
+M 768 1843 
+C 858 2387 1210 2733 1741 2733 
+C 2253 2733 2566 2381 2586 1843 
+L 768 1843 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-39" d="M 2746 -1242 
+L 3245 -1242 
+L 3245 -1229 
+L 3245 -909 
+L 3245 3072 
+L 2746 3072 
+L 2746 2630 
+C 2541 2957 2125 3168 1626 3168 
+C 832 3168 224 2592 224 1536 
+C 224 493 813 -96 1606 -96 
+C 2131 -96 2541 115 2746 442 
+L 2746 -909 
+L 2746 -1229 
+L 2746 -1242 
+z
+M 1715 346 
+C 1114 346 742 806 742 1536 
+C 742 2266 1120 2733 1728 2733 
+C 2349 2733 2739 2278 2739 1574 
+L 2739 1498 
+C 2739 794 2336 346 1715 346 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-3d" d="M 1402 -96 
+C 1875 -96 2266 64 2477 422 
+L 2477 0 
+L 2970 0 
+L 2970 3072 
+L 2451 3072 
+L 2451 1427 
+C 2451 806 2170 333 1574 333 
+C 1101 333 864 608 864 1165 
+L 864 3072 
+L 352 3072 
+L 352 1088 
+C 352 358 749 -96 1402 -96 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-36" d="M 384 0 
+L 896 0 
+L 896 13 
+L 896 333 
+L 896 1645 
+C 896 2298 1229 2720 1773 2720 
+C 2253 2720 2483 2451 2483 1901 
+L 2483 333 
+L 2483 13 
+L 2483 0 
+L 2995 0 
+L 2995 13 
+L 2995 333 
+L 2995 1978 
+C 2995 2707 2579 3168 1914 3168 
+C 1491 3168 1069 2963 870 2637 
+L 870 3072 
+L 384 3072 
+L 384 333 
+L 384 13 
+L 384 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-42" d="M 205 0 
+L 2611 0 
+L 2611 416 
+L 851 416 
+L 2483 2701 
+L 2483 3072 
+L 301 3072 
+L 301 2656 
+L 1869 2656 
+L 205 358 
+L 205 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-26" d="M 1165 -96 
+C 1651 -96 2016 64 2227 371 
+C 2278 58 2458 -58 2733 -58 
+C 2861 -58 2982 -38 3091 -19 
+L 3091 358 
+C 3040 352 2989 352 2938 352 
+C 2778 352 2726 422 2720 602 
+L 2720 2170 
+C 2720 2854 2317 3168 1581 3168 
+C 768 3168 358 2797 288 2144 
+L 794 2144 
+C 838 2547 1056 2733 1549 2733 
+C 1971 2733 2202 2522 2202 2170 
+L 2202 1818 
+C 851 1939 192 1581 192 806 
+C 192 243 570 -96 1165 -96 
+z
+M 691 838 
+C 691 1318 1101 1485 2202 1389 
+C 2182 698 1798 346 1312 346 
+C 915 346 691 493 691 838 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-1" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-1e2" d="M 224 -1101 
+L 1267 -1101 
+L 1267 -704 
+L 666 -704 
+L 666 4314 
+L 1267 4314 
+L 1267 4710 
+L 224 4710 
+L 224 -1101 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-a" d="M 416 0 
+L 941 0 
+L 941 13 
+L 941 333 
+L 941 2074 
+L 3277 2074 
+L 3277 333 
+L 3277 13 
+L 3277 0 
+L 3802 0 
+L 3802 13 
+L 3802 333 
+L 3802 4147 
+L 3802 4467 
+L 3802 4480 
+L 3277 4480 
+L 3277 4467 
+L 3277 4147 
+L 3277 2554 
+L 941 2554 
+L 941 4147 
+L 941 4467 
+L 941 4480 
+L 416 4480 
+L 416 4467 
+L 416 4147 
+L 416 333 
+L 416 13 
+L 416 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-1e3" d="M 1491 4704 
+L 448 4704 
+L 448 4307 
+L 1050 4307 
+L 1050 -710 
+L 448 -710 
+L 448 -1107 
+L 1491 -1107 
+L 1491 4704 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#AltroGrotesk-Book-8"/>
+      <use xlink:href="#AltroGrotesk-Book-3a" transform="translate(46 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(75.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-39" transform="translate(128.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(184.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(236.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-36" transform="translate(288.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(340.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(382.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(431 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e2" transform="translate(457 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(483.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(549 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e3" transform="translate(591.796875 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_9">
+      <path d="M 44.284615 319.59976 
+L 299.181564 319.59976 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10">
+      <defs>
+       <path id="m79a8d51a56" d="M 0 0 
+L -3.5 0 
+" style="stroke: #0a0a0a; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <!-- −35 -->
+      <g style="fill: #0a0a0a" transform="translate(20.827584 324.82476) scale(0.11 -0.11)">
+       <defs>
+        <path id="AltroGrotesk-Book-21d" d="M 429 1856 
+L 3174 1856 
+L 3174 2266 
+L 429 2266 
+L 429 1856 
+z
+" transform="scale(0.015625)"/>
+        <path id="AltroGrotesk-Book-50" d="M 1728 -96 
+C 2662 -96 3181 448 3181 1248 
+C 3181 1869 2854 2253 2310 2368 
+C 2746 2502 3027 2880 3027 3424 
+C 3027 4122 2554 4576 1728 4576 
+C 858 4576 384 4122 346 3270 
+L 858 3270 
+C 883 3840 1171 4115 1709 4115 
+C 2259 4115 2509 3840 2509 3366 
+C 2509 2822 2246 2534 1376 2534 
+L 1376 2118 
+C 2112 2118 2650 2035 2650 1261 
+C 2650 678 2298 365 1728 365 
+C 1158 365 787 666 787 1254 
+L 269 1254 
+C 269 397 832 -96 1728 -96 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-50" transform="translate(41.90625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(93.109375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_11">
+      <path d="M 44.284615 283.43732 
+L 299.181564 283.43732 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="283.43732" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <!-- −30 -->
+      <g style="fill: #0a0a0a" transform="translate(20.20024 288.66232) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-50" transform="translate(41.90625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(94.109375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_13">
+      <path d="M 44.284615 247.27488 
+L 299.181564 247.27488 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="247.27488" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <!-- −25 -->
+      <g style="fill: #0a0a0a" transform="translate(21.411959 252.49988) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(38.296875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(87.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_15">
+      <path d="M 44.284615 211.11244 
+L 299.181564 211.11244 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="211.11244" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <!-- −20 -->
+      <g style="fill: #0a0a0a" transform="translate(20.861959 216.33744) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(38.296875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(88.09375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_17">
+      <path d="M 44.284615 174.95 
+L 299.181564 174.95 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="174.95" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <!-- −15 -->
+      <g style="fill: #0a0a0a" transform="translate(22.511959 180.175) scale(0.11 -0.11)">
+       <defs>
+        <path id="AltroGrotesk-Book-4e" d="M 1184 0 
+L 1734 0 
+L 1734 13 
+L 1734 333 
+L 1734 4480 
+L 1267 4480 
+L 230 3910 
+L 230 3354 
+L 1184 3878 
+L 1184 333 
+L 1184 13 
+L 1184 0 
+z
+" transform="scale(0.015625)"/>
+       </defs>
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(43 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(77.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_19">
+      <path d="M 44.284615 138.78756 
+L 299.181564 138.78756 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="138.78756" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <!-- −10 -->
+      <g style="fill: #0a0a0a" transform="translate(21.939615 144.01256) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(43 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(78.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_21">
+      <path d="M 44.284615 102.62512 
+L 299.181564 102.62512 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="102.62512" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <!-- −5 -->
+      <g style="fill: #0a0a0a" transform="translate(24.887271 107.85012) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(56.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_23">
+      <path d="M 44.284615 66.46268 
+L 299.181564 66.46268 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="66.46268" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <!-- 0 -->
+      <g style="fill: #0a0a0a" transform="translate(30.552271 71.68768) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4d"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_25">
+      <path d="M 44.284615 30.30024 
+L 299.181564 30.30024 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="44.284615" y="30.30024" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <!-- 5 -->
+      <g style="fill: #0a0a0a" transform="translate(31.069615 35.52524) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-52"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_15">
+     <!-- Livello relativo [dB] -->
+     <g style="fill: #0a0a0a" transform="translate(13.45024 217.697031) rotate(-90) scale(0.11 -0.11)">
+      <defs>
+       <path id="AltroGrotesk-Book-f" d="M 3123 0 
+L 3123 474 
+L 941 474 
+L 941 4147 
+L 941 4467 
+L 941 4480 
+L 416 4480 
+L 416 4467 
+L 416 4147 
+L 416 333 
+L 416 13 
+L 416 0 
+L 3123 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-2e" d="M 384 0 
+L 890 0 
+L 890 13 
+L 890 333 
+L 890 3072 
+L 384 3072 
+L 384 333 
+L 384 13 
+L 384 0 
+z
+M 371 3674 
+L 902 3674 
+L 902 4371 
+L 371 4371 
+L 371 3674 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-3e" d="M 154 2720 
+L 1158 0 
+L 1779 0 
+L 2784 2720 
+L 2918 3072 
+L 2374 3072 
+L 2253 2720 
+L 1472 512 
+L 698 2720 
+L 576 3072 
+L 26 3072 
+L 154 2720 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-34" d="M 384 0 
+L 896 0 
+L 896 13 
+L 896 333 
+L 896 4608 
+L 384 4608 
+L 384 333 
+L 384 13 
+L 384 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-37" d="M 1747 -96 
+C 2675 -96 3264 531 3264 1523 
+C 3264 2541 2675 3168 1747 3168 
+C 813 3168 224 2541 224 1523 
+C 224 531 813 -96 1747 -96 
+z
+M 1747 346 
+C 1126 346 742 800 742 1523 
+C 742 2272 1126 2733 1747 2733 
+C 2355 2733 2739 2272 2739 1523 
+C 2739 800 2355 346 1747 346 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-3c" d="M 1357 -77 
+C 1523 -77 1702 -51 1856 -19 
+L 1856 378 
+L 1472 378 
+C 1171 378 1050 499 1050 858 
+L 1050 2643 
+L 1843 2643 
+L 1843 3072 
+L 1050 3072 
+L 1050 3974 
+L 538 3974 
+L 538 3072 
+L 19 3072 
+L 19 2643 
+L 538 2643 
+L 538 819 
+C 538 275 749 -77 1357 -77 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-29" d="M 1632 -96 
+C 2125 -96 2534 115 2739 448 
+L 2733 0 
+L 3245 0 
+L 3245 4608 
+L 2733 4608 
+L 2733 2637 
+C 2522 2976 2125 3168 1626 3168 
+C 762 3168 224 2541 224 1536 
+C 224 531 762 -96 1632 -96 
+z
+M 1728 346 
+C 1120 346 742 806 742 1536 
+C 742 2266 1120 2733 1728 2733 
+C 2342 2733 2726 2330 2726 1574 
+L 2726 1504 
+C 2726 755 2342 346 1728 346 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-4" d="M 2048 0 
+C 2970 0 3552 480 3552 1242 
+C 3552 1843 3226 2253 2675 2362 
+C 3136 2490 3411 2874 3411 3392 
+C 3411 4058 2886 4480 2048 4480 
+L 416 4480 
+L 416 4467 
+L 416 4147 
+L 416 333 
+L 416 13 
+L 416 0 
+L 2048 0 
+z
+M 2022 486 
+L 941 486 
+L 941 2099 
+L 2016 2099 
+C 2618 2099 3008 1779 3008 1267 
+C 3008 794 2624 486 2022 486 
+z
+M 941 2586 
+L 941 3994 
+L 2016 3994 
+C 2534 3994 2867 3738 2867 3334 
+C 2867 2867 2528 2586 1984 2586 
+L 941 2586 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#AltroGrotesk-Book-f"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(48 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3e" transform="translate(67.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(111.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(164.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(184.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-37" transform="translate(203.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(258.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3a" transform="translate(284.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(314.015625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(366.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(386.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3c" transform="translate(433.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(464.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3e" transform="translate(483.515625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-37" transform="translate(528.015625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(582.421875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e2" transform="translate(608.421875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-29" transform="translate(635.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4" transform="translate(692.125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e3" transform="translate(750.421875 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_27">
+    <path d="M 47.935054 361 
+L 55.436357 328.40607 
+L 61.80878 301.651291 
+L 67.543962 278.482658 
+L 72.960522 257.535574 
+L 77.73984 239.905524 
+L 82.200536 224.23874 
+L 86.661233 209.379484 
+L 90.803308 196.331217 
+L 94.945384 184.016591 
+L 99.087459 172.434959 
+L 102.910913 162.385559 
+L 106.734368 152.937236 
+L 110.557822 144.072369 
+L 114.381276 135.772243 
+L 118.20473 128.019031 
+L 122.028185 120.797281 
+L 125.533018 114.633702 
+L 129.037851 108.899395 
+L 132.542684 103.589306 
+L 136.047517 98.699503 
+L 139.233729 94.615673 
+L 142.419941 90.872221 
+L 145.606152 87.463827 
+L 148.792364 84.382975 
+L 151.978576 81.619517 
+L 155.164788 79.160496 
+L 158.351 76.99022 
+L 161.537212 75.090587 
+L 164.723424 73.4416 
+L 168.228257 71.891802 
+L 171.73309 70.590422 
+L 175.556544 69.420025 
+L 179.698619 68.404865 
+L 184.159316 67.55792 
+L 188.938634 66.881083 
+L 194.355194 66.340277 
+L 200.727618 65.933741 
+L 208.374526 65.673124 
+L 218.570404 65.561869 
+L 234.182842 65.640275 
+L 299.181564 66.23578 
+L 299.181564 66.23578 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #4d11a7; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_28">
+    <path d="M 44.284615 312.091919 
+L 51.612902 280.467955 
+L 57.666705 255.271347 
+L 63.083265 233.621783 
+L 68.181204 214.171939 
+L 72.641901 198.005205 
+L 76.783976 183.791421 
+L 80.60743 171.415092 
+L 84.430885 159.802063 
+L 87.935718 149.860044 
+L 91.440551 140.612409 
+L 94.626763 132.81809 
+L 97.812974 125.609335 
+L 100.999186 118.981367 
+L 103.866777 113.50364 
+L 106.734368 108.47507 
+L 109.601958 103.87989 
+L 112.469549 99.699354 
+L 115.33714 95.912286 
+L 118.20473 92.495674 
+L 121.072321 89.42524 
+L 123.939912 86.676011 
+L 126.807502 84.222821 
+L 129.675093 82.040773 
+L 132.861305 79.904814 
+L 136.047517 78.041824 
+L 139.233729 76.421794 
+L 142.738562 74.887156 
+L 146.562016 73.470045 
+L 150.704091 72.193193 
+L 155.164788 71.06973 
+L 159.944106 70.103767 
+L 165.360666 69.247261 
+L 171.414469 68.523056 
+L 178.424135 67.91428 
+L 186.708285 67.420915 
+L 197.222785 67.027479 
+L 211.242117 66.741378 
+L 232.271115 66.559133 
+L 272.417385 66.475381 
+L 299.181564 66.465967 
+L 299.181564 66.465967 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #4d11a7; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_29">
+    <path d="M 49.887177 361 
+L 55.117735 334.387196 
+L 60.215674 309.546378 
+L 64.994992 287.298125 
+L 69.77431 266.098166 
+L 74.235007 247.284337 
+L 78.695703 229.426611 
+L 82.837779 213.706971 
+L 86.979854 198.815842 
+L 91.121929 184.742918 
+L 95.264005 171.470072 
+L 99.40608 158.972797 
+L 103.548156 147.222863 
+L 107.37161 137.015629 
+L 111.195064 127.402111 
+L 115.018518 118.36958 
+L 118.841973 109.914223 
+L 122.346806 102.676184 
+L 125.851639 95.942233 
+L 129.037851 90.274793 
+L 132.224063 85.058961 
+L 135.091653 80.766531 
+L 137.959244 76.867536 
+L 140.826835 73.370732 
+L 143.375804 70.603055 
+L 145.924774 68.154043 
+L 148.473743 66.017138 
+L 151.022713 64.181124 
+L 153.571682 62.630464 
+L 156.120652 61.345971 
+L 158.669621 60.305698 
+L 161.218591 59.485948 
+L 164.086181 58.796878 
+L 167.272393 58.28034 
+L 170.777226 57.963109 
+L 174.60068 57.854974 
+L 179.061377 57.96366 
+L 184.477937 58.328072 
+L 192.124846 59.087574 
+L 224.305585 62.530903 
+L 236.413191 63.480961 
+L 249.158038 64.256494 
+L 263.495991 64.902804 
+L 280.382914 65.432457 
+L 299.181564 65.816737 
+L 299.181564 65.816737 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #57ccf6; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_30">
+    <path d="M 52.721294 361 
+L 58.303947 332.165335 
+L 63.720507 305.348893 
+L 68.818446 281.253546 
+L 73.597764 259.74187 
+L 78.058461 240.649079 
+L 82.519157 222.532405 
+L 86.661233 206.591499 
+L 90.803308 191.493758 
+L 94.945384 177.221604 
+L 99.087459 163.747973 
+L 103.229535 151.039853 
+L 107.37161 139.063126 
+L 111.513685 127.7884 
+L 115.33714 117.987915 
+L 119.160594 108.76817 
+L 122.984048 100.143325 
+L 126.488881 92.786467 
+L 129.675093 86.585506 
+L 132.861305 80.882973 
+L 135.728896 76.206471 
+L 138.277865 72.432756 
+L 140.826835 69.034298 
+L 143.375804 66.020003 
+L 145.606152 63.699649 
+L 147.836501 61.672183 
+L 150.066849 59.929883 
+L 152.297197 58.460663 
+L 154.527546 57.248601 
+L 156.757894 56.27471 
+L 159.306863 55.426151 
+L 161.855833 54.827636 
+L 164.404802 54.445421 
+L 167.272393 54.233337 
+L 170.458605 54.217748 
+L 174.282059 54.433488 
+L 178.742756 54.913167 
+L 184.796558 55.799579 
+L 199.134512 58.217332 
+L 209.967632 59.906389 
+L 219.844889 61.216592 
+L 229.722146 62.299199 
+L 240.236645 63.226199 
+L 252.025629 64.033824 
+L 265.089097 64.702242 
+L 280.382914 65.258794 
+L 299.181564 65.710246 
+L 299.181564 65.710246 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #afd100; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_31">
+    <path d="M 55.403623 361 
+L 61.171538 331.191632 
+L 66.588098 304.318213 
+L 71.686037 280.122796 
+L 76.465355 258.480956 
+L 81.244673 237.898247 
+L 85.705369 219.668226 
+L 90.166066 202.388256 
+L 94.626763 186.041945 
+L 98.768838 171.670138 
+L 103.229535 157.018868 
+L 107.690231 143.174627 
+L 112.150928 130.090623 
+L 116.293003 118.594129 
+L 120.435079 107.722242 
+L 124.258533 98.263198 
+L 128.081987 89.407037 
+L 131.268199 82.542466 
+L 134.454411 76.208195 
+L 137.322002 71.015061 
+L 139.870971 66.843086 
+L 142.419941 63.120075 
+L 144.650289 60.248111 
+L 146.880637 57.744452 
+L 149.110985 55.609105 
+L 151.022713 54.065966 
+L 152.93444 52.777742 
+L 154.846167 51.730837 
+L 156.757894 50.908561 
+L 158.988242 50.207779 
+L 161.218591 49.754552 
+L 163.448939 49.515768 
+L 165.997908 49.464004 
+L 168.865499 49.63393 
+L 172.370332 50.089776 
+L 176.512407 50.869571 
+L 182.56621 52.267881 
+L 202.002102 56.919665 
+L 209.967632 58.517128 
+L 217.933162 59.884268 
+L 226.217313 61.077945 
+L 235.138706 62.13487 
+L 245.015963 63.072568 
+L 255.849083 63.873758 
+L 268.275309 64.565263 
+L 282.931884 65.149168 
+L 299.181564 65.589868 
+L 299.181564 65.589868 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke: #0a0a0a; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_32">
+    <path d="M 44.284615 80.927656 
+L 299.181564 80.927656 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #d0d4e3; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_33">
+    <path d="M 131.281733 319.59976 
+L 131.281733 30.30024 
+" clip-path="url(#p733369a20f)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #d0d4e3; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.284615 319.59976 
+L 44.284615 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 299.181564 319.59976 
+L 299.181564 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 44.284615 319.59976 
+L 299.181564 319.59976 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 44.284615 30.30024 
+L 299.181564 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_16">
+    <!-- A24 / SB16PFCR25 -->
+    <g style="fill: #0a0a0a" transform="translate(114.817621 16.30024) scale(0.14 -0.14)">
+     <defs>
+      <path id="AltroGrotesk-Book-3" d="M 32 0 
+L 563 0 
+L 685 352 
+L 992 1216 
+L 2886 1216 
+L 3194 352 
+L 3322 0 
+L 3891 0 
+L 3757 352 
+L 2246 4480 
+L 1664 4480 
+L 160 352 
+L 32 0 
+z
+M 1139 1626 
+L 1946 3885 
+L 2746 1626 
+L 1139 1626 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-51" d="M 250 1082 
+L 2278 1082 
+L 2278 333 
+L 2278 13 
+L 2278 0 
+L 2778 0 
+L 2778 13 
+L 2778 333 
+L 2778 1082 
+L 3354 1082 
+L 3354 1530 
+L 2778 1530 
+L 2778 2509 
+L 2278 2509 
+L 2278 1530 
+L 851 1530 
+L 2630 4448 
+L 2630 4480 
+L 2106 4480 
+L 250 1421 
+L 250 1082 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-1c7" d="M 224 -973 
+L 672 -973 
+L 3008 4621 
+L 2560 4621 
+L 224 -973 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-16" d="M 1792 -90 
+C 2758 -90 3379 397 3379 1178 
+C 3379 2816 915 2317 915 3443 
+C 915 3866 1254 4090 1741 4090 
+C 2310 4090 2669 3859 2739 3290 
+L 3296 3290 
+C 3219 4070 2733 4576 1760 4576 
+C 928 4576 371 4096 371 3437 
+C 371 1856 2835 2336 2835 1152 
+C 2835 691 2438 397 1811 397 
+C 1190 397 794 653 768 1312 
+L 205 1312 
+C 250 467 736 -90 1792 -90 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-13" d="M 416 0 
+L 941 0 
+L 941 13 
+L 941 333 
+L 941 1773 
+L 1997 1773 
+C 3021 1773 3590 2272 3590 3162 
+C 3590 4032 3008 4480 1971 4480 
+L 416 4480 
+L 416 4467 
+L 416 4147 
+L 416 333 
+L 416 13 
+L 416 0 
+z
+M 1952 2234 
+L 941 2234 
+L 941 4026 
+L 1952 4026 
+C 2688 4026 3014 3744 3014 3155 
+C 3014 2560 2688 2234 1952 2234 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-5" d="M 2349 -96 
+C 3405 -96 4115 474 4224 1459 
+L 3686 1459 
+C 3590 736 3034 390 2349 390 
+C 1408 390 838 1126 838 2240 
+C 838 3354 1421 4090 2355 4090 
+C 3002 4090 3565 3750 3654 3078 
+L 4186 3078 
+C 4109 3936 3405 4576 2355 4576 
+C 1094 4576 256 3635 256 2240 
+C 256 832 1088 -96 2349 -96 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-15" d="M 416 0 
+L 941 0 
+L 941 13 
+L 941 333 
+L 941 1824 
+L 1875 1824 
+L 3053 0 
+L 3654 0 
+L 3418 352 
+L 2445 1862 
+C 3168 1997 3533 2483 3533 3168 
+C 3533 4000 2976 4480 1958 4480 
+L 416 4480 
+L 416 4467 
+L 416 4147 
+L 416 333 
+L 416 13 
+L 416 0 
+z
+M 1933 2291 
+L 941 2291 
+L 941 4045 
+L 1933 4045 
+C 2643 4045 2963 3725 2963 3168 
+C 2963 2586 2643 2291 1933 2291 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#AltroGrotesk-Book-3"/>
+     <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(61.296875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-51" transform="translate(106.703125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1" transform="translate(163.203125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1c7" transform="translate(189.203125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1" transform="translate(239.703125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-16" transform="translate(265.703125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4" transform="translate(323.5 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(381.796875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-53" transform="translate(417.09375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-13" transform="translate(472.796875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-8" transform="translate(531.296875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-5" transform="translate(579.390625 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-15" transform="translate(647.984375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(707.078125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-52" transform="translate(756.578125 0)"/>
+    </g>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_34">
+     <path d="M 191.558439 244.89976 
+L 200.558439 244.89976 
+L 209.558439 244.89976 
+" style="fill: none; stroke: #4d11a7; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_17">
+     <!-- Chiusa + HP35 -->
+     <g style="fill: #0a0a0a" transform="translate(216.758439 248.04976) scale(0.09 -0.09)">
+      <defs>
+       <path id="AltroGrotesk-Book-2d" d="M 384 0 
+L 896 0 
+L 896 13 
+L 896 333 
+L 896 1645 
+C 896 2298 1229 2720 1773 2720 
+C 2253 2720 2483 2451 2483 1901 
+L 2483 333 
+L 2483 13 
+L 2483 0 
+L 2995 0 
+L 2995 13 
+L 2995 333 
+L 2995 1978 
+C 2995 2707 2579 3168 1914 3168 
+C 1517 3168 1107 2982 896 2682 
+L 896 4608 
+L 384 4608 
+L 384 333 
+L 384 13 
+L 384 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-3b" d="M 1440 -96 
+C 2176 -96 2650 230 2650 813 
+C 2650 1350 2323 1619 1562 1811 
+C 986 1958 832 2016 832 2336 
+C 832 2573 1024 2720 1459 2720 
+C 1856 2720 2093 2573 2125 2259 
+L 2138 2266 
+L 2592 2259 
+C 2566 2842 2138 3168 1453 3168 
+C 717 3168 333 2842 333 2330 
+C 333 1805 666 1542 1370 1370 
+C 1907 1235 2150 1152 2150 806 
+C 2150 525 1907 346 1453 346 
+C 1043 346 736 486 723 915 
+L 224 915 
+C 243 390 614 -96 1440 -96 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-21c" d="M 1594 678 
+L 2010 678 
+L 2010 1856 
+L 3174 1856 
+L 3174 2266 
+L 2010 2266 
+L 2010 3450 
+L 1594 3450 
+L 1594 2266 
+L 429 2266 
+L 429 1856 
+L 1594 1856 
+L 1594 678 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#AltroGrotesk-Book-5"/>
+      <use xlink:href="#AltroGrotesk-Book-2d" transform="translate(68.59375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(120.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(140.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3b" transform="translate(193.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(238.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(287.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(313.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(369.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(395.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-13" transform="translate(461.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-50" transform="translate(520.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(571.609375 0)"/>
+     </g>
+    </g>
+    <g id="line2d_35">
+     <path d="M 191.558439 260.19976 
+L 200.558439 260.19976 
+L 209.558439 260.19976 
+" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #4d11a7; stroke-width: 1.5"/>
+    </g>
+    <g id="text_18">
+     <!-- Chiusa + LT + HP35 -->
+     <g style="fill: #0a0a0a" transform="translate(216.758439 263.34976) scale(0.09 -0.09)">
+      <defs>
+       <path id="AltroGrotesk-Book-17" d="M 1414 0 
+L 1946 0 
+L 1946 13 
+L 1946 333 
+L 1946 4019 
+L 3309 4019 
+L 3309 4480 
+L 45 4480 
+L 45 4019 
+L 1414 4019 
+L 1414 333 
+L 1414 13 
+L 1414 0 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#AltroGrotesk-Book-5"/>
+      <use xlink:href="#AltroGrotesk-Book-2d" transform="translate(68.59375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(120.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(140.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3b" transform="translate(193.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(238.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(287.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(313.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(369.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-f" transform="translate(395.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-17" transform="translate(432.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(485.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(511.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(567.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(593.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-13" transform="translate(659.3125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-50" transform="translate(718.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(769.3125 0)"/>
+     </g>
+    </g>
+    <g id="line2d_36">
+     <path d="M 191.558439 275.49976 
+L 200.558439 275.49976 
+L 209.558439 275.49976 
+" style="fill: none; stroke: #57ccf6; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_19">
+     <!-- Reflex 40 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(216.758439 278.64976) scale(0.09 -0.09)">
+      <defs>
+       <path id="AltroGrotesk-Book-14d" d="M 582 0 
+L 1101 0 
+L 1101 13 
+L 1101 333 
+L 1101 2643 
+L 1958 2643 
+L 1958 3072 
+L 1101 3072 
+L 1101 3648 
+C 1101 4102 1235 4250 1549 4250 
+L 1965 4250 
+L 1965 4653 
+C 1766 4678 1632 4685 1485 4685 
+C 819 4685 582 4326 582 3674 
+L 582 3072 
+L 45 3072 
+L 45 2643 
+L 582 2643 
+L 582 333 
+L 582 13 
+L 582 0 
+z
+M 2317 0 
+L 2829 0 
+L 2829 13 
+L 2829 333 
+L 2829 4608 
+L 2317 4608 
+L 2317 333 
+L 2317 13 
+L 2317 0 
+z
+" transform="scale(0.015625)"/>
+       <path id="AltroGrotesk-Book-40" d="M 32 0 
+L 576 0 
+L 813 352 
+L 1434 1254 
+L 2054 352 
+L 2298 0 
+L 2835 0 
+L 2586 352 
+L 1747 1555 
+L 2554 2720 
+L 2797 3072 
+L 2240 3072 
+L 2003 2720 
+L 1434 1894 
+L 877 2720 
+L 640 3072 
+L 83 3072 
+L 320 2720 
+L 1120 1555 
+L 282 352 
+L 32 0 
+z
+" transform="scale(0.015625)"/>
+      </defs>
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-51" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(333.296875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(394.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(420.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(485.703125 0)"/>
+     </g>
+    </g>
+    <g id="line2d_37">
+     <path d="M 191.558439 290.79976 
+L 200.558439 290.79976 
+L 209.558439 290.79976 
+" style="fill: none; stroke: #afd100; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_20">
+     <!-- Reflex 45 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(216.758439 293.94976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-51" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(332.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(389.1875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(415.1875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(480.390625 0)"/>
+     </g>
+    </g>
+    <g id="line2d_38">
+     <path d="M 191.558439 306.09976 
+L 200.558439 306.09976 
+L 209.558439 306.09976 
+" style="fill: none; stroke: #0a0a0a; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_21">
+     <!-- Reflex 50 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(216.758439 309.24976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(334.296875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(395.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(421.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(486.703125 0)"/>
+     </g>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 356.364455 319.59976 
+L 611.261404 319.59976 
+L 611.261404 30.30024 
+L 356.364455 30.30024 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_39">
+      <path d="M 356.364455 319.59976 
+L 356.364455 30.30024 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_40">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="356.364455" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <!-- 20 -->
+      <g style="fill: #0a0a0a" transform="translate(350.259455 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4f"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(49.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_41">
+      <path d="M 443.361573 319.59976 
+L 443.361573 30.30024 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_42">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="443.361573" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <!-- 60 -->
+      <g style="fill: #0a0a0a" transform="translate(437.009073 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-53"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(54.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_43">
+      <path d="M 538.702 319.59976 
+L 538.702 30.30024 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_44">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="538.702" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <!-- 200 -->
+      <g style="fill: #0a0a0a" transform="translate(529.297 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4f"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(49.796875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(109.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_45">
+      <path d="M 611.261404 319.59976 
+L 611.261404 30.30024 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_46">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="611.261404" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <!-- 500 -->
+      <g style="fill: #0a0a0a" transform="translate(601.602889 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-52"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(54.40625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(114.40625 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_26">
+     <!-- Frequenza [Hz] -->
+     <g style="fill: #0a0a0a" transform="translate(449.790273 354.24976) scale(0.11 -0.11)">
+      <use xlink:href="#AltroGrotesk-Book-8"/>
+      <use xlink:href="#AltroGrotesk-Book-3a" transform="translate(46 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(75.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-39" transform="translate(128.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(184.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(236.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-36" transform="translate(288.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(340.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(382.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(431 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e2" transform="translate(457 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(483.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(549 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e3" transform="translate(591.796875 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_10">
+     <g id="line2d_47">
+      <path d="M 356.364455 319.59976 
+L 611.261404 319.59976 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_48">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <!-- −35 -->
+      <g style="fill: #0a0a0a" transform="translate(332.907424 324.82476) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-50" transform="translate(41.90625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(93.109375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_49">
+      <path d="M 356.364455 283.43732 
+L 611.261404 283.43732 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_50">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="283.43732" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <!-- −30 -->
+      <g style="fill: #0a0a0a" transform="translate(332.28008 288.66232) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-50" transform="translate(41.90625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(94.109375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_51">
+      <path d="M 356.364455 247.27488 
+L 611.261404 247.27488 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_52">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="247.27488" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <!-- −25 -->
+      <g style="fill: #0a0a0a" transform="translate(333.491799 252.49988) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(38.296875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(87.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_53">
+      <path d="M 356.364455 211.11244 
+L 611.261404 211.11244 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_54">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="211.11244" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_30">
+      <!-- −20 -->
+      <g style="fill: #0a0a0a" transform="translate(332.941799 216.33744) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(38.296875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(88.09375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_55">
+      <path d="M 356.364455 174.95 
+L 611.261404 174.95 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_56">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="174.95" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_31">
+      <!-- −15 -->
+      <g style="fill: #0a0a0a" transform="translate(334.591799 180.175) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(43 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(77.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_57">
+      <path d="M 356.364455 138.78756 
+L 611.261404 138.78756 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_58">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="138.78756" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_32">
+      <!-- −10 -->
+      <g style="fill: #0a0a0a" transform="translate(334.019455 144.01256) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(43 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(78.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_59">
+      <path d="M 356.364455 102.62512 
+L 611.261404 102.62512 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_60">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="102.62512" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_33">
+      <!-- −5 -->
+      <g style="fill: #0a0a0a" transform="translate(336.967111 107.85012) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(56.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_61">
+      <path d="M 356.364455 66.46268 
+L 611.261404 66.46268 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_62">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="66.46268" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_34">
+      <!-- 0 -->
+      <g style="fill: #0a0a0a" transform="translate(342.632111 71.68768) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4d"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_63">
+      <path d="M 356.364455 30.30024 
+L 611.261404 30.30024 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_64">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="356.364455" y="30.30024" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_35">
+      <!-- 5 -->
+      <g style="fill: #0a0a0a" transform="translate(343.149455 35.52524) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-52"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_36">
+     <!-- Livello relativo [dB] -->
+     <g style="fill: #0a0a0a" transform="translate(325.53008 217.697031) rotate(-90) scale(0.11 -0.11)">
+      <use xlink:href="#AltroGrotesk-Book-f"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(48 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3e" transform="translate(67.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(111.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(164.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(184.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-37" transform="translate(203.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(258.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3a" transform="translate(284.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(314.015625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(366.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(386.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3c" transform="translate(433.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(464.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3e" transform="translate(483.515625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-37" transform="translate(528.015625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(582.421875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e2" transform="translate(608.421875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-29" transform="translate(635.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4" transform="translate(692.125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e3" transform="translate(750.421875 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_65">
+    <path d="M 359.139912 361 
+L 366.241712 330.338335 
+L 372.614136 303.752326 
+L 378.349317 280.752557 
+L 383.447256 261.179517 
+L 388.226574 243.675118 
+L 392.68727 228.148285 
+L 396.829346 214.479494 
+L 400.971421 201.564186 
+L 404.794875 190.327333 
+L 408.61833 179.752937 
+L 412.441784 169.836453 
+L 416.265238 160.565406 
+L 419.770071 152.618001 
+L 423.274904 145.179459 
+L 426.779737 138.230122 
+L 430.28457 131.749526 
+L 433.789403 125.717254 
+L 437.294236 120.113534 
+L 440.799069 114.919552 
+L 444.303903 110.11751 
+L 447.808736 105.690488 
+L 451.313569 101.622169 
+L 454.818402 97.8965 
+L 458.323235 94.497353 
+L 461.828068 91.408251 
+L 465.332901 88.612186 
+L 468.837734 86.091557 
+L 472.342567 83.82822 
+L 476.166021 81.630779 
+L 479.989475 79.693193 
+L 484.131551 77.859423 
+L 488.273626 76.272451 
+L 492.734323 74.806733 
+L 497.513641 73.479528 
+L 502.61158 72.300241 
+L 508.02814 71.270907 
+L 514.081942 70.343524 
+L 521.091609 69.503241 
+L 529.057138 68.78102 
+L 538.297153 68.170106 
+L 549.767515 67.64614 
+L 564.105469 67.225678 
+L 583.22274 66.899847 
+L 611.261404 66.664263 
+L 611.261404 66.664263 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #4d11a7; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_66">
+    <path d="M 356.364455 312.091919 
+L 363.692742 280.467955 
+L 369.746545 255.271347 
+L 375.163105 233.621783 
+L 380.261044 214.171939 
+L 384.721741 198.005205 
+L 388.863816 183.791421 
+L 392.68727 171.415092 
+L 396.510725 159.802063 
+L 400.015558 149.860044 
+L 403.520391 140.612409 
+L 406.706603 132.81809 
+L 409.892814 125.609335 
+L 413.079026 118.981367 
+L 415.946617 113.50364 
+L 418.814208 108.47507 
+L 421.681798 103.87989 
+L 424.549389 99.699354 
+L 427.41698 95.912286 
+L 430.28457 92.495674 
+L 433.152161 89.42524 
+L 436.019752 86.676011 
+L 438.887342 84.222821 
+L 441.754933 82.040773 
+L 444.941145 79.904814 
+L 448.127357 78.041824 
+L 451.313569 76.421794 
+L 454.818402 74.887156 
+L 458.641856 73.470045 
+L 462.783931 72.193193 
+L 467.244628 71.06973 
+L 472.023946 70.103767 
+L 477.440506 69.247261 
+L 483.494309 68.523056 
+L 490.503975 67.91428 
+L 498.788125 67.420915 
+L 509.302625 67.027479 
+L 523.321957 66.741378 
+L 544.350955 66.559133 
+L 584.497225 66.475381 
+L 611.261404 66.465967 
+L 611.261404 66.465967 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #4d11a7; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_67">
+    <path d="M 362.955019 361 
+L 368.790681 330.735878 
+L 374.525863 302.151561 
+L 379.623802 277.835536 
+L 384.403119 256.073699 
+L 388.863816 236.74103 
+L 393.324513 218.413726 
+L 397.466588 202.337972 
+L 401.290042 188.330011 
+L 405.113497 175.135458 
+L 408.936951 162.762416 
+L 412.441784 152.144267 
+L 415.946617 142.217163 
+L 419.45145 132.977818 
+L 422.637662 125.171505 
+L 425.823874 117.926057 
+L 429.010086 111.237047 
+L 432.196297 105.099076 
+L 435.063888 100.040236 
+L 437.931479 95.41511 
+L 440.799069 91.214514 
+L 443.66666 87.426526 
+L 446.534251 84.036167 
+L 449.401842 81.025317 
+L 451.950811 78.65061 
+L 454.818402 76.296966 
+L 457.685992 74.255386 
+L 460.553583 72.499125 
+L 463.421174 71.000886 
+L 466.607386 69.605831 
+L 469.793597 68.45988 
+L 473.298431 67.446683 
+L 477.121885 66.590008 
+L 481.26396 65.901317 
+L 486.043278 65.350553 
+L 491.459838 64.964197 
+L 497.832262 64.737958 
+L 506.116413 64.6786 
+L 518.224018 64.837698 
+L 585.134467 66.041073 
+L 611.261404 66.238306 
+L 611.261404 66.238306 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #57ccf6; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_68">
+    <path d="M 365.913068 361 
+L 371.976893 329.415456 
+L 377.712075 300.630802 
+L 383.128635 274.557617 
+L 388.226574 251.119475 
+L 393.005891 230.201438 
+L 397.466588 211.657681 
+L 401.608664 195.322232 
+L 405.750739 179.862582 
+L 409.892814 165.29634 
+L 413.716269 152.656038 
+L 417.539723 140.801287 
+L 421.044556 130.637731 
+L 424.549389 121.163442 
+L 427.735601 113.165763 
+L 430.921813 105.772428 
+L 433.789403 99.650268 
+L 436.656994 94.044322 
+L 439.205964 89.501552 
+L 441.754933 85.375724 
+L 444.303903 81.664701 
+L 446.852872 78.361154 
+L 449.401842 75.452252 
+L 451.950811 72.919836 
+L 454.181159 70.994927 
+L 456.730129 69.103821 
+L 459.279098 67.514337 
+L 461.828068 66.196151 
+L 464.377037 65.118682 
+L 467.244628 64.157186 
+L 470.112219 63.422583 
+L 473.298431 62.828032 
+L 476.803264 62.392449 
+L 480.945339 62.106304 
+L 485.724657 62.001057 
+L 491.778459 62.097441 
+L 500.381231 62.478444 
+L 547.218546 64.901278 
+L 565.379953 65.446864 
+L 587.046194 65.86347 
+L 611.261404 66.13383 
+L 611.261404 66.13383 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #afd100; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_69">
+    <path d="M 368.667989 361 
+L 374.844484 329.040667 
+L 380.898286 298.870319 
+L 386.314847 272.976893 
+L 391.412786 249.653096 
+L 396.192103 228.771473 
+L 400.971421 208.882708 
+L 405.432118 191.234647 
+L 409.892814 174.476087 
+L 414.353511 158.608012 
+L 418.495586 144.675186 
+L 422.637662 131.531226 
+L 426.461116 120.130774 
+L 429.965949 110.342419 
+L 433.152161 102.042064 
+L 436.338373 94.365973 
+L 439.205964 88.039799 
+L 441.754933 82.915184 
+L 444.303903 78.286554 
+L 446.534251 74.657731 
+L 448.764599 71.428084 
+L 450.994947 68.595866 
+L 453.225296 66.151617 
+L 455.455644 64.07845 
+L 457.685992 62.353017 
+L 459.916341 60.946971 
+L 462.146689 59.828696 
+L 464.377037 58.965054 
+L 466.607386 58.322945 
+L 469.156355 57.819662 
+L 472.023946 57.495264 
+L 475.210158 57.370769 
+L 479.033612 57.46336 
+L 483.81293 57.827483 
+L 490.503975 58.591368 
+L 518.86126 62.076912 
+L 529.694381 63.066112 
+L 541.164743 63.889738 
+L 554.228212 64.596924 
+L 569.203408 65.176798 
+L 587.364815 65.646386 
+L 610.305541 66.004023 
+L 611.261404 66.014925 
+L 611.261404 66.014925 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke: #0a0a0a; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_70">
+    <path d="M 356.364455 80.927656 
+L 611.261404 80.927656 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #d0d4e3; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_71">
+    <path d="M 443.361573 319.59976 
+L 443.361573 30.30024 
+" clip-path="url(#p55a4d95952)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #d0d4e3; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 356.364455 319.59976 
+L 356.364455 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 611.261404 319.59976 
+L 611.261404 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 356.364455 319.59976 
+L 611.261404 319.59976 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 356.364455 30.30024 
+L 611.261404 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_37">
+    <!-- B27 / SB15NRX2C30 -->
+    <g style="fill: #0a0a0a" transform="translate(421.76668 16.30024) scale(0.14 -0.14)">
+     <defs>
+      <path id="AltroGrotesk-Book-54" d="M 864 0 
+L 1408 0 
+C 1734 1690 2093 2566 3014 4134 
+L 3014 4480 
+L 397 4480 
+L 397 4032 
+L 2432 4032 
+C 1613 2669 1222 1722 864 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-11" d="M 416 0 
+L 902 0 
+L 902 13 
+L 902 333 
+L 902 3674 
+L 3219 0 
+L 3795 0 
+L 3795 4147 
+L 3795 4467 
+L 3795 4480 
+L 3302 4480 
+L 3302 4467 
+L 3302 4147 
+L 3302 806 
+L 979 4480 
+L 416 4480 
+L 416 4467 
+L 416 4147 
+L 416 333 
+L 416 13 
+L 416 0 
+z
+" transform="scale(0.015625)"/>
+      <path id="AltroGrotesk-Book-1b" d="M 51 0 
+L 653 0 
+C 704 83 742 154 800 237 
+L 1946 1933 
+L 3059 237 
+L 3213 0 
+L 3840 0 
+L 3680 237 
+L 2298 2304 
+L 3520 4128 
+L 3757 4480 
+L 3168 4480 
+L 2938 4128 
+L 2003 2726 
+L 1075 4128 
+L 845 4480 
+L 224 4480 
+L 461 4128 
+L 1645 2323 
+L 211 237 
+L 51 0 
+z
+" transform="scale(0.015625)"/>
+     </defs>
+     <use xlink:href="#AltroGrotesk-Book-4"/>
+     <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(58.296875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-54" transform="translate(106.390625 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1" transform="translate(157.59375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1c7" transform="translate(183.59375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1" transform="translate(234.09375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-16" transform="translate(260.09375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4" transform="translate(317.890625 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(376.1875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-52" transform="translate(410.984375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-11" transform="translate(466.6875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-15" transform="translate(532.484375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1b" transform="translate(592.578125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(653.375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-5" transform="translate(704.375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-50" transform="translate(772.96875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(825.171875 0)"/>
+    </g>
+   </g>
+   <g id="legend_2">
+    <g id="line2d_72">
+     <path d="M 503.638279 244.89976 
+L 512.638279 244.89976 
+L 521.638279 244.89976 
+" style="fill: none; stroke: #4d11a7; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_38">
+     <!-- Chiusa + HP35 -->
+     <g style="fill: #0a0a0a" transform="translate(528.838279 248.04976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-5"/>
+      <use xlink:href="#AltroGrotesk-Book-2d" transform="translate(68.59375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(120.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(140.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3b" transform="translate(193.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(238.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(287.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(313.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(369.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(395.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-13" transform="translate(461.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-50" transform="translate(520.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(571.609375 0)"/>
+     </g>
+    </g>
+    <g id="line2d_73">
+     <path d="M 503.638279 260.19976 
+L 512.638279 260.19976 
+L 521.638279 260.19976 
+" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #4d11a7; stroke-width: 1.5"/>
+    </g>
+    <g id="text_39">
+     <!-- Chiusa + LT + HP35 -->
+     <g style="fill: #0a0a0a" transform="translate(528.838279 263.34976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-5"/>
+      <use xlink:href="#AltroGrotesk-Book-2d" transform="translate(68.59375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(120.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(140.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3b" transform="translate(193.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(238.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(287.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(313.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(369.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-f" transform="translate(395.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-17" transform="translate(432.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(485.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(511.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(567.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(593.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-13" transform="translate(659.3125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-50" transform="translate(718.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(769.3125 0)"/>
+     </g>
+    </g>
+    <g id="line2d_74">
+     <path d="M 503.638279 275.49976 
+L 512.638279 275.49976 
+L 521.638279 275.49976 
+" style="fill: none; stroke: #57ccf6; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_40">
+     <!-- Reflex 40 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(528.838279 278.64976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-51" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(333.296875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(394.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(420.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(485.703125 0)"/>
+     </g>
+    </g>
+    <g id="line2d_75">
+     <path d="M 503.638279 290.79976 
+L 512.638279 290.79976 
+L 521.638279 290.79976 
+" style="fill: none; stroke: #afd100; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_41">
+     <!-- Reflex 45 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(528.838279 293.94976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-51" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(332.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(389.1875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(415.1875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(480.390625 0)"/>
+     </g>
+    </g>
+    <g id="line2d_76">
+     <path d="M 503.638279 306.09976 
+L 512.638279 306.09976 
+L 521.638279 306.09976 
+" style="fill: none; stroke: #0a0a0a; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_42">
+     <!-- Reflex 50 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(528.838279 309.24976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(334.296875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(395.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(421.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(486.703125 0)"/>
+     </g>
+    </g>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_12">
+    <path d="M 668.444295 319.59976 
+L 923.341244 319.59976 
+L 923.341244 30.30024 
+L 668.444295 30.30024 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_5">
+    <g id="xtick_9">
+     <g id="line2d_77">
+      <path d="M 668.444295 319.59976 
+L 668.444295 30.30024 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_78">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="668.444295" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_43">
+      <!-- 20 -->
+      <g style="fill: #0a0a0a" transform="translate(662.339295 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4f"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(49.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_79">
+      <path d="M 755.441413 319.59976 
+L 755.441413 30.30024 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_80">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="755.441413" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_44">
+      <!-- 60 -->
+      <g style="fill: #0a0a0a" transform="translate(749.088913 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-53"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(54.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_81">
+      <path d="M 850.78184 319.59976 
+L 850.78184 30.30024 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_82">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="850.78184" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_45">
+      <!-- 200 -->
+      <g style="fill: #0a0a0a" transform="translate(841.37684 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4f"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(49.796875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(109.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_83">
+      <path d="M 923.341244 319.59976 
+L 923.341244 30.30024 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_84">
+      <g>
+       <use xlink:href="#m6e36f10fc9" x="923.341244" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_46">
+      <!-- 500 -->
+      <g style="fill: #0a0a0a" transform="translate(913.682729 337.04976) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-52"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(54.40625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(114.40625 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_47">
+     <!-- Frequenza [Hz] -->
+     <g style="fill: #0a0a0a" transform="translate(761.870113 354.24976) scale(0.11 -0.11)">
+      <use xlink:href="#AltroGrotesk-Book-8"/>
+      <use xlink:href="#AltroGrotesk-Book-3a" transform="translate(46 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(75.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-39" transform="translate(128.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(184.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(236.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-36" transform="translate(288.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(340.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(382.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(431 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e2" transform="translate(457 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(483.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(549 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e3" transform="translate(591.796875 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_6">
+    <g id="ytick_19">
+     <g id="line2d_85">
+      <path d="M 668.444295 319.59976 
+L 923.341244 319.59976 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_86">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="319.59976" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_48">
+      <!-- −35 -->
+      <g style="fill: #0a0a0a" transform="translate(644.987264 324.82476) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-50" transform="translate(41.90625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(93.109375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_20">
+     <g id="line2d_87">
+      <path d="M 668.444295 283.43732 
+L 923.341244 283.43732 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_88">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="283.43732" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_49">
+      <!-- −30 -->
+      <g style="fill: #0a0a0a" transform="translate(644.35992 288.66232) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-50" transform="translate(41.90625 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(94.109375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_21">
+     <g id="line2d_89">
+      <path d="M 668.444295 247.27488 
+L 923.341244 247.27488 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_90">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="247.27488" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_50">
+      <!-- −25 -->
+      <g style="fill: #0a0a0a" transform="translate(645.571639 252.49988) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(38.296875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(87.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_22">
+     <g id="line2d_91">
+      <path d="M 668.444295 211.11244 
+L 923.341244 211.11244 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_92">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="211.11244" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_51">
+      <!-- −20 -->
+      <g style="fill: #0a0a0a" transform="translate(645.021639 216.33744) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(38.296875 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(88.09375 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_23">
+     <g id="line2d_93">
+      <path d="M 668.444295 174.95 
+L 923.341244 174.95 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_94">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="174.95" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_52">
+      <!-- −15 -->
+      <g style="fill: #0a0a0a" transform="translate(646.671639 180.175) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(43 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(77.796875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_24">
+     <g id="line2d_95">
+      <path d="M 668.444295 138.78756 
+L 923.341244 138.78756 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_96">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="138.78756" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_53">
+      <!-- −10 -->
+      <g style="fill: #0a0a0a" transform="translate(646.099295 144.01256) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(43 0)"/>
+       <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(78.296875 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_25">
+     <g id="line2d_97">
+      <path d="M 668.444295 102.62512 
+L 923.341244 102.62512 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_98">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="102.62512" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_54">
+      <!-- −5 -->
+      <g style="fill: #0a0a0a" transform="translate(649.046951 107.85012) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-21d"/>
+       <use xlink:href="#AltroGrotesk-Book-52" transform="translate(56.203125 0)"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_26">
+     <g id="line2d_99">
+      <path d="M 668.444295 66.46268 
+L 923.341244 66.46268 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_100">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="66.46268" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_55">
+      <!-- 0 -->
+      <g style="fill: #0a0a0a" transform="translate(654.711951 71.68768) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-4d"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_27">
+     <g id="line2d_101">
+      <path d="M 668.444295 30.30024 
+L 923.341244 30.30024 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_102">
+      <g>
+       <use xlink:href="#m79a8d51a56" x="668.444295" y="30.30024" style="fill: #0a0a0a; stroke: #0a0a0a; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_56">
+      <!-- 5 -->
+      <g style="fill: #0a0a0a" transform="translate(655.229295 35.52524) scale(0.11 -0.11)">
+       <use xlink:href="#AltroGrotesk-Book-52"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_57">
+     <!-- Livello relativo [dB] -->
+     <g style="fill: #0a0a0a" transform="translate(637.60992 217.697031) rotate(-90) scale(0.11 -0.11)">
+      <use xlink:href="#AltroGrotesk-Book-f"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(48 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3e" transform="translate(67.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(111.90625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(164.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(184.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-37" transform="translate(203.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(258.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3a" transform="translate(284.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(314.015625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-34" transform="translate(366.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(386.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3c" transform="translate(433.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(464.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3e" transform="translate(483.515625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-37" transform="translate(528.015625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(582.421875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e2" transform="translate(608.421875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-29" transform="translate(635.21875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4" transform="translate(692.125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1e3" transform="translate(750.421875 0)"/>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_103">
+    <path d="M 670.045885 361 
+L 677.684309 327.706907 
+L 684.375354 299.52574 
+L 690.110536 276.28878 
+L 695.527096 255.271566 
+L 700.306414 237.582417 
+L 704.76711 221.870939 
+L 709.227807 206.986259 
+L 713.369882 193.940477 
+L 717.511958 181.662077 
+L 721.335412 171.01582 
+L 725.158866 161.026955 
+L 728.98232 151.685706 
+L 732.487154 143.679085 
+L 735.991987 136.190044 
+L 739.49682 129.203301 
+L 743.001653 122.703259 
+L 746.506486 116.674623 
+L 750.011319 111.102675 
+L 753.516152 105.973233 
+L 756.702364 101.682349 
+L 759.888576 97.734965 
+L 763.074787 94.119875 
+L 766.260999 90.825005 
+L 769.447211 87.837162 
+L 772.633423 85.14188 
+L 775.819635 82.723411 
+L 779.005847 80.564833 
+L 782.51068 78.469224 
+L 786.015513 76.641797 
+L 789.520346 75.057536 
+L 793.3438 73.577456 
+L 797.485876 72.231208 
+L 801.627951 71.116116 
+L 806.407269 70.072171 
+L 811.505208 69.195182 
+L 817.240389 68.441507 
+L 823.931434 67.801376 
+L 831.578343 67.299682 
+L 841.136978 66.906164 
+L 853.563204 66.630806 
+L 871.724612 66.46999 
+L 906.772943 66.424398 
+L 923.341244 66.430965 
+L 923.341244 66.430965 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #4d11a7; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_104">
+    <path d="M 668.444295 312.091919 
+L 675.772582 280.467955 
+L 681.826385 255.271347 
+L 687.242945 233.621783 
+L 692.340884 214.171939 
+L 696.801581 198.005205 
+L 700.943656 183.791421 
+L 704.76711 171.415092 
+L 708.590565 159.802063 
+L 712.095398 149.860044 
+L 715.600231 140.612409 
+L 718.786443 132.81809 
+L 721.972654 125.609335 
+L 725.158866 118.981367 
+L 728.026457 113.50364 
+L 730.894048 108.47507 
+L 733.761638 103.87989 
+L 736.629229 99.699354 
+L 739.49682 95.912286 
+L 742.36441 92.495674 
+L 745.232001 89.42524 
+L 748.099592 86.676011 
+L 750.967182 84.222821 
+L 753.834773 82.040773 
+L 757.020985 79.904814 
+L 760.207197 78.041824 
+L 763.393409 76.421794 
+L 766.898242 74.887156 
+L 770.721696 73.470045 
+L 774.863771 72.193193 
+L 779.324468 71.06973 
+L 784.103786 70.103767 
+L 789.520346 69.247261 
+L 795.574149 68.523056 
+L 802.583815 67.91428 
+L 810.867965 67.420915 
+L 821.382465 67.027479 
+L 835.401797 66.741378 
+L 856.430795 66.559133 
+L 896.577065 66.475381 
+L 923.341244 66.465967 
+L 923.341244 66.465967 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #4d11a7; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_105">
+    <path d="M 673.369538 361 
+L 678.958794 331.201162 
+L 684.375354 303.487141 
+L 689.473293 278.571324 
+L 694.252611 256.331087 
+L 698.713308 236.61094 
+L 702.855383 219.234187 
+L 706.997459 202.781634 
+L 711.139534 187.266304 
+L 714.962988 173.779412 
+L 718.786443 161.090652 
+L 722.609897 149.192468 
+L 726.11473 138.97227 
+L 729.619563 129.401674 
+L 733.124396 120.475943 
+L 736.629229 112.193586 
+L 739.815441 105.224279 
+L 743.001653 98.792505 
+L 745.869243 93.467816 
+L 748.736834 88.586348 
+L 751.604425 84.150175 
+L 754.153394 80.580187 
+L 756.702364 77.358222 
+L 759.251333 74.477887 
+L 761.800303 71.929317 
+L 764.349272 69.699103 
+L 766.898242 67.770516 
+L 769.447211 66.123972 
+L 771.996181 64.737692 
+L 774.54515 63.588462 
+L 777.412741 62.549214 
+L 780.280332 61.745985 
+L 783.466543 61.090776 
+L 786.971376 60.61063 
+L 790.794831 60.317882 
+L 795.255527 60.209512 
+L 800.672087 60.317766 
+L 807.681754 60.700926 
+L 819.152116 61.590099 
+L 841.136978 63.296646 
+L 855.474932 64.162136 
+L 870.450127 64.841201 
+L 887.655671 65.390942 
+L 908.366049 65.81809 
+L 923.341244 66.018195 
+L 923.341244 66.018195 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #57ccf6; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_106">
+    <path d="M 676.447802 361 
+L 682.463627 328.875938 
+L 688.198809 299.435583 
+L 693.296748 274.369405 
+L 698.076065 251.908669 
+L 702.855383 230.527044 
+L 707.31608 211.593229 
+L 711.458155 194.922305 
+L 715.600231 179.140355 
+L 719.742306 164.249566 
+L 723.56576 151.29192 
+L 727.389215 139.086535 
+L 731.212669 127.633216 
+L 734.717502 117.801505 
+L 738.222335 108.622816 
+L 741.408547 100.865417 
+L 744.594759 93.692302 
+L 747.462349 87.759969 
+L 750.32994 82.346155 
+L 752.878909 77.98498 
+L 755.427879 74.05888 
+L 757.976848 70.572433 
+L 760.207197 67.880841 
+L 762.437545 65.517864 
+L 764.667893 63.472522 
+L 766.898242 61.729503 
+L 769.12859 60.269781 
+L 771.358938 59.071455 
+L 773.589287 58.110712 
+L 776.138256 57.271885 
+L 778.687226 56.674132 
+L 781.554816 56.245636 
+L 784.741028 56.017783 
+L 788.245861 56.003496 
+L 792.387937 56.221503 
+L 797.485876 56.722671 
+L 804.814163 57.684462 
+L 829.347994 61.053394 
+L 839.862493 62.198398 
+L 850.695614 63.154864 
+L 862.484598 63.970167 
+L 875.866688 64.664662 
+L 891.160505 65.230254 
+L 909.640533 65.684872 
+L 923.341244 65.910683 
+L 923.341244 65.910683 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #afd100; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_107">
+    <path d="M 679.262023 361 
+L 685.331218 328.850275 
+L 691.066399 299.600223 
+L 696.482959 273.117666 
+L 701.580898 249.305468 
+L 706.360216 228.0249 
+L 711.139534 207.7913 
+L 715.600231 189.863396 
+L 720.060927 172.85373 
+L 724.521624 156.745143 
+L 728.663699 142.576161 
+L 732.805775 129.156772 
+L 736.94785 116.494386 
+L 740.771304 105.508717 
+L 744.276137 96.081164 
+L 747.462349 88.10299 
+L 750.32994 81.461804 
+L 753.197531 75.388989 
+L 755.7465 70.51366 
+L 757.976848 66.680406 
+L 760.207197 63.26982 
+L 762.437545 60.291883 
+L 764.349272 58.084351 
+L 766.260999 56.189478 
+L 768.172726 54.596092 
+L 770.084454 53.288127 
+L 771.996181 52.245504 
+L 773.907908 51.445236 
+L 775.819635 50.862598 
+L 778.049983 50.424106 
+L 780.280332 50.207783 
+L 782.829301 50.184817 
+L 785.696892 50.385026 
+L 789.201725 50.868834 
+L 793.662421 51.732914 
+L 800.353466 53.285299 
+L 815.328662 56.798786 
+L 823.294192 58.409918 
+L 831.259721 59.793642 
+L 839.543872 61.003594 
+L 848.465265 62.075511 
+L 858.023901 62.999293 
+L 868.857021 63.818123 
+L 881.283248 64.524747 
+L 895.621201 65.110509 
+L 913.145366 65.592637 
+L 923.341244 65.789725 
+L 923.341244 65.789725 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke: #0a0a0a; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_108">
+    <path d="M 668.444295 80.927656 
+L 923.341244 80.927656 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #d0d4e3; stroke-width: 1.5"/>
+   </g>
+   <g id="line2d_109">
+    <path d="M 755.441413 319.59976 
+L 755.441413 30.30024 
+" clip-path="url(#p533b4663c6)" style="fill: none; stroke-dasharray: 1.5,2.475; stroke-dashoffset: 0; stroke: #d0d4e3; stroke-width: 1.5"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 668.444295 319.59976 
+L 668.444295 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 923.341244 319.59976 
+L 923.341244 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 668.444295 319.59976 
+L 923.341244 319.59976 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 668.444295 30.30024 
+L 923.341244 30.30024 
+" style="fill: none; stroke: #d0d4e3; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_58">
+    <!-- C24 / SB16PFCR25 -->
+    <g style="fill: #0a0a0a" transform="translate(738.46652 16.30024) scale(0.14 -0.14)">
+     <use xlink:href="#AltroGrotesk-Book-5"/>
+     <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(68.59375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-51" transform="translate(114 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1" transform="translate(170.5 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1c7" transform="translate(196.5 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-1" transform="translate(247 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-16" transform="translate(273 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4" transform="translate(330.796875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4e" transform="translate(389.09375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-53" transform="translate(424.390625 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-13" transform="translate(480.09375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-8" transform="translate(538.59375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-5" transform="translate(586.6875 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-15" transform="translate(655.28125 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-4f" transform="translate(714.375 0)"/>
+     <use xlink:href="#AltroGrotesk-Book-52" transform="translate(763.875 0)"/>
+    </g>
+   </g>
+   <g id="legend_3">
+    <g id="line2d_110">
+     <path d="M 815.718119 244.89976 
+L 824.718119 244.89976 
+L 833.718119 244.89976 
+" style="fill: none; stroke: #4d11a7; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_59">
+     <!-- Chiusa + HP35 -->
+     <g style="fill: #0a0a0a" transform="translate(840.918119 248.04976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-5"/>
+      <use xlink:href="#AltroGrotesk-Book-2d" transform="translate(68.59375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(120.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(140.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3b" transform="translate(193.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(238.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(287.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(313.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(369.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(395.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-13" transform="translate(461.609375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-50" transform="translate(520.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(571.609375 0)"/>
+     </g>
+    </g>
+    <g id="line2d_111">
+     <path d="M 815.718119 260.19976 
+L 824.718119 260.19976 
+L 833.718119 260.19976 
+" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #4d11a7; stroke-width: 1.5"/>
+    </g>
+    <g id="text_60">
+     <!-- Chiusa + LT + HP35 -->
+     <g style="fill: #0a0a0a" transform="translate(840.918119 263.34976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-5"/>
+      <use xlink:href="#AltroGrotesk-Book-2d" transform="translate(68.59375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2e" transform="translate(120.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3d" transform="translate(140.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-3b" transform="translate(193.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-26" transform="translate(238.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(287.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(313.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(369.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-f" transform="translate(395.703125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-17" transform="translate(432.796875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(485.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-21c" transform="translate(511.203125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(567.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(593.40625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-13" transform="translate(659.3125 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-50" transform="translate(718.109375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(769.3125 0)"/>
+     </g>
+    </g>
+    <g id="line2d_112">
+     <path d="M 815.718119 275.49976 
+L 824.718119 275.49976 
+L 833.718119 275.49976 
+" style="fill: none; stroke: #57ccf6; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_61">
+     <!-- Reflex 40 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(840.918119 278.64976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-51" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(333.296875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(394.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(420.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(485.703125 0)"/>
+     </g>
+    </g>
+    <g id="line2d_113">
+     <path d="M 815.718119 290.79976 
+L 824.718119 290.79976 
+L 833.718119 290.79976 
+" style="fill: none; stroke: #afd100; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_62">
+     <!-- Reflex 45 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(840.918119 293.94976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-51" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(332.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(389.1875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(415.1875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(480.390625 0)"/>
+     </g>
+    </g>
+    <g id="line2d_114">
+     <path d="M 815.718119 306.09976 
+L 824.718119 306.09976 
+L 833.718119 306.09976 
+" style="fill: none; stroke: #0a0a0a; stroke-width: 1.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_63">
+     <!-- Reflex 50 Hz -->
+     <g style="fill: #0a0a0a" transform="translate(840.918119 309.24976) scale(0.09 -0.09)">
+      <use xlink:href="#AltroGrotesk-Book-15"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(57.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-14d" transform="translate(108.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-2a" transform="translate(158.6875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-40" transform="translate(209.09375 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(253.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-52" transform="translate(279.890625 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-4d" transform="translate(334.296875 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-1" transform="translate(395.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-a" transform="translate(421.5 0)"/>
+      <use xlink:href="#AltroGrotesk-Book-42" transform="translate(486.703125 0)"/>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p733369a20f">
+   <rect x="44.284615" y="30.30024" width="254.896949" height="289.29952"/>
+  </clipPath>
+  <clipPath id="p55a4d95952">
+   <rect x="356.364455" y="30.30024" width="254.896949" height="289.29952"/>
+  </clipPath>
+  <clipPath id="p533b4663c6">
+   <rect x="668.444295" y="30.30024" width="254.896949" height="289.29952"/>
+  </clipPath>
+ </defs>
+</svg>
