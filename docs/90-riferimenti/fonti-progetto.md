@@ -2,7 +2,7 @@
 
 <!-- Generato da tools/mappa_fonti_progetto.py; dati autorati in research-vault/anagrafiche-fonti-web.json. -->
 
-Ricognizione del 2026-11-20: 213 identità nei 139 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
+Ricognizione del 2026-11-20: 215 identità nei 143 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
 
 Le chiavi bibliografiche preesistenti restano nel registro canonico del vault. Questa mappa descrive gli usi, non sostituisce la biblioteca. Registrata, letta e verificata sono proprietà distinte: le fonti storiche da riconciliare non diventano lette perché censite. Le letture parziali restano parziali.
 
@@ -39,7 +39,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-2F1354CB5CA013C3](#src-2f1354cb5ca013c3) | ubuntustudio.org | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-31AAE5A3F9C84980](#src-31aae5a3f9c84980) | www.behringer.com | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-321AB4F065ABC963](#src-321ab4f065abc963) | www.hypex.nl | riferimento_storico_da_classificare | da_verificare | 2 |
-| [SRC-32FCE3F5F7A1338B](#src-32fce3f5f7a1338b) | Behringer A800 | riferimento_storico_da_classificare | da_verificare | 1 |
+| [SRC-32FCE3F5F7A1338B](#src-32fce3f5f7a1338b) | A800, offerta Thomann Italia | offerta_commerciale | verificata | 3 |
 | [SRC-3302D1358F792A47](#src-3302d1358f792a47) | manuale Philips | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-33A8B226448BF720](#src-33a8b226448bf720) | www.aes.org | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-3441262650778E8B](#src-3441262650778e8b) | websockets 15.0.1 | riferimento_storico_da_classificare | da_verificare | 2 |
@@ -86,7 +86,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-6EE018AAFD3AB1AD](#src-6ee018aafd3ab1ad) | dev.scaniverse.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-707FC728B7CA778F](#src-707fc728b7ca778f) | www.minidsp.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-728DC04502254CF7](#src-728dc04502254cf7) | github.com | riferimento_storico_da_classificare | da_verificare | 1 |
-| [SRC-7452AE3470D6DF68](#src-7452ae3470d6df68) | guida Dayton | riferimento_storico_da_classificare | da_verificare | 1 |
+| [SRC-7452AE3470D6DF68](#src-7452ae3470d6df68) | EMM-6 Quick Reference Guide, fonte non recuperata | manuale_produttore_non_letto | da_verificare | 1 |
 | [SRC-74A4A45C25E5D2E0](#src-74a4a45c25e5d2e0) | ubuntustudio.org | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-7575484C9D5F58C7](#src-7575484c9d5f58c7) | www.kirstein.de | riferimento_storico_da_classificare | da_verificare | 3 |
 | [SRC-76785B7EC0211534](#src-76785b7ec0211534) | aes.org | riferimento_storico_da_classificare | da_verificare | 5 |
@@ -119,10 +119,11 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-9FB3D6B66794A06F](#src-9fb3d6b66794a06f) | pypi.org | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-A1061D785DE49B6F](#src-a1061d785de49b6f) | www.audioclub.ro | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-A561BACC12C5BF66](#src-a561bacc12c5bf66) | pagina ufficiale pw-cli | riferimento_storico_da_classificare | da_verificare | 1 |
-| [SRC-A5B79BD8EB9E426C](#src-a5b79bd8eb9e426c) | Esaurito, rientro indicato 18 dicembre | riferimento_storico_da_classificare | da_verificare | 1 |
+| [SRC-A5B79BD8EB9E426C](#src-a5b79bd8eb9e426c) | EMM-6, offerta SoundImports | offerta_commerciale | verificata | 3 |
 | [SRC-A7057EF1FBAD2294](#src-a7057ef1fbad2294) | github.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-A7842FFBD745C845](#src-a7842ffbd745c845) | www.audiosciencereview.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-A7C740CDAAEA025B](#src-a7c740cdaaea025b) | www.hifiberry.com | riferimento_storico_da_classificare | da_verificare | 2 |
+| [SRC-A800-QSG-V4](#src-a800-qsg-v4) | A800 Quick Start Guide | manuale_produttore | verificata | 1 |
 | [SRC-AA96602179BB39F8](#src-aa96602179bb39f8) | panther.kapsi.fi | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-AC0E9DD53D123EFB](#src-ac0e9dd53d123efb) | www.hifiberry.com | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-ACCA8D5FD302DF98](#src-acca8d5fd302df98) | cdn-data.motu.com | riferimento_storico_da_classificare | da_verificare | 1 |
@@ -161,6 +162,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-D2D59820D89F0037](#src-d2d59820d89f0037) | forums.steinberg.net | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-D35F9872CA99261B](#src-d35f9872ca99261b) | rilascio CamillaDSP 4.1.3 | riferimento_storico_da_classificare | da_verificare | 3 |
 | [SRC-D5DDDEF2F89A32C1](#src-d5dddef2f89a32c1) | segnalazione upstream AppArmor 585 | riferimento_storico_da_classificare | da_verificare | 1 |
+| [SRC-DAYTON-CALIBRATION-TOOL](#src-dayton-calibration-tool) | Microphone Calibration Tool | portale_produttore | verificata | 2 |
 | [SRC-DB3C40A023DFE27F](#src-db3c40a023dfe27f) | www.thomann.it | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-DCCC645C4726DFF7](#src-dccc645c4726dff7) | downloads.focusrite.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-DD57F2727CECF568](#src-dd57f2727cecf568) | www.dell.com | riferimento_storico_da_classificare | da_verificare | 1 |
@@ -193,7 +195,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-FC31BF0DE8D082C2](#src-fc31bf0de8d082c2) | sound-au.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-FD42B4DF08EA2DEB](#src-fd42b4df08ea2deb) | produttore | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-FD991D2C270A2225](#src-fd991d2c270a2225) | manuale systemd 259 | riferimento_storico_da_classificare | da_verificare | 1 |
-| [SRC-FOSI-V3-MANUAL](#src-fosi-v3-manual) | Fosi Audio V3 Product User Instruction | manuale_produttore | verificata | 2 |
+| [SRC-FOSI-V3-MANUAL](#src-fosi-v3-manual) | Fosi Audio V3 Product User Instruction | manuale_produttore | verificata | 3 |
 | [SRC-HIFIBERRY-DAC8X](#src-hifiberry-dac8x) | HiFiBerry DAC8x datasheet | datasheet_convertitore | verificata | 4 |
 | [SRC-KERNEL-ALSA-PROC](#src-kernel-alsa-proc) | Proc Files of ALSA Drivers | documentazione_software_primaria | verificata | 2 |
 | [SRC-KERNEL-USB-ABI-7](#src-kernel-usb-abi-7) | USB stable sysfs ABI | documentazione_software_primaria | verificata | 2 |
@@ -206,22 +208,22 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-PI-CONFIGURATION](#src-pi-configuration) | Raspberry Pi Configuration documentation | documentazione_primaria | verificata | 3 |
 | [SRC-PI4-PRODUCT](#src-pi4-product) | Raspberry Pi 4 Model B | scheda_prodotto | verificata | 2 |
 | [SRC-PIPEWIRE-PW-LINK](#src-pipewire-pw-link) | pw-link | documentazione_software_primaria | verificata | 2 |
-| [SRC-PRICE-FOSI-V3-AUDIOPHONICS](#src-price-fosi-v3-audiophonics) | Fosi V3 32V, riferimento Audiophonics | prezzo_venditore | verificata | 2 |
+| [SRC-PRICE-FOSI-V3-AUDIOPHONICS](#src-price-fosi-v3-audiophonics) | V3 stereo con alimentatore32V/5A, offerta Audiophonics | offerta_commerciale | verificata | 4 |
 | [SRC-PRICE-SB15-SOUNDIMPORTS](#src-price-sb15-soundimports) | SB15NRX2C30-8, prezzo SoundImports | prezzo_venditore | verificata | 1 |
-| [SRC-PRICE-SB16-SOUNDIMPORTS](#src-price-sb16-soundimports) | SB16PFCR25-8, prezzo SoundImports | prezzo_venditore | verificata | 3 |
-| [SRC-PRICE-SB26-SOUNDIMPORTS](#src-price-sb26-soundimports) | SB26STCN-C000-4, prezzo SoundImports | prezzo_venditore | verificata | 3 |
-| [SRC-PRICE-UMC1820-THOMANN](#src-price-umc1820-thomann) | UMC1820, prezzo Thomann Italia | prezzo_venditore | verificata | 3 |
+| [SRC-PRICE-SB16-SOUNDIMPORTS](#src-price-sb16-soundimports) | SB16PFCR25-8, offerta SoundImports | offerta_commerciale | verificata | 5 |
+| [SRC-PRICE-SB26-SOUNDIMPORTS](#src-price-sb26-soundimports) | SB26STCN-C000-4, offerta SoundImports | offerta_commerciale | verificata | 5 |
+| [SRC-PRICE-UMC1820-THOMANN](#src-price-umc1820-thomann) | UMC1820, offerta Thomann Italia | offerta_commerciale | verificata | 5 |
 | [SRC-RUSSELL-BAFFLED-PISTON](#src-russell-baffled-piston) | Radiation from a Circular Baffled Piston | pagina_didattica_autore | verificata | 1 |
 | [SRC-SB15NRX2C30-8](#src-sb15nrx2c30-8) | SB15NRX2C30-8 datasheet | datasheet_trasduttore | verificata | 5 |
-| [SRC-SB16PFCR25-8](#src-sb16pfcr25-8) | SB16PFCR25-8 datasheet | datasheet_trasduttore | verificata | 7 |
-| [SRC-SB26STCN-C000-4](#src-sb26stcn-c000-4) | SB26STCN-C000-4 datasheet | datasheet_trasduttore | verificata | 7 |
+| [SRC-SB16PFCR25-8](#src-sb16pfcr25-8) | SB16PFCR25-8 datasheet | datasheet_trasduttore | verificata | 8 |
+| [SRC-SB26STCN-C000-4](#src-sb26stcn-c000-4) | SB26STCN-C000-4 datasheet | datasheet_trasduttore | verificata | 8 |
 | [SRC-SMALL-VENTED-1973](#src-small-vented-1973) | Vented-Box Loudspeaker Systems--Part 1: Small-Signal Analysis | articolo_metadati_e_abstract | verificata | 1 |
 | [SRC-ST120-DIMENSION-IMAGE](#src-st120-dimension-image) | Stagecaptain ST-120, immagine quotata ufficiale | disegno_quotato_produttore | verificata | 3 |
 | [SRC-ST120-MANUAL-2025](#src-st120-manual-2025) | Stagecaptain ST-120 manuale inglese | manuale_produttore | verificata | 3 |
 | [SRC-TI-SLOA049D](#src-ti-sloa049d) | Active Low-Pass Filter Design, SLOA049D | nota_applicativa | verificata | 1 |
 | [SRC-TI-TPA3255](#src-ti-tpa3255) | TPA3255 datasheet | datasheet_componente | verificata | 2 |
-| [SRC-UMC1820-PRODUCT](#src-umc1820-product) | UMC1820, pagina e specifiche del produttore | scheda_prodotto | verificata | 4 |
-| [SRC-UMC1820-QSG](#src-umc1820-qsg) | UMC1820 Quick Start Guide multilingue | manuale_produttore | verificata | 2 |
+| [SRC-UMC1820-PRODUCT](#src-umc1820-product) | UMC1820, pagina e specifiche del produttore | scheda_prodotto | verificata | 5 |
+| [SRC-UMC1820-QSG](#src-umc1820-qsg) | UMC1820 Quick Start Guide multilingue | manuale_produttore | verificata | 3 |
 | [SRC-W3C-EQ-2021](#src-w3c-eq-2021) | Audio EQ Cookbook | nota_tecnica | verificata | 1 |
 
 ## SRC-LINKWITZ-ACTIVE-FILTERS
@@ -843,19 +845,33 @@ Contesto locale: - `https://www.hypex.nl/media/07/c1/98/1676894420/HFD%20Manual%
 
 ## SRC-32FCE3F5F7A1338B
 
-Behringer A800
+A800, offerta Thomann Italia
 
-Riferimento rilevato nei documenti sotto elencati; titolo e funzione derivano dal contesto locale, non da una nuova lettura web.
+Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.
 
 Fonte canonica: [https://www.thomann.it/behringer_a800.htm](https://www.thomann.it/behringer_a800.htm).
 
-Verifica: da_verificare, data non riconciliata. La ricognizione non promuove i riscontri storici a verifiche correnti.
+Responsabile: Thomann Italia.
 
-Lettura: da_riconciliare. Consultare i microstep e la scheda della fonte per le eventuali letture precedenti.
+Versione: Pagina consultata 2026-11-26.
+
+Verifica: verificata, data 2026-11-26. 179.00 EUR; IVA inclusa nella pagina italiana; disponibile entro2-3 settimane secondo la pagina.
+
+Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout.
+
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 195.
+
+Contesto locale: "url": "https://www.thomann.it/behringer_a800.htm",
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Lista della spesa residua», riga 138.
 
 Contesto locale: Un riferimento concreto per confrontare l'autocostruzione degli amplificatori è costituito da due Behringer A800, 179 € ciascuno e disponibilità indicata in 3-4 settimane: quattro canali completi a 358 €. Il produttore dichia
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Revisione commerciale e budget», riga 109.
+
+Contesto locale: Il confronto non scelto è due A800: 179€ ciascuno, disponibilità indicata entro 2-3 settimane, ingressi bilanciati secondo QSG V4. La sostituzione aggiungerebbe 160€ e porterebbe il budge
 
 
 ## SRC-3302D1358F792A47
@@ -1754,15 +1770,21 @@ Contesto locale: Dove si revoca. Dal pannello dell'account su GitHub, alla pagin
 
 ## SRC-7452AE3470D6DF68
 
-guida Dayton
+EMM-6 Quick Reference Guide, fonte non recuperata
 
-Riferimento rilevato nei documenti sotto elencati; titolo e funzione derivano dal contesto locale, non da una nuova lettura web.
+Puntatore rilevante, non prova tecnica: i recuperi hanno restituito HTML di verifica.
 
 Fonte canonica: [https://www.daytonaudio.com/images/resources/390-801-dayton-audio-emm-6-quick-reference-guide%282%29.pdf](https://www.daytonaudio.com/images/resources/390-801-dayton-audio-emm-6-quick-reference-guide%282%29.pdf).
 
-Verifica: da_verificare, data non riconciliata. La ricognizione non promuove i riscontri storici a verifiche correnti.
+Responsabile: Dayton Audio.
 
-Lettura: da_riconciliare. Consultare i microstep e la scheda della fonte per le eventuali letture precedenti.
+Versione: Versione non verificata sul documento originale.
+
+Verifica: da_verificare, data 2026-11-26. Pagina/PDF non leggibili; HTTP200 con1157 byte HTML, copia pubblica e CDX non recuperati.
+
+Lettura: non_letta. Soltanto URL e indizio nei risultati; nessun contenuto del PDF dichiarato letto.
+
+Usi progettuali dichiarati: MS-323, lacuna dichiarata nel percorso di misura.
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Lista della spesa residua», riga 140.
 
@@ -2405,19 +2427,33 @@ Contesto locale: La API sincrona websockets 15.0.1 sostiene connessione locale, 
 
 ## SRC-A5B79BD8EB9E426C
 
-Esaurito, rientro indicato 18 dicembre
+EMM-6, offerta SoundImports
 
-Riferimento rilevato nei documenti sotto elencati; titolo e funzione derivano dal contesto locale, non da una nuova lettura web.
+Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.
 
 Fonte canonica: [https://www.soundimports.eu/en/dayton-audio-emm-6.html](https://www.soundimports.eu/en/dayton-audio-emm-6.html).
 
-Verifica: da_verificare, data non riconciliata. La ricognizione non promuove i riscontri storici a verifiche correnti.
+Responsabile: SoundImports.
 
-Lettura: da_riconciliare. Consultare i microstep e la scheda della fonte per le eventuali letture precedenti.
+Versione: Pagina consultata 2026-11-26.
+
+Verifica: verificata, data 2026-11-26. 78.45 EUR; lordo/netto visualizzati; IVA destinazione da confermare; preordine; arrivo stimato18-12-2026 dal venditore.
+
+Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout.
+
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 181.
+
+Contesto locale: "url": "https://www.soundimports.eu/en/dayton-audio-emm-6.html",
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Lista della spesa residua», riga 127.
 
 Contesto locale: / Microfono XLR calibrato EMM-6 / 1 / 78,45 € osservati / Esaurito, rientro indicato 18 dicembre; non promettere consegna immediata /
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Revisione commerciale e budget», riga 96.
+
+Contesto locale: / EMM-6, SoundImports /1 /78,45€ lordo;64,83€ netto /78,45€ / Preordine; arrivo stimato18 dicembre /
 
 
 ## SRC-A7057EF1FBAD2294
@@ -2473,6 +2509,29 @@ Contesto locale: Il modo in cui si configurano è lo stesso per entrambi e sta n
 Uso in [docs/54-amplificazione-e-dsp.md](../../docs/54-amplificazione-e-dsp.md), sezione «Fonti lette», riga 250.
 
 Contesto locale: - `https://www.hifiberry.com/docs/software/implementing-room-acoustics-correction-using-rew/` (letta il 2026-10-06)
+
+
+## SRC-A800-QSG-V4
+
+A800 Quick Start Guide
+
+Alternativa stereo con ingressi bilanciati; potenza commerciale non usata come limite dei driver.
+
+Fonte canonica: [https://mediadl.musictribe.com/media/PLM/data/docs/P0CE8/QSG_BE_0105-ABA_A800_WW.pdf](https://mediadl.musictribe.com/media/PLM/data/docs/P0CE8/QSG_BE_0105-ABA_A800_WW.pdf).
+
+Responsabile: Behringer.
+
+Versione: V4.0.
+
+Verifica: verificata, data 2026-11-26. Letti ingressi, modalità stereo/bridge e dimensioni nominali.
+
+Lettura: parziale. Controls e Specifications, pagine stampate16-17/26-27; non manuale intero.
+
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Revisione commerciale e budget», riga 109.
+
+Contesto locale: Il confronto non scelto è due A800: 179€ ciascuno, disponibilità indicata entro 2-3 settimane, ingressi bilanciati secondo QSG V4. La sostituzione aggiungerebbe 160€ e porterebbe il budge
 
 
 ## SRC-AA96602179BB39F8
@@ -3323,6 +3382,33 @@ Uso in [docs/10-ambiente/fluidsynth-diagnosi-e-collaudo.md](../../docs/10-ambien
 Contesto locale: Il manuale systemd 259 conferma che le due opzioni intervengono anche sull'insieme delle capability. La documentazione Ubuntu su AppArmor descrive le r
 
 
+## SRC-DAYTON-CALIBRATION-TOOL
+
+Microphone Calibration Tool
+
+Conferma il punto di accesso ufficiale alla calibrazione, non la disponibilità di un seriale specifico.
+
+Fonte canonica: [https://support.daytonaudio.com/MicrophoneCalibrationTool](https://support.daytonaudio.com/MicrophoneCalibrationTool).
+
+Responsabile: Dayton Audio.
+
+Versione: Interfaccia consultata 2026-11-26.
+
+Verifica: verificata, data 2026-11-26. Interfaccia leggibile; prodotto/PDF principali restano non letti per pagina di verifica.
+
+Lettura: parziale. Pagina con selettore del microfono e campo seriale; nessun file individuale richiesto.
+
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 58.
+
+Contesto locale: "calibration_portal": "https://support.daytonaudio.com/MicrophoneCalibrationTool",
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Distinta prima dei dettagli esecutivi», riga 84.
+
+Contesto locale: Il portale ufficiale Dayton è leggibile e richiede modello/seriale; non è stato scaricato un file individuale. Il PDF guida del sito ha restituito una pagina di verifica e rimane non letto. Il file di calibrazione non sostituisce da solo la qualificazione del
+
+
 ## SRC-DB3C40A023DFE27F
 
 www.thomann.it
@@ -3933,6 +4019,10 @@ Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-aut
 
 Contesto locale: La base economica proposta è due Fosi V3 stereo con alimentatore 32 V/5 A ciascuno: quattro canali completi, nessuna scheda nuda o alimentazione di rete da costruire. Il manuale del produttore documenta ingresso RCA, carichi e alimentazione; le potenze commerciali mass
 
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Collegamenti di linea e potenza», riga 59.
+
+Contesto locale: UMC1820 fornisce uscite di linea bilanciate TRS[^3]; il manuale V3 stereo documenta ingressi RCA. Servono quattro collegamenti mono. La forma dei connettori non stabilisce come terminare il ramo freddo dell'uscita: il pinout del cavo non è congelato, e non viene dichia
+
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 11.
 
 Contesto locale: / Fosi V3 manuale / Ingressi RCA, stereo, alimentazioni, carichi e collegamento. Non misura indipendente di rumore/potenza del nostro esemplare. /
@@ -4250,23 +4340,33 @@ Contesto locale: - SRC-2AFD8DC105BFCA8A e SRC-PIPEWIRE-PW-LINK: dump JSON e crea
 
 ## SRC-PRICE-FOSI-V3-AUDIOPHONICS
 
-Fosi V3 32V, riferimento Audiophonics
+V3 stereo con alimentatore32V/5A, offerta Audiophonics
 
-99 euro visualizzati con IVA francese e alimentatore: base di confronto dell'oggetto completo, non costo finale italiano o potenza misurata.
+Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.
 
 Fonte canonica: [https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html](https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html).
 
 Responsabile: Audiophonics.
 
-Versione: rilevazione2026-11-20.
+Versione: Pagina consultata 2026-11-26.
 
-Verifica: verificata, data 2026-11-20. Prezzo della pagina letto; disponibilità e consegna da confermare.
+Verifica: verificata, data 2026-11-26. 99.00 EUR; TTC con IVA pagina20%; IVA italiana da confermare; ultimi pezzi e anche avviso disponibilità; quantità2 non garantita.
 
-Lettura: parziale. Prezzo e dotazione dichiarata; nessuna prova del prodotto.
+Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout.
 
-Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa aggiornata e acquisti da preparare», riga 191.
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 167.
+
+Contesto locale: "url": "https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html",
+
+Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa del 20 novembre, conservata come riferimento storico», riga 191.
 
 Contesto locale: / Due Fosi V3 con alimentatori / 2 / 99 € ciascuno IVA francese inclusa, Audiophonics, riferimento 198 €, disponibilità da confermare /
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Revisione commerciale e budget», riga 95.
+
+Contesto locale: / V3-32V, Audiophonics /2 /99,00€ TTC;82,50€ HT /198,00€ / Ultimi pezzi indicati; quantità 2 da confermare /
 
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 19.
 
@@ -4296,27 +4396,37 @@ Contesto locale: / SB16, SB15, SB26, SoundImports / 31,45 / 63,95 / 36,45 € vi
 
 ## SRC-PRICE-SB16-SOUNDIMPORTS
 
-SB16PFCR25-8, prezzo SoundImports
+SB16PFCR25-8, offerta SoundImports
 
-31,45 euro visualizzati per il confronto economico; imponibile, IVA di destinazione e spedizione distinti dal datasheet tecnico.
+Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.
 
 Fonte canonica: [https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html](https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html).
 
 Responsabile: SoundImports.
 
-Versione: rilevazione2026-11-20.
+Versione: Pagina consultata 2026-11-26.
 
-Verifica: verificata, data 2026-11-20. Prezzo visualizzato e stock letti; non preventivo finale italiano.
+Verifica: verificata, data 2026-11-26. 31.45 EUR; lordo/netto visualizzati; IVA destinazione da confermare; 10+ disponibili nella pagina consultata.
 
-Lettura: parziale. Sezione prezzo/stock, non recensioni dei clienti.
+Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout.
+
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 139.
+
+Contesto locale: "url": "https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html",
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Lista della spesa residua», riga 125.
 
 Contesto locale: / SB16PFCR25-8 / 2 / 62,90 € osservati / 31,45 € ciascuno, disponibile; da simulare /
 
-Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa aggiornata e acquisti da preparare», riga 189.
+Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa del 20 novembre, conservata come riferimento storico», riga 189.
 
 Contesto locale: / SB16PFCR25-8 / 2 / 31,45 € ciascuno, SoundImports, 62,90 € visualizzati /
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Revisione commerciale e budget», riga 93.
+
+Contesto locale: / SB16, SoundImports /2 /31,45€ lordo;25,99€ netto /62,90€ /10+ indicati /
 
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 18.
 
@@ -4325,27 +4435,37 @@ Contesto locale: / SB16, SB15, SB26, SoundImports / 31,45 / 63,95 / 36,45 € vi
 
 ## SRC-PRICE-SB26-SOUNDIMPORTS
 
-SB26STCN-C000-4, prezzo SoundImports
+SB26STCN-C000-4, offerta SoundImports
 
-36,45 euro visualizzati e backorder: il costo è distinto dalla possibilità di ricevere subito il tweeter.
+Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.
 
 Fonte canonica: [https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html](https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html).
 
 Responsabile: SoundImports.
 
-Versione: rilevazione2026-11-20.
+Versione: Pagina consultata 2026-11-26.
 
-Verifica: verificata, data 2026-11-20. Prezzo e indisponibilità letti; ricontrollare al preventivo.
+Verifica: verificata, data 2026-11-26. 36.45 EUR; lordo/netto visualizzati; IVA destinazione da confermare; esaurito/backorder, data non dichiarata.
 
-Lettura: parziale. Prezzo lordo visualizzato, stato esaurito/backorder.
+Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout.
+
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 153.
+
+Contesto locale: "url": "https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html",
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Lista della spesa residua», riga 126.
 
 Contesto locale: / SB26STCN-C000-4 / 2 / 72,90 € osservati / 36,45 € ciascuno, esaurito; reperire o confrontare alternativa /
 
-Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa aggiornata e acquisti da preparare», riga 190.
+Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa del 20 novembre, conservata come riferimento storico», riga 190.
 
 Contesto locale: / SB26STCN-C000-4 / 2 / 36,45 € ciascuno, SoundImports, 72,90 €, esaurito/backorder /
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Revisione commerciale e budget», riga 94.
+
+Contesto locale: / SB26, SoundImports /2 /36,45€ lordo;30,12€ netto /72,90€ / Esaurito/backorder /
 
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 18.
 
@@ -4354,27 +4474,37 @@ Contesto locale: / SB16, SB15, SB26, SoundImports / 31,45 / 63,95 / 36,45 € vi
 
 ## SRC-PRICE-UMC1820-THOMANN
 
-UMC1820, prezzo Thomann Italia
+UMC1820, offerta Thomann Italia
 
-Fonte del riferimento economico 175 euro IVA inclusa e della disponibilità letta; non prova della qualità sonora o del supporto Linux.
+Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.
 
 Fonte canonica: [https://www.thomann.it/behringer_umc1820.htm](https://www.thomann.it/behringer_umc1820.htm).
 
-Responsabile: Thomann.
+Responsabile: Thomann Italia.
 
-Versione: rilevazione2026-11-20.
+Versione: Pagina consultata 2026-11-26.
 
-Verifica: verificata, data 2026-11-20. Prezzo e disponibilità letti, da ricontrollare prima dell'acquisto.
+Verifica: verificata, data 2026-11-26. 175.00 EUR; IVA inclusa nella pagina italiana; disponibile nella pagina consultata.
 
-Lettura: parziale. Prezzo, IVA e disponibilità della pagina italiana.
+Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout.
+
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
+
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 125.
+
+Contesto locale: "url": "https://www.thomann.it/behringer_umc1820.htm",
 
 Uso in [docs/55-proposta-sistema-home-recording.md](../../docs/55-proposta-sistema-home-recording.md), sezione «Interfaccia: risolvere la contraddizione fra quattro e otto ingressi», riga 89.
 
 Contesto locale: Propongo per il sistema completo la Behringer UMC1820, con otto ingressi e uscite di linea bilanciate 3-10 oltre alle principali. Il prezzo osservato su Thomann Italia è 175 €, disponibile; la [UMC404HD](https://www.thomann.it
 
-Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa aggiornata e acquisti da preparare», riga 188.
+Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Spesa del 20 novembre, conservata come riferimento storico», riga 188.
 
 Contesto locale: / UMC1820 / 1 / 175 € IVA inclusa, Thomann Italia, disponibile nella pagina letta /
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Revisione commerciale e budget», riga 92.
+
+Contesto locale: / UMC1820, Thomann Italia /1 /175,00€ IVA inclusa /175,00€ / Disponibile /
 
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 17.
 
@@ -4481,6 +4611,10 @@ Uso in [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-d
 
 Contesto locale: I disegni ufficiali di SB16, SB15 e SB26 sono stati riletti e ispezionati. Il diametro posterio
 
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Base consolidata per proseguire», riga 20.
+
+Contesto locale: La base conserva una sola coppia e riusa interfaccia e finali fra le due modalità. Non aggiunge un secondo DAC multicanale o un crossover passivo completo. SB15/B27 resta un'alternativa geometrica se le verifiche future rendessero inadatta A24; non è una seconda coppia da comprare. I dati nominali dei driver e i disegn
+
 Uso in [docs/90-riferimenti/fonti.md](../../docs/90-riferimenti/fonti.md), sezione «Ricognizione e proposta della catena condivisa, 2026-11-17», riga 145.
 
 Contesto locale: Fonti primarie lette: Ubuntu Studio Audio Configuration (`https://ubuntustudio.org/audio-configuration/`) per la regolazione di PipeWire; documentazione kernel intel_pstate (`https://docs.kernel.org/admin-guide/pm/intel_pstate.html`) per la distinzione fra policy e frequenza fissa; changelog Ubuntu cpupower-gui (`https
@@ -4527,6 +4661,10 @@ Contesto locale: L'alternativa SB15NRX2C30-8 nel B27 permette un frontale più s
 Uso in [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md), sezione «Cabinet, frontali e distinta», riga 92.
 
 Contesto locale: I disegni ufficiali di SB16, SB15 e SB26 sono stati riletti e ispezionati. Il diametro posterio
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Base consolidata per proseguire», riga 20.
+
+Contesto locale: La base conserva una sola coppia e riusa interfaccia e finali fra le due modalità. Non aggiunge un secondo DAC multicanale o un crossover passivo completo. SB15/B27 resta un'alternativa geometrica se le verifiche future rendessero inadatta A24; non è una seconda coppia da comprare. I dati nominali dei driver e i disegn
 
 Uso in [docs/90-riferimenti/fonti.md](../../docs/90-riferimenti/fonti.md), sezione «Ricognizione e proposta della catena condivisa, 2026-11-17», riga 145.
 
@@ -4704,6 +4842,10 @@ Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-aut
 
 Contesto locale: UMC1820 è la candidata di sistema per gli otto ingressi richiesti dall'home recording e per le uscite/digitali; sostituisce nella proposta corrente la precedente candidata a quattro ingressi, senza fingere un acquisto già compiuto. Produttore e manuale documentano connettiv
 
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Mappa dei canali e del volume», riga 53.
+
+Contesto locale: La funzione cuffie e le uscite sono documentate anche nella pagina del produttore. La mappa proposta coincide con gli array4/5/6/7 dei due example PC/ALSA, che restano verified=false. Questa coerenza documentale non prova i jack dell'esemplare. Main1/2 e Line Out9/10 non ve
+
 Uso in [docs/90-riferimenti/fonti.md](../../docs/90-riferimenti/fonti.md), sezione «Ricognizione e proposta della catena condivisa, 2026-11-17», riga 145.
 
 Contesto locale: Fonti primarie lette: Ubuntu Studio Audio Configuration (`https://ubuntustudio.org/audio-configuration/`) per la regolazione di PipeWire; documentazione kernel intel_pstate (`https://docs.kernel.org/admin-guide/pm/intel_pstate.html`) per la distinzione fra policy e frequenza fissa; changelog Ubuntu cpupower-gui (`https
@@ -4717,7 +4859,7 @@ Contesto locale: / UMC1820 produttore e manuale ufficiale / Controlli, routing d
 
 UMC1820 Quick Start Guide multilingue
 
-Distingue routing ottico/coassiale e controlli di volume: le uscite Line non seguono Main. Impone il progetto del livello comune e del cambio modalità prima del cablaggio.
+Definisce volume delle linee e clock nominali, senza assumere la qualifica della scheda.
 
 Fonte canonica: [https://cdn-media.empowertribe.com/2b9a46d7e1104b78b8881f726c18a4d0/QSG_BE_0805-AAN_UMC1820_WW.pdf](https://cdn-media.empowertribe.com/2b9a46d7e1104b78b8881f726c18a4d0/QSG_BE_0805-AAN_UMC1820_WW.pdf).
 
@@ -4725,17 +4867,21 @@ Alias dichiarati: [https://mediadl.musictribe.com/media/PLM/data/docs/0805-AAN/Q
 
 Responsabile: Behringer.
 
-Versione: PDF ufficiale consultato 2026-11-20.
+Versione: V8.0.
 
-Verifica: verificata, data 2026-11-20. Controlli e tabella Digital I/O Routing letti sul manuale ufficiale.
+Verifica: verificata, data 2026-11-26. Rilette le sezioni pertinenti; Main e linee restano distinti.
 
-Lettura: parziale. Controlli e specifiche/routing; il protocollo ALSA deve ancora essere osservato sulla scheda.
+Lettura: parziale. Controlli, specifiche e Digital I/O Routing, pagina PDF21; nessuna nuova prova ALSA.
 
-Usi progettuali dichiarati: Doc63, ingresso CD, selezione OPT I/O, mappa dei jack e percorso cuffie.
+Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
 Uso in [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md), sezione «Ingressi digitali, clock e significato di bit perfect», riga 24.
 
 Contesto locale: Il manuale UMC1820 ufficiale, sezioni controlli e Digital I/O Routing, impone una distinzione decisiva: con OPT I/O in S/PDIF l'ingresso è ottico e il coassiale è disabilitato; in modalità ADAT il coassiale riceve S/PD
+
+Uso in [docs/67-catena-di-riferimento-e-dipendenze-esecutive.md](../../docs/67-catena-di-riferimento-e-dipendenze-esecutive.md), sezione «Percorsi completi e proprietà dell'interfaccia», riga 41.
+
+Contesto locale: Il QSG UMC1820 V8 distingue S/PDIF[^2] ottico e coassiale secondo OPT I/O. Il progetto conserva configurazioni a44,1 e48kHz; lock e controlli effettivi vanno osservati sull'esemplare. Lo schema non autorizza un ingress
 
 Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md), sezione «Fonti dello sviluppo autonomo e dei componenti», riga 7.
 

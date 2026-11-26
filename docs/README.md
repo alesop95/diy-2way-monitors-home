@@ -49,3 +49,5 @@ Il [completamento del progetto nominale](64-reflex-direttivita-e-cabinet-nominal
 La [caratterizzazione aperta su file](65-caratterizzazione-aperta-e-dati-di-misura.md) aggiunge importazione, confronto e integrità dei dati FRD/OSM, con esempio sintetico riproducibile. Separa i dati di misura dall’eventuale authoring GLL, senza riaprire le prove fisiche.
 
 La [somma complessa dei driver](66-somma-acustica-e-crossover-su-file.md) collega le curve importate a filtro, livello, polarità e ritardo, con esempi LR4 e dataset riutilizzabile nel confronto su file.
+
+La [catena di riferimento consolidata](67-catena-di-riferimento-e-dipendenze-esecutive.md) raccoglie distinta, canali, collegamenti e budget del26 novembre. I V3 sono confermati per priorità al costo; acquisti, qualifiche e rilascio costruttivo restano distinti.

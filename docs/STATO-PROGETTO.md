@@ -7,7 +7,8 @@ Aggiornamento del 2026-11-26. Questo è il punto di lettura per il proprietario:
 | Funzione | Fonte canonica |
 |---|---|
 | Stato e percorso di lettura | Questo documento, `docs/STATO-PROGETTO.md` |
-| Progetto tecnico corrente, componenti e calcoli | [Capitolo 63](63-sistema-autonomo-driver-e-collaudo.md) |
+| Modelli e relazione tecnica | [Capitolo 63](63-sistema-autonomo-driver-e-collaudo.md) |
+| Catena di riferimento, distinta e budget | [Capitolo 67](67-catena-di-riferimento-e-dipendenze-esecutive.md) |
 | Uso e controllo del DSP | [Manuale CamillaDSP](61-camilladsp-manuale-tecnico.md) |
 | Pendenze e verifiche sospese | [PENDING-ACTIONS.md](PENDING-ACTIONS.md) |
 | Decisioni e motivazioni | [Registro ADR](../.claude/memory/decisions.md) |
@@ -83,7 +84,7 @@ La proposta è una coppia con profili mix e ascolto. Cambiare profilo può cambi
 
 ## Componenti, mobile e schermo: che cosa è una proposta
 
-La base di sviluppo documentata è UMC1820 per gli otto ingressi condivisi con l'home recording, quattro uscite per le vie, due Fosi V3 stereo e Raspberry Pi 4 completo per l'autonomia. Sono candidati, non componenti dichiarati acquistati o già collaudati sull'intera catena.
+La [catena consolidata](67-catena-di-riferimento-e-dipendenze-esecutive.md) mantiene UMC1820 per gli otto ingressi condivisi, quattro uscite per le vie, due Fosi V3 stereo e Pi4 completo per l’autonomia. Il proprietario conferma i V3 per priorità al costo, ADR-058. Distinta e mappa nominale sono pronte; collegamento TRS-RCA, livelli e rumore restano da qualificare. Nessun acquisto o collaudo dell’intera catena è dedotto dalla scelta.
 
 Il cabinet di riferimento A24 è largo 220 mm, profondo 190 mm e alto 430 mm, in MDF da 18 mm, chiuso. I driver candidati sono SB16PFCR25-8 e SB26STCN-C000-4. L'alternativa B27 è larga 190 mm, profonda 180 mm e alta 430 mm e usa il woofer SB15NRX2C30-8. C24 è il confronto di maggiore volume. I tre assiemi nominali dettagliati includono tagli, incassi e rinforzo; il kit conserva sette solidi modificabili per cassa e distinte per coppia. Fissaggi, lavorazione e tolleranze definitive dipendono dai riscontri sospesi.
 
@@ -107,9 +108,9 @@ I modelli CAD sono stati ricomputati e riaperti; STEP e DXF controllati, compres
 
 ## Lista della spesa: stato del preventivo
 
-La distinta di riferimento del 20 novembre totalizza 868,80-1088,80 € senza switch USB, oppure 888,80-1128,80 € con switch. Comprende interfaccia, quattro driver, due finali con alimentatori, Pi completo, materiali del mobile, collegamenti/protezioni/supporti e dotazione di misura stimata. È una somma con voci stimate e prezzi datati, non un preventivo chiuso o una nuova verifica commerciale.
+La revisione commerciale del 26 novembre somma 587,25€ per interfaccia, quattro driver, due V3 completi e microfono. Con Pi completo, legno, collegamenti/protezioni/supporti, cavo e asta stimati, il budget è 867,25-1087,25€ senza switch; quello opzionale aggiunge 20-40€. Sono prezzi visualizzati e stime, con IVA di destinazione e spedizione ancora da confermare, non un preventivo italiano o un tetto approvato. Il confronto A800 aggiunge 160€ ed è l’alternativa non scelta.
 
-Esclude schermo, tavolo già comprato, spedizioni, finitura e utensili. L'alternativa SB15 costa di più; non sono da comprare entrambe le coppie di woofer. Stock, IVA di consegna e offerte del fornitore restano da riscontrare prima dell'ordine. L'obiettivo di spesa minima a qualità adeguata guida il confronto teorico, senza anticipare l'acquisto di componenti non ancora giustificati.
+Sono esclusi schermo, tavolo già comprato, spedizioni, finitura, utensili e differenze IVA di destinazione. Un eventuale convertitore di linea oltre il lotto stimato riaprirebbe il costo. Il tweeter è in backorder e l’EMM-6 in preordine nella pagina consultata; quantità e date non sono garantite. Nessuna sostituzione automatica dei driver e nessun ordine adesso.
 
 ## Apparecchi già posseduti
 
@@ -154,7 +155,7 @@ La documentazione e il codice canonici sono nel repository Windows. Ubuntu conti
 
 I risultati correnti sono in `build/studio-crossover-20261120-v2/`, `build/sistema-autonomo-20261120-v5/` e `build/collaudo-profili-autonomi-20261120-finale-v5/`. I rapporti leggibili sono copiati nei due topic del vault. I tentativi precedenti, anche falliti, sono nel ZIP `_notes/archivio-prove/20261120/prove-superate.zip`, con 340 file e manifesto dei percorsi originali. La rimozione dei soli espansi ha ridotto di circa 190 MiB lordi le copie, conservando la prova delle correzioni.
 
-La mappa registra 213 riferimenti, con 46 schede curate e 167 riferimenti storici ancora da riconciliare. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende dodici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
+La mappa registra 215 riferimenti, con 51 schede curate e 164 riferimenti storici ancora da riconciliare. Una scheda curata è esplicitamente non letta: la guida Dayton non recuperata. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende tredici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
 
 ## Sviluppo e attività residue
 

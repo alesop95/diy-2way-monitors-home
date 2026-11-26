@@ -69,7 +69,7 @@ voci:
     livello: 2
     dove: questo repository e il gemello
     titolo: PA-012, scegliere la catena di ingresso audio
-    stato: "Scelta condivisa ancora aperta: UMC1820 proposta per gli otto ingressi del gemello e le uscite dei monitor; ADR-046 conserva la UMC404HD come candidata precedente finché non si decide."
+    stato: "Base UMC1820 condivisa consolidata con distinta e mappa nel capitolo67, MS-323. Scelta di acquisto e qualifica dell’interfaccia restano aperte; nessuna disponibilità del dispositivo dedotta."
     passo: "Proseguire il confronto documentale della catena condivisa. Scelta finale, acquisto e verifiche sull’esemplare restano differiti."
     fonte: "docs/PENDING-ACTIONS.md"
 
@@ -125,7 +125,7 @@ voci:
     livello: 2
     dove: questo repository
     titolo: PA-024, scegliere il modulo di amplificazione e processore per i cabinet attivi
-    stato: "Base attiva PC/Pi proposta in ADR-053: UMC1820 condivisa fra host alternativi e due finali V3; driver SB16/SB26 in A24 come studio, alternativa SB15/B27. Nessun acquisto o guadagno hardware definitivo."
+    stato: "V3 stereo confermati dal proprietario per priorità al costo, ADR-058. Catena PC/Pi, distinta e budget rivisti nel capitolo67; C-01 bilanciato-RCA e guadagni/protezioni ancora da qualificare. Nessun acquisto."
     passo: "Distinta nominale, guadagni ipotetici, condensatore e limite ideale di tensione sviluppati in docs/64. Scelta di spesa ancora aperta; rumore, potenza reale e compatibilità misurata sono sospesi."
     fonte: "docs/PENDING-ACTIONS.md"
 
@@ -212,7 +212,7 @@ voci:
     dove: "acquisti e realizzazione"
     titolo: "07. Acquisti mirati, prototipo e misure finali"
     stato: "Tavolo comprato; interfaccia, microfono, driver e amplificazione ancora da scegliere definitivamente e acquistare. Schermo differito."
-    passo: "Consolidare la lista della spesa e distinguere necessario/opzionale/già posseduto; ordini, costruzione e collaudo fisico restano differiti."
+    passo: "Distinta e budget distinti fra osservazioni e stime, MS-323. Risolvere C-01 e aggiornare preventivi della variante esatta prima di un ordine; costruzione e collaudo fisico restano differiti."
     fonte: "docs/70-realizzazione-e-verifica.md"
   - id: 34
     livello: 4

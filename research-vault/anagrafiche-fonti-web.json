@@ -283,17 +283,17 @@
       "titolo": "UMC1820 Quick Start Guide multilingue",
       "ente": "Behringer",
       "tipo": "manuale_produttore",
-      "versione": "PDF ufficiale consultato 2026-11-20",
-      "spiegazione": "Distingue routing ottico/coassiale e controlli di volume: le uscite Line non seguono Main. Impone il progetto del livello comune e del cambio modalità prima del cablaggio.",
-      "usi_progettuali": "Doc63, ingresso CD, selezione OPT I/O, mappa dei jack e percorso cuffie.",
+      "versione": "V8.0",
+      "spiegazione": "Definisce volume delle linee e clock nominali, senza assumere la qualifica della scheda.",
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67.",
       "verifica": {
         "stato": "verificata",
-        "data": "2026-11-20",
-        "nota": "Controlli e tabella Digital I/O Routing letti sul manuale ufficiale."
+        "data": "2026-11-26",
+        "nota": "Rilette le sezioni pertinenti; Main e linee restano distinti."
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Controlli e specifiche/routing; il protocollo ALSA deve ancora essere osservato sulla scheda."
+        "copertura": "Controlli, specifiche e Digital I/O Routing, pagina PDF21; nessuna nuova prova ALSA."
       }
     },
     {
@@ -480,39 +480,41 @@
       "id": "SRC-PRICE-UMC1820-THOMANN",
       "url": "https://www.thomann.it/behringer_umc1820.htm",
       "aliases": [],
-      "titolo": "UMC1820, prezzo Thomann Italia",
-      "ente": "Thomann",
-      "tipo": "prezzo_venditore",
-      "versione": "rilevazione2026-11-20",
-      "spiegazione": "Fonte del riferimento economico 175 euro IVA inclusa e della disponibilità letta; non prova della qualità sonora o del supporto Linux.",
+      "titolo": "UMC1820, offerta Thomann Italia",
+      "ente": "Thomann Italia",
+      "tipo": "offerta_commerciale",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.",
       "verifica": {
         "stato": "verificata",
-        "data": "2026-11-20",
-        "nota": "Prezzo e disponibilità letti, da ricontrollare prima dell'acquisto."
+        "data": "2026-11-26",
+        "nota": "175.00 EUR; IVA inclusa nella pagina italiana; disponibile nella pagina consultata."
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Prezzo, IVA e disponibilità della pagina italiana."
-      }
+        "copertura": "Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout."
+      },
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67."
     },
     {
       "id": "SRC-PRICE-SB16-SOUNDIMPORTS",
       "url": "https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html",
       "aliases": [],
-      "titolo": "SB16PFCR25-8, prezzo SoundImports",
+      "titolo": "SB16PFCR25-8, offerta SoundImports",
       "ente": "SoundImports",
-      "tipo": "prezzo_venditore",
-      "versione": "rilevazione2026-11-20",
-      "spiegazione": "31,45 euro visualizzati per il confronto economico; imponibile, IVA di destinazione e spedizione distinti dal datasheet tecnico.",
+      "tipo": "offerta_commerciale",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.",
       "verifica": {
         "stato": "verificata",
-        "data": "2026-11-20",
-        "nota": "Prezzo visualizzato e stock letti; non preventivo finale italiano."
+        "data": "2026-11-26",
+        "nota": "31.45 EUR; lordo/netto visualizzati; IVA destinazione da confermare; 10+ disponibili nella pagina consultata."
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Sezione prezzo/stock, non recensioni dei clienti."
-      }
+        "copertura": "Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout."
+      },
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67."
     },
     {
       "id": "SRC-PRICE-SB15-SOUNDIMPORTS",
@@ -537,39 +539,41 @@
       "id": "SRC-PRICE-SB26-SOUNDIMPORTS",
       "url": "https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html",
       "aliases": [],
-      "titolo": "SB26STCN-C000-4, prezzo SoundImports",
+      "titolo": "SB26STCN-C000-4, offerta SoundImports",
       "ente": "SoundImports",
-      "tipo": "prezzo_venditore",
-      "versione": "rilevazione2026-11-20",
-      "spiegazione": "36,45 euro visualizzati e backorder: il costo è distinto dalla possibilità di ricevere subito il tweeter.",
+      "tipo": "offerta_commerciale",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.",
       "verifica": {
         "stato": "verificata",
-        "data": "2026-11-20",
-        "nota": "Prezzo e indisponibilità letti; ricontrollare al preventivo."
+        "data": "2026-11-26",
+        "nota": "36.45 EUR; lordo/netto visualizzati; IVA destinazione da confermare; esaurito/backorder, data non dichiarata."
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Prezzo lordo visualizzato, stato esaurito/backorder."
-      }
+        "copertura": "Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout."
+      },
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67."
     },
     {
       "id": "SRC-PRICE-FOSI-V3-AUDIOPHONICS",
       "url": "https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html",
       "aliases": [],
-      "titolo": "Fosi V3 32V, riferimento Audiophonics",
+      "titolo": "V3 stereo con alimentatore32V/5A, offerta Audiophonics",
       "ente": "Audiophonics",
-      "tipo": "prezzo_venditore",
-      "versione": "rilevazione2026-11-20",
-      "spiegazione": "99 euro visualizzati con IVA francese e alimentatore: base di confronto dell'oggetto completo, non costo finale italiano o potenza misurata.",
+      "tipo": "offerta_commerciale",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.",
       "verifica": {
         "stato": "verificata",
-        "data": "2026-11-20",
-        "nota": "Prezzo della pagina letto; disponibilità e consegna da confermare."
+        "data": "2026-11-26",
+        "nota": "99.00 EUR; TTC con IVA pagina20%; IVA italiana da confermare; ultimi pezzi e anche avviso disponibilità; quantità2 non garantita."
       },
       "lettura": {
         "stato": "parziale",
-        "copertura": "Prezzo e dotazione dichiarata; nessuna prova del prodotto."
-      }
+        "copertura": "Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout."
+      },
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67."
     },
     {
       "id": "SRC-ST120-MANUAL-2025",
@@ -1030,6 +1034,106 @@
       "lettura": {
         "stato": "parziale",
         "copertura": "Supported response file types e Convert IR to FR: delimitatori e tre colonne FRD; non lettura dell’intero manuale."
+      }
+    },
+    {
+      "id": "SRC-A800-QSG-V4",
+      "url": "https://mediadl.musictribe.com/media/PLM/data/docs/P0CE8/QSG_BE_0105-ABA_A800_WW.pdf",
+      "aliases": [],
+      "titolo": "A800 Quick Start Guide",
+      "ente": "Behringer",
+      "tipo": "manuale_produttore",
+      "versione": "V4.0",
+      "spiegazione": "Alternativa stereo con ingressi bilanciati; potenza commerciale non usata come limite dei driver.",
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Letti ingressi, modalità stereo/bridge e dimensioni nominali."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Controls e Specifications, pagine stampate16-17/26-27; non manuale intero."
+      }
+    },
+    {
+      "id": "SRC-DAYTON-CALIBRATION-TOOL",
+      "url": "https://support.daytonaudio.com/MicrophoneCalibrationTool",
+      "aliases": [],
+      "titolo": "Microphone Calibration Tool",
+      "ente": "Dayton Audio",
+      "tipo": "portale_produttore",
+      "versione": "Interfaccia consultata 2026-11-26",
+      "spiegazione": "Conferma il punto di accesso ufficiale alla calibrazione, non la disponibilità di un seriale specifico.",
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Interfaccia leggibile; prodotto/PDF principali restano non letti per pagina di verifica."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Pagina con selettore del microfono e campo seriale; nessun file individuale richiesto."
+      }
+    },
+    {
+      "id": "SRC-A5B79BD8EB9E426C",
+      "url": "https://www.soundimports.eu/en/dayton-audio-emm-6.html",
+      "aliases": [],
+      "titolo": "EMM-6, offerta SoundImports",
+      "ente": "SoundImports",
+      "tipo": "offerta_commerciale",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.",
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "78.45 EUR; lordo/netto visualizzati; IVA destinazione da confermare; preordine; arrivo stimato18-12-2026 dal venditore."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout."
+      }
+    },
+    {
+      "id": "SRC-32FCE3F5F7A1338B",
+      "url": "https://www.thomann.it/behringer_a800.htm",
+      "aliases": [],
+      "titolo": "A800, offerta Thomann Italia",
+      "ente": "Thomann Italia",
+      "tipo": "offerta_commerciale",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "Fotografia commerciale con IVA e spedizione da verificare prima di un eventuale ordine.",
+      "usi_progettuali": "Catena di riferimento e budget, MS-323, capitolo67.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "179.00 EUR; IVA inclusa nella pagina italiana; disponibile entro2-3 settimane secondo la pagina."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Variante, prezzo visualizzato, stato disponibilità; nessun carrello o checkout."
+      }
+    },
+    {
+      "id": "SRC-7452AE3470D6DF68",
+      "url": "https://www.daytonaudio.com/images/resources/390-801-dayton-audio-emm-6-quick-reference-guide%282%29.pdf",
+      "aliases": [],
+      "titolo": "EMM-6 Quick Reference Guide, fonte non recuperata",
+      "ente": "Dayton Audio",
+      "tipo": "manuale_produttore_non_letto",
+      "versione": "Versione non verificata sul documento originale",
+      "spiegazione": "Puntatore rilevante, non prova tecnica: i recuperi hanno restituito HTML di verifica.",
+      "usi_progettuali": "MS-323, lacuna dichiarata nel percorso di misura.",
+      "verifica": {
+        "stato": "da_verificare",
+        "data": "2026-11-26",
+        "nota": "Pagina/PDF non leggibili; HTTP200 con1157 byte HTML, copia pubblica e CDX non recuperati."
+      },
+      "lettura": {
+        "stato": "non_letta",
+        "copertura": "Soltanto URL e indizio nei risultati; nessun contenuto del PDF dichiarato letto."
       }
     }
   ]

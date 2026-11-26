@@ -1,0 +1,26 @@
+# Fonti e copertura, 26 novembre 2026
+
+Ricerca narrativa mirata. I documenti sono stati consultati soltanto nei passaggi indicati; le pagine commerciali provano la propria offerta visualizzata, non prestazioni misurate. Le query iniziali sono in scope.md; aggiunte: site.parts-express.com "EMM-6" "quick" "pdf" e site.behringer.com "A800" "Quick". I risultati di forum e recensioni non sono stati usati per qualificare i componenti. Nessun nuovo paper o DOI.
+
+| ID | Fonte, autore e versione | Copertura e stato | Uso e limite |
+|---|---|---|---|
+| T1 | [UMC1820 QSG V8.0, Behringer](https://cdn-media.empowertribe.com/2b9a46d7e1104b78b8881f726c18a4d0/QSG_BE_0805-AAN_UMC1820_WW.pdf), SRC-UMC1820-QSG | Contenuto verificato parzialmente: controlli, tabella Digital I/O Routing e specifiche, pagina PDF 21 | Linee, volume e clock nominali; nessuna prova ALSA. |
+| T2 | [UMC1820, Behringer](https://behringer.com/en/products/0805-AAN), SRC-UMC1820-PRODUCT | Contenuto verificato: ingressi, cuffie e uscite | Conferma funzioni; non dichiara una qualifica del nostro host Linux. |
+| T3 | [SB16PFCR25-8, SB Acoustics](https://sbacoustics.com/wp-content/uploads/2024/01/6in-SB16PFCR25-8.pdf), REV.2 15.12.2021, SRC-SB16PFCR25-8 | Datasheet a pagina unica, dati e disegno già collegati alla geometria | Modello e ingombri nominali; non tolleranze dell'esemplare. |
+| T4 | [SB26STCN-C000-4, SB Acoustics](https://sbacoustics.com/wp-content/uploads/2020/02/SB26STCN-C000-4.pdf), SRC-SB26STCN-C000-4 | Datasheet a pagina unica e condizione di potenza già trascritta nei dati geometrici | Potenza dichiarata subordinata al filtro di prova, non banda intera. |
+| T5 | [V3 Product User Instruction, Fosi Audio](https://fosiaudio.com/pages/user-instruction-v3), SRC-FOSI-V3-MANUAL | Contenuto verificato parzialmente: Product Specifications, Package Contents, Quick Setup | Variante stereo RCA; non V3 Mono, guadagno o rumore misurati. |
+| T6 | [Raspberry Pi4 Model B, Raspberry Pi](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/), SRC-PI4-PRODUCT | Specifiche USB, alimentazione e modelli | Piattaforma candidata; nessun benchmark CamillaDSP ARM. |
+| T7 | [A800 QSG V4.0, Behringer](https://mediadl.musictribe.com/media/PLM/data/docs/P0CE8/QSG_BE_0105-ABA_A800_WW.pdf) | Contenuto verificato parzialmente: Controls, Specifications, pagine stampate 16-17/26-27 | Alternativa con ingressi bilanciati, uso stereo; non potenza di progetto. |
+| T8 | [Microphone Calibration Tool, Dayton Audio](https://support.daytonaudio.com/MicrophoneCalibrationTool) | Contenuto verificato: interfaccia con selettore del microfono e campo seriale | Esiste il portale; nessun seriale inserito o file individuale ottenuto. |
+| P1 | [UMC1820, Thomann Italia](https://www.thomann.it/behringer_umc1820.htm), SRC-PRICE-UMC1820-THOMANN |175 euro, IVA inclusa; disponibile nella pagina letta | Trasporto e consegna finale non quotati. |
+| P2 | [SB16, SoundImports](https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html), SRC-PRICE-SB16-SOUNDIMPORTS |31,45 euro lordo visualizzato,25,99 netto;10+ disponibili | Regime IVA di destinazione e spedizione da confermare. |
+| P3 | [SB26, SoundImports](https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html), SRC-PRICE-SB26-SOUNDIMPORTS |36,45 euro lordo visualizzato,30,12 netto; esaurito/backorder | Il prezzo non prova una data di rifornimento. |
+| P4 | [V3-32V, Audiophonics](https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html), SRC-PRICE-FOSI-V3-AUDIOPHONICS |99 euro TTC,82,50 HT, IVA pagina20%; alimentatore32V/5A incluso | Pagina con ultimi pezzi e anche avviso disponibilità: quantità 2 da confermare. |
+| P5 | [EMM-6, SoundImports](https://www.soundimports.eu/en/dayton-audio-emm-6.html) |78,45 euro lordo visualizzato,64,83 netto; preordine, arrivo stimato18 dicembre | La data è una previsione del venditore; non prova del download di calibrazione. |
+| P6 | [A800, Thomann Italia](https://www.thomann.it/behringer_a800.htm) |179 euro IVA inclusa; disponibilità dichiarata entro 2-3 settimane | Due unità358 euro; cavi e supporto separati. |
+
+## Recuperi non riusciti e fonti non lette
+
+La pagina Dayton del prodotto e il [PDF guida ufficiale](https://www.daytonaudio.com/images/resources/390-801-dayton-audio-emm-6-quick-reference-guide%282%29.pdf) hanno restituito una pagina di verifica, anche al recupero locale con HTTP200. Il corpo di1157 byte è HTML con iframe, non un PDF. È conservato privatamente con estensione.html. Lo snippet della ricerca riporta una guida del 2019, ma non è stato promosso a lettura del documento. Tentativo su copia pubblica Parts Express non riuscito; CDX Wayback non accessibile dallo strumento. Non sono stati aggirati la verifica o il portale, aperti browser dell'utente o usati seriali altrui.
+
+T8 è una fonte diversa e leggibile: consente di documentare l'esistenza dell'interfaccia ufficiale di calibrazione. Il contenuto per un esemplare resta da acquisire dopo disponibilità e autorizzazione. La scheda commerciale P5 è usata per prezzo e condizioni; le sue dichiarazioni tecniche rimangono dichiarazioni del venditore. L'URL A800 con codice0711-AAI cercato inizialmente era errato: scartato, sostituito dal manuale ufficiale T7 con codice0105-ABA. Nessuna equivalenza fra modelli dedotta dal nome.

@@ -1410,3 +1410,34 @@ Revisione: file riusato dai due rami poteva cambiare fra due letture; prova ross
 Primo gate:45 dei46 comandi locali passati, blocco su Test-Allineamento per deployment ancorata prima del contenuto3ce3c93. Scheda riletta per intero contro ricevuta MS-317, unità locale, ADR e runbook; aggiornata soltanto la firma a ea70a7b. Non è un nuovo controllo del runtime. Controllo mirato ora senza invarianti rotti; altre tre ancore non avanzate. Ultimo gate dopo la persistenza in chiudi-finale.txt privato, da leggere prima di proporre la milestone manuale.
 
 File scritti: somma_acustica e suite, dataset/rapporti, docs/66/65/STATO/PENDING/README/artefatti, recap e manifesto QA, catalogo/mappa, piano/roadmap/controlli/STACK/deployment/didattica12, registro operativo, memoria/current-work e ripresa privata. Due GRC preesistenti esclusi. Nessun add/commit/push/deploy, agente parallelo, accesso a J o richiesta fisica. Modelli e kit precedenti ancora coerenti.
+
+
+## 2026-11-26 - Catena di riferimento in consolidamento, MS-323
+
+**Template:** nessuna nuova lezione; applicate ricerca tracciabile e distinzione fra specifica, inferenza e qualifica.
+
+Chiusura MS-322 verificata in ac01f66 e mandato di consolidare la catena ricevuto. Inventario dei capitoli20/55/63/64/65/66, dati e mappe esistenti; nessun nuovo accesso a dischi esterni. Riletti manuali UMC1820, V3, A800 e datasheet SB; prezzi dei venditori osservati con varianti e condizioni, non preventivo per consegna italiana. Portalino Dayton di calibrazione leggibile senza seriale; PDF ufficiale non letto perché la risposta è HTML di verifica, anche con HTTP200. Non confondere lo snippet con il documento. Proposta tecnica e distinta in preparazione, nessuna scelta d'acquisto già approvata.
+
+File scritti: piano, scope del topic, index/current-work e questo registro; ripresa con backup e risposta Dayton conservati privatamente. Nessun agente parallelo, scrittura Git, installazione o richiesta fisica.
+
+## 2026-11-26 - Scelta V3 ricevuta e registrata, MS-323
+
+**Template:** nessuna nuova lezione; decisione del proprietario registrata nel suo perimetro.
+
+Il proprietario sceglie di mantenere i due V3 per priorità al costo dopo il confronto con A800. ADR-058 e dato della catena aggiornati; non autorizza acquisti o qualifica fisica. Punto C-01 sul collegamento TRS-RCA esplicito, guadagni e protezioni ancora da determinare. Nessuna modifica a profili, mappa hardware o CAD.
+
+File scritti: decisions, questo registro e data/catena-riferimento.json; proposta67 e fonti già preparate. Ripresa privata da consolidare nello stesso giro, prima della verifica finale.
+
+## 2026-11-26 - Catena di riferimento consolidata e verificata, MS-323
+
+**Template:** nessuna nuova lezione; applicati i presidi esistenti di ricerca, fonti e prova. Sette lezioni precedenti aperte.
+
+Consolidati capitolo67, distinta JSON e ADR-058 dopo la conferma esplicita V3 per costo. Quantità e mappa nominale riscontrate nei dati e nei manuali: una interfaccia a host alternativo, due coppie di driver in A24, due finali stereo esterni, quattro linee e quattro coppie di potenza indipendenti. C-01 fra uscite bilanciate e RCA resta aperto. Nessun ordine, cablaggio effettivo o rilascio costruttivo.
+
+Somme Decimal coerenti: 587,25 euro osservati e 867,25-1087,25 con stime senza switch, esclusioni esplicite; A800 confronto non scelto. Revisione commerciale corrente distinta dalla tabella storica63. Fonti 215/51 curate/164 storiche, 143 file/395 usi; una curata da verificare/non letta per risposta HTML Dayton. Catalogo 195, didattica13. Nessun DOI nuovo o fonte fallita promossa come letta.
+
+Quattro PDF coerenti con QA; due rigenerati, tutte le 16 pagine correnti coperte dall'ispezione, 16 PNG rimossi con ricevuta SHA. Precedenti PDF/manifesto conservati, kit nominale 55 file ancora coerente. Primo chiudi -SoloControlli con «Controlli verdi» e tutti i 46 comandi locali passati; nessun nuovo test per questa revisione documentale. Ultimo gate dopo questa persistenza nel rapporto chiudi-finale.txt privato, da leggere prima di proporre chiudi. Controllo identità personali sui file tracciati senza riscontri.
+
+Due ancore testuali del helper privato hanno fermato l'aggiornamento documentale: riletto il testo e corrette le corrispondenze, senza forzature. La correzione degli spazi nella prosa ha richiesto rigenerazione ordinaria della mappa e dei PDF prima della QA finale. Primo richiamo del controllo identità al percorso tools inesistente; trovato con rg il file nel template e rieseguito correttamente. Non erano guasti del software audio.
+
+File scritti e riletti: distinta e docs/67, piano e topic di ricerca, schede canoniche/mappa e catalogo, ADR-058, capitoli63/STATO/PENDING/README/artefatti, LaTeX/due PDF/manifesto QA, roadmap/STACK/didattica13, registro operativo, memoria/current-work e ripresa privata con backup. Perimetro manuale esclude due GRC preesistenti. Roadmap 26 aperte, fisiche sospese, gate pacchetti senza risposta e sicurezza non verificata. Nessun agente parallelo, scrittura Git, installazione o accesso a dischi esterni.

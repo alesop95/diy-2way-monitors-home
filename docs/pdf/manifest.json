@@ -4,11 +4,11 @@
   "documenti": [
     {
       "pdf": "docs/pdf/recap-progetto.pdf",
-      "sha256": "91d0176aafa81664661ee1302bd9a127bd466b1476c5cc65f448a4ebf8fe5c4e",
-      "bytes": 142074,
+      "sha256": "439e51c5208753e243b419f00f66ea7e3a9d2551cf283fd42c5773c5fda3b5ea",
+      "bytes": 142628,
       "pagine": 7,
       "sorgenti": {
-        "docs/STATO-PROGETTO.md": "65bb1ab0be13229a03118ed5f13da581807b0e30fea778f3df8a3cb3e9c5c697",
+        "docs/STATO-PROGETTO.md": "6e0bbed97054c9b4661550c5473da9c2d4d153297c6142fc5d5008fefe4dc093",
         "config/documenti/intrawelt-tecnico.json": "f1221bad44cfa2957b3e18191414025b3eb920a2c30297f2e47b67c6c71d149c",
         "tools/consegna_documenti.py": "a10ed62f436df28de6ce3b1a0635fe5fca0ba983fb39987eba2d44fad0e76730"
       },
@@ -79,12 +79,12 @@
     },
     {
       "pdf": "docs/pdf/sistema-autonomo-driver-e-collaudo.pdf",
-      "sha256": "7e7cf459205358cf4264599a206d672d545efa32ef9e1cffd7d27726534234cb",
-      "bytes": 140201,
+      "sha256": "24021c58df315fc7fd14690833fe6b66e6142f340f250ad2ce00bb8a30ef76cb",
+      "bytes": 140813,
       "pagine": 9,
       "sorgenti": {
-        "docs/63-sistema-autonomo-driver-e-collaudo.md": "f04d9d092ef34a1f8292bef8dfd6f420f809a1b5a5f5d9138534c2bd805dcf7a",
-        "docs/latex/sistema-autonomo-driver-e-collaudo.tex": "a81f2e250fb542d8bd01e220995cee8eaf0bf6b0fc28e50a9c6f2244293ebf3f",
+        "docs/63-sistema-autonomo-driver-e-collaudo.md": "213b165873476e1ff667985e32830b1e95d243b5519c3bf7fd1c0b1487571fbf",
+        "docs/latex/sistema-autonomo-driver-e-collaudo.tex": "4b4f8861533ccb97749920beb86667c7fcae10ee8c2bb58044df835492674d17",
         "docs/latex/converti.py": "e11e2f5c1ddaf5f3fc975329438b02a7250465f9254f1058192bb4307b4c7b0f",
         "docs/latex/intrawelt-header.tex": "ce6d6482081359ae7d0ba9f930a0efc4ad5c1d3e03a66c046934171ecdf8ad4e",
         "research-vault/sistema-autonomo-20261120/fattibilita-basso.json": "c5cc32b75d683b0c412c2adb66ec767d2cb672a5820823236e172fe12c05f8ec",
@@ -114,20 +114,32 @@
           "WebSocket",
           "SIGTERM",
           "WebSocket",
+          "SIGTERM",
+          "WebSocket",
+          "SIGTERM",
+          "WebSocket",
           "SIGTERM"
         ]
       },
       "ispezione_visiva": {
         "pagine_correnti": [
-          2
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
         ],
         "esito": "Testo, formule e tabelle leggibili nelle pagine ispezionate; nessun taglio rilevato.",
         "png_conservate": false,
-        "data": "2026-11-25"
+        "data": "2026-11-26"
       },
-      "collegamenti_pdf": 31,
+      "collegamenti_pdf": 33,
       "limiti": "Non certifica diffusori o hardware.",
-      "rigenerazione": "2026-11-25"
+      "rigenerazione": "2026-11-26"
     },
     {
       "pdf": "docs/pdf/reflex-direttivita-cabinet.pdf",

@@ -137,3 +137,13 @@ Com'era e perché non bastava. Il confronto dei singoli file conserva la fase ma
 Il salto di qualità. Somma complessa dopo filtri e parametri espliciti, riferimenti dichiarati, qualità degli input separata e nulli conservati come fase mancante. La mutazione della somma dei moduli viene rilevata; il passaggio al confronto successivo mantiene simulated.
 
 Dove leggere il dettaglio: [refactor-12-la-somma-ha-una-fase.md](refactor-12-la-somma-ha-una-fase.md).
+
+## 13. Distinta, collegamento e compatibilità hanno condizioni diverse
+
+Contesto. Portare la base di componenti già studiata verso il progetto esecutivo, senza fingere una qualifica fisica.
+
+Com’era e perché restava aperto. Nome del componente, numero di uscite e prezzo potevano sembrare una catena completa. Il cavo fra uscita bilanciata e RCA e l’IVA di consegna rimanevano condizioni non risolte da quei numeri.
+
+Il salto di qualità. Quantità e collegamenti numerati, decisione V3 nel suo perimetro, prezzi/stock e stime separati, C-01 esplicito e qualifiche false. La distinta non sceglie la vite dal conteggio dei fori e il download HTML non diventa un PDF letto.
+
+Dove leggere il dettaglio: [refactor-13-distinta-e-compatibilita.md](refactor-13-distinta-e-compatibilita.md).

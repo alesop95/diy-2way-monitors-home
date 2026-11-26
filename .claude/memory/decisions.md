@@ -703,3 +703,13 @@ Un solo nucleo Python gestisce prepare/enable/mute, normalizzazione API 4.1.3, r
 Una policy hardware richiede manifest privato e prova coerente, identità, parametri PCM, clock, routing fisico e volume attestati, con hash dei profili canonici. Gli esempi restano non abilitanti; i generatori producono candidati con ReadConfigJson senza caricarli. Il ritorno del clock o della connessione non ripristina il livello. Un errore di mute non è silenzio confermato e viene ritentato; le protezioni elettriche restano separate.
 
 Il software si qualifica su motore reale separato, browser e prove negative; hardware/ARM/DAW non si deducono da questi risultati. Il kit e l'unità sono preparati, installazione e attivazione persistente restano manuali per AGENTS.md. La rinuncia all'automatismo del volume costa una nuova preparazione dopo il guasto; rende esplicita la condizione che autorizza l'ascolto e impedisce una ripartenza inattesa.
+
+## ADR-058 - Catena V3 confermata per lo sviluppo documentale
+
+Data:2026-11-26. Stato: scelta esplicita del proprietario nel consolidamento MS-323; nessun acquisto o rilascio esecutivo.
+
+Dopo il confronto fra due V3 stereo RCA e due A800 con ingressi bilanciati, il proprietario mantiene i V3 con priorità al costo. La revisione commerciale osserva198 euro per due V3 completi e358 euro per due A800: differenza160 euro, prima di consegna e condizioni finali. Non è un tetto di spesa approvato né una garanzia di disponibilità.
+
+La catena di sviluppo resta UMC1820 condivisa fra PC e Pi alternativi, SB16PFCR25-8/SB26STCN-C000-4 in due A24 chiusi e due finali stereo esterni, uno per i woofer e uno per i tweeter. La distinta e la mappa nominale sono nel capitolo67 e in data/catena-riferimento.json; il capitolo63 conserva modelli e relazione tecnica.
+
+La scelta accetta il punto aperto del collegamento fra uscita bilanciata e ingresso RCA: terminazioni, livelli e rumore vanno definiti e qualificati, senza presumere ammesso il cortocircuito del ramo freddo. Resta aperta la voce C-01 del capitolo67. Guadagni, protezioni, componenti effettivi e cablaggi non diventano qualificati per questa decisione. ADR-055 resta valida, nessun ordine, taglio, installazione o verifica fisica riaperta.

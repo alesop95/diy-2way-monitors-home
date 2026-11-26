@@ -1,0 +1,260 @@
+{
+  "schema": "catena-riferimento-1",
+  "revision": "2026-11-26-r1",
+  "status": "base di sviluppo documentale confermata; nessun ordine o rilascio esecutivo",
+  "hardware_qualified": false,
+  "manufacturing_release": false,
+  "purchase_authorized": false,
+  "reference_chain": {
+    "interface": {
+      "model": "UMC1820",
+      "quantity": 1,
+      "hosts": [
+        "PC Ubuntu Studio",
+        "Raspberry Pi4 Model B2GB"
+      ],
+      "usb_owners_simultaneous": 1
+    },
+    "dsp": {
+      "engine": "CamillaDSP4.1.3",
+      "profile_status": "dimostrativo, non calibrato",
+      "software_source": "docs/61-camilladsp-manuale-tecnico.md"
+    },
+    "cabinet": {
+      "variant": "A24",
+      "quantity": 2,
+      "kind": "chiusa",
+      "materials": "MDF18mm",
+      "dimensions_mm": [
+        220,
+        190,
+        430
+      ],
+      "source": "config/cabinet/progetto-candidato.json"
+    },
+    "drivers": [
+      {
+        "model": "SB16PFCR25-8",
+        "quantity": 2,
+        "nominal_impedance_ohm": 8
+      },
+      {
+        "model": "SB26STCN-C000-4",
+        "quantity": 2,
+        "nominal_impedance_ohm": 4
+      }
+    ],
+    "amplifiers": {
+      "base_model": "Fosi V3 stereo",
+      "quantity": 2,
+      "power_supplies": "2x32V/5A esterni inclusi",
+      "input": "RCA",
+      "selection_status": "V3 confermati dal proprietario il2026-11-26, priorità al costo, ADR-058",
+      "balanced_line_conversion": "da definire e qualificare"
+    },
+    "measurement": {
+      "microphone_candidate": "Dayton Audio EMM-6",
+      "quantity": 1,
+      "calibration_portal": "https://support.daytonaudio.com/MicrophoneCalibrationTool",
+      "individual_calibration_download_tested": false
+    }
+  },
+  "nominal_channels": [
+    {
+      "purpose": "cuffie stereo a banda intera",
+      "playback_channels_one_based": [
+        3,
+        4
+      ],
+      "qualified": false
+    },
+    {
+      "purpose": "woofer L",
+      "line_out": 5,
+      "simulated_zero_based": 4,
+      "amp_group": "LF",
+      "amp_channel": "L",
+      "qualified": false
+    },
+    {
+      "purpose": "tweeter L",
+      "line_out": 6,
+      "simulated_zero_based": 5,
+      "amp_group": "HF",
+      "amp_channel": "L",
+      "qualified": false
+    },
+    {
+      "purpose": "woofer R",
+      "line_out": 7,
+      "simulated_zero_based": 6,
+      "amp_group": "LF",
+      "amp_channel": "R",
+      "qualified": false
+    },
+    {
+      "purpose": "tweeter R",
+      "line_out": 8,
+      "simulated_zero_based": 7,
+      "amp_group": "HF",
+      "amp_channel": "R",
+      "qualified": false
+    }
+  ],
+  "wiring_quantities": {
+    "line_mono_links_to_power_amps": 4,
+    "independent_power_pairs": 4,
+    "isolated_driver_terminals_per_cabinet": 4,
+    "driver_mounting_screws_nominal_total": 16,
+    "cable_lengths": null,
+    "rear_connector_model": null,
+    "fastener_model": null
+  },
+  "observed_prices": [
+    {
+      "id": "umc1820",
+      "model": "UMC1820",
+      "quantity": 1,
+      "unit_display_eur": "175.00",
+      "unit_net_display_eur": null,
+      "line_display_eur": "175.00",
+      "tax_scope": "IVA inclusa nella pagina italiana",
+      "availability_observed": "disponibile nella pagina consultata",
+      "observed_on": "2026-11-26",
+      "source_id": "SRC-PRICE-UMC1820-THOMANN",
+      "url": "https://www.thomann.it/behringer_umc1820.htm",
+      "shipping_verified": false
+    },
+    {
+      "id": "woofer",
+      "model": "SB16PFCR25-8",
+      "quantity": 2,
+      "unit_display_eur": "31.45",
+      "unit_net_display_eur": "25.99",
+      "line_display_eur": "62.90",
+      "tax_scope": "lordo/netto visualizzati; IVA destinazione da confermare",
+      "availability_observed": "10+ disponibili nella pagina consultata",
+      "observed_on": "2026-11-26",
+      "source_id": "SRC-PRICE-SB16-SOUNDIMPORTS",
+      "url": "https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html",
+      "shipping_verified": false
+    },
+    {
+      "id": "tweeter",
+      "model": "SB26STCN-C000-4",
+      "quantity": 2,
+      "unit_display_eur": "36.45",
+      "unit_net_display_eur": "30.12",
+      "line_display_eur": "72.90",
+      "tax_scope": "lordo/netto visualizzati; IVA destinazione da confermare",
+      "availability_observed": "esaurito/backorder, data non dichiarata",
+      "observed_on": "2026-11-26",
+      "source_id": "SRC-PRICE-SB26-SOUNDIMPORTS",
+      "url": "https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html",
+      "shipping_verified": false
+    },
+    {
+      "id": "v3",
+      "model": "V3 stereo con alimentatore32V/5A",
+      "quantity": 2,
+      "unit_display_eur": "99.00",
+      "unit_net_display_eur": "82.50",
+      "line_display_eur": "198.00",
+      "tax_scope": "TTC con IVA pagina20%; IVA italiana da confermare",
+      "availability_observed": "ultimi pezzi e anche avviso disponibilità; quantità2 non garantita",
+      "observed_on": "2026-11-26",
+      "source_id": "SRC-PRICE-FOSI-V3-AUDIOPHONICS",
+      "url": "https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html",
+      "shipping_verified": false
+    },
+    {
+      "id": "microphone",
+      "model": "EMM-6",
+      "quantity": 1,
+      "unit_display_eur": "78.45",
+      "unit_net_display_eur": "64.83",
+      "line_display_eur": "78.45",
+      "tax_scope": "lordo/netto visualizzati; IVA destinazione da confermare",
+      "availability_observed": "preordine; arrivo stimato18-12-2026 dal venditore",
+      "observed_on": "2026-11-26",
+      "source_id": "SRC-A5B79BD8EB9E426C",
+      "url": "https://www.soundimports.eu/en/dayton-audio-emm-6.html",
+      "shipping_verified": false
+    },
+    {
+      "id": "a800",
+      "model": "A800",
+      "quantity": 2,
+      "unit_display_eur": "179.00",
+      "unit_net_display_eur": null,
+      "line_display_eur": "358.00",
+      "tax_scope": "IVA inclusa nella pagina italiana",
+      "availability_observed": "disponibile entro2-3 settimane secondo la pagina",
+      "observed_on": "2026-11-26",
+      "source_id": "SRC-32FCE3F5F7A1338B",
+      "url": "https://www.thomann.it/behringer_a800.htm",
+      "shipping_verified": false
+    }
+  ],
+  "project_estimates_not_offers": [
+    {
+      "id": "pi_kit",
+      "scope": "Pi4 Model B2GB, alimentatore ufficiale15W, microSD e contenitore ventilato",
+      "minimum_eur": "100.00",
+      "maximum_eur": "160.00"
+    },
+    {
+      "id": "wood",
+      "scope": "MDF18mm, rinforzi, colla, tagli e ferramenta, lotto per coppia",
+      "minimum_eur": "80.00",
+      "maximum_eur": "140.00"
+    },
+    {
+      "id": "connections",
+      "scope": "Collegamenti, morsetti isolati, protezioni parziali e supporti, lotto",
+      "minimum_eur": "80.00",
+      "maximum_eur": "140.00"
+    },
+    {
+      "id": "microphone_accessories",
+      "scope": "Cavo XLR e asta; microfono conteggiato separatamente",
+      "minimum_eur": "20.00",
+      "maximum_eur": "60.00"
+    }
+  ],
+  "budget": {
+    "kind": "somma di prezzi visualizzati e stime, non preventivo italiano",
+    "display_subtotal_v3_eur": "587.25",
+    "v3_without_usb_switch_eur": [
+      "867.25",
+      "1087.25"
+    ],
+    "a800_without_usb_switch_eur": [
+      "1027.25",
+      "1247.25"
+    ],
+    "a800_delta_eur": "160.00",
+    "optional_usb_switch_estimate_eur": [
+      "20.00",
+      "40.00"
+    ],
+    "excluded": [
+      "spedizioni",
+      "differenze IVA di destinazione",
+      "schermo",
+      "tavolo già posseduto",
+      "finitura",
+      "utensili",
+      "eventuale conversione attiva/isolata di quattro linee se necessaria oltre il lotto stimato"
+    ],
+    "reread_before_order": true
+  },
+  "open_decisions": [
+    "C-01: collegamento ammesso e qualificato fra UMC1820 bilanciata e V3 RCA; A800 resta confronto non scelto",
+    "Disponibilità e preventivo del tweeter esatto; nessuna sostituzione automatica",
+    "Connettore posteriore, fissaggi, tolleranze e lunghezze dal layout esecutivo",
+    "Guadagni, massima tensione e protezioni da qualificare",
+    "Calibrazione e riferimento temporale/SPL della catena di misura"
+  ],
+  "physical_checks_suspended": true
+}

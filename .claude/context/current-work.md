@@ -11,22 +11,22 @@ last-verified-commit: cf177180ef9f2a3ef325247dd07c973eb544d949
 
 # Lavoro corrente
 
-## Somma acustica su file sviluppata, MS-322, 2026-11-26
+## Catena di riferimento consolidata, MS-323, 2026-11-26
 
-Base main ea70a7b, MS-321 chiusa dal proprietario. Sviluppati i tre task di docs/piani/2026-11-26-somma-acustica-su-file.md: calcolo SOS, somma complessa con fase, manifesto, diagnostici e pacchetto riproducibile. Riusati Curve e parser della caratterizzazione; nessun interprete generale CamillaDSP o acquisizione audio.
+Base main ac01f66, dopo la chiusura MS-322. Catena in docs/67 e distinta strutturata in data/catena-riferimento.json. Due V3 stereo confermati dal proprietario per priorità al costo, ADR-058; nessun ordine autorizzato. UMC1820 condivisa PC/Pi a host alternativo, cuffie nominali 3/4 e quattro vie 5-8; SB16/SB26 in A24 chiusa, due finali completi esterni, EMM-6 candidato.
 
-Ventidue test verdi. Griglie identiche, fase e riferimenti comuni obbligatori, stabilità digitale e Nyquist; banda/coerenza degli input controllate senza inventare coerenza risultante. Qualità insufficiente blocca dataset/FRD. Nei nulli fase vuota nel CSV e FRD a due colonne. Il caso rosso del file condiviso modificato fra le letture ora usa un solo snapshot per percorso normalizzato; due mutazioni rilevate e ripristini SHA verificati.
+Distinta, quantità, routing e dipendenze CAD/DSP espliciti. Prezzi osservati separati dalle stime e dalle offerte storiche del capitolo63: 587,25 euro di componenti visualizzati, 867,25-1087,25 con lotti stimati senza switch, IVA di destinazione/trasporto/conversione extra non inclusi. Non è un tetto di spesa. Backorder e preordine non producono sostituzioni automatiche.
 
-Tre casi analitici LR4 su242 frequenze: al taglio1, circa0 e sqrt(0,5). Soltanto l'allineato rispetta il bersaglio sintetico; tutti i pacchetti sono integri. Tre cartelle da8 file in build/somma-acustica-20261126 e rapporti durevoli nel vault. Dataset allineato passato realmente a caratterizzazione, simulated e hardware_qualified falso. Nessun driver SB o prototipo qualificato.
+Ricerca narrativa mirata, manuali ufficiali e prezzi con varianti/condizioni. Fonte Dayton HTML marcata non letta, distinto il portale di calibrazione leggibile; nessun file individuale acquisito. Mappa 215 fonti/51 curate/164 storiche, 143 file e 395 usi; una curata da verificare/non letta. Catalogo 195, didattica13.
 
-## Verifica e consegna
+## Prove e consegna
 
-Al primo passaggio45 dei46 comandi locali sono verdi; gate fermato dalla firma storica di deployment. Scheda riletta contro prove conservate, ADR e runbook; unità locale coincidente con MS-317. Sola firma aggiornata a ea70a7b, senza nuova prova host; Test-Allineamento mirato ora senza invarianti rotti. Rapporto finale dopo questa persistenza: _notes/somma-acustica-20261126/chiudi-finale.txt, ultima riga da leggere prima di proporre chiudi.
+Primo gate completo con «Controlli verdi», tutti i 46 comandi locali passati. Nessun nuovo software o test; identità personali senza riscontri sui file tracciati. Ultimo gate dopo questa persistenza nel rapporto _notes/catena-riferimento-20261126/chiudi-finale.txt: leggerlo prima della proposta manuale. Quattro PDF coerenti con QA; recap e sistema autonomo aggiornati, 16 pagine correnti ispezionate e 16 PNG rimossi con ricevuta. Originali precedenti conservati; kit nominale 55 file e modelli esistenti invariati.
 
-Quattro PDF con QA, recap tutte le sette pagine viste e sette PNG rimossi con ricevuta. Archivi verificati dei25 artefatti prima della correzione e del precedente recap/manifesto. Fonti213/46 curate,139 file nel perimetro e375 usi; catalogo189, didattica12. Nessuna fonte nuova promossa. Kit nominale55 file e modelli108/27/18 precedenti invariati e coerenti.
+Milestone preparata tramite COMMIT-MSG/COMMIT-SCOPE, due GRC preesistenti riservati al template esclusi. Nessun add/commit/push/deploy, impronta anticipata o agente parallelo. Dopo la consegna non scrivere durante chiudi.
 
 ## Prossimo gesto e vincoli
 
-Versionamento manuale con COMMIT-MSG/COMMIT-SCOPE dopo gate finale verde, due GRC preesistenti esclusi. Nessuna impronta prima del commit/push del proprietario e nessun add/commit/push/deploy dall'agente. Un solo albero, zero agenti paralleli. Dopo la consegna non scrivere mentre chiudi viene eseguito.
+Risolvere documentalmente C-01 per le quattro linee bilanciate UMC1820 verso RCA V3, senza presumere ammesso un ring cortocircuitato. Poi schema numerato e layout esecutivo; guadagni, protezioni e profili tarati richiedono qualifiche differite. La conferma V3 non è una prova di compatibilità dell'esemplare.
 
-PENDING è il solo registro del residuo:26 voci aperte. Fisiche sospese ADR-055; nessuna richiesta di foto, misure, acquisti o tagli. Enable del pannello al login manuale; niente reinstallazione, nuovo setup, backup/reboot o accesso a J. Gate pacchetti senza risposta, sicurezza non verificata. Le altre tre ancore storiche restano esplicite, nessun riallineamento completo dichiarato.
+PENDING rimane il solo registro corrente: 26 voci aperte, 8 interamente fisiche sospese ADR-055. Nessuna richiesta di misure, foto, acquisti o tagli. Enable del pannello al login manuale; nessuna reinstallazione, nuovo banco DSP, backup/reboot o accesso a J. Gate pacchetti senza risposta e sicurezza non verificata. Tre ancore storiche non avanzate; deployment mantiene la firma ea70a7b della rilettura MS-322.

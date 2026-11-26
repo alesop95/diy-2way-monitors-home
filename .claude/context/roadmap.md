@@ -21,6 +21,8 @@ MS-321 sviluppa il confronto dei dati su file: FRD/OSM, riferimento comune, cope
 
 MS-322 aggiunge somma complessa dei driver con filtri e riferimenti espliciti,22 prove e tre casi LR4. Qualità insufficiente degli input blocca il dataset; i due casi negativi conservano outside_bounds anche con integrità verde. Il risultato rimane simulato, non una qualifica del prototipo.
 
+MS-323 consolida la catena in docs/67 e data/catena-riferimento.json. V3 confermati per costo, ADR-058; distinta e budget tracciabili. Il prossimo ingresso è C-01 per le quattro linee bilanciate-RCA, poi layout e dettagli esecutivi. Nessuna chiusura delle qualifiche fisiche o dell’acquisto.
+
 ## Priorità e dipendenze
 
 PENDING-ACTIONS è il solo registro corrente e roadmap-items.yml fornisce i dati della vista generata. I blocchi software sviluppati non vanno riaperti come lavoro mancante a ogni ripresa. Restano scelte esecutive e di spesa, fonti e attività nei progetti competenti. Le otto voci interamente fisiche sono sospese per ADR-055; nessuna scadenza o richiesta automatica di misure.

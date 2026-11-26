@@ -1,6 +1,6 @@
 # Sistema con PC e autonomo: componenti, profili e qualificazione
 
-Revisione 2026-11-23, ADR-051/052/057. L'ascolto a PC spento da CD o riproduttori esterni è obbligatorio. Questa proposta sviluppa entrambi i percorsi e sceglie una base concreta per interfaccia, driver e finali. Le parti già verificate sono indicate con il relativo risultato; le prove di hardware assente sono un protocollo da eseguire, non un collaudo dichiarato riuscito. La versione di lettura con formule è [il PDF LaTeX](pdf/sistema-autonomo-driver-e-collaudo.pdf); il [dossier sul crossover](62-confronto-crossover-e-verifica-matematica.md) fornisce le dimostrazioni generali. I prezzi conservano la data della rilevazione, 20 novembre.
+Revisione 2026-11-26, ADR-051/052/057/058. L'ascolto a PC spento da CD o riproduttori esterni è obbligatorio. Questa proposta sviluppa entrambi i percorsi e sceglie una base concreta per interfaccia, driver e finali. Le parti già verificate sono indicate con il relativo risultato; le prove di hardware assente sono un protocollo da eseguire, non un collaudo dichiarato riuscito. La versione di lettura con formule è [il PDF LaTeX](pdf/sistema-autonomo-driver-e-collaudo.pdf); il [dossier sul crossover](62-confronto-crossover-e-verifica-matematica.md) fornisce le dimostrazioni generali. Il [consolidamento della catena, distinta e budget corrente](67-catena-di-riferimento-e-dipendenze-esecutive.md) registra la conferma dei V3 e i collegamenti nominali; le cifre del 20 novembre conservate sotto sono storiche.
 
 ## Architettura scelta per proseguire
 
@@ -179,9 +179,9 @@ python tools/fattibilita_basso.py --check
 
 Si mantiene SB16/A24 come base, C24 come confronto di volume e SB15/B27 come alternativa per lo schermo. Driver, fresature e prestazioni reali restano da qualificare. Il report rende esplicito il costo elettrico dell'estensione prima dell'acquisto.
 
-## Spesa aggiornata e acquisti da preparare
+## Spesa del 20 novembre, conservata come riferimento storico
 
-Rilevazione 2026-11-20. Prezzi visualizzati dei negozi, non ordini o preventivi per la consegna italiana; IVA locale, spedizione, stock e fornitore vanno riscontrati. Le stime sono budget di progetto e non prezzi verificati.
+Aggiornamento corrente: [capitolo67](67-catena-di-riferimento-e-dipendenze-esecutive.md), revisione commerciale del 26 novembre. La tabella seguente conserva la rilevazione2026-11-20 e non governa più la distinta corrente. Prezzi visualizzati dei negozi, non ordini o preventivi per la consegna italiana; IVA locale, spedizione, stock e fornitore vanno riscontrati. Le stime sono budget di progetto e non prezzi verificati.
 
 | Voce | Quantità | Costo di riferimento o budget |
 |---|---|---|
