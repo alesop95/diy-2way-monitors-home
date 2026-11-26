@@ -6,11 +6,13 @@ import io
 import json
 from pathlib import Path
 import math
+import sys
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
+from font_intrawelt import resolve_fonts, font_hashes
 from fattibilita_basso import highpass,lr4_hp,transform
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -18,9 +20,10 @@ REPORT=ROOT/'research-vault/sistema-autonomo-20261120/fattibilita-basso.json'
 TARGET=ROOT/'docs/figure/sistema-autonomo/fattibilita-basso.svg'
 
 
-def render():
+def render(font_dir=None):
     report=json.loads(REPORT.read_text(encoding='utf-8'))
-    font=ROOT/'build/consegna-cabinet-20261119/assets/Altro-Grotesk-Book.ttf'
+    font_dir=resolve_fonts(font_dir,required=('Altro-Grotesk-Book.ttf',))
+    font=font_dir/'Altro-Grotesk-Book.ttf'
     body=FontProperties(fname=str(font),size=10)
     heading=FontProperties(fname=str(font),size=13)
     matplotlib.rcParams.update({'svg.fonttype':'path','svg.hashsalt':'diy-2way-basso',
@@ -69,6 +72,7 @@ def render():
     provenance={'report':str(REPORT.relative_to(ROOT)).replace('\\','/'),
                 'report_sha256':hashlib.sha256(REPORT.read_bytes()).hexdigest(),
                 'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                'font_sha256':font_hashes(font_dir,required=('Altro-Grotesk-Book.ttf',)),
                 'matplotlib':matplotlib.__version__,'curves':18,'panels':6,
                 'status':'Modello nominale, non misura dei diffusori'}
     position=svg.index('>',svg.index('<svg'))+1
@@ -76,13 +80,18 @@ def render():
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__); parser.add_argument('--check',action='store_true'); args=parser.parse_args()
-    result=render()
+    parser=argparse.ArgumentParser(description=__doc__); parser.add_argument('--check',action='store_true')
+    parser.add_argument('--font-dir',type=Path,help='Font Intrawelt; alternativa a INTRAWELT_FONT_DIR')
+    args=parser.parse_args();result=render(args.font_dir)
     if args.check:
         ok=TARGET.exists() and TARGET.read_bytes()==result
         print('Figura basso: '+('coerente con dati e generatore' if ok else 'da rigenerare'))
         raise SystemExit(0 if ok else 1)
-    TARGET.parent.mkdir(parents=True,exist_ok=True); TARGET.write_bytes(result)
+    TARGET.parent.mkdir(parents=True,exist_ok=True)
+    sys.path.insert(0,str(ROOT/'.claude/templates/tools'))
+    from rigenera_sicuro import scrivi
+    if scrivi(str(TARGET),result.decode('utf-8'),silenzioso=True):
+        raise RuntimeError('Figura con contenuto autorato: rigenerazione fermata')
     print(str(TARGET.relative_to(ROOT)))
 
 

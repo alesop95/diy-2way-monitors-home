@@ -1344,3 +1344,23 @@ Completati tutti i task del piano reflex/direttività/CAD. Rapporto 108/27/18 ca
 Il primo gate completo ha superato i 37 controlli locali ma rilevato accenti mancanti nei nuovi testi. Correzioni nel sorgente e nel README generato, poi rapporto/figure/PDF/kit ricostruiti: secondo gate completo con «Controlli verdi». Ultima ripetizione richiesta dopo questa persistenza, rapporto chiudi-controlli-finale.txt nel livello privato. Nessuna nuova esclusione per ottenere il verde. Le ancore di quattro schede e il rapporto sicurezza assente restano dichiarati; gate pacchetti senza risposta, nessuna installazione.
 
 Roadmap e PENDING aggiornati: nominale sviluppato, scelte esecutive e riscontri fisici differiti. La roadmap conserva 26 voci aperte. Preparato per chiudi un perimetro esatto che esclude i due GRC preesistenti, riservati al template; il commit resta manuale. Nessuna scrittura Git, deploy o nuova impronta di ripresa. File scritti e riletti: modelli/suite/generatori CAD e kit, dati/rapporti/figure, docs/64 e sorgenti PDF, STATO/PENDING/OPS e indici delle prove/fonti/catalogo, piano/roadmap/controlli, STACK/didattica, snapshot/current-work e questo registro; ripresa e messaggio proposto privati.
+## 2026-11-25 - Ripresa dopo chiusura e difetto di ricostruzione
+
+**Template:** nessuna nuova lezione; applicata la norma sulle prove che esercitano i dati reali del confine dichiarato.
+
+Chiusura manuale acquisita: dcb5e18, impronta coerente, due soli GRC preesistenti. Il proprietario richiede di proseguire fino al completamento. Prova su archivio Git dei soli sorgenti: figure e tavole cercano font in un kit ignorato assente; tre test della consegna richiedono CAD/PDF generati sul vecchio workspace. I verdi locali di MS-319 restano validi per quel workspace e non attestavano il clone. Il primo tentativo nel sandbox ha incluso una negazione dei file temporanei; ripetuto con i permessi appropriati, il difetto di risorse è confermato. Piano docs/piani/2026-11-25-ricostruzione-da-sorgenti.md, correzione inline in corso. Nessun nuovo requisito fisico, installazione o scrittura Git.
+
+File scritti: piano di ricostruzione e questo registro; archivio sorgenti, rapporti e banco pulito nel livello privato/build. Template99b13ff, gate dovuto senza risposta, sicurezza ancora senza rapporto.
+
+
+## 2026-11-26 - Ricostruzione verificata e consegna consolidata, MS-320
+
+**Template:** nessuna nuova lezione; applicati i presidi già disponibili su risorse esplicite e prove pertinenti. Sette lezioni precedenti ancora aperte.
+
+Correzione conclusa: selezione font condivisa, contratti del kit autonomi con fixture dichiarate e ricostruzione reale da sorgenti senza vecchi build. Suite completa del blocco: 42 test e nove subtest verdi. CADCraft reale rilegge dodici profili per tre varianti; i nativi FreeCAD e le equazioni di MS-319 sono invariati. Un percorso assoluto nello stile CADCraft non è riconosciuto come TrueType: mantenuto il nome file con verifica esplicita del motore, senza installazioni.
+
+Artefatti precedenti archiviati e verificati prima dell'aggiornamento. Quattro PDF correnti con QA, relazione64 sei pagine: prime cinque identiche per hash delle immagini, sesta ispezionata; recap aggiornato e tavola A24 visti. Kit di 55 file e 2.444.936 byte verificato, fonte durevole nel vault. Fonti205/38, catalogo177 e didattica10. Rimossi14 PNG QA, cache e banco iniziale dopo verifica dell'archivio Git435 voci; temporaneo Craft fuori repository eliminato con autorizzazione specifica. Nessun originale o dato personale toccato.
+
+Primo gate completo dopo le correzioni: «Controlli verdi», 39 comandi locali. La nuova persistenza richiede l'ultima ripetizione prima di proporre chiudi, rapporto chiudi-ms320-finale.txt nel livello privato. Nessuna esclusione nuova, nessuna modifica al template o al runtime audio. I due GRC preesistenti restano fuori dal perimetro; commit/push/deploy manuali, impronta soltanto dopo la chiusura dell'utente. Piano, indice, current-work e ripresa consolidati sulla base dcb5e18; roadmap ancora26 voci aperte, fisiche sospese e gate senza risposta.
+
+File scritti e riletti: font_intrawelt e prove, test di ricostruzione, generatori di grafici/tavole, kit e contratti, cinque figure, capitolo64/LaTeX/PDF/manifesti, STATO/PENDING/artefatti/catalogo/fonti, piano/controlli/STACK e didattica10, registro operativo, memoria/current-work e ripresa. Non è stata introdotta una nuova richiesta fisica.

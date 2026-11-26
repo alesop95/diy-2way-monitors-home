@@ -107,3 +107,13 @@ Com'era e perché era fragile. Il modello chiuso non conteneva un condotto e i s
 Il salto di qualità. Circuito complesso, volume e accordo risolti insieme, geometria analitica confrontata con solidi FreeCAD, formati riaperti e mutazioni rilevate. Il kit confronta gli artefatti con le impronte della prova e verifica anche le sorgenti del PDF prima della firma. I limiti fisici restano visibili nel rapporto.
 
 Dove leggere il dettaglio: [refactor-09-fase-volume-e-consegna.md](refactor-09-fase-volume-e-consegna.md).
+
+## 10. Il verde della postazione e la ricostruzione dai sorgenti
+
+Contesto. Dopo MS-319 una copia dei soli sorgenti non trovava risorse conservate soltanto nel vecchio build.
+
+Com'era e perché era fragile. La prova cambiava la destinazione dei grafici, lasciando disponibili font, CAD e PDF della postazione. Il verde non misurava il comportamento di un clone.
+
+Il salto di qualità. Font come input dichiarato, contratti del manifesto con fixture autonome e processi reali in una copia senza i vecchi build. I controlli sulle alterazioni restano obbligatori; le fixture non sostituiscono il collaudo nativo dei CAD.
+
+Dove leggere il dettaglio: [refactor-10-sorgenti-e-risorse.md](refactor-10-sorgenti-e-risorse.md).

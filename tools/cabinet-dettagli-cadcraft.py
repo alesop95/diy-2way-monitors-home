@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 import subprocess
 from progetto_cabinet import ROOT, load_project, analyse_variant
+from font_intrawelt import resolve_fonts, font_hashes
 
 
 def run(app,args):
@@ -32,7 +33,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--app',type=Path,default=Path('C:/Program Files/CADCraft/cadcraft-cli.exe'))
-    parser.add_argument('--font',type=Path,default=ROOT/'build/consegna-cabinet-20261119/assets/Altro-Grotesk-Book.ttf')
+    parser.add_argument('--font',type=Path,help='File Altro Grotesk Book; altrimenti usa i font di account')
     parser.add_argument('--solo-verifica',action='store_true')
     parser.add_argument('--errore-raggio-per-prova',action='store_true')
     args=parser.parse_args()
@@ -40,7 +41,11 @@ def main():
     report={'status':'running','application':'CADCraft 0.20.1','variants':[],
             'manufacturing_release':False,'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     try:
-        if not args.font.is_file(): raise FileNotFoundError('Font Intrawelt assente')
+        if args.font is None:
+            args.font=resolve_fonts(required=('Altro-Grotesk-Book.ttf',))/'Altro-Grotesk-Book.ttf'
+        if not args.font.is_file(): raise FileNotFoundError('Font Intrawelt assente: correggere --font')
+        report['font_sha256']=font_hashes(args.font.parent,required=(args.font.name,))
+        report['dependency_sha256']={'tools/font_intrawelt.py':hashlib.sha256((ROOT/'tools/font_intrawelt.py').read_bytes()).hexdigest()}
         config,drivers=load_project()
         for variant in config['variants']:
             geo=analyse_variant(variant,drivers);w,d,h=geo['external_dimensions_mm']

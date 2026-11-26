@@ -4,11 +4,11 @@
   "documenti": [
     {
       "pdf": "docs/pdf/recap-progetto.pdf",
-      "sha256": "faa253f2b23277e311ed7b9e9138bd5875029b39f2dcadff38496f56d1f86b9c",
-      "bytes": 139252,
+      "sha256": "79b0f12f7b8c41b675a67e01043fabf6e16dc6b0bae13b1d9618147717728293",
+      "bytes": 139250,
       "pagine": 7,
       "sorgenti": {
-        "docs/STATO-PROGETTO.md": "7a55c351299a59c1b59c833ac0ae49344b75a7cf498f0fabc954a40bd91d64a1",
+        "docs/STATO-PROGETTO.md": "090ee24ed9e11dec9cce12deb3bedcb7da78833045cc54db00eecab2d7f0aa3d",
         "config/documenti/intrawelt-tecnico.json": "f1221bad44cfa2957b3e18191414025b3eb920a2c30297f2e47b67c6c71d149c",
         "tools/consegna_documenti.py": "a10ed62f436df28de6ce3b1a0635fe5fca0ba983fb39987eba2d44fad0e76730"
       },
@@ -23,7 +23,7 @@
       },
       "ispezione_visiva": {
         "pagine_correnti": [
-          1,
+          6,
           7
         ],
         "esito": "Testo, formule e tabelle leggibili nelle pagine ispezionate; nessun taglio rilevato.",
@@ -126,22 +126,22 @@
     },
     {
       "pdf": "docs/pdf/reflex-direttivita-cabinet.pdf",
-      "sha256": "ecafe909e74a2cda42c28d13d5adad2ba64276d2950091dadc3655bc1f3db2fe",
-      "bytes": 210983,
+      "sha256": "d07a9f38746cd1d36fee0631e775b11b8730a3e781e3fc3d297908a2f68791ea",
+      "bytes": 213727,
       "pagine": 6,
       "sorgenti": {
-        "docs/64-reflex-direttivita-e-cabinet-nominale.md": "6e5bceca47902a43b4288e40aa431d7a12e655b197b50d69a79d9f02e207baab",
-        "docs/latex/reflex-direttivita-cabinet.tex": "4ddeda01d320cc030bb7303c3f2cd8bc1b43cead80f64a6b7d591a004580c88c",
+        "docs/64-reflex-direttivita-e-cabinet-nominale.md": "d48732e792c501f5c2f4138d5bbc617cc083568f227332fba688473cf7cc6ad8",
+        "docs/latex/reflex-direttivita-cabinet.tex": "75e2ea3c562da8a3d4e54d59e0c6fe5ab57d1638eb27f8a630c841e3791ab8e1",
         "docs/latex/converti.py": "e11e2f5c1ddaf5f3fc975329438b02a7250465f9254f1058192bb4307b4c7b0f",
         "docs/latex/intrawelt-header.tex": "ce6d6482081359ae7d0ba9f930a0efc4ad5c1d3e03a66c046934171ecdf8ad4e",
         "research-vault/completamento-20261125/risultati.json": "2114c443680627c29e3537c8bc11f4eab354d4a5fb63be7a71521601764ebbd9",
-        "docs/figure/completamento-20261125/chiusa-reflex.svg": "10a2a76bf564328354645c8fc6856b6c7f9e789bffc122d79219984840fa3c81",
+        "docs/figure/completamento-20261125/chiusa-reflex.svg": "a55ed6ce14c442cb5793d118735402fad6fbd9b2ede5c84e5925b6b3a3d2b4a5",
         "build/completamento-20261125-figure/chiusa-reflex.pdf": "49ee586d68d2c0dbe2e90501209770f0d4497d5df6025cea3889ee4a7dd029a4",
-        "docs/figure/completamento-20261125/condotto-ingombro-velocita.svg": "66f21850a2a183f33b88cbc31ef53deee7e69e966af2354454325214886fd7e4",
+        "docs/figure/completamento-20261125/condotto-ingombro-velocita.svg": "b5e39316cd8182042d7c9024f1a926f4ef96b9715548d66b488fcca9deab6c56",
         "build/completamento-20261125-figure/condotto-ingombro-velocita.pdf": "a23ac06040180f4505efd6f328d590ae37d215ac226247c5e859bbcc34fb768d",
-        "docs/figure/completamento-20261125/direttivita-ideale.svg": "94f6fc886738e66a7989d4d5ea895ba228dbd8d7a1be17609b657f3c514b6718",
+        "docs/figure/completamento-20261125/direttivita-ideale.svg": "546df09932efe2833be8e7770b87c53bb19adfe92a67eadd529f9c5ab7a145ed",
         "build/completamento-20261125-figure/direttivita-ideale.pdf": "c4f41798963a0f6c9fe27a92006c820a1b4ac2e6de625db8cb7a3f2c6311d7d3",
-        "docs/figure/completamento-20261125/condensatore-e-livelli.svg": "d99525f261d9154a5542ae33aaa03ddc3b387c1318dac7fadf815d15e0e53f86",
+        "docs/figure/completamento-20261125/condensatore-e-livelli.svg": "23565d79ec008766a3926078c656b60dc54cea1240eef926abf3d7b424773882",
         "build/completamento-20261125-figure/condensatore-e-livelli.pdf": "8c745c0b2ce8575928032328da54b84cb87137cb3e9d1caae814fb29ad1b1232",
         "tools/consegna_documenti.py": "a10ed62f436df28de6ce3b1a0635fe5fca0ba983fb39987eba2d44fad0e76730"
       },

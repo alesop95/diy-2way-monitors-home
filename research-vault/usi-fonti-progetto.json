@@ -2,7 +2,7 @@
   "schema": "fonti-usi-audio-1",
   "data": "2026-11-20",
   "perimetro": {
-    "file": 125,
+    "file": 127,
     "radici": [
       "docs",
       ".claude/context",

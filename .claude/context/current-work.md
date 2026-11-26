@@ -11,18 +11,18 @@ last-verified-commit: cf177180ef9f2a3ef325247dd07c973eb544d949
 
 # Lavoro corrente
 
-## Completamento nominale, MS-319
+## Ricostruzione completata, MS-320, 2026-11-26
 
-Base main 7c7c864, dopo commit e push manuali del proprietario. Piano docs/piani/2026-11-25-reflex-direttivita-cad.md: modelli reflex/direttività, protezioni elettriche e cabinet nominali sviluppati. Rapporto con 108 casi reflex, 27 angolari, 18 elettrici e tre geometrie; 31 test nuovi e nove subtest verdi, controlli negativi osservati. Tre assiemi da sette solidi, incassi e rinforzo, FCStd ricomputati/riaperti, STEP reimportati e DXF riletti con CADCraft. A24 chiusa rimane base; nessuna scelta esecutiva dedotta.
+Base main dcb5e18 dopo chiusura manuale MS-319. Il nuovo mandato ha fatto esercitare un archivio Git senza vecchi build: rilevati font cercati nel kit ignorato e test del manifesto dipendenti da CAD/PDF precedenti. Piano docs/piani/2026-11-25-ricostruzione-da-sorgenti.md sviluppato: risorse esplicite condivise, fixture autonome di soli byte e prova reale dei generatori da sorgenti copiati. Nessuna nuova installazione o scelta del prodotto.
 
-## Consegna e verifiche
+Otto suite con 42 test e nove subtest verdi. Quattro prove della ricostruzione reale e sei della selezione dei font; cinque contratti del kit mantengono alterazioni prima/dopo la firma, sorgente PDF superata e dipendenza CAD cambiata. I collaudi dei formati reali restano distinti dalle fixture. Chiudi in sola verifica con 39 controlli locali verdi; rapporto finale dopo l'ultima scrittura richiamato da memory/index.
 
-docs/64 e PDF di sei pagine con quattro figure; tutte le pagine viste. Kit locale build/consegna-completamento-20261125.zip, 52 file verificati; provenienza in research-vault/completamento-20261125/consegna.json. Quattro PDF correnti con QA e sorgenti nel manifesto. Fonti 205/38 curate, catalogo 175 file e nove approfondimenti didattici. Primo gate generale fermato da accenti nei nuovi testi, corretti nel sorgente; secondo gate con «Controlli verdi», 37 controlli locali. Rapporto finale dopo l'ultima scrittura nel livello privato, richiamato da memory/index. Immagini QA rimosse con ricevuta; fonti originali e viste CAD conservate.
+## Consegna
 
-Il controllo DSP già consegnato non è riconfigurato: software sviluppato e pannello installato/verificato in MS-317. Resta l'abilitazione manuale al login; nessuna reinstallazione. Non ripetere banco DSP, backup o riavvio per chiudere il nuovo blocco teorico.
+Quattro PDF con QA, capitolo64 di sei pagine e cinque figure SVG attuali. Kit locale build/consegna-completamento-20261125.zip: 55 file, 2.444.936 byte verificati. Provenienza in research-vault/completamento-20261125/consegna.json. Fonti205/38, catalogo177, didattica10. Quattordici PNG QA rimossi con ricevuta; artefatti precedenti e archivio dei sorgenti conservati. Le equazioni e i nativi FreeCAD non sono cambiati: restano 108 casi reflex, 27 angolari, 18 elettrici e tre geometrie nominali di MS-319.
 
-## Vincoli e prossimo gesto
+## Prossimo gesto e residui
 
-Le pendenze correnti stanno in docs/PENDING-ACTIONS.md. Scelta esecutiva, spesa, fonti e attività del template restano aperte; qualifica fisica sospesa ADR-055, senza richieste all'utente. Fissaggi, cablaggio, lavorazione e risposta reale richiedono i riscontri differiti. Gate pacchetti ancora senza risposta e sicurezza senza rapporto; nessun verde implicito. Ancore delle quattro schede non avanzate senza verifica completa.
+Il proprietario può versionare la nuova milestone dopo il gate finale, con messaggio e perimetro esatto nel livello privato; due GRC preesistenti esclusi. L'agente non esegue add/commit/push/deploy e non registra l'impronta prima della chiusura manuale. PENDING è l'unico registro del residuo: scelte esecutive/spesa/fonti/template e qualifiche fisiche sospese ADR-055. Il pannello è già installato/verificato; enable al login manuale, nessuna reinstallazione o nuova prova fisica richiesta.
 
-Il proprietario può versionare la milestone dopo il gate finale: messaggio in COMMIT-MSG e perimetro esatto in COMMIT-SCOPE, con i due GRC preesistenti esclusi. Nessun add/commit/push/deploy eseguito dall'agente. Impronta soltanto dopo commit e push dell'utente. Memoria canonica in memory/index; cronologia in progress e OPS. Nessun subagent.
+Gate pacchetti senza risposta, sicurezza senza rapporto, quattro ancore di contesto conservate ai commit effettivamente verificati. Nessun verde implicito. Non ripetere setup, backup o reboot; non riaprire J o altri progetti. Nessun agente parallelo.

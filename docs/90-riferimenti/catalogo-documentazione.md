@@ -4,7 +4,7 @@
 
 Radice di questa postazione: `E:\diy-2way-monitors-home`. Ogni percorso relativo delle tabelle va aggiunto a questa radice. Il [CSV completo](../../data/catalogo-documentazione.csv) include anche il percorso assoluto Windows. L’elenco censisce i file pubblicabili presenti, compresi quelli ancora da aggiungere manualmente a git; esclude template, binari, appunti privati e fonti della biblioteca esterna.
 
-175 file documentali, bibliografici e di ricerca. Il [percorso di lettura](../STATO-PROGETTO.md) spiega cosa leggere; questo catalogo risponde a dove si trova ogni file. Lo stato operativo resta nella memoria canonica.
+177 file documentali, bibliografici e di ricerca. Il [percorso di lettura](../STATO-PROGETTO.md) spiega cosa leggere; questo catalogo risponde a dove si trova ogni file. Lo stato operativo resta nella memoria canonica.
 
 Per le prove binarie correnti, i manuali privati, i modelli CAD e gli archivi dei tentativi precedenti consultare la [mappa degli artefatti](artefatti-e-prove.md). Per fonti e punti d’uso consultare la [mappa del pedigree](fonti-progetto.md).
 
@@ -97,6 +97,7 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [docs/piani/2026-11-20-fonti-lezioni-e-riordino.md](../../docs/piani/2026-11-20-fonti-lezioni-e-riordino.md) |
 | [docs/piani/2026-11-23-controllo-ascolto.md](../../docs/piani/2026-11-23-controllo-ascolto.md) |
 | [docs/piani/2026-11-25-reflex-direttivita-cad.md](../../docs/piani/2026-11-25-reflex-direttivita-cad.md) |
+| [docs/piani/2026-11-25-ricostruzione-da-sorgenti.md](../../docs/piani/2026-11-25-ricostruzione-da-sorgenti.md) |
 | [docs/separazione-ambienti/FONTI.md](../../docs/separazione-ambienti/FONTI.md) |
 | [docs/separazione-ambienti/GUIDA.md](../../docs/separazione-ambienti/GUIDA.md) |
 
@@ -116,6 +117,7 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [.claude/context/refactor-07-fonti-lezioni-e-prove-conservate.md](../../.claude/context/refactor-07-fonti-lezioni-e-prove-conservate.md) |
 | [.claude/context/refactor-08-controllo-ascolto.md](../../.claude/context/refactor-08-controllo-ascolto.md) |
 | [.claude/context/refactor-09-fase-volume-e-consegna.md](../../.claude/context/refactor-09-fase-volume-e-consegna.md) |
+| [.claude/context/refactor-10-sorgenti-e-risorse.md](../../.claude/context/refactor-10-sorgenti-e-risorse.md) |
 | [.claude/context/roadmap.md](../../.claude/context/roadmap.md) |
 | [.claude/context/studio-didattico-master.md](../../.claude/context/studio-didattico-master.md) |
 

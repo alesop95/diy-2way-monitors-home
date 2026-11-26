@@ -10,7 +10,7 @@ Radice locale: `E:\diy-2way-monitors-home`. I percorsi sotto sono relativi alla 
 | Relazione matematica | `docs/pdf/crossover-pc-pi-analogico.pdf` | `docs/62-confronto-crossover-e-verifica-matematica.md`, TeX in `docs/latex/`. |
 | Relazione tecnica corrente | `docs/pdf/sistema-autonomo-driver-e-collaudo.pdf` | `docs/63-sistema-autonomo-driver-e-collaudo.md`, TeX in `docs/latex/`. |
 | Relazione reflex e cabinet | `docs/pdf/reflex-direttivita-cabinet.pdf` | `docs/64-reflex-direttivita-e-cabinet-nominale.md`, quattro figure e TeX. |
-| Kit nominale dettagliato | `build/consegna-completamento-20261125.zip` | 52 file con manifesto; estratto nello stesso percorso senza estensione. Tre FCStd, STEP, DXF, tavole, distinte e viste; nessun ordine di taglio. |
+| Kit nominale dettagliato | `build/consegna-completamento-20261125.zip` | 55 file con manifesto; estratto nello stesso percorso senza estensione. Tre FCStd, STEP, DXF, tavole, distinte e viste; nessun ordine di taglio. |
 | Provenienza dei PDF | `docs/pdf/manifest.json` | SHA-256 dei PDF e degli input, controllati da `tools/verifica_documenti.py`. |
 | Compilazione | `docs/latex/README.md` | Intermedi in build, consegne in docs/pdf, QA temporaneo eliminato. |
 | Kit CAD esplorativo | `build/consegna-cabinet-20261119/confronto.html` | Tre cabinet parametrici, nativi, STEP, DXF, distinta e viste; non ordine di taglio. |

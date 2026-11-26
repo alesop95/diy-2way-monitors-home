@@ -17,7 +17,8 @@ TARGET=ROOT/'build/consegna-completamento-20261125'
 ZIP=ROOT/'build/consegna-completamento-20261125.zip'
 RECORD=ROOT/'research-vault/completamento-20261125/consegna.json'
 DOC_MANIFEST=ROOT/'docs/pdf/manifest.json'
-SOURCES=('tools/acustica_cabinet.py','tools/progetto_cabinet.py','tools/studio_completamento.py',
+SOURCES=('tools/font_intrawelt.py','tools/test_font_intrawelt.py','tools/test_ricostruzione_sorgenti.py',
+    'tools/acustica_cabinet.py','tools/progetto_cabinet.py','tools/studio_completamento.py',
     'tools/figure_completamento.py','tools/cabinet-dettagli-cadcraft.py','tools/cabinet-dettagli-freecad.py',
     'tools/cabinet-dettagli-vista.FCMacro','tools/collauda-cabinet-dettagli.py','tools/consegna_completamento.py',
     'tools/studia_ingombri.py','tools/studio_sistema_audio.py','tools/fattibilita_basso.py',
@@ -52,6 +53,7 @@ def bundle():
     checked(ROOT/'tools/cabinet-dettagli-freecad.py',normal['source_sha256'],'Sorgente FreeCAD')
     checked(ROOT/'tools/cabinet-dettagli-vista.FCMacro',gui['source_sha256'],'Sorgente vista')
     checked(ROOT/'tools/cabinet-dettagli-cadcraft.py',cad['source_sha256'],'Sorgente CADCraft')
+    for name,expected in cad['dependency_sha256'].items():checked(ROOT/name,expected,'Dipendenza CADCraft')
     for name,expected in normal['input_sha256'].items():checked(ROOT/name,expected,'Input CAD')
     files={}
     for row in normal['variants']:

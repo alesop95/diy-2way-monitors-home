@@ -27,7 +27,7 @@ Questo è il riepilogo operativo unico; le voci storiche sotto conservano apertu
 
 | Fronte | Sviluppato e verificato | Residuo reale |
 |---|---|---|
-| Basso e driver | HP35/LT e banco file, più 108 casi reflex con fase/condotto, 27 scenari angolari ideali e 18 elettrici in docs/64; nuove prove fisiche indipendenti. | Scelta esecutiva e qualifica dei modelli sui driver montati e nella stanza sospese. |
+| Basso e driver | HP35/LT e banco file, più 108 casi reflex con fase/condotto, 27 scenari angolari ideali e 18 elettrici in docs/64; prove su casi analitici indipendenti. | Scelta esecutiva e qualifica dei modelli sui driver montati e nella stanza sospese. |
 | DSP e autonomia, PA-041 | API WebSocket reale, observer ALSA/clock, grafo PC attestato, pannello e watchdog; 46 test e banco reale. Pannello installato manualmente e verificato in esercizio il 23 novembre. | Abilitazione manuale dell'avvio al login, ancora disabled alla prova; qualifica fisica di identità, jack, clock e volume PC/Pi sospesa. Nessuna reinstallazione richiesta. |
 | CAD e costruzione, PA-037 | Tre assiemi nominali con tagli/incassi, centri di montaggio, rinforzo e distinta per coppia; FCStd/STEP/DXF riaperti e verificati. | Fissaggi, giunzioni di lavorazione, tolleranze, cablaggi e distinta esecutiva dopo i componenti definitivi; tagli e appoggi reali sospesi. |
 | Spesa, PA-012/024 | Catena candidata e budget datato con quantità, ipotesi ed esclusioni. | Stock/preventivi aggiornati, ottimizzazione finale e scelta d'acquisto; nessun ordine adesso. |

@@ -38,3 +38,5 @@ test_consegna_completamento.py
 studio_completamento.py --check
 figure_completamento.py --check
 consegna_completamento.py --check
+test_font_intrawelt.py
+test_ricostruzione_sorgenti.py

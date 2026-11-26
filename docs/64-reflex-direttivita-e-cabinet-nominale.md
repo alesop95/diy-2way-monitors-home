@@ -130,6 +130,23 @@ I comandi di generazione CAD e figure richiedono destinazioni di lavoro nuove. C
 
 ## Troubleshooting osservato
 
+### Ricostruire senza il vecchio kit in build
+
+La prova del 25 novembre successiva a MS-319 ha estratto i soli sorgenti del commit dcb5e18. I generatori non trovavano i font perché li cercavano nella copia ignorata di un kit precedente; tre test della consegna richiedevano anche CAD e PDF già generati. I verdi precedenti descrivevano la postazione su cui erano stati eseguiti e non dimostravano quel caso.
+
+La selezione condivisa in tools/font_intrawelt.py usa prima l'argomento esplicito, poi INTRAWELT_FONT_DIR, quindi la skill dell'account attivo e i font installati. Un percorso esplicito incompleto fallisce; non viene sostituita la famiglia tipografica. Le figure registrano gli hash dei font, le tavole anche quello del modulo che li seleziona. Nessun font viene installato o pubblicato nel repository. Per le figure è disponibile --font-dir; per le tavole resta --font.
+
+I test del manifesto costruiscono file opachi in una cartella temporanea e verificano composizione e alterazioni prima/dopo la firma. Non attestano la validità di un FCStd o di uno STEP. Questa rimane coperta dai generatori e dai collaudi reali. tools/test_ricostruzione_sorgenti.py esegue grafici e CADCraft da una copia senza i vecchi build e confronta gli SVG ricostruiti con le figure correnti; prova anche il rifiuto della risorsa mancante. I comandi osservati sulla postazione sono:
+
+```powershell
+cd "E:/diy-2way-monitors-home"
+python tools/test_font_intrawelt.py
+python tools/test_ricostruzione_sorgenti.py
+python tools/test_consegna_completamento.py
+```
+
+La ricostruzione del kit finale richiede ancora i CAD realmente collaudati e il PDF corrente: le fixture dei test non li sostituiscono. Le prove su cartelle temporanee richiedono i permessi appropriati nell'ambiente Windows, come descritto sotto.
+
 ### FreeCAD rifiuta un alias del foglio
 
 Osservato su Ubuntu il 25 novembre, FreeCAD 1.1.4: gli alias W, H e T vengono rifiutati, mentre D e i nomi prefissati DimW/DimH/DimT sono accettati. Una prova sul foglio nudo ha isolato il problema prima di cambiare il modello. La correzione usa il prefisso Dim per tutte le quote. Il primo rapporto conserva il fallimento; il successivo collaudo dei solidi e la prova negativa sono riusciti.

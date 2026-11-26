@@ -18,6 +18,7 @@ from fattibilita_basso import lr4_hp,transform,target_frequency
 from studio_sistema_audio import closed_box
 from studio_completamento import ROOT,build_report
 from progetto_cabinet import load_project
+from font_intrawelt import resolve_fonts, font_hashes
 
 REPORT=ROOT/'research-vault/completamento-20261125/risultati.json'
 PUBLIC=ROOT/'docs/figure/completamento-20261125'
@@ -111,6 +112,7 @@ def render(fontdir):
     result={}
     provenance={'report_sha256':hashlib.sha256(REPORT.read_bytes()).hexdigest(),
                 'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                'font_sha256':font_hashes(fontdir),
                 'status':'Modelli nominali, non misure'}
     for name,fig in figures.items():
         svg=io.StringIO();fig.savefig(svg,format='svg',metadata={'Date':None,'Creator':'figure_completamento.py'})
@@ -124,9 +126,9 @@ def render(fontdir):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out',type=Path,default=ROOT/'build/completamento-20261125-figure')
-    parser.add_argument('--font-dir',type=Path,default=ROOT/'build/consegna-cabinet-20261119/assets')
+    parser.add_argument('--font-dir',type=Path,help='Font Intrawelt; alternativa a INTRAWELT_FONT_DIR')
     parser.add_argument('--check',action='store_true')
-    args=parser.parse_args();figures=render(args.font_dir)
+    args=parser.parse_args();figures=render(resolve_fonts(args.font_dir))
     if args.check:
         stale=[name for name,formats in figures.items() if not (PUBLIC/(name+'.svg')).is_file() or (PUBLIC/(name+'.svg')).read_bytes()!=formats['svg']]
         print(json.dumps({'figure_da_rigenerare':stale}));return int(bool(stale))
