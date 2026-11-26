@@ -13,6 +13,7 @@ Contesto e didattica,.claude/context/refactor-08-controllo-ascolto.md,E:\diy-2wa
 Contesto e didattica,.claude/context/refactor-09-fase-volume-e-consegna.md,E:\diy-2way-monitors-home\.claude\context\refactor-09-fase-volume-e-consegna.md
 Contesto e didattica,.claude/context/refactor-10-sorgenti-e-risorse.md,E:\diy-2way-monitors-home\.claude\context\refactor-10-sorgenti-e-risorse.md
 Contesto e didattica,.claude/context/refactor-11-dati-e-verdetti.md,E:\diy-2way-monitors-home\.claude\context\refactor-11-dati-e-verdetti.md
+Contesto e didattica,.claude/context/refactor-12-la-somma-ha-una-fase.md,E:\diy-2way-monitors-home\.claude\context\refactor-12-la-somma-ha-una-fase.md
 Contesto e didattica,.claude/context/roadmap.md,E:\diy-2way-monitors-home\.claude\context\roadmap.md
 Contesto e didattica,.claude/context/studio-didattico-master.md,E:\diy-2way-monitors-home\.claude\context\studio-didattico-master.md
 Memoria e lezioni,.claude/memory/decisions.md,E:\diy-2way-monitors-home\.claude\memory\decisions.md
@@ -66,6 +67,7 @@ Documentazione tecnica e procedure,docs/62-confronto-crossover-e-verifica-matema
 Documentazione tecnica e procedure,docs/63-sistema-autonomo-driver-e-collaudo.md,E:\diy-2way-monitors-home\docs\63-sistema-autonomo-driver-e-collaudo.md
 Documentazione tecnica e procedure,docs/64-reflex-direttivita-e-cabinet-nominale.md,E:\diy-2way-monitors-home\docs\64-reflex-direttivita-e-cabinet-nominale.md
 Documentazione tecnica e procedure,docs/65-caratterizzazione-aperta-e-dati-di-misura.md,E:\diy-2way-monitors-home\docs\65-caratterizzazione-aperta-e-dati-di-misura.md
+Documentazione tecnica e procedure,docs/66-somma-acustica-e-crossover-su-file.md,E:\diy-2way-monitors-home\docs\66-somma-acustica-e-crossover-su-file.md
 Documentazione tecnica e procedure,docs/70-realizzazione-e-verifica.md,E:\diy-2way-monitors-home\docs\70-realizzazione-e-verifica.md
 Documentazione tecnica e procedure,docs/75-catena-di-riproduzione.md,E:\diy-2way-monitors-home\docs\75-catena-di-riproduzione.md
 Documentazione tecnica e procedure,docs/80-strumenti-posseduti/README.md,E:\diy-2way-monitors-home\docs\80-strumenti-posseduti\README.md
@@ -107,6 +109,7 @@ Documentazione tecnica e procedure,docs/piani/2026-11-23-controllo-ascolto.md,E:
 Documentazione tecnica e procedure,docs/piani/2026-11-25-reflex-direttivita-cad.md,E:\diy-2way-monitors-home\docs\piani\2026-11-25-reflex-direttivita-cad.md
 Documentazione tecnica e procedure,docs/piani/2026-11-25-ricostruzione-da-sorgenti.md,E:\diy-2way-monitors-home\docs\piani\2026-11-25-ricostruzione-da-sorgenti.md
 Documentazione tecnica e procedure,docs/piani/2026-11-26-caratterizzazione-su-file.md,E:\diy-2way-monitors-home\docs\piani\2026-11-26-caratterizzazione-su-file.md
+Documentazione tecnica e procedure,docs/piani/2026-11-26-somma-acustica-su-file.md,E:\diy-2way-monitors-home\docs\piani\2026-11-26-somma-acustica-su-file.md
 Documentazione tecnica e procedure,docs/separazione-ambienti/FONTI.md,E:\diy-2way-monitors-home\docs\separazione-ambienti\FONTI.md
 Documentazione tecnica e procedure,docs/separazione-ambienti/GUIDA.md,E:\diy-2way-monitors-home\docs\separazione-ambienti\GUIDA.md
 Wiki e conoscenza,knowledge/WIKI-SCHEMA.md,E:\diy-2way-monitors-home\knowledge\WIKI-SCHEMA.md
@@ -180,6 +183,8 @@ Wiki e conoscenza,knowledge/log.md,E:\diy-2way-monitors-home\knowledge\log.md
 "Fonti, bibliografia e ricerca",research-vault/sistema-autonomo-20261120/risultati-profili.json,E:\diy-2way-monitors-home\research-vault\sistema-autonomo-20261120\risultati-profili.json
 "Fonti, bibliografia e ricerca",research-vault/sistema-autonomo-20261120/scope.md,E:\diy-2way-monitors-home\research-vault\sistema-autonomo-20261120\scope.md
 "Fonti, bibliografia e ricerca",research-vault/sistema-autonomo-20261120/sources.md,E:\diy-2way-monitors-home\research-vault\sistema-autonomo-20261120\sources.md
+"Fonti, bibliografia e ricerca",research-vault/somma-acustica-20261126/README.md,E:\diy-2way-monitors-home\research-vault\somma-acustica-20261126\README.md
+"Fonti, bibliografia e ricerca",research-vault/somma-acustica-20261126/risultati.json,E:\diy-2way-monitors-home\research-vault\somma-acustica-20261126\risultati.json
 "Fonti, bibliografia e ricerca",research-vault/tracked-sources.md,E:\diy-2way-monitors-home\research-vault\tracked-sources.md
 "Fonti, bibliografia e ricerca",research-vault/usi-fonti-progetto.json,E:\diy-2way-monitors-home\research-vault\usi-fonti-progetto.json
 "Fonti, bibliografia e ricerca",research-vault/web/linkwitzlab-active-filters.md,E:\diy-2way-monitors-home\research-vault\web\linkwitzlab-active-filters.md

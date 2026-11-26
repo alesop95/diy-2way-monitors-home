@@ -4,7 +4,7 @@
 
 Radice di questa postazione: `E:\diy-2way-monitors-home`. Ogni percorso relativo delle tabelle va aggiunto a questa radice. Il [CSV completo](../../data/catalogo-documentazione.csv) include anche il percorso assoluto Windows. L’elenco censisce i file pubblicabili presenti, compresi quelli ancora da aggiungere manualmente a git; esclude template, binari, appunti privati e fonti della biblioteca esterna.
 
-184 file documentali, bibliografici e di ricerca. Il [percorso di lettura](../STATO-PROGETTO.md) spiega cosa leggere; questo catalogo risponde a dove si trova ogni file. Lo stato operativo resta nella memoria canonica.
+189 file documentali, bibliografici e di ricerca. Il [percorso di lettura](../STATO-PROGETTO.md) spiega cosa leggere; questo catalogo risponde a dove si trova ogni file. Lo stato operativo resta nella memoria canonica.
 
 Per le prove binarie correnti, i manuali privati, i modelli CAD e gli archivi dei tentativi precedenti consultare la [mappa degli artefatti](artefatti-e-prove.md). Per fonti e punti d’uso consultare la [mappa del pedigree](fonti-progetto.md).
 
@@ -59,6 +59,7 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [docs/63-sistema-autonomo-driver-e-collaudo.md](../../docs/63-sistema-autonomo-driver-e-collaudo.md) |
 | [docs/64-reflex-direttivita-e-cabinet-nominale.md](../../docs/64-reflex-direttivita-e-cabinet-nominale.md) |
 | [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md) |
+| [docs/66-somma-acustica-e-crossover-su-file.md](../../docs/66-somma-acustica-e-crossover-su-file.md) |
 | [docs/70-realizzazione-e-verifica.md](../../docs/70-realizzazione-e-verifica.md) |
 | [docs/75-catena-di-riproduzione.md](../../docs/75-catena-di-riproduzione.md) |
 | [docs/80-strumenti-posseduti/README.md](../../docs/80-strumenti-posseduti/README.md) |
@@ -100,6 +101,7 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [docs/piani/2026-11-25-reflex-direttivita-cad.md](../../docs/piani/2026-11-25-reflex-direttivita-cad.md) |
 | [docs/piani/2026-11-25-ricostruzione-da-sorgenti.md](../../docs/piani/2026-11-25-ricostruzione-da-sorgenti.md) |
 | [docs/piani/2026-11-26-caratterizzazione-su-file.md](../../docs/piani/2026-11-26-caratterizzazione-su-file.md) |
+| [docs/piani/2026-11-26-somma-acustica-su-file.md](../../docs/piani/2026-11-26-somma-acustica-su-file.md) |
 | [docs/separazione-ambienti/FONTI.md](../../docs/separazione-ambienti/FONTI.md) |
 | [docs/separazione-ambienti/GUIDA.md](../../docs/separazione-ambienti/GUIDA.md) |
 
@@ -121,6 +123,7 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [.claude/context/refactor-09-fase-volume-e-consegna.md](../../.claude/context/refactor-09-fase-volume-e-consegna.md) |
 | [.claude/context/refactor-10-sorgenti-e-risorse.md](../../.claude/context/refactor-10-sorgenti-e-risorse.md) |
 | [.claude/context/refactor-11-dati-e-verdetti.md](../../.claude/context/refactor-11-dati-e-verdetti.md) |
+| [.claude/context/refactor-12-la-somma-ha-una-fase.md](../../.claude/context/refactor-12-la-somma-ha-una-fase.md) |
 | [.claude/context/roadmap.md](../../.claude/context/roadmap.md) |
 | [.claude/context/studio-didattico-master.md](../../.claude/context/studio-didattico-master.md) |
 
@@ -206,6 +209,8 @@ Rigenerazione eseguita con `python tools/catalogo_documentazione.py`; verifica c
 | [research-vault/sistema-autonomo-20261120/risultati-profili.json](../../research-vault/sistema-autonomo-20261120/risultati-profili.json) |
 | [research-vault/sistema-autonomo-20261120/scope.md](../../research-vault/sistema-autonomo-20261120/scope.md) |
 | [research-vault/sistema-autonomo-20261120/sources.md](../../research-vault/sistema-autonomo-20261120/sources.md) |
+| [research-vault/somma-acustica-20261126/README.md](../../research-vault/somma-acustica-20261126/README.md) |
+| [research-vault/somma-acustica-20261126/risultati.json](../../research-vault/somma-acustica-20261126/risultati.json) |
 | [research-vault/tracked-sources.md](../../research-vault/tracked-sources.md) |
 | [research-vault/usi-fonti-progetto.json](../../research-vault/usi-fonti-progetto.json) |
 | [research-vault/web/linkwitzlab-active-filters.md](../../research-vault/web/linkwitzlab-active-filters.md) |

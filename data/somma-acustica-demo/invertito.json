@@ -1,0 +1,88 @@
+{
+  "schema": "speaker-complex-sum-1",
+  "data_kind": "synthetic",
+  "level_unit": "dB_relative",
+  "samplerate_hz": 48000,
+  "references": {
+    "level": "same_excitation_voltage",
+    "time": "common_time_origin",
+    "observation": "same_direction_and_distance",
+    "drivers": "without_applied_crossover"
+  },
+  "direction": {
+    "plane": "axial",
+    "angle_deg": 0
+  },
+  "target": {
+    "minimum_hz": 100,
+    "maximum_hz": 10000,
+    "reference_db": 0,
+    "tolerance_db": 0.5,
+    "max_gap_octaves": 0.08333333333333333,
+    "minimum_coherence": 0.9
+  },
+  "branches": {
+    "woofer": {
+      "path": "woofer.frd",
+      "format": "frd",
+      "valid_range_hz": [
+        50,
+        20000
+      ],
+      "filter": {
+        "sos": [
+          [
+            0.01440144034651121,
+            0.02880288069302242,
+            0.01440144034651121,
+            1.0,
+            -1.6329931618554523,
+            0.6905989232414971
+          ],
+          [
+            0.01440144034651121,
+            0.02880288069302242,
+            0.01440144034651121,
+            1.0,
+            -1.6329931618554523,
+            0.6905989232414971
+          ]
+        ],
+        "gain_db": 0.0,
+        "polarity": 1,
+        "delay_ms": 0.0
+      }
+    },
+    "tweeter": {
+      "path": "tweeter.frd",
+      "format": "frd",
+      "valid_range_hz": [
+        50,
+        20000
+      ],
+      "filter": {
+        "sos": [
+          [
+            0.8308980212742373,
+            -1.6617960425484746,
+            0.8308980212742373,
+            1.0,
+            -1.6329931618554523,
+            0.6905989232414971
+          ],
+          [
+            0.8308980212742373,
+            -1.6617960425484746,
+            0.8308980212742373,
+            1.0,
+            -1.6329931618554523,
+            0.6905989232414971
+          ]
+        ],
+        "gain_db": 0.0,
+        "polarity": -1,
+        "delay_ms": 0.0
+      }
+    }
+  }
+}

@@ -77,7 +77,7 @@ voci:
     livello: 2
     dove: questo repository
     titolo: PA-014, dati di caratterizzazione aperti e via GLL
-    stato: "Ricerca primaria e pipeline di confronto su file sviluppate, MS-321. ARTA/export, authoring SpeakerLab e autorizzazione Focus sono passaggi distinti; nessun GLL libero garantito."
+    stato: "Ricerca primaria e confronto su file sviluppati, MS-321; somma complessa dei due driver con filtri e fase espliciti, MS-322. ARTA/export, authoring SpeakerLab e autorizzazione Focus sono passaggi distinti; nessun GLL libero garantito."
     passo: "Dati aperti già elaborabili e verificabili; scegliere e qualificare l’acquisizione sul prototipo soltanto alla riapertura delle verifiche. Nessun acquisto o installazione adesso."
     fonte: "docs/PENDING-ACTIONS.md"
 
@@ -198,7 +198,7 @@ voci:
     dove: "progetto dei monitor"
     titolo: "05. Simulazione driver, cabinet e crossover"
     stato: "Modelli a piccoli segnali SB16/A24 e alternativa SB15/B27 sviluppati in docs/63, con risposte ed escursione ideali. Dodici profili elettrici su file verificati; aggiunti 486 scenari HP35/LT e dodici casi nel motore. Aggiunti 108 casi reflex con ingombro e velocità del condotto, 27 scenari angolari ideali e 18 elettrici, docs/64. Risposta acustica non dimostrata e scelta esecutiva non congelata."
-    passo: "Confronti teorici autorizzati sviluppati e riproducibili, MS-319. Mantenere A24 chiusa come base; scelta esecutiva e validazione acustica dipendono dalle verifiche sospese."
+    passo: "Confronti teorici sviluppati e riproducibili, MS-319; aggiunta somma su file dei due driver con filtri, fase e riferimenti espliciti, docs/66. Mantenere A24 chiusa come base; scelta esecutiva e validazione acustica dipendono dalle verifiche sospese."
     fonte: "docs/50-progettazione-monitor.md"
   - id: 32
     livello: 2

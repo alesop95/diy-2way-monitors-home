@@ -2,7 +2,7 @@
 
 <!-- Generato da tools/mappa_fonti_progetto.py; dati autorati in research-vault/anagrafiche-fonti-web.json. -->
 
-Ricognizione del 2026-11-20: 213 identità nei 132 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
+Ricognizione del 2026-11-20: 213 identità nei 139 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
 
 Le chiavi bibliografiche preesistenti restano nel registro canonico del vault. Questa mappa descrive gli usi, non sostituisce la biblioteca. Registrata, letta e verificata sono proprietà distinte: le fonti storiche da riconciliare non diventano lette perché censite. Le letture parziali restano parziali.
 

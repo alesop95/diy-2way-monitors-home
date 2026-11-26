@@ -19,6 +19,8 @@ Controllo API/ALSA/PipeWire e pannello sviluppati e collaudati su file; installa
 
 MS-321 sviluppa il confronto dei dati su file: FRD/OSM, riferimento comune, copertura/griglia/coerenza/direzioni e integrità. Ventisei prove, esempio sintetico con quattro curve entro i limiti e una fuori. La ricerca distingue export della misura, authoring GLL e autorizzazione Focus. Nessuna installazione o acquisizione nuova; PA-014 resta aperta per la scelta e qualifica della catena reale e l’eventuale authoring.
 
+MS-322 aggiunge somma complessa dei driver con filtri e riferimenti espliciti,22 prove e tre casi LR4. Qualità insufficiente degli input blocca il dataset; i due casi negativi conservano outside_bounds anche con integrità verde. Il risultato rimane simulato, non una qualifica del prototipo.
+
 ## Priorità e dipendenze
 
 PENDING-ACTIONS è il solo registro corrente e roadmap-items.yml fornisce i dati della vista generata. I blocchi software sviluppati non vanno riaperti come lavoro mancante a ogni ripresa. Restano scelte esecutive e di spesa, fonti e attività nei progetti competenti. Le otto voci interamente fisiche sono sospese per ADR-055; nessuna scadenza o richiesta automatica di misure.

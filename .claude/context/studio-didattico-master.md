@@ -127,3 +127,13 @@ Com'era e perché era fragile. Formato, salvataggio e qualifica del diffusore er
 Il salto di qualità. Schemi espliciti, fase assente conservata, intervalli originali verificati, byte firmati e due verdetti distinti. La fixture fuori bersaglio produce un pacchetto coerente, senza diventare una prova hardware.
 
 Dove leggere il dettaglio: [refactor-11-dati-e-verdetti.md](refactor-11-dati-e-verdetti.md).
+
+## 12. La somma dei moduli nasconde la cancellazione
+
+Contesto. Collegare i dati importati allo studio del crossover senza attendere nuove misure.
+
+Com'era e perché non bastava. Il confronto dei singoli file conserva la fase ma non costruisce la somma dei driver. Sommare i moduli perde la cancellazione; assegnare fase zero a un nullo inventa una misura.
+
+Il salto di qualità. Somma complessa dopo filtri e parametri espliciti, riferimenti dichiarati, qualità degli input separata e nulli conservati come fase mancante. La mutazione della somma dei moduli viene rilevata; il passaggio al confronto successivo mantiene simulated.
+
+Dove leggere il dettaglio: [refactor-12-la-somma-ha-una-fase.md](refactor-12-la-somma-ha-una-fase.md).

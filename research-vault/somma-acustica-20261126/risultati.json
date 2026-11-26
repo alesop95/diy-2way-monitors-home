@@ -1,0 +1,440 @@
+{
+  "schema": "speaker-complex-sum-demo-1",
+  "hardware_qualified": false,
+  "analytic_checks": {
+    "allineato": {
+      "cutoff_hz": 2000,
+      "expected_magnitude_at_cutoff": 1.0,
+      "computed_magnitude_at_cutoff": 1.0000000000000009,
+      "all_band_unity_error": 7.105427357601002e-15
+    },
+    "invertito": {
+      "cutoff_hz": 2000,
+      "expected_magnitude_at_cutoff": 0.0,
+      "computed_magnitude_at_cutoff": 1.2432609180411955e-15,
+      "all_band_unity_error": null
+    },
+    "ritardo-6-campioni": {
+      "cutoff_hz": 2000,
+      "expected_magnitude_at_cutoff": 0.7071067811865476,
+      "computed_magnitude_at_cutoff": 0.7071067811865486,
+      "all_band_unity_error": null
+    }
+  },
+  "cases": {
+    "allineato": {
+      "schema": "speaker-complex-sum-report-1",
+      "data_kind": "simulated",
+      "input_data_kind": "synthetic",
+      "level_unit": "dB_relative",
+      "samplerate_hz": 48000.0,
+      "direction": {
+        "plane": "axial",
+        "angle_deg": 0.0
+      },
+      "references": {
+        "level": "same_excitation_voltage",
+        "time": "common_time_origin",
+        "observation": "same_direction_and_distance",
+        "drivers": "without_applied_crossover"
+      },
+      "references_status": "declared_not_independently_verified",
+      "filters": {
+        "woofer": {
+          "sos": [
+            [
+              0.01440144034651121,
+              0.02880288069302242,
+              0.01440144034651121,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ],
+            [
+              0.01440144034651121,
+              0.02880288069302242,
+              0.01440144034651121,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ]
+          ],
+          "gain_db": 0.0,
+          "polarity": 1,
+          "delay_ms": 0.0
+        },
+        "tweeter": {
+          "sos": [
+            [
+              0.8308980212742373,
+              -1.6617960425484746,
+              0.8308980212742373,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ],
+            [
+              0.8308980212742373,
+              -1.6617960425484746,
+              0.8308980212742373,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ]
+          ],
+          "gain_db": 0.0,
+          "polarity": 1,
+          "delay_ms": 0.0
+        }
+      },
+      "target": {
+        "minimum_hz": 100.0,
+        "maximum_hz": 10000.0,
+        "reference_db": 0.0,
+        "tolerance_db": 0.5,
+        "max_gap_octaves": 0.08333333333333333,
+        "minimum_coherence": 0.9
+      },
+      "status": "within_bounds",
+      "input_quality": {
+        "woofer": {
+          "status": "within_bounds",
+          "coverage_issues": [],
+          "maximum_deviation_db": 0.0,
+          "worst_frequency_hz": 100.0,
+          "maximum_gap_octaves": 0.036016067467286916,
+          "minimum_coherence": null,
+          "phase_available": true,
+          "declared_valid_band_hz": [
+            50.0,
+            20000.0
+          ],
+          "physical_validity_verified": false,
+          "comparison_scope": "samples_and_interpolated_band_endpoints"
+        },
+        "tweeter": {
+          "status": "within_bounds",
+          "coverage_issues": [],
+          "maximum_deviation_db": 0.0,
+          "worst_frequency_hz": 100.0,
+          "maximum_gap_octaves": 0.036016067467286916,
+          "minimum_coherence": null,
+          "phase_available": true,
+          "declared_valid_band_hz": [
+            50.0,
+            20000.0
+          ],
+          "physical_validity_verified": false,
+          "comparison_scope": "samples_and_interpolated_band_endpoints"
+        }
+      },
+      "analysis": {
+        "status": "within_bounds",
+        "coverage_issues": [],
+        "maximum_deviation_db": 6.171695785941015e-14,
+        "worst_frequency_hz": 197.367399544,
+        "maximum_gap_octaves": 0.036016067467286916,
+        "minimum_coherence": null,
+        "phase_available": true,
+        "declared_valid_band_hz": [
+          50.0,
+          20000.0
+        ],
+        "physical_validity_verified": false,
+        "comparison_scope": "samples_and_interpolated_band_endpoints"
+      },
+      "magnitude_floor_db": -300.0,
+      "phase_cancellation_ratio_threshold": 1e-12,
+      "magnitude_floored_bins": 0,
+      "undefined_phase_bins": 0,
+      "exports_for_characterization": true,
+      "input_sha256": {
+        "manifest.json": "117e5ae9a76b7c8934c594eb8805058afeb2503a2438b2afcd3ed2d7f2f3ae2d",
+        "woofer.frd": "e8b0b6d9f6029cbf74e1350aba44ac6b71ec12f8a2a6139965052df6b4f5e94c",
+        "tweeter.frd": "e8b0b6d9f6029cbf74e1350aba44ac6b71ec12f8a2a6139965052df6b4f5e94c"
+      },
+      "code_sha256": {
+        "somma_acustica.py": "5bd9e1341beb1ae330cad3da85cd08058192a4a0577466e24505cf9116b1d98c",
+        "caratterizzazione.py": "67f0e5008938d232f6f2789a4ed69400636aaaa7f50f437ad6244c54f3a1cf0c"
+      },
+      "numpy_version": "2.2.2",
+      "hardware_qualified": false
+    },
+    "invertito": {
+      "schema": "speaker-complex-sum-report-1",
+      "data_kind": "simulated",
+      "input_data_kind": "synthetic",
+      "level_unit": "dB_relative",
+      "samplerate_hz": 48000.0,
+      "direction": {
+        "plane": "axial",
+        "angle_deg": 0.0
+      },
+      "references": {
+        "level": "same_excitation_voltage",
+        "time": "common_time_origin",
+        "observation": "same_direction_and_distance",
+        "drivers": "without_applied_crossover"
+      },
+      "references_status": "declared_not_independently_verified",
+      "filters": {
+        "woofer": {
+          "sos": [
+            [
+              0.01440144034651121,
+              0.02880288069302242,
+              0.01440144034651121,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ],
+            [
+              0.01440144034651121,
+              0.02880288069302242,
+              0.01440144034651121,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ]
+          ],
+          "gain_db": 0.0,
+          "polarity": 1,
+          "delay_ms": 0.0
+        },
+        "tweeter": {
+          "sos": [
+            [
+              0.8308980212742373,
+              -1.6617960425484746,
+              0.8308980212742373,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ],
+            [
+              0.8308980212742373,
+              -1.6617960425484746,
+              0.8308980212742373,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ]
+          ],
+          "gain_db": 0.0,
+          "polarity": -1,
+          "delay_ms": 0.0
+        }
+      },
+      "target": {
+        "minimum_hz": 100.0,
+        "maximum_hz": 10000.0,
+        "reference_db": 0.0,
+        "tolerance_db": 0.5,
+        "max_gap_octaves": 0.08333333333333333,
+        "minimum_coherence": 0.9
+      },
+      "status": "outside_bounds",
+      "input_quality": {
+        "woofer": {
+          "status": "within_bounds",
+          "coverage_issues": [],
+          "maximum_deviation_db": 0.0,
+          "worst_frequency_hz": 100.0,
+          "maximum_gap_octaves": 0.036016067467286916,
+          "minimum_coherence": null,
+          "phase_available": true,
+          "declared_valid_band_hz": [
+            50.0,
+            20000.0
+          ],
+          "physical_validity_verified": false,
+          "comparison_scope": "samples_and_interpolated_band_endpoints"
+        },
+        "tweeter": {
+          "status": "within_bounds",
+          "coverage_issues": [],
+          "maximum_deviation_db": 0.0,
+          "worst_frequency_hz": 100.0,
+          "maximum_gap_octaves": 0.036016067467286916,
+          "minimum_coherence": null,
+          "phase_available": true,
+          "declared_valid_band_hz": [
+            50.0,
+            20000.0
+          ],
+          "physical_validity_verified": false,
+          "comparison_scope": "samples_and_interpolated_band_endpoints"
+        }
+      },
+      "analysis": {
+        "status": "outside_bounds",
+        "coverage_issues": [],
+        "maximum_deviation_db": 298.1087543640266,
+        "worst_frequency_hz": 2000.0,
+        "maximum_gap_octaves": 0.036016067467286916,
+        "minimum_coherence": null,
+        "phase_available": false,
+        "declared_valid_band_hz": [
+          50.0,
+          20000.0
+        ],
+        "physical_validity_verified": false,
+        "comparison_scope": "samples_and_interpolated_band_endpoints"
+      },
+      "magnitude_floor_db": -300.0,
+      "phase_cancellation_ratio_threshold": 1e-12,
+      "magnitude_floored_bins": 0,
+      "undefined_phase_bins": 1,
+      "exports_for_characterization": true,
+      "input_sha256": {
+        "invertito.json": "0de9a3e5b66dda77f5b74913ec3983b601eefae8659ac0b36bba54d548b3920b",
+        "woofer.frd": "e8b0b6d9f6029cbf74e1350aba44ac6b71ec12f8a2a6139965052df6b4f5e94c",
+        "tweeter.frd": "e8b0b6d9f6029cbf74e1350aba44ac6b71ec12f8a2a6139965052df6b4f5e94c"
+      },
+      "code_sha256": {
+        "somma_acustica.py": "5bd9e1341beb1ae330cad3da85cd08058192a4a0577466e24505cf9116b1d98c",
+        "caratterizzazione.py": "67f0e5008938d232f6f2789a4ed69400636aaaa7f50f437ad6244c54f3a1cf0c"
+      },
+      "numpy_version": "2.2.2",
+      "hardware_qualified": false
+    },
+    "ritardo-6-campioni": {
+      "schema": "speaker-complex-sum-report-1",
+      "data_kind": "simulated",
+      "input_data_kind": "synthetic",
+      "level_unit": "dB_relative",
+      "samplerate_hz": 48000.0,
+      "direction": {
+        "plane": "axial",
+        "angle_deg": 0.0
+      },
+      "references": {
+        "level": "same_excitation_voltage",
+        "time": "common_time_origin",
+        "observation": "same_direction_and_distance",
+        "drivers": "without_applied_crossover"
+      },
+      "references_status": "declared_not_independently_verified",
+      "filters": {
+        "woofer": {
+          "sos": [
+            [
+              0.01440144034651121,
+              0.02880288069302242,
+              0.01440144034651121,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ],
+            [
+              0.01440144034651121,
+              0.02880288069302242,
+              0.01440144034651121,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ]
+          ],
+          "gain_db": 0.0,
+          "polarity": 1,
+          "delay_ms": 0.0
+        },
+        "tweeter": {
+          "sos": [
+            [
+              0.8308980212742373,
+              -1.6617960425484746,
+              0.8308980212742373,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ],
+            [
+              0.8308980212742373,
+              -1.6617960425484746,
+              0.8308980212742373,
+              1.0,
+              -1.6329931618554523,
+              0.6905989232414971
+            ]
+          ],
+          "gain_db": 0.0,
+          "polarity": 1,
+          "delay_ms": 0.125
+        }
+      },
+      "target": {
+        "minimum_hz": 100.0,
+        "maximum_hz": 10000.0,
+        "reference_db": 0.0,
+        "tolerance_db": 0.5,
+        "max_gap_octaves": 0.08333333333333333,
+        "minimum_coherence": 0.9
+      },
+      "status": "outside_bounds",
+      "input_quality": {
+        "woofer": {
+          "status": "within_bounds",
+          "coverage_issues": [],
+          "maximum_deviation_db": 0.0,
+          "worst_frequency_hz": 100.0,
+          "maximum_gap_octaves": 0.036016067467286916,
+          "minimum_coherence": null,
+          "phase_available": true,
+          "declared_valid_band_hz": [
+            50.0,
+            20000.0
+          ],
+          "physical_validity_verified": false,
+          "comparison_scope": "samples_and_interpolated_band_endpoints"
+        },
+        "tweeter": {
+          "status": "within_bounds",
+          "coverage_issues": [],
+          "maximum_deviation_db": 0.0,
+          "worst_frequency_hz": 100.0,
+          "maximum_gap_octaves": 0.036016067467286916,
+          "minimum_coherence": null,
+          "phase_available": true,
+          "declared_valid_band_hz": [
+            50.0,
+            20000.0
+          ],
+          "physical_validity_verified": false,
+          "comparison_scope": "samples_and_interpolated_band_endpoints"
+        }
+      },
+      "analysis": {
+        "status": "outside_bounds",
+        "coverage_issues": [],
+        "maximum_deviation_db": 3.6923294245157727,
+        "worst_frequency_hz": 2395.89114309,
+        "maximum_gap_octaves": 0.036016067467286916,
+        "minimum_coherence": null,
+        "phase_available": true,
+        "declared_valid_band_hz": [
+          50.0,
+          20000.0
+        ],
+        "physical_validity_verified": false,
+        "comparison_scope": "samples_and_interpolated_band_endpoints"
+      },
+      "magnitude_floor_db": -300.0,
+      "phase_cancellation_ratio_threshold": 1e-12,
+      "magnitude_floored_bins": 0,
+      "undefined_phase_bins": 0,
+      "exports_for_characterization": true,
+      "input_sha256": {
+        "ritardo-6-campioni.json": "9c5bc342836b9e5774493cab9dbd99aa5d41023138adc14194f588fe3b14cb77",
+        "woofer.frd": "e8b0b6d9f6029cbf74e1350aba44ac6b71ec12f8a2a6139965052df6b4f5e94c",
+        "tweeter.frd": "e8b0b6d9f6029cbf74e1350aba44ac6b71ec12f8a2a6139965052df6b4f5e94c"
+      },
+      "code_sha256": {
+        "somma_acustica.py": "5bd9e1341beb1ae330cad3da85cd08058192a4a0577466e24505cf9116b1d98c",
+        "caratterizzazione.py": "67f0e5008938d232f6f2789a4ed69400636aaaa7f50f437ad6244c54f3a1cf0c"
+      },
+      "numpy_version": "2.2.2",
+      "hardware_qualified": false
+    }
+  }
+}

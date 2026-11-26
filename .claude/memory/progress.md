@@ -1388,3 +1388,25 @@ Ricerca e correzioni ARTA/GLL consolidate in docs/65,30,70 e PA-014, ancora aper
 Primo gate completo con «Controlli verdi»,41 comandi locali. Ultima verifica dopo la persistenza in chiudi-finale.txt privato, da leggere prima di proporre chiudi. Piano completato, memoria/current-work/ripresa e messaggio preparati sul main19e56b3; due GRC preesistenti esclusi dal perimetro manuale.26 voci roadmap aperte, fisiche sospese, gate pacchetti senza risposta e sicurezza non verificata. Nessun add/commit/push/deploy, installazione o agente parallelo.
 
 File scritti: modulo e suite, dataset/rapporto e topic di ricerca, fonti canoniche e mappa, docs/65/30/70/PENDING/STATO/README/artefatti, recap e manifesto QA, catalogo, piano/roadmap/controlli/STACK/didattica11, .gitattributes, registro operativo, memoria/current-work e ripresa privata. Originali e ricevute precedenti conservati.
+
+
+## 2026-11-26 - Somma dei driver su file avviata, MS-322
+
+**Template:** nessuna nuova lezione; applicati input espliciti e prove analitiche indipendenti.
+
+Chiusura MS-321 verificata nel commit ea70a7b, nuova prosecuzione autorizzata. Piano scritto prima del codice. Il nucleo della somma usa coefficienti digitali espliciti, griglie identiche e fase disponibile; sette prove rosse per modulo assente, poi verdi. La cancellazione fra fasi opposte distingue la somma complessa dalla somma dei moduli; ritardo positivo verificato con fase negativa. Ancora da completare manifesto, qualità degli input, export dei nulli, esempio e gate.
+
+File scritti: piano, somma_acustica.py e test_somma_acustica.py, index/current-work e questo registro, ripresa privata con backup. Nessuna nuova installazione o acquisizione, nessun agente parallelo e nessuna scrittura Git.
+
+
+## 2026-11-26 - Somma acustica su file verificata, MS-322
+
+**Template:** nessuna nuova lezione; applicati snapshot espliciti, ricerca nel catalogo e prove pertinenti. Sette lezioni precedenti aperte.
+
+Completati calcolo, manifesto, qualità input ed export;22 test verdi. LR4 digitale confrontato con il modello continuo alla frequenza bilineare, tre casi su242 frequenze:1/circa0/sqrt(0,5) al taglio. Pacchetti integri da8 file, due casi fuori bersaglio. Il downstream reale mantiene simulated e hardware_qualified falso. Coerenza risultante sconosciuta, riferimenti dichiarati e griglie identiche; input inaffidabili non esportano dataset/FRD. Nei nulli fase vuota, parti complesse preservate e pavimento dichiarato.
+
+Revisione: file riusato dai due rami poteva cambiare fra due letture; prova rossa2!=1, cache per percorso normalizzato, poi verde. Mutazioni di somma dei moduli e doppia lettura rilevate, ciascuna ripristinata alla propria base con SHA identico.25 artefatti precedenti archiviati e riletti prima delle nuove impronte, calcoli invariati. Recap/manifesto precedenti conservati; quattro PDF correnti con QA, tutte le sette pagine del recap viste e sette PNG rimossi con ricevuta. Fonti213/46 curate,139 file/375 usi; catalogo189, didattica12. Nessuna nuova lettura bibliografica, installazione o qualifica fisica.
+
+Primo gate:45 dei46 comandi locali passati, blocco su Test-Allineamento per deployment ancorata prima del contenuto3ce3c93. Scheda riletta per intero contro ricevuta MS-317, unità locale, ADR e runbook; aggiornata soltanto la firma a ea70a7b. Non è un nuovo controllo del runtime. Controllo mirato ora senza invarianti rotti; altre tre ancore non avanzate. Ultimo gate dopo la persistenza in chiudi-finale.txt privato, da leggere prima di proporre la milestone manuale.
+
+File scritti: somma_acustica e suite, dataset/rapporti, docs/66/65/STATO/PENDING/README/artefatti, recap e manifesto QA, catalogo/mappa, piano/roadmap/controlli/STACK/deployment/didattica12, registro operativo, memoria/current-work e ripresa privata. Due GRC preesistenti esclusi. Nessun add/commit/push/deploy, agente parallelo, accesso a J o richiesta fisica. Modelli e kit precedenti ancora coerenti.

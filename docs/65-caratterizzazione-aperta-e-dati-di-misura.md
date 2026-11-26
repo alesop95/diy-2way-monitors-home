@@ -77,3 +77,7 @@ La prima implementazione considerava soltanto i segmenti dopo il taglio agli est
 Un percorso con prefisso punto veniva scritto correttamente dal filesystem ma confrontato con una chiave diversa nel manifesto. La prova ha riprodotto il fallimento del proprio check; i percorsi relativi sono ora normalizzati, senza rendere lecita una risalita o un collegamento esterno. Manifesti con forma errata sono rifiutati prima di generare output.
 
 La mutazione che normalizzava ogni curva alla propria media ha fatto fallire la prova dell'attenuazione fuori asse. Il sorgente è stato ripristinato all'hash precedente. Le altre prove esercitano parsing, fase, coerenza, copertura, direzioni, conservazione del lavoro umano e alterazioni prima del check. Nessuna di esse apre hardware audio.
+
+## Dal singolo file alla somma dei driver
+
+Il [capitolo66](66-somma-acustica-e-crossover-su-file.md) applica coefficienti elettrici espliciti alle due risposte con fase e le somma senza normalizzarle. Richiede griglie identiche e dichiarazioni di riferimento comune; distingue fase indefinita nei nulli e qualità degli input. Il dataset risultante passa a questo confronto soltanto se gli input hanno copertura e qualità numerica sufficienti; rimane simulated e hardware_qualified falso.

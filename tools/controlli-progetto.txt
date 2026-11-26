@@ -43,3 +43,9 @@ test_ricostruzione_sorgenti.py
 
 test_caratterizzazione.py
 caratterizzazione.py --manifest data/caratterizzazione-demo/manifest.json --out build/caratterizzazione-20261126 --check
+
+test_somma_acustica.py
+somma_acustica.py --manifest data/somma-acustica-demo/manifest.json --out build/somma-acustica-20261126/allineato --check
+somma_acustica.py --manifest data/somma-acustica-demo/invertito.json --out build/somma-acustica-20261126/invertito --check
+somma_acustica.py --manifest data/somma-acustica-demo/ritardo-6-campioni.json --out build/somma-acustica-20261126/ritardo-6-campioni --check
+caratterizzazione.py --manifest build/somma-acustica-20261126/allineato/dataset.json --out build/caratterizzazione-somma-20261126 --check

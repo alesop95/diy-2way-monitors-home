@@ -95,6 +95,8 @@ L'obiettivo storico è circa 60 Hz-20 kHz entro ±2 dB al punto di ascolto, anch
 
 Il [capitolo65](65-caratterizzazione-aperta-e-dati-di-misura.md) aggiunge importazione FRD/OSM, conservazione degli input e controllo di livello, banda, griglia, coerenza e direzioni richieste. Ventisei prove e un esempio sintetico distinguono pacchetto integro da bersaglio rispettato: una curva volutamente fuori limite viene rilevata. Non sono misure del diffusore. La ricerca corregge le vecchie affermazioni su ARTA/GLL e gratuità di SpeakerLab; l’eventuale authoring GLL rimane distinto dall’analisi dei dati.
 
+La [somma dei driver dopo il crossover](66-somma-acustica-e-crossover-su-file.md) collega le curve importate a filtri, guadagno, polarità e ritardo espliciti. Ventidue prove e tre casi analitici verificano somma coerente, cancellazione e ritardo; input inaffidabili bloccano il dataset risultante. Il calcolo non modifica il servizio audio e non qualifica il diffusore.
+
 ## Quali prove ingegneristiche esistono
 
 Il confronto LR4 è riproducibile su 8194 frequenze e distingue filtro analogico/digitale, somma complessa, polarità e ritardo. Le formule e i risultati sono nel capitolo 62 e nel PDF LaTeX. I risultati verificano il modello ideale; non sostituiscono la misura dei driver montati sul frontale.
@@ -152,7 +154,7 @@ La documentazione e il codice canonici sono nel repository Windows. Ubuntu conti
 
 I risultati correnti sono in `build/studio-crossover-20261120-v2/`, `build/sistema-autonomo-20261120-v5/` e `build/collaudo-profili-autonomi-20261120-finale-v5/`. I rapporti leggibili sono copiati nei due topic del vault. I tentativi precedenti, anche falliti, sono nel ZIP `_notes/archivio-prove/20261120/prove-superate.zip`, con 340 file e manifesto dei percorsi originali. La rimozione dei soli espansi ha ridotto di circa 190 MiB lordi le copie, conservando la prova delle correzioni.
 
-La mappa registra 213 riferimenti, con 46 schede curate e 167 riferimenti storici ancora da riconciliare. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende undici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
+La mappa registra 213 riferimenti, con 46 schede curate e 167 riferimenti storici ancora da riconciliare. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende dodici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
 
 ## Sviluppo e attività residue
 

@@ -47,3 +47,5 @@ Il [DSP persistente](57-dsp-persistente.md) e il [piano eseguito](58-piano-dsp-p
 Il [completamento del progetto nominale](64-reflex-direttivita-e-cabinet-nominale.md), sviluppato il 25 novembre, aggiunge confronto reflex, direttività ideale, livelli e protezioni, frontali con incassi e rinforzo. Collega il nuovo PDF e il kit FCStd/STEP/DXF verificato; qualifica fisica e rilascio costruttivo restano distinti.
 
 La [caratterizzazione aperta su file](65-caratterizzazione-aperta-e-dati-di-misura.md) aggiunge importazione, confronto e integrità dei dati FRD/OSM, con esempio sintetico riproducibile. Separa i dati di misura dall’eventuale authoring GLL, senza riaprire le prove fisiche.
+
+La [somma complessa dei driver](66-somma-acustica-e-crossover-su-file.md) collega le curve importate a filtro, livello, polarità e ritardo, con esempi LR4 e dataset riutilizzabile nel confronto su file.
