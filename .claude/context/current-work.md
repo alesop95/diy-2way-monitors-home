@@ -11,18 +11,22 @@ last-verified-commit: cf177180ef9f2a3ef325247dd07c973eb544d949
 
 # Lavoro corrente
 
-## Ricostruzione completata, MS-320, 2026-11-26
+## Caratterizzazione su file sviluppata, MS-321, 2026-11-26
 
-Base main dcb5e18 dopo chiusura manuale MS-319. Il nuovo mandato ha fatto esercitare un archivio Git senza vecchi build: rilevati font cercati nel kit ignorato e test del manifesto dipendenti da CAD/PDF precedenti. Piano docs/piani/2026-11-25-ricostruzione-da-sorgenti.md sviluppato: risorse esplicite condivise, fixture autonome di soli byte e prova reale dei generatori da sorgenti copiati. Nessuna nuova installazione o scelta del prodotto.
+Base main19e56b3, MS-320 versionata dal proprietario. Completati i tre task di docs/piani/2026-11-26-caratterizzazione-su-file.md. Nuovo tools/caratterizzazione.py,26 test verdi e dataset analitico versionato. FRD due/tre colonne e OSM1.5.2 quattro colonne, fase/coerenza opzionali, confronto con riferimento comune, copertura e griglia originale, direzioni richieste, snapshot degli input e integrità del pacchetto. Nessuna acquisizione o installazione.
 
-Otto suite con 42 test e nove subtest verdi. Quattro prove della ricostruzione reale e sei della selezione dei font; cinque contratti del kit mantengono alterazioni prima/dopo la firma, sorgente PDF superata e dipendenza CAD cambiata. I collaudi dei formati reali restano distinti dalle fixture. Chiudi in sola verifica con 39 controlli locali verdi; rapporto finale dopo l'ultima scrittura richiamato da memory/index.
+Le prove coprono errori reali della prima versione, percorsi con punto, collegamento esterno reale rifiutato e alterazioni del rapporto/input. Mutazione della normalizzazione rilevata e ripristino SHA verificato. CLI distingue integrità e data_status; hardware_qualified sempre falso. Esempio cinque curve: quattro entro±2dB, verticale+10 fuori di3,29644dB;17 file firmati più manifesto in build/caratterizzazione-20261126, rapporto durevole nel vault. Non sono misure o una previsione fisica.
 
-## Consegna
+Ricerca primaria e procedura docs/65 correggono le premesse ARTA/GLL e gratuità di SpeakerLab. OSM analizzato staticamente nella release identificata; nessun runtime dichiarato. PA-014 rimane aperta per la scelta/qualifica reale e authoring eventuale. Fonti213/46 curate, catalogo184, didattica11. Identità storica VituixCAD preservata nella mappa senza forzare controlli.
 
-Quattro PDF con QA, capitolo64 di sei pagine e cinque figure SVG attuali. Kit locale build/consegna-completamento-20261125.zip: 55 file, 2.444.936 byte verificati. Provenienza in research-vault/completamento-20261125/consegna.json. Fonti205/38, catalogo177, didattica10. Quattordici PNG QA rimossi con ricevuta; artefatti precedenti e archivio dei sorgenti conservati. Le equazioni e i nativi FreeCAD non sono cambiati: restano 108 casi reflex, 27 angolari, 18 elettrici e tre geometrie nominali di MS-319.
+## Verifica e consegna
 
-## Prossimo gesto e residui
+Chiudi in sola verifica con41 comandi locali e «Controlli verdi» al primo passaggio. L'ultima verifica dopo questa scrittura è _notes/caratterizzazione-20261126/chiudi-finale.txt; leggere l'ultima riga prima della consegna manuale. Quattro PDF con QA, recap aggiornato e cinque pagine viste; cinque PNG rimossi con ricevuta. PDF classificati binari in .gitattributes contro il driver globale astextplain, testo invariato.
 
-Il proprietario può versionare la nuova milestone dopo il gate finale, con messaggio e perimetro esatto nel livello privato; due GRC preesistenti esclusi. L'agente non esegue add/commit/push/deploy e non registra l'impronta prima della chiusura manuale. PENDING è l'unico registro del residuo: scelte esecutive/spesa/fonti/template e qualifiche fisiche sospese ADR-055. Il pannello è già installato/verificato; enable al login manuale, nessuna reinstallazione o nuova prova fisica richiesta.
+Modelli di MS-319 e ricostruzione MS-320 conservati:108 reflex/27 angolari/18 elettrici, tre geometrie e sette solidi per variante. Kit nominale55 file/2.444.936 byte ancora coerente, nessuna rigenerazione necessaria. Archivi e ricevute precedenti preservati. Impronta solo dopo commit/push del proprietario.
 
-Gate pacchetti senza risposta, sicurezza senza rapporto, quattro ancore di contesto conservate ai commit effettivamente verificati. Nessun verde implicito. Non ripetere setup, backup o reboot; non riaprire J o altri progetti. Nessun agente parallelo.
+## Prossimo gesto e vincoli
+
+Proporre chiudi per questa milestone solo con gate finale verde. COMMIT-MSG e COMMIT-SCOPE nel livello privato, due GRC preesistenti esclusi; nessun add/commit/push/deploy dall'agente. Un solo albero, nessun agente parallelo. Dopo la consegna non scrivere mentre chiudi viene eseguito.
+
+PENDING è il solo registro del residuo:26 voci aperte. ADR-055 mantiene sospese tutte le verifiche fisiche; non richiedere foto, misure, acquisti o tagli. Scelte esecutive/spesa, fonti e template nei perimetri competenti. Pannello già installato, enable al login manuale; non ripetere setup, backup o reboot e non riaprire J. Gate pacchetti senza risposta, sicurezza senza rapporto, ancore storiche conservate senza verde implicito.

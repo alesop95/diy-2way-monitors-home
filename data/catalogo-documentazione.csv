@@ -12,6 +12,7 @@ Contesto e didattica,.claude/context/refactor-07-fonti-lezioni-e-prove-conservat
 Contesto e didattica,.claude/context/refactor-08-controllo-ascolto.md,E:\diy-2way-monitors-home\.claude\context\refactor-08-controllo-ascolto.md
 Contesto e didattica,.claude/context/refactor-09-fase-volume-e-consegna.md,E:\diy-2way-monitors-home\.claude\context\refactor-09-fase-volume-e-consegna.md
 Contesto e didattica,.claude/context/refactor-10-sorgenti-e-risorse.md,E:\diy-2way-monitors-home\.claude\context\refactor-10-sorgenti-e-risorse.md
+Contesto e didattica,.claude/context/refactor-11-dati-e-verdetti.md,E:\diy-2way-monitors-home\.claude\context\refactor-11-dati-e-verdetti.md
 Contesto e didattica,.claude/context/roadmap.md,E:\diy-2way-monitors-home\.claude\context\roadmap.md
 Contesto e didattica,.claude/context/studio-didattico-master.md,E:\diy-2way-monitors-home\.claude\context\studio-didattico-master.md
 Memoria e lezioni,.claude/memory/decisions.md,E:\diy-2way-monitors-home\.claude\memory\decisions.md
@@ -64,6 +65,7 @@ Documentazione tecnica e procedure,docs/61-camilladsp-manuale-tecnico.md,E:\diy-
 Documentazione tecnica e procedure,docs/62-confronto-crossover-e-verifica-matematica.md,E:\diy-2way-monitors-home\docs\62-confronto-crossover-e-verifica-matematica.md
 Documentazione tecnica e procedure,docs/63-sistema-autonomo-driver-e-collaudo.md,E:\diy-2way-monitors-home\docs\63-sistema-autonomo-driver-e-collaudo.md
 Documentazione tecnica e procedure,docs/64-reflex-direttivita-e-cabinet-nominale.md,E:\diy-2way-monitors-home\docs\64-reflex-direttivita-e-cabinet-nominale.md
+Documentazione tecnica e procedure,docs/65-caratterizzazione-aperta-e-dati-di-misura.md,E:\diy-2way-monitors-home\docs\65-caratterizzazione-aperta-e-dati-di-misura.md
 Documentazione tecnica e procedure,docs/70-realizzazione-e-verifica.md,E:\diy-2way-monitors-home\docs\70-realizzazione-e-verifica.md
 Documentazione tecnica e procedure,docs/75-catena-di-riproduzione.md,E:\diy-2way-monitors-home\docs\75-catena-di-riproduzione.md
 Documentazione tecnica e procedure,docs/80-strumenti-posseduti/README.md,E:\diy-2way-monitors-home\docs\80-strumenti-posseduti\README.md
@@ -104,6 +106,7 @@ Documentazione tecnica e procedure,docs/piani/2026-11-20-fonti-lezioni-e-riordin
 Documentazione tecnica e procedure,docs/piani/2026-11-23-controllo-ascolto.md,E:\diy-2way-monitors-home\docs\piani\2026-11-23-controllo-ascolto.md
 Documentazione tecnica e procedure,docs/piani/2026-11-25-reflex-direttivita-cad.md,E:\diy-2way-monitors-home\docs\piani\2026-11-25-reflex-direttivita-cad.md
 Documentazione tecnica e procedure,docs/piani/2026-11-25-ricostruzione-da-sorgenti.md,E:\diy-2way-monitors-home\docs\piani\2026-11-25-ricostruzione-da-sorgenti.md
+Documentazione tecnica e procedure,docs/piani/2026-11-26-caratterizzazione-su-file.md,E:\diy-2way-monitors-home\docs\piani\2026-11-26-caratterizzazione-su-file.md
 Documentazione tecnica e procedure,docs/separazione-ambienti/FONTI.md,E:\diy-2way-monitors-home\docs\separazione-ambienti\FONTI.md
 Documentazione tecnica e procedure,docs/separazione-ambienti/GUIDA.md,E:\diy-2way-monitors-home\docs\separazione-ambienti\GUIDA.md
 Wiki e conoscenza,knowledge/WIKI-SCHEMA.md,E:\diy-2way-monitors-home\knowledge\WIKI-SCHEMA.md
@@ -123,6 +126,10 @@ Wiki e conoscenza,knowledge/log.md,E:\diy-2way-monitors-home\knowledge\log.md
 "Fonti, bibliografia e ricerca",research-vault/09-Biblioteca-tassonomia.md,E:\diy-2way-monitors-home\research-vault\09-Biblioteca-tassonomia.md
 "Fonti, bibliografia e ricerca",research-vault/10-Piano-digestione-MAIN.md,E:\diy-2way-monitors-home\research-vault\10-Piano-digestione-MAIN.md
 "Fonti, bibliografia e ricerca",research-vault/anagrafiche-fonti-web.json,E:\diy-2way-monitors-home\research-vault\anagrafiche-fonti-web.json
+"Fonti, bibliografia e ricerca",research-vault/caratterizzazione-aperta-20261126/brief.md,E:\diy-2way-monitors-home\research-vault\caratterizzazione-aperta-20261126\brief.md
+"Fonti, bibliografia e ricerca",research-vault/caratterizzazione-aperta-20261126/risultati-esempio.json,E:\diy-2way-monitors-home\research-vault\caratterizzazione-aperta-20261126\risultati-esempio.json
+"Fonti, bibliografia e ricerca",research-vault/caratterizzazione-aperta-20261126/scope.md,E:\diy-2way-monitors-home\research-vault\caratterizzazione-aperta-20261126\scope.md
+"Fonti, bibliografia e ricerca",research-vault/caratterizzazione-aperta-20261126/sources.md,E:\diy-2way-monitors-home\research-vault\caratterizzazione-aperta-20261126\sources.md
 "Fonti, bibliografia e ricerca",research-vault/completamento-20261125/consegna.json,E:\diy-2way-monitors-home\research-vault\completamento-20261125\consegna.json
 "Fonti, bibliografia e ricerca",research-vault/completamento-20261125/risultati.json,E:\diy-2way-monitors-home\research-vault\completamento-20261125\risultati.json
 "Fonti, bibliografia e ricerca",research-vault/crossover-pc-pi-analogico/brief.md,E:\diy-2way-monitors-home\research-vault\crossover-pc-pi-analogico\brief.md

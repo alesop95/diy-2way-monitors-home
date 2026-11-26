@@ -76,9 +76,9 @@ voci:
   - id: 8
     livello: 2
     dove: questo repository
-    titolo: PA-014, la via verso il GLL dei monitor
-    stato: ARTA in modalità dimostrativa non salva, quindi non produce un GLL; la voce si sblocca quando il progetto arriva alla caratterizzazione del prototipo.
-    passo: Per direttiva dell'utente del 2026-09-16, cercare un sostituto gratuito e open source; la licenza resta l'ultima risorsa.
+    titolo: PA-014, dati di caratterizzazione aperti e via GLL
+    stato: "Ricerca primaria e pipeline di confronto su file sviluppate, MS-321. ARTA/export, authoring SpeakerLab e autorizzazione Focus sono passaggi distinti; nessun GLL libero garantito."
+    passo: "Dati aperti già elaborabili e verificabili; scegliere e qualificare l’acquisizione sul prototipo soltanto alla riapertura delle verifiche. Nessun acquisto o installazione adesso."
     fonte: "docs/PENDING-ACTIONS.md"
 
   - id: 9

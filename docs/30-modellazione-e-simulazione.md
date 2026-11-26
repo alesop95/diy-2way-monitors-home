@@ -60,11 +60,11 @@ La conclusione operativa è che Pachyderm resta annotato come alternativa non pr
 
 Il progetto ha sul disco un corredo notevole di software AFMG, con tre versioni di EASE Focus e un database di GLL molto ampio, e questo ha generato nel documento sorgente una lunga esplorazione. Vale ridurla a ciò che serve, perché il rischio è usare uno strumento per un compito che non è il suo.
 
-EASE SpeakerLab, gratuito, serve a creare il modello acustico di un singolo altoparlante, cioè a produrre un file `.gll` o `.spk` partendo da misure o specifiche, definendo geometria, risposta in frequenza, direttività e fase. Non simula un impianto né una stanza. Nel workflow di questo progetto il suo posto naturale è a valle della costruzione: una volta misurato il monitor autocostruito, SpeakerLab è lo strumento con cui trasformare quelle misure in un GLL utilizzabile dagli altri programmi della famiglia.
+Rettifica del 26 novembre 2026: [AFMG presenta SpeakerLab](https://www.afmg.eu/en/ease-speakerlab) come authoring GLL con licenza commerciale. Importare le misure e costruire il modello sono passaggi distinti. La precedente attribuzione di gratuità è ritirata; la via dei dati aperti è sviluppata nella [caratterizzazione su file](65-caratterizzazione-aperta-e-dati-di-misura.md).
 
 EASE Address 2.1 è escluso. Calcola la copertura di colonne di altoparlanti in ambienti semplici, lavora solo in due dimensioni sulla vista laterale, e non gestisce geometrie complesse né riflessioni multiple. Per una stanza domestica irregolare con soffitto spiovente non è lo strumento.
 
-EASE Focus 3 simula sistemi di diffusione in due e tre dimensioni usando i GLL, e dà mappe di copertura SPL e il livello in punti specifici. Il suo limite è dichiarato: calcola il campo diretto, non il riverbero realistico né la propagazione complessa in ambienti generici. È gratuito e la licenza è inclusa.
+EASE Focus 3 simula sistemi di diffusione in due e tre dimensioni usando i GLL, e dà mappe di copertura SPL e il livello in punti specifici. Il suo limite è dichiarato: calcola il campo diretto, non il riverbero realistico né la propagazione complessa in ambienti generici. È gratuito per l’utilizzatore, ma il modello da caricare deve essere [autorizzato per Focus](https://www.afmg.eu/en/we-are-loudspeaker-manufacturer-can-we-get-installer-ease-focus-only-our-own-glls-it).
 
 EASE JR è la versione a pagamento di fascia bassa della famiglia completa, e fa quello che Focus non fa: definisce la geometria della stanza in tre dimensioni, assegna coefficienti di assorbimento diversi a pareti, soffitto e arredi, calcola riflessioni multiple e tempi di riverberazione, e mostra la distribuzione del suono in campo diretto e riverberato. Il suo limite, cioè il numero ridotto di sorgenti, è irrilevante quando le sorgenti sono due monitor.
 
@@ -92,7 +92,7 @@ La conclusione è installare la 3.1.260 e ignorare le altre due. Le ragioni sono
 
 ## Il vincolo dei GLL per un diffusore autocostruito
 
-C'è un limite strutturale nell'uso della famiglia EASE in un progetto DIY, e va detto prima di investirvi tempo. Un GLL è il modello acustico di un diffusore specifico, fornito e licenziato dal costruttore. Un monitor autocostruito non ha un GLL ufficiale, quindi si può soltanto approssimarlo con il GLL di un modello commerciale simile in risposta e dispersione, oppure crearne uno partendo da misure reali con EASE SpeakerLab o con software di misura come ARTA.
+C'è un limite strutturale nell'uso della famiglia EASE in un progetto DIY, e va detto prima di investirvi tempo. Un GLL è il modello acustico di un diffusore specifico, fornito e licenziato dal costruttore. Un monitor autocostruito richiede dati propri. Il GLL di un prodotto simile non lo qualifica; l’eventuale authoring con SpeakerLab e la relativa autorizzazione sono distinti dagli export del programma di misura. Nel frattempo i file numerici permettono il confronto documentato nel capitolo65.
 
 Questo significa che, finché i monitor non sono costruiti e misurati, ogni simulazione fatta in EASE Focus su un GLL di un altro diffusore è un esercizio di approssimazione, utile per capire l'ordine di grandezza degli effetti ma non per progettare. La progettazione vera passa da VituixCAD e Akabak, che lavorano sui parametri dei driver invece che su un modello preconfezionato del diffusore finito.
 

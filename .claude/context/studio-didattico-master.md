@@ -117,3 +117,13 @@ Com'era e perché era fragile. La prova cambiava la destinazione dei grafici, la
 Il salto di qualità. Font come input dichiarato, contratti del manifesto con fixture autonome e processi reali in una copia senza i vecchi build. I controlli sulle alterazioni restano obbligatori; le fixture non sostituiscono il collaudo nativo dei CAD.
 
 Dove leggere il dettaglio: [refactor-10-sorgenti-e-risorse.md](refactor-10-sorgenti-e-risorse.md).
+
+## 11. Il file valido e il risultato che non rispetta il bersaglio
+
+Contesto. Preparare il confronto con dati di caratterizzazione senza attendere authoring GLL o misure fisiche.
+
+Com'era e perché era fragile. Formato, salvataggio e qualifica del diffusore erano mescolati. La prima implementazione poteva inoltre nascondere una lacuna ai bordi della banda o perdere il riferimento comune fra direzioni.
+
+Il salto di qualità. Schemi espliciti, fase assente conservata, intervalli originali verificati, byte firmati e due verdetti distinti. La fixture fuori bersaglio produce un pacchetto coerente, senza diventare una prova hardware.
+
+Dove leggere il dettaglio: [refactor-11-dati-e-verdetti.md](refactor-11-dati-e-verdetti.md).

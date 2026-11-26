@@ -29,10 +29,11 @@ Questo è il riepilogo operativo unico; le voci storiche sotto conservano apertu
 |---|---|---|
 | Basso e driver | HP35/LT e banco file, più 108 casi reflex con fase/condotto, 27 scenari angolari ideali e 18 elettrici in docs/64; prove su casi analitici indipendenti. | Scelta esecutiva e qualifica dei modelli sui driver montati e nella stanza sospese. |
 | DSP e autonomia, PA-041 | API WebSocket reale, observer ALSA/clock, grafo PC attestato, pannello e watchdog; 46 test e banco reale. Pannello installato manualmente e verificato in esercizio il 23 novembre. | Abilitazione manuale dell'avvio al login, ancora disabled alla prova; qualifica fisica di identità, jack, clock e volume PC/Pi sospesa. Nessuna reinstallazione richiesta. |
+| Caratterizzazione, PA-014 | Ricerca primaria istruita, importatore FRD/OSM e confronto su file con 26 prove; esempio sintetico con un caso fuori bersaglio rilevato. | Scelta e qualifica della catena di acquisizione reali differite; authoring GLL e autorizzazione Focus separati dai dati aperti. |
 | CAD e costruzione, PA-037 | Tre assiemi nominali con tagli/incassi, centri di montaggio, rinforzo e distinta per coppia; FCStd/STEP/DXF riaperti e verificati. | Fissaggi, giunzioni di lavorazione, tolleranze, cablaggi e distinta esecutiva dopo i componenti definitivi; tagli e appoggi reali sospesi. |
 | Spesa, PA-012/024 | Catena candidata e budget datato con quantità, ipotesi ed esclusioni. | Stock/preventivi aggiornati, ottimizzazione finale e scelta d'acquisto; nessun ordine adesso. |
 | Combo, PA-038/039 | Manuali acquisiti, schede e protocolli, EKO 30 W identificato documentalmente come XB30. | Schemi delle revisioni; diagnosi, speaker montato e misure sospesi. |
-| Fonti, PA-025/027 | Pedigree di 205 risorse, 38 schede curate; bibliografia e archivio esistenti preservati. | Riconciliare 167 riferimenti storici e proseguire le letture per i temi utili, senza chiamare letta l'intera biblioteca. |
+| Fonti, PA-025/027 | Pedigree di 213 risorse, 46 schede curate; bibliografia e archivio esistenti preservati. | Riconciliare 167 riferimenti storici e proseguire le letture per i temi utili, senza chiamare letta l'intera biblioteca. |
 | Versionamento, PA-003/042 | Documenti correnti anonimizzati e sette lezioni locali disponibili. | Valutazione manuale della storia Git e ricezione delle lezioni/consegne nel template; nessuna riscrittura automatica. |
 
 ## Come si legge una voce
@@ -356,7 +357,9 @@ Il primo comando non è decorativo: riverifica che il materiale sulla macchina c
 
 ## PA-014 - Decidere la via verso il GLL del monitor, dato che ARTA in modalità dimostrativa non salva
 
-Data di apertura: 2026-09-15. Stato: aperta.
+Data di apertura: 2026-09-15. Stato: aperta; ricerca e analisi su file sviluppate il 2026-11-26, MS-321.
+
+Rettifica corrente: [ricerca e procedura](65-caratterizzazione-aperta-e-dati-di-misura.md) distinguono misura e authoring. Le fonti ufficiali non sostengono la precedente equivalenza fra salvataggio ARTA e creazione GLL, né la gratuità di SpeakerLab. La pipeline locale usa dati aperti senza attendere un GLL. Restano da scegliere e qualificare gli strumenti sull’hardware quando le verifiche saranno riaperte; nessuna licenza da acquistare ora. I paragrafi seguenti conservano il ragionamento storico che ha aperto la voce, superato su questi punti.
 
 Che cosa va fatto. Decidere come si produrrà il file GLL del monitor autocostruito, sapendo che la via attribuita finora a questo compito non è percorribile senza spesa.
 

@@ -1364,3 +1364,27 @@ Artefatti precedenti archiviati e verificati prima dell'aggiornamento. Quattro P
 Primo gate completo dopo le correzioni: «Controlli verdi», 39 comandi locali. La nuova persistenza richiede l'ultima ripetizione prima di proporre chiudi, rapporto chiudi-ms320-finale.txt nel livello privato. Nessuna esclusione nuova, nessuna modifica al template o al runtime audio. I due GRC preesistenti restano fuori dal perimetro; commit/push/deploy manuali, impronta soltanto dopo la chiusura dell'utente. Piano, indice, current-work e ripresa consolidati sulla base dcb5e18; roadmap ancora26 voci aperte, fisiche sospese e gate senza risposta.
 
 File scritti e riletti: font_intrawelt e prove, test di ricostruzione, generatori di grafici/tavole, kit e contratti, cinque figure, capitolo64/LaTeX/PDF/manifesti, STATO/PENDING/artefatti/catalogo/fonti, piano/controlli/STACK e didattica10, registro operativo, memoria/current-work e ripresa. Non è stata introdotta una nuova richiesta fisica.
+
+
+## 2026-11-26 - Via aperta e caratterizzazione su file in sviluppo, MS-321
+
+**Template:** nessuna nuova lezione; riusati ricerca tracciabile, prove che misurano e input espliciti.
+
+Chiusura MS-320 acquisita nel commit19e56b3 e richiesta di continuazione ricevuta. PA-014 contieneva una premessa non sostenuta: salvare dati con ARTA non produce automaticamente un GLL. AFMG documenta SpeakerLab con licenza commerciale e autorizzazioni dei modelli per Focus. Ricerca mirata su manuali ufficiali e repository: OSM1.5.2 GPL3 fissato al commit1e08de2, MATAA al5fd77c0, VituixCAD2.0.135.2 e ARTA1.9.8. OSM EULA2026 non va estesa retroattivamente alla release GPL. Nei sorgenti OSM gli export hanno quattro colonne e usano la fase memorizzata; è un rilievo statico, non una prova dell'app.
+
+Implementato il confronto locale dei file con24 test verdi. Due difetti della prima implementazione sono stati riprodotti con prove rosse: griglie ampie che attraversano i bordi della banda risultavano nascoste dal taglio agli estremi, e percorsi con prefisso punto non superavano il proprio check. Corretto il controllo sugli intervalli originali che intersecano la banda e normalizzati soltanto i percorsi relativi. Manifesti con forma errata sono rifiutati; snapshot dei byte firmato e conservato. Collegamento reale fuori dataset rifiutato. Nessuna fase inventata, estrapolazione, per-curva normalizzazione o qualifica hardware. Ancora da completare esempio sintetico, integrazione documentale e gate.
+
+File scritti: piano, scope/sources/brief del nuovo topic, otto schede tecniche nel registro canonico, modulo e suite, index/current-work e questo registro. Prove grezze HTTPS nel livello privato; niente nuovi accessi a J, installazioni, hardware, scritture Git o altri agenti.
+
+
+## 2026-11-26 - Caratterizzazione su file verificata, MS-321
+
+**Template:** nessuna nuova lezione; applicati i presidi esistenti su ricerca, identità delle fonti e prove. Sette lezioni precedenti aperte.
+
+Completati importatore/evaluatore,26 test ed esempio analitico di cinque curve. Quattro entro±2dB, verticale+10 fuori di3,29644dB;17 file firmati più manifesto e rapporto durevole nel vault. La mutazione del riferimento comune è rilevata; ripristino del sorgente verificato per SHA. CLI separa integrità e risultato sui dati, hardware_qualified falso anche con etichetta measured. Nessuna acquisizione o qualifica fisica.
+
+Ricerca e correzioni ARTA/GLL consolidate in docs/65,30,70 e PA-014, ancora aperta per scelte/qualifiche future. Fonte VituixCAD aggiornata mantenendo l'ID storico dopo il rifiuto della guardia strutturale: nessuna forzatura. Mappa213 fonti/46 curate/167 storiche,132 file e375 usi; catalogo184, didattica11. Recap rigenerato, pagine1/4/5/6/7 viste e QA confermato; cinque PNG rimossi con ricevuta. Gli altri tre PDF e il kit nominale55 file sono coerenti. Il driver globale Git astextplain trattava il PDF come testo: aggiunta classificazione binaria in .gitattributes, hash PDF e controllo documenti invariati.
+
+Primo gate completo con «Controlli verdi»,41 comandi locali. Ultima verifica dopo la persistenza in chiudi-finale.txt privato, da leggere prima di proporre chiudi. Piano completato, memoria/current-work/ripresa e messaggio preparati sul main19e56b3; due GRC preesistenti esclusi dal perimetro manuale.26 voci roadmap aperte, fisiche sospese, gate pacchetti senza risposta e sicurezza non verificata. Nessun add/commit/push/deploy, installazione o agente parallelo.
+
+File scritti: modulo e suite, dataset/rapporto e topic di ricerca, fonti canoniche e mappa, docs/65/30/70/PENDING/STATO/README/artefatti, recap e manifesto QA, catalogo, piano/roadmap/controlli/STACK/didattica11, .gitattributes, registro operativo, memoria/current-work e ripresa privata. Originali e ricevute precedenti conservati.

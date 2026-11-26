@@ -2,7 +2,7 @@
 
 <!-- Generato da tools/mappa_fonti_progetto.py; dati autorati in research-vault/anagrafiche-fonti-web.json. -->
 
-Ricognizione del 2026-11-20: 205 identità nei 127 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
+Ricognizione del 2026-11-20: 213 identità nei 132 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
 
 Le chiavi bibliografiche preesistenti restano nel registro canonico del vault. Questa mappa descrive gli usi, non sostituisce la biblioteca. Registrata, letta e verificata sono proprietà distinte: le fonti storiche da riconciliare non diventano lette perché censite. Le letture parziali restano parziali.
 
@@ -95,7 +95,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-79A463AFA89BAA4B](#src-79a463afa89baa4b) | cdimage.ubuntu.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-79F5C548C88F30A7](#src-79f5c548c88f30a7) | www.audiophonics.fr | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-7C73408D22C56636](#src-7c73408d22c56636) | www.ti.com | riferimento_storico_da_classificare | da_verificare | 2 |
-| [SRC-7E426029EF155B01](#src-7e426029ef155b01) | kimmosaunisto.net | riferimento_storico_da_classificare | da_verificare | 3 |
+| [SRC-7E426029EF155B01](#src-7e426029ef155b01) | VituixCAD User Manual | documentazione_tecnica_primaria | verificata | 4 |
 | [SRC-8240722BE55E9CFD](#src-8240722be55e9cfd) | sourceforge.net | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-82ADECD798F05650](#src-82adecd798f05650) | cdimage.ubuntu.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-877C355DF7546769](#src-877c355df7546769) | manuale ufficiale Fender | riferimento_storico_da_classificare | da_verificare | 2 |
@@ -112,6 +112,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-952FCEDADA52AA79](#src-952fcedada52aa79) | repository.veeam.com | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-972D80111CA59782](#src-972d80111ca59782) | www.arturia.com | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-983E67E12E67A54B](#src-983e67e12e67a54b) | git.rwth-aachen.de | riferimento_storico_da_classificare | da_verificare | 1 |
+| [SRC-9BDAEFC5CBA14E9E](#src-9bdaefc5cba14e9e) | MATAA | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-9C012B68265F1833](#src-9c012b68265f1833) | www.ibselectronics.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-9D9182A3A0398CE5](#src-9d9182a3a0398ce5) | documentazione Ubuntu su AppArmor | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-9E659D20A390D730](#src-9e659d20a390d730) | www.thomann.it | riferimento_storico_da_classificare | da_verificare | 2 |
@@ -128,7 +129,10 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-AD2D5898AF4727CC](#src-ad2d5898af4727cc) | crystalmark.info | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-ADF730F89F23D89F](#src-adf730f89f23d89f) | github.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-AES-CROSSOVER-REVIEW-2023](#src-aes-crossover-review-2023) | Crossover Networks: A Review | articolo_review | verificata | 1 |
+| [SRC-AFMG-FOCUS-GLL-AUTH](#src-afmg-focus-gll-auth) | Installer EASE Focus e autorizzazione dei propri GLL | documentazione_tecnica_primaria | verificata | 2 |
+| [SRC-AFMG-SPEAKERLAB-20261126](#src-afmg-speakerlab-20261126) | EASE SpeakerLab | documentazione_tecnica_primaria | verificata | 2 |
 | [SRC-ALSAUTILS-AMIXER-1-2-14](#src-alsautils-amixer-1-2-14) | amixer manual | documentazione_software_primaria | verificata | 2 |
+| [SRC-ARTA-MANUAL-198](#src-arta-manual-198) | ARTA User Manual | documentazione_tecnica_primaria | verificata | 1 |
 | [SRC-B1FDA5FE1237A13C](#src-b1fda5fe1237a13c) | P2725D | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-B400D53E237410BD](#src-b400d53e237410bd) | www.audiophonics.fr | riferimento_storico_da_classificare | da_verificare | 2 |
 | [SRC-B49C7AAB4C624C7F](#src-b49c7aab4c624c7f) | www.randteam.de | riferimento_storico_da_classificare | da_verificare | 1 |
@@ -195,6 +199,10 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-KERNEL-USB-ABI-7](#src-kernel-usb-abi-7) | USB stable sysfs ABI | documentazione_software_primaria | verificata | 2 |
 | [SRC-KERNEL-USB-SYSFS-7](#src-kernel-usb-sysfs-7) | USB sysfs attributes | documentazione_software_primaria | verificata | 2 |
 | [SRC-MARSHALL-MG10MG15-USER-PDF](#src-marshall-mg10mg15-user-pdf) | MG10 & MG15 Owners Manual | manuale_locale_fornito | verificata | 2 |
+| [SRC-MATAA-README-5FD77C0](#src-mataa-readme-5fd77c0) | MATAA README | documentazione_tecnica_primaria | verificata | 0 |
+| [SRC-OSM-152-EXPORT](#src-osm-152-export) | Stored export functions | documentazione_tecnica_primaria | verificata | 1 |
+| [SRC-OSM-152-RELEASE](#src-osm-152-release) | Open Sound Meter v1.5.2 | documentazione_tecnica_primaria | verificata | 1 |
+| [SRC-OSM-EULA-20260925](#src-osm-eula-20260925) | Terms and Conditions and EULA | documentazione_tecnica_primaria | verificata | 1 |
 | [SRC-PI-CONFIGURATION](#src-pi-configuration) | Raspberry Pi Configuration documentation | documentazione_primaria | verificata | 3 |
 | [SRC-PI4-PRODUCT](#src-pi4-product) | Raspberry Pi 4 Model B | scheda_prodotto | verificata | 2 |
 | [SRC-PIPEWIRE-PW-LINK](#src-pipewire-pw-link) | pw-link | documentazione_software_primaria | verificata | 2 |
@@ -1823,7 +1831,7 @@ Uso in [docs/OPERATIONS-LOG.md](../../docs/OPERATIONS-LOG.md), sezione «MS-195 
 
 Contesto locale: *La prova.* L'utente ha aperto nel browser `https://aes.org/publications/elibrary-page/?id=2173` e la pagina mostra Thiele, *Loudspeakers in Vented Boxes: Part 1*. È la prima verifica di un formato AES fatta vedendo la pagina aprirsi con il titolo, come richiede la regola di MS-194. Tutti i collegamenti `https://www.ae
 
-Uso in [docs/PENDING-ACTIONS.md](../../docs/PENDING-ACTIONS.md), sezione «PA-025 - Scaricare i PDF delle fonti selezionate per la tesi», riga 649.
+Uso in [docs/PENDING-ACTIONS.md](../../docs/PENDING-ACTIONS.md), sezione «PA-025 - Scaricare i PDF delle fonti selezionate per la tesi», riga 652.
 
 Contesto locale: Data di apertura: 2026-10-02, da MS-186 e MS-188. Stato: aperta, dipende da un'azione dell'utente. Al 2026-10-05 sono scaricati e registrati otto lavori: i sette non AES con MS-194 e Leach dalla copia dell'autore con MS-195. Restano 20 lavori AES. Il formato `https://aes.org/publications/elibrary-page/?id=N` è provato 
 
@@ -1939,15 +1947,21 @@ Contesto locale: - `https://www.ti.com/product/TPA3255` (pagina del chip, letta 
 
 ## SRC-7E426029EF155B01
 
-kimmosaunisto.net
+VituixCAD User Manual
 
-Riferimento rilevato nei documenti sotto elencati; titolo e funzione derivano dal contesto locale, non da una nuova lettura web.
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
 
 Fonte canonica: [https://kimmosaunisto.net/Software/VituixCAD/VituixCAD_help_20.html](https://kimmosaunisto.net/Software/VituixCAD/VituixCAD_help_20.html).
 
-Verifica: da_verificare, data non riconciliata. La ricognizione non promuove i riscontri storici a verifiche correnti.
+Responsabile: Kimmo Saunisto.
 
-Lettura: da_riconciliare. Consultare i microstep e la scheda della fonte per le eventuali letture precedenti.
+Versione: 2.0.135.2, 25 aprile 2026.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura. Identificativo storico conservato per lo stesso URL, senza perdere i rimandi precedenti.
+
+Lettura: parziale. Supported response file types e Convert IR to FR: delimitatori e tre colonne FRD; non lettura dell’intero manuale.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
 
 Uso in [docs/52-crossover-passivo-o-attivo.md](../../docs/52-crossover-passivo-o-attivo.md), sezione «Fonti», riga 61.
 
@@ -1960,6 +1974,10 @@ Contesto locale: Un cabinet attivo a due vie chiede due canali di amplificazione
 Uso in [docs/54-amplificazione-e-dsp.md](../../docs/54-amplificazione-e-dsp.md), sezione «Fonti lette», riga 243.
 
 Contesto locale: - `https://kimmosaunisto.net/Software/VituixCAD/VituixCAD_help_20.html` (manuale di VituixCAD, letto il 2026-10-06)
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Formati ammessi e fase», riga 23.
+
+Contesto locale: Il manuale VituixCAD 2.0.135.2 documenta il FRD a tre colonne. L'export canonico del modulo segue quella struttura quando la fase esiste. Senza fase produce soltanto il CSV di analisi, lasciando il campo vuoto: zero gradi sarebbe un dato diverso. Il
 
 
 ## SRC-8240722BE55E9CFD
@@ -2262,6 +2280,23 @@ Uso in [docs/90-riferimenti/fonti.md](../../docs/90-riferimenti/fonti.md), sezio
 Contesto locale: ITA-Toolbox dell'Istituto di Acustica Tecnica della RWTH di Aachen: `https://git.rwth-aachen.de/ita/toolbox`
 
 
+## SRC-9BDAEFC5CBA14E9E
+
+MATAA
+
+Riferimento rilevato nei documenti sotto elencati; titolo e funzione derivano dal contesto locale, non da una nuova lettura web.
+
+Fonte canonica: [https://github.com/mbrennwa/mataa](https://github.com/mbrennwa/mataa).
+
+Verifica: da_verificare, data non riconciliata. La ricognizione non promuove i riscontri storici a verifiche correnti.
+
+Lettura: da_riconciliare. Consultare i microstep e la scheda della fonte per le eventuali letture precedenti.
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Misura, file di confronto e modello GLL», riga 9.
+
+Contesto locale: Il manuale ARTA 1.9.8, sezione 9.16, documenta export testuali. Qui si usa questa possibilità come punto di ingresso, senza attribuire ad ARTA un exporter GLL non dimostrato. GNU Octave e MATAA restano una strada libera previs
+
+
 ## SRC-9C012B68265F1833
 
 www.ibselectronics.com
@@ -2558,6 +2593,60 @@ Uso in [research-vault/crossover-pc-pi-analogico/sources.md](../../research-vaul
 Contesto locale: / S7 / S. Cecchi, V. Bruschi, S. Nobili, A. Terenzi, V. Välimäki, Crossover Networks: A Review, JAES 71(9), 526-551, settembre 2023, DOI 10.17743/jaes.2022.0100 / PDF letto parzialmente: abstract, requisiti/formalismo
 
 
+## SRC-AFMG-FOCUS-GLL-AUTH
+
+Installer EASE Focus e autorizzazione dei propri GLL
+
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
+
+Fonte canonica: [https://www.afmg.eu/en/we-are-loudspeaker-manufacturer-can-we-get-installer-ease-focus-only-our-own-glls-it](https://www.afmg.eu/en/we-are-loudspeaker-manufacturer-can-we-get-installer-ease-focus-only-our-own-glls-it).
+
+Responsabile: AFMG.
+
+Versione: Pagina consultata il 2026-11-26.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura.
+
+Lettura: parziale. Note sul GLL autorizzato e autorizzazione per modello; non vengono testate chiavi o licenze.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
+
+Uso in [docs/30-modellazione-e-simulazione.md](../../docs/30-modellazione-e-simulazione.md), sezione «La famiglia EASE, e a che cosa serve davvero», riga 67.
+
+Contesto locale: EASE Focus 3 simula sistemi di diffusione in due e tre dimensioni usando i GLL, e dà mappe di copertura SPL e il livello in punti specifici. Il suo limite è dichiarato: calcola il campo diretto, non il riverbero realistico né la propagazione complessa in ambienti generici. È gratuito per l’utilizzatore, ma il modello d
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Misura, file di confronto e modello GLL», riga 7.
+
+Contesto locale: Alla verifica odierna AFMG presenta SpeakerLab come authoring GLL a licenza commerciale. Per Focus i modelli richiedono autorizzazione. Il limite non si risolve acquis
+
+
+## SRC-AFMG-SPEAKERLAB-20261126
+
+EASE SpeakerLab
+
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
+
+Fonte canonica: [https://www.afmg.eu/en/ease-speakerlab](https://www.afmg.eu/en/ease-speakerlab).
+
+Responsabile: AFMG.
+
+Versione: Pagina consultata il 2026-11-26.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura.
+
+Lettura: parziale. Descrizione, importazione delle misure e disponibilità con licenza commerciale; non prova runtime.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
+
+Uso in [docs/30-modellazione-e-simulazione.md](../../docs/30-modellazione-e-simulazione.md), sezione «La famiglia EASE, e a che cosa serve davvero», riga 63.
+
+Contesto locale: Rettifica del 26 novembre 2026: AFMG presenta SpeakerLab come authoring GLL con licenza commerciale. Importare le misure e costruire il modello sono passaggi distinti. La precedente attribuzione di gratuità è ritirata; la via dei dati aperti è sviluppata nella [caratterizzazion
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Misura, file di confronto e modello GLL», riga 7.
+
+Contesto locale: Alla verifica odierna AFMG presenta SpeakerLab come authoring GLL a licenza commerciale. Per Focus i modelli richiedono autorizzazione. Il limite non si risolve acquis
+
+
 ## SRC-ALSAUTILS-AMIXER-1-2-14
 
 amixer manual
@@ -2583,6 +2672,29 @@ Uso in [tools/ascolto_alsa.py](../../tools/ascolto_alsa.py), sezione «def read_
 Uso in [docs/61-camilladsp-manuale-tecnico.md](../../docs/61-camilladsp-manuale-tecnico.md), sezione «Provenienza, backup e riferimenti», riga 163.
 
 Contesto locale: - SRC-ALSAUTILS-AMIXER-1-2-14: amixer.1, cget e selezione della card, senza scritture ai controlli.
+
+
+## SRC-ARTA-MANUAL-198
+
+ARTA User Manual
+
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
+
+Fonte canonica: [https://www.artalabs.hr/download/ARTA-user-manual.pdf](https://www.artalabs.hr/download/ARTA-user-manual.pdf).
+
+Responsabile: Ivo Mateljan.
+
+Versione: 1.9.8, dicembre 2024.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura.
+
+Lettura: parziale. Sezione9.16, pagine164-165: esportazione testuale FRD/CSV. Non lettura integrale delle207 pagine.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Misura, file di confronto e modello GLL», riga 9.
+
+Contesto locale: Il manuale ARTA 1.9.8, sezione 9.16, documenta export testuali. Qui si usa questa possibilità come punto di ingresso, senza attribuire ad ARTA un exporter GLL non dimostrato. GNU Octave e MATAA restano una strada libera previs
 
 
 ## SRC-B1FDA5FE1237A13C
@@ -3961,6 +4073,96 @@ Usi progettuali dichiarati: MS-243, docs/80-strumenti-posseduti/marshall-mg15.md
 Uso in [docs/80-strumenti-posseduti/marshall-mg15.md](../../docs/80-strumenti-posseduti/marshall-mg15.md), sezione «Marshall MG15», riga 1.
 
 Uso in [data/strumenti-posseduti.json](../../data/strumenti-posseduti.json), sezione «AMP-001», riga 1.
+
+
+## SRC-MATAA-README-5FD77C0
+
+MATAA README
+
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
+
+Fonte canonica: [https://github.com/mbrennwa/mataa/blob/5fd77c08378a68c35d130b7f4e2b03f8c3896aca/README.txt](https://github.com/mbrennwa/mataa/blob/5fd77c08378a68c35d130b7f4e2b03f8c3896aca/README.txt).
+
+Responsabile: Matthias S. Brennwald.
+
+Versione: Commit5fd77c08378a68c35d130b7f4e2b03f8c3896aca.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura.
+
+Lettura: parziale. README consultato, GNU Octave/Matlab e GPL; identificazione GPL2 nei metadati ufficiali GitHub. Non acquisizione o installazione.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
+
+Registrata come fonte locale o riferimento esplicito; uso documentato nella scheda collegata ai metadati.
+
+
+## SRC-OSM-152-EXPORT
+
+Stored export functions
+
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
+
+Fonte canonica: [https://github.com/psmokotnin/osm/blob/1e08de2322f5e8849e1ba39e1d3993187a7cc75c/src/source/stored.cpp](https://github.com/psmokotnin/osm/blob/1e08de2322f5e8849e1ba39e1d3993187a7cc75c/src/source/stored.cpp).
+
+Responsabile: Progetto Open Sound Meter.
+
+Versione: v1.5.2, commit1e08de2322f5e8849e1ba39e1d3993187a7cc75c.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura.
+
+Lettura: parziale. saveFRD, saveCSV, magnitude e phase: schema a quattro colonne e trasformazioni. Analisi statica; app e periferiche non eseguite.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Formati ammessi e fase», riga 25.
+
+Contesto locale: Per OSM si è esaminato il sorgente v1.5.2. Gli export usano la fase memorizzata e possono omettere valori zero; non si assume che includano le correzioni di fase dell'app. È analisi statica, non collaudo runtime. La
+
+
+## SRC-OSM-152-RELEASE
+
+Open Sound Meter v1.5.2
+
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
+
+Fonte canonica: [https://github.com/psmokotnin/osm/releases/tag/v1.5.2](https://github.com/psmokotnin/osm/releases/tag/v1.5.2).
+
+Responsabile: Progetto Open Sound Meter.
+
+Versione: v1.5.2, 17 settembre 2025.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura.
+
+Lettura: parziale. Nota di release sui desktop GPL3 e LICENSE della stessa tag; non confondere con le nuove offerte commerciali.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Formati ammessi e fase», riga 25.
+
+Contesto locale: Per OSM si è esaminato il sorgente v1.5.2. Gli export usano la fase memorizzata e possono omettere valori zero; non si assume che includano le correzioni di fase dell'app. È analisi statica, non collaudo runtime. La
+
+
+## SRC-OSM-EULA-20260925
+
+Terms and Conditions and EULA
+
+Separare acquisizione, confronto su file e authoring GLL per PA-014.
+
+Fonte canonica: [https://opensoundmeter.com/en/eula](https://opensoundmeter.com/en/eula).
+
+Responsabile: Open Sound Meter.
+
+Versione: 25 settembre 2026.
+
+Verifica: verificata, data 2026-11-26. Contenuto primario pertinente consultato; limiti espliciti nella lettura.
+
+Lettura: parziale. Sezioni2-4 e riserva delle licenze GPL delle versioni precedenti; lettura tecnica, nessuna attivazione di account.
+
+Usi progettuali dichiarati: Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.
+
+Uso in [docs/65-caratterizzazione-aperta-e-dati-di-misura.md](../../docs/65-caratterizzazione-aperta-e-dati-di-misura.md), sezione «Formati ammessi e fase», riga 25.
+
+Contesto locale: Per OSM si è esaminato il sorgente v1.5.2. Gli export usano la fase memorizzata e possono omettere valori zero; non si assume che includano le correzioni di fase dell'app. È analisi statica, non collaudo runtime. La
 
 
 ## SRC-PI-CONFIGURATION

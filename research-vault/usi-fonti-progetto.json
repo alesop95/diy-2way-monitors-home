@@ -2,7 +2,7 @@
   "schema": "fonti-usi-audio-1",
   "data": "2026-11-20",
   "perimetro": {
-    "file": 127,
+    "file": 132,
     "radici": [
       "docs",
       ".claude/context",
@@ -2298,7 +2298,7 @@
         },
         {
           "file": "docs/PENDING-ACTIONS.md",
-          "riga": 649,
+          "riga": 652,
           "sezione": "PA-025 - Scaricare i PDF delle fonti selezionate per la tesi",
           "contesto": "Data di apertura: 2026-10-02, da MS-186 e MS-188. Stato: aperta, dipende da un'azione dell'utente. Al 2026-10-05 sono scaricati e registrati otto lavori: i sette non AES con MS-194 e Leach dalla copia dell'autore con MS-195. Restano 20 lavori AES. Il formato `https://aes.org/publications/elibrary-page/?id=N` è provato "
         },
@@ -2475,6 +2475,21 @@
       "id": "SRC-7E426029EF155B01",
       "url": "https://kimmosaunisto.net/Software/VituixCAD/VituixCAD_help_20.html",
       "aliases": [],
+      "titolo": "VituixCAD User Manual",
+      "ente": "Kimmo Saunisto",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "2.0.135.2, 25 aprile 2026",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura. Identificativo storico conservato per lo stesso URL, senza perdere i rimandi precedenti."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Supported response file types e Convert IR to FR: delimitatori e tre colonne FRD; non lettura dell’intero manuale."
+      },
       "usi": [
         {
           "file": "docs/52-crossover-passivo-o-attivo.md",
@@ -2493,19 +2508,14 @@
           "riga": 243,
           "sezione": "Fonti lette",
           "contesto": "- `https://kimmosaunisto.net/Software/VituixCAD/VituixCAD_help_20.html` (manuale di VituixCAD, letto il 2026-10-06)"
+        },
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 23,
+          "sezione": "Formati ammessi e fase",
+          "contesto": "Il [manuale VituixCAD 2.0.135.2](https://kimmosaunisto.net/Software/VituixCAD/VituixCAD_help_20.html) documenta il FRD a tre colonne. L'export canonico del modulo segue quella struttura quando la fase esiste. Senza fase produce soltanto il CSV di analisi, lasciando il campo vuoto: zero gradi sarebbe un dato diverso. Il"
         }
-      ],
-      "titolo": "kimmosaunisto.net",
-      "tipo": "riferimento_storico_da_classificare",
-      "spiegazione": "Riferimento rilevato nei documenti sotto elencati; titolo e funzione derivano dal contesto locale, non da una nuova lettura web.",
-      "verifica": {
-        "stato": "da_verificare",
-        "nota": "La ricognizione non promuove i riscontri storici a verifiche correnti."
-      },
-      "lettura": {
-        "stato": "da_riconciliare",
-        "copertura": "Consultare i microstep e la scheda della fonte per le eventuali letture precedenti."
-      }
+      ]
     },
     {
       "id": "SRC-8240722BE55E9CFD",
@@ -2934,6 +2944,30 @@
       }
     },
     {
+      "id": "SRC-9BDAEFC5CBA14E9E",
+      "url": "https://github.com/mbrennwa/mataa",
+      "aliases": [],
+      "usi": [
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 9,
+          "sezione": "Misura, file di confronto e modello GLL",
+          "contesto": "Il [manuale ARTA 1.9.8](https://www.artalabs.hr/download/ARTA-user-manual.pdf), sezione 9.16, documenta export testuali. Qui si usa questa possibilità come punto di ingresso, senza attribuire ad ARTA un exporter GLL non dimostrato. GNU Octave e [MATAA](https://github.com/mbrennwa/mataa) restano una strada libera previs"
+        }
+      ],
+      "titolo": "MATAA",
+      "tipo": "riferimento_storico_da_classificare",
+      "spiegazione": "Riferimento rilevato nei documenti sotto elencati; titolo e funzione derivano dal contesto locale, non da una nuova lettura web.",
+      "verifica": {
+        "stato": "da_verificare",
+        "nota": "La ricognizione non promuove i riscontri storici a verifiche correnti."
+      },
+      "lettura": {
+        "stato": "da_riconciliare",
+        "copertura": "Consultare i microstep e la scheda della fonte per le eventuali letture precedenti."
+      }
+    },
+    {
       "id": "SRC-9C012B68265F1833",
       "url": "https://www.ibselectronics.com/part/mean-well/lrs-350-48/155582/",
       "aliases": [],
@@ -3350,6 +3384,74 @@
       ]
     },
     {
+      "id": "SRC-AFMG-FOCUS-GLL-AUTH",
+      "url": "https://www.afmg.eu/en/we-are-loudspeaker-manufacturer-can-we-get-installer-ease-focus-only-our-own-glls-it",
+      "aliases": [],
+      "titolo": "Installer EASE Focus e autorizzazione dei propri GLL",
+      "ente": "AFMG",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "Pagina consultata il 2026-11-26",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Note sul GLL autorizzato e autorizzazione per modello; non vengono testate chiavi o licenze."
+      },
+      "usi": [
+        {
+          "file": "docs/30-modellazione-e-simulazione.md",
+          "riga": 67,
+          "sezione": "La famiglia EASE, e a che cosa serve davvero",
+          "contesto": "EASE Focus 3 simula sistemi di diffusione in due e tre dimensioni usando i GLL, e dà mappe di copertura SPL e il livello in punti specifici. Il suo limite è dichiarato: calcola il campo diretto, non il riverbero realistico né la propagazione complessa in ambienti generici. È gratuito per l’utilizzatore, ma il modello d"
+        },
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 7,
+          "sezione": "Misura, file di confronto e modello GLL",
+          "contesto": "Alla verifica odierna [AFMG presenta SpeakerLab](https://www.afmg.eu/en/ease-speakerlab) come authoring GLL a licenza commerciale. Per Focus i modelli richiedono [autorizzazione](https://www.afmg.eu/en/we-are-loudspeaker-manufacturer-can-we-get-installer-ease-focus-only-our-own-glls-it). Il limite non si risolve acquis"
+        }
+      ]
+    },
+    {
+      "id": "SRC-AFMG-SPEAKERLAB-20261126",
+      "url": "https://www.afmg.eu/en/ease-speakerlab",
+      "aliases": [],
+      "titolo": "EASE SpeakerLab",
+      "ente": "AFMG",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "Pagina consultata il 2026-11-26",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Descrizione, importazione delle misure e disponibilità con licenza commerciale; non prova runtime."
+      },
+      "usi": [
+        {
+          "file": "docs/30-modellazione-e-simulazione.md",
+          "riga": 63,
+          "sezione": "La famiglia EASE, e a che cosa serve davvero",
+          "contesto": "Rettifica del 26 novembre 2026: [AFMG presenta SpeakerLab](https://www.afmg.eu/en/ease-speakerlab) come authoring GLL con licenza commerciale. Importare le misure e costruire il modello sono passaggi distinti. La precedente attribuzione di gratuità è ritirata; la via dei dati aperti è sviluppata nella [caratterizzazion"
+        },
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 7,
+          "sezione": "Misura, file di confronto e modello GLL",
+          "contesto": "Alla verifica odierna [AFMG presenta SpeakerLab](https://www.afmg.eu/en/ease-speakerlab) come authoring GLL a licenza commerciale. Per Focus i modelli richiedono [autorizzazione](https://www.afmg.eu/en/we-are-loudspeaker-manufacturer-can-we-get-installer-ease-focus-only-our-own-glls-it). Il limite non si risolve acquis"
+        }
+      ]
+    },
+    {
       "id": "SRC-ALSAUTILS-AMIXER-1-2-14",
       "url": "https://github.com/alsa-project/alsa-utils/blob/v1.2.14/amixer/amixer.1",
       "aliases": [
@@ -3388,6 +3490,34 @@
           "riga": 163,
           "sezione": "Provenienza, backup e riferimenti",
           "contesto": "- SRC-ALSAUTILS-AMIXER-1-2-14: [amixer.1](https://github.com/alsa-project/alsa-utils/blob/v1.2.14/amixer/amixer.1), cget e selezione della card, senza scritture ai controlli."
+        }
+      ]
+    },
+    {
+      "id": "SRC-ARTA-MANUAL-198",
+      "url": "https://www.artalabs.hr/download/ARTA-user-manual.pdf",
+      "aliases": [],
+      "titolo": "ARTA User Manual",
+      "ente": "Ivo Mateljan",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "1.9.8, dicembre 2024",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Sezione9.16, pagine164-165: esportazione testuale FRD/CSV. Non lettura integrale delle207 pagine."
+      },
+      "usi": [
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 9,
+          "sezione": "Misura, file di confronto e modello GLL",
+          "contesto": "Il [manuale ARTA 1.9.8](https://www.artalabs.hr/download/ARTA-user-manual.pdf), sezione 9.16, documenta export testuali. Qui si usa questa possibilità come punto di ingresso, senza attribuire ad ARTA un exporter GLL non dimostrato. GNU Octave e [MATAA](https://github.com/mbrennwa/mataa) restano una strada libera previs"
         }
       ]
     },
@@ -5364,6 +5494,111 @@
           "file": "data/strumenti-posseduti.json",
           "riga": 1,
           "sezione": "AMP-001"
+        }
+      ]
+    },
+    {
+      "id": "SRC-MATAA-README-5FD77C0",
+      "url": "https://github.com/mbrennwa/mataa/blob/5fd77c08378a68c35d130b7f4e2b03f8c3896aca/README.txt",
+      "aliases": [],
+      "titolo": "MATAA README",
+      "ente": "Matthias S. Brennwald",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "Commit5fd77c08378a68c35d130b7f4e2b03f8c3896aca",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "README consultato, GNU Octave/Matlab e GPL; identificazione GPL2 nei metadati ufficiali GitHub. Non acquisizione o installazione."
+      },
+      "usi": []
+    },
+    {
+      "id": "SRC-OSM-152-EXPORT",
+      "url": "https://github.com/psmokotnin/osm/blob/1e08de2322f5e8849e1ba39e1d3993187a7cc75c/src/source/stored.cpp",
+      "aliases": [],
+      "titolo": "Stored export functions",
+      "ente": "Progetto Open Sound Meter",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "v1.5.2, commit1e08de2322f5e8849e1ba39e1d3993187a7cc75c",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "saveFRD, saveCSV, magnitude e phase: schema a quattro colonne e trasformazioni. Analisi statica; app e periferiche non eseguite."
+      },
+      "usi": [
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 25,
+          "sezione": "Formati ammessi e fase",
+          "contesto": "Per OSM si è esaminato il [sorgente v1.5.2](https://github.com/psmokotnin/osm/blob/1e08de2322f5e8849e1ba39e1d3993187a7cc75c/src/source/stored.cpp). Gli export usano la fase memorizzata e possono omettere valori zero; non si assume che includano le correzioni di fase dell'app. È analisi statica, non collaudo runtime. La"
+        }
+      ]
+    },
+    {
+      "id": "SRC-OSM-152-RELEASE",
+      "url": "https://github.com/psmokotnin/osm/releases/tag/v1.5.2",
+      "aliases": [],
+      "titolo": "Open Sound Meter v1.5.2",
+      "ente": "Progetto Open Sound Meter",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "v1.5.2, 17 settembre 2025",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Nota di release sui desktop GPL3 e LICENSE della stessa tag; non confondere con le nuove offerte commerciali."
+      },
+      "usi": [
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 25,
+          "sezione": "Formati ammessi e fase",
+          "contesto": "Per OSM si è esaminato il [sorgente v1.5.2](https://github.com/psmokotnin/osm/blob/1e08de2322f5e8849e1ba39e1d3993187a7cc75c/src/source/stored.cpp). Gli export usano la fase memorizzata e possono omettere valori zero; non si assume che includano le correzioni di fase dell'app. È analisi statica, non collaudo runtime. La"
+        }
+      ]
+    },
+    {
+      "id": "SRC-OSM-EULA-20260925",
+      "url": "https://opensoundmeter.com/en/eula",
+      "aliases": [],
+      "titolo": "Terms and Conditions and EULA",
+      "ente": "Open Sound Meter",
+      "tipo": "documentazione_tecnica_primaria",
+      "versione": "25 settembre 2026",
+      "spiegazione": "Separare acquisizione, confronto su file e authoring GLL per PA-014.",
+      "usi_progettuali": "Caratterizzazione su file e correzione delle affermazioni nelle pagine30/70 e PA-014.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Contenuto primario pertinente consultato; limiti espliciti nella lettura."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Sezioni2-4 e riserva delle licenze GPL delle versioni precedenti; lettura tecnica, nessuna attivazione di account."
+      },
+      "usi": [
+        {
+          "file": "docs/65-caratterizzazione-aperta-e-dati-di-misura.md",
+          "riga": 25,
+          "sezione": "Formati ammessi e fase",
+          "contesto": "Per OSM si è esaminato il [sorgente v1.5.2](https://github.com/psmokotnin/osm/blob/1e08de2322f5e8849e1ba39e1d3993187a7cc75c/src/source/stored.cpp). Gli export usano la fase memorizzata e possono omettere valori zero; non si assume che includano le correzioni di fase dell'app. È analisi statica, non collaudo runtime. La"
         }
       ]
     },

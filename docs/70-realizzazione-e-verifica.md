@@ -36,7 +36,7 @@ La procedura è la stessa della fase 1, con la stessa catena di misura e nello s
 
 Il criterio di giudizio è la distanza dal criterio di uscita già dichiarato per le fasi 4 e 5, cioè una risposta lineare entro più o meno 2 dB in asse e fino a più o meno dieci gradi fuori asse, da 60 Hz a circa 20 kHz. Lo scarto fra quel bersaglio e la misura reale è il risultato del progetto.
 
-Un passaggio ulteriore, non presente nel sorgente ma coerente con gli strumenti disponibili, chiude il cerchio: una volta misurato il monitor costruito, quelle misure possono diventare un file GLL tramite EASE SpeakerLab o un software di misura come ARTA. Da quel momento il diffusore autocostruito è simulabile come un prodotto commerciale, e il limite discusso nella pagina della fase 2, cioè l'assenza di un GLL per un progetto DIY, cade.
+Rettifica del 26 novembre 2026: l’export del programma di misura non crea automaticamente un GLL autorizzato. Il [capitolo65](65-caratterizzazione-aperta-e-dati-di-misura.md) separa acquisizione, confronto dei dati e authoring eventuale. La pipeline su file è sviluppata; l’uso futuro di SpeakerLab e l’autorizzazione per Focus restano una decisione distinta, senza acquisti anticipati.
 
 ## Il correttivo, che è l'ultima decisione aperta
 

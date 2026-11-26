@@ -45,3 +45,5 @@ Verifica del motore DSP prima dell'hardware: [collaudo offline su Windows e Ubun
 Il [DSP persistente](57-dsp-persistente.md) e il [piano eseguito](58-piano-dsp-persistente.md) collegano il collaudo offline al servizio utente e al banco PipeWire. La [procedura Ubuntu](10-ambiente/camilladsp-servizio-utente.md) conserva i comandi e i limiti della verifica virtuale.
 
 Il [completamento del progetto nominale](64-reflex-direttivita-e-cabinet-nominale.md), sviluppato il 25 novembre, aggiunge confronto reflex, direttività ideale, livelli e protezioni, frontali con incassi e rinforzo. Collega il nuovo PDF e il kit FCStd/STEP/DXF verificato; qualifica fisica e rilascio costruttivo restano distinti.
+
+La [caratterizzazione aperta su file](65-caratterizzazione-aperta-e-dati-di-misura.md) aggiunge importazione, confronto e integrità dei dati FRD/OSM, con esempio sintetico riproducibile. Separa i dati di misura dall’eventuale authoring GLL, senza riaprire le prove fisiche.

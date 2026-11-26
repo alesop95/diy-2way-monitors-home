@@ -1,0 +1,157 @@
+{
+  "schema": "speaker-characterization-report-1",
+  "data_kind": "synthetic",
+  "level_unit": "dB_relative",
+  "provenance_status": "declared_not_independently_verified",
+  "target": {
+    "minimum_hz": 60.0,
+    "maximum_hz": 20000.0,
+    "reference_db": 0.0,
+    "tolerance_db": 2.0,
+    "max_gap_octaves": 0.08333333333333333,
+    "minimum_coherence": 0.9
+  },
+  "required_directions": [
+    {
+      "plane": "axial",
+      "angle_deg": 0.0
+    },
+    {
+      "plane": "horizontal",
+      "angle_deg": -10.0
+    },
+    {
+      "plane": "horizontal",
+      "angle_deg": 10.0
+    },
+    {
+      "plane": "vertical",
+      "angle_deg": -10.0
+    },
+    {
+      "plane": "vertical",
+      "angle_deg": 10.0
+    }
+  ],
+  "missing_directions": [],
+  "status": "outside_bounds",
+  "curves": [
+    {
+      "id": "axial",
+      "plane": "axial",
+      "angle_deg": 0.0,
+      "input": "axial.frd",
+      "input_format": "frd",
+      "required_direction": true,
+      "status": "within_bounds",
+      "coverage_issues": [],
+      "maximum_deviation_db": 0.249995401371,
+      "worst_frequency_hz": 1491.6010654,
+      "maximum_gap_octaves": 0.03711204415882463,
+      "minimum_coherence": null,
+      "phase_available": true,
+      "declared_valid_band_hz": [
+        50.0,
+        24000.0
+      ],
+      "physical_validity_verified": false,
+      "comparison_scope": "samples_and_interpolated_band_endpoints"
+    },
+    {
+      "id": "h_neg10",
+      "plane": "horizontal",
+      "angle_deg": -10.0,
+      "input": "h_neg10.frd",
+      "input_format": "frd",
+      "required_direction": true,
+      "status": "within_bounds",
+      "coverage_issues": [],
+      "maximum_deviation_db": 1.19999528624,
+      "worst_frequency_hz": 167.512188778,
+      "maximum_gap_octaves": 0.03711204415882463,
+      "minimum_coherence": null,
+      "phase_available": true,
+      "declared_valid_band_hz": [
+        50.0,
+        24000.0
+      ],
+      "physical_validity_verified": false,
+      "comparison_scope": "samples_and_interpolated_band_endpoints"
+    },
+    {
+      "id": "h_pos10",
+      "plane": "horizontal",
+      "angle_deg": 10.0,
+      "input": "h_pos10.frd",
+      "input_format": "frd",
+      "required_direction": true,
+      "status": "within_bounds",
+      "coverage_issues": [],
+      "maximum_deviation_db": 1.39999636987,
+      "worst_frequency_hz": 4394.09964744,
+      "maximum_gap_octaves": 0.03711204415882463,
+      "minimum_coherence": null,
+      "phase_available": true,
+      "declared_valid_band_hz": [
+        50.0,
+        24000.0
+      ],
+      "physical_validity_verified": false,
+      "comparison_scope": "samples_and_interpolated_band_endpoints"
+    },
+    {
+      "id": "v_neg10",
+      "plane": "vertical",
+      "angle_deg": -10.0,
+      "input": "v_neg10.frd",
+      "input_format": "frd",
+      "required_direction": true,
+      "status": "within_bounds",
+      "coverage_issues": [],
+      "maximum_deviation_db": 1.24999546234,
+      "worst_frequency_hz": 4394.09964744,
+      "maximum_gap_octaves": 0.03711204415882463,
+      "minimum_coherence": null,
+      "phase_available": true,
+      "declared_valid_band_hz": [
+        50.0,
+        24000.0
+      ],
+      "physical_validity_verified": false,
+      "comparison_scope": "samples_and_interpolated_band_endpoints"
+    },
+    {
+      "id": "v_pos10",
+      "plane": "vertical",
+      "angle_deg": 10.0,
+      "input": "v_pos10.frd",
+      "input_format": "frd",
+      "required_direction": true,
+      "status": "outside_bounds",
+      "coverage_issues": [],
+      "maximum_deviation_db": 3.29643620432,
+      "worst_frequency_hz": 2626.83704107,
+      "maximum_gap_octaves": 0.03711204415882463,
+      "minimum_coherence": null,
+      "phase_available": true,
+      "declared_valid_band_hz": [
+        50.0,
+        24000.0
+      ],
+      "physical_validity_verified": false,
+      "comparison_scope": "samples_and_interpolated_band_endpoints"
+    }
+  ],
+  "input_sha256": {
+    "manifest.json": "807e260153354012b2342728625919908af8b007ba03358d1eca6880d96ca8f8",
+    "axial.frd": "e125510438deb8b6f82edd1dc41d1bf18c395abcf2ac2c4c313b0b44a5704ed1",
+    "h_neg10.frd": "d79ccc32cf432e8cc0fb5fdb9e47599139cdad01f9365237ff58bb3e4ad5b6c9",
+    "h_pos10.frd": "fcb0761f81cc2f6eae3ef17d45d91b8e8f8fa69ea84df5498eae6d7deac70aaf",
+    "v_neg10.frd": "b04d2bb5d7eca157aefa7cc54d1869c0c8cca0fb5a633f4302ce05609213b4be",
+    "v_pos10.frd": "a2dd01345db7990d28a9038df18dd783ecb8e5ec666b320f9cc807d0b1821f98"
+  },
+  "generator_sha256": "67f0e5008938d232f6f2789a4ed69400636aaaa7f50f437ad6244c54f3a1cf0c",
+  "numpy_version": "2.2.2",
+  "hardware_qualified": false,
+  "gll_generated": false
+}

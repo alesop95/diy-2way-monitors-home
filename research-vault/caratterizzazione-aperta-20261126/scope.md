@@ -1,0 +1,9 @@
+# Caratterizzazione aperta e confronto su file
+
+Domanda del 26 novembre 2026: quale parte della caratterizzazione dei monitor può essere sviluppata gratuitamente e con codice ispezionabile, distinguendo acquisizione delle misure, analisi dei dati e compilazione GLL? È la ricerca richiesta da PA-014, con successivo sviluppo del controllo dei file prima del collaudo fisico.
+
+Metodo: ricognizione tecnica narrativa mirata, non revisione sistematica. Ammesse documentazione dei produttori, manuali ufficiali e sorgenti/licenze dei manutentori. Inventario locale limitato al repository, al vault e alle schede già disponibili: nessun nuovo accesso a J o ad altri archivi. In docs/30, docs/70 e PA-014 esistevano affermazioni non sostenute sull'esportazione GLL da ARTA e sulla gratuità di SpeakerLab. Gli script attuali producono modelli nominali, non importano i dati di caratterizzazione.
+
+Query esatte: «site.afmg.eu EASE SpeakerLab GLL create measurement data»; «site.artalabs.hr ARTA export directivity FRD GLL»; «site.opensoundmeter.com GPL export transfer function measurement»; «site.opensoundmeter.com export CSV transfer function source code license»; «site.github.com/psmokotnin/osm export csv»; «site.afmg.eu EASE SpeakerLab GLL author license EASE Focus»; «MATAA acoustic measurement toolbox official github license»; «site.kimmosaunisto.net VituixCAD measurement FRD frequency magnitude phase text format». Consultati poi i collegamenti primari e i sorgenti elencati in sources.md. I risultati di aggregatori commerciali non sono fonti della conclusione.
+
+I controlli software useranno file costruiti con valori noti: frequenze non finite o disordinate, fase mancante, esportazioni OSM a quattro colonne, coerenza, estremi della banda, buchi nella griglia e direzioni mancanti. Un esempio dichiaratamente sintetico non diventa una misura o una qualifica hardware. Nessuna installazione, attivazione di periferiche o riapertura delle verifiche sospese ADR-055.

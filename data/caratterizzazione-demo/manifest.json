@@ -1,0 +1,93 @@
+{
+  "schema": "speaker-response-dataset-1",
+  "data_kind": "synthetic",
+  "level_unit": "dB_relative",
+  "description": "Fixture analitica di cinque direzioni, non risposta prevista o misurata di un diffusore.",
+  "target": {
+    "minimum_hz": 60,
+    "maximum_hz": 20000,
+    "reference_db": 0,
+    "tolerance_db": 2,
+    "max_gap_octaves": 0.08333333333333333,
+    "minimum_coherence": 0.9
+  },
+  "required_directions": [
+    {
+      "plane": "axial",
+      "angle_deg": 0
+    },
+    {
+      "plane": "horizontal",
+      "angle_deg": -10
+    },
+    {
+      "plane": "horizontal",
+      "angle_deg": 10
+    },
+    {
+      "plane": "vertical",
+      "angle_deg": -10
+    },
+    {
+      "plane": "vertical",
+      "angle_deg": 10
+    }
+  ],
+  "curves": [
+    {
+      "id": "axial",
+      "plane": "axial",
+      "angle_deg": 0,
+      "path": "axial.frd",
+      "format": "frd",
+      "valid_range_hz": [
+        50,
+        24000
+      ]
+    },
+    {
+      "id": "h_neg10",
+      "plane": "horizontal",
+      "angle_deg": -10,
+      "path": "h_neg10.frd",
+      "format": "frd",
+      "valid_range_hz": [
+        50,
+        24000
+      ]
+    },
+    {
+      "id": "h_pos10",
+      "plane": "horizontal",
+      "angle_deg": 10,
+      "path": "h_pos10.frd",
+      "format": "frd",
+      "valid_range_hz": [
+        50,
+        24000
+      ]
+    },
+    {
+      "id": "v_neg10",
+      "plane": "vertical",
+      "angle_deg": -10,
+      "path": "v_neg10.frd",
+      "format": "frd",
+      "valid_range_hz": [
+        50,
+        24000
+      ]
+    },
+    {
+      "id": "v_pos10",
+      "plane": "vertical",
+      "angle_deg": 10,
+      "path": "v_pos10.frd",
+      "format": "frd",
+      "valid_range_hz": [
+        50,
+        24000
+      ]
+    }
+  ]
+}
