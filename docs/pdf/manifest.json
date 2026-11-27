@@ -4,11 +4,11 @@
   "documenti": [
     {
       "pdf": "docs/pdf/recap-progetto.pdf",
-      "sha256": "439e51c5208753e243b419f00f66ea7e3a9d2551cf283fd42c5773c5fda3b5ea",
-      "bytes": 142628,
+      "sha256": "8c4c6c8d19ba3425b1034a144d3698f067f3ca726c206c2c9594f6c6df24f581",
+      "bytes": 143189,
       "pagine": 7,
       "sorgenti": {
-        "docs/STATO-PROGETTO.md": "6e0bbed97054c9b4661550c5473da9c2d4d153297c6142fc5d5008fefe4dc093",
+        "docs/STATO-PROGETTO.md": "315a32ba3e7a99d9076f85e809ecce08880c8a536e1dc989dc65376f022b6b0a",
         "config/documenti/intrawelt-tecnico.json": "f1221bad44cfa2957b3e18191414025b3eb920a2c30297f2e47b67c6c71d149c",
         "tools/consegna_documenti.py": "a10ed62f436df28de6ce3b1a0635fe5fca0ba983fb39987eba2d44fad0e76730"
       },

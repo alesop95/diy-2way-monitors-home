@@ -56,9 +56,7 @@ La manopola Main dell'interfaccia non governa Line Out3-10. Il volume quotidiano
 
 ## Collegamenti di linea e potenza
 
-UMC1820 fornisce uscite di linea bilanciate TRS[^3]; il [manuale V3 stereo](https://fosiaudio.com/pages/user-instruction-v3) documenta ingressi RCA. Servono quattro collegamenti mono. La forma dei connettori non stabilisce come terminare il ramo freddo dell'uscita: il pinout del cavo non è congelato, e non viene dichiarata ammessa una cortocircuitazione del contatto ring.
-
-Il punto C-01 rimane preciso: ottenere un collegamento ammesso dal costruttore o qualificare una conversione appropriata sulle quattro linee, con livello e rumore verificati. Se servisse un dispositivo attivo o isolato oltre il lotto stimato, il budget si riapre. La scelta V3 appena confermata non risolve questo punto per deduzione. Non viene installato o ordinato un convertitore adesso.
+Le quattro linee dalle uscite TRS[^3] UMC1820 ai V3 hanno uno [schema numerato](68-cablaggio-quattro-vie.md), MS-324. C-01 ha un cavo diretto con ring isolato come prima variante da qualificare. La conversione con due trasformatori DTI è la riserva documentata. Il capitolo68 definisce pinout, cavi e criteri per distinguere compatibilità di linea, livello e rumore.
 
 Sul lato potenza servono quattro coppie indipendenti, una per ogni trasduttore. Ogni cassa presenta LF+, LF-, HF+, HF-, con coppie isolate; non si prevede un ritorno comune fra vie o finali. Connettore posteriore, lunghezze, sezione, fermacavo e ingombri restano da definire nel layout esecutivo. Non si rimuove la terra di protezione degli apparecchi per risolvere un eventuale ronzio.
 
@@ -74,7 +72,7 @@ La protezione locale del tweeter non viene ridotta al condensatore47µF del conf
 | Trasduttori |2 woofer e2 tweeter | Disponibilità della sigla esatta, riscontro degli esemplari |
 | Struttura |2 set pannelli A24 e2 rinforzi già descritti nel CAD | Giunzioni, tolleranze, incollaggio, finitura e preventivo artigiano |
 | Fissaggio dei driver |16 centri di montaggio nominali complessivi | Modello, lunghezza, sedi e pilotaggio delle viti; non una misura già scelta |
-| Cablaggio di linea |4 collegamenti mono | C-01, connettori e lunghezze |
+| Cablaggio di linea |4 linee mono | Varianti D/I in capitolo68, lunghezze e qualifica C-01 differite |
 | Cablaggio di potenza |4 coppie indipendenti,4 poli isolati per cassa | Connettore posteriore, fermacavo e sezione |
 | Misura |1 microfono,1 cavo XLR e1 asta | Calibrazione individuale, orientamento e riferimento temporale/SPL |
 | Commutazione USB |1 cavo trasferito; switch opzionale | Nessuno switch richiesto per il primo sviluppo |
@@ -104,7 +102,7 @@ Pagine consultate il26 novembre 2026. I prezzi sono quelli visualizzati, non un 
 | Cavo e asta microfono, escluso il microfono sopra |20€ |60€ |
 | Totale V3 senza switch |867,25€ |1087,25€ |
 
-Il budget arrotondato rimane circa870-1090€. Lo switch facoltativo aggiunge 20-40€ stimati. Sono esclusi spedizioni, differenze IVA di destinazione, schermo, tavolo già comprato, finitura e utensili. Un'eventuale conversione di linea necessaria oltre il lotto stimato richiede una nuova voce. Somme controllate con aritmetica decimale e quantità nel JSON; nessuna cifra è un tetto di spesa approvato.
+Il budget arrotondato rimane circa870-1090€. Lo switch facoltativo aggiunge 20-40€ stimati. Sono esclusi spedizioni, differenze IVA di destinazione, schermo, tavolo già comprato, finitura e utensili. Il capitolo68 stima separatamente il ramo con due DTI e i cavi aggiuntivi. Somme controllate con aritmetica decimale e quantità nel JSON; nessuna cifra è un tetto di spesa approvato.
 
 Il confronto non scelto è due A800: [179€ ciascuno](https://www.thomann.it/behringer_a800.htm), disponibilità indicata entro 2-3 settimane, ingressi bilanciati secondo [QSG V4](https://mediadl.musictribe.com/media/PLM/data/docs/P0CE8/QSG_BE_0105-ABA_A800_WW.pdf). La sostituzione aggiungerebbe 160€ e porterebbe il budget a1027,25-1247,25€, con ingombro nominale94×483×220mm per unità. Non vengono comprati entrambi i tipi di finale; non si deduce una prestazione sonora migliore da questa alternativa.
 
@@ -114,12 +112,12 @@ Il backorder del tweeter non cambia la scelta acustica automaticamente. Un sosti
 
 | Passaggio | Ingresso necessario | Risultato da produrre | Stato |
 |---|---|---|---|
-| Cablaggio esecutivo | Soluzione C-01 per quattro linee, connettori e layout | Schema numerato, lunghezze e terminazioni | Preparabile documentalmente; qualifica fisica sospesa |
+| Cablaggio esecutivo | Schema numerato D/I in capitolo68, MS-324 | Lunghezze, connettore posteriore e fissaggi dal layout | Schema disponibile, qualifica fisica sospesa |
 | CAD esecutivo | Componenti e ferramenta effettivi, ingombri e appoggi | Sedi, tolleranze, giunzioni e distinta finale | Riscontri fisici sospesi; nativi nominali disponibili |
 | Profili DSP finali | Curve valide con riferimento comune, guadagni e limiti | Filtri, ritardi, livelli e protezioni tarati | Acquisizione e qualifica fisica sospese |
 | Acquisto | Progetto approvato e preventivo finale | Ordine delle sole quantità necessarie | Nessun ordine autorizzato |
 
-Non viene dichiarato completo il monitor: è consolidata la catena su cui proseguire. Controller e pannello già sviluppati non richiedono una reinstallazione; il Pi e il percorso reale restano da qualificare. La prossima attività documentale è risolvere C-01 e completare lo schema dei collegamenti, conservando questa base V3 e senza chiedere ora foto, ascolti o misure.
+Non viene dichiarato completo il monitor: è consolidata la catena su cui proseguire. Controller e pannello già sviluppati non richiedono una reinstallazione; il Pi e il percorso reale restano da qualificare. La prossima attività documentale usa lo schema del capitolo68 per studiare connettore posteriore, fissaggi e passaggi di cavo di A24. La qualifica C-01 rimane sospesa.
 
 [^1]: Digital Audio Workstation, programma per registrazione e produzione audio.
 [^2]: Sony/Philips Digital Interface, interfaccia digitale audio.

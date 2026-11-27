@@ -21,3 +21,11 @@ Nessun nuovo test automatico pretende di misurare questi componenti. Le prove so
 ## Il risultato utile
 
 Il capitolo67 e il dato della catena sostituiscono l'elenco generico con quantità e dipendenze: quattro linee, quattro coppie di potenza indipendenti, sedici centri nominali di montaggio e componenti non duplicati fra modalità. Le viti non vengono ordinate dal solo conteggio dei centri; il retro non viene fresato senza il connettore effettivo. La prossima lavorazione ha un ingresso preciso, C-01 e layout, mentre le qualifiche fisiche restano sospese.
+
+## Dal nome del connettore al percorso di corrente, MS-324
+
+Per ogni uscita i tre contatti del jack descrivono la geometria. La parola *bilanciata* descrive le impedenze viste dai due conduttori. Per conoscere la tensione sul solo tip occorre ancora sapere come il circuito genera il segnale. Se due poli uguali sono in opposizione di fase, la tensione fra poli è doppia rispetto al solo tip e la perdita ideale del diretto è 6 dB. Se su un polo c'è solo l'impedenza di bilanciamento, quel rapporto non segue dalla forma della presa.
+
+Il capitolo68 usa questa distinzione per ordinare le prove. Il diretto isola il ring e usa lo sleeve come ritorno. Si conserva il vantaggio di costo soltanto se tensione caricata, risposta e rumore sono adatti. L'isolatore legge tip-ring e offre sul secondario un riferimento per RCA. Il suo rapporto 1:1 lascia aperta la questione del guadagno. Sul ramo woofer vanno controllati anche livello e risposta alle frequenze basse, dove un trasformatore può introdurre perdita o distorsione. Una misura differenziale a monte e un confronto a livello equalizzato a valle mostrano due effetti diversi.
+
+La modalità nel JSON aggiunge `line_label`, `power_label` e `isolator_channel` senza ripetere la mappa di routing. L05 e L07 entrano nel V3 woofer, L06 e L08 nel V3 tweeter. Gli stessi identificativi legano le linee alle coppie P05-P08 in entrambe le varianti. Il confronto della tabella con questi campi ha verificato gli estremi di tutte e quattro le vie. La compatibilità elettrica mantiene il proprio esito sospeso fino al banco. Il tema prosegue qui perché sviluppa la stessa distinzione fra distinta e qualifica della scheda 13.

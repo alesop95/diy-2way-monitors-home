@@ -125,7 +125,7 @@ voci:
     livello: 2
     dove: questo repository
     titolo: PA-024, scegliere il modulo di amplificazione e processore per i cabinet attivi
-    stato: "V3 stereo confermati dal proprietario per priorità al costo, ADR-058. Catena PC/Pi, distinta e budget rivisti nel capitolo67; C-01 bilanciato-RCA e guadagni/protezioni ancora da qualificare. Nessun acquisto."
+    stato: "V3 stereo confermati dal proprietario per priorità al costo, ADR-058. Catena PC/Pi, distinta e budget rivisti nel capitolo67; C-01 sviluppato in capitolo68 con pinout diretto e alternativa isolata. Qualifica di linea, guadagni e protezioni sospese."
     passo: "Distinta nominale, guadagni ipotetici, condensatore e limite ideale di tensione sviluppati in docs/64. Scelta di spesa ancora aperta; rumore, potenza reale e compatibilità misurata sono sospesi."
     fonte: "docs/PENDING-ACTIONS.md"
 
@@ -212,7 +212,7 @@ voci:
     dove: "acquisti e realizzazione"
     titolo: "07. Acquisti mirati, prototipo e misure finali"
     stato: "Tavolo comprato; interfaccia, microfono, driver e amplificazione ancora da scegliere definitivamente e acquistare. Schermo differito."
-    passo: "Distinta e budget distinti fra osservazioni e stime, MS-323. Risolvere C-01 e aggiornare preventivi della variante esatta prima di un ordine; costruzione e collaudo fisico restano differiti."
+    passo: "Distinta e budget distinti fra osservazioni e stime, MS-323. Usare lo schema C-01 per il layout esecutivo. Preventivi, costruzione e collaudo fisico restano differiti."
     fonte: "docs/70-realizzazione-e-verifica.md"
   - id: 34
     livello: 4

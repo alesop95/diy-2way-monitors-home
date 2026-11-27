@@ -9,6 +9,7 @@ Aggiornamento del 2026-11-26. Questo è il punto di lettura per il proprietario:
 | Stato e percorso di lettura | Questo documento, `docs/STATO-PROGETTO.md` |
 | Modelli e relazione tecnica | [Capitolo 63](63-sistema-autonomo-driver-e-collaudo.md) |
 | Catena di riferimento, distinta e budget | [Capitolo 67](67-catena-di-riferimento-e-dipendenze-esecutive.md) |
+| Schema delle quattro vie e conversione di linea | [Capitolo 68](68-cablaggio-quattro-vie.md) |
 | Uso e controllo del DSP | [Manuale CamillaDSP](61-camilladsp-manuale-tecnico.md) |
 | Pendenze e verifiche sospese | [PENDING-ACTIONS.md](PENDING-ACTIONS.md) |
 | Decisioni e motivazioni | [Registro ADR](../.claude/memory/decisions.md) |
@@ -84,7 +85,7 @@ La proposta è una coppia con profili mix e ascolto. Cambiare profilo può cambi
 
 ## Componenti, mobile e schermo: che cosa è una proposta
 
-La [catena consolidata](67-catena-di-riferimento-e-dipendenze-esecutive.md) mantiene UMC1820 per gli otto ingressi condivisi, quattro uscite per le vie, due Fosi V3 stereo e Pi4 completo per l’autonomia. Il proprietario conferma i V3 per priorità al costo, ADR-058. Distinta e mappa nominale sono pronte; collegamento TRS-RCA, livelli e rumore restano da qualificare. Nessun acquisto o collaudo dell’intera catena è dedotto dalla scelta.
+La [catena consolidata](67-catena-di-riferimento-e-dipendenze-esecutive.md) mantiene UMC1820 per gli otto ingressi condivisi, quattro uscite per le vie, due Fosi V3 stereo e Pi4 completo per l’autonomia. Il proprietario conferma i V3 per priorità al costo, ADR-058. Lo schema numerato delle quattro vie specifica il cavo diretto con ring isolato come prima variante da qualificare. Se serve isolamento, il ramo con due ART DTI aggiunge 154 € per i trasformatori ai prezzi osservati. Livelli, rumore e risposta della linea restano da misurare quando riprenderà il collaudo.
 
 Il cabinet di riferimento A24 è largo 220 mm, profondo 190 mm e alto 430 mm, in MDF da 18 mm, chiuso. I driver candidati sono SB16PFCR25-8 e SB26STCN-C000-4. L'alternativa B27 è larga 190 mm, profonda 180 mm e alta 430 mm e usa il woofer SB15NRX2C30-8. C24 è il confronto di maggiore volume. I tre assiemi nominali dettagliati includono tagli, incassi e rinforzo; il kit conserva sette solidi modificabili per cassa e distinte per coppia. Fissaggi, lavorazione e tolleranze definitive dipendono dai riscontri sospesi.
 
@@ -110,7 +111,7 @@ I modelli CAD sono stati ricomputati e riaperti; STEP e DXF controllati, compres
 
 La revisione commerciale del 26 novembre somma 587,25€ per interfaccia, quattro driver, due V3 completi e microfono. Con Pi completo, legno, collegamenti/protezioni/supporti, cavo e asta stimati, il budget è 867,25-1087,25€ senza switch; quello opzionale aggiunge 20-40€. Sono prezzi visualizzati e stime, con IVA di destinazione e spedizione ancora da confermare, non un preventivo italiano o un tetto approvato. Il confronto A800 aggiunge 160€ ed è l’alternativa non scelta.
 
-Sono esclusi schermo, tavolo già comprato, spedizioni, finitura, utensili e differenze IVA di destinazione. Un eventuale convertitore di linea oltre il lotto stimato riaprirebbe il costo. Il tweeter è in backorder e l’EMM-6 in preordine nella pagina consultata; quantità e date non sono garantite. Nessuna sostituzione automatica dei driver e nessun ordine adesso.
+Sono esclusi schermo, tavolo già comprato, spedizioni, finitura, utensili e differenze IVA di destinazione. Il capitolo 68 stima il costo della variante con isolamento. Il tweeter è in backorder e l’EMM-6 in preordine nella pagina consultata; quantità e date non sono garantite. Nessuna sostituzione automatica dei driver e nessun ordine adesso.
 
 ## Apparecchi già posseduti
 
@@ -130,7 +131,7 @@ I capitoli numerati e gli indici tecnici sono sotto `docs/`. Le tre relazioni so
 
 | Serve per | Documento da aprire |
 |---|---|
-| Capire il sistema completo e le scelte correnti | [63-sistema-autonomo-driver-e-collaudo.md](63-sistema-autonomo-driver-e-collaudo.md) |
+| Leggere i modelli e il sistema autonomo | [63-sistema-autonomo-driver-e-collaudo.md](63-sistema-autonomo-driver-e-collaudo.md) |
 | Usare e capire CamillaDSP nel nostro setup | [61-camilladsp-manuale-tecnico.md](61-camilladsp-manuale-tecnico.md) |
 | Leggere la matematica del crossover | [PDF LaTeX crossover](pdf/crossover-pc-pi-analogico.pdf), sei pagine |
 | Leggere componenti, autonomia e protocollo | [PDF LaTeX sistema autonomo](pdf/sistema-autonomo-driver-e-collaudo.pdf), aggiornato con fattibilità del basso |
@@ -145,7 +146,7 @@ I capitoli numerati e gli indici tecnici sono sotto `docs/`. Le tre relazioni so
 | Capire fonti, pedigree e usi | [Mappa delle fonti](90-riferimenti/fonti-progetto.md) e [metodo delle lezioni](90-riferimenti/metodo-fonti-lezioni-riordino.md) |
 | Vedere attività differite e sospensioni | [PENDING-ACTIONS.md](PENDING-ACTIONS.md) e dati in `tools/roadmap-items.yml` |
 
-Il capitolo 55 conserva la prima proposta e il suo contesto; per la base corrente di componenti e autonomia si usa il capitolo 63. I microstep descrivono anche ipotesi poi corrette e non vanno letti come se ogni frase storica fosse lo stato attuale.
+Il capitolo 55 conserva la prima proposta. Per distinta e budget correnti si apre il capitolo 67. Il capitolo 68 contiene lo schema dei collegamenti e il capitolo 63 conserva i modelli e il progetto di autonomia. La cronologia registra anche le ipotesi poi corrette.
 
 ## Dove sono file, dati e copie
 
@@ -155,7 +156,7 @@ La documentazione e il codice canonici sono nel repository Windows. Ubuntu conti
 
 I risultati correnti sono in `build/studio-crossover-20261120-v2/`, `build/sistema-autonomo-20261120-v5/` e `build/collaudo-profili-autonomi-20261120-finale-v5/`. I rapporti leggibili sono copiati nei due topic del vault. I tentativi precedenti, anche falliti, sono nel ZIP `_notes/archivio-prove/20261120/prove-superate.zip`, con 340 file e manifesto dei percorsi originali. La rimozione dei soli espansi ha ridotto di circa 190 MiB lordi le copie, conservando la prova delle correzioni.
 
-La mappa registra 215 riferimenti, con 51 schede curate e 164 riferimenti storici ancora da riconciliare. Una scheda curata è esplicitamente non letta: la guida Dayton non recuperata. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende tredici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
+La mappa registra 219 riferimenti, con 55 schede curate e 164 riferimenti storici ancora da riconciliare. Una scheda curata è esplicitamente non letta: la guida Dayton non recuperata. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende tredici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
 
 ## Sviluppo e attività residue
 

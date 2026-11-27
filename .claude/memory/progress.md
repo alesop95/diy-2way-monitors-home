@@ -1441,3 +1441,15 @@ Quattro PDF coerenti con QA; due rigenerati, tutte le 16 pagine correnti coperte
 Due ancore testuali del helper privato hanno fermato l'aggiornamento documentale: riletto il testo e corrette le corrispondenze, senza forzature. La correzione degli spazi nella prosa ha richiesto rigenerazione ordinaria della mappa e dei PDF prima della QA finale. Primo richiamo del controllo identità al percorso tools inesistente; trovato con rg il file nel template e rieseguito correttamente. Non erano guasti del software audio.
 
 File scritti e riletti: distinta e docs/67, piano e topic di ricerca, schede canoniche/mappa e catalogo, ADR-058, capitoli63/STATO/PENDING/README/artefatti, LaTeX/due PDF/manifesto QA, roadmap/STACK/didattica13, registro operativo, memoria/current-work e ripresa privata con backup. Perimetro manuale esclude due GRC preesistenti. Roadmap 26 aperte, fisiche sospese, gate pacchetti senza risposta e sicurezza non verificata. Nessun agente parallelo, scrittura Git, installazione o accesso a dischi esterni.
+
+## 2026-11-26 - Cablaggio delle quattro vie specificato, MS-324
+
+**Template:** nessuna nuova lezione. Riusati registro delle fonti e distinzione fra dato osservato e specifica.
+
+Chiusura MS-323 verificata in 71a50a9. Sviluppato schema numerato L05-L08 e P05-P08 in capitolo68, con pinout diretto ring isolato e riserva differenziale a due DTI. Manuale UMC1820 conferma TRS e +16 dBu; un resoconto su un esemplare indica tip pilotato. Nessuna autorizzazione ufficiale al ring a massa recuperata. La sequenza in ADR-059 conserva prima il ramo economico e i criteri per abbandonarlo. Tutte le prove fisiche restano differite.
+
+Confronto puntuale tabella-JSON sui quattro canali, indici, etichette e quantità delle due varianti. Riferimenti 4,889919 V RMS per +16 dBu, 48,9 e 489 mV RMS per attenuazioni ipotetiche di 40 e 20 dB. Due DTI aggiungono 154 euro prima dei cavi extra. Fonti 219/55 curate e 164 storiche, 145 file/400 usi, catalogo 198. Il controllo PDF in parallelo al primo build ha osservato una sorgente non ancora consolidata e un intermedio. Controllo ripetuto a build fermo. La QA ha corretto un rimando storico del recap. WordCraft ha poi incontrato ACL Windows sulla cartella temporanea, rieseguito con autorizzazione. Recap corrente con cinque pagine nuove viste e due identiche a quelle già viste, 14 render con impronte conservate e rimossi. Altri tre PDF correnti.
+
+File scritti: capitoli 67-68 e piano, dati della catena, ricerca C-01, schede e mappa fonti, catalogo, documenti di stato, recap e manifesto QA, agenda, ADR, memoria e ripresa. Nessun nuovo test o modifica software. Rapporto finale privato chiudi-finale.txt, da leggere prima della proposta manuale. Due GRC preesistenti esclusi e stage lasciato vuoto.
+
+Il seguito didattico è nella scheda 13, sezione MS-324 sul percorso di corrente.

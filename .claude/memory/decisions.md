@@ -713,3 +713,11 @@ Dopo il confronto fra due V3 stereo RCA e due A800 con ingressi bilanciati, il p
 La catena di sviluppo resta UMC1820 condivisa fra PC e Pi alternativi, SB16PFCR25-8/SB26STCN-C000-4 in due A24 chiusi e due finali stereo esterni, uno per i woofer e uno per i tweeter. La distinta e la mappa nominale sono nel capitolo67 e in data/catena-riferimento.json; il capitolo63 conserva modelli e relazione tecnica.
 
 La scelta accetta il punto aperto del collegamento fra uscita bilanciata e ingresso RCA: terminazioni, livelli e rumore vanno definiti e qualificati, senza presumere ammesso il cortocircuito del ramo freddo. Resta aperta la voce C-01 del capitolo67. Guadagni, protezioni, componenti effettivi e cablaggi non diventano qualificati per questa decisione. ADR-055 resta valida, nessun ordine, taglio, installazione o verifica fisica riaperta.
+
+## ADR-059 - Qualifica del collegamento di linea delle quattro vie
+
+Data: 2026-11-26. Stato: percorso di progetto in MS-324, qualifica degli esemplari differita per ADR-055.
+
+Resta valida la scelta del proprietario per due V3. Il progetto porta per prima al futuro banco la variante diretta con tip al centro RCA, sleeve alla corona e ring isolato. Il caso pubblicato su un esemplare UMC1820 orienta la prova. Behringer documenta le linee bilanciate e il livello massimo, con topologia e terminazione da verificare sull'hardware. Il capitolo68 definisce il confronto fra misure sui poli e sulla linea caricata.
+
+La riserva documentale è due convertitori passivi ART DTI con quattro primari differenziali e quattro secondari RCA. Il rapporto 1:1 richiede un bilancio di livello dedicato. Il ramo isolato aggiunge 154 euro di dispositivi ai prezzi osservati e può erodere il vantaggio economico originario. La scelta dell'isolatore e della spesa resta condizionata all'esito del diretto, alla qualifica del carico e al preventivo. Lo schema numerato e le coppie di potenza indipendenti valgono per entrambe le varianti. L'integrazione fisica resta sospesa.

@@ -6053,6 +6053,14 @@ Consolidamento MS-323: mappa 215 fonti/51 curate/164 storiche, 143 file nel peri
 
 Nel lavoro privato due corrispondenze testuali errate hanno fermato il helper prima della scrittura prevista; corrette dopo rilettura, senza forzare guardie. Dopo le correzioni di spazi nella prosa, la mappa ha rilevato le intestazioni cambiate ed è stata rigenerata normalmente; rifatti i due PDF e l'ispezione corrente. Il primo richiamo del controllo identità al percorso tools inesistente è stato corretto trovando con rg lo strumento nel template: riesecuzione sui tracciati senza riscontri. Non sono difetti del runtime audio. Memoria, piano, ripresa e messaggio consolidati, due GRC riservati esclusi. Roadmap dal vivo 26 aperte, fisiche sospese ADR-055; nessuna scrittura Git o modifica della macchina.
 
+## MS-324 - 2026-11-26 - Cablaggio numerato e conversione di linea
+
+Ripresa da 71a50a9 dopo chiudi del proprietario. Riletto il contratto delle uscite UMC1820 e degli ingressi V3, cercata la terminazione del ring. Il resoconto originale su un esemplare segnala bilanciamento in impedenza, con copertura insufficiente per estendere il dato alla revisione futura. Specificata una prima variante economica con ring aperto e riserva con due DTI, manuale 1.4. Nessun collegamento reale. Cap.68, dato r2 e ADR-059 conservano mappa, quantità, livelli da verificare e limiti.
+
+Controllo puntuale Decimal e confronto tabella/JSON dei quattro canali. Il convertitore 1:1 richiede verifica della risposta a carico e del livello in ingresso. La pagina italiana aperta mostrava 77 euro unitari IVA inclusa, diversa dalla pagina indicizzata di ricerca. Totale 154 euro per quattro canali, budget isolato 1021,25-1241,25 escludendo i cavi aggiuntivi oltre il lotto e le esclusioni di base. Budget principale e scelta V3 restano nel capitolo67.
+
+Rigenerati mappa 219/55/164 con 145 file e 400 usi, catalogo 198 e recap con gli stessi strumenti. Il primo controllo PDF concorrente vedeva l'intermedio ancora in costruzione. Ripetuto a build concluso. Corretto durante l'ispezione il rimando ai componenti correnti. Il tentativo successivo di compilazione è stato fermato dai permessi della temporanea WordCraft. Rieseguita la compilazione autorizzata, verificati gli hash e rilette le pagine 5/6 cambiate dopo la correzione. Cinque pagine correnti viste e due coincidenti con la consegna precedente, 14 render temporanei rimossi e impronte conservate. Nessun cambiamento al generatore. Controllo di chiusura finale in chiudi-finale.txt privato.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Nota di lettura corrente: il testo seguente conserva un riepilogo storico anteriore al setup e al controllo attuali. Le pendenze correnti si leggono soltanto in PENDING-ACTIONS.md e il percorso documentale in STATO-PROGETTO.md; le priorità storiche sotto non riaprono attività concluse o verifiche fisiche sospese.

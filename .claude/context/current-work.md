@@ -11,22 +11,16 @@ last-verified-commit: cf177180ef9f2a3ef325247dd07c973eb544d949
 
 # Lavoro corrente
 
-## Catena di riferimento consolidata, MS-323, 2026-11-26
+## Schema delle quattro vie, MS-324
 
-Base main ac01f66, dopo la chiusura MS-322. Catena in docs/67 e distinta strutturata in data/catena-riferimento.json. Due V3 stereo confermati dal proprietario per priorità al costo, ADR-058; nessun ordine autorizzato. UMC1820 condivisa PC/Pi a host alternativo, cuffie nominali 3/4 e quattro vie 5-8; SB16/SB26 in A24 chiusa, due finali completi esterni, EMM-6 candidato.
+Base main 71a50a9, MS-323 chiusa dal proprietario con commit, push e impronta coerente. MS-324 sviluppa C-01 in docs/68-cablaggio-quattro-vie.md e nella revisione r2 di data/catena-riferimento.json. Schema L05-L08 e P05-P08 verificato contro la mappa nominale, con coppie di potenza indipendenti. V3 confermati in ADR-058. ADR-059 registra la sequenza proposta per qualificare la linea.
 
-Distinta, quantità, routing e dipendenze CAD/DSP espliciti. Prezzi osservati separati dalle stime e dalle offerte storiche del capitolo63: 587,25 euro di componenti visualizzati, 867,25-1087,25 con lotti stimati senza switch, IVA di destinazione/trasporto/conversione extra non inclusi. Non è un tetto di spesa. Backorder e preordine non producono sostituzioni automatiche.
+Prima variante: quattro cavi TRS-RCA con tip al centro, sleeve alla corona e ring aperto/isolato. Il manuale UMC1820 non autorizza un ponte ring-sleeve. Il resoconto su un esemplare favorevole al diretto rimane un indizio. Riserva: due ART DTI con quattro cavi TRS-TRS e quattro RCA-RCA, primari differenziali e secondari isolati. Le misure di carico, livello, fase e rumore restano differite.
 
-Ricerca narrativa mirata, manuali ufficiali e prezzi con varianti/condizioni. Fonte Dayton HTML marcata non letta, distinto il portale di calibrazione leggibile; nessun file individuale acquisito. Mappa 215 fonti/51 curate/164 storiche, 143 file e 395 usi; una curata da verificare/non letta. Catalogo 195, didattica13.
+Quattro linee ricontate con gli indici 4/5/6/7 e due gruppi LF/HF. Riferimento +16 dBu pari a 4,889919 V RMS; ampiezze ricavate sotto l'ipotesi dichiarata di riferimento a fondo scala. Due DTI a 77 euro IVA inclusa nella pagina aperta danno 154 euro. L'isolamento porta il budget a 1021,25-1241,25 euro prima di cavi extra e spedizione. DTI resta una variante condizionata, nessun acquisto o rilascio costruttivo autorizzato.
 
-## Prove e consegna
+Mappa 219 fonti/55 curate/164 storiche, 145 file e 400 usi. Quattro fonti C-01 aggiunte con copertura esplicita. Una scheda curata resta non letta, la guida Dayton. Catalogo 198 file, didattica13. Recap aggiornato e ispezionato: pagine 1/4/5/6/7 cambiate e viste, 2/3 identiche per SHA alle pagine già verificate. Quattro PDF correnti e precedenti conservati; 14 PNG di confronto archiviati come impronte e rimossi. La prima lettura concorrente del controllo PDF ha visto un intermedio in rigenerazione. Dopo il termine del build il controllo è verde. Una successiva compilazione ha richiesto accesso alla cartella temporanea Windows, con approvazione del comando.
 
-Primo gate completo con «Controlli verdi», tutti i 46 comandi locali passati. Nessun nuovo software o test; identità personali senza riscontri sui file tracciati. Ultimo gate dopo questa persistenza nel rapporto _notes/catena-riferimento-20261126/chiudi-finale.txt: leggerlo prima della proposta manuale. Quattro PDF coerenti con QA; recap e sistema autonomo aggiornati, 16 pagine correnti ispezionate e 16 PNG rimossi con ricevuta. Originali precedenti conservati; kit nominale 55 file e modelli esistenti invariati.
+Nessun nuovo programma o test versionato. Ultimo rapporto di chiusura in _notes/cablaggio-20261126/chiudi-finale.txt. Proporre chiudi solo con «Controlli verdi» all'ultima riga. Identità sui tracciati senza riscontri, sicurezza non verificata. Nessun add/commit/push/deploy dall'agente. Due GRC riservati al template esclusi. Un albero, zero agenti paralleli.
 
-Milestone preparata tramite COMMIT-MSG/COMMIT-SCOPE, due GRC preesistenti riservati al template esclusi. Nessun add/commit/push/deploy, impronta anticipata o agente parallelo. Dopo la consegna non scrivere durante chiudi.
-
-## Prossimo gesto e vincoli
-
-Risolvere documentalmente C-01 per le quattro linee bilanciate UMC1820 verso RCA V3, senza presumere ammesso un ring cortocircuitato. Poi schema numerato e layout esecutivo; guadagni, protezioni e profili tarati richiedono qualifiche differite. La conferma V3 non è una prova di compatibilità dell'esemplare.
-
-PENDING rimane il solo registro corrente: 26 voci aperte, 8 interamente fisiche sospese ADR-055. Nessuna richiesta di misure, foto, acquisti o tagli. Enable del pannello al login manuale; nessuna reinstallazione, nuovo banco DSP, backup/reboot o accesso a J. Gate pacchetti senza risposta e sicurezza non verificata. Tre ancore storiche non avanzate; deployment mantiene la firma ea70a7b della rilettura MS-322.
+Prossima attività documentale: layout posteriore A24, scelta candidata del connettore a quattro poli e fissaggi/giunzioni a partire dagli ingombri dichiarati. PENDING-ACTIONS è il registro corrente. La roadmap mantiene 26 voci aperte, incluse 8 interamente fisiche sospese per ADR-055. Rumore, livelli, guadagni, protezioni, costruzione e taratura sono differiti. Enable del pannello al login manuale. Gate pacchetti senza risposta, sette lezioni aperte, PA-042 manuale. Ancore storiche dichiarate e deployment ea70a7b della sola rilettura precedente.

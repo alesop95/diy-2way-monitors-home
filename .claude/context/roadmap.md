@@ -21,7 +21,7 @@ MS-321 sviluppa il confronto dei dati su file: FRD/OSM, riferimento comune, cope
 
 MS-322 aggiunge somma complessa dei driver con filtri e riferimenti espliciti,22 prove e tre casi LR4. Qualità insufficiente degli input blocca il dataset; i due casi negativi conservano outside_bounds anche con integrità verde. Il risultato rimane simulato, non una qualifica del prototipo.
 
-MS-323 consolida la catena in docs/67 e data/catena-riferimento.json. V3 confermati per costo, ADR-058; distinta e budget tracciabili. Il prossimo ingresso è C-01 per le quattro linee bilanciate-RCA, poi layout e dettagli esecutivi. Nessuna chiusura delle qualifiche fisiche o dell’acquisto.
+MS-323 consolida la catena in docs/67 e data/catena-riferimento.json. V3 confermati per costo, ADR-058; distinta e budget tracciabili. MS-324 documenta C-01 e lo schema numerato delle quattro vie nel capitolo68. La qualifica resta differita. Il lavoro documentale successivo è il layout di A24 con passaggio a quattro poli, fissaggi e giunzioni.
 
 ## Priorità e dipendenze
 

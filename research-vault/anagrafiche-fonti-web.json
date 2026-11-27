@@ -1135,6 +1135,86 @@
         "stato": "non_letta",
         "copertura": "Soltanto URL e indizio nei risultati; nessun contenuto del PDF dichiarato letto."
       }
+    },
+    {
+      "id": "SRC-CAMERATIM-UMC1820",
+      "url": "https://www.cameratim.com/reviews/audio/behringer-u-phoria-umc1820-audio-interface/",
+      "aliases": [],
+      "titolo": "Review of Behringer U-PHORIA UMC1820",
+      "ente": "Cameratim",
+      "tipo": "osservazione_originale",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "Riporta solo tip pilotato sul proprio esemplare. Revisione e misura separata dei poli non dichiarate.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Riporta solo tip pilotato sul proprio esemplare. Revisione e misura separata dei poli non dichiarate."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Sezione Audio, passaggio sullo stadio delle uscite."
+      },
+      "usi_progettuali": "Schema e bilancio C-01, MS-324, capitolo68."
+    },
+    {
+      "id": "SRC-JENSEN-AN003",
+      "url": "https://www.jensen-transformers.com/wp-content/uploads/2014/08/an003.pdf",
+      "aliases": [],
+      "titolo": "Interconnection of Balanced and Unbalanced Equipment",
+      "ente": "Bill Whitlock, Jensen Transformers",
+      "tipo": "nota_tecnica",
+      "versione": "AN-003",
+      "spiegazione": "Distinzione tra equilibrio delle impedenze e segnali simmetrici. Figure con trasformatore e attenuazione.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "Distinzione tra equilibrio delle impedenze e segnali simmetrici. Figure con trasformatore e attenuazione."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Sezioni 1, 3.1, 3.2 e 4."
+      },
+      "usi_progettuali": "Schema e bilancio C-01, MS-324, capitolo68."
+    },
+    {
+      "id": "SRC-ART-DTI-MANUAL",
+      "url": "https://artproaudio.com/imgs/file/Manuals/om-DTI_Manual_A6_V1_4.pdf",
+      "aliases": [],
+      "titolo": "DTI Dual Transformer/Isolator",
+      "ente": "ART Pro Audio",
+      "tipo": "manuale_produttore",
+      "versione": "1.4",
+      "spiegazione": "1:1, TRS in e RCA out; perdita dipendente dal carico. Nessuna curva con i V3.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "1:1, TRS in e RCA out; perdita dipendente dal carico. Nessuna curva con i V3."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Introduzione, Signal Flow Chart e Specifiche."
+      },
+      "usi_progettuali": "Schema e bilancio C-01, MS-324, capitolo68."
+    },
+    {
+      "id": "SRC-PRICE-ART-DTI-THOMANN",
+      "url": "https://www.thomann.it/art_dti.htm",
+      "aliases": [],
+      "titolo": "ART DTI",
+      "ente": "Thomann Italia",
+      "tipo": "offerta_venditore",
+      "versione": "Pagina consultata 2026-11-26",
+      "spiegazione": "77 euro IVA inclusa, entro 2-3 settimane. La copia indicizzata differiva; quantità e trasporto da confermare.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-26",
+        "nota": "77 euro IVA inclusa, entro 2-3 settimane. La copia indicizzata differiva; quantità e trasporto da confermare."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Prezzo, IVA e disponibilità della pagina aperta."
+      },
+      "usi_progettuali": "Schema e bilancio C-01, MS-324, capitolo68."
     }
   ]
 }

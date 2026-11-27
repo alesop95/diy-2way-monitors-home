@@ -1,6 +1,6 @@
 {
   "schema": "catena-riferimento-1",
-  "revision": "2026-11-26-r1",
+  "revision": "2026-11-26-r2",
   "status": "base di sviluppo documentale confermata; nessun ordine o rilascio esecutivo",
   "hardware_qualified": false,
   "manufacturing_release": false,
@@ -50,7 +50,7 @@
       "power_supplies": "2x32V/5A esterni inclusi",
       "input": "RCA",
       "selection_status": "V3 confermati dal proprietario il2026-11-26, priorità al costo, ADR-058",
-      "balanced_line_conversion": "da definire e qualificare"
+      "balanced_line_conversion": "C-01: variante diretta a ring isolato prioritaria per la qualifica, alternativa isolata documentata"
     },
     "measurement": {
       "microphone_candidate": "Dayton Audio EMM-6",
@@ -74,7 +74,10 @@
       "simulated_zero_based": 4,
       "amp_group": "LF",
       "amp_channel": "L",
-      "qualified": false
+      "qualified": false,
+      "line_label": "L05",
+      "power_label": "P05",
+      "isolator_channel": 1
     },
     {
       "purpose": "tweeter L",
@@ -82,7 +85,10 @@
       "simulated_zero_based": 5,
       "amp_group": "HF",
       "amp_channel": "L",
-      "qualified": false
+      "qualified": false,
+      "line_label": "L06",
+      "power_label": "P06",
+      "isolator_channel": 1
     },
     {
       "purpose": "woofer R",
@@ -90,7 +96,10 @@
       "simulated_zero_based": 6,
       "amp_group": "LF",
       "amp_channel": "R",
-      "qualified": false
+      "qualified": false,
+      "line_label": "L07",
+      "power_label": "P07",
+      "isolator_channel": 2
     },
     {
       "purpose": "tweeter R",
@@ -98,7 +107,10 @@
       "simulated_zero_based": 7,
       "amp_group": "HF",
       "amp_channel": "R",
-      "qualified": false
+      "qualified": false,
+      "line_label": "L08",
+      "power_label": "P08",
+      "isolator_channel": 2
     }
   ],
   "wiring_quantities": {
@@ -250,11 +262,41 @@
     "reread_before_order": true
   },
   "open_decisions": [
-    "C-01: collegamento ammesso e qualificato fra UMC1820 bilanciata e V3 RCA; A800 resta confronto non scelto",
+    "C-01: qualificare il diretto D o la conversione I su esemplari e carichi reali; schema e criteri nel capitolo68",
     "Disponibilità e preventivo del tweeter esatto; nessuna sostituzione automatica",
     "Connettore posteriore, fissaggi, tolleranze e lunghezze dal layout esecutivo",
     "Guadagni, massima tensione e protezioni da qualificare",
     "Calibrazione e riferimento temporale/SPL della catena di misura"
   ],
-  "physical_checks_suspended": true
+  "physical_checks_suspended": true,
+  "line_wiring_c01": {
+    "specification": "docs/68-cablaggio-quattro-vie.md",
+    "hardware_qualified": false,
+    "direct_candidate": {
+      "priority": "first_if_supported",
+      "quantity_mono_trs_rca": 4,
+      "pinout": {
+        "tip": "centro RCA",
+        "ring": "aperto e isolato",
+        "sleeve": "corona RCA"
+      }
+    },
+    "isolated_candidate": {
+      "model": "ART DTI",
+      "quantity": 2,
+      "channels_per_unit": 2,
+      "quantity_mono_trs_trs": 4,
+      "quantity_mono_rca_rca": 4,
+      "primary": "tip-ring",
+      "secondary": "centro-corona RCA",
+      "per_unit_observed_eur": "77.00",
+      "total_observed_eur": "154.00",
+      "vendor_source_id": "SRC-PRICE-ART-DTI-THOMANN",
+      "observed_on": "2026-11-26",
+      "with_v3_without_switch_before_extra_cables_eur": [
+        "1021.25",
+        "1241.25"
+      ]
+    }
+  }
 }
