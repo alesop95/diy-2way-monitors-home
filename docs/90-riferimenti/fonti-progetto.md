@@ -2,7 +2,7 @@
 
 <!-- Generato da tools/mappa_fonti_progetto.py; dati autorati in research-vault/anagrafiche-fonti-web.json. -->
 
-Ricognizione del 2026-11-20: 224 identità nei 149 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
+Ricognizione del 2026-11-20: 227 identità nei 152 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
 
 Le chiavi bibliografiche preesistenti restano nel registro canonico del vault. Questa mappa descrive gli usi, non sostituisce la biblioteca. Registrata, letta e verificata sono proprietà distinte: le fonti storiche da riconciliare non diventano lette perché censite. Le letture parziali restano parziali.
 
@@ -141,6 +141,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-B5FFC3376179796E](#src-b5ffc3376179796e) | www.simplywise.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-BA1FD932A2DB210A](#src-ba1fd932a2db210a) | support.audient.com | riferimento_storico_da_classificare | da_verificare | 1 |
 | [SRC-BCE9D7DE4671AA2B](#src-bce9d7de4671aa2b) | discourse.ubuntu.com | riferimento_storico_da_classificare | da_verificare | 1 |
+| [SRC-BITNER-LP0285](#src-bitner-lp0285) | BiTsound INSTAL Speaker Cable OFC | scheda_produttore | verificata | 2 |
 | [SRC-C135A8E0A1D033DE](#src-c135a8e0a1d033de) | changelog Ubuntu della versione candidata | riferimento_storico_da_classificare | da_verificare | 3 |
 | [SRC-C1ED38714AD119C2](#src-c1ed38714ad119c2) | FreeCAD 1.1.4 | riferimento_storico_da_classificare | da_verificare | 4 |
 | [SRC-C1FA6E0E94A1FDC9](#src-c1fa6e0e94a1fdc9) | github.com | riferimento_storico_da_classificare | da_verificare | 1 |
@@ -206,8 +207,10 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-MARSHALL-MG10MG15-USER-PDF](#src-marshall-mg10mg15-user-pdf) | MG10 & MG15 Owners Manual | manuale_locale_fornito | verificata | 2 |
 | [SRC-MATAA-README-5FD77C0](#src-mataa-readme-5fd77c0) | MATAA README | documentazione_tecnica_primaria | verificata | 0 |
 | [SRC-NEUTRIK-20002406](#src-neutrik-20002406) | NL4MPXX, disegno 20002406 | disegno_produttore | verificata | 1 |
-| [SRC-NEUTRIK-20003841](#src-neutrik-20003841) | NL4FXX-W-S, disegno 20003841 | disegno_produttore | verificata | 1 |
+| [SRC-NEUTRIK-20003841](#src-neutrik-20003841) | NL4FXX-W-S, disegno 20003841 | disegno_produttore | verificata | 2 |
 | [SRC-NEUTRIK-BDA594](#src-neutrik-bda594) | speakON NL4MPXX e NL4MPXX-3, istruzioni | manuale_produttore | verificata | 2 |
+| [SRC-NEUTRIK-FXX](#src-neutrik-fxx) | FXX series | elenco_produttore | verificata | 1 |
+| [SRC-NEUTRIK-NL4FRX](#src-neutrik-nl4frx) | NL4FRX | pagina_produttore | verificata | 1 |
 | [SRC-NEUTRIK-NL4FXX-WS](#src-neutrik-nl4fxx-ws) | NL4FXX-W-S | pagina_produttore | verificata | 1 |
 | [SRC-NEUTRIK-NL4MPXX](#src-neutrik-nl4mpxx) | NL4MPXX | pagina_produttore | verificata | 1 |
 | [SRC-OSM-152-EXPORT](#src-osm-152-export) | Stored export functions | documentazione_tecnica_primaria | verificata | 1 |
@@ -870,7 +873,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 209.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 211.
 
 Contesto locale: "url": "https://www.thomann.it/behringer_a800.htm",
 
@@ -2452,7 +2455,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 195.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 197.
 
 Contesto locale: "url": "https://www.soundimports.eu/en/dayton-audio-emm-6.html",
 
@@ -2896,6 +2899,33 @@ Lettura: da_riconciliare. Consultare i microstep e la scheda della fonte per le 
 Uso in [docs/90-riferimenti/fonti.md](../../docs/90-riferimenti/fonti.md), sezione «Sistema operativo e ambiente», riga 17.
 
 Contesto locale: Discussione sull'annuncio di Ubuntu Studio 26.04 LTS e note di rilascio sul forum della comunità Ubuntu: `https://discourse.ubuntu.com/t/ubuntu-studio-26-04-lts-released/80832` e `https://discourse.ubuntu.com/t/ubuntu-studio-26-04-lts-release-notes/79113`. Elencate dalla stessa ricerca e non lette.
+
+
+## SRC-BITNER-LP0285
+
+BiTsound INSTAL Speaker Cable OFC
+
+Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C.
+
+Fonte canonica: [https://bitner-cablefactory.com/data/t4txt_photos/09383060420_BiTsound%C2%AEINSTAL%20Speaker%20Cable%20OFC.pdf](https://bitner-cablefactory.com/data/t4txt_photos/09383060420_BiTsound%C2%AEINSTAL%20Speaker%20Cable%20OFC.pdf).
+
+Responsabile: BITNER.
+
+Versione: consultata il 2026-11-27.
+
+Verifica: verificata, data 2026-11-27. Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C.
+
+Lettura: parziale. Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C.
+
+Usi progettuali dichiarati: Discesa sullo ST-120, MS-327, docs/69a.
+
+Uso in [docs/69a-discesa-cavi-st120.md](../../docs/69a-discesa-cavi-st120.md), sezione «La spina e la curva del cavo», riga 7.
+
+Contesto locale: Il cavo candidato BITNER LP0285 ha quattro conduttori da 1,5 mm² e guaina Ø9,1 mm. Entrambe le quote rientrano nei limiti dichiarati per la NL4FXX-W-S. Il cavo specifica cinque diametri di raggio minimo, pari a 45,5 mm. Il modello assume prudenzialmente questa quota all'intradosso e usa 50,05 mm sull'asse. [Scheda BITN
+
+Uso in [docs/69a-discesa-cavi-st120.md](../../docs/69a-discesa-cavi-st120.md), sezione «Scelta condizionata e verifica», riga 32.
+
+Contesto locale: Il cavo candidato ha resistenza massima di 12,8 Ω/km per conduttore a 20 °C. Tre metri di tratta, scelti solo come caso di confronto, danno circa 0,077 Ω per andata e ritorno e 0,17 dB di attenuazione su 4 Ω resistivi. La lunghezza reale dipende dall'ansa e dalla posizione dei finali. Lo schema conserva i quattro condu
 
 
 ## SRC-C135A8E0A1D033DE
@@ -4309,6 +4339,10 @@ Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passagg
 
 Contesto locale: Il disegno della spina indica fino a 82,5 mm complessivi. Si riservano 110 mm dalla faccia esterna della piastra, includendo il terminale montato e uno spazio di progetto per il cavo. È una riserva da verificare in funzione della curva ammessa dal cavo scelto. A 30° la profondità proiettata del cabinet da solo vale `22
 
+Uso in [docs/69a-discesa-cavi-st120.md](../../docs/69a-discesa-cavi-st120.md), sezione «La spina e la curva del cavo», riga 9.
+
+Contesto locale: Dal disegno della spina si prende 82,5 mm come lunghezza totale massima. Si somma tutta la sporgenza della presa, 7,05 mm, senza sottrarre la parte che entrerà nell'accoppiamento. Si aggiungono 5 mm ipotetici di tratto rettilineo e il quarto di cerchio. Il tratto verticale inizia quindi a 144,6 mm dalla piastra e circa
+
 
 ## SRC-NEUTRIK-BDA594
 
@@ -4335,6 +4369,52 @@ Contesto locale: Le marcature dei contatti distinguono le due coppie, isolate l'
 Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passaggio-cavi.md), sezione «Piastra, giunzioni e tenuta», riga 32.
 
 Contesto locale: La diagonale M3 è in alto a sinistra e in basso a destra nella vista dall'esterno del cabinet. Il disegno Neutrik della foratura è riferito al lato morsetti, quindi va specchiato orizzontalmente per questa vista. Il montaggio qui previsto è frontale sulla piastra, con viti svasate e dado verificato per accesso. Il mass
+
+
+## SRC-NEUTRIK-FXX
+
+FXX series
+
+Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina.
+
+Fonte canonica: [https://www.neutrik.com/en/neutrik/products/speakon-r-loudspeaker-connectors/speakon-r-cable-connectors/fxx-series](https://www.neutrik.com/en/neutrik/products/speakon-r-loudspeaker-connectors/speakon-r-cable-connectors/fxx-series).
+
+Responsabile: Neutrik AG.
+
+Versione: consultata il 2026-11-27.
+
+Verifica: verificata, data 2026-11-27. Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina.
+
+Lettura: parziale. Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina.
+
+Usi progettuali dichiarati: Discesa sullo ST-120, MS-327, docs/69a.
+
+Uso in [docs/69a-discesa-cavi-st120.md](../../docs/69a-discesa-cavi-st120.md), sezione «La spina e la curva del cavo», riga 11.
+
+Contesto locale: Neutrik indica la spina a gomito NL4FRX come fuori produzione. Nella pagina della serie FXX le due spine a quattro poli documentate sono W-L e W-S diritte. Il progetto conserva quindi la diritta e confronta una flangia arretrata che ne diminuisce l'ingombro. NL4FRX, [serie F
+
+
+## SRC-NEUTRIK-NL4FRX
+
+NL4FRX
+
+Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta.
+
+Fonte canonica: [https://www.neutrik.com/en/product/nl4frx](https://www.neutrik.com/en/product/nl4frx).
+
+Responsabile: Neutrik AG.
+
+Versione: consultata il 2026-11-27.
+
+Verifica: verificata, data 2026-11-27. Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta.
+
+Lettura: parziale. Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta.
+
+Usi progettuali dichiarati: Discesa sullo ST-120, MS-327, docs/69a.
+
+Uso in [docs/69a-discesa-cavi-st120.md](../../docs/69a-discesa-cavi-st120.md), sezione «La spina e la curva del cavo», riga 11.
+
+Contesto locale: Neutrik indica la spina a gomito NL4FRX come fuori produzione. Nella pagina della serie FXX le due spine a quattro poli documentate sono W-L e W-S diritte. Il progetto conserva quindi la diritta e confronta una flangia arretrata che ne diminuisce l'ingombro. NL4FRX, [serie F
 
 
 ## SRC-NEUTRIK-NL4FXX-WS
@@ -4576,7 +4656,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 181.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 183.
 
 Contesto locale: "url": "https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html",
 
@@ -4632,7 +4712,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 153.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 155.
 
 Contesto locale: "url": "https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html",
 
@@ -4671,7 +4751,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 167.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 169.
 
 Contesto locale: "url": "https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html",
 
@@ -4710,7 +4790,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 139.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 141.
 
 Contesto locale: "url": "https://www.thomann.it/behringer_umc1820.htm",
 

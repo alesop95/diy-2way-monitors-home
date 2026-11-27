@@ -1315,6 +1315,66 @@
         "stato": "parziale",
         "copertura": "Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato."
       }
+    },
+    {
+      "id": "SRC-NEUTRIK-NL4FRX",
+      "url": "https://www.neutrik.com/en/product/nl4frx",
+      "aliases": [],
+      "titolo": "NL4FRX",
+      "ente": "Neutrik AG",
+      "tipo": "pagina_produttore",
+      "versione": "consultata il 2026-11-27",
+      "spiegazione": "Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta.",
+      "usi_progettuali": "Discesa sullo ST-120, MS-327, docs/69a.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta."
+      }
+    },
+    {
+      "id": "SRC-NEUTRIK-FXX",
+      "url": "https://www.neutrik.com/en/neutrik/products/speakon-r-loudspeaker-connectors/speakon-r-cable-connectors/fxx-series",
+      "aliases": [],
+      "titolo": "FXX series",
+      "ente": "Neutrik AG",
+      "tipo": "elenco_produttore",
+      "versione": "consultata il 2026-11-27",
+      "spiegazione": "Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina.",
+      "usi_progettuali": "Discesa sullo ST-120, MS-327, docs/69a.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina."
+      }
+    },
+    {
+      "id": "SRC-BITNER-LP0285",
+      "url": "https://bitner-cablefactory.com/data/t4txt_photos/09383060420_BiTsound%C2%AEINSTAL%20Speaker%20Cable%20OFC.pdf",
+      "aliases": [],
+      "titolo": "BiTsound INSTAL Speaker Cable OFC",
+      "ente": "BITNER",
+      "tipo": "scheda_produttore",
+      "versione": "consultata il 2026-11-27",
+      "spiegazione": "Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C.",
+      "usi_progettuali": "Discesa sullo ST-120, MS-327, docs/69a.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C."
+      }
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema": "catena-riferimento-1",
-  "revision": "2026-11-27-r3",
+  "revision": "2026-11-27-r4",
   "status": "base di sviluppo documentale confermata; nessun ordine o rilascio esecutivo",
   "hardware_qualified": false,
   "manufacturing_release": false,
@@ -122,7 +122,9 @@
     "rear_connector_model": null,
     "fastener_model": null,
     "rear_connector_candidate": "Neutrik NL4MPXX",
-    "rear_connector_study": "config/cabinet/retro-a24.json"
+    "rear_connector_study": "config/cabinet/retro-a24.json",
+    "candidate_external_wire_model": "BITNER LP0285",
+    "layout_comparison": "data/discesa-st120-a24.json"
   },
   "observed_prices": [
     {
@@ -266,7 +268,7 @@
   "open_decisions": [
     "C-01: qualificare il diretto D o la conversione I su esemplari e carichi reali; schema e criteri nel capitolo68",
     "Disponibilità e preventivo del tweeter esatto; nessuna sostituzione automatica",
-    "Retro A24: piastra e layout quotati in capitolo69. Resta qualifica di tenuta, fissaggi, percorso dei cavi e spazio sullo ST-120.",
+    "Retro A24: soglie sullo ST-120 in docs/69a. Restano spazio reale di discesa e sgancio, scelta della geometria, tenuta e ferramenta.",
     "Guadagni, massima tensione e protezioni da qualificare",
     "Calibrazione e riferimento temporale/SPL della catena di misura"
   ],

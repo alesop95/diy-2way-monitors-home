@@ -35,3 +35,9 @@ La modalità nel JSON aggiunge `line_label`, `power_label` e `isolator_channel` 
 Un cerchio centrale e due fori con interassi giusti non determinano il verso di montaggio. Il disegno Neutrik mostra il ritaglio dal lato morsetti. La tavola dell'A24 guarda il lato spina, quindi i centri si specchiano. Il confronto sui centri distingue due disegni con area e diametro identici. La prova volutamente specchiata esercita proprio questa differenza.
 
 La stima della profondità del solo cabinet aveva tre dimensioni dichiarate e un angolo. Il punto terminale della spina richiede un'altra quota a partire dalla faccia della piastra. Con la riserva di 110 mm il risultato supera i 300 mm dello ST-120, se tutto deve restare entro il ripiano. Le foto mostrano il contesto, mentre la formula usa le quote pubbliche. La distanza dalla parete rimane aperta e può consentire una discesa del cavo oltre il bordo. È questa distinzione a evitare che il disegno del pannello sembri già un rilascio costruttivo.
+
+## La curva e lo sgancio cambiano la profondità, MS-327
+
+Una lunghezza letta sul disegno della spina descrive la spina isolata. Per far scendere il cavo oltre il bordo servono il raggio del cavo e una verifica del punto in cui il tratto verticale attraversa il piano del ripiano. In più lo sgancio chiede spazio per la traslazione del connettore. Il confronto ora distingue le condizioni e le esprime rispetto alla stessa linea di parete.
+
+L'offset da 110 a 60 mm riduce di 25 mm la proiezione posteriore a 30°. Spostare soltanto la presa porta però il cavo fuori fascia laterale. La compatta combina un arretramento e uno spostamento delle due casse. Il nuovo limite per lo schermo segue da quelle posizioni e conserva le distanze laterali scelte. Il costo geometrico è osservabile prima di intervenire sul legno.

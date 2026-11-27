@@ -6087,6 +6087,20 @@ Verifica: _notes/retro-a24-20261127/tavola.py con CADCraft e PdfCraft. Controllo
 
 Il controllo degli spazi ha trovato un contesto della mappa fonti troncato subito dopo uno spazio. Accorciata la frase nel capitolo69 e rigenerata la mappa. Il controllo del diff non segnala spazi residui.
 
+## MS-327 - 2026-11-27 - Discesa del cavo e riserva di sgancio sullo ST-120
+
+Perimetro fasi 5-7. Il calcolo usa quote pubbliche già registrate e dipendenze firmate. Serve a scegliere la piastra dopo il riscontro della luce reale.
+
+MS-326 pubblicata in 175ed91. MS-327 confronta quattro discese sullo ST-120 documentato, con A24 a 30°. Fonte operativa docs/69a-discesa-cavi-st120.md e dati firmati in data/discesa-st120-a24.json. Il modello usa BITNER LP0285, guaina Ø9,1 mm, quattro conduttori da 1,5 mm² e raggio minimo di cinque diametri. Assunto all'intradosso, equivale a 50,05 mm sull'asse. Spina Neutrik W-S, somma cautelativa di flangia e lunghezza libera, tratto rettilineo di 5 mm. Asse della discesa a 144,6 mm dalla piastra. Neutrik NL4FRX risulta fuori produzione nella pagina del produttore.
+
+Verificati corpo fermo, discesa oltre bordo e riserva di sgancio di 15 mm assiali. Distinguere l'ingombro modellato dalle misure effettive della mano, del cavo e della parete. Soglie di servizio bordo-parete: centrale 79,911 mm, centrale arretrata 53,930 mm, compatta 32,930 mm. Spostare soltanto la presa porta il cavo 16,4 mm fuori fascia laterale. La compatta usa arretramento 30 mm e posizioni speculari, spazio schermo 540,949 mm. Vano e accesso restano da progettare se necessario. Centrale preferita se la luce reale lo consente. Nessuna scelta esecutiva o acquisto autorizzati.
+
+Verificato il quarto di cerchio contro 101 campioni, parete al bordo e contrasto a 50 mm. I riferimenti firmati comprendono geometria A24, ST-120 e dati driver, ricalcolati sul codice nominale esistente. Il valore woofer non è più una costante copiata nel calcolo. Nuove fonti Neutrik e BITNER, mappa 227/63 curate/164 storiche, 152 file/411 usi, catalogo 204. Guida Dayton ancora non letta. Recap con quattro pagine cambiate viste e tre identiche per SHA alle precedenti. Quattordici render temporanei rimossi con impronte. Tavola A24 già pubblicata preservata. Il controllo di chiusura dopo la persistenza è in _notes/discesa-st120-20261127/chiudi-finale.txt.
+
+Prossimo passo documentale: consolidare la sequenza di montaggio e verifica dal cablaggio al DSP, con i criteri che decidono tra le piastre e la distinta di messa in opera. La luce reale, la tenuta, l'hardware C-01, i tagli e la taratura restano differiti per ADR-055. Nessun nuovo accesso alle foto o alla macchina Ubuntu. Enable pannello al login e PA-042 restano manuali. Gate pacchetti senza risposta, sette lezioni aperte, sicurezza non verificata. Due file GRC riservati e fuori perimetro. Un albero, zero subagenti e nessuna scrittura Git automatica.
+
+Verifica: calcola.py privato, quattro casi contro le quote nominali, confronto analitico e campionato della curva, margine laterale negativo sull'offset isolato e positivo sulla compatta. Nel primo calcolo il massimo ingombro driver era riportato a mano. Riletto da progetto_cabinet e confermato 88,3 mm, con risultato precedente archiviato. Confermati PDF e perimetro dopo l'ultima scrittura.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Nota di lettura corrente: il testo seguente conserva un riepilogo storico anteriore al setup e al controllo attuali. Le pendenze correnti si leggono soltanto in PENDING-ACTIONS.md e il percorso documentale in STATO-PROGETTO.md; le priorità storiche sotto non riaprono attività concluse o verifiche fisiche sospese.

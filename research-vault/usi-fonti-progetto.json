@@ -2,7 +2,7 @@
   "schema": "fonti-usi-audio-1",
   "data": "2026-11-20",
   "perimetro": {
-    "file": 149,
+    "file": 152,
     "radici": [
       "docs",
       ".claude/context",
@@ -921,7 +921,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 209,
+          "riga": 211,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.thomann.it/behringer_a800.htm\","
         },
@@ -3159,7 +3159,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 195,
+          "riga": 197,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.soundimports.eu/en/dayton-audio-emm-6.html\","
         },
@@ -3768,6 +3768,40 @@
         "stato": "da_riconciliare",
         "copertura": "Consultare i microstep e la scheda della fonte per le eventuali letture precedenti."
       }
+    },
+    {
+      "id": "SRC-BITNER-LP0285",
+      "url": "https://bitner-cablefactory.com/data/t4txt_photos/09383060420_BiTsound%C2%AEINSTAL%20Speaker%20Cable%20OFC.pdf",
+      "aliases": [],
+      "titolo": "BiTsound INSTAL Speaker Cable OFC",
+      "ente": "BITNER",
+      "tipo": "scheda_produttore",
+      "versione": "consultata il 2026-11-27",
+      "spiegazione": "Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C.",
+      "usi_progettuali": "Discesa sullo ST-120, MS-327, docs/69a.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C."
+      },
+      "usi": [
+        {
+          "file": "docs/69a-discesa-cavi-st120.md",
+          "riga": 7,
+          "sezione": "La spina e la curva del cavo",
+          "contesto": "Il cavo candidato BITNER LP0285 ha quattro conduttori da 1,5 mm² e guaina Ø9,1 mm. Entrambe le quote rientrano nei limiti dichiarati per la NL4FXX-W-S. Il cavo specifica cinque diametri di raggio minimo, pari a 45,5 mm. Il modello assume prudenzialmente questa quota all'intradosso e usa 50,05 mm sull'asse. [Scheda BITN"
+        },
+        {
+          "file": "docs/69a-discesa-cavi-st120.md",
+          "riga": 32,
+          "sezione": "Scelta condizionata e verifica",
+          "contesto": "Il cavo candidato ha resistenza massima di 12,8 Ω/km per conduttore a 20 °C. Tre metri di tratta, scelti solo come caso di confronto, danno circa 0,077 Ω per andata e ritorno e 0,17 dB di attenuazione su 4 Ω resistivi. La lunghezza reale dipende dall'ansa e dalla posizione dei finali. Lo schema conserva i quattro condu"
+        }
+      ]
     },
     {
       "id": "SRC-C135A8E0A1D033DE",
@@ -5759,6 +5793,12 @@
           "riga": 42,
           "sezione": "Passaggio interno e spazio sul tavolo",
           "contesto": "Il disegno della spina indica fino a 82,5 mm complessivi. Si riservano 110 mm dalla faccia esterna della piastra, includendo il terminale montato e uno spazio di progetto per il cavo. È una riserva da verificare in funzione della curva ammessa dal cavo scelto. A 30° la profondità proiettata del cabinet da solo vale `22"
+        },
+        {
+          "file": "docs/69a-discesa-cavi-st120.md",
+          "riga": 9,
+          "sezione": "La spina e la curva del cavo",
+          "contesto": "Dal disegno della spina si prende 82,5 mm come lunghezza totale massima. Si somma tutta la sporgenza della presa, 7,05 mm, senza sottrarre la parte che entrerà nell'accoppiamento. Si aggiungono 5 mm ipotetici di tratto rettilineo e il quarto di cerchio. Il tratto verticale inizia quindi a 144,6 mm dalla piastra e circa"
         }
       ]
     },
@@ -5793,6 +5833,62 @@
           "riga": 32,
           "sezione": "Piastra, giunzioni e tenuta",
           "contesto": "La diagonale M3 è in alto a sinistra e in basso a destra nella vista dall'esterno del cabinet. Il disegno Neutrik della foratura è riferito al lato morsetti, quindi va specchiato orizzontalmente per questa vista. Il montaggio qui previsto è frontale sulla piastra, con viti svasate e dado verificato per accesso. Il mass"
+        }
+      ]
+    },
+    {
+      "id": "SRC-NEUTRIK-FXX",
+      "url": "https://www.neutrik.com/en/neutrik/products/speakon-r-loudspeaker-connectors/speakon-r-cable-connectors/fxx-series",
+      "aliases": [],
+      "titolo": "FXX series",
+      "ente": "Neutrik AG",
+      "tipo": "elenco_produttore",
+      "versione": "consultata il 2026-11-27",
+      "spiegazione": "Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina.",
+      "usi_progettuali": "Discesa sullo ST-120, MS-327, docs/69a.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Tre voci della serie. W-L e W-S a quattro poli, nessuna a gomito indicata nella pagina."
+      },
+      "usi": [
+        {
+          "file": "docs/69a-discesa-cavi-st120.md",
+          "riga": 11,
+          "sezione": "La spina e la curva del cavo",
+          "contesto": "Neutrik indica la spina a gomito NL4FRX come fuori produzione. Nella pagina della serie FXX le due spine a quattro poli documentate sono W-L e W-S diritte. Il progetto conserva quindi la diritta e confronta una flangia arretrata che ne diminuisce l'ingombro. [NL4FRX](https://www.neutrik.com/en/product/nl4frx), [serie F"
+        }
+      ]
+    },
+    {
+      "id": "SRC-NEUTRIK-NL4FRX",
+      "url": "https://www.neutrik.com/en/product/nl4frx",
+      "aliases": [],
+      "titolo": "NL4FRX",
+      "ente": "Neutrik AG",
+      "tipo": "pagina_produttore",
+      "versione": "consultata il 2026-11-27",
+      "spiegazione": "Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta.",
+      "usi_progettuali": "Discesa sullo ST-120, MS-327, docs/69a.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Stato fuori produzione, spina a gomito a quattro poli. Esclusa come base di distinta."
+      },
+      "usi": [
+        {
+          "file": "docs/69a-discesa-cavi-st120.md",
+          "riga": 11,
+          "sezione": "La spina e la curva del cavo",
+          "contesto": "Neutrik indica la spina a gomito NL4FRX come fuori produzione. Nella pagina della serie FXX le due spine a quattro poli documentate sono W-L e W-S diritte. Il progetto conserva quindi la diritta e confronta una flangia arretrata che ne diminuisce l'ingombro. [NL4FRX](https://www.neutrik.com/en/product/nl4frx), [serie F"
         }
       ]
     },
@@ -6100,7 +6196,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 181,
+          "riga": 183,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html\","
         },
@@ -6173,7 +6269,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 153,
+          "riga": 155,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html\","
         },
@@ -6225,7 +6321,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 167,
+          "riga": 169,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html\","
         },
@@ -6277,7 +6373,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 139,
+          "riga": 141,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.thomann.it/behringer_umc1820.htm\","
         },
