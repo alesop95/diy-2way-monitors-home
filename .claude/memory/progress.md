@@ -1450,6 +1450,14 @@ Chiusura MS-323 verificata in 71a50a9. Sviluppato schema numerato L05-L08 e P05-
 
 Confronto puntuale tabella-JSON sui quattro canali, indici, etichette e quantità delle due varianti. Riferimenti 4,889919 V RMS per +16 dBu, 48,9 e 489 mV RMS per attenuazioni ipotetiche di 40 e 20 dB. Due DTI aggiungono 154 euro prima dei cavi extra. Fonti 219/55 curate e 164 storiche, 145 file/400 usi, catalogo 198. Il controllo PDF in parallelo al primo build ha osservato una sorgente non ancora consolidata e un intermedio. Controllo ripetuto a build fermo. La QA ha corretto un rimando storico del recap. WordCraft ha poi incontrato ACL Windows sulla cartella temporanea, rieseguito con autorizzazione. Recap corrente con cinque pagine nuove viste e due identiche a quelle già viste, 14 render con impronte conservate e rimossi. Altri tre PDF correnti.
 
-File scritti: capitoli 67-68 e piano, dati della catena, ricerca C-01, schede e mappa fonti, catalogo, documenti di stato, recap e manifesto QA, agenda, ADR, memoria e ripresa. Nessun nuovo test o modifica software. Rapporto finale privato chiudi-finale.txt, da leggere prima della proposta manuale. Due GRC preesistenti esclusi e stage lasciato vuoto.
+File toccati: capitoli 67-68 e piano, dati della catena, ricerca C-01, schede e mappa fonti, catalogo, documenti di stato, recap e manifesto QA, `tools/roadmap-items.yml`, ADR, memoria e ripresa. Nessun nuovo test o modifica software. Rapporto finale privato chiudi-finale.txt, da leggere prima della proposta manuale. Due GRC preesistenti esclusi e stage lasciato vuoto.
 
 Il seguito didattico è nella scheda 13, sezione MS-324 sul percorso di corrente.
+
+## 2026-11-27 - Pubblicazione della MS-324 registrata, MS-325
+
+**Template:** nessuna. La differenza tra giorno di lavoro e giorno di pubblicazione è registrata nel diario.
+
+Il commit 2992e12 ha pubblicato la MS-324 su main il 2026-11-27. Main e origin/main coincidono e l'impronta delle 09:20 è coerente. Il lavoro tecnico resta registrato nella voce del 26 novembre. Il controllo precedente al commit era verde. Al controllo successivo `lint-memoria.py` ha confrontato la data del commit con l'ultima voce del giorno precedente e ha classificato `tools/roadmap-items.yml` fra i file sotto tools. Questa voce registra la pubblicazione con la data effettiva.
+
+File toccati: `.claude/memory/progress.md`, `.claude/memory/index.md`, `.claude/context/current-work.md`, `docs/OPERATIONS-LOG.md` e ripresa privata. Verifica mirata con `python tools/lint-memoria.py`, esito completo nel rapporto privato di riallineamento.

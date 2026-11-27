@@ -6061,6 +6061,14 @@ Controllo puntuale Decimal e confronto tabella/JSON dei quattro canali. Il conve
 
 Rigenerati mappa 219/55/164 con 145 file e 400 usi, catalogo 198 e recap con gli stessi strumenti. Il primo controllo PDF concorrente vedeva l'intermedio ancora in costruzione. Ripetuto a build concluso. Corretto durante l'ispezione il rimando ai componenti correnti. Il tentativo successivo di compilazione è stato fermato dai permessi della temporanea WordCraft. Rieseguita la compilazione autorizzata, verificati gli hash e rilette le pagine 5/6 cambiate dopo la correzione. Cinque pagine correnti viste e due coincidenti con la consegna precedente, 14 render temporanei rimossi e impronte conservate. Nessun cambiamento al generatore. Controllo di chiusura finale in chiudi-finale.txt privato.
 
+## MS-325 - 2026-11-27 - Registrata la pubblicazione della MS-324
+
+Perimetro: continuità del progetto e verifica della chiusura. Il prossimo lavoro sul cabinet dipende da un registro leggibile e dal passaggio ordinario di chiudi.
+
+Il commit 2992e12 ha pubblicato la MS-324 su main il 2026-11-27. Main e origin/main coincidono e l'impronta delle 09:20 è coerente. Il lavoro tecnico resta registrato nella voce del 26 novembre. Il controllo precedente al commit era verde. Al controllo successivo `lint-memoria.py` ha confrontato la data del commit con l'ultima voce del giorno precedente e ha classificato `tools/roadmap-items.yml` fra i file sotto tools. Questa voce registra la pubblicazione con la data effettiva.
+
+Verifica: `python tools/lint-memoria.py` prima e dopo la registrazione, poi chiudi in sola verifica. Il rapporto finale è in chiudi-riallineamento.txt nel livello privato. La correzione conserva il commit di cablaggio e documenta la data effettiva della sua pubblicazione.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Nota di lettura corrente: il testo seguente conserva un riepilogo storico anteriore al setup e al controllo attuali. Le pendenze correnti si leggono soltanto in PENDING-ACTIONS.md e il percorso documentale in STATO-PROGETTO.md; le priorità storiche sotto non riaprono attività concluse o verifiche fisiche sospese.
