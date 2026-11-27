@@ -1375,6 +1375,66 @@
         "stato": "parziale",
         "copertura": "Pagine PDF 1-2, raggio minimo e riga LP0285. Quattro conduttori da 1,5 mm², Ø9,1 mm, resistenza per conduttore a 20 °C."
       }
+    },
+    {
+      "id": "SRC-TI-SLOA068A",
+      "url": "https://www.ti.com/lit/an/sloa068a/sloa068a.pdf",
+      "aliases": [],
+      "titolo": "Guidelines for Measuring Audio Power Amplifier Performance",
+      "ente": "Richard Palmer, Texas Instruments",
+      "tipo": "nota_applicativa_produttore",
+      "versione": "SLOA068A, 2019-09",
+      "spiegazione": "§3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare.",
+      "usi_progettuali": "Protocollo MS-328, docs/70.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "§3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "§3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare."
+      }
+    },
+    {
+      "id": "SRC-REW-MAKING-MEASUREMENTS",
+      "url": "https://www.roomeqwizard.com/help/help_en-GB/html/makingmeasurements.html",
+      "aliases": [],
+      "titolo": "Making Measurements",
+      "ente": "REW Help",
+      "tipo": "manuale_produttore",
+      "versione": "Help en-GB consultato il 2026-11-27",
+      "spiegazione": "Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio.",
+      "usi_progettuali": "Protocollo MS-328, docs/70.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio."
+      }
+    },
+    {
+      "id": "SRC-REW-FILE-MENU",
+      "url": "https://www.roomeqwizard.com/help/help_en-GB/html/file.html",
+      "aliases": [],
+      "titolo": "File Menu",
+      "ente": "REW Help",
+      "tipo": "manuale_produttore",
+      "versione": "Help en-GB consultato il 2026-11-27",
+      "spiegazione": "Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato.",
+      "usi_progettuali": "Protocollo MS-328, docs/70.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato."
+      }
     }
   ]
 }

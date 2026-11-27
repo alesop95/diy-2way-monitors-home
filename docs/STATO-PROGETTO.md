@@ -12,6 +12,7 @@ Aggiornamento del 2026-11-27. Questo è il punto di lettura per il proprietario:
 | Schema delle quattro vie e conversione di linea | [Capitolo 68](68-cablaggio-quattro-vie.md) |
 | Retro A24 e cablaggio | [Tavola e piastra](69-retro-a24-e-passaggio-cavi.md), [discesa sullo ST-120](69a-discesa-cavi-st120.md) |
 | Uso e controllo del DSP | [Manuale CamillaDSP](61-camilladsp-manuale-tecnico.md) |
+| Montaggio e collaudo | [Procedura 70](70-realizzazione-e-verifica.md), [scheda 70a](70a-scheda-collaudo-a24.md) |
 | Pendenze e verifiche sospese | [PENDING-ACTIONS.md](PENDING-ACTIONS.md) |
 | Decisioni e motivazioni | [Registro ADR](../.claude/memory/decisions.md) |
 | Cronologia, comandi, errori e prove | [OPERATIONS-LOG.md](OPERATIONS-LOG.md) |
@@ -157,11 +158,13 @@ La documentazione e il codice canonici sono nel repository Windows. Ubuntu conti
 
 I risultati correnti sono in `build/studio-crossover-20261120-v2/`, `build/sistema-autonomo-20261120-v5/` e `build/collaudo-profili-autonomi-20261120-finale-v5/`. I rapporti leggibili sono copiati nei due topic del vault. I tentativi precedenti, anche falliti, sono nel ZIP `_notes/archivio-prove/20261120/prove-superate.zip`, con 340 file e manifesto dei percorsi originali. La rimozione dei soli espansi ha ridotto di circa 190 MiB lordi le copie, conservando la prova delle correzioni.
 
-La mappa registra 227 riferimenti, con 63 schede curate e 164 riferimenti storici ancora da riconciliare. Una scheda curata è esplicitamente non letta: la guida Dayton non recuperata. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende tredici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
+La mappa registra 230 riferimenti, con 66 schede curate e 164 riferimenti storici ancora da riconciliare. Una scheda curata è esplicitamente non letta: la guida Dayton non recuperata. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende tredici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
 
 ## Sviluppo e attività residue
 
 Il basso protetto e la trasformazione nominale sono calcolati e verificati nel motore su file. Il controllo comune comprende API reale, osservazione ALSA, percorso PC PipeWire, pannello e sorveglianza: il [manuale](61-camilladsp-manuale-tecnico.md) collega codice, prove e misure. Il pannello è installato e attivo; restano abilitazione al login e qualifica hardware. Il software non certifica diffusori, jack, clock o livelli acustici reali. Il modulo WebSocket già presente su Ubuntu viene riusato senza aggiungere dipendenze al Python Windows.
+
+La procedura di montaggio e collaudo collega tavola, cablaggio, protezioni e taratura. La scheda tecnica resta da compilare quando riprendono le verifiche fisiche.
 
 Le attività residue hanno una sola lista operativa: [PENDING-ACTIONS.md, pendenze correnti](PENDING-ACTIONS.md#pendenze-correnti-dopo-lo-sviluppo-autonomo). Il blocco teorico e software autorizzato è sviluppato: controllo DSP, reflex/direttività, livelli e cabinet nominali. Restano scelta esecutiva, spesa, fonti e versionamento, con lavorazione e qualifica fisica sospese. La roadmap generata legge gli stessi fronti dai dati di pianificazione, senza diventare un secondo registro di pendenze.
 

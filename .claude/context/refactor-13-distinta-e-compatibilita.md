@@ -41,3 +41,9 @@ La stima della profondità del solo cabinet aveva tre dimensioni dichiarate e un
 Una lunghezza letta sul disegno della spina descrive la spina isolata. Per far scendere il cavo oltre il bordo servono il raggio del cavo e una verifica del punto in cui il tratto verticale attraversa il piano del ripiano. In più lo sgancio chiede spazio per la traslazione del connettore. Il confronto ora distingue le condizioni e le esprime rispetto alla stessa linea di parete.
 
 L'offset da 110 a 60 mm riduce di 25 mm la proiezione posteriore a 30°. Spostare soltanto la presa porta però il cavo fuori fascia laterale. La compatta combina un arretramento e uno spostamento delle due casse. Il nuovo limite per lo schermo segue da quelle posizioni e conserva le distanze laterali scelte. Il costo geometrico è osservabile prima di intervenire sul legno.
+
+## L'integrità del pacchetto non approva il crossover, MS-328
+
+La scheda di lavoro può contenere un export ben formato con origini temporali incompatibili. Conservare la sessione, l'offset e il filtro già in uso permette di decidere se le curve si possono sommare. In banco restano separati la tensione fra i poli, il limite di dissipazione del carico e il limite per il trasduttore. Un controllo su file non può misurare quei tre dati.
+
+Il caso di polarità invertita del capitolo66 ha integrità verde e `outside_bounds`. La procedura del capitolo70 usa questi due esiti distinti: il file integro autorizza la rilettura, il bersaglio fuori specifica trattiene la taratura. La scheda 70a resta vuota fino all'evidenza di una verifica sul sistema reale.

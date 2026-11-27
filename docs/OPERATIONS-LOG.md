@@ -6101,6 +6101,20 @@ Prossimo passo documentale: consolidare la sequenza di montaggio e verifica dal 
 
 Verifica: calcola.py privato, quattro casi contro le quote nominali, confronto analitico e campionato della curva, margine laterale negativo sull'offset isolato e positivo sulla compatta. Nel primo calcolo il massimo ingombro driver era riportato a mano. Riletto da progetto_cabinet e confermato 88,3 mm, con risultato precedente archiviato. Confermati PDF e perimetro dopo l'ultima scrittura.
 
+## MS-328 - 2026-11-27 - Montaggio, banco e taratura nella stessa sequenza
+
+Perimetro fasi 6-8. La procedura e la scheda dipendono da CAD e mappa dei quattro canali. La revisione tecnica prepara le verifiche differite e il fascicolo per chi realizzerà il mobile.
+
+MS-327 pubblicata in 124a454. MS-328 consolida la preparazione documentale dal preventivo alla taratura. Capitolo70, procedura con sei passi e criteri di avanzamento. Capitolo70a, scheda vuota per montaggio, cablaggio, banco, acquisizione e accettazione. Riscontri per esemplare e profili solo dopo riapertura delle verifiche. Il workflow storico rimane sotto, con marcatura esplicita.
+
+Quattro vie confrontate con la distinta r4 e i contatti NL4MPXX. Prima continuità senza alimentazione, poi misura con carichi fittizi fra i poli, ingresso differenziale adeguato a tensione e commutazione. Limiti di banco e operativi distinti. Qualifica C-01, mappa PC/Pi, protezioni e arresto espliciti. La scheda di misura conserva eccitazione, origine comune, riferimenti, banda, fase e filtri presenti. Il dato di fase mancante non è zero. La misura già filtrata non può ricevere lo stesso crossover nella predizione. Nota TI e due pagine REW registrate con copertura. Il caso sintetico allineato rientra, quello a polarità invertita risulta fuori bersaglio a file integri. Riutilizzati i tre controlli su file con rapporto d'impronte, hardware_qualified sempre falso.
+
+Fonti 230/66 curate/164 storiche, 154 file e 414 usi. Catalogo 207 e didattica13. Guida Dayton ancora non letta. Il taglio del contesto nella mappa lasciava uno spazio finale. Accorciata la frase dell'export nel sorgente, mappa rigenerata e diff pulito. Recap aggiornato con WordCraft/PdfCraft, pagine 1/7 viste e le altre cinque identiche per SHA. Quattordici render temporanei rimossi con impronte conservate. Nessun nuovo modulo, test, hardware, accesso a host o a foto. Il rapporto dopo la persistenza si legge in _notes/montaggio-collaudo-20261127/chiudi-finale.txt prima della proposta manuale.
+
+La sequenza rende disponibili le verifiche future in ordine. Il prossimo passo pratico dipende dalla riapertura della fase A con spazio reale e revisione della tavola. Restano A24, V3, vincolo PC/Pi e soglie di discesa; scelta esecutiva, ordini, montaggio e taratura restano differiti ADR-055. Nessuna nuova richiesta fisica. Enable pannello al login e PA-042 manuali, gate pacchetti senza risposta, sette lezioni aperte, sicurezza non verificata. Due GRC riservati esclusi, zero subagenti e una sola radice di lavoro.
+
+Verificato con verifica-sequenza.py nel livello privato, eseguendo i tre comandi documentati e confrontando la scheda con data/catena-riferimento.json e config/cabinet/retro-a24.json. Conservate impronte dei rapporti e copia del recap precedente. Controllo integrale dopo le ultime scritture nel rapporto chiudi-finale.txt.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Nota di lettura corrente: il testo seguente conserva un riepilogo storico anteriore al setup e al controllo attuali. Le pendenze correnti si leggono soltanto in PENDING-ACTIONS.md e il percorso documentale in STATO-PROGETTO.md; le priorità storiche sotto non riaprono attività concluse o verifiche fisiche sospese.

@@ -2,7 +2,7 @@
 
 <!-- Generato da tools/mappa_fonti_progetto.py; dati autorati in research-vault/anagrafiche-fonti-web.json. -->
 
-Ricognizione del 2026-11-20: 227 identità nei 152 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
+Ricognizione del 2026-11-20: 230 identità nei 154 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
 
 Le chiavi bibliografiche preesistenti restano nel registro canonico del vault. Questa mappa descrive gli usi, non sostituisce la biblioteca. Registrata, letta e verificata sono proprietà distinte: le fonti storiche da riconciliare non diventano lette perché censite. Le letture parziali restano parziali.
 
@@ -225,6 +225,8 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-PRICE-SB16-SOUNDIMPORTS](#src-price-sb16-soundimports) | SB16PFCR25-8, offerta SoundImports | offerta_commerciale | verificata | 5 |
 | [SRC-PRICE-SB26-SOUNDIMPORTS](#src-price-sb26-soundimports) | SB26STCN-C000-4, offerta SoundImports | offerta_commerciale | verificata | 5 |
 | [SRC-PRICE-UMC1820-THOMANN](#src-price-umc1820-thomann) | UMC1820, offerta Thomann Italia | offerta_commerciale | verificata | 5 |
+| [SRC-REW-FILE-MENU](#src-rew-file-menu) | File Menu | manuale_produttore | verificata | 1 |
+| [SRC-REW-MAKING-MEASUREMENTS](#src-rew-making-measurements) | Making Measurements | manuale_produttore | verificata | 1 |
 | [SRC-RUSSELL-BAFFLED-PISTON](#src-russell-baffled-piston) | Radiation from a Circular Baffled Piston | pagina_didattica_autore | verificata | 1 |
 | [SRC-SB15NRX2C30-8](#src-sb15nrx2c30-8) | SB15NRX2C30-8 datasheet | datasheet_trasduttore | verificata | 5 |
 | [SRC-SB16PFCR25-8](#src-sb16pfcr25-8) | SB16PFCR25-8 datasheet | datasheet_trasduttore | verificata | 8 |
@@ -233,6 +235,7 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-ST120-DIMENSION-IMAGE](#src-st120-dimension-image) | Stagecaptain ST-120, immagine quotata ufficiale | disegno_quotato_produttore | verificata | 3 |
 | [SRC-ST120-MANUAL-2025](#src-st120-manual-2025) | Stagecaptain ST-120 manuale inglese | manuale_produttore | verificata | 3 |
 | [SRC-TI-SLOA049D](#src-ti-sloa049d) | Active Low-Pass Filter Design, SLOA049D | nota_applicativa | verificata | 1 |
+| [SRC-TI-SLOA068A](#src-ti-sloa068a) | Guidelines for Measuring Audio Power Amplifier Performance | nota_applicativa_produttore | verificata | 1 |
 | [SRC-TI-TPA3255](#src-ti-tpa3255) | TPA3255 datasheet | datasheet_componente | verificata | 2 |
 | [SRC-UMC1820-PRODUCT](#src-umc1820-product) | UMC1820, pagina e specifiche del produttore | scheda_prodotto | verificata | 5 |
 | [SRC-UMC1820-QSG](#src-umc1820-qsg) | UMC1820 Quick Start Guide multilingue | manuale_produttore | verificata | 4 |
@@ -4811,6 +4814,52 @@ Uso in [research-vault/sistema-autonomo-20261120/sources.md](../../research-vaul
 Contesto locale: / UMC1820 Thomann / Prezzo 175 € IVA inclusa e disponibilità della pagina italiana. /
 
 
+## SRC-REW-FILE-MENU
+
+File Menu
+
+Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato.
+
+Fonte canonica: [https://www.roomeqwizard.com/help/help_en-GB/html/file.html](https://www.roomeqwizard.com/help/help_en-GB/html/file.html).
+
+Responsabile: REW Help.
+
+Versione: Help en-GB consultato il 2026-11-27.
+
+Verifica: verificata, data 2026-11-27. Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato.
+
+Lettura: parziale. Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato.
+
+Usi progettuali dichiarati: Protocollo MS-328, docs/70.
+
+Uso in [docs/70-realizzazione-e-verifica.md](../../docs/70-realizzazione-e-verifica.md), sezione «E. Acquisizione, somma e taratura», riga 50.
+
+Contesto locale: Conservare sessione `.mdat`, curve con modulo e fase ed eventuali impulsi. Confrontare segno, unità, griglia e fase con la sessione. L'export REW può contenere zeri quando manca la fase. REW, File Menu.
+
+
+## SRC-REW-MAKING-MEASUREMENTS
+
+Making Measurements
+
+Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio.
+
+Fonte canonica: [https://www.roomeqwizard.com/help/help_en-GB/html/makingmeasurements.html](https://www.roomeqwizard.com/help/help_en-GB/html/makingmeasurements.html).
+
+Responsabile: REW Help.
+
+Versione: Help en-GB consultato il 2026-11-27.
+
+Verifica: verificata, data 2026-11-27. Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio.
+
+Lettura: parziale. Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio.
+
+Usi progettuali dichiarati: Protocollo MS-328, docs/70.
+
+Uso in [docs/70-realizzazione-e-verifica.md](../../docs/70-realizzazione-e-verifica.md), sezione «E. Acquisizione, somma e taratura», riga 48.
+
+Contesto locale: Per la fase usare loopback di linea o riferimento acustico fisso qualificato, con offset annotato. Conservare lo stesso zero temporale per i due driver. REW, Making Measurements.
+
+
 ## SRC-RUSSELL-BAFFLED-PISTON
 
 Radiation from a Circular Baffled Piston
@@ -5085,6 +5134,29 @@ Usi progettuali dichiarati: Doc62, dimostrazione3: componenti uguali, Q=1/(3-K),
 Uso in [research-vault/crossover-pc-pi-analogico/sources.md](../../research-vault/crossover-pc-pi-analogico/sources.md), sezione «Fonti dello studio», riga 11.
 
 Contesto locale: / S5 / Jim Karki, Texas Instruments, Active Low-Pass Filter Design, SLOA049D, revisione febbraio 2023 / Contenuto verificato: forma del secondo ordine, cascate e appendice A.1.4, pagina stampata 19 / Relazione fra fc, Q e guadagno Sallen-Key; non schema esecutivo o sce
+
+
+## SRC-TI-SLOA068A
+
+Guidelines for Measuring Audio Power Amplifier Performance
+
+§3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare.
+
+Fonte canonica: [https://www.ti.com/lit/an/sloa068a/sloa068a.pdf](https://www.ti.com/lit/an/sloa068a/sloa068a.pdf).
+
+Responsabile: Richard Palmer, Texas Instruments.
+
+Versione: SLOA068A, 2019-09.
+
+Verifica: verificata, data 2026-11-27. §3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare.
+
+Lettura: parziale. §3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare.
+
+Usi progettuali dichiarati: Protocollo MS-328, docs/70.
+
+Uso in [docs/70-realizzazione-e-verifica.md](../../docs/70-realizzazione-e-verifica.md), sezione «D. Banco elettrico con quattro carichi fittizi», riga 38.
+
+Contesto locale: Il carico di prova va fra `+` e `-` di ciascun finale. I finali a ponte richiedono misura differenziale idonea alla tensione di modo comune e ai residui di commutazione. Verificare portata, banda e isolamento dell'ingresso di misura. Il filtro dello strumento deve permettere il confronto nella banda scelta. Tenere i tr
 
 
 ## SRC-TI-TPA3255

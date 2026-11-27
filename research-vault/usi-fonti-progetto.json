@@ -2,7 +2,7 @@
   "schema": "fonti-usi-audio-1",
   "data": "2026-11-20",
   "perimetro": {
-    "file": 152,
+    "file": 154,
     "radici": [
       "docs",
       ".claude/context",
@@ -6404,6 +6404,62 @@
       ]
     },
     {
+      "id": "SRC-REW-FILE-MENU",
+      "url": "https://www.roomeqwizard.com/help/help_en-GB/html/file.html",
+      "aliases": [],
+      "titolo": "File Menu",
+      "ente": "REW Help",
+      "tipo": "manuale_produttore",
+      "versione": "Help en-GB consultato il 2026-11-27",
+      "spiegazione": "Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato.",
+      "usi_progettuali": "Protocollo MS-328, docs/70.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Salvataggio mdat, export risposta e impulso. L’help avverte dello zero di fase in mancanza del dato."
+      },
+      "usi": [
+        {
+          "file": "docs/70-realizzazione-e-verifica.md",
+          "riga": 50,
+          "sezione": "E. Acquisizione, somma e taratura",
+          "contesto": "Conservare sessione `.mdat`, curve con modulo e fase ed eventuali impulsi. Confrontare segno, unità, griglia e fase con la sessione. L'export REW può contenere zeri quando manca la fase. [REW, File Menu](https://www.roomeqwizard.com/help/help_en-GB/html/file.html)."
+        }
+      ]
+    },
+    {
+      "id": "SRC-REW-MAKING-MEASUREMENTS",
+      "url": "https://www.roomeqwizard.com/help/help_en-GB/html/makingmeasurements.html",
+      "aliases": [],
+      "titolo": "Making Measurements",
+      "ente": "REW Help",
+      "tipo": "manuale_produttore",
+      "versione": "Help en-GB consultato il 2026-11-27",
+      "spiegazione": "Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio.",
+      "usi_progettuali": "Protocollo MS-328, docs/70.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Timing reference. Loopback e riferimento acustico, offset e posizione del microfono. Nessun collaudo sul nostro apparecchio."
+      },
+      "usi": [
+        {
+          "file": "docs/70-realizzazione-e-verifica.md",
+          "riga": 48,
+          "sezione": "E. Acquisizione, somma e taratura",
+          "contesto": "Per la fase usare loopback di linea o riferimento acustico fisso qualificato, con offset annotato. Conservare lo stesso zero temporale per i due driver. [REW, Making Measurements](https://www.roomeqwizard.com/help/help_en-GB/html/makingmeasurements.html)."
+        }
+      ]
+    },
+    {
       "id": "SRC-RUSSELL-BAFFLED-PISTON",
       "url": "https://www.acs.psu.edu/drussell/demos/baffledpiston/baffledpiston.html",
       "aliases": [],
@@ -6760,6 +6816,34 @@
           "riga": 11,
           "sezione": "Fonti dello studio",
           "contesto": "| S5 | Jim Karki, Texas Instruments, [Active Low-Pass Filter Design, SLOA049D](https://www.ti.com/lit/an/sloa049d/sloa049d.pdf), revisione febbraio 2023 | Contenuto verificato: forma del secondo ordine, cascate e appendice A.1.4, pagina stampata 19 | Relazione fra fc, Q e guadagno Sallen-Key; non schema esecutivo o sce"
+        }
+      ]
+    },
+    {
+      "id": "SRC-TI-SLOA068A",
+      "url": "https://www.ti.com/lit/an/sloa068a/sloa068a.pdf",
+      "aliases": [],
+      "titolo": "Guidelines for Measuring Audio Power Amplifier Performance",
+      "ente": "Richard Palmer, Texas Instruments",
+      "tipo": "nota_applicativa_produttore",
+      "versione": "SLOA068A, 2019-09",
+      "spiegazione": "§3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare.",
+      "usi_progettuali": "Protocollo MS-328, docs/70.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "§3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "§3.1 e figure 2/11. Lettura differenziale e carico fra i poli. Limiti del banco V3 da verificare."
+      },
+      "usi": [
+        {
+          "file": "docs/70-realizzazione-e-verifica.md",
+          "riga": 38,
+          "sezione": "D. Banco elettrico con quattro carichi fittizi",
+          "contesto": "Il carico di prova va fra `+` e `-` di ciascun finale. I finali a ponte richiedono misura differenziale idonea alla tensione di modo comune e ai residui di commutazione. Verificare portata, banda e isolamento dell'ingresso di misura. Il filtro dello strumento deve permettere il confronto nella banda scelta. Tenere i tr"
         }
       ]
     },

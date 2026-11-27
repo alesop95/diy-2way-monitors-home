@@ -23,6 +23,8 @@ MS-322 aggiunge somma complessa dei driver con filtri e riferimenti espliciti,22
 
 MS-323 consolida la catena in docs/67 e data/catena-riferimento.json. V3 confermati per costo, ADR-058; distinta e budget tracciabili. MS-324 documenta C-01 e lo schema numerato delle quattro vie nel capitolo68. La qualifica resta differita. MS-326 dispone il retro A24 con piastra e passaggio a quattro poli. La riserva posteriore proiettata supera i 300 mm del ripiano. MS-327 confronta quattro layout di discesa in docs/69a. Soglie di servizio nominali 80, 54 e 33 mm per gli scenari ammessi. Restano distanze effettive, scelta di variante e fabbricabilità del vano.
 
+MS-328 consolida il percorso dal preventivo alla taratura nel capitolo70 con scheda 70a. La scelta della piastra dipende ancora dalla luce reale. I criteri di banco e misura sono preparati per la ripresa delle verifiche.
+
 ## Priorità e dipendenze
 
 PENDING-ACTIONS è il solo registro corrente e roadmap-items.yml fornisce i dati della vista generata. I blocchi software sviluppati non vanno riaperti come lavoro mancante a ogni ripresa. Restano scelte esecutive e di spesa, fonti e attività nei progetti competenti. Le otto voci interamente fisiche sono sospese per ADR-055; nessuna scadenza o richiesta automatica di misure.
