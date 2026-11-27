@@ -2,7 +2,7 @@
 
 <!-- Generato da tools/mappa_fonti_progetto.py; dati autorati in research-vault/anagrafiche-fonti-web.json. -->
 
-Ricognizione del 2026-11-20: 219 identità nei 145 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
+Ricognizione del 2026-11-20: 224 identità nei 149 file del perimetro. Il [JSON completo](../../research-vault/usi-fonti-progetto.json) conserva tutti i punti d'uso con riga e sezione.
 
 Le chiavi bibliografiche preesistenti restano nel registro canonico del vault. Questa mappa descrive gli usi, non sostituisce la biblioteca. Registrata, letta e verificata sono proprietà distinte: le fonti storiche da riconciliare non diventano lette perché censite. Le letture parziali restano parziali.
 
@@ -205,6 +205,11 @@ Il perimetro esclude template, guide ereditate, testi privati, appunti, altri re
 | [SRC-KERNEL-USB-SYSFS-7](#src-kernel-usb-sysfs-7) | USB sysfs attributes | documentazione_software_primaria | verificata | 2 |
 | [SRC-MARSHALL-MG10MG15-USER-PDF](#src-marshall-mg10mg15-user-pdf) | MG10 & MG15 Owners Manual | manuale_locale_fornito | verificata | 2 |
 | [SRC-MATAA-README-5FD77C0](#src-mataa-readme-5fd77c0) | MATAA README | documentazione_tecnica_primaria | verificata | 0 |
+| [SRC-NEUTRIK-20002406](#src-neutrik-20002406) | NL4MPXX, disegno 20002406 | disegno_produttore | verificata | 1 |
+| [SRC-NEUTRIK-20003841](#src-neutrik-20003841) | NL4FXX-W-S, disegno 20003841 | disegno_produttore | verificata | 1 |
+| [SRC-NEUTRIK-BDA594](#src-neutrik-bda594) | speakON NL4MPXX e NL4MPXX-3, istruzioni | manuale_produttore | verificata | 2 |
+| [SRC-NEUTRIK-NL4FXX-WS](#src-neutrik-nl4fxx-ws) | NL4FXX-W-S | pagina_produttore | verificata | 1 |
+| [SRC-NEUTRIK-NL4MPXX](#src-neutrik-nl4mpxx) | NL4MPXX | pagina_produttore | verificata | 1 |
 | [SRC-OSM-152-EXPORT](#src-osm-152-export) | Stored export functions | documentazione_tecnica_primaria | verificata | 1 |
 | [SRC-OSM-152-RELEASE](#src-osm-152-release) | Open Sound Meter v1.5.2 | documentazione_tecnica_primaria | verificata | 1 |
 | [SRC-OSM-EULA-20260925](#src-osm-eula-20260925) | Terms and Conditions and EULA | documentazione_tecnica_primaria | verificata | 1 |
@@ -865,7 +870,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 207.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 209.
 
 Contesto locale: "url": "https://www.thomann.it/behringer_a800.htm",
 
@@ -2447,7 +2452,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 193.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 195.
 
 Contesto locale: "url": "https://www.soundimports.eu/en/dayton-audio-emm-6.html",
 
@@ -4259,6 +4264,125 @@ Usi progettuali dichiarati: Caratterizzazione su file e correzione delle afferma
 Registrata come fonte locale o riferimento esplicito; uso documentato nella scheda collegata ai metadati.
 
 
+## SRC-NEUTRIK-20002406
+
+NL4MPXX, disegno 20002406
+
+Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette.
+
+Fonte canonica: [https://www.neutrik.com/media/14283/download/20002406.pdf?v=2](https://www.neutrik.com/media/14283/download/20002406.pdf?v=2).
+
+Responsabile: Neutrik AG.
+
+Versione: 20002406, 2019-10-18.
+
+Verifica: verificata, data 2026-11-27. Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette.
+
+Lettura: parziale. Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette.
+
+Usi progettuali dichiarati: Retro A24, MS-326, docs/69.
+
+Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passaggio-cavi.md), sezione «Piastra, giunzioni e tenuta», riga 32.
+
+Contesto locale: La diagonale M3 è in alto a sinistra e in basso a destra nella vista dall'esterno del cabinet. Il disegno Neutrik della foratura è riferito al lato morsetti, quindi va specchiato orizzontalmente per questa vista. Il montaggio qui previsto è frontale sulla piastra, con viti svasate e dado verificato per accesso. Il mass
+
+
+## SRC-NEUTRIK-20003841
+
+NL4FXX-W-S, disegno 20003841
+
+Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato.
+
+Fonte canonica: [https://www.neutrik.com/media/17072/download/NL4FXX-W-S.pdf?v=1](https://www.neutrik.com/media/17072/download/NL4FXX-W-S.pdf?v=1).
+
+Responsabile: Neutrik AG.
+
+Versione: 20003841, 2022-06-21.
+
+Verifica: verificata, data 2026-11-27. Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato.
+
+Lettura: parziale. Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato.
+
+Usi progettuali dichiarati: Retro A24, MS-326, docs/69.
+
+Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passaggio-cavi.md), sezione «Passaggio interno e spazio sul tavolo», riga 42.
+
+Contesto locale: Il disegno della spina indica fino a 82,5 mm complessivi. Si riservano 110 mm dalla faccia esterna della piastra, includendo il terminale montato e uno spazio di progetto per il cavo. È una riserva da verificare in funzione della curva ammessa dal cavo scelto. A 30° la profondità proiettata del cabinet da solo vale `22
+
+
+## SRC-NEUTRIK-BDA594
+
+speakON NL4MPXX e NL4MPXX-3, istruzioni
+
+Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso.
+
+Fonte canonica: [https://www.neutrik.com/media/14195/download/BDA%20594%20V1%20-%20speakON%20NL4MPXX%20%26%20NL4MPXX-3.pdf?v=2](https://www.neutrik.com/media/14195/download/BDA%20594%20V1%20-%20speakON%20NL4MPXX%20%26%20NL4MPXX-3.pdf?v=2).
+
+Responsabile: Neutrik AG.
+
+Versione: BDA 594 V1, 2020-05-20.
+
+Verifica: verificata, data 2026-11-27. Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso.
+
+Lettura: parziale. Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso.
+
+Usi progettuali dichiarati: Retro A24, MS-326, docs/69.
+
+Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passaggio-cavi.md), sezione «Connettore e coppie di potenza», riga 18.
+
+Contesto locale: Le marcature dei contatti distinguono le due coppie, isolate l'una dall'altra e dal telaio. Etichettare le estremità dei cavi con L/R e LF/HF e confermare la continuità verso ciascun V3 prima di alimentare. Il connettore porta potenza audio ai driver. [Istruzioni BDA 594](https://www.neutrik.com/media/14195/download/BD
+
+Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passaggio-cavi.md), sezione «Piastra, giunzioni e tenuta», riga 32.
+
+Contesto locale: La diagonale M3 è in alto a sinistra e in basso a destra nella vista dall'esterno del cabinet. Il disegno Neutrik della foratura è riferito al lato morsetti, quindi va specchiato orizzontalmente per questa vista. Il montaggio qui previsto è frontale sulla piastra, con viti svasate e dado verificato per accesso. Il mass
+
+
+## SRC-NEUTRIK-NL4FXX-WS
+
+NL4FXX-W-S
+
+Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite.
+
+Fonte canonica: [https://www.neutrik.com/en/product/nl4fxx-w-s](https://www.neutrik.com/en/product/nl4fxx-w-s).
+
+Responsabile: Neutrik AG.
+
+Versione: Pagina consultata il 2026-11-27.
+
+Verifica: verificata, data 2026-11-27. Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite.
+
+Lettura: parziale. Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite.
+
+Usi progettuali dichiarati: Retro A24, MS-326, docs/69.
+
+Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passaggio-cavi.md), sezione «Connettore e coppie di potenza», riga 9.
+
+Contesto locale: Il candidato è Neutrik NL4MPXX, flangia D con quattro contatti e linguette piatte per capicorda. La spina candidata NL4FXX-W-S ammette, secondo il costruttore, guaina da 6 a 12 mm e conduttori da 1,5 a 4 mm². Si prevede un cavo a quattro conduttori per cassa e una diramazione nei pressi dei finali. Guaina, sezione effe
+
+
+## SRC-NEUTRIK-NL4MPXX
+
+NL4MPXX
+
+Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato.
+
+Fonte canonica: [https://www.neutrik.com/en/product/nl4mpxx](https://www.neutrik.com/en/product/nl4mpxx).
+
+Responsabile: Neutrik AG.
+
+Versione: Pagina consultata il 2026-11-27.
+
+Verifica: verificata, data 2026-11-27. Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato.
+
+Lettura: parziale. Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato.
+
+Usi progettuali dichiarati: Retro A24, MS-326, docs/69.
+
+Uso in [docs/69-retro-a24-e-passaggio-cavi.md](../../docs/69-retro-a24-e-passaggio-cavi.md), sezione «Connettore e coppie di potenza», riga 9.
+
+Contesto locale: Il candidato è Neutrik NL4MPXX, flangia D con quattro contatti e linguette piatte per capicorda. La spina candidata NL4FXX-W-S ammette, secondo il costruttore, guaina da 6 a 12 mm e conduttori da 1,5 a 4 mm². Si prevede un cavo a quattro conduttori per cassa e una diramazione nei pressi dei finali. Guaina, sezione effe
+
+
 ## SRC-OSM-152-EXPORT
 
 Stored export functions
@@ -4452,7 +4576,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 179.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 181.
 
 Contesto locale: "url": "https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html",
 
@@ -4508,7 +4632,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 151.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 153.
 
 Contesto locale: "url": "https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html",
 
@@ -4547,7 +4671,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 165.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 167.
 
 Contesto locale: "url": "https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html",
 
@@ -4586,7 +4710,7 @@ Lettura: parziale. Variante, prezzo visualizzato, stato disponibilità; nessun c
 
 Usi progettuali dichiarati: Catena di riferimento e budget, MS-323, capitolo67.
 
-Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 137.
+Uso in [data/catena-riferimento.json](../../data/catena-riferimento.json), sezione «Documento», riga 139.
 
 Contesto locale: "url": "https://www.thomann.it/behringer_umc1820.htm",
 

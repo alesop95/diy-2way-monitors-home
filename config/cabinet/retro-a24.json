@@ -1,0 +1,54 @@
+{
+  "schema": "retro-a24-1",
+  "revision": "2026-11-27-r1",
+  "variant": "A24",
+  "base_geometry": "config/cabinet/progetto-candidato.json",
+  "manufacturing_release": false,
+  "hardware_qualified": false,
+  "frame": "coordinate di tavola (u,z) viste da dietro il cabinet, u da sinistra, z dal fondo; profondità y dal frontale; asse x del modello = 220-u",
+  "bulkhead": {
+    "model": "Neutrik NL4MPXX",
+    "quantity_pair": 2,
+    "mating_plug_candidate": "Neutrik NL4FXX-W-S",
+    "face_mm": [26, 31],
+    "face_projection_mm": 7.05,
+    "body_and_bare_tabs_depth_mm": 27.3,
+    "coupling_side_hole_centres_relative_mm": [[-9.5, 12], [9.5, -12]],
+    "cutout_diameter_min_mm": 24,
+    "screw_clearance_min_mm": 3.2,
+    "screw_spacing_tolerance_mm": 0.1,
+    "m3_front_assembly_torque_max_nm": 0.6,
+    "plug_total_length_max_mm": 82.5,
+    "plug_supported_cable_od_mm": [6, 12],
+    "plug_supported_wire_section_mm2": [1.5, 4],
+    "contacts": {"1+": "LF+", "1-": "LF-", "2+": "HF+", "2-": "HF-"}
+  },
+  "plate_design": {
+    "centre_uv_mm": [110, 75],
+    "material_candidate": "alluminio piano",
+    "width_height_thickness_mm": [80, 70, 3],
+    "mdf_access_diameter_mm": 50,
+    "metal_connector_cutout_diameter_mm": 24.2,
+    "metal_m3_clearance_diameter_mm": 3.4,
+    "metal_m4_clearance_diameter_mm": 4.5,
+    "plate_to_wood_centres_relative_mm": [[-31, -26], [31, -26], [-31, 26], [31, 26]],
+    "mdf_insert_pilot_diameter_mm": null,
+    "mdf_insert_length_mm": null,
+    "plate_to_wood_seal_ring_id_od_mm": [50, 60],
+    "connector_to_plate_seal": "guarnizione compatibile da confermare",
+    "nominal_internal_service_envelope_from_outer_plate_mm": [50, 65, 50],
+    "external_axial_reserve_from_outer_plate_mm": 110
+  },
+  "internal_route": {
+    "through_brace_centre_uy_mm": [150, 130],
+    "through_brace_reserved_radius_mm": 8,
+    "description": "LF rimane sotto il rinforzo; HF risale dalla zona di servizio e attraversa la finestra esistente",
+    "harness_length_mm": null,
+    "cable_min_bend_radius_mm": null
+  },
+  "layout_at_desk": {
+    "photo_observation": "Parete dietro il ripiano e accesso posteriore parzialmente occultato nelle due viste. Distanza e passaggio effettivo non determinati.",
+    "wall_clearance_mm": null,
+    "external_reserve_qualified": false
+  }
+}

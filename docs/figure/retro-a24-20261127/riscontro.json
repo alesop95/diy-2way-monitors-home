@@ -1,0 +1,35 @@
+{
+  "source": "config/cabinet/retro-a24.json",
+  "cad_version": "CADCraft 0.20.1",
+  "profiles_mm_verified": 13,
+  "mirrored_drill_pattern_rejected": true,
+  "wood_opening_web_to_joint_mm": 32.0,
+  "metal_web_between_connector_and_m3_clearance_mm": 1.505,
+  "plate_seal_margin_mm": 5.0,
+  "seal_margin_from_m4_mm": 8.21,
+  "internal_envelope_gap_to_driver_mm": 39.7,
+  "internal_envelope_gap_to_brace_mm": 101.0,
+  "wire_corridor_margin_to_brace_window_mm": 14.0,
+  "mdf_opening_unoccupied_geometric_l": 0.035343,
+  "shelf_depth_mm": 300,
+  "bare_cabinet_depth_projection_mm": 274.545,
+  "minimum_projection_including_axial_point_mm": 317.406,
+  "axial_point_excess_vs_shelf_mm": 17.406,
+  "manufacturing_release": false,
+  "hardware_qualified": false,
+  "sha256": {
+    "retro-a24.dxf": "9fc263cc07fb29f38e2ecf2e3ab1f2f1c07963105250eb8e6e7883cdb5f8353b",
+    "retro-a24.pdf": "0958c0d111158adbe13b513fd3c1749e3c6421382dc766fd872d9e143d39297a"
+  },
+  "ispezione_visiva": {
+    "pagina": 1,
+    "esito": "Quote e tre viste leggibili dopo accorciamento della linea mediana."
+  },
+  "input_sha256": {
+    "config/cabinet/retro-a24.json": "fc42d39f71861e17501afbb9863330846b53d82fdd0d0bd09c9f9f2f21904380",
+    "data/postazione-st120.json": "7e815e2e2d3ec912754efee95627af3a5341a0c8be94f9141822075fb5b02685",
+    "config/cabinet/progetto-candidato.json": "6fa4e92e3614855465b405482259550ad25814bab5f422cebdb204b47e190b64",
+    "config/cabinet/studio-st120.json": "f1b2af052d5c80692eb569e7f88ba97978045f0c4593722ebe85c66eb6c64b5a",
+    "data/driver-geometria.json": "f1146daff032afc44c018ea3c7cb876e5a3d2f0af72be54c4781aad9c71821d6"
+  }
+}

@@ -2,7 +2,7 @@
   "schema": "fonti-usi-audio-1",
   "data": "2026-11-20",
   "perimetro": {
-    "file": 145,
+    "file": 149,
     "radici": [
       "docs",
       ".claude/context",
@@ -921,7 +921,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 207,
+          "riga": 209,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.thomann.it/behringer_a800.htm\","
         },
@@ -3159,7 +3159,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 193,
+          "riga": 195,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.soundimports.eu/en/dayton-audio-emm-6.html\","
         },
@@ -5707,6 +5707,152 @@
       "usi": []
     },
     {
+      "id": "SRC-NEUTRIK-20002406",
+      "url": "https://www.neutrik.com/media/14283/download/20002406.pdf?v=2",
+      "aliases": [],
+      "titolo": "NL4MPXX, disegno 20002406",
+      "ente": "Neutrik AG",
+      "tipo": "disegno_produttore",
+      "versione": "20002406, 2019-10-18",
+      "spiegazione": "Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette."
+      },
+      "usi": [
+        {
+          "file": "docs/69-retro-a24-e-passaggio-cavi.md",
+          "riga": 32,
+          "sezione": "Piastra, giunzioni e tenuta",
+          "contesto": "La diagonale M3 è in alto a sinistra e in basso a destra nella vista dall'esterno del cabinet. Il disegno Neutrik della foratura è riferito al lato morsetti, quindi va specchiato orizzontalmente per questa vista. Il montaggio qui previsto è frontale sulla piastra, con viti svasate e dado verificato per accesso. Il mass"
+        }
+      ]
+    },
+    {
+      "id": "SRC-NEUTRIK-20003841",
+      "url": "https://www.neutrik.com/media/17072/download/NL4FXX-W-S.pdf?v=1",
+      "aliases": [],
+      "titolo": "NL4FXX-W-S, disegno 20003841",
+      "ente": "Neutrik AG",
+      "tipo": "disegno_produttore",
+      "versione": "20003841, 2022-06-21",
+      "spiegazione": "Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato."
+      },
+      "usi": [
+        {
+          "file": "docs/69-retro-a24-e-passaggio-cavi.md",
+          "riga": 42,
+          "sezione": "Passaggio interno e spazio sul tavolo",
+          "contesto": "Il disegno della spina indica fino a 82,5 mm complessivi. Si riservano 110 mm dalla faccia esterna della piastra, includendo il terminale montato e uno spazio di progetto per il cavo. È una riserva da verificare in funzione della curva ammessa dal cavo scelto. A 30° la profondità proiettata del cabinet da solo vale `22"
+        }
+      ]
+    },
+    {
+      "id": "SRC-NEUTRIK-BDA594",
+      "url": "https://www.neutrik.com/media/14195/download/BDA%20594%20V1%20-%20speakON%20NL4MPXX%20%26%20NL4MPXX-3.pdf?v=2",
+      "aliases": [],
+      "titolo": "speakON NL4MPXX e NL4MPXX-3, istruzioni",
+      "ente": "Neutrik AG",
+      "tipo": "manuale_produttore",
+      "versione": "BDA 594 V1, 2020-05-20",
+      "spiegazione": "Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso."
+      },
+      "usi": [
+        {
+          "file": "docs/69-retro-a24-e-passaggio-cavi.md",
+          "riga": 18,
+          "sezione": "Connettore e coppie di potenza",
+          "contesto": "Le marcature dei contatti distinguono le due coppie, isolate l'una dall'altra e dal telaio. Etichettare le estremità dei cavi con L/R e LF/HF e confermare la continuità verso ciascun V3 prima di alimentare. Il connettore porta potenza audio ai driver. [Istruzioni BDA 594](https://www.neutrik.com/media/14195/download/BD"
+        },
+        {
+          "file": "docs/69-retro-a24-e-passaggio-cavi.md",
+          "riga": 32,
+          "sezione": "Piastra, giunzioni e tenuta",
+          "contesto": "La diagonale M3 è in alto a sinistra e in basso a destra nella vista dall'esterno del cabinet. Il disegno Neutrik della foratura è riferito al lato morsetti, quindi va specchiato orizzontalmente per questa vista. Il montaggio qui previsto è frontale sulla piastra, con viti svasate e dado verificato per accesso. Il mass"
+        }
+      ]
+    },
+    {
+      "id": "SRC-NEUTRIK-NL4FXX-WS",
+      "url": "https://www.neutrik.com/en/product/nl4fxx-w-s",
+      "aliases": [],
+      "titolo": "NL4FXX-W-S",
+      "ente": "Neutrik AG",
+      "tipo": "pagina_produttore",
+      "versione": "Pagina consultata il 2026-11-27",
+      "spiegazione": "Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite."
+      },
+      "usi": [
+        {
+          "file": "docs/69-retro-a24-e-passaggio-cavi.md",
+          "riga": 9,
+          "sezione": "Connettore e coppie di potenza",
+          "contesto": "Il candidato è Neutrik NL4MPXX, flangia D con quattro contatti e linguette piatte per capicorda. La spina candidata NL4FXX-W-S ammette, secondo il costruttore, guaina da 6 a 12 mm e conduttori da 1,5 a 4 mm². Si prevede un cavo a quattro conduttori per cassa e una diramazione nei pressi dei finali. Guaina, sezione effe"
+        }
+      ]
+    },
+    {
+      "id": "SRC-NEUTRIK-NL4MPXX",
+      "url": "https://www.neutrik.com/en/product/nl4mpxx",
+      "aliases": [],
+      "titolo": "NL4MPXX",
+      "ente": "Neutrik AG",
+      "tipo": "pagina_produttore",
+      "versione": "Pagina consultata il 2026-11-27",
+      "spiegazione": "Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato."
+      },
+      "usi": [
+        {
+          "file": "docs/69-retro-a24-e-passaggio-cavi.md",
+          "riga": 9,
+          "sezione": "Connettore e coppie di potenza",
+          "contesto": "Il candidato è Neutrik NL4MPXX, flangia D con quattro contatti e linguette piatte per capicorda. La spina candidata NL4FXX-W-S ammette, secondo il costruttore, guaina da 6 a 12 mm e conduttori da 1,5 a 4 mm². Si prevede un cavo a quattro conduttori per cassa e una diramazione nei pressi dei finali. Guaina, sezione effe"
+        }
+      ]
+    },
+    {
       "id": "SRC-OSM-152-EXPORT",
       "url": "https://github.com/psmokotnin/osm/blob/1e08de2322f5e8849e1ba39e1d3993187a7cc75c/src/source/stored.cpp",
       "aliases": [],
@@ -5954,7 +6100,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 179,
+          "riga": 181,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.audiophonics.fr/fr/amplificateurs-integre/fosi-audio-v3-32v-p-21697.html\","
         },
@@ -6027,7 +6173,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 151,
+          "riga": 153,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.soundimports.eu/en/sb-acoustics-sb16pfcr25-8.html\","
         },
@@ -6079,7 +6225,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 165,
+          "riga": 167,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.soundimports.eu/en/sb-acoustics-sb26stcn-c000-4.html\","
         },
@@ -6131,7 +6277,7 @@
       "usi": [
         {
           "file": "data/catena-riferimento.json",
-          "riga": 137,
+          "riga": 139,
           "sezione": "Documento",
           "contesto": "\"url\": \"https://www.thomann.it/behringer_umc1820.htm\","
         },

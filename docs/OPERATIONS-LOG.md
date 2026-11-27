@@ -6069,6 +6069,24 @@ Il commit 2992e12 ha pubblicato la MS-324 su main il 2026-11-27. Main e origin/m
 
 Verifica: `python tools/lint-memoria.py` prima e dopo la registrazione, poi chiudi in sola verifica. Il rapporto finale è in chiudi-riallineamento.txt nel livello privato. La correzione conserva il commit di cablaggio e documenta la data effettiva della sua pubblicazione.
 
+## MS-326 - 2026-11-27 - Retro A24, piastra e ingombro sullo ST-120
+
+Perimetro fasi 5-7. Dalla mappa delle quattro vie si sviluppa la piastra rimovibile. Quote di fabbrica e riserve proposte sono distinte nel JSON. Il risultato documentale alimenta il confronto di layout e la distinta esecutiva dopo le verifiche fisiche differite.
+
+Base f69041b, pubblicazione di MS-325 verificata. MS-326 sviluppa retro A24 in capitolo69 e config/cabinet/retro-a24.json. Candidato NL4MPXX su piastra rimovibile 80 × 70 × 3 mm, apertura MDF Ø50 centrata a u110/z75 e due contatti per ciascuna via. Quote e ferramenta distinte dalle condizioni di rilascio. Il dossier Neutrik distingue lato spina e lato morsetti. Le due copie locali delle foto richieste sono state lette e cancellate dopo la verifica degli originali. Nessuna copia trasferita nel progetto. Usato soltanto il riscontro qualitativo di parete e accesso parzialmente occultato.
+
+Sul ripiano nominale ST-120 di 1180 × 300 mm, quota 930 mm, A24 a 30° proietta 274,5 mm. Con la riserva assiale di 110 mm dalla piastra proietta 317,4 mm, eccedenza di 17,4 mm rispetto al ripiano prima dei margini. La formula usa quote pubbliche già registrate e non ricava la distanza dalla parete dalle foto. L'inviluppo interno ha 39,7 mm liberi rispetto ai driver e 101 mm rispetto al rinforzo. Il corridoio HF mantiene 14 mm dal bordo della finestra. Cablaggio e ferramenta da qualificare.
+
+CADCraft 0.20.1 riapre 13 profili in millimetri, inclusi i fori asimmetrici. La diagonale specchiata conserva diametri e aree ma viene respinta dal controllo dei centri. Tavola PDF A3 vista dopo aver accorciato la linea che intersecava le etichette. Recap aggiornato, cinque pagine cambiate viste, due identiche per SHA a pagine già viste. Quattro PDF del fascicolo correnti e tavola separata, 17 render di servizio rimossi con impronte, precedenti recap e tavola conservati. Kit nominale invariato e coerente.
+
+Mappa delle fonti 224/60 curate/164 storiche, 149 file nel perimetro e 406 usi. Catalogo 201; guida Dayton ancora non letta. Cinque fonti Neutrik nuove, con vista delle quote e copertura registrate. La sandbox ha negato il primo download dei PDF, riuscito con autorizzazione. Zero subagenti. Nessun nuovo modulo di produzione, installazione, commit o deploy automatico. I due GRC preesistenti restano riservati. Controlli finali richiesti dopo le ultime scritture, rapporto in _notes/retro-a24-20261127/chiudi-finale.txt.
+
+Prossima attività documentale: confrontare discesa oltre bordo e soluzione con ingombro posteriore ridotto sulla geometria ST-120. Il passaggio serve a chiudere l'ultima restrizione di layout prima della distinta esecutiva. Restano differiti qualifica C-01, tenuta, fissaggi, lavorazioni e taratura, ADR-055. Enable del pannello al login manuale. PA-042 manuale, sette lezioni aperte, gate pacchetti senza risposta e sicurezza non verificata. Nessuna nuova verifica della macchina Ubuntu.
+
+Verifica: _notes/retro-a24-20261127/tavola.py con CADCraft e PdfCraft. Controllo indipendente dell'orientamento con diagonale specchiata. Primi render con asse sopra il testo, versione v2 accorciata e ispezionata. Rapporti con SHA dei sorgenti, DXF e PDF. Verifica integrale di chiusura in chiudi-finale.txt dopo memoria e perimetro.
+
+Il controllo degli spazi ha trovato un contesto della mappa fonti troncato subito dopo uno spazio. Accorciata la frase nel capitolo69 e rigenerata la mappa. Il controllo del diff non segnala spazi residui.
+
 ## Che cosa resta da fare, e da che cosa dipende
 
 Nota di lettura corrente: il testo seguente conserva un riepilogo storico anteriore al setup e al controllo attuali. Le pendenze correnti si leggono soltanto in PENDING-ACTIONS.md e il percorso documentale in STATO-PROGETTO.md; le priorità storiche sotto non riaprono attività concluse o verifiche fisiche sospese.

@@ -58,7 +58,7 @@ La manopola Main dell'interfaccia non governa Line Out3-10. Il volume quotidiano
 
 Le quattro linee dalle uscite TRS[^3] UMC1820 ai V3 hanno uno [schema numerato](68-cablaggio-quattro-vie.md), MS-324. C-01 ha un cavo diretto con ring isolato come prima variante da qualificare. La conversione con due trasformatori DTI è la riserva documentata. Il capitolo68 definisce pinout, cavi e criteri per distinguere compatibilità di linea, livello e rumore.
 
-Sul lato potenza servono quattro coppie indipendenti, una per ogni trasduttore. Ogni cassa presenta LF+, LF-, HF+, HF-, con coppie isolate; non si prevede un ritorno comune fra vie o finali. Connettore posteriore, lunghezze, sezione, fermacavo e ingombri restano da definire nel layout esecutivo. Non si rimuove la terra di protezione degli apparecchi per risolvere un eventuale ronzio.
+Sul lato potenza servono quattro coppie indipendenti, una per ogni trasduttore. Ogni cassa presenta LF+, LF-, HF+, HF-, con coppie isolate; non si prevede un ritorno comune fra vie o finali. Il capitolo69 propone NL4MPXX e quota gli ingombri. Restano lunghezze, sezione, fermacavo e qualifica dell’accoppiamento. Non si rimuove la terra di protezione degli apparecchi per risolvere un eventuale ronzio.
 
 I finali rimangono apparecchi completi esterni: nei due cabinet si progettano trasduttori, cablaggi e protezioni locali, senza aggiungere rete elettrica o una scheda di potenza nuda. La targhetta32V/5A dell'alimentatore corrisponde a160W al lato DC; non è una misura di potenza audio continua. Guadagno, livello d'ingresso utile, saturazione e tensione ammessa dai driver restano da determinare.
 
@@ -117,7 +117,7 @@ Il backorder del tweeter non cambia la scelta acustica automaticamente. Un sosti
 | Profili DSP finali | Curve valide con riferimento comune, guadagni e limiti | Filtri, ritardi, livelli e protezioni tarati | Acquisizione e qualifica fisica sospese |
 | Acquisto | Progetto approvato e preventivo finale | Ordine delle sole quantità necessarie | Nessun ordine autorizzato |
 
-Non viene dichiarato completo il monitor: è consolidata la catena su cui proseguire. Controller e pannello già sviluppati non richiedono una reinstallazione; il Pi e il percorso reale restano da qualificare. La prossima attività documentale usa lo schema del capitolo68 per studiare connettore posteriore, fissaggi e passaggi di cavo di A24. La qualifica C-01 rimane sospesa.
+Non viene dichiarato completo il monitor: è consolidata la catena su cui proseguire. Controller e pannello già sviluppati non richiedono una reinstallazione; il Pi e il percorso reale restano da qualificare. Il [retro A24](69-retro-a24-e-passaggio-cavi.md) sviluppa piastra rimovibile e passaggio a quattro poli, con riserva posteriore da verificare sullo ST-120. La qualifica C-01 rimane sospesa.
 
 [^1]: Digital Audio Workstation, programma per registrazione e produzione audio.
 [^2]: Sony/Philips Digital Interface, interfaccia digitale audio.

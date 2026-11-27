@@ -12,6 +12,7 @@ Radice locale: `E:\diy-2way-monitors-home`. I percorsi sotto sono relativi alla 
 | Relazione reflex e cabinet | `docs/pdf/reflex-direttivita-cabinet.pdf` | `docs/64-reflex-direttivita-e-cabinet-nominale.md`, quattro figure e TeX. |
 | Kit nominale dettagliato | `build/consegna-completamento-20261125.zip` | 55 file con manifesto; estratto nello stesso percorso senza estensione. Tre FCStd, STEP, DXF, tavole, distinte e viste; nessun ordine di taglio. |
 | Somma dei driver su file | `build/somma-acustica-20261126/` | Tre casi analitici di8 file ciascuno; input in data/somma-acustica-demo, rapporti durevoli in research-vault/somma-acustica-20261126. Dataset allineato analizzato in build/caratterizzazione-somma-20261126; nessuna misura. |
+| Retro A24 | [Capitolo69](../69-retro-a24-e-passaggio-cavi.md) | Piastra e passaggio a quattro poli, [tavola](../figure/retro-a24-20261127/retro-a24.pdf), [DXF](../figure/retro-a24-20261127/retro-a24.dxf) e riscontro CAD con prova della diagonale. |
 | Schema delle quattro vie | [Capitolo68](../68-cablaggio-quattro-vie.md) | L05-L08 e P05-P08, pinout TRS/RCA e alternativa a trasformatore, bilancio e qualifica sospesa. |
 | Distinta della catena | `data/catena-riferimento.json` | Revisione26 novembre: componenti, quantità, mappa nominale, prezzi visualizzati e lotti stimati; ADR-058 e docs/67, nessun acquisto o qualifica. |
 | Provenienza dei PDF | `docs/pdf/manifest.json` | SHA-256 dei PDF e degli input, controllati da `tools/verifica_documenti.py`. |

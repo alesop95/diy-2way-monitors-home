@@ -1,6 +1,6 @@
 # Progetto audio domestico: stato e documenti
 
-Aggiornamento del 2026-11-26. Questo è il punto di lettura per il proprietario: riunisce stato, report e simulazioni dalle fonti canoniche. Controllo DSP, confronto reflex/direttività e cabinet nominali dettagliati sono sviluppati e verificati nei rispettivi perimetri. Le verifiche fisiche rimangono sospese; nessun risultato software certifica diffusori o interfaccia fisica.
+Aggiornamento del 2026-11-27. Questo è il punto di lettura per il proprietario: riunisce stato, report e simulazioni dalle fonti canoniche. Controllo DSP, confronto reflex/direttività e cabinet nominali dettagliati sono sviluppati e verificati nei rispettivi perimetri. Le verifiche fisiche rimangono sospese; nessun risultato software certifica diffusori o interfaccia fisica.
 
 ## Fonti di verità: una per funzione
 
@@ -10,6 +10,7 @@ Aggiornamento del 2026-11-26. Questo è il punto di lettura per il proprietario:
 | Modelli e relazione tecnica | [Capitolo 63](63-sistema-autonomo-driver-e-collaudo.md) |
 | Catena di riferimento, distinta e budget | [Capitolo 67](67-catena-di-riferimento-e-dipendenze-esecutive.md) |
 | Schema delle quattro vie e conversione di linea | [Capitolo 68](68-cablaggio-quattro-vie.md) |
+| Retro A24, piastra e cablaggio | [Capitolo 69](69-retro-a24-e-passaggio-cavi.md) |
 | Uso e controllo del DSP | [Manuale CamillaDSP](61-camilladsp-manuale-tecnico.md) |
 | Pendenze e verifiche sospese | [PENDING-ACTIONS.md](PENDING-ACTIONS.md) |
 | Decisioni e motivazioni | [Registro ADR](../.claude/memory/decisions.md) |
@@ -89,7 +90,7 @@ La [catena consolidata](67-catena-di-riferimento-e-dipendenze-esecutive.md) mant
 
 Il cabinet di riferimento A24 è largo 220 mm, profondo 190 mm e alto 430 mm, in MDF da 18 mm, chiuso. I driver candidati sono SB16PFCR25-8 e SB26STCN-C000-4. L'alternativa B27 è larga 190 mm, profonda 180 mm e alta 430 mm e usa il woofer SB15NRX2C30-8. C24 è il confronto di maggiore volume. I tre assiemi nominali dettagliati includono tagli, incassi e rinforzo; il kit conserva sette solidi modificabili per cassa e distinte per coppia. Fissaggi, lavorazione e tolleranze definitive dipendono dai riscontri sospesi.
 
-Il ripiano superiore Stagecaptain ST-120 è già documentato: 118 × 30 cm, quota 93 cm. Non viene richiesta una nuova misura di queste quote pubbliche. Nello scenario nominale studiato, A24 lascia circa 569 mm per la larghezza totale dello schermo; B27 circa 631 mm. Questo spiega perché un 27″ largo 61-62 cm e A24 non sono automaticamente compatibili. La scelta dello schermo resta differita: Full HD è il minimo proposto, QHD non è obbligatorio e il gaming non è un requisito.
+Il ripiano superiore Stagecaptain ST-120 è già documentato: 118 × 30 cm, quota 93 cm. Non viene richiesta una nuova misura di queste quote pubbliche. Nello scenario nominale studiato, A24 lascia circa 569 mm per la larghezza totale dello schermo; B27 circa 631 mm. Questo spiega perché un 27″ largo 61-62 cm e A24 non sono automaticamente compatibili. La scelta dello schermo resta differita: Full HD è il minimo proposto, QHD non è obbligatorio e il gaming non è un requisito. Il retro A24 ora ha una piastra rimovibile quotata. A 30°, la proiezione in profondità con la riserva della spina arriva a 317,4 mm contro i 300 mm del ripiano. La distanza effettiva dalla parete e la discesa del cavo restano aperte.
 
 L'obiettivo storico è circa 60 Hz-20 kHz entro ±2 dB al punto di ascolto, anche nel piccolo intervallo angolare previsto. Non è una prestazione raggiunta. Nel modello chiuso ideale SB16/A24 il volume netto assunto è 9,664 L, la frequenza a -3 dB circa 68 Hz e il livello a 60 Hz circa -4,4 dB: includendo il passa alto protettivo a 35 Hz il risultato è -5,391 dB. La trasformazione nominale sviluppata recupera +3,391 dB a 60 Hz per arrivare a -2 dB, con circa 2,18 volte la potenza a quella frequenza. Dodici casi sono stati collaudati nel motore e 486 scenari mostrano la sensibilità ai parametri: non è una garanzia sugli esemplari non misurati. Le scelte possono cambiare in base al confronto tra volume, emissione, equalizzazione e costo.
 
@@ -156,7 +157,7 @@ La documentazione e il codice canonici sono nel repository Windows. Ubuntu conti
 
 I risultati correnti sono in `build/studio-crossover-20261120-v2/`, `build/sistema-autonomo-20261120-v5/` e `build/collaudo-profili-autonomi-20261120-finale-v5/`. I rapporti leggibili sono copiati nei due topic del vault. I tentativi precedenti, anche falliti, sono nel ZIP `_notes/archivio-prove/20261120/prove-superate.zip`, con 340 file e manifesto dei percorsi originali. La rimozione dei soli espansi ha ridotto di circa 190 MiB lordi le copie, conservando la prova delle correzioni.
 
-La mappa registra 219 riferimenti, con 55 schede curate e 164 riferimenti storici ancora da riconciliare. Una scheda curata è esplicitamente non letta: la guida Dayton non recuperata. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende tredici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
+La mappa registra 224 riferimenti, con 60 schede curate e 164 riferimenti storici ancora da riconciliare. Una scheda curata è esplicitamente non letta: la guida Dayton non recuperata. Censire non equivale a leggere: copertura e verifica rimangono distinte. Linkwitz Lab e OpenCV sono prioritari per indicazione dell'utente. Sette lezioni per il template sono disponibili e ancora da recepire; il percorso didattico comprende tredici approfondimenti. Non sono stati importati contenuti aziendali; rimane PA-042 per la valutazione manuale dei vecchi identificatori nelle revisioni Git precedenti.
 
 ## Sviluppo e attività residue
 

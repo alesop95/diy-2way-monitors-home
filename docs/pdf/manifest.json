@@ -1,14 +1,14 @@
 {
   "schema": "documenti-consegna-1",
-  "data": "2026-11-26",
+  "data": "2026-11-27",
   "documenti": [
     {
       "pdf": "docs/pdf/recap-progetto.pdf",
-      "sha256": "8c4c6c8d19ba3425b1034a144d3698f067f3ca726c206c2c9594f6c6df24f581",
-      "bytes": 143189,
+      "sha256": "99c79d393e54789efa0baff105dc6f5a786beb247a2c6cce769ebb8e8ac95c0d",
+      "bytes": 144357,
       "pagine": 7,
       "sorgenti": {
-        "docs/STATO-PROGETTO.md": "315a32ba3e7a99d9076f85e809ecce08880c8a536e1dc989dc65376f022b6b0a",
+        "docs/STATO-PROGETTO.md": "f84f93babc3fadbb61c6ef675b460d0f186be869a78d04cff97b8e40fd4fb9b7",
         "config/documenti/intrawelt-tecnico.json": "f1221bad44cfa2957b3e18191414025b3eb920a2c30297f2e47b67c6c71d149c",
         "tools/consegna_documenti.py": "a10ed62f436df28de6ce3b1a0635fe5fca0ba983fb39987eba2d44fad0e76730"
       },
@@ -33,11 +33,11 @@
         ],
         "esito": "Testo, formule e tabelle leggibili nelle pagine ispezionate; nessun taglio rilevato.",
         "png_conservate": false,
-        "data": "2026-11-26"
+        "data": "2026-11-27"
       },
       "collegamenti_pdf": 0,
       "limiti": "Il recap è copia di lettura senza link; la navigazione completa resta nel Markdown.",
-      "rigenerazione": "2026-11-26"
+      "rigenerazione": "2026-11-27"
     },
     {
       "pdf": "docs/pdf/crossover-pc-pi-analogico.pdf",

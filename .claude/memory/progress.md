@@ -1461,3 +1461,19 @@ Il seguito didattico è nella scheda 13, sezione MS-324 sul percorso di corrente
 Il commit 2992e12 ha pubblicato la MS-324 su main il 2026-11-27. Main e origin/main coincidono e l'impronta delle 09:20 è coerente. Il lavoro tecnico resta registrato nella voce del 26 novembre. Il controllo precedente al commit era verde. Al controllo successivo `lint-memoria.py` ha confrontato la data del commit con l'ultima voce del giorno precedente e ha classificato `tools/roadmap-items.yml` fra i file sotto tools. Questa voce registra la pubblicazione con la data effettiva.
 
 File toccati: `.claude/memory/progress.md`, `.claude/memory/index.md`, `.claude/context/current-work.md`, `docs/OPERATIONS-LOG.md` e ripresa privata. Verifica mirata con `python tools/lint-memoria.py`, esito completo nel rapporto privato di riallineamento.
+
+## 2026-11-27 - Piastra e ingombri del retro A24 verificati sul modello, MS-326
+
+**Template:** nessuna. Prova reale di riapertura del disegno, caso contrario con fori specchiati.
+
+Base f69041b, pubblicazione di MS-325 verificata. MS-326 sviluppa retro A24 in capitolo69 e config/cabinet/retro-a24.json. Candidato NL4MPXX su piastra rimovibile 80 × 70 × 3 mm, apertura MDF Ø50 centrata a u110/z75 e due contatti per ciascuna via. Quote e ferramenta distinte dalle condizioni di rilascio. Il dossier Neutrik distingue lato spina e lato morsetti. Le due copie locali delle foto richieste sono state lette e cancellate dopo la verifica degli originali. Nessuna copia trasferita nel progetto. Usato soltanto il riscontro qualitativo di parete e accesso parzialmente occultato.
+
+Sul ripiano nominale ST-120 di 1180 × 300 mm, quota 930 mm, A24 a 30° proietta 274,5 mm. Con la riserva assiale di 110 mm dalla piastra proietta 317,4 mm, eccedenza di 17,4 mm rispetto al ripiano prima dei margini. La formula usa quote pubbliche già registrate e non ricava la distanza dalla parete dalle foto. L'inviluppo interno ha 39,7 mm liberi rispetto ai driver e 101 mm rispetto al rinforzo. Il corridoio HF mantiene 14 mm dal bordo della finestra. Cablaggio e ferramenta da qualificare.
+
+CADCraft 0.20.1 riapre 13 profili in millimetri, inclusi i fori asimmetrici. La diagonale specchiata conserva diametri e aree ma viene respinta dal controllo dei centri. Tavola PDF A3 vista dopo aver accorciato la linea che intersecava le etichette. Recap aggiornato, cinque pagine cambiate viste, due identiche per SHA a pagine già viste. Quattro PDF del fascicolo correnti e tavola separata, 17 render di servizio rimossi con impronte, precedenti recap e tavola conservati. Kit nominale invariato e coerente.
+
+Mappa delle fonti 224/60 curate/164 storiche, 149 file nel perimetro e 406 usi. Catalogo 201; guida Dayton ancora non letta. Cinque fonti Neutrik nuove, con vista delle quote e copertura registrate. La sandbox ha negato il primo download dei PDF, riuscito con autorizzazione. Zero subagenti. Nessun nuovo modulo di produzione, installazione, commit o deploy automatico. I due GRC preesistenti restano riservati. Controlli finali richiesti dopo le ultime scritture, rapporto in _notes/retro-a24-20261127/chiudi-finale.txt.
+
+Prossima attività documentale: confrontare discesa oltre bordo e soluzione con ingombro posteriore ridotto sulla geometria ST-120. Il passaggio serve a chiudere l'ultima restrizione di layout prima della distinta esecutiva. Restano differiti qualifica C-01, tenuta, fissaggi, lavorazioni e taratura, ADR-055. Enable del pannello al login manuale. PA-042 manuale, sette lezioni aperte, gate pacchetti senza risposta e sicurezza non verificata. Nessuna nuova verifica della macchina Ubuntu.
+
+File toccati: piano, capitoli 67-69, config retro e distinta, tavola DXF/PDF e rapporto, fonti, mappa, catalogo, stato e pendenze, recap e manifesto, `tools/roadmap-items.yml`, didattica13, contesto, registro, memoria e ripresa. Le foto cancellate non fanno parte della consegna.

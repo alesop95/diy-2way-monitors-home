@@ -1215,6 +1215,106 @@
         "copertura": "Prezzo, IVA e disponibilità della pagina aperta."
       },
       "usi_progettuali": "Schema e bilancio C-01, MS-324, capitolo68."
+    },
+    {
+      "id": "SRC-NEUTRIK-NL4MPXX",
+      "url": "https://www.neutrik.com/en/product/nl4mpxx",
+      "aliases": [],
+      "titolo": "NL4MPXX",
+      "ente": "Neutrik AG",
+      "tipo": "pagina_produttore",
+      "versione": "Pagina consultata il 2026-11-27",
+      "spiegazione": "Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Specifiche e accessori. Quattro poli e linguette piatte; montaggio da disegno separato."
+      }
+    },
+    {
+      "id": "SRC-NEUTRIK-20002406",
+      "url": "https://www.neutrik.com/media/14283/download/20002406.pdf?v=2",
+      "aliases": [],
+      "titolo": "NL4MPXX, disegno 20002406",
+      "ente": "Neutrik AG",
+      "tipo": "disegno_produttore",
+      "versione": "20002406, 2019-10-18",
+      "spiegazione": "Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Foglio 1 visto in PdfCraft. Flangia, viste opposte e quota assiale delle linguette."
+      }
+    },
+    {
+      "id": "SRC-NEUTRIK-BDA594",
+      "url": "https://www.neutrik.com/media/14195/download/BDA%20594%20V1%20-%20speakON%20NL4MPXX%20%26%20NL4MPXX-3.pdf?v=2",
+      "aliases": [],
+      "titolo": "speakON NL4MPXX e NL4MPXX-3, istruzioni",
+      "ente": "Neutrik AG",
+      "tipo": "manuale_produttore",
+      "versione": "BDA 594 V1, 2020-05-20",
+      "spiegazione": "Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Connection, Wiring, Panel cutout e Mounting. Foratura e limite di coppia distinti per montaggio e suffisso."
+      }
+    },
+    {
+      "id": "SRC-NEUTRIK-NL4FXX-WS",
+      "url": "https://www.neutrik.com/en/product/nl4fxx-w-s",
+      "aliases": [],
+      "titolo": "NL4FXX-W-S",
+      "ente": "Neutrik AG",
+      "tipo": "pagina_produttore",
+      "versione": "Pagina consultata il 2026-11-27",
+      "spiegazione": "Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Intervalli del diametro guaina e delle sezioni dei conduttori, terminali a vite."
+      }
+    },
+    {
+      "id": "SRC-NEUTRIK-20003841",
+      "url": "https://www.neutrik.com/media/17072/download/NL4FXX-W-S.pdf?v=1",
+      "aliases": [],
+      "titolo": "NL4FXX-W-S, disegno 20003841",
+      "ente": "Neutrik AG",
+      "tipo": "disegno_produttore",
+      "versione": "20003841, 2022-06-21",
+      "spiegazione": "Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato.",
+      "usi_progettuali": "Retro A24, MS-326, docs/69.",
+      "verifica": {
+        "stato": "verificata",
+        "data": "2026-11-27",
+        "nota": "Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato."
+      },
+      "lettura": {
+        "stato": "parziale",
+        "copertura": "Foglio 1, quote longitudinali della spina. Nessun dato sulla distanza parete con cavo piegato."
+      }
     }
   ]
 }
